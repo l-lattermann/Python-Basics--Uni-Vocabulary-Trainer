@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+
+import os
+import re
+import random
+
+def clear():
+    os.system('clear')
+
+def load_vocab_file(path: str) -> list[str]:
+    with open(path, "r") as f:
+        return f.read().splitlines()
+
+def validate_format(lines: list[str]) -> None:
+    for i in range(len(lines) - 1):
+        tag1, tag2 = lines[i][:2], lines[i+1][:2]
+        if tag1 == tag2:
+            print("❌ Format error: Expected alternating Q:/A: lines.")
+            print(f"Line {i+1}: {lines[i]}\nLine {i+2}: {lines[i+1]}\n")
+            exit(1)
+
+def build_vocab_dict(lines: list[str]) -> dict[str, str]:
+    return {lines[i]: lines[i+1] for i in range(0, len(lines)-1, 2)}
+
+def prompt_for_vocab_file() -> str:
+    print("Copy-paste the file path of your vocabulary file below:\n")
+    while True:
+        path = input("File path: ").strip().strip("'")
+        if os.path.exists(path):
+            return path
+        print("Invalid path. Try again.\n")
+
+def main():
+    clear()
+    print("📘 Vocabulary Trainer\n")
+    default_file = "vocabulary.txt"
+    
+    # Load file
+    if os.path.exists(default_file):
+        vocab_path = default_file
+    else:
+        vocab_path = prompt_for_vocab_file()
+
+    print(f"\n📂 Loading vocabulary from: {vocab_path}\n")
+    lines = load_vocab_file(vocab_path)
+    validate_format(lines)
+    vocab = build_vocab_dict(lines)
+    
+    keys = list(vocab.keys())
+    random.shuffle(keys)
+
+    # Load not-known entries if they exist
+    default_file = "not_known.txt"
+    if os.path.exists(default_file):
+        vocab_path = default_file
+    else:
+        vocab_path = prompt_for_vocab_file()
+
+    print(f"\n📂 Loading vocabulary from: {vocab_path}\n")
+    lines = load_vocab_file(vocab_path)
+    validate_format(lines)
+    not_known = build_vocab_dict(lines)
+            
+    for question in keys:
+        clear()
+        print("\n"*15)
+        print("↩ Enter = show answer | # = mark as not known | r = repeat not-known | q = quit\n")
+        print(f"{question}\n")
+        cmd = input().strip().lower()
+
+        if cmd == "":
+            print(f"{vocab[question]}\n")
+            temp_cmd = input()
+            if temp_cmd == "#":
+                not_known[question] = vocab[question]
+        elif cmd == "#":
+            print(f"{vocab[question]}\n")
+            not_known[question] = vocab[question]
+            input()
+        elif cmd == "q":
+            break
+        elif cmd == "r":
+            if not not_known:
+                print("ℹ️ No not-known entries.\n")
+                input("Press Enter to continue...")
+                continue
+            print("🔁 Repeating not-known entries:\n")
+            for nq in not_known:
+                print(f"{nq}\n")
+                input()
+                print(f"{not_known[nq]}\n")
+                input()
+            continue
+
+        # Create file with not-known entries
+        if not_known:
+            with open("not_known.txt", "a") as f:
+                for nq in not_known:
+                    f.write(f"{nq}\n{not_known[nq]}\n")
+            print("📄 Not-known entries saved to 'not_known.txt'.\n")
+
+    input("🎉 Done! Press Enter to exit...")
+
+if __name__ == "__main__":
+    main()

@@ -50,7 +50,7 @@ Avoid duplicate consecutive `Q:` or `A:` tags—this will raise a format error w
 2. Double click the `start_vocabtrainer.command`
 3.	Follow the on-screen instructions:
 
-```bash
+```txt
 ↩ Enter = show answer
 # = mark as not known
 r = repeat not-known
@@ -64,9 +64,12 @@ q = quit
 1. Open Terminal.
 2. Clone or download this repository.
 3. Navigate to the folder:
+4. Make the command file executable
+5. Run the start_vocabtrainer.command script
 
 ```bash
-git clone https://github.com/your-username/vocab_trainer.git
-cd path/to/VOCAB_TRAINER
-git clone https://github.com/your-username/vocab_trainer.git
+git clone https://github.com/l-lattermann/uni-vocabulary-trainer.git
+cd /uni-vocabulary-trainer
+chmod +x start_vocabtrainer.command
+./start_vocabtrainer.command
 ```

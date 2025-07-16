@@ -1,4 +1,4 @@
-# Vocabulary Trainer
+# Vocabulary Trainer for Mac/Linux
 
 A simple terminal-based flashcard trainer for learning vocabulary. This Python script reads questions and answers from a text file and quizzes you interactively. Unknown entries are saved for focused repetition later.
 

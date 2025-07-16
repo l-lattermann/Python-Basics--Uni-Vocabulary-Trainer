@@ -33,7 +33,7 @@ A simple terminal-based flashcard trainer for learning vocabulary. This Python s
 ## File Format
 
 vocabulary.txt files must alternate between `Q:` and `A:` lines. Example:
-```bash
+```txt
 Q: What is the capital of France?
 A: Paris
 Q: What is the German word for ‘apple’?

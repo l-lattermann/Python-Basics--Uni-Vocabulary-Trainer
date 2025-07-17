@@ -54,12 +54,25 @@ def main():
     if os.path.exists(default_file):
         vocab_path = default_file
     else:
+        print("\nℹ️ No 'not_known.txt' file found. You can create one by marking entries as not known during the session.\n")
         vocab_path = prompt_for_vocab_file()
 
     print(f"\n📂 Loading vocabulary from: {vocab_path}\n")
     lines = load_vocab_file(vocab_path)
     validate_format(lines)
     not_known = build_vocab_dict(lines)
+
+    # Start with not-known entries if they exist
+    if not_known:
+        print("🔁 Starting with not-known entries:\n")
+        for nq in not_known:
+            clear()
+            print("\n"*15)
+            print("Not-known:\n")
+            print(f"{nq}\n")
+            input()
+            print(f"{not_known[nq]}\n")
+            input()
             
     for question in keys:
         clear()

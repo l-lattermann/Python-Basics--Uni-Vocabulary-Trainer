@@ -3,9 +3,9 @@
 import os
 import sys
 from dataclasses import dataclass
-from turtle import mode
 from typing import List
 import time
+from pathlib import Path
 
 @dataclass
 class Entry:
@@ -75,47 +75,39 @@ def save_vocab(entries: List[Entry]):
     known = [e for e in entries if e.known and e.seen]
     not_known = [e for e in entries if not e.known and e.seen]
 
-    with open("src_and_data/"+Entry.path_known, "w") as f:
+    path = Path("src_and_data") / Entry.path_known
+    with open(path, "w") as f:
         for e in known:
             f.write(f"{e.question}\n{e.answer}\n")
 
-    with open("src_and_data/"+Entry.path_not_known, "w") as f:
-        for e in not_known:
+    path = Path("src_and_data") / Entry.path_not_known
+    with open(path, "w") as f:
+        for e in not_known:  
             f.write(f"{e.question}\n{e.answer}\n")
 
 def run_trainer(entries: List[Entry], label="Trainer") -> str:
     for entry in entries:
         print_header(label)
-        print(f"{entry.question}\n")
+        BOLD = "\033[1m"
+        RESET = "\033[0m"
+        CYAN = "\033[36m"
+        print(f"{CYAN}[ENTER] -> show answer{RESET}")
+        print(f"{BOLD}{entry.question}{RESET}")
+        input()
+        print(f"{BOLD}{entry.answer}{RESET}\n")
         while True:
-            cmd = input().strip().lower()
-            if cmd == "#":
-                print(f"{entry.answer}\n")
-                if input("✔ Not known? ([ENTER] to confirm): ").strip() == "#":
+            cmd = input(f"{CYAN}Not known? [ENTER]     Known? [#]{RESET}\n").strip().lower()
+            if cmd == "":
                     entry.known = False
                     entry.seen = True
-                    print("❌ Marked as not known.")
-                    time.sleep(0.65)
+                    print(f"❌ {CYAN} Marked as not known {RESET}") 
+                    time.sleep(0.75)
                     break
-                else:
+            elif cmd == "#": 
                     entry.known = True
                     entry.seen = True
-                    print("✅ Marked as known.")
-                    time.sleep(0.65)
-                    break
-            elif cmd == "": 
-                print(f"{entry.answer}\n")
-                if input("✔ Known? (# to confirm): ").strip() == "#":
-                    entry.known = True
-                    entry.seen = True
-                    print("✅ Marked as known.")
-                    time.sleep(0.65)
-                    break
-                else:
-                    entry.known = False
-                    entry.seen = True
-                    print("❌ Marked as not known.")
-                    time.sleep(0.65)
+                    print(f"✅ {CYAN}Marked as known.{RESET}")
+                    time.sleep(0.75)
                     break
             elif cmd == "q":
                 return "q"

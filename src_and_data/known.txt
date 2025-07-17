@@ -1,2 +1,0 @@
-Q: Who coined the term “user experience design” and why?
-A: The term was popularized by cognitive psychologist Donald Norman in the 1980s while at Apple. He emphasized the need to design technology that aligns with human psychology, making systems intuitive and emotionally satisfying rather than just functional.

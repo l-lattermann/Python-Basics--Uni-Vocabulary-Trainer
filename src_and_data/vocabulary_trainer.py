@@ -3,7 +3,9 @@
 import os
 import sys
 from dataclasses import dataclass
+from turtle import mode
 from typing import List
+import time
 
 @dataclass
 class Entry:
@@ -28,8 +30,6 @@ def validate_format(entries: list[Entry]):
             return       
     print("✅ Format validated successfully.")
             
-
-
 def load_vocab_file(path: str) -> List[Entry]:
     with open(path, "r") as f:
         lines = f.read().splitlines()
@@ -39,9 +39,29 @@ def load_vocab_file(path: str) -> List[Entry]:
 
 def print_header(mode="Trainer"):
     clear()
-    print("\n" * 5)
-    print(f"####### Vocabulary Trainer ({mode}) #######")
-    print("# = mark known | Enter = show answer (mark unkown) | q = quit | m = change mode [ known / unkown / unseen ]\n")
+    print("\n" * 3)
+    
+    # ANSI Colors
+    CYAN = "\033[36m"
+    BLUE = "\033[38;5;117m"
+    GREEN = "\033[38;5;151m"
+    RED = "\033[38;5;210m"
+    RESET = "\033[0m"
+
+
+    # Modes
+    if mode == "Known":
+        mode = f"{GREEN}✅ Known Vocabulary ✅{RESET}"
+    elif mode == "Not Known":
+        mode = f"{RED}❌ Not Known Vocabulary ❌{RESET}"
+    elif mode == "Unseen":
+        mode = f"{BLUE}🆕 Unseen Vocabulary 🆕{RESET}"
+
+    print(f"{mode}\n")
+    print(f"{CYAN}# = mark known{RESET}")
+    print(f"{CYAN}Enter = show answer (mark unknown){RESET}")
+    print(f"{CYAN}q = quit{RESET}")
+    print(f"{CYAN}m = change mode [ known / unknown / unseen ]{RESET}\n")
 
 def prompt_for_file(msg: str) -> str:
     print(msg)
@@ -50,7 +70,7 @@ def prompt_for_file(msg: str) -> str:
         if os.path.exists(path):
             return path
         print("Invalid path. Try again.\n")
-
+ 
 def save_vocab(entries: List[Entry]):
     known = [e for e in entries if e.known and e.seen]
     not_known = [e for e in entries if not e.known and e.seen]
@@ -71,31 +91,41 @@ def run_trainer(entries: List[Entry], label="Trainer") -> str:
             cmd = input().strip().lower()
             if cmd == "#":
                 print(f"{entry.answer}\n")
-                entry.known = True
-                entry.seen = True
-                input()
-                break
+                if input("✔ Not known? ([ENTER] to confirm): ").strip() == "#":
+                    entry.known = False
+                    entry.seen = True
+                    print("❌ Marked as not known.")
+                    time.sleep(0.65)
+                    break
+                else:
+                    entry.known = True
+                    entry.seen = True
+                    print("✅ Marked as known.")
+                    time.sleep(0.65)
+                    break
             elif cmd == "": 
                 print(f"{entry.answer}\n")
                 if input("✔ Known? (# to confirm): ").strip() == "#":
                     entry.known = True
                     entry.seen = True
+                    print("✅ Marked as known.")
+                    time.sleep(0.65)
                     break
                 else:
                     entry.known = False
                     entry.seen = True
+                    print("❌ Marked as not known.")
+                    time.sleep(0.65)
                     break
             elif cmd == "q":
-                    return "q"
+                return "q"
             elif cmd == "m":
-                return "m"
+                return "m" 
+            
             # Move cursor up one line and clear the line
             sys.stdout.write("\033[F\033[K")
             sys.stdout.flush()
 
-            
-        
-    
 
 def main():
     clear()

@@ -1,0 +1,10 @@
+Q: How did the field of user experience design emerge historically?
+A: UX design developed in the mid-20th century alongside human–machine interaction (HCI). Its roots lie in military efforts to improve interface usability in the 1940s, evolving through ergonomics and cognitive psychology, and becoming central to software and product design by the 1980s and 1990s.
+Q: Who coined the term “user experience design” and why?
+A: The term was popularized by cognitive psychologist Donald Norman in the 1980s while at Apple. He emphasized the need to design technology that aligns with human psychology, making systems intuitive and emotionally satisfying rather than just functional.
+Q: What role did the internet and dotcom boom play in UX?
+A: The rise of the web changed software marketing: users could try or preview software before purchase, making usability and user experience central to purchasing decisions. The dotcom boom pushed companies to invest in UX to remain competitive.
+Q: How does DIN EN ISO 9241-210 define a “user”?
+A: A user is anyone who interacts with a system, whether directly or indirectly. This includes customers who buy and use the product, and also employees who operate, maintain, or support it within an organization.
+Q: What factors shape the mindset and behavior of users?
+A: Users are influenced by physical and mental abilities, emotional states, cultural background, social environments, education, and personal experiences. These factors form an individual mental model and determine how users interact with systems.

@@ -1,0 +1,8 @@
+Q: What does user experience (UX) design focus on?
+A: UX design focuses on the holistic experience people have with a product or service, emphasizing emotions, satisfaction, and usability during interaction. It looks beyond functionality to consider how users feel and what meanings they associate with their experiences.
+Q: Why do designed objects and services play a key role in shaping experience?
+A: Most everyday interactions occur not in natural settings but through designed systems—products, interfaces, or services. These designs mediate how we perceive activities, develop habits, and form attitudes toward brands or technologies.
+Q: How is UX relevant to digital products?
+A: In digital contexts, UX refers to the interaction with systems like apps, websites, and software. A positive UX ensures that these tools are not only usable but also emotionally engaging, intuitive, and aligned with user goals and expectations.
+Q: What shift occurred in HCI with the rise of personal computing?
+A: As non-experts began using computers in the 1980s and 1990s, HCI shifted from training users to adapt to systems, toward designing systems that adapt to users. This user-centered perspective laid the foundation for modern UX practices.

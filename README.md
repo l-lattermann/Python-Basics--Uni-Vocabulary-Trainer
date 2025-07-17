@@ -9,23 +9,19 @@ A simple terminal-based flashcard trainer for learning vocabulary. This Python s
 
 - Loads vocabulary from `vocabulary.txt` or a custom path
 - Supports alternating question (`Q:`) and answer (`A:`) lines
-- Randomizes question order each session
-- Interactive controls:
-  - `Enter` — Show the answer
-  - `#` — Mark as not known
-  - `r` — Review only not-known entries
-  - `q` — Quit the session
-- Saves unknown entries to `not_known.txt` for targeted review
+- Interactive controls
+- Saves which vocabulary you have learn, not learned yet, and not seen yet
 
 
 
 ## Project Structure
 
-| File / Folder                | Description                                                                 |
+| File / Folder                | Description                                                                |
 |-----------------------------|-----------------------------------------------------------------------------|
 | `vocabulary_trainer.py`     | Main Python script that runs the vocabulary quiz in the terminal.           |
 | `vocabulary.txt`            | Default vocabulary file with alternating `Q:` and `A:` lines.               |
 | `not_known.txt`             | Automatically generated file saving entries marked as not known.            |
+| `known.txt`                 | Automatically generated file saving entries marked as known.                |
 | `start_vocabtrainer.command`| macOS launcher script that opens Terminal and runs the quiz.                |
 
 ---
@@ -66,9 +62,9 @@ Avoid duplicate consecutive `Q:` or `A:` tags—this will raise a format error w
 3.	Follow the on-screen instructions:
 
 ```txt
-↩ Enter = show answer
-# = mark as not known
-r = repeat not-known
+↩ Enter = show answer (mark as known)
+# = mark as known
+m = switch between modes [ known / unkown / unseen ]
 q = quit
 ```
 

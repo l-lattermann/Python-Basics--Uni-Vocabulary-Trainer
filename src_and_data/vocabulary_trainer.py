@@ -75,11 +75,11 @@ def save_vocab(entries: List[Entry]):
     known = [e for e in entries if e.known and e.seen]
     not_known = [e for e in entries if not e.known and e.seen]
 
-    with open(Entry.path_known, "w") as f:
+    with open("src_and_data/"+Entry.path_known, "w") as f:
         for e in known:
             f.write(f"{e.question}\n{e.answer}\n")
 
-    with open(Entry.path_not_known, "w") as f:
+    with open("src_and_data/"+Entry.path_not_known, "w") as f:
         for e in not_known:
             f.write(f"{e.question}\n{e.answer}\n")
 

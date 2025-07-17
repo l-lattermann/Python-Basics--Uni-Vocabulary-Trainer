@@ -59,7 +59,7 @@ def print_header(mode="Trainer"):
 
     print(f"{mode}\n")
     print(f"{CYAN}# = mark known{RESET}")
-    print(f"{CYAN}Enter = show answer (mark unknown){RESET}")
+    print(f"{CYAN}[Enter] = show answer (mark unknown){RESET}")
     print(f"{CYAN}q = quit{RESET}")
     print(f"{CYAN}m = change mode [ known / unknown / unseen ]{RESET}\n")
 

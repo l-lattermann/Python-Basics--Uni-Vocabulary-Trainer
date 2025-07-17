@@ -81,6 +81,6 @@ q = quit
 ```bash
 git clone https://github.com/l-lattermann/uni-vocabulary-trainer.git
 cd /uni-vocabulary-trainer
-chmod +x start_vocabtrainer.command
+chmod +x ./src_and_data/vocabulary_trainer.py
 ./start_vocabtrainer.command
 ```

@@ -31,8 +31,22 @@ A simple terminal-based flashcard trainer for learning vocabulary. This Python s
 
 
 ## File Format
+•	Exactly one line per question, prefixed by Q:
 
-vocabulary.txt files must alternate between `Q:` and `A:` lines. Example:
+•	Followed immediately by one line per answer, prefixed by A:
+
+•	No blank lines or extra whitespace
+
+•	No repeated Q: or A: lines in a row
+
+•	The number of lines in the file must be even (every Q: must be followed by A:).
+
+•	Each line should start with either Q: or A: (no indentation or space before the prefix).
+
+•	Do not add extra line breaks at the end of the file.
+
+
+Example:
 ```txt
 Q: What is the capital of France?
 A: Paris

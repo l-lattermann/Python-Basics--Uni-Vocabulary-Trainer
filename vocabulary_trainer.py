@@ -63,16 +63,37 @@ def main():
     not_known = build_vocab_dict(lines)
 
     # Start with not-known entries if they exist
+    not_known_copy = not_known.copy()
     if not_known:
         print("🔁 Starting with not-known entries:\n")
         for nq in not_known:
             clear()
             print("\n"*15)
+            print("# = mark as known | q = quit ")
             print("Not-known:\n")
             print(f"{nq}\n")
-            input()
+            inp = input()
             print(f"{not_known[nq]}\n")
-            input()
+            inp2 = input()
+            if inp.strip() == "#" or inp2.strip() == "#":
+                not_known_copy.pop(nq)
+            elif inp.strip() == "q" or inp2.strip() == "q":
+                print("Exiting...")
+                # Create file with not-known entries
+                if not_known:
+                    with open("not_known.txt", "w") as f:
+                        for nq in not_known_copy:
+                            f.write(f"{nq}\n{not_known_copy[nq]}\n")
+                    print("📄 Not-known entries saved to 'not_known.txt'.\n")
+                exit(0)
+        not_known = not_known_copy # Reset not_known to the updated copy
+         # Create file with not-known entries
+        if not_known:
+            with open("not_known.txt", "w") as f:
+                for nq in not_known_copy:
+                    f.write(f"{nq}\n{not_known_copy[nq]}\n")
+            print("📄 Not-known entries saved to 'not_known.txt'.\n")
+                
             
     for question in keys:
         clear()
@@ -91,6 +112,13 @@ def main():
             not_known[question] = vocab[question]
             input()
         elif cmd == "q":
+            # Create file with not-known entries
+            if not_known:
+                with open("not_known.txt", "a") as f:
+                    for nq in not_known:
+                        f.write(f"{nq}\n{not_known[nq]}\n")
+                print("📄 Not-known entries saved to 'not_known.txt'.\n")
+
             break
         elif cmd == "r":
             if not not_known:
@@ -105,12 +133,12 @@ def main():
                 input()
             continue
 
-        # Create file with not-known entries
-        if not_known:
-            with open("not_known.txt", "a") as f:
-                for nq in not_known:
-                    f.write(f"{nq}\n{not_known[nq]}\n")
-            print("📄 Not-known entries saved to 'not_known.txt'.\n")
+    # Create file with not-known entries
+    if not_known:
+        with open("not_known.txt", "a") as f:
+            for nq in not_known:
+                f.write(f"{nq}\n{not_known[nq]}\n")
+        print("📄 Not-known entries saved to 'not_known.txt'.\n")
 
     input("🎉 Done! Press Enter to exit...")
 

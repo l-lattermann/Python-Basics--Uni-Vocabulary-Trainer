@@ -7,9 +7,17 @@ from typing import List
 import time
 from pathlib import Path
 import textwrap
-
+import shutil
+import shutil
+import textwrap
 # ___________ Variables ___________
-global_terminal_width = 80  # Default terminal width, can be adjusted
+global terminal_width, terminal_height
+terminal_width, terminal_height = shutil.get_terminal_size()
+
+global left_bound_text_box, right_bound_text_box, text_box_size
+left_bound_text_box = max(terminal_width // 2 - 20, 0)
+right_bound_text_box = max(terminal_width // 2 + 20, 0)
+text_box_size = 80
 
 @dataclass
 class Entry:
@@ -42,8 +50,13 @@ def load_vocab_file(path: str) -> List[Entry]:
     return [Entry(lines[i], lines[i+1]) for i in range(0, len(lines), 2)]
 
 def print_header(mode="Trainer", current=0, total=0):
+    terminal_width, terminal_height = shutil.get_terminal_size()
+    left_bound_text_box = max(terminal_width // 2 - 20, 0)
+    right_bound_text_box = max(terminal_width // 2 + 20, 0)
+
     clear()
-    print("\n" * 3)
+    offset_vertical = max(0, (terminal_height - 40) // 2)
+    print("\n" * offset_vertical)
     
     # ANSI Colors
     CYAN = "\033[36m"
@@ -61,11 +74,12 @@ def print_header(mode="Trainer", current=0, total=0):
     elif mode == "Unseen":
         mode = f"{BLUE}🆕 Unseen Vocabulary 🆕{RESET}"
 
-    print(f"{mode}\n".center(global_terminal_width))
-    print(f"{CYAN}[q] = quit{RESET}".center(global_terminal_width))
-    print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}\n".center(global_terminal_width))
-    print(f"{CYAN}Q: {current}/{total}{RESET}")
-    print(f"{CYAN}[ENTER] -> show answer{RESET}")
+    print(f"{mode}\n".center(terminal_width))
+    print(f"{CYAN}[q] = quit{RESET}".center(terminal_width))
+    print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}\n".center(terminal_width))
+    target_pos = int(max(terminal_width/2 - text_box_size/2, 0))
+    print(" " * target_pos + f"{CYAN}Q: {current}/{total}{RESET}")
+    print(" " * target_pos + f"{CYAN}[ENTER] -> show answer{RESET}\n")
 
 def prompt_for_file(msg: str) -> str:
     print(msg)
@@ -89,13 +103,41 @@ def save_vocab(entries: List[Entry]):
         for e in not_known:  
             f.write(f"{e.question}\n{e.answer}\n")
 
-def print_formated(string: str):
-    BOLD = "\033[1m"
-    RESET = "\033[0m"
 
-    width = global_terminal_width 
-    wrapped_string = textwrap.fill(string, width=width)  # or 70, 100, etc.
-    print(f"{BOLD}{wrapped_string}{RESET}")
+def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
+    # Terminal dimensions
+    terminal_width, _ = shutil.get_terminal_size()
+
+    # Escape sequences
+    STYLES = {
+        "BOLD": "\033[1m",
+        "NORMAL": "\033[0m"
+    }
+
+    COLOURS = {
+        "WHITE": "\033[97m",
+        "CYAN": "\033[36m",
+        "BLUE": "\033[38;5;117m",
+        "GREEN": "\033[38;5;151m",
+        "RED": "\033[38;5;210m"
+    }
+
+    RESET = "\033[0m"
+    UNDERLINE = "\033[4m"
+
+    # Apply special formatting to questions
+    if string.startswith("Q:"):
+        string = f"{STYLES['BOLD']}{UNDERLINE}{string}{RESET}"
+
+    # Wrap and indent
+    wrapped_string = textwrap.fill(string, width=text_box_size)
+    indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
+    wrapped_string = wrapped_string.replace("\n", "\n" + indent)
+
+    # Final print
+    style_code = STYLES.get(style.upper(), "")
+    colour_code = COLOURS.get(colour.upper(), "")
+    print(indent + f"{style_code}{colour_code}{wrapped_string}{RESET}")
 
 def run_trainer(entries: List[Entry], label="Trainer") -> str:
     CYAN = "\033[36m"
@@ -108,21 +150,24 @@ def run_trainer(entries: List[Entry], label="Trainer") -> str:
         current = i + 1
         total = len(entries)
         print_header(label, current, total)
-        print_formated(entry.question)
-        input()
-        print_formated(entry.answer)
+        print_formated(entry.question, colour="WHITE", style="BOLD")
+        terminal_width = shutil.get_terminal_size().columns
+        input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+        print_formated(entry.answer, colour="WHITE", style="BOLD")
         while True:
-            cmd = input(f"{CYAN}Not known? [ENTER]     Known? [#]{RESET}\n").strip().lower()
+            terminal_width = shutil.get_terminal_size().columns
+            print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
+            cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
             if cmd == "":
                     entry.known = False
                     entry.seen = True
-                    print(f"❌ {CYAN} Marked as not known {RESET}".center(global_terminal_width)) 
+                    print(f"❌ {CYAN} Marked as not known {RESET}".center(terminal_width)) 
                     time.sleep(0.75)
                     break
             elif cmd == "#": 
                     entry.known = True
                     entry.seen = True
-                    print(f"✅ {CYAN}Marked as known.{RESET}".center(global_terminal_width))
+                    print(f"✅ {CYAN} Marked as known.{RESET}".center(terminal_width))
                     time.sleep(0.75)
                     break
             elif cmd == "q":
@@ -140,22 +185,29 @@ def main():
     # Load vocab
     all_path = Entry.path_all if os.path.exists(Entry.path_all) else prompt_for_file("No 'vocabulary.txt' found.")
     all_vocab = load_vocab_file(all_path)
+    print(all_path)
     validate_format(all_vocab)
 
     known = []
     not_known = []
 
-    if os.path.exists(Path("src_and_data") / Entry.path_known):
-        known = load_vocab_file(Path("src_and_data") / Entry.path_known)
+    # Load known vocab
+    known_path = Path("src_and_data") / Entry.path_known
+    if os.path.exists(known_path):
+        known = load_vocab_file(known_path)
         # Set all known entries known:True and seen:True
+        print(known_path)
         validate_format(known)
         for e in known:
             e.known = True
             e.seen = True
 
-    if os.path.exists(Path("src_and_data") / Entry.path_not_known):
-        not_known = load_vocab_file(Path("src_and_data") / Entry.path_not_known)
+    # Load not known vocab
+    not_known_path = Path("src_and_data") / Entry.path_not_known
+    if os.path.exists(not_known_path):
+        not_known = load_vocab_file(not_known_path)
         # Set all not known entries known:False and seen:True
+        print(not_known_path)
         validate_format(not_known)
         for e in not_known:
             e.known = False
@@ -192,7 +244,7 @@ def main():
         known = [entry for entry in known if entry.known]
 
 
-    save_vocab(known + not_known + unseen)
+    save_vocab(known + not_known)
     input("🎉 All done. Press Enter to exit...")
 
 if __name__ == "__main__":

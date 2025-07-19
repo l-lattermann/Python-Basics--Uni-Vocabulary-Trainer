@@ -468,3 +468,87 @@ Q: How do scenarios differ from user stories and use cases?
 A: Scenarios provide richer narratives about user goals and system behavior in specific contexts. While still abstract, they go further than use cases or user stories in imagining future use situations and can be visualized through storyboards.
 Q: When are storyboards especially useful in UX design?
 A: Storyboards are ideal when words are insufficient—such as for novel applications, unusual interactions, or complex behaviors. Their visual clarity makes them effective for communicating with stakeholders and identifying design flaws early.
+Q: What is the purpose of card sorting in the design phase?
+A: To structure content, navigation, and category naming based on user expectations, especially when the interface content is known but unorganized.
+Q: What is the difference between open and closed card sorting?
+A: Open (generative) card sorting lets users define their own groups, while closed (evaluative) card sorting uses predefined categories to test comprehension.
+Q: How is a card sorting session typically conducted?
+A: Participants group up to ~50 labeled cards, optionally name the groups, and may form supergroups; results are documented and can be enriched by think-aloud protocols.
+Q: What are the two main ways to evaluate card sorting results?
+A: Informally by comparing participant groupings visually, and formally through cluster analysis, which mathematically detects structural similarities.
+Q: What insights does card sorting provide for interface design?
+A: It reveals user expectations, category comprehension, and helps shape intuitive information architectures through analysis of naming and grouping behavior.
+Q: What are the main purposes of sketches in the design process?
+A: Sketches help visualize ideas and communicate concepts when words are insufficient, fostering shared understanding within a team.
+Q: What are typical characteristics of interface sketches?
+A: They are black-and-white, low-detail, rough, and use layout conventions like crossed boxes for images and lines for text to indicate structure.
+Q: How can dynamic aspects be represented in sketches?
+A: Changes in layout or element states can be shown with multiple screen views or enlarged annotations for micro-interactions and animations.
+Q: What is the role of sketch size and detail in early UI design?
+A: Small sketches on A4 pages prevent premature detailing and support focusing on overall layout and interaction logic rather than aesthetics.
+Q: How are images typically represented in layout sketches?
+A: As rectangular boxes with an “X” inside and an optional note beside the box describing the image content.
+Q: How is text represented in sketch layouts?
+A: Body text is shown as horizontal lines; headings are wider lines; filler content may use wavy lines in boxes.
+Q: How are interface elements like buttons or input fields sketched?
+A: As simple boxes, lines, or bars with labels or annotations to indicate function, optionally including font size or state notes.
+Q: What are wireframes and what is their main purpose in UX design?
+A: Wireframes are simplified, mostly black-and-white representations of graphical interfaces used to plan structure, layout, and content placement without focusing on visual design.
+Q: How do wireframes differ from sketches and prototypes?
+A: Wireframes are more detailed than sketches but less interactive than prototypes. They often use the real interface size and serve as an intermediate design step.
+Q: What is the communicative value of wireframes in a design team?
+A: Wireframes help designers and developers align on how user requirements translate into layout and functionality, enabling shared understanding and fast iteration.
+Q: What are wireflows and how are they created?
+A: Wireflows are sequences of linked wireframes representing navigation paths. They are created using tools that allow interactive linking, such as Balsamiq or Axure.
+Q: How are content elements typically represented in hand-drawn wireframes?
+A: Headings and menus may be labeled; body text appears as lines; images are often omitted or replaced by boxes; explanatory annotations clarify roles and behavior.
+Q: What is the function of annotations in wireframes?
+A: Annotations explain function, content, or behavior of elements, either via numbered callouts linked to notes in the margin or text directly near the element.
+Q: What are the three structural wireframe types based on interface focus?
+A: (1) Superordinate wireframes show overall structure, (2) Individual action wireframes trace critical interaction paths, and (3) Sequence wireframes clarify micro-information architecture.
+Q: How are wireframes used in user testing?
+A: Wireframes test information structure, navigation, and labeling but are limited in interactivity. Digitally linked wireframes enable simple click-through prototypes.
+Q: Which tools are commonly used to create wireframes and what distinguishes them?
+A: Balsamiq is fast and visually consistent, Axure supports customization and logic, and tools like Keynote, PowerPoint, or browser-based apps allow simple prototyping.
+Q: What are key considerations when choosing software for wireframing?
+A: Speed of creation, ease of use, and team collaboration outweigh aesthetic quality—tools should enable rapid iteration and accessible sharing within interdisciplinary teams.
+Q: What is the main purpose of prototyping in the design process?
+A: To test and evaluate specific aspects of an interface by narrowing down variant options and supporting informed design decisions through practical exploration.
+Q: How do prototypes differ from sketches in UX design?
+A: While sketches serve to explore ideas broadly and quickly, prototypes focus on testing chosen interface variants with more structure and defined interaction or visual detail.
+Q: What distinguishes low-fidelity from high-fidelity prototypes?
+A: Low-fidelity prototypes (e.g. sketches, paper) lack detail and realism, while high-fidelity prototypes (e.g. visual mockups, programmed versions) closely resemble the final interface in appearance and interaction.
+Q: What are horizontal and vertical prototypes in UX?
+A: Horizontal prototypes cover many interface screens with minimal functionality; vertical prototypes focus on deep interaction in a limited area, often with real functionality.
+Q: What is paper prototyping and in which stage is it most useful?
+A: A low-fidelity method using hand-drawn paper elements to test usability and conceptual decisions early in the design process, ideal for terminology, layout, and basic navigation.
+Q: How is interactivity simulated in paper prototypes?
+A: With modular elements like index cards, transparent foil, and user interaction mimicked through manual rearrangement or annotation by a moderator.
+Q: What are the main limitations of paper prototyping?
+A: It cannot meaningfully simulate dynamic interactions like drag-and-drop, real-time search, or scrolling through large documents.
+Q: What is a visionary video prototype and its typical use case?
+A: A future-oriented video mockup that visualizes speculative technologies, often used to inspire, explore social impacts, or present high-level ideas in design fiction.
+Q: What distinguishes holistic video prototypes from visionary ones?
+A: Holistic prototypes simulate realistic interaction in context for current systems and are used for internal user-oriented testing; visionary ones explore future potential.
+Q: What characterizes programmed prototypes and when are they used?
+A: High-fidelity, partially functional interface versions coded in visual or real programming languages, suitable for formal testing, presentations, or as early product versions.
+Q: What is the main purpose of guidelines and style guides in UX design?
+A: They document the results of the design phase through principles and specifications, ensuring consistency and collaboration in the implementation of the user interface.
+Q: What distinguishes a style guide from general interface guidelines?
+A: A style guide contains precise visual design specifications including typography, layout, and branding, while guidelines describe broader rules for how and when interface elements are used.
+Q: What is a design system and how does it relate to style guides?
+A: A design system is a comprehensive document that combines multiple style and interface guidelines, representing the full corporate identity and UI principles in one structured reference.
+Q: What characterizes the flexibility of guidelines versus style guides?
+A: Guidelines are generally formulated, allowing interpretive flexibility and longer relevance; style guides are more concrete, enabling consistency but requiring updates to remain current.
+Q: What is the role of pattern libraries in interface design documentation?
+A: Pattern libraries describe recurring interface solutions as reusable patterns, often with code snippets, showing both form and usage based on application examples.
+Q: What do user interface guidelines typically include?
+A: Descriptions of control elements, views, input methods, window types, feedback messages, and navigation components as defined by platform providers like Apple or Microsoft.
+Q: Why are standards important in interface design and what is the controversy?
+A: Standards shape user expectations and consistency; however, strict adherence is debated, as some deviations may not impact usability if the overall design is strong.
+Q: What is a design pattern in the context of pattern libraries?
+A: A documented best-practice solution for a recurring UI problem, structured hierarchically and related to other patterns, originally inspired by architectural theory.
+Q: What visual and structural elements are specified in style guides?
+A: Font types and sizes, color schemes, menu structures, image placement, layout grids, subpage templates, and branding components like logos and corporate design.
+Q: Why must style guides include versioning and updates?
+A: Because they serve as implementation templates, their accuracy and relevance depend on regular revision to reflect evolving designs and technologies.

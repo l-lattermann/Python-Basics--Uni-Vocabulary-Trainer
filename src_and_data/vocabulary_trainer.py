@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import re
 import sys
 from dataclasses import dataclass
 from typing import List
@@ -10,6 +11,8 @@ import textwrap
 import shutil
 import shutil
 import textwrap
+import random
+
 # ___________ Variables ___________
 global terminal_width, terminal_height
 terminal_width, terminal_height = shutil.get_terminal_size()
@@ -17,7 +20,8 @@ terminal_width, terminal_height = shutil.get_terminal_size()
 global left_bound_text_box, right_bound_text_box, text_box_size
 left_bound_text_box = max(terminal_width // 2 - 20, 0)
 right_bound_text_box = max(terminal_width // 2 + 20, 0)
-text_box_size = 80
+text_box_size = 100
+
 
 @dataclass
 class Entry:
@@ -76,6 +80,7 @@ def print_header(mode="Trainer", current=0, total=0):
 
     print(f"{mode}\n".center(terminal_width))
     print(f"{CYAN}[q] = quit{RESET}".center(terminal_width))
+    print(f"{CYAN}[e] = edit current entry{RESET}".center(terminal_width))
     print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}\n".center(terminal_width))
     target_pos = int(max(terminal_width/2 - text_box_size/2, 0))
     print(" " * target_pos + f"{CYAN}Q: {current}/{total}{RESET}")
@@ -102,7 +107,6 @@ def save_vocab(entries: List[Entry]):
     with open(path, "w") as f:
         for e in not_known:  
             f.write(f"{e.question}\n{e.answer}\n")
-
 
 def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
     # Terminal dimensions
@@ -132,12 +136,74 @@ def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
     # Wrap and indent
     wrapped_string = textwrap.fill(string, width=text_box_size)
     indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
-    wrapped_string = wrapped_string.replace("\n", "\n" + indent)
+    wrapped_string = wrapped_string.replace("\n", "\n\n" + indent)
 
     # Final print
     style_code = STYLES.get(style.upper(), "")
     colour_code = COLOURS.get(colour.upper(), "")
     print(indent + f"{style_code}{colour_code}{wrapped_string}{RESET}")
+
+def multi_line_input() -> str:
+        terminal_width, _ = shutil.get_terminal_size()
+        indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
+        print_formated("Type '#' on a new line to finish.", style="NORMAL", colour="CYAN")
+        new_question = ""
+        while True:
+            # Print the current input
+            user_input = input(indent)
+            if user_input == "#":
+                break
+            new_question += (" " + user_input).strip()
+        # Normalize the input      
+        new_question = new_question.strip()  # Remove leading/trailing whitespace
+        new_question = re.sub(r'\s+', ' ', new_question)  # Normalize whitespace
+        new_question = re.sub(r'\r\n|\r|\n', ' ', new_question) # Normalize line endings
+        new_question = new_question.strip() # Remove leading/trailing whitespace
+        return new_question
+
+def entry_editor(entry: Entry) -> Entry:
+    # Edit current entry
+    while True:
+        # Get terminal size
+        print_formated("Editing current entry...", style="NORMAL", colour="CYAN")
+        print_formated("Please enter the new question and answer in the format 'Q: question'", style="NORMAL", colour="CYAN")
+        new_question = multi_line_input()
+        print_formated("Now enter the answer in the format 'A: answer'", style="NORMAL", colour="CYAN")
+        new_answer = multi_line_input()
+        # Validate input
+
+        if new_question[:2] == "Q:" and new_answer[:2] == "A:":
+            print("\n\n")
+            print_formated(f"New Question:", style="NORMAL", colour="CYAN")
+            print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
+            print("\n")
+            print_formated(f"New Answer: ", style="NORMAL", colour="CYAN")
+            print_formated(f"{new_answer}", style="NORMAL", colour="WHITE")
+            print("\n")
+
+            while True:
+                print_formated("Confirm update? [y/n]", style="NORMAL", colour="CYAN")
+                print("\n")
+                confirm = input().strip().lower()
+                if confirm == "y":
+                    entry.question = new_question
+                    entry.answer = new_answer
+                    return entry
+                elif confirm == "n":
+                    print_formated(" ❌ Update cancelled", style="NORMAL", colour="RED")
+                    print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
+                    exit_confirm = input().strip().lower()
+                    if exit_confirm == "y":
+                        print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
+                        time.sleep(1)
+                        break
+                    elif exit_confirm == "n":
+                        print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
+                        continue  
+                      
+        else:
+            print_formated("❌ Invalid input. Entry not updated.", style="NORMAL", colour="RED")
+            time.sleep(1)
 
 def run_trainer(entries: List[Entry], label="Trainer") -> str:
     CYAN = "\033[36m"
@@ -156,6 +222,7 @@ def run_trainer(entries: List[Entry], label="Trainer") -> str:
         print_formated(entry.answer, colour="WHITE", style="BOLD")
         while True:
             terminal_width = shutil.get_terminal_size().columns
+            print("\n")
             print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
             cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
             if cmd == "":
@@ -174,7 +241,15 @@ def run_trainer(entries: List[Entry], label="Trainer") -> str:
                 return "q"
             elif cmd == "m":
                 return "m" 
-            
+            elif cmd == "e":
+                new_entry = entry_editor(entry)
+                index_old_entry = entries.index(entry)
+                if new_entry is not None:
+                    entries[index_old_entry] = new_entry
+                    print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
+                    time.sleep(0.75)
+                break
+                   
             # Move cursor up one line and clear the line
             sys.stdout.write("\033[F\033[K")
             sys.stdout.flush()
@@ -198,9 +273,7 @@ def main():
         # Set all known entries known:True and seen:True
         print(known_path)
         validate_format(known)
-        for e in known:
-            e.known = True
-            e.seen = True
+        known_question_set = {e.question for e in known}
 
     # Load not known vocab
     not_known_path = Path("src_and_data") / Entry.path_not_known
@@ -209,39 +282,59 @@ def main():
         # Set all not known entries known:False and seen:True
         print(not_known_path)
         validate_format(not_known)
-        for e in not_known:
-            e.known = False
-            e.seen = True
+        not_known_question_set = {e.question for e in not_known}
+
+    # Set all entries in all_vocab that are not in known or not_known as unseen
+    # And set known:False and seen:True
+    for entry in all_vocab:
+        if entry.question not in known_question_set and entry.question not in not_known_question_set:
+            entry.seen = False
+            entry.known = False
+        else:
+            entry.seen = True
+        if entry.question in known_question_set:
+            entry.known = True
+            entry.seen = True
+        if entry.question in not_known_question_set:
+            entry.known = False
+            entry.seen = True
 
     while True:
         # Not known first
+        not_known = [e for e in all_vocab if not e.known and e.seen]
+        # Shuffle not known entries
+        random.shuffle(not_known)
         if not_known:
             res = run_trainer(not_known, label="Not Known")
             if res == "q":
                 save_vocab(not_known + known)
                 break
         # Drop entrys that have changed category
-        not_known = [entry for entry in not_known if not entry.known]
+        not_known = [e for e in not_known if not e.known]
 
         # Unseen entries 
-        seen_qs = {e.question for e in known + not_known}
-        unseen = [e for e in all_vocab if e.question not in seen_qs]
+        unseen = [e for e in all_vocab if not e.seen]
+        # Shuffle unseen entries
+        random.shuffle(unseen)
         if unseen:
             res = run_trainer(unseen, label="Unseen")
             if res == "q":
                 save_vocab(known + not_known)
                 break
         # Drop unseen entries that have been seen
-        unseen = [entry for entry in unseen if not entry.seen]
+        unseen = [e for e in unseen if not e.seen]
         
         # Known entries
+        known = [e for e in all_vocab if e.known and e.seen]
+        # Shuffle known entries
+        random.shuffle(known)
         if known:
             res = run_trainer(known, label="Known")
             if res == "q":
                 save_vocab(known + not_known)
                 break
         # Drop entries that have changed category
-        known = [entry for entry in known if entry.known]
+        known = [e for e in known if e.known]
 
 
     save_vocab(known + not_known)

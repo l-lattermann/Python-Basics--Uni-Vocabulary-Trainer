@@ -1,44 +1,126 @@
-Q: What are Hassenzahl’s three levels of goals in UX?
-A: (1) Motor goals deal with physical actions (how), (2) action goals describe specific activities (what), and (3) being goals reflect motivations and identities (why). Positive user experiences emerge when systems support all three levels, especially the being goals.
-Q: What are the three core activities in the UX design process?
-A: According to Jonas (2006), the UX design process includes: (1) analysis – understanding the current state, (2) projection – generating ideas, and (3) synthesis – developing and implementing concrete design solutions. These activities span the broader macroprocess.
-Q: How does Garrett distinguish between functional and informational UX?
-A: Garrett divides each level into two perspectives: the function side, focusing on user tasks and actions, and the information side, focusing on content and meaning. This dual view helps identify both interaction and content-related design issues.
-Q: How does the DIN EN ISO 9241-210 model describe UX design?
-A: This model emphasizes an iterative user-centered process that continually tests and refines solutions based on user feedback. It outlines the importance of aligning product behavior with user expectations but doesn’t focus on divergence/convergence or method choice.
-Q: How is “user experience” (UX) defined according to DIN EN ISO 9241-210?
-A: User experience is defined as the perceptions and reactions of a person resulting from the actual or expected use of a product, system, or service. This includes emotions, thoughts, preferences, physical and psychological responses, behaviors, and accomplishments that occur before, during, and after use.
-Q: How did UX design contribute to Apple’s turnaround?
-A: Apple succeeded by combining management support with high-quality UX design. Products like the iMac and iPod emphasized aesthetic value and emotional appeal. Even when technically inferior, their symbolic product value and branding (e.g., white headphones) created strong consumer attachment.
-Q: What key insight does Hassenzahl draw from the Wakeup Light example?
-A: The product’s value lies not in its appearance but in the experience it creates. Hassenzahl stresses designing for emotional quality and user needs rather than sticking to traditional forms, urging designers to begin with the desired experience.
-Q: What is the purpose of the analysis phase in user-centered design?
-A: The analysis phase identifies user needs, intentions, tasks, and the context of system use. It provides the foundation for meaningful user requirements that guide the design and development of user-centered solutions.
-Q: How do Hartson and Pyla define the components of user experience?
-A: They outline four key components: (1) Usability – task performance ease; (2) Usefulness – practical value; (3) Emotional Impact – feelings evoked by use; (4) Meaningfulness – long-term personal significance of the product to the user.
-Q: Which methods are commonly used in the analysis phase of UX design?
-A: Common methods include contextual inquiry, touchpoint analysis, customer journey mapping, and personas. These approaches help uncover user behavior, pain points, and goals across different stages and contexts of interaction.
-Q: What are Peter Morville’s seven facets of the UX Honeycomb?
-A: (1) Useful: fulfills a real need; (2) Usable: easy to operate; (3) Desirable: aesthetically and emotionally appealing; (4) Findable: easy to locate and navigate; (5) Accessible: usable by people with disabilities; (6) Credible: inspires user trust; (7) Valuable: provides benefit to both user and business.
-Q: What is the difference between projection and synthesis in UX design?
-A: Projection involves generating ideas and envisioning possible solutions, while synthesis refers to shaping and concretizing these ideas into implementable concepts. In UX, both are grounded in what is technically feasible and directly usable by the end user.
-Q: What is a conceptual model in interface design?
-A: It’s the designer’s simplified representation of how a system works, crafted to match the user’s mental model. Unlike the technical implementation, it focuses on making the system understandable and transparent for users.
-Q: What does user experience (UX) design focus on?
-A: UX design focuses on the holistic experience people have with a product or service, emphasizing emotions, satisfaction, and usability during interaction. It looks beyond functionality to consider how users feel and what meanings they associate with their experiences.
-Q: What are the four microprocess phases in UX design?
-A: The microprocess involves: (1) research – collecting user data, (2) analysis – deriving user needs, (3) synthesis – generating and refining design ideas, and (4) realization – implementing and testing solutions. These phases often repeat iteratively.
-Q: Who coined the term “user experience design” and why?
-A: The term was popularized by cognitive psychologist Donald Norman in the 1980s while at Apple. He emphasized the need to design technology that aligns with human psychology, making systems intuitive and emotionally satisfying rather than just functional.
-Q: How can UX activities be aligned with business objectives?
-A: UX teams should prioritize projects that support business goals, such as reducing user errors, increasing task efficiency, or improving conversion. Linking UX metrics (like success rate or time-on-task) to business KPIs makes the value of UX clearer to stakeholders.
-Q: What are the guiding principles of user-centered design according to the UK Design Council?
-A: Core principles include: (1) user-centeredness, (2) inclusive and visual communication, (3) collaboration and co-creation, and (4) iteration. These guide the integration of UX into business culture and processes.
-Q: What role did the internet and dotcom boom play in UX?
-A: The rise of the web changed software marketing: users could try or preview software before purchase, making usability and user experience central to purchasing decisions. The dotcom boom pushed companies to invest in UX to remain competitive.
-Q: How is “experience” defined in the context of UX?
-A: Experience refers to the subjective, emotional, and cognitive response to using a product or service. It is shaped by past interactions, personal expectations, and contextual factors, and includes both real-time perception and retrospective evaluation.
 Q: How does the revised Double Diamond model enhance UX practice?
 A: The updated model adds a “methods bank,” integrating specific techniques and design principles. This recognizes that successful UX work is not only about diverging and converging, but also about applying the right tools to ensure user-centeredness and iterative learning.
+Q: How is the objective or scope of a use case defined?
+A: The objective describes the boundaries of the system under development—what is inside and outside the system’s responsibility. It can be viewed at the enterprise, system, or subsystem level and modeled as a black box or white box depending on the needed transparency.
+Q: What is the purpose of preconditions and guarantees in a use case?
+A: Preconditions define what must be true before the use case starts. Minimal guarantees describe what must still be ensured if the use case fails, and success guarantees define what must be true if the use case completes successfully.
+Q: What is a user story map?
+A: A user story map is a visual tool showing all user stories arranged chronologically along a process (the “backbone”), with detailed tasks prioritized vertically. It helps maintain system context and identify gaps or inconsistencies.
+Q: What role did the internet and dotcom boom play in UX?
+A: The rise of the web changed software marketing: users could try or preview software beforepurchase, making usability and user experience central to purchasing decisions. The dotcom boompushed companies to invest in UX to remain competitive.
+Q: What does the acronym INVEST stand for in the context of user stories?
+A: INVEST stands for: •	Immediately actionable •Negotiable •	Valuable •	Estimable •	Short •	Testable These ensure stories are practical and ready for implementation.
+Q: What are Hassenzahl’s three levels of goals in UX?
+A: (1) Motor goals deal with physical actions (how), (2) action goals describe specific activities (what), and (3) being goals reflect motivations and identities (why). Positive user experiences emerge when systems support all three levels, especially the being goals.
+Q: In what format are these models typically documented?
+A: Flow and sequence models use diagrams or flowcharts; artifact models use annotated sketches or photos; cultural models use influence maps with labeled relationships; physical models are drawn as top-down spatial layouts with annotations.
+Q: What does user experience (UX) design focus on?
+A: UX design focuses on the holistic experience people have with a product or service, emphasizing emotions, satisfaction, and usability during interaction. It looks beyond functionality to consider how users feel and what meanings they associate with their experiences.
+Q: What is the significance of the “desirability” facet in Morville’s UX Honeycomb?
+A: Desirability refers to the product’s emotional appeal and aesthetic experience. It targets users’ deep-seated desires by creating a strong emotional connection, making people feel like they want to use the product—not just need to.
+Q: What is the main difference in interpretation between participatory and user-centered design?
+A: In participatory design, users themselves propose ideas and solutions, often co-designing with professionals. In user-centered design, professionals interpret user data and validate findings with users, maintaining more control over solution development.
+Q: What are the three core components of a user story?
+A: The three parts are (1) the story card with a concise description, (2) acceptance criteria defining when the story is considered done, and (3) the conversations that provide context and clarity around the story during development.
+Q: How do Hartson and Pyla define the components of user experience?
+A: They outline four key components: (1) Usability – task performance ease; (2) Usefulness – practical value; (3) Emotional Impact – feelings evoked by use; (4) Meaningfulness – long-term personal significance of the product to the user.
+Q: How do scenarios differ from user stories and use cases?
+A: Scenarios provide richer narratives about user goals and system behavior in specific contexts. While still abstract, they go further than use cases or user stories in imagining future use situations and can be visualized through storyboards.
+Q: What is the purpose of a use case specification?
+A: It offers a comprehensive and detailed description of a use case, including goals, actors, preconditions, steps, and exceptions. These are especially useful in large or complex development efforts that require clarity and traceability.
+Q: What makes storyboards effective compared to plain text?
+A: Their combination of images and narrative context enables them to communicate subtle information, such as emotions, implicit user behavior, or environmental factors, that pure text would struggle to express clearly.
+Q: What are key scenes in a storyboard?
+A: Key scenes are the critical steps or turning points in a storyboard’s storyline where significant user actions or system responses occur. These scenes form the structural backbone of the storyboard and ensure focus on important interactions.
+Q: What key elements are included in a use case specification?
+A: (1) Actors, (2) stakeholders, (3) primary actor, (4) system objective, (5) preconditions and guarantees, (6) main success scenario, (7) extensions, and (8) a numbering scheme for mapping extensions to the main scenario steps.
+Q: How is “user experience” (UX) defined according to DIN EN ISO 9241-210?
+A: User experience is defined as the perceptions and reactions of a person resulting from the actual or expected use of a product, system, or service. This includes emotions, thoughts, preferences, physical and psychological responses, behaviors, and accomplishments that occur before, during, and after use.
+Q: What are the risks of a UX-driven strategy according to Buxton?
+A: A UX-driven strategy can lead to product failures, such as the PowerMac G4 Cube, where design aesthetics harmed functionality. However, Buxton argues that such risks are part of innovation and can ultimately contribute to long-term brand success.
+Q: Why is user experience considered holistic?
+A: UX considers the full lifecycle of a product, from first contact through purchase, use, support, and disposal. It involves multiple departments—like design, customer service, and marketing—because each touchpoint affects the overall experience.
+Q: What is the focus of customer experience management (CEM)?
+A: Customer experience management focuses on shaping the entire brand and service experience from the customer’s perspective, particularly around purchasing decisions and building loyalty. It emphasizes all customer touchpoints with the brand and is closely related to brand perception and marketing strategy.
+Q: What is an in-out list in use case creation?
+A: An in-out list defines the system’s scope by listing which features are “in” (within development scope) and which are “out” (external or out of scope). It helps clarify team responsibilities and boundary conditions, especially with third-party integrations.
+Q: When should each use case format be used?
+A: The choice of format depends on the project context, especially readability and structural needs. Full formats suit detailed technical documentation, informal ones are good for early drafts or stakeholders, and conversation formats are helpful for UI-focused or interactive scenarios.
+Q: How many images are typically used in a storyboard?
+A: Usually, 5 to 8 boxes (or more, depending on the complexity) are enough to illustrate a complete storyline. Each box represents a key action step, supported by simple sketches and short explanatory notes.
+Q: What are the eight steps of an empirical UX research process (Moser)?
+A: (1) Familiarize with topic, (2) Define objectives, (3) Clarify project conditions, (4) Develop research design, (5) Plan and recruit participants, (6) Conduct and record study, (7) Interpret and discuss findings, (8) Document and model results.
+Q: What are the five models of work context in contextual design?
+A: (1) Flow model, (2) Sequence model, (3) Artifact model, (4) Cultural model, (5) Physical model. Each focuses on a specific perspective—communication, task sequence, tools, social influences, and physical space.
+Q: How did UX design contribute to Apple’s turnaround?
+A: Apple succeeded by combining management support with high-quality UX design. Products like the iMac and iPod emphasized aesthetic value and emotional appeal. Even when technically inferior, their symbolic product value and branding (e.g., white headphones) created strong consumer attachment.
+Q: What is a sequential storyboard?
+A: A sequential storyboard represents a single user action through a sequence of user interface states. Each frame shows a distinct UI screen or state, and annotations describe what changes or transitions occur between those states.
+Q: Why is UX design relevant to a company’s internal organization?
+A: Implementing UX design successfully requires alignment across departments, from developers to management. A company must adopt a user-centered mindset and often restructure workflows and strategy to prioritize consistent, meaningful user experiences across all touchpoints.
+Q: What does Bill Buxton’s juicer example reveal about UX?
+A: Buxton compares three juice squeezers with similar functions but vastly different user experiences. The OrangeX stands out because it reduces physical effort at the end of the pressing motion, showing how small design refinements can significantly enhance experience.
+Q: What is the primary purpose of use cases in system design?
+A: Use cases help define and clarify the system boundaries at the beginning of a project. They show how external actors interact with the system, often treating it as a “black box,” and help identify relevant user goals that the system must support.
+Q: What are the guiding principles of user-centered design according to the UK Design Council?
+A: Core principles include: (1) user-centeredness, (2) inclusive and visual communication, (3) collaboration and co-creation, and (4) iteration. These guide the integration of UX into business culture and processes.
+Q: What are the four microprocess phases in UX design?
+A: The microprocess involves: (1) research – collecting user data, (2) analysis – deriving user needs, (3) synthesis – generating and refining design ideas, and (4) realization – implementing and testing solutions. These phases often repeat iteratively.
+Q: What is the core method of contextual design?
+A: The core method is contextual inquiry (CI), a combination of participant observation and in-situ interviewing. It captures how users perform tasks in their natural environment, revealing implicit knowledge and identifying problems or inefficiencies in workflows.
+Q: Which methods are commonly used in the analysis phase of UX design?
+A: Common methods include contextual inquiry, touchpoint analysis, customer journey mapping, and personas. These approaches help uncover user behavior, pain points, and goals across different stages and contexts of interaction.
+Q: What are the three core activities in the UX design process?
+A: According to Jonas (2006), the UX design process includes: (1) analysis – understanding the current state, (2) projection – generating ideas, and (3) synthesis – developing and implementing concrete design solutions. These activities span the broader macroprocess.
+Q: What key insight does Hassenzahl draw from the Wakeup Light example?
+A: The product’s value lies not in its appearance but in the experience it creates. Hassenzahl stresses designing for emotional quality and user needs rather than sticking to traditional forms, urging designers to begin with the desired experience.
+Q: How do use cases help in identifying system boundaries?
+A: Use cases focus on interactions between the system and external actors, highlighting what lies inside or outside the system’s responsibility. This helps distinguish internal functionality from external dependencies, such as third-party systems or services.
+Q: What is the difference between projection and synthesis in UX design?
+A: Projection involves generating ideas and envisioning possible solutions, while synthesis refers to shaping and concretizing these ideas into implementable concepts. In UX, both are grounded in what is technically feasible and directly usable by the end user.
+Q: How can UX activities be aligned with business objectives?
+A: UX teams should prioritize projects that support business goals, such as reducing user errors, increasing task efficiency, or improving conversion. Linking UX metrics (like success rate or time-on-task) to business KPIs makes the value of UX clearer to stakeholders.
+Q: What is the purpose of the analysis phase in user-centered design?
+A: The analysis phase identifies user needs, intentions, tasks, and the context of system use. It provides the foundation for meaningful user requirements that guide the design and development of user-centered solutions.
+Q: What are Peter Morville’s seven facets of the UX Honeycomb?
+A: (1) Useful: fulfills a real need; (2) Usable: easy to operate; (3) Desirable: aesthetically and emotionally appealing; (4) Findable: easy to locate and navigate; (5) Accessible: usable by people with disabilities; (6) Credible: inspires user trust; (7) Valuable: provides benefit to both user and business.
+Q: How does Garrett distinguish between functional and informational UX?
+A: Garrett divides each level into two perspectives: the function side, focusing on user tasks and actions, and the information side, focusing on content and meaning. This dual view helps identify both interaction and content-related design issues.
+Q: When are storyboards especially useful in UX design?
+A: Storyboards are ideal when words are insufficient—such as for novel applications, unusual interactions, or complex behaviors. Their visual clarity makes them effective for communicating with stakeholders and identifying design flaws early.
+Q: What is a conceptual model in interface design?
+A: It’s the designer’s simplified representation of how a system works, crafted to match the user’s mental model. Unlike the technical implementation, it focuses on making the system understandable and transparent for users.
+Q: How are user stories prioritized and organized?
+A: They are placed in a product backlog, prioritized by importance and urgency. High-priority stories must be “sprint-ready”, meaning they are clearly defined and estimable in terms of effort.
+Q: What is meant by the “context of use” in UX design?
+A: The context of use includes the user, their goals, tasks, available resources, and their physical, technical, social, and organizational environment. It shapes how a product is experienced and what design is appropriate for a given situation.
+Q: Who coined the term “user experience design” and why?
+A: The term was popularized by cognitive psychologist Donald Norman in the 1980s while at Apple. He emphasized the need to design technology that aligns with human psychology, making systems intuitive and emotionally satisfying rather than just functional.
 Q: What are Jesse James Garrett’s five elements of UX design?
 A: Garrett identifies five levels: (1) Strategy – goals of users and company; (2) Scope – features and content; (3) Structure – logical relationships and navigation; (4) Skeleton (Grid) – layout and interface structure; (5) Surface – visuals and interaction elements. Together, these levels move from abstract goals to concrete designs.
+Q: What determines the level of detail in a use case?
+A: The required detail level is project-specific and can vary across use cases. Central use cases are often elaborated in full, while less critical ones may remain brief. An iterative approach is recommended to balance effort and value (Cockburn, 2001).
+Q: What types of data are used to create a customer journey map?
+A: Both quantitative data (e.g., usage stats, satisfaction ratings) and qualitative data (e.g., interviews, observations, diary studies) are used. Combining both helps understand not only what happens but also why it happens.
+Q: In what type of context is contextual inquiry most effective?
+A: CI works best in structured professional settings with routinized tasks. While it can be used in personal contexts, behavioral variability makes it harder to generalize findings.
+Q: Why is the cultural model important in design?
+A: It reveals non-technical constraints—like fear of blame or hierarchical pressure—that may affect adoption or use. Understanding these helps design systems that respect or mitigate these forces.
+Q: How does the DIN EN ISO 9241-210 model describe UX design?
+A: This model emphasizes an iterative user-centered process that continually tests and refines solutions based on user feedback. It outlines the importance of aligning product behavior with user expectations but doesn’t focus on divergence/convergence or method choice.
+Q: How do user stories differ from use cases?
+A: While both describe user requirements, user stories are more concise and suited for agile workflows. They avoid technical detail, use everyday language, and are designed to be completed within one sprint, whereas use cases can be more extensive and structured.
+Q: What is the purpose of UX process models like the Double Diamond?
+A: Models like the Double Diamond provide a structured view of UX processes by visualizing divergent (idea generation) and convergent (decision-making) phases. They emphasize both creativity and focus, helping teams explore broadly before committing to specific solutions.
+Q: Why is simplification necessary when creating a customer journey map?
+A: Real-world behavior is complex and non-linear, but journey maps must reduce this complexity into a manageable, linear format. This allows teams to visualize patterns, compare user flows, and communicate effectively across departments.
+Q: What is an epic in agile development?
+A: An epic is a larger feature that consists of multiple user stories. It is used to group related functionalities and is later broken down into smaller, sprint-sized user stories for implementation.
+Q: What is the purpose of business ecosystem optimization in touchpoint analysis?
+A: It aligns the most critical touchpoints with available internal resources and department responsibilities. This ensures that the most impactful improvements are made given limited budgets and staff capacities.
+Q: Which qualitative methods are commonly used to gather data for journey mapping?
+A: Methods include ethnographic studies, shadowing, participant observation, user diaries, in-depth interviews, focus groups, and user workshops—each offering insights into different stages of the decision and usage process.
+Q: What are the main display formats for use cases?
+A: Use cases can be displayed in three main formats: (1) the full use case, which lists key elements followed by numbered main steps and matching extensions; (2) the informal format, which presents all information in a narrative text with scenarios in paragraph form; and (3) the conversation format, which uses two columns to document the dialogue between actor and system, showing each interaction clearly.
+Q: How is “experience” defined in the context of UX?
+A: Experience refers to the subjective, emotional, and cognitive response to using a product or service. It is shaped by past interactions, personal expectations, and contextual factors, and includes both real-time perception and retrospective evaluation.

@@ -55,9 +55,6 @@ def load_vocab_file(path: str) -> List[Entry]:
 
 def print_header(mode="Trainer", current=0, total=0):
     terminal_width, terminal_height = shutil.get_terminal_size()
-    left_bound_text_box = max(terminal_width // 2 - 20, 0)
-    right_bound_text_box = max(terminal_width // 2 + 20, 0)
-
     clear()
     offset_vertical = max(0, (terminal_height - 40) // 2)
     print("\n" * offset_vertical)
@@ -174,6 +171,15 @@ def entry_editor(entry: Entry) -> Entry:
 
         if new_question[:2] == "Q:" and new_answer[:2] == "A:":
             print("\n\n")
+            print_formated("Do you want to edit this question? [y/n]", style="NORMAL", colour="CYAN")
+            edit_confirm = input().strip().lower()
+            if edit_confirm == "n":
+                print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
+                time.sleep(1)
+                break
+            elif edit_confirm == "y":
+                print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
+                continue  
             print_formated(f"New Question:", style="NORMAL", colour="CYAN")
             print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
             print("\n")
@@ -205,7 +211,7 @@ def entry_editor(entry: Entry) -> Entry:
             print_formated("❌ Invalid input. Entry not updated.", style="NORMAL", colour="RED")
             time.sleep(1)
 
-def run_trainer(entries: List[Entry], label="Trainer") -> str:
+def run_trainer(entries: List[Entry], all_vocab: List[Entry], label="Trainer") -> str:
     CYAN = "\033[36m"
     BLUE = "\033[38;5;117m"
     GREEN = "\033[38;5;151m"
@@ -244,10 +250,31 @@ def run_trainer(entries: List[Entry], label="Trainer") -> str:
             elif cmd == "e":
                 new_entry = entry_editor(entry)
                 index_old_entry = entries.index(entry)
+                all_question_dict = {e.question: e for e in all_vocab}
+                old_in_all_vocab = all_question_dict.get[entry.question]
+                index_old_all_vocab = all_vocab.index(old_in_all_vocab)
                 if new_entry is not None:
                     entries[index_old_entry] = new_entry
+                    all_vocab[index_old_all_vocab] = new_entry
                     print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
                     time.sleep(0.75)
+                    print("\n")
+                    print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
+                    while True:
+                        cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+                        if cmd == "":
+                            entry.known = False
+                            entry.seen = True
+                            print(f"❌ {CYAN} Marked as not known {RESET}".center(terminal_width)) 
+                            time.sleep(0.75)
+                            break
+                        elif cmd == "#": 
+                            entry.known = True
+                            entry.seen = True
+                            print(f"✅ {CYAN} Marked as known.{RESET}".center(terminal_width))
+                            time.sleep(0.75)
+                            break
+            if cmd == "":   
                 break
                    
             # Move cursor up one line and clear the line
@@ -305,7 +332,7 @@ def main():
         # Shuffle not known entries
         random.shuffle(not_known)
         if not_known:
-            res = run_trainer(not_known, label="Not Known")
+            res = run_trainer(not_known, all_vocab, label="Not Known")
             if res == "q":
                 save_vocab(not_known + known)
                 break
@@ -317,7 +344,7 @@ def main():
         # Shuffle unseen entries
         random.shuffle(unseen)
         if unseen:
-            res = run_trainer(unseen, label="Unseen")
+            res = run_trainer(unseen, all_vocab, label="Unseen")
             if res == "q":
                 save_vocab(known + not_known)
                 break
@@ -329,7 +356,7 @@ def main():
         # Shuffle known entries
         random.shuffle(known)
         if known:
-            res = run_trainer(known, label="Known")
+            res = run_trainer(known, all_vocab, label="Known")
             if res == "q":
                 save_vocab(known + not_known)
                 break
@@ -337,8 +364,9 @@ def main():
         known = [e for e in known if e.known]
 
 
-    save_vocab(known + not_known)
-    input("🎉 All done. Press Enter to exit...")
+    save_vocab(known + not_known + all_vocab)
+    print_formated("🎉 All done. Press Enter to exit...", style="NORMAL", colour="CYAN")
+    time.sleep(1)
 
 if __name__ == "__main__":
     main()

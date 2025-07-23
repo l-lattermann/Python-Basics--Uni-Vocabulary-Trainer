@@ -1,0 +1,182 @@
+Q: What is robotics and what disciplines does it involve?
+A: Robotics is a multidisciplinary field concerned with the design, construction, operation, and application of robots, drawing from mechanical and electrical engineering, computer science, ethics, and social sciences.
+Q: Where does the term “robot” come from and what does it imply?
+A: The term “robot” originates from the Slavic word “robota” meaning “subordinate labor,” introduced by Karel Čapek in 1920, emphasizing the role of robots in performing strenuous or dangerous tasks to support humans.
+Q: What defines an industrial robot?
+A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
+Q: What characterizes a mobile robot?
+A: Mobile robots are not stationary and can adapt to changing environments by moving autonomously and using sensors to navigate and perform transport or other tasks.
+Q: What are the six classes of robot intelligence according to JIRA?
+A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
+Q: What are joints and links in robotic kinematics?
+A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
+Q: What is a degree of freedom (DOF) in robotics?
+A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
+Q: How are robot joints geometrically classified?
+A: Joint arrangements are classified by axis orientation: ∥ means parallel, ∟ means orthogonal, and ⊥ means perpendicular; common joint setups for 3 DOF include R∥R∥P and R∟R⊥P, combining rotation and translation.
+Q: What are end effectors in industrial robotics?
+A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
+Q: What distinguishes stationary from mobile robots?
+A: Stationary robots, typically industrial, remain fixed and perform tasks in a set area, whereas mobile robots move within their environment and adjust their actions based on sensor input and context.
+Q: Why are coordinate systems important in robot programming?
+A: Coordinate systems provide a consistent reference for describing robot motion, enabling precise interpretation of commands and transformations between joints, tools, and workpieces in space.
+Q: What is the Cartesian coordinate system and how is it used in robotics?
+A: The Cartesian coordinate system defines positions in 3D space using x, y, and z axes; it is ideal for describing translational movements of robots and is the most commonly used coordinate model.
+Q: What is the polar coordinate system used for in robotics?
+A: The polar coordinate system is used in 2D space to represent points by their distance r from the origin and angle φ, making it suitable for describing planar rotations.
+Q: What is the cylindrical coordinate system and its purpose in robotics?
+A: The cylindrical coordinate system represents 3D points using radial distance r, rotation angle φ, and height z, making it useful for describing combined rotational and linear movements around a central axis.
+Q: What are joint coordinates versus Cartesian coordinates in robotics?
+A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
+Q: What is a base coordinate system in robotics?
+A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
+Q: What is a tool coordinate system?
+A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
+Q: What is an object or workpiece coordinate system?
+A: An object or workpiece coordinate system defines a reference frame located at the manipulated item, ensuring correct spatial orientation for handling and assembly tasks.
+Q: What is the mechanical interface coordinate system?
+A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
+Q: What does the discipline of kinematics describe in robotics?
+A: Kinematics is the study of how robot parts move in space—focusing on position, velocity, and acceleration—without considering the forces or torques that cause this movement; it is used to plan motion paths and end effector trajectories.
+Q: What is systems engineering in the context of robotics vs regular engineering?
+A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
+Q: When and how did the term “robot” enter public awareness? (History and Cultural Influence)
+A: The term “robot” was popularized in 1920 by Karel Čapek’s play, sparking broader discussions about human-robot interaction, including ethical concerns addressed in 1940s science fiction.
+Q: Who invented the first industrial robot and when? (History and Cultural Influence)
+A: George Devol filed the first patent for an industrial robot in 1954, and by the early 1960s these robots were used for tasks like workpiece handling and welding in production lines.
+Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
+A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
+Q: What are SCARA robots and their role in industry? (History and Cultural Influence)
+A: SCARA robots, introduced in 1978, are compact, affordable arms with selective compliance, ideal for electronics assembly and mass production due to their speed and precision.
+Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
+A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
+Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
+A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
+Q: What was Shakey and what control concept did it introduce? (History and Cultural Influence)
+A: Shakey was a 1960s mobile robot with sensors and a camera, capable of mapping and planning its movements; it introduced hierarchical control with low-level, intermediate, and high-level decision layers.
+Q: What is hierarchical control in robotics? (History and Cultural Influence)
+A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
+Q: What role did NASA play in mobile robot development? (History and Cultural Influence)
+A: In the 1970s, NASA advanced mobile robotics through Mars Rover research using Stanford Arm components and rich sensor suites, contributing to world-model-based navigation.
+Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
+A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
+Q: How were AMRs used after the Chernobyl disaster? (History and Cultural Influence)
+A: After the 1986 nuclear accident, AMRs were deployed in hazardous zones where humans couldn’t safely operate, showcasing robots’ ability to replace humans in dangerous environments.
+Q: What are examples of modern AMR applications? (History and Cultural Influence)
+A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
+Q: What dual goal do Siciliano and Khatib (2008) attribute to robotics? (History and Cultural Influence)
+A: Siciliano and Khatib (2008) describe robotics as aiming both to create machines that are skilled and intelligent and to design artifacts with human-like characteristics.
+Q: What are some early historical examples of robotic concepts before modern robotics? (History and Cultural Influence)
+A: Early examples include Greek legends of bronze slaves (3500 BCE), Egyptian priest-sheltering statues (2500 BCE), water clocks (1400 BCE), the Hero of Alexandria’s devices (100 CE), and Leonardo da Vinci’s mechanical apparatus (1500 CE).
+Q: When did the word “robot” gain popularity, and what cultural effect did it have? (History and Cultural Influence)
+A: The term “robot” gained popularity in 1920 and led to broader discussions about robotics, including ethical concerns in science fiction literature during the 1940s.
+Q: Who filed the first patent for an industrial robot and in which year? (History of Industrial Robots)
+A: George Devol filed the first patent for an industrial robot in 1954.
+Q: What were the initial key applications of industrial robots? (History of Industrial Robots)
+A: Early industrial robots were primarily used for handling workpieces and welding, which remain typical applications today.
+Q: What is the significance of the Stanford Arm invented in 1969? (History of Industrial Robots)
+A: The Stanford Arm, invented by Victor Scheinman, featured six degrees of freedom and a configuration that allowed fast movement computations with limited computational resources.
+Q: What development followed the Stanford Arm in the field of programmable manipulation? (History of Industrial Robots)
+A: Victor Scheinman developed the MIT Arm in 1972, a foundational model for programmable universal manipulation arms (PUMA).
+Q: What major advancements in industrial robotics occurred in the 1970s? (History of Industrial Robots)
+A: The 1970s saw the introduction of the first microcomputer-controlled all-electric robot (1973) and the SCARA robot (1978), facilitating cost-effective mass production.
+Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
+A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost-effective assembly in industries such as electronics.
+Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
+A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
+Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
+A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
+Q: What are some general trends in industrial robot development over recent decades? (History of Industrial Robots)
+A: Trends include increased speed, lighter designs, enhanced kinematics, cheaper units, improved synchronization, and better communication and service models.
+Q: What distinguishes mobile robots from industrial robots? (History of Mobile Robots)
+A: Mobile robots differ by their non-stationary operation, requiring navigation, environmental adaptability, and independent power supply.
+Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
+A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
+Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
+A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
+Q: What is hierarchical control in robotics? (History of Mobile Robots)
+A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
+Q: What was NASA’s contribution to mobile robot navigation in the 1970s? (History of Mobile Robots)
+A: NASA developed a research program leading to the Mars Rover, which used a modified Stanford arm and sensors for navigation via a world model.
+Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
+A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
+Q: What innovation did the Stanford Cart bring to robotic perception? (History of Mobile Robots)
+A: The Stanford Cart used stereo cameras to generate and process 3D images, enhancing robots’ environmental perception.
+Q: What applications of mobile robots emerged in the 1980s? (History of Mobile Robots)
+A: Applications included blind-assisting navigation robots in Japan and micromouse maze-solving robots in Germany.
+Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
+A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
+Q: What was the KAMRO, and what could it do? (History of Mobile Robots)
+A: KAMRO, the Karlsruhe autonomous mobile robot, could perform autonomous assembly tasks, expanding AMR capabilities.
+Q: What common AMR applications have emerged since the 1990s? (History of Mobile Robots)
+A: Modern AMRs are used for tasks such as automated vacuum cleaning, autonomous transport, and planetary exploration.
+Q: What misconception about the field of robotics does Hägele et al. (2008) highlight? (Challenges and Trends)
+A: Hägele et al. (2008) emphasize that robotics is not a “solved problem,” contrary to common belief, as numerous challenges still persist, especially in industrial applications.
+Q: Why have robots not been widely adopted by small and medium-sized enterprises? (Challenges and Trends)
+A: Robots are still predominantly used in large companies; smaller firms face barriers due to cost and complexity, which could be mitigated by standardized production cells and reasonable pricing (Kopacek, 2013).
+Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
+A: It refers to the need for improved human-machine interaction that allows efficient information exchange between operators and robots in production settings.
+Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
+A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
+Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
+A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
+Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
+A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
+Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
+A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
+Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
+A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
+Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
+A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
+Q: How have robot unit costs changed from the 1990s to the 2020s? (Challenges and Trends)
+A: Unit costs fell from over $100,000 in the 1990s to around $27,000 in 2017, with projections between $11,000 and $24,000 in the 2020s (Korus, 2019).
+Q: What is the status of intelligent multi-robot synchronization? (Challenges and Trends)
+A: Although studied since the 1970s, intelligent control for synchronized multi-robot systems remains an active research topic (Caccavale & Uchiyama, 2008).
+Q: How does Moore’s Law influence robotics development? (Challenges and Trends)
+A: Moore’s Law, which states microprocessor performance doubles every 18 months, enhances computational power and reduces cost, enabling more advanced robotic applications.
+Q: What advancements in sensor technology benefit robotics? (Challenges and Trends)
+A: Emerging sensor technologies support the development of better vision systems, enabling faster and more precise interaction between robots and their environments (Inoue, 2008).
+Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
+A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
+Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
+A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
+Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
+A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
+Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
+A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
+Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
+A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
+Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
+A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
+Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
+A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
+Q: What are humanoid robots and why are they significant despite their limitations? (New Fields of Robotics)
+A: Humanoid robots are designed based on human anatomy. Though costly and not suited for manufacturing, they represent a key future trend, supporting humans in diverse everyday tasks through naturalistic design and interaction capabilities.
+Q: What is ASIMO and who developed it? (New Fields of Robotics)
+A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
+Q: What defines social robots and what is their intended purpose? (New Fields of Robotics)
+A: Social robots are designed to coexist with humans and form relationships that enhance quality of life. They require artificial intelligence and positive human perception to function in domains like healthcare and eldercare.
+Q: What does the term “cloud-computing infrastructure” mean in the context of cloud robotics? (New Fields of Robotics)
+A: In cloud robotics, a cloud-computing infrastructure provides centralized resources such as databases and processing power that robots can access remotely, decoupling computation from physical robot hardware.
+Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
+A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
+Q: What example of wearable robotics was developed by Honda? (Wearable and Soft Robotics)
+A: Honda developed a walking assist system designed to help people relearn how to walk, demonstrating the medical potential of wearable robotics.
+Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
+A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).
+Q: What materials and control methods are commonly used in soft robotics? (Wearable and Soft Robotics)
+A: Soft robots use materials with soft mechanical properties and may be controlled via pneumatic or hydraulic systems, or mechanisms like stiffening cables to balance flexibility with control (Rus & Tolley, 2015).
+Q: What is the definition of bio-inspired robotics? (Bio-Inspired Robotics)
+A: Bio-inspired robotics involves designing robotic systems based on solutions found in nature, including anatomy and behavior of animals, to solve technological challenges (Kopacek, 2013).
+Q: How do bio-inspired robots differ from humanoid robots? (Bio-Inspired Robotics)
+A: While humanoid robots are modeled on human anatomy, bio-inspired robots are based on animal forms and behaviors, enabling capabilities like climbing, swimming, or navigating uneven terrain (Meyer & Guillot, 2008).
+Q: What prediction has been made about the availability of insect-sized robots? (Bio-Inspired Robotics)
+A: Insect-sized bio-inspired robots are expected to become commercially available at affordable prices during the 2020s (Kopacek, 2013).
+Q: What is an example of a bio-inspired robot, and what is its capability? (Bio-Inspired Robotics)
+A: An example is the six-legged robot developed by Boston Dynamics, designed to walk through uneven terrain, showcasing adaptive locomotion based on animal-like anatomy.
+Q: Why is robotics considered an interdisciplinary field, and what frameworks must it account for? (Summary)
+A: Robotics combines multiple engineering disciplines and must also consider ethical and political frameworks to ensure responsible development and integration into society.
+Q: What role do coordinate systems play in modern robotics? (Summary)
+A: Coordinate systems are essential for motion planning and must be tailored to the robot’s end effector task to ensure precise control and operation.
+Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
+A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻

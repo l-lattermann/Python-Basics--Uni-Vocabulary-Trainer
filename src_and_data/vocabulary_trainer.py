@@ -4,7 +4,6 @@ import os
 import re
 import sys
 from dataclasses import dataclass
-from typing import List
 import time
 from pathlib import Path
 import textwrap
@@ -12,6 +11,7 @@ import shutil
 import shutil
 import textwrap
 import random
+from typing import List, Literal, Tuple
 
 # ___________ Variables ___________
 global terminal_width, terminal_height
@@ -27,12 +27,13 @@ text_box_size = 100
 class Entry:
     question: str
     answer: str
-    known: bool = False
-    seen: bool = False
+    known: bool = None
+    seen: bool = None
 
-    path_known = "known.txt"
-    path_not_known = "not_known.txt"
-    path_all = "vocabulary.txt"
+    path_known = "src_and_data/known.txt"
+    path_not_known = "src_and_data/not_known.txt"
+    path_all = "src_and_data/vocabulary.txt"
+    path_backup = "src_and_data/vocabulary_backup"
 
 def clear():
     os.system('clear' if os.name == 'posix' else 'cls')
@@ -95,14 +96,19 @@ def save_vocab(entries: List[Entry]):
     known = [e for e in entries if e.known and e.seen]
     not_known = [e for e in entries if not e.known and e.seen]
 
-    path = Path("src_and_data") / Entry.path_known
+    path = Path(Entry.path_known)
     with open(path, "w") as f:
         for e in known:
             f.write(f"{e.question}\n{e.answer}\n")
 
-    path = Path("src_and_data") / Entry.path_not_known
+    path = Path(Entry.path_not_known)
     with open(path, "w") as f:
         for e in not_known:  
+            f.write(f"{e.question}\n{e.answer}\n")
+
+    path = Path(Entry.path_all)
+    with open(path, "w") as f:
+        for e in entries:
             f.write(f"{e.question}\n{e.answer}\n")
 
 def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
@@ -159,6 +165,19 @@ def multi_line_input() -> str:
         return new_question
 
 def entry_editor(entry: Entry) -> Entry:
+
+    while True:
+        print_formated("Do you want to edit this question? [y/n]", style="NORMAL", colour="CYAN")
+        edit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+        if edit_confirm == "n":
+            print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
+            time.sleep(1)
+            return
+        elif edit_confirm == "y":
+            print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
+            break
+
+
     # Edit current entry
     while True:
         # Get terminal size
@@ -171,15 +190,6 @@ def entry_editor(entry: Entry) -> Entry:
 
         if new_question[:2] == "Q:" and new_answer[:2] == "A:":
             print("\n\n")
-            print_formated("Do you want to edit this question? [y/n]", style="NORMAL", colour="CYAN")
-            edit_confirm = input().strip().lower()
-            if edit_confirm == "n":
-                print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
-                time.sleep(1)
-                break
-            elif edit_confirm == "y":
-                print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
-                continue  
             print_formated(f"New Question:", style="NORMAL", colour="CYAN")
             print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
             print("\n")
@@ -189,8 +199,7 @@ def entry_editor(entry: Entry) -> Entry:
 
             while True:
                 print_formated("Confirm update? [y/n]", style="NORMAL", colour="CYAN")
-                print("\n")
-                confirm = input().strip().lower()
+                confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
                 if confirm == "y":
                     entry.question = new_question
                     entry.answer = new_answer
@@ -198,7 +207,7 @@ def entry_editor(entry: Entry) -> Entry:
                 elif confirm == "n":
                     print_formated(" ❌ Update cancelled", style="NORMAL", colour="RED")
                     print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
-                    exit_confirm = input().strip().lower()
+                    exit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
                     if exit_confirm == "y":
                         print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
                         time.sleep(1)
@@ -211,22 +220,47 @@ def entry_editor(entry: Entry) -> Entry:
             print_formated("❌ Invalid input. Entry not updated.", style="NORMAL", colour="RED")
             time.sleep(1)
 
-def run_trainer(entries: List[Entry], all_vocab: List[Entry], label="Trainer") -> str:
+def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Unseen"] = "Known") -> Tuple[List[Entry], str | None]:    
     CYAN = "\033[36m"
     BLUE = "\033[38;5;117m"
     GREEN = "\033[38;5;151m"
     RED = "\033[38;5;210m"
     RESET = "\033[0m"
+    
 
+    if label == "Known":
+        entries = [e for e in all_vocab if e.known]
+        if not entries:
+            print_formated("No known entries found.", style="NORMAL", colour="CYAN")
+            time.sleep(1)
+            return (all_vocab, None)
+    elif label == "Not Known":
+        entries = [e for e in all_vocab if not e.known]
+        if not entries:
+            print_formated("No not known entries found.", style="NORMAL", colour="CYAN")
+            time.sleep(1)
+            return (all_vocab, None)
+    elif label == "Unseen":
+        entries = [e for e in all_vocab if not e.seen]
+        if not entries:
+            print_formated("No unseen entries found.", style="NORMAL", colour="CYAN")
+            time.sleep(1)
+            return (all_vocab, None)
+    else:
+        raise ValueError(f"Invalid label: {label}")
+        return (all_vocab, None)
+    
+    exit_code = None # "q" | "m" | None
     for i, entry in enumerate(entries):
-        current = i + 1
-        total = len(entries)
-        print_header(label, current, total)
-        print_formated(entry.question, colour="WHITE", style="BOLD")
-        terminal_width = shutil.get_terminal_size().columns
-        input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
-        print_formated(entry.answer, colour="WHITE", style="BOLD")
         while True:
+            current = i + 1
+            total = len(entries)
+            print_header(label, current, total)
+            print_formated(entry.question, colour="WHITE", style="BOLD")
+            terminal_width = shutil.get_terminal_size().columns
+            input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+            print_formated(entry.answer, colour="WHITE", style="BOLD")
+
             terminal_width = shutil.get_terminal_size().columns
             print("\n")
             print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
@@ -244,45 +278,46 @@ def run_trainer(entries: List[Entry], all_vocab: List[Entry], label="Trainer") -
                     time.sleep(0.75)
                     break
             elif cmd == "q":
-                return "q"
-            elif cmd == "m":
-                return "m" 
-            elif cmd == "e":
-                new_entry = entry_editor(entry)
-                index_old_entry = entries.index(entry)
-                all_question_dict = {e.question: e for e in all_vocab}
-                old_in_all_vocab = all_question_dict.get[entry.question]
-                index_old_all_vocab = all_vocab.index(old_in_all_vocab)
-                if new_entry is not None:
-                    entries[index_old_entry] = new_entry
-                    all_vocab[index_old_all_vocab] = new_entry
-                    print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
-                    time.sleep(0.75)
-                    print("\n")
-                    print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
-                    while True:
-                        cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
-                        if cmd == "":
-                            entry.known = False
-                            entry.seen = True
-                            print(f"❌ {CYAN} Marked as not known {RESET}".center(terminal_width)) 
-                            time.sleep(0.75)
-                            break
-                        elif cmd == "#": 
-                            entry.known = True
-                            entry.seen = True
-                            print(f"✅ {CYAN} Marked as known.{RESET}".center(terminal_width))
-                            time.sleep(0.75)
-                            break
-            if cmd == "":   
+                exit_code = "q"
                 break
-                   
-            # Move cursor up one line and clear the line
-            sys.stdout.write("\033[F\033[K")
-            sys.stdout.flush()
+            elif cmd == "m":
+                exit_code = "m"
+                break
+            elif cmd == "e":
+                entry_editor(entry)    
+                print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
+                continue
+                    
+                # Move cursor up one line and clear the line
+                sys.stdout.write("\033[F\033[K")
+                sys.stdout.flush()
+
+    result = (all_vocab, exit_code)
+    return result
+
+def create_vocab_backup():
+    backup_path = Path(Entry.path_backup) / f"vocabulary_backup_{time.strftime('%d.%m.%Y-%H:%M:%S')}.txt"
+    if os.path.exists(backup_path):
+        i = 2 
+        while True:
+            backup_path = Path(Entry.path_backup) / f"vocabulary_backup_{time.strftime('%d.%m.%Y-%H:%M:%S')}_{i}.txt"
+            if os.path.exists(backup_path):
+                i += 1
+            else:
+                print(f"❌ Backup file already exists. Creating new backup at {backup_path.stem}")
+                break
+    os.makedirs(backup_path.parent, exist_ok=True)
+    shutil.copy(Entry.path_all, backup_path)
+    print(f"✅ Backup created at {backup_path.stem}")
+
+
 
 def main():
     clear()
+
+    # Create backup of vocabulary file
+    if os.path.exists(Entry.path_all):
+        create_vocab_backup()
 
     # Load vocab
     all_path = Entry.path_all if os.path.exists(Entry.path_all) else prompt_for_file("No 'vocabulary.txt' found.")
@@ -294,7 +329,7 @@ def main():
     not_known = []
 
     # Load known vocab
-    known_path = Path("src_and_data") / Entry.path_known
+    known_path = Path(Entry.path_known)
     if os.path.exists(known_path):
         known = load_vocab_file(known_path)
         # Set all known entries known:True and seen:True
@@ -303,7 +338,7 @@ def main():
         known_question_set = {e.question for e in known}
 
     # Load not known vocab
-    not_known_path = Path("src_and_data") / Entry.path_not_known
+    not_known_path = Path(Entry.path_not_known)
     if os.path.exists(not_known_path):
         not_known = load_vocab_file(not_known_path)
         # Set all not known entries known:False and seen:True
@@ -314,57 +349,43 @@ def main():
     # Set all entries in all_vocab that are not in known or not_known as unseen
     # And set known:False and seen:True
     for entry in all_vocab:
-        if entry.question not in known_question_set and entry.question not in not_known_question_set:
-            entry.seen = False
-            entry.known = False
-        else:
-            entry.seen = True
         if entry.question in known_question_set:
             entry.known = True
             entry.seen = True
-        if entry.question in not_known_question_set:
+        elif entry.question in not_known_question_set:
             entry.known = False
             entry.seen = True
+        else:
+            entry.known = False
+            entry.seen = False
 
     while True:
         # Not known first
-        not_known = [e for e in all_vocab if not e.known and e.seen]
         # Shuffle not known entries
-        random.shuffle(not_known)
-        if not_known:
-            res = run_trainer(not_known, all_vocab, label="Not Known")
-            if res == "q":
-                save_vocab(not_known + known)
-                break
-        # Drop entrys that have changed category
-        not_known = [e for e in not_known if not e.known]
+        random.shuffle(all_vocab)
+        all_vocab, exit_code = run_trainer(all_vocab, label="Not Known")
+        if exit_code == "q":
+            save_vocab(all_vocab)
+            break
 
         # Unseen entries 
-        unseen = [e for e in all_vocab if not e.seen]
         # Shuffle unseen entries
-        random.shuffle(unseen)
-        if unseen:
-            res = run_trainer(unseen, all_vocab, label="Unseen")
-            if res == "q":
-                save_vocab(known + not_known)
-                break
-        # Drop unseen entries that have been seen
-        unseen = [e for e in unseen if not e.seen]
+        random.shuffle(all_vocab)
+        all_vocab, exit_code = run_trainer(all_vocab, label="Unseen")
+        if exit_code == "q":
+            save_vocab(all_vocab)
+            break
         
         # Known entries
-        known = [e for e in all_vocab if e.known and e.seen]
         # Shuffle known entries
-        random.shuffle(known)
-        if known:
-            res = run_trainer(known, all_vocab, label="Known")
-            if res == "q":
-                save_vocab(known + not_known)
-                break
-        # Drop entries that have changed category
-        known = [e for e in known if e.known]
+        random.shuffle(all_vocab)
+        all_vocab, exit_code = run_trainer(all_vocab, label="Known")
+        if exit_code == "q":
+            save_vocab(all_vocab)
+            break
 
 
-    save_vocab(known + not_known + all_vocab)
+    save_vocab(all_vocab)
     print_formated("🎉 All done. Press Enter to exit...", style="NORMAL", colour="CYAN")
     time.sleep(1)
 

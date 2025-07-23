@@ -1,0 +1,6 @@
+Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
+A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
+Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
+A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
+Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
+A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).

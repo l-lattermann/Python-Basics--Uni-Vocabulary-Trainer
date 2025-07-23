@@ -38,6 +38,10 @@ class Entry:
 def clear():
     os.system('clear' if os.name == 'posix' else 'cls')
 
+def clear_line():
+    sys.stdout.write("\033[F\033[K")  # Move cursor up one line and clear the line
+    sys.stdout.flush()  # Ensure the command is executed immediately
+    
 def validate_format(entries: list[Entry]):
     for entry in entries:
         q_marker = entry.question[:2]
@@ -75,12 +79,17 @@ def print_header(mode="Trainer", current=0, total=0):
         mode = f"{RED}❌ Not Known Vocabulary ❌{RESET}"
     elif mode == "Unseen":
         mode = f"{BLUE}🆕 Unseen Vocabulary 🆕{RESET}"
-
-    print(f"{mode}\n".center(terminal_width))
+    
+    print_formated("=-" * (text_box_size // 2), style="BOLD", colour="CYAN")
+    print(f"{mode}".center(terminal_width))
+    print_formated("=-" * (text_box_size // 2), style="BOLD", colour="CYAN")
     print(f"{CYAN}[q] = quit{RESET}".center(terminal_width))
     print(f"{CYAN}[e] = edit current entry{RESET}".center(terminal_width))
     print(f"{CYAN}[d] = delete this entry{RESET}".center(terminal_width))
-    print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}\n".center(terminal_width))
+    print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}".center(terminal_width))
+    print_formated("=-" * (text_box_size // 2), style="BOLD", colour="CYAN")
+    print("\n\n")
+
     target_pos = int(max(terminal_width/2 - text_box_size/2, 0))
     print(" " * target_pos + f"{CYAN}Q: {current}/{total}{RESET}")
     print(" " * target_pos + f"{CYAN}[ENTER] -> show answer{RESET}\n")
@@ -112,7 +121,12 @@ def save_vocab(entries: List[Entry]):
         for e in entries:
             f.write(f"{e.question}\n{e.answer}\n")
 
-def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
+def print_formated(
+        string: str, colour: Literal["WHITE", "CYAN", "BLUE", "GREEN", "RED"], 
+        style: Literal["BOLD", "NORMAL"], 
+        position: Literal["LEFT", "CENTER", "RIGHT"] = "LEFT"
+        ):
+    
     # Terminal dimensions
     terminal_width, _ = shutil.get_terminal_size()
 
@@ -158,12 +172,20 @@ def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
         elif is_answer:
             styled = f"{STYLES['BOLD']}{COLOURS["WHITE"]}{line}{RESET}"
         else:
-            styled = f"{STYLES['NORMAL']}{COLOURS['CYAN']}{line}{RESET}"
+            styled = f"{STYLES[style]}{COLOURS[colour]}{line}{RESET}"
         formatted_lines.append(indent + styled)
 
     # Join and print
     final_output = "\n\n".join(formatted_lines)
-    print(final_output)
+    if position == "LEFT":
+        print(final_output)
+        print("\n")
+    elif position == "CENTER":
+        print(final_output.center(terminal_width))
+        print("\n")
+    elif position == "RIGHT":
+        print(final_output.rjust(terminal_width))
+        print("\n")
 
 def multi_line_input() -> str:
         terminal_width, _ = shutil.get_terminal_size()
@@ -173,9 +195,10 @@ def multi_line_input() -> str:
         while True:
             # Print the current input
             user_input = input(indent)
+            clear_line()          
             if user_input == "#":
                 break
-            new_question += (" " + user_input).strip()
+            new_question += (" " + user_input.strip())
         # Normalize the input      
         new_question = new_question.strip()  # Remove leading/trailing whitespace
         new_question = re.sub(r'\s+', ' ', new_question)  # Normalize whitespace
@@ -188,6 +211,7 @@ def entry_editor(entry: Entry) -> Entry:
     while True:
         print_formated("Do you want to edit this question? [y/n]", style="NORMAL", colour="CYAN")
         edit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+        clear_line()      
         if edit_confirm == "n":
             print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
             time.sleep(1)
@@ -219,6 +243,7 @@ def entry_editor(entry: Entry) -> Entry:
             while True:
                 print_formated("Confirm update? [y/n]", style="NORMAL", colour="CYAN")
                 confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                clear_line()              
                 if confirm == "y":
                     entry.question = new_question
                     entry.answer = new_answer
@@ -227,6 +252,7 @@ def entry_editor(entry: Entry) -> Entry:
                     print_formated(" ❌ Update cancelled", style="NORMAL", colour="RED")
                     print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
                     exit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                    clear_line()                  
                     if exit_confirm == "y":
                         print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
                         time.sleep(1)
@@ -279,13 +305,14 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Un
         print_formated(entry.question, colour="WHITE", style="BOLD")
         terminal_width = shutil.get_terminal_size().columns
         input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+        clear_line()      
         print_formated(entry.answer, colour="WHITE", style="BOLD")
 
         while True:
             terminal_width = shutil.get_terminal_size().columns
-            print("\n")
             print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
             cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+            clear_line()          
 
             if cmd == "":
                 entry.known = False
@@ -313,6 +340,7 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Un
                 while True:
                     print_formated("Are you sure you want to delete this entry? [y/n]", style="NORMAL", colour="CYAN")
                     confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                    clear_line()                  
                     if confirm == "y":
                         if entry in entries:
                             entries.remove(entry)
@@ -406,14 +434,6 @@ def main():
             entry.seen = False
 
     while True:
-        # Not known first
-        # Shuffle not known entries
-        random.shuffle(all_vocab)
-        all_vocab, exit_code = run_trainer(all_vocab, label="Not Known")
-        if exit_code == "q":
-            save_vocab(all_vocab)
-            break
-
         # Unseen entries 
         # Shuffle unseen entries
         random.shuffle(all_vocab)
@@ -421,9 +441,15 @@ def main():
         if exit_code == "q":
             save_vocab(all_vocab)
             break
-        
-        # Known entries
-        # Shuffle known entries
+        # Not known first
+        # Shuffle not known entries
+        random.shuffle(all_vocab)
+        all_vocab, exit_code = run_trainer(all_vocab, label="Not Known")
+        if exit_code == "q":
+            save_vocab(all_vocab)   
+            break
+        # Seen entries
+        # Shuffle seen entries
         random.shuffle(all_vocab)
         all_vocab, exit_code = run_trainer(all_vocab, label="Known")
         if exit_code == "q":
@@ -432,7 +458,11 @@ def main():
 
 
     save_vocab(all_vocab)
-    print_formated("🎉 All done. Press Enter to exit...", style="NORMAL", colour="CYAN")
+    print("\n\n")
+    print_formated("=-" * (text_box_size // 2), style="BOLD", colour="CYAN")
+    print_formated("🎉 Good Job! 🎉 Press Enter to exit...", style="NORMAL", colour="CYAN", position="CENTER")
+    print_formated("=-" * (text_box_size // 2), style="BOLD", colour="CYAN")
+    print("\n\n\n\n")
     time.sleep(1)
 
 if __name__ == "__main__":

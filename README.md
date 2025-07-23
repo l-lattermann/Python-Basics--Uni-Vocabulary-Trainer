@@ -1,7 +1,9 @@
-# Vocabulary Trainer for Mac/Linux
+# Vocabulary Trainer for Mac/Linux [BETA]
 
 [Can be run on Windows by running the vocabulary_trainer.py manually]
 A simple terminal-based flashcard trainer for learning vocabulary. This Python script reads questions and answers from a text file and quizzes you interactively. Unknown entries are saved for focused repetition later. Vocabs are intentionally stored in .txt format, so copy-pasting and reformating them from Coursebooks or AI is easy.
+
+Vocabualry backups are saved in the backup folder on every start. So there is no chance of loosing your vocabulary set
 
 
 
@@ -23,7 +25,7 @@ A simple terminal-based flashcard trainer for learning vocabulary. This Python s
 | `not_known.txt`             | Automatically generated file saving entries marked as not known.            |
 | `known.txt`                 | Automatically generated file saving entries marked as known.                |
 | `start_vocabtrainer.command`| macOS launcher script that opens Terminal and runs the quiz.                |
-
+| `vocabulary_backup`         | Backup folder for vocabulary file backup in case something bugs out         |
 ---
 
 

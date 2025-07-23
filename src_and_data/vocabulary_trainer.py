@@ -79,6 +79,7 @@ def print_header(mode="Trainer", current=0, total=0):
     print(f"{mode}\n".center(terminal_width))
     print(f"{CYAN}[q] = quit{RESET}".center(terminal_width))
     print(f"{CYAN}[e] = edit current entry{RESET}".center(terminal_width))
+    print(f"{CYAN}[d] = delete this entry{RESET}".center(terminal_width))
     print(f"{CYAN}[m] = change mode [ known / unknown / unseen ]{RESET}\n".center(terminal_width))
     target_pos = int(max(terminal_width/2 - text_box_size/2, 0))
     print(" " * target_pos + f"{CYAN}Q: {current}/{total}{RESET}")
@@ -132,19 +133,37 @@ def print_formated(string: str, colour: str = "WHITE", style: str = "BOLD"):
     RESET = "\033[0m"
     UNDERLINE = "\033[4m"
 
-    # Apply special formatting to questions
+
     if string.startswith("Q:"):
-        string = f"{STYLES['BOLD']}{UNDERLINE}{string}{RESET}"
+        is_question = True
+    else:
+        is_question = False
+    if string.startswith("A:"):
+        is_answer = True
+    else:
+        is_answer = False
 
-    # Wrap and indent
-    wrapped_string = textwrap.fill(string, width=text_box_size)
+    # Wrap first (no styling yet)
+    wrapped_lines = textwrap.wrap(string, width=text_box_size)
+
+    # Compute indent once
     indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
-    wrapped_string = wrapped_string.replace("\n", "\n\n" + indent)
 
-    # Final print
-    style_code = STYLES.get(style.upper(), "")
-    colour_code = COLOURS.get(colour.upper(), "")
-    print(indent + f"{style_code}{colour_code}{wrapped_string}{RESET}")
+    # Apply formatting line by line
+    formatted_lines = []
+    for i, line in enumerate(wrapped_lines):
+        styled = line
+        if is_question:
+            styled = f"{STYLES['BOLD']}{UNDERLINE}{line}{RESET}"
+        elif is_answer:
+            styled = f"{STYLES['BOLD']}{COLOURS["WHITE"]}{line}{RESET}"
+        else:
+            styled = f"{STYLES['NORMAL']}{COLOURS['CYAN']}{line}{RESET}"
+        formatted_lines.append(indent + styled)
+
+    # Join and print
+    final_output = "\n\n".join(formatted_lines)
+    print(final_output)
 
 def multi_line_input() -> str:
         terminal_width, _ = shutil.get_terminal_size()
@@ -229,13 +248,13 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Un
     
 
     if label == "Known":
-        entries = [e for e in all_vocab if e.known]
+        entries = [e for e in all_vocab if e.known and e.seen]
         if not entries:
             print_formated("No known entries found.", style="NORMAL", colour="CYAN")
             time.sleep(1)
             return (all_vocab, None)
     elif label == "Not Known":
-        entries = [e for e in all_vocab if not e.known]
+        entries = [e for e in all_vocab if not e.known and e.seen]
         if not entries:
             print_formated("No not known entries found.", style="NORMAL", colour="CYAN")
             time.sleep(1)
@@ -251,47 +270,66 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Un
         return (all_vocab, None)
     
     exit_code = None # "q" | "m" | None
-    for i, entry in enumerate(entries):
-        while True:
-            current = i + 1
-            total = len(entries)
-            print_header(label, current, total)
-            print_formated(entry.question, colour="WHITE", style="BOLD")
-            terminal_width = shutil.get_terminal_size().columns
-            input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
-            print_formated(entry.answer, colour="WHITE", style="BOLD")
+    i = 0
+    while i < len(entries):
+        entry = entries[i]
+        current = i + 1
+        total = len(entries)
+        print_header(label, current, total)
+        print_formated(entry.question, colour="WHITE", style="BOLD")
+        terminal_width = shutil.get_terminal_size().columns
+        input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+        print_formated(entry.answer, colour="WHITE", style="BOLD")
 
+        while True:
             terminal_width = shutil.get_terminal_size().columns
             print("\n")
             print_formated("Not known? [ENTER]     Known? [#]", style="NORMAL", colour="CYAN")
             cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
+
             if cmd == "":
-                    entry.known = False
-                    entry.seen = True
-                    print(f"❌ {CYAN} Marked as not known {RESET}".center(terminal_width)) 
-                    time.sleep(0.75)
-                    break
-            elif cmd == "#": 
-                    entry.known = True
-                    entry.seen = True
-                    print(f"✅ {CYAN} Marked as known.{RESET}".center(terminal_width))
-                    time.sleep(0.75)
-                    break
+                entry.known = False
+                entry.seen = True
+                print(f"❌ {CYAN}Marked as not known{RESET}".center(terminal_width))
+                time.sleep(0.75)
+                break
+            elif cmd == "#":
+                entry.known = True
+                entry.seen = True
+                print(f"✅ {CYAN}Marked as known.{RESET}".center(terminal_width))
+                time.sleep(0.75)
+                break
             elif cmd == "q":
                 exit_code = "q"
-                break
+                return all_vocab, exit_code
             elif cmd == "m":
                 exit_code = "m"
-                break
+                return all_vocab, exit_code
             elif cmd == "e":
-                entry_editor(entry)    
+                entry_editor(entry)
                 print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
-                continue
-                    
-                # Move cursor up one line and clear the line
-                sys.stdout.write("\033[F\033[K")
-                sys.stdout.flush()
+                continue  # Stay on current entry
+            elif cmd == "d":
+                while True:
+                    print_formated("Are you sure you want to delete this entry? [y/n]", style="NORMAL", colour="CYAN")
+                    confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                    if confirm == "y":
+                        if entry in entries:
+                            entries.remove(entry)
+                        if entry in all_vocab:
+                            all_vocab.remove(entry)
+                        print_formated("✅ Entry deleted successfully.", style="NORMAL", colour="CYAN")
+                        time.sleep(0.75)
+                        i -= 1  # offset next increment to skip forward
+                        break
+                    elif confirm == "n":
+                        print_formated("❌ Deletion cancelled.", style="NORMAL", colour="RED")
+                        time.sleep(0.75)
+                        break
+            break  # exit inner while after valid input
 
+        i += 1  # advance to next entry
+               
     result = (all_vocab, exit_code)
     return result
 
@@ -318,6 +356,14 @@ def main():
     # Create backup of vocabulary file
     if os.path.exists(Entry.path_all):
         create_vocab_backup()
+
+    # Create known and not known files if they don't exist
+    if not os.path.exists(Entry.path_known):
+        with open(Entry.path_known, "w") as f:
+            f.write("")
+    if not os.path.exists(Entry.path_not_known):
+        with open(Entry.path_not_known, "w") as f:
+            f.write("")
 
     # Load vocab
     all_path = Entry.path_all if os.path.exists(Entry.path_all) else prompt_for_file("No 'vocabulary.txt' found.")

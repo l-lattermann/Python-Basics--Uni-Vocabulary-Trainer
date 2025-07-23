@@ -1,0 +1,4 @@
+Q: What is systems engineering in the context of robotics vs regular engineering?
+A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
+Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
+A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.

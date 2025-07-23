@@ -1,10 +1,30 @@
 # Vocabulary Trainer for Mac/Linux [BETA]
 
-[Can be run on Windows by running the vocabulary_trainer.py manually]
-A simple terminal-based flashcard trainer for learning vocabulary. This Python script reads questions and answers from a text file and quizzes you interactively. Unknown entries are saved for focused repetition later. Vocabs are intentionally stored in .txt format, so copy-pasting and reformating them from Coursebooks or AI is easy.
+This vocabulary trainer was primarily developed for macOS. You can launch it conveniently via the provided .command script. On Windows, the trainer can be run manually by executing the Python script directly.
 
+The main use case is to send a coursebook text to ChatGPT and ask it to format the output as vocabulary flashcards. The script helps you manage, review, and update the vocabulary efficiently. *Copy-paste that output to the vocabulary.txt file (reformat it if needed, specs below) and start learning!
 Vocabualry backups are saved in the backup folder on every start. So there is no chance of loosing your vocabulary set
 
+#### Exemplary ChatGPT promt
+```txt
+I will give you a text. Your task is to extract and format vocabulary card–style Q&A pairs.
+
+Step 1: Perform Named Entity Recognition (NER) to identify all relevant entities—such as names, concepts, and ideas.
+
+Step 2: Create a question for each identified entity. Use the following format:
+Q: <question>? [<topic> or <chapter name>]
+A: <answer>
+
+Formatting rules:
+– Do not insert line breaks inside answers, even when using numbering or bullet points.
+– Example:
+
+Q: What are the three core activities in the UX design process? [UX Design Process]
+A: According to Jonas (2006), the UX design process includes: (1) analysis – understanding the current state, (2) projection – generating ideas, and (3) synthesis – developing and implementing concrete design solutions. These activities span the broader macroprocess.
+
+Q: What is the polar coordinate system used for in robotics? [Coordinate Systems in Robotics]
+A: The polar coordinate system is used in 2D space to represent points by their distance *r* from the origin and angle *φ*, making it suitable for describing planar rotations.
+```
 
 
 ## Features
@@ -25,7 +45,7 @@ Vocabualry backups are saved in the backup folder on every start. So there is no
 | `not_known.txt`             | Automatically generated file saving entries marked as not known.            |
 | `known.txt`                 | Automatically generated file saving entries marked as known.                |
 | `start_vocabtrainer.command`| macOS launcher script that opens Terminal and runs the quiz.                |
-| `vocabulary_backup`         | Backup folder for vocabulary file backup in case something bugs out         |
+| `vocabulary_backup/`         | Backup folder for vocabulary file backup in case something bugs out         |
 ---
 
 
@@ -68,6 +88,7 @@ Avoid duplicate consecutive `Q:` or `A:` tags—this will raise a format error w
 # = mark as known
 m = switch between modes [ known / unkown / unseen ]
 q = quit
+d = delete
 ```
 
 4.	All entries marked as not known will be saved to not_known.txt and can be reviewed separately.

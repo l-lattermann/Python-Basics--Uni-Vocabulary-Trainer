@@ -1,6 +1,12 @@
-Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
-A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
 Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
 A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
+Q: What does the discipline of kinematics describe in robotics?
+A: Kinematics is the study of how robot parts move in space—focusing on position, velocity, and acceleration—without considering the forces or torques that cause this movement; it is used to plan motion paths and end effector trajectories.
 Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
 A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).
+Q: Who filed the first patent for an industrial robot and in which year? (History of Industrial Robots)
+A: George Devol filed the first patent for an industrial robot in 1954.
+Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
+A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
+Q: What is the Cartesian coordinate system and how is it used in robotics?
+A: The Cartesian coordinate system defines positions in 3D space using x, y, and z axes; it is ideal for describing translational movements of robots and is the most commonly used coordinate model.

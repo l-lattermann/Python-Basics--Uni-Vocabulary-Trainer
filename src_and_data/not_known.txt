@@ -1,88 +1,92 @@
-Q: What are joint coordinates versus Cartesian coordinates in robotics?
-A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
-Q: What is a base coordinate system in robotics?
-A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
-Q: What are joints and links in robotic kinematics?
-A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
-Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
-A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
-Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
-A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
-Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
-A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
+Q: What are SCARA robots and their role in industry? (History and Cultural Influence)
+A: SCARA robots, introduced in 1978, are compact, affordable arms with selective compliance, ideal for electronics assembly and mass production due to their speed and precision.
 Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
 A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
-Q: Where does the term “robot” come from and what does it imply?
-A: The term “robot” originates from the Slavic word “robota” meaning “subordinate labor,” introduced by Karel Čapek in 1920, emphasizing the role of robots in performing strenuous or dangerous tasks to support humans.
-Q: What characterizes a mobile robot?
-A: Mobile robots are not stationary and can adapt to changing environments by moving autonomously and using sensors to navigate and perform transport or other tasks.
-Q: What role did NASA play in mobile robot development? (History and Cultural Influence)
-A: In the 1970s, NASA advanced mobile robotics through Mars Rover research using Stanford Arm components and rich sensor suites, contributing to world-model-based navigation.
-Q: What is hierarchical control in robotics? (History of Mobile Robots)
-A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
-Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
-A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
-Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
-A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
-Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
-A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
-Q: What is systems engineering in the context of robotics vs regular engineering?
-A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
-Q: What materials and control methods are commonly used in soft robotics? (Wearable and Soft Robotics)
-A: Soft robots use materials with soft mechanical properties and may be controlled via pneumatic or hydraulic systems, or mechanisms like stiffening cables to balance flexibility with control (Rus & Tolley, 2015).
-Q: What is the cylindrical coordinate system and its purpose in robotics?
-A: The cylindrical coordinate system represents 3D points using radial distance r, rotation angle φ, and height z, making it useful for describing combined rotational and linear movements around a central axis.
-Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
-A: It refers to the need for improved human-machine interaction that allows efficient information exchange between operators and robots in production settings.
-Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
-A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
-Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
-A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
-Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
-A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
-Q: What was Shakey and what control concept did it introduce? (History and Cultural Influence)
-A: Shakey was a 1960s mobile robot with sensors and a camera, capable of mapping and planning its movements; it introduced hierarchical control with low-level, intermediate, and high-level decision layers.
-Q: What are examples of modern AMR applications? (History and Cultural Influence)
-A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
-Q: What is the mechanical interface coordinate system?
-A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
-Q: What is the polar coordinate system used for in robotics?
-A: The polar coordinate system is used in 2D space to represent points by their distance r from the origin and angle φ, making it suitable for describing planar rotations.
-Q: What defines social robots and what is their intended purpose? (New Fields of Robotics)
-A: Social robots are designed to coexist with humans and form relationships that enhance quality of life. They require artificial intelligence and positive human perception to function in domains like healthcare and eldercare.
-Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
-A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
-Q: What example of wearable robotics was developed by Honda? (Wearable and Soft Robotics)
-A: Honda developed a walking assist system designed to help people relearn how to walk, demonstrating the medical potential of wearable robotics.
-Q: What prediction has been made about the availability of insect-sized robots? (Bio-Inspired Robotics)
-A: Insect-sized bio-inspired robots are expected to become commercially available at affordable prices during the 2020s (Kopacek, 2013).
-Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
-A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
-Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
-A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
-Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
-A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost-effective assembly in industries such as electronics.Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion.
-Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
-A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
-Q: What is a degree of freedom (DOF) in robotics?
-A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
-Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
-A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
-Q: What is an object or workpiece coordinate system?(Chapter 1)
-A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
-Q: What is a tool coordinate system?
-A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
-Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
-A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
-Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
-A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
-Q: What is the definition of bio-inspired robotics? (Bio-Inspired Robotics)
-A: Bio-inspired robotics involves designing robotic systems based on solutions found in nature, including anatomy and behavior of animals, to solve technological challenges (Kopacek, 2013).
-Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
-A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
-Q: Why have robots not been widely adopted by small and medium-sized enterprises? (Challenges and Trends)
-A: Robots are still predominantly used in large companies; smaller firms face barriers due to cost and complexity, which could be mitigated by standardized production cells and reasonable pricing (Kopacek, 2013).
 Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
 A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
+Q: What is the mechanical interface coordinate system?
+A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
+Q: What are end effectors in industrial robotics?
+A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
+Q: What example of wearable robotics was developed by Honda? (Wearable and Soft Robotics)
+A: Honda developed a walking assist system designed to help people relearn how to walk, demonstrating the medical potential of wearable robotics.
+Q: What is a tool coordinate system?
+A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
+Q: What is systems engineering in the context of robotics vs regular engineering?
+A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
+Q: What are examples of modern AMR applications? (History and Cultural Influence)
+A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
 Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
 A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
+Q: What are the six classes of robot intelligence according to JIRA?
+A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
+Q: How are robot joints geometrically classified?
+A: Joint arrangements are classified by axis orientation: ∥ means parallel, ∟ means orthogonal, and ⊥ means perpendicular; common joint setups for 3 DOF include R∥R∥P and R∟R⊥P, combining rotation and translation.
+Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
+A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
+Q: What is a degree of freedom (DOF) in robotics?
+A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
+Q: What is hierarchical control in robotics? (History and Cultural Influence)
+A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
+Q: What is hierarchical control in robotics? (History of Mobile Robots)
+A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
+Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
+A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
+Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
+A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
+Q: What defines an industrial robot?
+A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
+Q: What are joint coordinates versus Cartesian coordinates in robotics?
+A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
+Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
+A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
+Q: What are joints and links in robotic kinematics?
+A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
+Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
+A: It refers to the need for improved human-machine interaction that allows efficient information exchange between operators and robots in production settings.
+Q: What innovation did the Stanford Cart bring to robotic perception? (History of Mobile Robots)
+A: The Stanford Cart used stereo cameras to generate and process 3D images, enhancing robots’ environmental perception.
+Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
+A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost-effective assembly in industries such as electronics.Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion.
+Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
+A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
+Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
+A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
+Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
+A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
+Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
+A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
+Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
+A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
+Q: What is ASIMO and who developed it? (New Fields of Robotics)
+A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
+Q: What is an object or workpiece coordinate system?(Chapter 1)
+A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
+Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
+A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
+Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
+A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
+Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
+A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
+Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
+A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
+Q: What is a base coordinate system in robotics?
+A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
+Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
+A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
+Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
+A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
+Q: What was the KAMRO, and what could it do? (History of Mobile Robots)
+A: KAMRO, the Karlsruhe autonomous mobile robot, could perform autonomous assembly tasks, expanding AMR capabilities.
+Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
+A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
+Q: What was Shakey and what control concept did it introduce? (History and Cultural Influence)
+A: Shakey was a 1960s mobile robot with sensors and a camera, capable of mapping and planning its movements; it introduced hierarchical control with low-level, intermediate, and high-level decision layers.
+Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
+A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
+Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
+A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
+Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
+A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
+Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
+A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.

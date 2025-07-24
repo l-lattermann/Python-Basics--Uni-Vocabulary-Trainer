@@ -168,24 +168,25 @@ def print_formated(
     for i, line in enumerate(wrapped_lines):
         styled = line
         if is_question:
-            styled = f"{STYLES['BOLD']}{UNDERLINE}{line}{RESET}"
+            styled = f"{STYLES['BOLD']}{UNDERLINE}{line}{RESET}" 
         elif is_answer:
-            styled = f"{STYLES['BOLD']}{COLOURS["WHITE"]}{line}{RESET}"
+            styled = f"{STYLES['BOLD']}{COLOURS['WHITE']}{line}{RESET}"
         else:
             styled = f"{STYLES[style]}{COLOURS[colour]}{line}{RESET}"
         formatted_lines.append(indent + styled)
+    
+    if is_question or is_answer:
+        final_output = "\n\n".join(formatted_lines)
+        final_output += "\n\n"  # Add extra space after answer
+    else:
+        final_output = "\n".join(formatted_lines) 
 
-    # Join and print
-    final_output = "\n\n".join(formatted_lines)
     if position == "LEFT":
         print(final_output)
-        print("\n")
     elif position == "CENTER":
         print(final_output.center(terminal_width))
-        print("\n")
     elif position == "RIGHT":
         print(final_output.rjust(terminal_width))
-        print("\n")
 
 def multi_line_input() -> str:
         terminal_width, _ = shutil.get_terminal_size()
@@ -225,45 +226,57 @@ def entry_editor(entry: Entry) -> Entry:
     while True:
         # Get terminal size
         print_formated("Editing current entry...", style="NORMAL", colour="CYAN")
-        print_formated("Please enter the new question and answer in the format 'Q: question'", style="NORMAL", colour="CYAN")
-        new_question = multi_line_input()
-        print_formated("Now enter the answer in the format 'A: answer'", style="NORMAL", colour="CYAN")
-        new_answer = multi_line_input()
+        while True:
+            print_formated("Please enter the new question and answer in the format 'Q: question'", style="NORMAL", colour="CYAN")
+            new_question = multi_line_input()
+            if new_question[:2] == "Q:":
+                break
+            else:
+                print_formated("❌ Invalid format. Question must start with 'Q:'. Please try again.", style="NORMAL", colour="RED")
+
+        while True:       
+            print_formated("Now enter the answer in the format 'A: answer'", style="NORMAL", colour="CYAN")
+            new_answer = multi_line_input()
+            if new_answer[:2] == "A:":
+                break
+            else:
+                print_formated("❌ Invalid format. Answer must start with 'A:'. Please try again.", style="NORMAL", colour="RED")
         # Validate input
 
-        if new_question[:2] == "Q:" and new_answer[:2] == "A:":
-            print("\n\n")
-            print_formated(f"New Question:", style="NORMAL", colour="CYAN")
-            print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
-            print("\n")
-            print_formated(f"New Answer: ", style="NORMAL", colour="CYAN")
-            print_formated(f"{new_answer}", style="NORMAL", colour="WHITE")
-            print("\n")
+        
+        print("\n\n")
+        print_formated(f"New Question:", style="NORMAL", colour="CYAN")
+        print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
+        print("\n")
+        print_formated(f"New Answer: ", style="NORMAL", colour="CYAN")
+        print_formated(f"{new_answer}", style="NORMAL", colour="WHITE")
+        print("\n")
 
-            while True:
-                print_formated("Confirm update? [y/n]", style="NORMAL", colour="CYAN")
-                confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
-                clear_line()              
-                if confirm == "y":
-                    entry.question = new_question
-                    entry.answer = new_answer
-                    return entry
-                elif confirm == "n":
-                    print_formated(" ❌ Update cancelled", style="NORMAL", colour="RED")
-                    print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
-                    exit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
-                    clear_line()                  
-                    if exit_confirm == "y":
-                        print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
-                        time.sleep(1)
-                        break
-                    elif exit_confirm == "n":
-                        print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
-                        continue  
-                      
-        else:
-            print_formated("❌ Invalid input. Entry not updated.", style="NORMAL", colour="RED")
-            time.sleep(1)
+        while True:
+            print_formated("Confirm update? [y/n]", style="NORMAL", colour="CYAN")
+            confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+            clear_line()              
+            if confirm == "y":
+                entry.question = new_question
+                entry.answer = new_answer
+                print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")∆≠
+                return entry
+            elif confirm == "n":
+                print_formated(" ❌ Update cancelled", style="NORMAL", colour="CYAN")
+                print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
+                exit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                clear_line()                  
+                if exit_confirm == "y":
+                    print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
+                    time.sleep(1)
+                    return
+                elif exit_confirm == "n":
+                    print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
+                    break  
+                    
+            else:
+                print_formated("❌ Invalid input.", style="NORMAL", colour="RED")
+                time.sleep(1)
 
 def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Unseen"] = "Known") -> Tuple[List[Entry], str | None]:    
     CYAN = "\033[36m"
@@ -334,7 +347,6 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Known", "Not Known", "Un
                 return all_vocab, exit_code
             elif cmd == "e":
                 entry_editor(entry)
-                print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
                 continue  # Stay on current entry
             elif cmd == "d":
                 while True:

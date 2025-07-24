@@ -94,6 +94,22 @@ d = delete
 4.	All entries marked as not known will be saved to not_known.txt and can be reviewed separately.
 
 ### Setup: macOS / Linux
+Open a terminal and copy paste these commands and hit enter.
+
+#### Install brew
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew --version
+```
+
+#### Intall python
+```bash
+brew install pyenv
+pyenv install 3.10.13
+pyenv global 3.10.13
+```
+#### Intsall the project
 
 1. Open Terminal.
 2. Clone or download this repository.

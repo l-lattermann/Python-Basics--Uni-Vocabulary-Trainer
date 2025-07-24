@@ -259,12 +259,12 @@ def entry_editor(entry: Entry) -> Entry:
             if confirm == "y":
                 entry.question = new_question
                 entry.answer = new_answer
-                print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")∆≠
+                print_formated("✅ Entry updated successfully.", style="NORMAL", colour="CYAN")
                 return entry
             elif confirm == "n":
                 print_formated(" ❌ Update cancelled", style="NORMAL", colour="CYAN")
                 print_formated("Exit editor? [y/n]", style="NORMAL", colour="CYAN")
-                exit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
+                exit_confirm = input(" " * max(terminal_width // 2 - text_box_size //  2, 0)).strip().lower()
                 clear_line()                  
                 if exit_confirm == "y":
                     print_formated("Exiting editor...", style="NORMAL", colour="CYAN")

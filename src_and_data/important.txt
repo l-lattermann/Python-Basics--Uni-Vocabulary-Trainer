@@ -1,0 +1,14 @@
+Q: What are the four categories of control for kinematic chains according to Crowder? (Kinematic Chains)
+A: Crowder (2019) defines four control categories: (1) limited sequence control using mechanical stops, (2) stored program with point-to-point control, (3) stored program with continuous path control, and (4) intelligent-robot control with environmental interaction.
+Q: What defines an industrial robot?
+A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
+Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
+A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control. Closed kinematic chains improve accuracy by providing multiple mechanical constraints that reduce structural deflection and limit the accumulation of positioning errors.
+Q: What are proprioceptive and exteroceptive sensors in mobile robots? [Mobile Robot Sensors]
+A: Proprioceptive sensors measure internal states like position and acceleration; exteroceptive sensors detect external environmental conditions, such as obstacles or landmarks (Hertzberg et al., 2012).
+Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
+A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
+Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
+A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
+Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
+A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.

@@ -1,14 +1,26 @@
-Q: What does the discipline of kinematics describe in robotics?
-A: Kinematics is the study of how robot parts move in space—focusing on position, velocity, and acceleration—without considering the forces or torques that cause this movement; it is used to plan motion paths and end effector trajectories.
-Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
-A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).
-Q: Who filed the first patent for an industrial robot and in which year? (History of Industrial Robots)
-A: George Devol filed the first patent for an industrial robot in 1954.
-Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
-A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
-Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
-A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
-Q: How does the meander shape of strain gauge wires enhance sensitivity? (Mechanical Structure)
-A: The meander shape increases the effective wire length in the direction of strain, making even small deformations lead to measurable resistance changes, thereby enhancing measurement sensitivity.
-Q: What is the Cartesian coordinate system and how is it used in robotics?
-A: The Cartesian coordinate system defines positions in 3D space using x, y, and z axes; it is ideal for describing translational movements of robots and is the most commonly used coordinate model.
+Q: What are stepper motors and how do they work? [Actuators]
+A: Stepper motors use multiple coils as electromagnets to attract gear teeth step-by-step through magnetic pulses, enabling precise incremental movement.
+Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
+A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
+Q: Why is a compass mandatory in mobile robots using GPS? [Mobile Robot Sensors]
+A: While GPS provides position, a compass is needed to determine the orientation of the robot, enabling accurate navigation and heading control (Hertzberg et al., 2012).
+Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
+A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
+Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
+A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
+Q: What characterizes the SCARA configuration and in which sector is it commonly applied? (Mechanical Structure)
+A: The SCARA (Selective Compliance Assembly Robot Arm) configuration features an R ∥ R ∥ P alignment with two rotational and one prismatic joint in parallel, offering high rigidity in the vertical direction and is widely used in electronics manufacturing.
+Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
+A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
+Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
+A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
+Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
+A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
+Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
+A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
+Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
+A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
+Q: How does a Bernoulli gripper function? [End Effectors]
+A: A Bernoulli gripper uses a high-speed airstream created by pressurized air to generate low static pressure, which creates lift and holds the object without direct contact.
+Q: What are the core characteristics of autonomous mobile robots (AMRs)? [Characteristics of Mobile Robots]
+A: AMRs are mobile, adapt to unknown environments, gather and process environmental data, interact with operators via commands, avoid harm to themselves and surroundings, and process information in real time (Berns & von Puttkamer, 2009).

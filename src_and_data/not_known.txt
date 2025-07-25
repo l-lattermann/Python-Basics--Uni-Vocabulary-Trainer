@@ -1,172 +1,172 @@
+Q: What is the mechanical interface coordinate system?
+A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
+Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
+A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
+Q: What innovation did the Stanford Cart bring to robotic perception? (History of Mobile Robots)
+A: The Stanford Cart used stereo cameras to generate and process 3D images, enhancing robots’ environmental perception.
+Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
+A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
+Q: What is a degree of freedom (DOF) in robotics?
+A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
+Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
+A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
 Q: What was the KAMRO, and what could it do? (History of Mobile Robots)
 A: KAMRO, the Karlsruhe autonomous mobile robot, could perform autonomous assembly tasks, expanding AMR capabilities.
+Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
+A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
+Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
+A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
+Q: What are examples of modern AMR applications? (History and Cultural Influence)
+A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
+Q: What is systems engineering in the context of robotics vs regular engineering?
+A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
+Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
+A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
+Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
+A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
+Q: What is a base coordinate system in robotics?
+A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
+Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
+A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
+Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
+A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
+Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
+A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
+Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
+A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
+Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
+A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control. Closed kinematic chains improve accuracy by providing multiple mechanical constraints that reduce structural deflection and limit the accumulation of positioning errors.
+Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
+A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
+Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
+A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
+Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
+A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
+Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
+A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
+Q: What are SCARA robots and their role in industry? (History and Cultural Influence)
+A: SCARA robots, introduced in 1978, are compact, affordable arms with selective compliance, ideal for electronics assembly and mass production due to their speed and precision.
+Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
+A: The closure constraint refers to the requirement that the closed loop formed by multiple links and joints must maintain a consistent geometric relationship, adding complexity to motion planning and control.
 Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
 A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
-Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
-A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installation.
+Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
+A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
+Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
+A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
+Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
+A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
+Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
+A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
+Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
+A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
+Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
+A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
+Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
+A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
+Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
+A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
+Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
+A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost-effective assembly in industries such as electronics.Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion.
+Q: What is the configuration and application of a polar robot? (Mechanical Structure)
+A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
+Q: What physical principle do strain gauges rely on to measure mechanical strain? (Mechanical Structure)
+A: Strain gauges operate based on the piezoresistive effect, where mechanical strain alters a wire’s resistance, which is a function of its length, cross-sectional area, and specific resistance (R = ρ·l/A).
+Q: What are the six classes of robot intelligence according to JIRA?
+A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
+Q: What are the three types of alignment between robot joints? (Mechanical Structure)
+A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
+Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
+A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
+Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
+A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
 Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
 A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.
 Q: What characterizes the SCARA configuration and in which sector is it commonly applied? (Mechanical Structure)
 A: The SCARA (Selective Compliance Assembly Robot Arm) configuration features an R ∥ R ∥ P alignment with two rotational and one prismatic joint in parallel, offering high rigidity in the vertical direction and is widely used in electronics manufacturing.
-Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
-A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
-Q: What are the three types of alignment between robot joints? (Mechanical Structure)
-A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
-Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
-A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
-Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
-A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost-effective assembly in industries such as electronics.Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion.
-Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
-A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
-Q: What defines an industrial robot?
-A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
-Q: How are robot joints geometrically classified?
-A: Joint arrangements are classified by axis orientation: ∥ means parallel, ∟ means orthogonal, and ⊥ means perpendicular; common joint setups for 3 DOF include R∥R∥P and R∟R⊥P, combining rotation and translation.
-Q: What are SCARA robots and their role in industry? (History and Cultural Influence)
-A: SCARA robots, introduced in 1978, are compact, affordable arms with selective compliance, ideal for electronics assembly and mass production due to their speed and precision.
-Q: What is an object or workpiece coordinate system?(Chapter 1)
-A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
-Q: What was Shakey and what control concept did it introduce? (History and Cultural Influence)
-A: Shakey was a 1960s mobile robot with sensors and a camera, capable of mapping and planning its movements; it introduced hierarchical control with low-level, intermediate, and high-level decision layers.
-Q: What is hierarchical control in robotics? (History of Mobile Robots)
-A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
-Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
-A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
-Q: What physical principle do strain gauges rely on to measure mechanical strain? (Mechanical Structure)
-A: Strain gauges operate based on the piezoresistive effect, where mechanical strain alters a wire’s resistance, which is a function of its length, cross-sectional area, and specific resistance (R = ρ·l/A).
-Q: How does a closed kinematic chain improve a robot’s positioning accuracy? (Forwards and Backwards Kinematics)
-A: Closed kinematic chains create geometric constraints that improve rigidity and positional accuracy, which is especially useful in high-precision applications like surgical teleoperation.
-Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
-A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
-Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
-A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
-Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
-A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
-Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
-A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
-Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
-A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
-Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
-A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
-Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
-A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
-Q: What are end effectors in industrial robotics?
-A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
-Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
-A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
-Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
-A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
-Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
-Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
-A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
-Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
-A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
-Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
-A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
-Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
-A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
-Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
-A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
-Q: What innovation did the Stanford Cart bring to robotic perception? (History of Mobile Robots)
-A: The Stanford Cart used stereo cameras to generate and process 3D images, enhancing robots’ environmental perception.
-Q: What example of wearable robotics was developed by Honda? (Wearable and Soft Robotics)
-A: Honda developed a walking assist system designed to help people relearn how to walk, demonstrating the medical potential of wearable robotics.
-Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
-A: It refers to the need for improved human-machine interaction that allows efficient information exchange between operators and robots in production settings.
-Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
-A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
-Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
-A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
-Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
-A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
-Q: What are joints and links in robotic kinematics?
-A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
-Q: What are joint coordinates versus Cartesian coordinates in robotics?
-A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
-Q: What are the six classes of robot intelligence according to JIRA?
-A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
-Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
-A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
-Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
-A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
-Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
-A: The closure constraint refers to the requirement that the closed loop formed by multiple links and joints must maintain a consistent geometric relationship, adding complexity to motion planning and control.
-Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
-A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
-Q: How is hierarchical control structured in robotic systems? (Kinematic Chains)
-A: Hierarchical control includes individual joint controllers and a main supervisory controller that oversees coordinated movement and higher-level tasks across the kinematic chain.
-Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
-A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
-Q: What is a degree of freedom (DOF) in robotics?
-A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
-Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
-A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
-Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
-A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
-Q: What is ASIMO and who developed it? (New Fields of Robotics)
-A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
 Q: What is a tool coordinate system?
 A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
-Q: How does stiffness relate to positioning accuracy in robotic systems? (Kinematic Chains)
-A: To maintain precise positioning, a robot’s stiffness must be high enough so that mechanical deformations do not exceed the system’s desired positioning accuracy, allowing the robot to be treated as a rigid body.
-Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
-A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
-Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
-A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
-Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
-A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
-Q: What is a base coordinate system in robotics?
-A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
-Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
-A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
-Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
-A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
-Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
-A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
-Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
-A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
-Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
-A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
-Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
-A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
-Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
-A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
-Q: What is the configuration and application of a polar robot? (Mechanical Structure)
-A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
-Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
-A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
-Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
-A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
-Q: What is systems engineering in the context of robotics vs regular engineering?
-A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
-Q: What is the mechanical interface coordinate system?
-A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
-Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
-A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
-Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
-A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control. Closed kinematic chains improve accuracy by providing multiple mechanical constraints that reduce structural deflection and limit the accumulation of positioning errors.
-Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
-A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
-Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
-A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
-Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
-A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
-Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
-A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
-Q: What are examples of modern AMR applications? (History and Cultural Influence)
-A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
-Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
-A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
-Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
-A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
-Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
-A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
-Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
 Q: What was the projected annual growth rate of the industrial robot market between 2019 and 2027? (Market Overview)
 A: The industrial robot market was projected to grow at an annual rate of 15.1% from a volume of $22 billion in 2019 to $66.5 billion in 2027, according to Fortune Business Insights.
-Q: What is hierarchical control in robotics? (History and Cultural Influence)
-A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
+Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
+A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
+Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
+A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
+Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
+A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
+Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
+A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
+Q: What example of wearable robotics was developed by Honda? (Wearable and Soft Robotics)
+A: Honda developed a walking assist system designed to help people relearn how to walk, demonstrating the medical potential of wearable robotics.
+Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
+A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
+Q: What are end effectors in industrial robotics?
+A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
+Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
+A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
+Q: What is an object or workpiece coordinate system?(Chapter 1)
+A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
+Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
+A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
+Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
+A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
+Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
+A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
+Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
+A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
+Q: What defines an industrial robot?
+A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
 Q: What distinguishes point-to-point control from continuous path control? (Kinematic Chains)
 A: Point-to-point control stores only the start and end positions of the end effector, with no control over the exact path in between. Continuous path control, on the other hand, stores the full end effector trajectory and dynamically computes joint positions in real time to follow it smoothly and accurately.
+Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
+A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
+Q: What is ASIMO and who developed it? (New Fields of Robotics)
+A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
+Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
+A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
+Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
+A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
+Q: What are joint coordinates versus Cartesian coordinates in robotics?
+A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
+Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
+A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
+Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
+A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
+Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
+A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
+Q: How does a closed kinematic chain improve a robot’s positioning accuracy? (Forwards and Backwards Kinematics)
+A: Closed kinematic chains create geometric constraints that improve rigidity and positional accuracy, which is especially useful in high-precision applications like surgical teleoperation.
+Q: What was Shakey and what control concept did it introduce? (History and Cultural Influence)
+A: Shakey was a 1960s mobile robot with sensors and a camera, capable of mapping and planning its movements; it introduced hierarchical control with low-level, intermediate, and high-level decision layers.
+Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
+A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
+Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
+A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
+Q: How does stiffness relate to positioning accuracy in robotic systems? (Kinematic Chains)
+A: To maintain precise positioning, a robot’s stiffness must be high enough so that mechanical deformations do not exceed the system’s desired positioning accuracy, allowing the robot to be treated as a rigid body.
+Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
+A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
+Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
+A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
+Q: What are joints and links in robotic kinematics?
+A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
+Q: What is hierarchical control in robotics? (History and Cultural Influence)
+A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
+Q: What is hierarchical control in robotics? (History of Mobile Robots)
+A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
+Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
+A: It refers to the need for improved human-machine interaction that allows efficient information exchange between operators and robots in production settings.
+Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
+A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
+Q: How is hierarchical control structured in robotic systems? (Kinematic Chains)
+A: Hierarchical control includes individual joint controllers and a main supervisory controller that oversees coordinated movement and higher-level tasks across the kinematic chain.
+Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
+A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installation.
+Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
+A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
+Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
+A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
+Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
+A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
+Q: How are robot joints geometrically classified?
+A: Joint arrangements are classified by axis orientation: ∥ means parallel, ∟ means orthogonal, and ⊥ means perpendicular; common joint setups for 3 DOF include R∥R∥P and R∟R⊥P, combining rotation and translation.

@@ -1,346 +1,1418 @@
-Q: What are stepper motors and how do they work? [Actuators]
-A: Stepper motors use multiple coils as electromagnets to attract gear teeth step-by-step through magnetic pulses, enabling precise incremental movement.
-Q: How do photoelectric sensors measure distance or presence in robotics? [Measurement Systems]
-A: They use light (often infrared) in systems like light barriers, where interruption or reflection of a light beam changes photoresistor resistance, indicating object presence.
-Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
-A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
-Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
-A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
-Q: What robot types are commonly used in car assembly tasks? [Common Industrial Robots and Applications]
-A: Articulated, Cartesian, SCARA, and cylindrical robots are used due to their ability to handle heavy components (100–300 kg) and perform repetitive tasks reliably.
-Q: What physical principle do strain gauges rely on to measure mechanical strain? (Mechanical
-A: Strain gauges operate based on the piezoresistive effect, where mechanical strain alters a wire’s resistance, which is a function of its length, cross-sectional area, and specific resistance (R = ρ·l/A). (l)=length
-Q: What was the purpose of the WAVE programming language developed in 1973? (History of Mobile Robots)
-A: WAVE was specifically created to address the programming needs of robots, enabling better control and coordination.
-Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
-A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
-Q: Why is a compass mandatory in mobile robots using GPS? [Mobile Robot Sensors]
-A: While GPS provides position, a compass is needed to determine the orientation of the robot, enabling accurate navigation and heading control (Hertzberg et al., 2012).
-Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
-A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
-Q: What types of inputs can a robot control system process? [Control]
-A: Inputs can come from user programs, handheld terminals, or environmental sensors and are interpreted into robot actions or switching signals.
-Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
-A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
-Q: What characterizes the SCARA configuration and in which sector is it commonly applied? (Mechanical Structure)
-A: The SCARA (Selective Compliance Assembly Robot Arm) configuration features an R ∥ R ∥ P alignment with two rotational and one prismatic joint in parallel, offering high rigidity in the vertical direction and is widely used in electronics manufacturing.
-Q: What are the four categories of control for kinematic chains according to Crowder? (Kinematic Chains)
-A: Crowder (2019) defines four control categories: (1) limited sequence control using mechanical stops, (2) stored program with point-to-point control, (3) stored program with continuous path control, and (4) intelligent-robot control with environmental interaction.
-Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
-A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
-Q: What defines an industrial robot?
-A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
-Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
-A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
-Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
-A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control. Closed kinematic chains improve accuracy by providing multiple mechanical constraints that reduce structural deflection and limit the accumulation of positioning errors.
-Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
-A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.
-Q: What is a parallel robot and when did its development begin? (History of Industrial Robots)
-A: Parallel robots, developed since the 1980s, use multiple actuators to simultaneously manipulate workpieces, improving efficiency and precision.
-Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
-A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
-Q: What are personal robots and what challenges do they raise? [Trends in Mobile Robotics]
-A: Personal robots are intelligent AMRs designed for close human interaction; challenges include moral behavior modeling, user acceptance, and human-machine interaction (Chen et al., 2019; Sinnema & Amimarani, 2019).
-Q: Why is cybersecurity increasingly important in robotics? (Challenges and Trends)
-A: As robots become more networked and remotely accessible, cybersecurity is crucial to prevent unauthorized access that could lead to production halts or safety hazards.
-Q: How does a Bernoulli gripper function? [End Effectors]
-A: A Bernoulli gripper uses a high-speed airstream created by pressurized air to generate low static pressure, which creates lift and holds the object without direct contact.
-Q: What are the core characteristics of autonomous mobile robots (AMRs)? [Characteristics of Mobile Robots]
-A: AMRs are mobile, adapt to unknown environments, gather and process environmental data, interact with operators via commands, avoid harm to themselves and surroundings, and process information in real time (Berns & von Puttkamer, 2009).
-Q: What are proprioceptive and exteroceptive sensors in mobile robots? [Mobile Robot Sensors]
-A: Proprioceptive sensors measure internal states like position and acceleration; exteroceptive sensors detect external environmental conditions, such as obstacles or landmarks (Hertzberg et al., 2012).
-Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
-A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
-Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
-A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
-Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
-A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.
-Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
-A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
-Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
-A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
-Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
-A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
-Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
-Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
-A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
-Q: How do inductive proximity sensors work? [Measurement Systems]
-A: They use a magnetic field from a coil in an oscillating circuit; when a metallic object enters the field, it reduces the amplitude, indicating distance.
-Q: What are the three types of alignment between robot joints? (Mechanical Structure)
-A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
-Q: Who filed the first patent for an industrial robot and in which year? (History of Industrial Robots)
-A: George Devol filed the first patent for an industrial robot in 1954.
-Q: What is an object or workpiece coordinate system?(Chapter 1)
-A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
-Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
-A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
-Q: How does the meander shape of strain gauge wires enhance sensitivity? (Mechanical Structure)
-A: The meander shape increases the effective wire length in the direction of strain, making even small deformations lead to measurable resistance changes, thereby enhancing measurement sensitivity.
-Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
-A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
-Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
-A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
-Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
-A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
-Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
-A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
-Q: What is the mechanical interface coordinate system?
-A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
-Q: What distinguishes point-to-point control from continuous path control? (Kinematic Chains)
-A: Point-to-point control stores only the start and end positions of the end effector, with no control over the exact path in between. Continuous path control, on the other hand, stores the full end effector trajectory and dynamically computes joint positions in real time to follow it smoothly and accurately.
-Q: How does the meander shape of strain gauge wires enhance sensitivity? (Mechanical Structure)
-A: The meander shape increases the effective wire length in the direction of strain, making even small deformations lead to measurable resistance changes, thereby enhancing measurement sensitivity.
-Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
-A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control.
-Q: What are the four categories of control for kinematic chains according to Crowder? (Kinematic Chains)
-A: Crowder (2019) defines four control categories: (1) limited sequence control using mechanical stops, (2) stored program with point-to-point control, (3) stored program with continuous path control, and (4) intelligent-robot control with environmental interaction.
-Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
-A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
-Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
-A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
-Q: What are joint coordinates versus Cartesian coordinates in robotics?
-A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
-Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
-A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
-Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
-A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
-Q: What is systems engineering in the context of robotics vs regular engineering?
-A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
-Q: What was the KAMRO, and what could it do? (History of Mobile Robots)
-A: KAMRO, the Karlsruhe autonomous mobile robot, could perform autonomous assembly tasks, expanding AMR capabilities.
-Q: What are common application areas for service mobile robots? [Applications of Mobile Robots]
-A: Service robots are used in transportation, surveillance, exploration, inspection, maintenance, harvesting, housekeeping, and entertainment (Berns & von Puttkamer, 2009).
-Q: How are mobile robot applications categorized based on autonomy and environment? [Applications of Mobile Robots]
-A: Applications are divided into (1) industrial robots with low autonomy and structured environments, (2) service robots with moderate autonomy and semi-structured environments, and (3) personal robots with high autonomy in unstructured environments (Berns & von Puttkamer, 2009).
-Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
-A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).
-Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
-A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
-Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
-A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
-Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
-A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
-Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
-Q: What are examples of modern AMR applications? (History and Cultural Influence)
-A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
-Q: What types of sensors are commonly used in mobile robots for navigation and collision avoidance? [Mobile Robot Sensors]
-A: Sensors include tactile switches, bumpers, incremental encoders, sonar, infrared, laser scanners, gyroscopes, GPS, compasses, and cameras (Berns & von Puttkamer, 2009; Hertzberg et al., 2012).
-Q: What are the six defining characteristics of industrial robots according to Hägele & Schäfer (2006)? [Characteristics of Industrial Robots]
-A: (1) They are multi-purpose manipulators adaptable to specific tasks, (2) they modify properties of workpieces via tools, (3) they possess an end effector, (4) they feature at least three programmable axes, (5) they operate automatically without human input, and (6) they are stationary.
-Q: What is a degree of freedom (DOF) in robotics?
-A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
-Q: What are the main trends shaping the field of industrial robotics? [Trends in Industrial Robotics]
-A: Key trends include: (1) decreasing prices due to competition, (2) more collaborative and networked robots, (3) improved computing and vision systems, (4) increased use of fieldbus communication, (5) new financing and training models, and (6) broader application areas such as logistics and packaging (Hägele et al., 2008; Francis, 2019).
-Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
-A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
-Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
-A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
-Q: What is the configuration and application of a polar robot? (Mechanical Structure)
-A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
-Q: What are the different types of grippers used as end effectors? [End Effectors]
-A: Types include (1) vacuum grippers for fragile/smooth objects, (2) magnetic grippers for ferromagnetic materials, (3) simple mechanical grippers like hooks and scoops, and (4) mechanically actuated grippers with 2–4 fingers or anthropomorphic designs (Kandray, 2010).
-Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
-A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
-Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
-A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
-Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
-A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
-Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
-A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installation.
-Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
-A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
-Q: What are the core responsibilities of the control system in an industrial robot? [Control]
-A: The control system processes sensor data, performs motion planning, interprets input commands, and generates output actions to determine and execute the robot’s path and movements (Jazar, 2010; Hägele & Schäfer, 2006).
-Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
-A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
-Q: What standard governs human-robot collaboration safety, and what are its main requirements? [Common Industrial Robots and Applications]
-A: ISO 10218-1 defines safety for human-robot collaboration, requiring: (1) guiding equipment near the end effector, (2) speed limits (max. 250 mm/s), and (3) safe, monitored distance between human and robot.
-Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
-A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
-Q: What are some military applications of mobile robots? [Applications of Mobile Robots]
-A: Military AMRs are used in bomb disposal and potentially in future combat systems; they reduce risk to human personnel in hazardous scenarios.
-Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
-A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
-Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
-A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
-Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
-A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
-Q: What are some additional application domains for industrial robots beyond manufacturing? [Common Industrial Robots and Applications]
-A: They include food packaging, foundry and forging, biomedical tasks, nuclear material handling, die casting, injection molding, wafer handling, and loading/unloading operations.
-Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
-A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
-Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
-A: The closure constraint in closed kinematic chains refers to the requirement that all joint positions and link lengths must satisfy loop closure equations, ensuring that the end of the chain returns to its starting point—mathematically, the product of all transformations around the loop must equal the identity, maintaining geometric consistency.
-Q: What additional control challenges do mobile robots face compared to industrial robots? [Mobile Robot Control]
-A: Unlike stationary robots, mobile robots must continuously manage navigation, avoid obstacles, and integrate real-time sensor data for localization and image-based path planning (Hertzberg et al., 2012).
-Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
-A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
-Q: What are the six classes of robot intelligence according to JIRA?
-A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
-Q: What are the six basic components of an industrial robot system according to Hägele and Schäfer (2006)? [Components of an Industrial Robot System]
-A: The six basic components are: (1) kinematics, (2) actuators, (3) measurement systems, (4) tools and/or picker arm, (5) control, and (6) sensors (if applicable).
-Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
-A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
-Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
-Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
-A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
-Q: What role does artificial intelligence play in modern industrial robots? [Trends in Industrial Robotics]
-A: AI enables data analytics, gesture recognition, haptic control of robotic hands, and more efficient use of sensor data to enhance automation and flexibility (Zhou et al., 2019; Jeong et al., 2019; Francis, 2019).
-Q: What types of kinematic structures are used in mobile robots? [Mobile Robot Kinematics]
-A: Kinematic structures include wheels, legs, wings, or biomimetic designs such as humanoid, salamander, shrimp, helicopter, submarine, or tank-like forms (Hertzberg et al., 2012).
-Q: What is a base coordinate system in robotics?
-A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
-Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
-A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
-Q: What advancements have been made in legged robots? [Trends in Mobile Robotics]
-A: Legged robots have become fast, robust, and efficient, with mobility that rivals animals and humans, driving progress in humanoid robot design (Kajita & Espiau, 2008).
-Q: What additional tasks are required for mobile robot motion planning? [Mobile Robot Kinematics]
-A: Motion planning includes localization (absolute or relative), mapping, navigation, and path planning based on environmental data (Berns & von Puttkamer, 2009).
-Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
-Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
-A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
-Q: What is the miniaturization trend in mobile robotics? [Trends in Mobile Robotics]
-A: Miniaturization enables the development of millimeter- to nanometer-scale robots for medicine, manufacturing, and search-and-rescue, aided by cheaper, smaller components (Paprotny & Bergbreiter, 2014).
-Q: What is the primary function of rotary encoders in robotics? [Measurement Systems]
-A: Rotary encoders measure angular position or velocity of revolute joints, enabling precise joint control.
-Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
-A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
-Q: What is a tool coordinate system?
-A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
-Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
-A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
-Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
-A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
-Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
-A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
-Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
-A: Human-friendly task specification” in robotics refers to designing robot programming or control interfaces so that humans—especially non-experts—can easily instruct robots to perform tasks without needing to understand complex code or low-level motion planning.
-Q: How are autonomous vehicles contributing to mobile robotics? [Trends in Mobile Robotics]
-A: Vehicles are integrating robotic features like autonomous navigation, advanced sensing, and environmental adaptation, making them intelligent mobile robots (Broggi et al., 2008).
-Q: What is the Cartesian coordinate system and how is it used in robotics?
-A: The Cartesian coordinate system defines positions in 3D space using x, y, and z axes; it is ideal for describing translational movements of robots and is the most commonly used coordinate model.
-Q: What is hierarchical control in robotics? (History of Mobile Robots)
-A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
-Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
-A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installationn
-Q: What characterizes the SCARA configuration and in which sector is it commonly applied? (Mechanical Structure)
-A: The SCARA (Selective Compliance Assembly Robot Arm) configuration features an R ∥ R ∥ P alignment with two rotational and one prismatic joint in parallel, offering high rigidity in the vertical direction and is widely used in electronics manufacturing.
-Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
-A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
-Q: What is the function of proximity switches in robotics? [Measurement Systems]
-A: Proximity switches detect object presence or distance without physical contact using inductive or capacitive sensing principles.
-Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
-A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
-Q: What is hierarchical control in robotics? (History and Cultural Influence)
-A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
-Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
-A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
-Q: How is sensor technology influencing industrial robot development? [Trends in Industrial Robotics]
-A: Due to the data demands of AI and mobile systems, sensor use is increasing, with new systems enabling higher accuracy, better perception, and smarter control strategies.
-Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
-A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
-Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
-A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
-Q: What are the three types of alignment between robot joints? (Mechanical Structure)
-A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
-Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
-A: The closure constraint refers to the requirement that the closed loop formed by multiple links and joints must maintain a consistent geometric relationship, adding complexity to motion planning and control.
-Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
-A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
-Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
-A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
-Q: What are end effectors in industrial robotics?
-A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
-Q: What is the main challenge in using industrial robots for machining processes? [Common Industrial Robots and Applications]
-A: Robots generally have lower stiffness than traditional machine tools, making them less suitable for high-force operations unless adapted for low-force incremental tasks like polishing and grinding.
-Q: What are recent improvements in actuator systems for industrial robots? [Trends in Industrial Robotics]
-A: Actuators are becoming more precise (nanometer-scale in research), while also becoming cheaper, lighter, and more flexible in form and function (Scheinman & McCarthy, 2008).
-Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
-A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
-Q: What is the role of couplings and transmissions in actuated robot systems? [Actuators]
-A: Couplings connect actuators to robot links, while transmissions convert movement parameters such as energy, velocity, or torque.
-Q: What are the typical sensing limitations in material transfer applications? [Common Industrial Robots and Applications]
-A: Many robots lack force or vision sensors, which limits their flexibility in handling variably oriented or positioned objects.
-Q: What are soft robots and what advantages do they offer? (Mechanical Structure)
-A: Soft robots are flexible robotic systems inspired by biological models, made from compliant materials that allow high adaptability, safe interaction, and simplified kinematic designs.
-Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
-A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
-Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
-A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
-Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
-A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
-Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
-A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
-Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
-A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
-Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
-A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
-Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
-A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
-Q: How is robot programming evolving in industrial robotics? [Trends in Industrial Robotics]
-A: There is a shift from manual programming (e.g. playback robots) toward offline programming, reducing downtime and enabling better flexibility in calibration and updates (Motta, 2006).
-Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
-A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
-Q: What type of robots are typically used for welding applications? [Common Industrial Robots and Applications]
-A: Welding tasks often use NC-controlled articulated or polar robots with up to seven degrees of freedom for kinematic redundancy and high precision.
-Q: What does the kinematic structure of a robot consist of? [Kinematics]
-A: It consists of joints and links forming axes of movement, where joints provide degrees of freedom (DOFs) through either translation or rotation, enabling relative motion between rigid links.
-Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
-A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
-Q: How does artificial intelligence enhance mobile robots? [Trends in Mobile Robotics]
-A: AI improves perception, decision-making, interaction, and learning in mobile robots through cognitive systems, neural networks, and machine learning (Verrugio & Operto, 2008).
-Q: What distinguishes magnetic grippers from other gripper types? [End Effectors]
-A: Magnetic grippers use permanent or electromagnets to lift objects with magnetic properties and do not require physical force or vacuum to grasp.
-Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
-A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
-Q: What was the projected annual growth rate of the industrial robot market between 2019 and 2027? (Market Overview)
-A: The industrial robot market was projected to grow at an annual rate of 15.1% from a volume of $22 billion in 2019 to $66.5 billion in 2027, according to Fortune Business Insights.
-Q: What are joints and links in robotic kinematics?
-A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
-Q: What distinguishes point-to-point control from continuous path control? (Kinematic Chains)
-A: Point-to-point control sets only the final positions in memory without controlling the intermediate path, whereas continuous path control constantly measures and adjusts joint positions throughout the entire movement.
-Q: What is the purpose of measurement systems in industrial robots? [Measurement Systems]
-A: Measurement systems sense mechanical parameters like position, angle, force, and velocity, enabling robots to adapt and plan movement via control loops.
-Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
-A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
-Q: What was the projected annual growth rate of the industrial robot market between 2019 and 2027? (Market Overview)
-A: The industrial robot market was projected to grow at an annual rate of 15.1% from a volume of $22 billion in 2019 to $66.5 billion in 2027, according to Fortune Business Insights.
-Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
-A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
-Q: Why are cylindrical robots often chosen for spray painting applications? [Common Industrial Robots and Applications]
-A: Because of their ability to perform uniform coating with minimal overspray and resource usage, and their motion can be programmed offline.
-Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
-A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
-Q: What is ASIMO and who developed it? (New Fields of Robotics)
-A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
-Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
-A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost- effective assembly in industries such as electronics. Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion. Selective compliance is especially beneficial in insertion tasks like: • Peg-in-hole assembly • Connector or cable insertion • PCB component placement • Screw alignment
-Q: What is the difference between incremental and absolute rotary encoders? [Measurement Systems]
-A: Incremental encoders count pulses per revolution and require re-referencing after shutdown, while absolute encoders assign a unique value to each position, retaining it after power loss.
-Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
-A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
-Q: What is the configuration and application of a polar robot? (Mechanical Structure)
-A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
-Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
-A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
-Q: How do tactile sensors function in mobile robots? [Mobile Robot Sensors]
-A: Tactile sensors use mechanical components like springs or bumpers to detect contact; when triggered, they typically interrupt robot movement as a safety response (Berns & von Puttkamer, 2009).
-Q: What is the advantage of brushless motors in robotics? [Actuators]
-A: Brushless motors provide durable actuation without physical contact for polarity switching, but pose greater challenges in control.
-Q: How does Jazar (2020) classify the kinematic chain of a robot? [Kinematics]
-A: Jazar classifies it into three parts: the manipulator, the wrist, and the end effector.
-Q: How does a closed kinematic chain improve a robot’s positioning accuracy? (Forwards and Backwards Kinematics)
-A: Closed kinematic chains create geometric constraints that improve rigidity and positional accuracy, which is especially useful in high-precision applications like surgical teleoperation. • The closed loop introduces closure constraints (loop-closure equations). • These mathematically constrain the end-effector to a specific path or position, reducing error propagation from joint inaccuracies. ⸻
-Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
-A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
-Q: What does the discipline of kinematics describe in robotics?
-A: Kinematics is the study of how robot parts move in space—focusing on position, velocity, and acceleration—without considering the forces or torques that cause this movement; it is used to plan motion paths and end effector trajectories.
-Q: How are industrial robots categorized with respect to kinematics? [Common Industrial Robots and Applications]
-A: They are classified based on their kinematic chain, including configurations like articulated, Cartesian, SCARA, cylindrical, and polar robots, depending on the required motion and task.
-Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
-A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
+Q: What is personality and how is it defined in differential psychology? [3.3 Personality Traits of the Human Being]
+A:
+	•	enduring traits
+	•	behavioral predictor
+	•	psychophysical systems
+	•	stable yet adaptable
+
+Personality encompasses consistent patterns of thinking, feeling, and behaving, shaped by internal traits and contextual influences. It is relatively stable but can change over time. It helps explain interindividual differences and predict behavior (Corr & Matthews, 2012).
+Q: What impact does advanced analytics have on the future of human–machine interaction? [4.5 The Future of the Human–Machine Relationship]
+A:
+	•	decision automation
+	•	increased efficiency
+	•	data-driven prediction
+
+Advanced analytics, including machine learning, shifts decision-making from humans to algorithms, improving accuracy in fields like healthcare, finance, and marketing. This transformation increases reliance on machine intelligence for critical judgments.
+Q: The ideal size for body text is…? [6.1 Basics of Typography]
+A:
+8.5–12 pt (print), 15–25 px (web)
+Q: What is a synapse and what happens there? [2.3 Main Components of a Nerve Cell]
+A:
+	•	inter-neuronal gap
+	•	signal transmission
+	•	neurotransmitter release
+	•	receptor binding
+
+A synapse is the microscopic space between neurons where communication occurs. Neurotransmitters are released from one neuron and bind to receptors on the next, passing on the signal.
+Q: What are the basal ganglia and their function? [2.1 Anatomy of the Human Brain]
+A:
+	•	subcortical nuclei
+	•	motor control
+	•	spontaneity regulation
+	•	affect modulation
+
+The basal ganglia are a group of deep brain structures responsible for voluntary motor control and cognitive-emotional integration. They help regulate movement initiation and mood.
+Q: What does cognitive load theory describe and how can designers minimize it? [1.3 Interaction of Psychology and Design]
+A:
+	•	mental effort
+	•	processing limits
+	•	multimodal input
+	•	chunking strategy
+
+Cognitive load theory explains how mental effort affects learning and task performance. UX designers can reduce overload by visually chunking content, aligning with users’ mental models, and distributing input across multiple senses.
+Q: What is the difference between cognitive and affective mental processes? [3.1 Reward and Avoidance System]
+A:
+	•	cognitive = processing
+	•	affective = excitation
+	•	dual activation
+	•	internal/external triggers
+
+Cognitive processes involve receiving, processing, and storing information, while affective processes involve emotional excitation that motivates behavior. Though often intertwined, one type may dominate, and both can be triggered internally or externally.
+Q: What is Hick’s law and how should it influence design? [1.3 Interaction of Psychology and Design]
+A:
+	•	decision time
+	•	option count
+	•	choice overload
+	•	speed optimization
+
+Hick’s law states that the time it takes to make a decision increases with the number of available choices. Designers apply this principle by minimizing options at key decision points—such as payment screens—to streamline user interaction.
+Q: Which hemisphere of the brain is primarily associated with rational and analytical functions? [2.1 Anatomy of the Human Brain]
+A:
+	•	left hemisphere
+	•	logical thinking
+	•	language and math
+	•	sequential processing
+
+The left hemisphere is dominant for analytical reasoning, language, logic, and planning. It processes information in a linear, structured manner and is often linked to verbal and scientific abilities.
+Q: What is chunking and how does it support memory? [1.3 Interaction of Psychology and Design]
+A:
+	•	information grouping
+	•	memory aid
+	•	reduced cognitive load
+	•	pattern structuring
+
+Chunking involves grouping information into manageable units to make it easier to remember. By reducing the number of separate items the brain has to process, chunking improves retention, as seen in formats like grouped phone numbers.
+Q: What is Fitt’s law and how does it apply to UI design? [1.3 Interaction of Psychology and Design]
+A:
+	•	movement time
+	•	element size
+	•	distance from user
+	•	interaction speed
+
+Fitt’s law predicts that users can reach larger and closer interface elements faster. UI designers use this by making critical buttons or targets big and near the user’s focus point to enhance efficiency.
+Q: What is the role of “wants” vs. “needs” in product design? [4.2 Design Principles of Emotional Design]
+A:
+	•	needs: task-related
+	•	wants: culturally shaped
+	•	wants drive market success
+
+Norman distinguishes between user needs (required to complete tasks) and wants (desirable features influenced by self-image, culture, or advertising). Although needs are essential, wants often have a greater impact on product success because they influence purchase motivation and emotional resonance with the product.
+Q: How is the nervous system organized and what are its two main divisions? [2.3 Main Components of a Nerve Cell]
+A:
+	•	central nervous system (CNS)
+	•	peripheral nervous system (PNS)
+	•	brain and spinal cord
+	•	external nerves
+
+The nervous system consists of the CNS (brain and spinal cord) and the PNS (nerves outside the CNS). Together, they process internal and external stimuli and coordinate responses.
+Q: What is informative reading and what layout and font styles are recommended? [6.1 Basics of Typography]
+A:
+	•	anticipatory reading of factual, structured content
+	•	short sections
+	•	short lines
+	•	clear structure with typographic mark-ups
+	•	bold for emphasis
+
+Informative reading is used in newspapers, blogs, or non-fiction books. The layout emphasizes brief, well-structured content with visual markers like bold text to guide scanning and comprehension.
+Q: What does experience design focus on in UX? [1.1 Explanation of Terms]
+A:
+	•	holistic experience
+	•	user-centered
+	•	beyond the product
+	•	full journey
+
+Experience design aims to shape the entire user journey, not just the product. It includes all stages—from discovery to use to after-sales support—and focuses on the emotional and functional experience from the user’s perspective.
+Q: How are emotions defined according to Gröppel-Klein (2014)? [3.1 Reward and Avoidance System]
+A:
+	•	complex reactions
+	•	subjective experience
+	•	physiological response
+	•	behavioral output
+
+Emotions are multifaceted reactions to events that affect well-being. They involve physiological changes, subjective sensations, behavioral expressions, and result from conscious or unconscious evaluation of stimuli.
+Q: What is the Molding Effect and how are basic shapes associated with meaning in design? [5.3 Effect of Shapes]
+A:
+	•	vertical lines: upward
+	•	horizontal lines: falling
+	•	diagonal lines: rising or falling
+	•	concave: moving, rotating, receiving
+	•	convex: protective
+	•	angular: directional, static, masculine
+	•	round: feminine
+
+The Molding Effect refers to the associative meaning attributed to shapes in the design process. Designers use these associations to influence user perception and emotional response. For example, vertical lines suggest upward motion, while concave forms appear receptive. Angular shapes are perceived as static or masculine, whereas round shapes are linked to femininity. These shape cues complement the Gestalt laws by shaping how users interpret visual elements beyond their arrangement.
+Q: What is a mental model in the context of UX design? [1.3 Interaction of Psychology and Design]
+A:
+	•	user belief
+	•	system expectations
+	•	error reduction
+	•	usability
+
+A mental model is the internal representation users form about how a system works, based on prior experience. Matching system behavior to these models enhances usability and helps prevent user errors.
+Q: What are the main functions of the limbic system? [2.2 Limbic System]
+A:
+	•	emotional evaluation
+	•	memory formation
+	•	behavioral response
+	•	learning and motivation
+
+The limbic system governs how sensory input is emotionally evaluated, whether an experience is positive or negative, and how it is stored in memory. It also supports adaptive behavioral responses and learning.
+Q: What are the basic and secondary emotions according to Ekman (2016) and current research? [3.1 Reward and Avoidance System]
+A:
+	basic emotions:
+	•	anger
+	•	fear
+	•	disgust
+	•	sadness
+	•	happiness
+	•	shame
+	•	surprise
+	•	embarrassment
+	secondary emotions:
+	•	guilt
+	•	contempt
+	•	love
+	•	awe
+	•	sorrow
+	•	envy
+	•	mercy
+	•	pride
+	•	gratitude
+
+Basic emotions are considered innate, universal, and biologically rooted; they appear quickly and are recognized across cultures. Ekman (2016) identified five core emotions—anger, fear, disgust, sadness, and happiness—while others add shame, surprise, and embarrassment. Secondary emotions are socially and cognitively more complex, involving deeper reflection and interpersonal awareness, such as guilt, love, or pride.
+Q: What is the focus of experience psychology? [1.1 Explanation of Terms]
+A:
+	•	cognitive processes
+	•	emotions and sensations
+	•	interdisciplinary
+	•	behavior shaping
+
+Experience psychology explores how experiences emerge through brain-based cognitive processes, especially those generating emotions and sensations. It integrates insights from cognitive psychology, media psychology, and UX to understand how experiences influence behavior and how they can be shaped in specific contexts.
+Q: What role did Donald Norman play in the development of UX as a concept? [1.2 User Experience over Time]
+A:
+	•	coined “user experience”
+	•	holistic interaction
+	•	emotional design
+	•	everyday objects
+
+Donald Norman introduced the term “user experience” in The Psychology of Everyday Things (1988), highlighting the importance of holistic, emotional, and meaningful interactions. He broadened UX to encompass all user contact points, not just digital interfaces.
+Q: What basic emotions are included in categorical emotion models? [1.1 Explanation of Terms]
+A:
+	•	happiness
+	•	anger
+	•	sadness
+	•	surprise, disgust, fear
+
+Categorical emotion models, such as those by Ekman & Friesen (1971), propose that a small set of universal emotions form the basis for all affective states. These basic emotions are biologically rooted and recognizable across cultures.
+Q: What factors determine the credibility of product communication? [3.4 Relevance, Credibility, and Differentiation]
+A:
+	•	expertise
+	•	trustworthiness
+	•	nonverbal cues
+	•	media channels
+
+Credibility depends on the communicator’s perceived expertise and trustworthiness, as well as the medium used (e.g., TV, social media). Nonverbal signals like facial expressions also strongly influence credibility (Hovland & Weiss, 1951; Puccinelli et al., 2010).
+Q: Why is Mixing fonts with similar x-height important for design consistency? [6.1 Basics of Typography]
+A:
+When fonts of the same size are combined, the x-height should be approximately equal to maintain visual balance.
+Q: How is vision and motor control laterally organized in the brain? [2.1 Anatomy of the Human Brain]
+A:
+	•	contralateral control
+	•	visual fields
+	•	motor coordination
+	•	hemispheric mapping
+
+Each hemisphere of the brain controls the opposite side of the body. The left hemisphere manages right-side motor skills and vision, while the right hemisphere manages the left side.
+Q: How is motivation defined in psychology? [1.1 Explanation of Terms]
+A:
+	•	emotional drive
+	•	internal and external forces
+	•	goal orientation
+	•	conscious and unconscious
+
+Motivation refers to internal and external processes that initiate, direct, and sustain goal-directed behavior. It involves moving from a current emotional state toward a more desired one, driven by both automatic and deliberate factors.
+Q: What is gamification and how does it relate to the flow experience? [7.2 Design of the Flow Experience]
+A:
+	•	use of game elements in non-game contexts
+	•	supports flow through clear goals and feedback
+	•	common tools: points, rankings, badges
+	•	risk: external pressure and loss of intrinsic motivation
+
+Gamification involves integrating game design elements—such as points, badges, and rankings—into non-game settings to enhance engagement and motivation (Deterding et al., 2011). It can support the flow experience by offering clear rules, immediate feedback, and challenging yet achievable goals. However, if poorly implemented, it may create social pressure or undermine intrinsic motivation, especially when used competitively or for external validation. A thoughtful design is essential for gamification to be effective and sustainable.
+Q: What are the key Gestalt laws and their roles in visual perception and interface design? [5.1 Effect of Images]
+A:
+•	 proximity: elements with small distance to each other are perceived as belonging together
+•	 similarity: objects that share visual properties are more likely to be perceived as belonging together
+•	 good figure: people prefer to perceive designs that correspond to a simple and concise structure
+•	 good continuation: elements on a continuous line or curve are perceived as belonging together
+• closure: preference is given to closed structures as opposed to open structures
+• common fate: elements that exhibit similar behavior are perceived as belonging together
+• common region: elements in delimited areas are perceived as belonging together
+• synchrony: elements that change simultaneously are perceived as belonging together
+• connected elements: elements connected by a line are perceived as belonging together
+
+Gestalt laws explain how people visually organize complex images into coherent wholes. They are foundational in interface design to guide user attention, improve grouping, and enhance readability. Each law provides a perceptual shortcut that helps users intuitively interpret visual elements and relationships within digital interfaces.
+Q: What is the primary function of neurons in the nervous system? [2.3 Main Components of a Nerve Cell]
+A:
+	•	signal transmission
+	•	electrical impulses
+	•	neural communication
+	•	information processing
+
+Neurons are the basic signaling units of the nervous system. They perceive stimuli and transmit electrical impulses to coordinate sensory input, cognition, and motor responses.
+Q: What is the myelin sheath and what is its function? [2.3 Main Components of a Nerve Cell]
+A:
+	•	axon insulation
+	•	lipid layer
+	•	signal acceleration
+	•	conduction efficiency
+
+The myelin sheath surrounds axons to insulate them and speed up the transmission of electrical impulses. It improves communication speed between neurons and prevents signal loss.
+Q: What is the role of dendrites in a neuron? [2.3 Main Components of a Nerve Cell]
+A:
+	•	signal reception
+	•	branched extensions
+	•	soma connection
+	•	input channels
+
+Dendrites are branching projections that receive incoming electrical signals from other neurons and transmit them to the soma, facilitating communication within the neural network.
+Q: How do emotions influence product-related decision-making according to brain research? [Introduction]
+A:
+	•	reward activation
+	•	emotional valuation
+	•	preference shaping
+	•	design impact
+
+Brain imaging shows that emotions play a key role in product choice: when emotional value is high, reward-related areas activate, increasing willingness to pay. Emotional design thus directly affects user preference and buying behavior.
+Q: Why is the Number of fonts used important in typographic design? [6.1 Basics of Typography]
+A:
+Using too many fonts can reduce visual harmony; two fonts are usually sufficient.
+Q: What factors influence the strength and impact of goals? [3.2 Motives and Goals]
+A:
+	•	expectancy-value (feasibility × value)
+	•	feedback
+	•	task complexity
+	•	situational factors
+
+According to goal-setting theory (Locke & Latham, 2002), clearly defined and challenging goals enhance performance. Key factors include feedback, commitment, perceived importance, and the ability to perform the task.
+Q: What is the fornix and what is its function in the limbic system? [2.2 Limbic System]
+A:
+	•	limbic fiber tract
+	•	communication bridge
+	•	hippocampal connection
+	•	structural integration
+
+The fornix is a major white matter tract connecting key limbic structures. It facilitates communication, especially between the hippocampus and hypothalamus, and supports integrated emotional and memory processes.
+Q: What should effective marketing strategies consider according to recent neuromarketing findings? [2.4 Brain Research and Marketing Myths]
+A:
+	•	cognitive-emotional integration
+	•	individual profiles
+	•	contextual adaptation
+	•	multi-factor modeling
+
+Modern neuromarketing suggests that effective strategies must address both emotional and cognitive aspects of decision-making, tailored to user traits and the specific context—rather than relying on simplistic neural shortcuts.
+Q: Why is the thalamus called the “gateway to consciousness”? [2.2 Limbic System]
+A:
+	•	sensory filtering
+	•	attention regulation
+	•	consciousness access
+	•	relevance detection
+
+The thalamus acts as a filter for incoming sensory and motor signals, determining what enters conscious awareness. This central role in attention and perception earns it the title “gateway to consciousness.”
+Q: What are the basic terms used in typography and how do they differ? [6.1 Basics of Typography]
+A:
+	•	typeface: design of a font (e.g., Arial)
+	•	font/type family: group of related types (e.g., Arial Regular, Italic, Bold)
+	•	font: specific variation (e.g., Arial Bold 12pt)
+
+In typography, the font refers to the design of the text appearance—such as Arial. A font family or type family includes all the style and weight variations of a font like Arial, such as Arial Regular, Arial Italic, and Arial Bold, ensuring consistent use across a layout. A type is a specific format within that font, defined by weight, style, and size, such as “Arial Bold 12pt.”
+Q: What key functions are attributed to the temporal lobe? [2.1 Anatomy of the Human Brain]
+A:
+	•	memory
+	•	auditory processing
+	•	emotions
+	•	speech comprehension
+
+The temporal lobe (lobus temporalis) is involved in memory formation, language comprehension, and emotional regulation. It houses the amygdala and auditory cortex.
+Q: What is reactance and how can it affect persuasive communication? [3.4 Relevance, Credibility, and Differentiation]
+A:
+	•	freedom restriction
+	•	resistance to influence
+	•	boomerang effect
+	•	attitude reinforcement
+
+Reactance occurs when people feel manipulated or pressured, leading them to resist or even adopt opposing behaviors. This undermines persuasive efforts and can harden existing attitudes (Kroeber-Riel & Gröppel-Klein, 2019).
+Q: What is the difference between traits and states? [3.3 Personality Traits of the Human Being]
+A:
+	•	traits = stable
+	•	states = temporary
+	•	constant vs. fluctuating
+	•	behavior prediction
+
+Traits are lasting personality characteristics that show up consistently across situations, while states refer to temporary emotional or mental conditions that vary throughout the day or in response to stimuli (Eysenck, 1983).
+Q: What is the Means-End Chain Model and how is it applied in UX? [4.3 Emotional Design and Technology]
+A:
+	•	origin: market research (Gutman, 1982)
+	•	evaluates products by linking attributes to need fulfillment
+	•	positive or negative emotions result from satisfied or unsatisfied needs
+
+The Means-End Chain Model explains how product features are evaluated based on the fulfillment of user needs. If a product characteristic satisfies a need, it is perceived positively; if not, it evokes negative emotions. Originally from marketing, this model has been adapted to IT products (Mangold, 2015) to analyze emotional responses and perceived value in UX.
+Q: Why is proper kerning important? [6.1 Basics of Typography]
+A:
+It improves readability and avoids a messy look
+Q: What is linear reading and what font style and layout are suitable for it? [6.1 Basics of Typography]
+A:
+	•	traditional, sequential reading from beginning to end
+	•	serif fonts
+	•	calm, even, harmonious layout
+	•	50–75 characters per line
+	•	1.2x to 1.5x line spacing
+
+Linear reading involves reading a continuous text from start to finish, such as in novels or essays. It requires a consistent layout and good readability, typically supported by serif fonts and balanced spacing.
+Q: What is the Valence Method and how is it used in UX evaluation? [4.3 Emotional Design and Technology]
+A:
+	•	formative evaluation method
+	•	based on valence of emotional experiences during use
+	•	consists of exploratory usage and retrospective survey
+	•	uses laddering technique to uncover underlying needs
+
+The Valence Method (Burmester et al., 2010) evaluates the emotional impact of design by observing user experiences in two phases: an unscripted usage phase where users mark emotions with +/– signals, followed by a retrospective interview using video playback. Laddering questions help link emotional responses to specific design aspects and the needs behind them.
+Q: Name and explain the three levels of emotional design. [4.2 Design Principles of Emotional Design]
+A:
+	•	visceral: appearance, sensory design
+	•	behavioral: functionality, usability
+	•	reflective: meaning, values, memory
+
+Designers address Norman’s three levels by tailoring their products: the visceral level through visual appeal and sensory feedback; the behavioral level through usability and functional design; and the reflective level through personal meaning, brand identity, and long-term memories. Each level targets different psychological mechanisms and must be aligned with user needs and cultural context.
+Q: How are user experience (UX) research and neuromarketing related? [2.4 Brain Research and Marketing Myths]
+A:
+	•	behavior analysis
+	•	subconscious influence
+	•	decision optimization
+	•	overlapping goals
+
+Both fields aim to understand how people interact with stimuli. Neuromarketing uses neuroscience to study subconscious responses, while UX research focuses on optimizing practical interactions and usability.
+Q: What are goals and how do they regulate behavior? [3.2 Motives and Goals]
+A:
+	•	desired future state
+	•	internal representation
+	•	behavioral direction
+	•	incentive anticipation
+
+Goals are mental representations of desired outcomes. They guide long-term behavior by enabling planning, control, and sustained motivation. Goals differ from wishes through commitment and trigger volitional regulation (Austin & Vancouver, 1996).
+Q: Where does the action potential originate and how does it travel? [2.3 Main Components of a Nerve Cell]
+A:
+	•	axon hillock
+	•	depolarization
+	•	axonal propagation
+	•	terminal activation
+
+The action potential starts at the axon hillock and travels along the axon to the terminals, triggering neurotransmitter release at the synapse.
+Q: Which side of the brain governs emotional and creative processes? [2.1 Anatomy of the Human Brain]
+A:
+	•	right hemisphere
+	•	holistic perception
+	•	creativity
+	•	intuition
+
+The right hemisphere is involved in emotional processing, artistic creativity, spatial reasoning, and intuitive thought. It interprets information in a more integrative and context-sensitive way.
+Q: What role does EEG play in UX testing? [2.4 Brain Research and Marketing Myths]
+A:
+	•	brainwave tracking
+	•	engagement metrics
+	•	attention detection
+	•	emotion feedback
+
+EEG monitors real-time brain activity, providing insights into user attention, cognitive load, and emotional reactions. This data supports iterative UX improvements and evidence-based design.
+Q: What does neuroscience reveal about effective learning processes? [Introduction]
+A:
+	•	prior knowledge links
+	•	memory anchoring
+	•	brain-based learning
+	•	neural efficiency
+
+Neuroscience shows that linking new content to existing knowledge enhances memory consolidation. By anchoring new concepts in familiar contexts, designers and educators can improve long-term learning outcomes.
+Q: What technologies are used for AI-based emotion recognition? [4.4 Emotion and Artificial Intelligence]
+A:
+	•	Facial Action Coding System (FACS)
+	•	speech prosody analysis
+	•	physiological signals
+	•	multimodal systems
+
+Emotion recognition in AI can involve facial expression decoding (e.g., FACS), voice tone and tempo, and biosignals like heart rate or pupil dilation. Multimodal approaches, such as those used in emotion-aware car systems, combine these data for robust interpretation.
+Q: What distinguishes augmented reality from virtual reality? [1.2 User Experience over Time]
+A:
+	•	AR = real + virtual
+	•	VR = full simulation
+	•	immersion level
+	•	environmental presence
+
+Augmented reality (AR) overlays virtual content onto the real world, enhancing perception without replacing reality. Virtual reality (VR), in contrast, immerses users in a completely artificial environment, detaching them from the physical world.
+Q: What is the role of the hypothalamus in the limbic system? [2.2 Limbic System]
+A:
+	•	vegetative regulation
+	•	memory involvement
+	•	anterior/posterior split
+	•	limbic integration
+
+The hypothalamus controls key bodily functions: its anterior region manages organ-related autonomic functions, while the posterior region participates in memory processing—both contributing to limbic system operations.
+Q: What are attitudes and how do they influence behavior? [1.1 Explanation of Terms]
+A:
+	•	emotional stance
+	•	self-assessment
+	•	stimulus evaluation
+	•	behavior orientation
+
+Attitudes are learned evaluations or emotional stances toward objects, people, or events. They influence how individuals interpret new information, make decisions, and engage in behavior based on prior beliefs and feelings.
+Q: What does gaze tracking reveal about user behavior and information processing? [5.1 Effect of Images]
+A:
+	•	fixations enable processing
+	•	saccades skip visual input
+	•	eye tracking reveals attention
+	•	heat maps visualize focus
+
+Gaze tracking captures where and how long users look at specific elements. Unlike smooth gliding, the eye jumps (saccades) and pauses (fixations), with only fixations enabling cognitive processing. Eye tracking is widely used in usability research, advertising, sports, and VR to evaluate user attention. Heat maps and gaze paths show which areas draw focus, with faces and images often receiving extended attention when well integrated.
+Q: What do Knutson et al. (2007) and Kim & Choi (2013) conclude about brain activation in purchasing decisions? [2.4 Brain Research and Marketing Myths]
+A:
+	•	product type effects
+	•	decision context
+	•	emotional vs. functional value
+	•	personality interaction
+
+Their studies reveal that different product features and decision contexts activate distinct brain systems. Emotional appeal and practical utility engage separate regions, with further modulation by personality and preference.
+Q: Why is light text on a black background problematic in print? [6.1 Basics of Typography]
+A:
+It may fill in and become hard to read
+Q: Why should centered or justified text be avoided in continuous reading? [6.1 Basics of Typography]
+A:
+It reduces readability
+Q: What are the five types of reading and their typographic characteristics? [6.1 Basics of Typography]
+A:
+• linear: sequential reading; serif fonts, 50–75 characters per line, 1.2–1.5x line spacing
+• nuanced: structured reading from random entry points; wide + narrow columns, clear headings
+• selective: targeted reading; 1–2 columns, generous white space, room for illustrations
+• scanning: for specific terms; 2–3 columns, bold keywords, sans-serif fonts like Arial
+• informative: anticipatory reading; short lines and sections, bold mark-ups, clear structure
+
+The five reading types serve different purposes and require specific typographic layouts to support readability. Linear reading involves traditional start-to-finish reading and benefits from serif fonts and harmonious layout. Nuanced reading is typical in academic texts, using well-structured columns and headings. Selective reading isolates specific content with space and imagery. Scanning demands compact layouts and clear emphasis for quick retrieval. Informative reading is used for blogs and non-fiction, relying on short, well-marked sections to aid navigation.Q: How many fonts should typically be used in a design? [6.1 Basics of Typography]
+A:
+Two (up to three in special cases)
+Q: What did Tusche et al. (2010) demonstrate in neuromarketing research? [2.4 Brain Research and Marketing Myths]
+A:
+	•	unconscious prediction
+	•	behavioral forecasting
+	•	neural indicators
+	•	interpretive caution
+
+Tusche et al. (2010) demonstrated that consumer decisions can be predicted even without conscious awareness. However, due to individual variability and contextual factors, these predictions must be interpreted with care.
+Q: What is affective computing, according to Picard (1997)? [4.4 Emotion and Artificial Intelligence]
+A:
+	•	emotion-aware computing
+	•	emotion-driven interaction
+	•	emotion recognition and synthesis
+
+Affective computing involves systems that can recognize, react to, and simulate human emotions. These systems aim to improve human-computer interaction by incorporating emotional responsiveness into AI interfaces, robots, or voice assistants.
+Q: What is the function of the reward and avoidance system in human behavior? [3.1 Reward and Avoidance System]
+A:
+	•	reward = pursue positive states
+	•	avoidance = prevent negative states
+	•	anticipatory motivation
+	•	emotional signaling
+
+The reward and avoidance system motivates behavior by signaling which stimuli are desirable or aversive. Positive emotions activate the reward system, prompting approach, while anticipated negative emotions activate the avoidance system, prompting withdrawal (Häusel, 2012).
+Q: What is the primary function of the occipital lobe? [2.1 Anatomy of the Human Brain]
+A:
+	•	vision processing
+	•	lobus occipitalis
+	•	visual cortex
+	•	sensory decoding
+
+The occipital lobe (lobus occipitalis) is the center for visual processing, interpreting information received from the eyes via the optic nerves.
+Q: What is the emotional experience memory and how is it used? [2.2 Limbic System]
+A:
+	•	emotional tagging
+	•	memory retrieval
+	•	behavioral guidance
+	•	familiarity assessment
+
+Emotional experience memory stores past events based on their emotional significance. When encountering a new situation, the limbic system uses this memory to evaluate relevance and guide future behavior.
+Q: What is the function of the thalamus, and why is it called the “gateway to consciousness”? [2.1 Anatomy of the Human Brain]
+A:
+	•	sensory relay
+	•	cerebral cortex input
+	•	attention control
+	•	awareness hub
+
+The thalamus relays sensory data to the cortex and modulates attention. It is termed the “gateway to consciousness” due to its central role in awareness and perception.
+Q: What rules apply when building visual hierarchy through font size? [6.2 Effect of Typography]
+A:
+	•	use no more than three font sizes
+	•	assign sizes to heading, subheading, and body text
+	•	recommended sizes: 14–16 px (body), 18–22 px (subheading), up to 32 px (heading)
+
+To build a clear visual hierarchy, font size should reflect the importance of content. Gordon (2021) advises using a maximum of three different font sizes—one each for headings, subheadings, and body text. This structured use of typography helps guide user attention effectively and keeps the layout visually organized.
+Q: What is the difference between the thalamus and the hypothalamus? [2.2 Limbic System]
+A:
+	• thalamus: relay station for sensory input (except smell); regulates consciousness and alertness
+	• hypothalamus: controls autonomic functions and hormones; regulates homeostasis and emotions
+
+The thalamus acts as the brain’s central relay for sensory information and supports consciousness and sleep. In contrast, the hypothalamus, located just below it, governs involuntary body functions such as hunger, temperature, and emotional responses, and manages hormone release via the pituitary gland.
+Q: How are emotions defined according to Kleinginna & Kleinginna (1981) and Meyer (2001)? [1.1 Explanation of Terms]
+A:
+	•	multidimensional change
+	•	emotion episode
+	•	arousal and cognition
+	•	time-limited occurrence
+
+Kleinginna & Kleinginna (1981) define emotions as complex patterns involving feelings, physiological arousal, cognition, and behavior. Meyer (2001) adds that emotions are concrete, temporally dated experiences unique to individuals.
+Q: Which academic disciplines contribute most to research in human–machine interaction? [1.3 Interaction of Psychology and Design]
+A:
+	•	psychology
+	•	computer science
+	•	engineering
+	•	economics
+
+According to Luther et al. (2020), psychology plays a central role in human–machine interaction research, complementing contributions from technical fields like computer science, engineering, and economics, especially in understanding human needs and behavior.
+Q: Which neurotransmitters and hormones contribute to reward and avoidance feelings? [3.1 Reward and Avoidance System]
+A:
+	•	dopamine – motivation, reward
+	•	serotonin – calm, well-being
+	•	norepinephrine – arousal, stress
+	•	acetylcholine – learning, attention
+	•	endorphins – happiness
+	•	oxytocin – bonding, trust
+
+These messengers regulate mental states. Dopamine and endorphins fuel reward; serotonin and acetylcholine promote calm focus and learning; norepinephrine raises arousal; oxytocin fosters social trust (Kroeber-Riel & Gröppel-Klein, 2019).
+Q: What are the aspects of the flow experience, and how are they expressed? [7.2 Design of the Flow Experience]
+A:
+	•	merging of action and consciousness: full focus without self-reflection
+	•	focusing attention: narrowed mental field, temporal fading
+	•	loss of ego: self-forgetfulness, becoming one with the task
+	•	control: feeling of mastery over action and environment
+	•	call to action and feedback: clear goals and direct feedback
+	•	autotelic nature: activity is done for its own sake
+
+Flow is a mental state in which individuals are completely absorbed in an activity. This includes a merging of action and awareness, intense concentration, and the fading of self-consciousness. Attention becomes sharply focused, and the perception of time may blur. Clear rules and immediate feedback allow a sense of control, and the activity is intrinsically rewarding—performed not for external rewards but for the joy of the task itself.
+Q: What does Miller’s law state, and how is it applied in UX? [1.3 Interaction of Psychology and Design]
+A:
+	•	7±2 items
+	•	working memory capacity
+	•	design simplification
+	•	cognitive limit
+
+Miller’s law suggests that the average person can hold 5 to 9 items in short-term memory. In UX, this principle supports limiting the number of elements users must memorize—favoring visible controls over memory-reliant gestures or sequences.
+Q: Has the limbic system been proven to be the sole origin of emotions? [2.2 Limbic System]
+A:
+	•	emotional network
+	•	disproved exclusivity
+	•	broader brain involvement
+	•	limbic centrality
+
+The idea that emotions originate solely from the limbic system is outdated. Emotions arise from multiple brain areas, although the limbic system plays a central coordinating role.
+Q: What are the five types of reading, where are they used, and what typographic styles support them? [6.1 Basics of Typography]
+A:
+	•	linear reading: used in prose (e.g., novels, long articles); serif fonts, 50–75 characters per line, 1.2–1.5× line spacing, calm and harmonious layout
+	•	nuanced reading: used in educational or scientific books; one wide and one narrow column, clear headings, structured layout for non-linear entry
+	•	selective reading: used to extract targeted info (e.g., brochures, illustrated guides); 1–2 columns, lots of white space, room for illustrations
+	•	scanning: used for quick info retrieval (e.g., dictionaries, websites); 2–3 columns, small font, narrow line spacing, bold keywords, sans-serif fonts like Arial or Helvetica
+	•	informative reading: used in newspapers, blogs, and nonfiction; short lines, clearly marked sections, bold font styles for navigation
+
+Each reading type corresponds to a specific purpose and content format. Linear reading supports immersive, continuous reading with serif fonts and evenly spaced lines. Nuanced reading allows flexible access within structured texts, often pairing main text with side notes. Selective reading benefits from visual separation and space to highlight key elements. Scanning prioritizes speed and clarity through compact layouts and emphasized keywords. Informative reading facilitates orientation and skimming through concise segments and typographic highlights like bold text.
+Q: What are font styles and which four are the most important? [6.1 Basics of Typography]
+A:
+	•	regular: standard form without styling
+	•	bold: thicker and darker for emphasis
+	•	italic: slanted version for emphasis or titles
+	•	bold italic: combination of bold and italic for strong emphasis
+
+Font styles are variations within a typeface that modify its appearance to convey structure or emphasis. The four most important styles are regular, bold, italic, and bold italic. Regular is the default form; bold adds weight for emphasis; italic slants the text for stylistic or semantic distinction; and bold italic combines both features for maximum emphasis. These styles help create visual hierarchy and improve readability in design.
+Q: What role do emotions play in user experience? [1.1 Explanation of Terms]
+A:
+	•	emotional impact
+	•	memory and meaning
+	•	action motivation
+	•	UX quality
+
+Emotions are central to user experience because they shape how interactions are perceived and remembered. They influence motivation, reinforce behavior, and determine the personal relevance and quality of a user’s engagement with a product.
+Q: What is the “buy button” myth in neuromarketing, and why is it flawed? [2.4 Brain Research and Marketing Myths]
+A:
+	•	oversimplified brain theory
+	•	Lindstrom critique
+	•	multi-region activation
+	•	contextual influence
+
+The “buy button” myth suggests a specific brain area triggers purchases. However, research shows that buying behavior involves multiple brain regions and is shaped by emotion, cognition, personality, and situational context.
+Q: Why did UX gain increasing business relevance with the rise of the internet? [1.2 User Experience over Time]
+A:
+	•	pre-purchase evaluation
+	•	online reviews
+	•	usability = sales factor
+	•	shift in product discovery
+
+With internet access, users could evaluate products through websites, reviews, and trials before buying. This shifted the role of UX from post-sale satisfaction to a decisive factor influencing initial purchase decisions and brand success.
+Q: What is selective reading and what layout supports it? [6.1 Basics of Typography]
+A:
+	•	targeted reading where only specific sections are read
+	•	one or two columns
+	•	generous white space
+	•	room for illustrations
+
+Selective reading aims to extract specific content without reading everything. Layouts support this through clear isolation of sections and the use of visual cues like spacing and imagery.
+Q: Whhat is important for Font Mixtures within a Font family? [6.1 Basics of Typography]
+A:
+Mixing styles within the same font family is safe, but overly similar styles (e.g., normal and medium) should be avoided.
+Q: What is meant by user experience (UX)? [1.1 Explanation of Terms]
+A:
+	•	subjective interaction
+	•	analog and digital products
+	•	emotions and expectations
+	•	anticipatory experience
+
+User experience (UX) encompasses the user’s entire emotional and cognitive response to interacting with a product or service. It includes anticipatory feelings, emotions during use, and expectations shaped by prior experiences or external factors such as advertising.
+Q: What are the main structural components of a neuron? [2.3 Main Components of a Nerve Cell]
+A:
+	•	soma
+	•	dendrites
+	•	axon
+	•	synapse and terminals
+
+Neurons consist of a soma (cell body) with a nucleus, dendrites to receive signals, an axon for transmitting impulses, myelin for insulation, and axon terminals that communicate via synapses with other neurons.
+Q: What distinguishes “Surface Delight” from “Deep Delight” in UX design? [4.3 Emotional Design and Technology]
+A:
+	•	superficial vs. holistic
+	•	temporary vs. sustained
+	•	design vs. interaction
+
+Surface Delight is a fleeting emotional reaction to design elements, while Deep Delight reflects a holistic, task-oriented UX that engages users fully and supports a flow state. Only the latter results in long-term satisfaction and positive brand perception.
+Q: What is the maximum recommended line length for readability? [6.1 Basics of Typography]
+A:
+80 characters including spaces
+Q: How does neuromarketing support emotional design in UX? [2.4 Brain Research and Marketing Myths]
+A:
+	•	emotional triggers
+	•	design alignment
+	•	aesthetic cues
+	•	affective engagement
+
+By identifying emotional responses to stimuli, neuromarketing helps UX designers create emotionally resonant interfaces using color, imagery, and storytelling that boost user engagement.
+Q: What influence does affective state have on product perception? [4.2 Design Principles of Emotional Design]
+A:
+	•	positive state: more tolerant, creative
+	•	negative state: more focused, analytical
+	•	mood affects cognition
+
+A user’s emotional state influences how they perceive and interact with a product. Positive moods increase creativity and tolerance for small flaws, while negative moods enhance attention to detail and critical thinking. Therefore, products used in stressful contexts should be especially well-designed to avoid overwhelming users.
+Q: What are the hierarchical levels of user needs according to Walter (2011)? [4.3 Emotional Design and Technology]
+A:
+	•	functionality
+	•	reliability
+	•	usability
+	•	emotional/hedonic value
+
+Walter (2011) adapted Maslow’s hierarchy to UX, proposing that users first require functionality, then reliability and usability, before experiencing higher-level emotional or hedonic satisfaction. Only when these foundational layers are fulfilled can designers aim for user delight or deep emotional engagement.
+Q: What is the paradox of choice in user behavior? [1.3 Interaction of Psychology and Design]
+A:
+	•	too many options
+	•	decision fatigue
+	•	reduced purchases
+	•	satisfaction decrease
+
+The paradox of choice posits that an abundance of options can overwhelm users, reducing their likelihood of making a purchase. Studies (e.g., Schwartz, 2009) show that limited choices often lead to more satisfaction and higher conversion rates.
+Q: Which psychological laws and design principles are used to understand and reduce cognitive load in UX? [1.3 Interaction of Psychology and Design]
+A:
+	•	cognitive load theory
+	•	chunking
+	•	Miller’s law
+	•	Hick’s law
+	•	Fitt’s law
+	•	choice overload
+
+Cognitive load in UX refers to the mental effort users expend when interacting with a system. To reduce this load, designers apply several principles: cognitive load theory explains how learning and stress affect mental effort; chunking improves memory by grouping information; Miller’s law limits items in working memory to ~7; Hick’s law warns that too many options slow decision-making; Fitt’s law guides the placement and size of UI elements; and choice overload describes how excessive options can reduce satisfaction and action. These principles help designers create more intuitive and efficient user experiences.
+Q: In what way does neuromarketing help improve usability and navigation? [2.4 Brain Research and Marketing Myths]
+A:
+	•	visual hierarchy
+	•	attention flow
+	•	layout testing
+	•	reduced cognitive load
+
+Neuromarketing reveals how users visually process interfaces, allowing designers to optimize menu structure, layout, and information flow based on subconscious cognitive patterns.
+Q: What practical relevance does the limbic system have in product design and marketing? [2.2 Limbic System]
+A:
+	•	emotional design
+	•	consumer behavior
+	•	decision-making models
+	•	Norman’s approach
+
+Knowledge of the limbic system informs product design and marketing by highlighting the emotional basis of consumer decisions. Emotional design strategies build on this to enhance product appeal and brand engagement.
+Q: What structures are included in the brainstem and what are their functions? [2.1 Anatomy of the Human Brain]
+A:
+	•	midbrain
+	•	pons
+	•	medulla oblongata
+	•	autonomic control
+
+The brainstem includes the midbrain, pons, and medulla oblongata. It manages core life-support functions like breathing, heart rate, and sleep regulation.
+Q: How has technology use changed from early personal computing to modern contexts? [1.2 User Experience over Time]
+A:
+	•	from stationary to mobile
+	•	integrated routines
+	•	background operation
+	•	smart devices
+
+Whereas early computing involved focused use of stationary devices, modern technology is embedded into daily life. Smartphones, wearables, and smart systems operate constantly and often invisibly, enabling seamless and continuous user interaction.
+Q: What is the function of the amygdala in emotional processing? [2.2 Limbic System]
+A:
+	•	fear regulation
+	•	memory encoding
+	•	hormone triggering
+	•	defensive behavior
+
+The amygdala processes emotional stimuli, especially fear, and coordinates with the hippocampus to encode emotional memories. It also initiates physiological responses such as hormonal release and behavioral defense reactions.
+Q: Why should professionally designed fonts be used? [6.1 Basics of Typography]
+A:
+They offer higher quality and better readability
+Q: Why does Norman (2013) advocate replacing the term HCI with “human–technology relations”? [1.2 User Experience over Time]
+A:
+	•	beyond device interaction
+	•	broader context
+	•	connected technologies
+	•	relational perspective
+
+Norman (2013) proposes replacing “human–computer interaction” (HCI) with “human–technology relations” to reflect how users engage with networks of technologies in everyday life. The term emphasizes relational, contextual, and emotional aspects of tech usage beyond isolated devices.
+Q: How does Hassenzahl (2010) characterize user experience? [1.1 Explanation of Terms]
+A:
+	•	subjective
+	•	holistic
+	•	situational
+	•	dynamic and desirable
+
+According to Hassenzahl (2010), user experience is not a static property but a dynamic, context-sensitive phenomenon that is holistic, emotionally rich, and grounded in subjective perception. It involves personal expectations, emotions, and the meaning users assign to interactions.
+Q: What is neuromarketing and what methods does it use? [2.4 Brain Research and Marketing Myths]
+A:
+	•	EEG
+	•	fMRI
+	•	brain-based analysis
+	•	consumer neuroscience
+
+Neuromarketing applies neuroscientific tools such as EEG and fMRI to explore how consumers respond to marketing stimuli. It investigates brain activity during product exposure and decision-making.
+Q: What was the original focus of human factors research in the 1940s? [1.2 User Experience over Time]
+A:
+	•	human–machine interaction
+	•	error reduction
+	•	safety-critical systems
+	•	military and aerospace
+
+In the 1940s, U.S. military-funded human factors research focused on optimizing the interface between humans and machines in safety-critical contexts. The aim was to reduce operational errors through ergonomic and psychological insights, especially in aviation and medical domains.
+Q: What functions are associated with the frontal lobe? [2.1 Anatomy of the Human Brain]
+A:
+	•	motor control
+	•	decision-making
+	•	speech production
+	•	pattern recognition
+
+The frontal lobe (lobus frontalis) controls voluntary movements and is involved in higher-order functions like planning, language production, and recognizing patterns.
+Q: What limitations does the Big Five personality model have in UX research? [3.3 Personality Traits of the Human Being]
+A:
+	•	too broad
+	•	ignores context
+	•	overlaps traits
+	•	lacks behavioral precision
+
+Although useful, the Big Five model does not capture all relevant traits (e.g., risk-taking) and may group distinct traits together. It does not consider environmental interactions or provide fine-grained behavior predictions.
+Q: What is the role of neuroscience in understanding user experience? [Introduction]
+A:
+	•	brain activity mapping
+	•	emotion and memory
+	•	design insights
+	•	imaging techniques
+
+Neuroscience reveals how cognitive and emotional processes work in the brain through methods like fMRI. These findings help UX designers understand behavior, predict responses, and craft emotionally resonant interfaces.
+Q: What are the four major anatomical regions of the human brain? [2.1 Anatomy of the Human Brain]
+A:
+	•	cerebrum
+	•	diencephalon
+	•	cerebellum
+	•	brainstem
+
+The human brain is anatomically divided into four main regions: the cerebrum (largest part), diencephalon (thalamic structures), cerebellum (movement coordination), and brainstem (autonomic control).
+Q: Why should fonts not be artificially stretched or compressed? [6.1 Basics of Typography]
+A:
+It distorts the design; use proper variants instead
+Q: What is the difference between push and pull motives? [3.2 Motives and Goals]
+A:
+	•	push = internal drives
+	•	pull = external stimuli
+	•	hunger/thirst = push
+	•	incentives = pull
+
+Push motives originate from biological or instinctual needs (e.g., hunger), while pull motives are activated by external incentives (e.g., seeing a drink). Both influence motivational strength (Radel et al., 2016; Maslow, 1954).
+Q: How do moods influence learning and memory in UX contexts? [3.1 Reward and Avoidance System]
+A:
+	•	learning enhancement
+	•	memory effect
+	•	mood-congruent processing
+	•	product interaction
+
+Positive moods can enhance information retention and product experimentation. For example, users in a good mood remember brand names better and are more likely to try new products (Lee & Sternthal, 1999).
+Q: What is the evolutionary significance of brain structure hierarchy? [2.3 Main Components of a Nerve Cell]
+A:
+	•	survival functions
+	•	layered brain systems
+	•	cognitive evolution
+	•	old vs. new regions
+
+Older brain structures handle vital bodily functions, while newer areas support complex cognition. This evolutionary hierarchy reflects functional specialization from basic life support to reasoning and decision-making.
+Q: What is persuasive technology according to Fogg (2003)? [1.1 Explanation of Terms]
+A:
+	•	behavior change
+	•	attitude shaping
+	•	goal facilitation
+	•	interactive design
+
+Persuasive technology involves digital systems intentionally designed to alter users’ behavior or attitudes. For example, fitness apps use reminders, goals, and feedback to encourage consistent training and health awareness (Fogg, 2003).
+Q: How does the limbic system contribute to memory and learning? [2.2 Limbic System]
+A:
+	•	emotional filtering
+	•	memory tagging
+	•	adaptive learning
+	•	experience evaluation
+
+The limbic system processes sensory data by emotionally tagging it and organizing it in memory. This emotional tagging helps in recognizing similar future events and adapting behavior accordingly.
+Q: What should be considered in a Mixture of similar structures? [6.1 Basics of Typography]
+A:
+Fonts with similar structure can be mixed if a clear distinction between typefaces remains visible.
+Q: What elements can trigger user delight in interface design, according to Nielsen (2017b)? [4.3 Emotional Design and Technology]
+A:
+	•	animations
+	•	tactile transitions
+	•	microcopy
+	•	high-resolution images
+	•	sound interactions
+
+Once basic needs are met, interface elements like animations, gesture-based transitions, humorous or helpful microcopy, vivid images, and sound feedback can evoke emotional responses. However, for true “Deep Delight,” all hierarchical UX needs must be fulfilled, supporting flow and positive user experience.
+Q: What cognitive processes are included under the term cognition? [1.1 Explanation of Terms]
+A:
+	•	attention
+	•	memory
+	•	problem solving
+	•	action control
+
+Cognition encompasses a wide range of mental processes such as attention, perception, memory, understanding, thinking, and planning. These enable humans to process stimuli, learn, solve problems, and coordinate purposeful actions.
+Q: What are the three dimensions of emotion in the dimensional model? [1.1 Explanation of Terms]
+A:
+	•	arousal
+	•	valence
+	•	dominance
+	•	Bradley & Lang (1994)
+
+The dimensional model defines emotions along three axes: arousal (intensity), valence (positivity vs. negativity), and dominance (perceived control). This framework helps classify emotional experiences beyond basic categories.
+Q: What are the guidelines for typographic design according to Hyndman (2016)? [6.1 Basics of Typography]
+A:
+	•	ideal text size: 8.5–12 pt (print), 15–25 px (web)
+	•	max line length: 80 characters
+	•	use professionally designed fonts
+	•	avoid centered or justified continuous text
+	•	use capital letters sparingly
+	•	avoid using too many fonts
+	•	avoid light text on black background for print
+	•	don’t stretch or compress fonts artificially
+	•	check for proper kerning
+
+Hyndman (2016) summarized nine key guidelines for designing readable and professional typography. These include choosing the right font size depending on medium, limiting line length, selecting quality fonts, and avoiding layout pitfalls like all caps, poor kerning, or distorted letterforms. Proper application of these principles improves legibility, aesthetics, and user experience across both print and digital platforms.
+Q: What are the roles of the gyrus cinguli and its subdivisions? [2.2 Limbic System]
+A:
+	•	affect regulation
+	•	memory formation
+	•	motor and pain integration
+	•	anterior/posterior parts
+
+The gyrus cinguli is the largest limbic structure and contributes to emotional processing, motor control, attention, and long-term memory. Its anterior and posterior segments serve distinct regulatory and integrative roles.
+Q: Why should emotional evaluations be included in early development stages of UX design? [4.3 Emotional Design and Technology]
+A:
+	•	ensure user needs are met
+	•	prevent negative emotions
+	•	validate hedonic quality
+
+Integrating user feedback early allows designers to assess whether products fulfill both pragmatic and emotional needs. Tools like the AttrakDiff and VisAwi questionnaires help measure perceived usability and aesthetics, guiding iterative improvement before launch.
+Q: What are small caps, serifs, and kerning in typography? [6.1 Basics of Typography]
+A:
+	•	small caps: uppercase-shaped letters with adjusted height and weight
+	•	serifs: small strokes on letter ends; absent in sans-serif fonts
+	•	kerning: adjustment of space between individual characters
+
+Small caps are a separate font style where all letters use the form of uppercase characters but are shorter and designed for visual harmony with lowercase text. Serifs are the small projecting features at the ends of strokes in letters; serif fonts (e.g., Times New Roman) are viewed as formal and readable in print, while sans-serif fonts (e.g., Arial) are cleaner and more common in digital contexts. Kerning is the fine-tuning of spacing between character pairs (like “A” and “V”) to ensure balanced and aesthetically pleasing text. It improves both readability and visual alignment in typography.
+Q: How do the Means-End Chain Model and the Valence Method compare in UX research? [4.3 Emotional Design and Technology]
+A:
+	•	both link product attributes to user needs
+	•	Means-End Chain: theoretical model for evaluation
+	•	Valence Method: practical, interactive, time-intensive tool
+	•	Valence uses laddering based on Means-End Chain logic
+
+Both models examine how product features affect emotional user responses via need satisfaction. The Means-End Chain Model is a conceptual framework, while the Valence Method is an applied tool that builds on its logic. The Valence Method adds real-time interaction and reflection, offering deeper but more time-consuming insights into emotional design.
+Q: What are the two hemispheres of the brain and how are they connected? [2.1 Anatomy of the Human Brain]
+A:
+	•	left and right hemisphere
+	•	corpus callosum
+	•	signal exchange
+	•	contralateral control
+
+The brain has two hemispheres that coordinate via the corpus callosum—a neural bridge. Each hemisphere governs the opposite side of the body and specializes in different cognitive functions.
+Q: What does biological psychology study? [2.1 Anatomy of the Human Brain]
+A:
+	•	brain and nervous system
+	•	hormones
+	•	behavior basis
+	•	conscious and unconscious
+
+Biological psychology investigates how physiological processes—like brain function and hormonal regulation—affect mental states and behavior. It seeks to explain the biological foundations of experience and action.
+Q: What are motives and how do they relate to motivation? [3.2 Motives and Goals]
+A:
+	•	motives = inner needs
+	•	goal orientation
+	•	emotional drive
+	•	time-stable preferences
+
+Motives reflect stable internal desires or needs (e.g., achievement, power, affiliation). Motivation arises when internal arousal is coupled with a goal, making motivation a goal-directed drive (Kroeber-Riel & Gröppel-Klein, 2019).
+Q: How does relevance influence purchasing decisions? [3.4 Relevance, Credibility, and Differentiation]
+A:
+	•	goal alignment
+	•	reward anticipation
+	•	need state influence
+	•	willingness to pay
+
+A product is perceived as more relevant when it supports goal achievement. Relevance increases when needs are present, boosting emotional reward expectations and purchasing willingness.
+Q: What functions are attributed to the septum in the limbic system? [2.2 Limbic System]
+A:
+	•	autonomic regulation
+	•	emotional experience
+	•	memory processing
+	•	limbic communication
+
+The septum helps regulate internal bodily states, emotional tone, and certain memory functions. It acts as a mediator between emotional states and physiological responses.
+Q: Can neuromarketing accurately read consumers’ minds using neuroimaging? [2.4 Brain Research and Marketing Myths]
+A:
+	•	limited predictability
+	•	generalization issues
+	•	individual variability
+	•	ethical caution
+
+Although neuroimaging reveals activity linked to consumer behavior, it cannot decode exact thoughts. Contextual factors and individual differences limit accuracy, making precise mind-reading unfeasible.
+Q: What does the cerebellum do and how is it structured? [2.1 Anatomy of the Human Brain]
+A:
+	•	movement coordination
+	•	two hemispheres
+	•	vermis cerebelli
+	•	motor learning
+
+The cerebellum consists of two hemispheres joined by the vermis. It refines movement, supports balance, and plays a key role in motor learning and classical conditioning.
+Q: What are basic and secondary emotions, and how are they distinguished? [3.1 Reward and Avoidance System]
+A:
+	•	basic emotions = innate, universal
+	•	secondary emotions = social, reflective
+	•	Ekman’s classification
+	•	emotional spectrum
+
+Basic emotions (anger, fear, disgust, sadness, happiness) are genetically embedded and culturally universal. Some researchers add shame, surprise, and embarrassment. Secondary emotions—like guilt, pride, envy, and love—arise from deeper self-awareness and complex social relationships (Ekman, 2016).
+Q: What is the overjustification effect and how does it affect motivation? [7.2 Design of the Flow Experience]
+A:
+	•	intrinsic motivation is undermined
+	•	caused by excessive external rewards
+	•	enjoyment becomes task-independent
+
+The overjustification effect occurs when a person who initially engages in an activity out of intrinsic motivation begins to associate it primarily with external rewards (e.g., money, grades). As a result, their natural enjoyment or interest decreases. The task becomes a means to an end rather than something pursued for its own value—potentially disrupting flow and long-term engagement.
+Q: How is user experience addressed in medical and care settings? [1.2 User Experience over Time]
+A:
+	•	assistive robotics
+	•	emotional design
+	•	HRI (human–robot interaction)
+	•	psychological well-being
+
+In healthcare, user experience includes not only functionality but also emotional effects. Social robots are designed to improve psychological well-being and foster trust, highlighting the emotional dimension of human–robot interaction.
+Q: What is typography and what is its main function in design? [6.1 Basics of Typography]
+A:
+	•	supports reading
+	•	ensures efficient text presentation
+	•	adapts to medium and purpose
+	•	enhances readability
+
+Typography refers to the design and arrangement of written text with the goal of presenting it efficiently and supporting the reading process. Its primary function is to help the reader’s eyes glide effortlessly over the text without causing distraction. Typography should simplify reading, not interfere with it. Its effectiveness depends on factors such as medium (print vs. digital) and the purpose of the content (e.g., informational vs. advertising), which influence typographic choices and guidelines.
+Q: What are the five traits in the Five Factor Model of Personality? [3.3 Personality Traits of the Human Being]
+A:
+	•	extraversion
+	•	agreeableness
+	•	conscientiousness
+	•	neuroticism
+	•	openness to experience
+
+The Big Five model reduces human personality to five major traits. These are sociability (extraversion), empathy (agreeableness), perfectionism (conscientiousness), emotional stability (neuroticism), and curiosity (openness). It’s widely used but lacks detail for some applications.
+Q: What are Maslow’s five hierarchical needs? [3.2 Motives and Goals]
+A:
+	•	physiological
+	•	safety
+	•	love and belonging
+	•	esteem
+	•	self-actualization
+
+Maslow’s theory arranges needs in a hierarchy: starting from survival needs (like hunger) to safety, social connection, esteem, and self-actualization. Once one level is satisfied, the next becomes motivationally relevant.
+Q: What is hemispheric lateralization and how is it often misunderstood? [2.1 Anatomy of the Human Brain]
+A:
+	•	functional specialization
+	•	left vs. right brain
+	•	language asymmetry
+	•	myth of strict division
+
+Hemispheric lateralization refers to the specialization of certain functions in one brain hemisphere. While language functions are reliably lateralized, the popular belief that logic or creativity reside strictly in one hemisphere is an oversimplification.
+Q: What are the components and role of the diencephalon? [2.1 Anatomy of the Human Brain]
+A:
+	•	thalamus
+	•	hypothalamus
+	•	subthalamus
+	•	epithalamus
+
+The diencephalon links the brainstem and cerebrum and regulates sensory input, emotions, vision, and autonomic functions. Each substructure contributes to brain–body coordination.
+Q: How does an axon contribute to neural communication? [2.3 Main Components of a Nerve Cell]
+A:
+	•	action potential transmission
+	•	long-range signaling
+	•	axon hillock origin
+	•	target communication
+
+The axon carries electrical impulses from the soma to the axon terminals. This long projection ensures efficient signal delivery across distances within the nervous system.
+Q: How is the term “experience” defined in the context of UX psychology? [1.1 Explanation of Terms]
+A:
+	•	knowledge dimension
+	•	emotional dimension
+	•	learning and feeling
+	•	significant events
+
+In UX psychology, “experience” refers to two key dimensions: (1) experience as knowledge gained through interaction and learning, and (2) experience as emotion—a subjective state triggered by important events or stimuli.
+Q: How does font style influence the perceived sound of written words? [6.1 Basics of Typography]
+A:
+	•	wide spacing = slower speech impression
+	•	capital letters = louder speech impression
+Q: What is important when using a Mixture of different fonts? [6.1 Basics of Typography]
+A:
+Fonts should be clearly different; if they are too similar, they must differ in size to remain distinguishable.
+Q: Why should capital letters be used sparingly? [6.1 Basics of Typography]
+A:
+They are harder to read and may seem like shouting
+Q: What roles do glial cells play in the brain? [2.3 Main Components of a Nerve Cell]
+A:
+	•	neuron support
+	•	blood–brain barrier
+	•	nutrient regulation
+	•	structural integrity
+
+Glial cells support neuronal function by providing nutrients, insulation, and structural support. They also regulate the blood–brain barrier and maintain homeostasis in the nervous system.
+Q: How can neuromarketing contribute to personalization in UX design? [2.4 Brain Research and Marketing Myths]
+A:
+	•	emotional profiling
+	•	user segmentation
+	•	targeted content
+	•	adaptive interfaces
+
+Neuromarketing enables UX designers to create personalized experiences by mapping emotional and cognitive responses, allowing content and design to be tailored to individual preferences.
+Q: What emotional and cultural associations are linked to major colors according to Aslam (2006)? [5.2 Effect of Colors]
+A:
+	•	black: fear, anger, envy, power, luxury, mourning
+	•	white: purity, happiness, mourning (Asia)
+	•	red: love, danger, masculinity, innovation
+	•	green: nature, happiness, envy
+	•	blue: trust, quality, aloofness, death (Iran)
+	•	yellow: joy, creativity, jealousy
+
+Colors carry culturally specific associations that influence perception and design use. In Anglo-Saxon cultures, black is linked to fear and formality, while white represents purity or, in Asia, mourning. Red evokes strong emotions like love or danger and is tied to innovation. Green is tied to nature and envy, blue to trust and technology, and yellow to cheerfulness and creativity. These connotations guide branding and UI design choices to match emotional resonance across contexts.
+Q: What is a flow experience and what are its characteristics? [1.1 Explanation of Terms]
+A:
+	•	deep focus
+	•	intrinsic motivation
+	•	altered time perception
+	•	challenge-skill balance
+
+Flow is a mental state of complete immersion in an activity, often accompanied by enjoyment and loss of time awareness. It arises when the task difficulty matches the individual’s skill level (Csíkszentmihályi, 2014).
+Q: What is the presumed function of the mamillary body? [2.2 Limbic System]
+A:
+	•	memory consolidation
+	•	emotional processing
+	•	functional speculation
+	•	limbic participation
+
+Although its exact role is unclear, the mamillary body is believed to be involved in processing emotions and consolidating memory, contributing to limbic system functions.
+Q: What is resting potential and how does it relate to action potentials? [2.3 Main Components of a Nerve Cell]
+A:
+	•	membrane voltage
+	•	neuron at rest
+	•	stimulus threshold
+	•	potential shift
+
+Resting potential is the baseline electrical charge across a neuron’s membrane. When disturbed by a stimulus, this charge shifts, potentially triggering an action potential and initiating signal transmission.
+Q: What assumptions underlie the theory of bounded rationality? [2.4 Brain Research and Marketing Myths]
+A:
+	•	limited options
+	•	future uncertainty
+	•	incomplete knowledge
+	•	restricted processing
+
+Bounded rationality assumes that people: (1) lack full knowledge of alternatives, (2) cannot predict all future consequences, (3) consider only a subset of options, and (4) have limited ability to process information.
+Q: How can color be used to create visual hierarchy in digital product design? [5.2 Effect of Colors]
+A:
+	•	visual contrast
+	•	emphasis through color
+	•	guidance of attention
+	•	orientation support
+
+Colors help structure content on screens by directing user attention and emphasizing important elements through contrast. According to Gordon (2021), visual hierarchy arranges design elements to guide the eye in a specific order. Strong contrasts between foreground and background colors signal relevance, while consistent color schemes support orientation (e.g., distinguishing visited links). Scaling and grouping further reinforce this hierarchy.
+Q: How do handedness and gender influence brain function? [2.3 Main Components of a Nerve Cell]
+A:
+	•	hemispheric dominance
+	•	functional asymmetry
+	•	cognitive variation
+	•	individual differences
+
+Handedness and gender may influence brain lateralization and information processing styles. However, the division of cognitive tasks across hemispheres is flexible and shaped by both biology and experience.
+Q: How does cognitive psychology support UX design? [1.3 Interaction of Psychology and Design]
+A:
+	•	perception
+	•	memory
+	•	information processing
+	•	cognitive alignment
+
+Cognitive psychology helps UX designers align interfaces with how users think, perceive, and remember. By understanding mental processes, designers can reduce overload, structure information clearly, and support intuitive navigation.
+Q: Does the brain follow fixed organizational rules throughout life? [2.3 Main Components of a Nerve Cell]
+A:
+	•	neuroplasticity
+	•	lifelong change
+	•	adaptability limits
+	•	structural reorganization
+
+The brain demonstrates neuroplasticity—the ability to reorganize itself by forming new neural connections. This flexibility supports learning and recovery but diminishes with age.
+Q: What is nuanced reading and what style and layout are suitable for it? [6.1 Basics of Typography]
+A:
+	•	reading that allows entry at any point in a structured text
+	•	one wide + one narrow column
+	•	structured layout with headings
+	•	typical for textbooks and academic material
+
+Nuanced reading is common in educational and scientific publications. The layout emphasizes structural clarity and uses side columns for references or additional info to support flexible navigation.
+Q: How do individual differences affect neural responses to marketing stimuli? [2.4 Brain Research and Marketing Myths]
+A:
+	•	cognitive style
+	•	emotional sensitivity
+	•	activation patterns
+	•	personalized response
+
+Individual traits such as cognitive style and emotional responsiveness influence which brain regions are activated during decision-making. Analytical thinkers engage more cognitive areas, while emotional types show heightened affective activation.
+Q: What brain regions are associated with language processing, and how do they demonstrate hemispheric asymmetry? [2.1 Anatomy of the Human Brain]
+A:
+	•	Broca’s area
+	•	Wernicke’s area
+	•	dominant hemisphere
+	•	language lateralization
+
+Language is primarily processed in Broca’s and Wernicke’s areas, usually located in the hemisphere opposite the dominant hand. This represents a clear example of hemispheric asymmetry in brain function.
+Q: How does differentiation help products stand out in the market? [3.4 Relevance, Credibility, and Differentiation]
+A:
+	•	USP communication
+	•	emotional design
+	•	user experience quality
+	•	brand positioning
+
+Differentiation is key to product success. Excellent UX—through simplicity, design, and intuitive interaction—can set a product apart, as demonstrated by Apple’s strategy (Nielsen, 2017a).
+Q: What brain region plays a central role in the reward system, and how does it function? [3.1 Reward and Avoidance System]
+A:
+	•	mesolimbic system
+	•	nucleus accumbens
+	•	reward evaluation
+	•	dopamine release
+
+The nucleus accumbens evaluates stimuli for their potential to trigger reward and coordinates with limbic inputs to initiate dopamine release when a stimulus is positively classified, reinforcing behavior (Brandstätter et al., 2018).
+Q: What is anticipated use in UX? [1.1 Explanation of Terms]
+A:
+	•	psychological pre-use effect
+	•	user expectations
+	•	experience shaping
+	•	pre-interaction
+
+Anticipated use describes the psychological impact a product has on a user before actual interaction. This includes expectations and emotional responses, which shape how the later user experience is perceived and evaluated.
+Q: What forms the central nervous system according to Schütz (2015)? [2.1 Anatomy of the Human Brain]
+A:
+	•	brain
+	•	medulla oblongata
+	•	signal transmission
+	•	neural core
+
+According to Schütz (2015), the central nervous system (CNS) includes the brain and medulla oblongata, forming the core of information processing and transmission in the human body.
+Q: What are the three key environmental factors influencing product decisions? [3.4 Relevance, Credibility, and Differentiation]
+A:
+	•	relevance
+	•	credibility
+	•	differentiation
+
+Besides psychological factors, product decisions are shaped by environmental cues. These include how relevant a product is to user goals, how credible the communication is, and how well it stands out from competitors.
+Q: How is personality applied in UX design? [3.3 Personality Traits of the Human Being]
+A:
+	•	persona generation
+	•	behavioral prediction
+	•	motivation modeling
+	•	trait-informed design
+
+UX professionals use personality traits to create user personas and infer motives and needs. This enables more tailored design decisions and improves user relevance (Salminen et al., 2020).
+Q: What is the difference between intrinsic and extrinsic motivation? [1.1 Explanation of Terms]
+A:
+	•	intrinsic = internal value
+	•	extrinsic = external reward
+	•	self-driven vs. goal-driven
+	•	enjoyment vs. outcome
+
+Intrinsic motivation arises from the inherent enjoyment of an activity, while extrinsic motivation is driven by rewards such as money, recognition, or grades. Both types influence goal setting and persistence.
+Q: Why is psychological knowledge essential for designers according to Leech (2017) and Norman (2010)? [1.3 Interaction of Psychology and Design]
+A:
+	•	foundation for design
+	•	cognition and emotion
+	•	user-centered reasoning
+	•	Leech & Norman
+
+Leech (2017) compares lacking psychological knowledge in design to practicing architecture without physics. Norman (2010) stresses that effective interaction design depends on understanding cognitive, emotional, and motor processes in users.
+Q: What is the hippocampus responsible for? [2.2 Limbic System]
+A:
+	•	memory formation
+	•	learning
+	•	encoding new information
+	•	seahorse-shaped structure
+
+The hippocampus plays a crucial role in encoding and storing new memories. Its name derives from its curved, seahorse-like shape, and it works closely with other limbic structures during learning.
+Q: How many fonts should typically be used in a design? [6.1 Basics of Typography]
+A:
+Two (up to three in special cases)
+Q: How is customer experience different from user experience? [1.1 Explanation of Terms]
+A:
+	•	customer = brand interaction
+	•	user = product interaction
+	•	company vs. individual view
+	•	CX vs. UX
+
+Customer experience refers to the entirety of a person’s interactions with a company across all channels, from a brand-oriented perspective. In contrast, user experience focuses on an individual’s personal, often emotional, interaction with a specific product or service.
+Q: What is perception in psychology? [1.1 Explanation of Terms]
+A:
+	•	unconscious processing
+	•	sensory input
+	•	automatic interpretation
+	•	subliminal effects
+
+Perception is the automatic, unconscious organization and interpretation of sensory information. It allows people to make sense of their environment quickly, even without deliberate attention or conscious awareness.
+Q: What is meant by ubiquitous and pervasive computing? [1.2 User Experience over Time]
+A:
+	•	ubiquitous = embedded tech
+	•	pervasive = interconnected
+	•	smart environments
+	•	invisible computing
+
+Ubiquitous computing describes technology embedded throughout everyday contexts, while pervasive computing emphasizes the interconnection of smart systems. Together, they form the basis for intelligent environments where technology adapts fluidly to user needs.
+Q: What is the concept of bounded rationality in decision-making? [2.4 Brain Research and Marketing Myths]
+A:
+	•	decision constraints
+	•	limited information
+	•	satisficing
+	•	cognitive limits
+
+Bounded rationality describes the human tendency to make decisions under constraints such as incomplete information, limited awareness, and restricted processing power—resulting in “good enough” rather than optimal choices (Sent, 2018).
+Q: How did the discipline of software ergonomics emerge and evolve? [1.2 User Experience over Time]
+A:
+	•	1980s emergence
+	•	PC usability
+	•	cognitive load reduction
+	•	IBM PC and Apple I
+
+Software ergonomics arose in the 1980s to address the usability challenges of personal computing. As devices like the IBM PC and Apple I entered homes, designers began focusing on ease of use and reducing mental effort for non-expert users.
+Q: How do neurotransmitters facilitate communication between neurons? [2.3 Main Components of a Nerve Cell]
+A:
+	•	chemical messengers
+	•	synaptic cleft
+	•	receptor activation
+	•	signal propagation
+
+Neurotransmitters are released into the synaptic cleft, bind to receptors on the receiving neuron, and convert electrical signals into biochemical responses that continue neural communication.
+Q: What is the difference between supraliminal and subliminal stimuli? [2.4 Brain Research and Marketing Myths]
+A:
+	•	supraliminal: consciously perceived
+	•	subliminal: not consciously perceived, but still effective
+
+Supraliminal stimuli are signals that are strong enough to enter conscious awareness, meaning the user notices them directly. In contrast, subliminal stimuli remain below the threshold of conscious perception but can still influence emotions, decisions, or behavior indirectly through subconscious processing.
+Q: What distinguishes emotions, feelings, affects, and moods? [3.1 Reward and Avoidance System]
+A:
+	•	feeling = interpretation
+	•	affect = activation
+	•	mood = diffuse, long-lasting
+	•	emotion = object-related
+
+Feelings are subjective interpretations of emotions, while affects are broader activation states encompassing emotions and moods. Moods last longer and lack specific triggers, whereas emotions are more intense, short-lived, and directed at particular events.
+Q: What is the basal forebrain and what does it control? [2.2 Limbic System]
+A:
+	•	vigilance
+	•	attention regulation
+	•	substantia innominata
+	•	arousal systems
+
+The basal forebrain, also called the substantia innominata, contains several nuclei involved in regulating attention, alertness, and cortical arousal. It plays a key role in cognitive readiness.
+Q: What are the three core needs in McClelland’s theory? [3.2 Motives and Goals]
+A:
+	•	achievement
+	•	power
+	•	affiliation
+
+McClelland’s theory posits that all behavior stems from three core needs. Achievement involves striving for excellence; power reflects the desire to influence others; affiliation relates to the need for social bonds (Harrell & Stahl, 1984).
+Q: What is the difference between intrinsic and extrinsic motivation? [3.2 Motives and Goals]
+A:
+	•	intrinsic = internal satisfaction
+	•	extrinsic = external reward
+	•	autonomy vs. control
+	•	related but distinct
+
+Intrinsic motivation comes from within and is driven by enjoyment or interest. Extrinsic motivation arises from external incentives (e.g., grades). Both can coexist and influence behavior in complex ways (Ryan & Deci, 2000).
+Q: What is a persona in user-centered design? [1.1 Explanation of Terms]
+A:
+	•	fictional user
+	•	UX design tool
+	•	goal-oriented
+	•	empathy driver
+
+A persona is a fictional character based on research data that represents a typical user group. It helps design teams keep user needs, goals, and behaviors in mind throughout the development process.
+Q: What is the cerebrum and what is its basic anatomical structure? [2.1 Anatomy of the Human Brain]
+A:
+	•	telencephalon
+	•	two hemispheres
+	•	corpus callosum
+	•	cortex cerebri
+
+The cerebrum, or telencephalon, is the brain’s largest region, divided into two hemispheres connected by the corpus callosum. It contains the insula and is covered by the cerebral cortex, which enables higher cognitive and sensory functions.
+Q: What is the function of the soma and the nucleus in a neuron? [2.3 Main Components of a Nerve Cell]
+A:
+	•	metabolic center
+	•	genetic control
+	•	protein synthesis
+	•	cell maintenance
+
+The soma houses the nucleus, which contains genetic material and regulates cell function. It serves as the metabolic hub of the neuron, supporting survival and communication.
+Q: What is the function of neural relay stations such as the thalamus? [2.3 Main Components of a Nerve Cell]
+A:
+	•	signal switching
+	•	sensory bundling
+	•	brain communication
+	•	relay integration
+
+Relay stations like the thalamus organize and transmit sensory signals between different brain regions. They enable efficient processing by routing relevant information to appropriate cortical areas.
+Q: What does the parietal lobe control? [2.1 Anatomy of the Human Brain]
+A:
+	•	spatial awareness
+	•	tactile processing
+	•	speech processing
+	•	sensory integration
+
+The parietal lobe (lobus parietalis) is responsible for integrating sensory information, especially touch and spatial orientation. It also contributes to language and speech processing.
+Q: What is scanning and what typographic features support it? [6.1 Basics of Typography]
+A:
+	•	fast searching for specific information like terms or dates
+	•	2–3 column layout
+	•	bold keywords
+	•	sans-serif fonts (e.g., Arial, Helvetica)
+	•	small font, tight line spacing
+
+Scanning involves quickly glancing through text to locate specific elements. Bold keywords, compact layout, and legible sans-serif fonts help guide the eye efficiently through dense content.
+Q: What is the limbic system and how is it best understood? [2.2 Limbic System]
+A:
+	•	functional network
+	•	emotional regulation
+	•	memory and motivation
+	•	autonomic influence
+
+The limbic system is not a discrete anatomical structure but a conceptual framework describing a network of brain areas involved in regulating emotion, memory, motivation, and autonomic functions. It includes interconnected regions that work together to influence behavior.

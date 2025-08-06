@@ -1,320 +1,305 @@
-Q: How do photoelectric sensors measure distance or presence in robotics? [Measurement Systems]
-A: They use light (often infrared) in systems like light barriers, where interruption or reflection of a light beam changes photoresistor resistance, indicating object presence.
-Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
-A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
-Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
-A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
-Q: What robot types are commonly used in car assembly tasks? [Common Industrial Robots and Applications]
-A: Articulated, Cartesian, SCARA, and cylindrical robots are used due to their ability to handle heavy components (100–300 kg) and perform repetitive tasks reliably.
-Q: What physical principle do strain gauges rely on to measure mechanical strain? (Mechanical
-A: Strain gauges operate based on the piezoresistive effect, where mechanical strain alters a wire’s resistance, which is a function of its length, cross-sectional area, and specific resistance (R = ρ·l/A). (l)=length
-Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
-A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
-Q: What types of inputs can a robot control system process? [Control]
-A: Inputs can come from user programs, handheld terminals, or environmental sensors and are interpreted into robot actions or switching signals.
-Q: What are the four categories of control for kinematic chains according to Crowder? (Kinematic Chains)
-A: Crowder (2019) defines four control categories: (1) limited sequence control using mechanical stops, (2) stored program with point-to-point control, (3) stored program with continuous path control, and (4) intelligent-robot control with environmental interaction.
-Q: What defines an industrial robot?
-A: Industrial robots are stationary, multi-purpose manipulators with at least three programmable axes used to perform industrial tasks automatically, often equipped with end effectors like tools or grippers.
-Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
-A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control. Closed kinematic chains improve accuracy by providing multiple mechanical constraints that reduce structural deflection and limit the accumulation of positioning errors.
-Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
-A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.
-Q: What are personal robots and what challenges do they raise? [Trends in Mobile Robotics]
-A: Personal robots are intelligent AMRs designed for close human interaction; challenges include moral behavior modeling, user acceptance, and human-machine interaction (Chen et al., 2019; Sinnema & Amimarani, 2019).
-Q: What are proprioceptive and exteroceptive sensors in mobile robots? [Mobile Robot Sensors]
-A: Proprioceptive sensors measure internal states like position and acceleration; exteroceptive sensors detect external environmental conditions, such as obstacles or landmarks (Hertzberg et al., 2012).
-Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
-A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
-Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
-A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
-Q: What is a kinematic chain in robotics and how is it categorized? (Kinematic Chains)
-A: A kinematic chain is the complete assembly of joints and links in a robot that defines its motion capabilities and is categorized into serial (open) and closed kinematic chains.
-Q: What problem does the “composition of subsystems” present in robotics? (Challenges and Trends)
-A: The integration of robot modules is complex when systems are unencapsulated; using standardized interfaces can reduce development and production effort.
-Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
-A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
-Q: What does Robotics 3.0 represent, and what are its key characteristics? (Different Generations of Robotics)
-A: Robotics 3.0 describes the third generation of robots, known as ubiquitous robots, capable of multitasking, emotive response, morphing capabilities, and operating as part of multiagent systems—summarized by the 4Ms. These robots are context-aware, connected, and increasingly autonomous.
-Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
-Q: How do cloud robotics extend robot capabilities? (New Fields of Robotics)
-A: Cloud robotics enable offloading of computations and access to large datasets through a cloud-computing infrastructure, allowing robots to perform more complex tasks without local processing constraints.
-Q: How do inductive proximity sensors work? [Measurement Systems]
-A: They use a magnetic field from a coil in an oscillating circuit; when a metallic object enters the field, it reduces the amplitude, indicating distance.
-Q: What are the three types of alignment between robot joints? (Mechanical Structure)
-A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
-Q: Who filed the first patent for an industrial robot and in which year? (History of Industrial Robots)
-A: George Devol filed the first patent for an industrial robot in 1954.
-Q: What is an object or workpiece coordinate system?(Chapter 1)
-A: An object or workpiece coordinate system defines a reference frame located at the manipulateditem, ensuring correct spatial orientation for handling and assembly tasks.
-Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
-A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
-Q: How does the meander shape of strain gauge wires enhance sensitivity? (Mechanical Structure)
-A: The meander shape increases the effective wire length in the direction of strain, making even small deformations lead to measurable resistance changes, thereby enhancing measurement sensitivity.
-Q: What improvements characterize Robotics 2.0? (Different Generations of Robotics)
-A: Robotics 2.0, emerging in the early 2000s, introduced mobile and intelligent “personal robots” defined by the 4Ss: smarter, safer, sensors, and simple. These robots were more versatile and capable of complex tasks than their predecessors.
-Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
-A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
-Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
-A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
-Q: What is the contradiction behind “open dependable systems” in robotics? (Challenges and Trends)
-A: Robotics needs open systems for interoperability between vendors, but also closed systems for security and functionality, creating a design conflict.
-Q: What is the mechanical interface coordinate system?
-A: The mechanical interface coordinate system is defined at the robot’s flange where end effectors are mounted, serving as a transitional reference between the robot and tool.
-Q: What distinguishes point-to-point control from continuous path control? (Kinematic Chains)
-A: Point-to-point control stores only the start and end positions of the end effector, with no control over the exact path in between. Continuous path control, on the other hand, stores the full end effector trajectory and dynamically computes joint positions in real time to follow it smoothly and accurately.
-Q: How does the meander shape of strain gauge wires enhance sensitivity? (Mechanical Structure)
-A: The meander shape increases the effective wire length in the direction of strain, making even small deformations lead to measurable resistance changes, thereby enhancing measurement sensitivity.
-Q: How do closed kinematic chains affect a robot’s performance? (Kinematic Chains)
-A: Closed kinematic chains can enhance a robot’s positioning accuracy and stiffness compared to open chains, but introduce additional computational challenges for control.
-Q: What are the four categories of control for kinematic chains according to Crowder? (Kinematic Chains)
-A: Crowder (2019) defines four control categories: (1) limited sequence control using mechanical stops, (2) stored program with point-to-point control, (3) stored program with continuous path control, and (4) intelligent-robot control with environmental interaction.
-Q: What was the Electro-light-sensitive Internal-External, and why is it significant? (History of Mobile Robots)
-A: Developed in 1940s–1950s England, it was an early autonomous mobile robot that could locate light sources and interact with its environment using sensors and actuators.
-Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
-A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
-Q: What are joint coordinates versus Cartesian coordinates in robotics?
-A: Joint coordinates describe the angles or positions of individual robot joints, while Cartesian coordinates describe the end effector’s absolute position in 3D space; both are needed to control robotic motion.
-Q: What are some of the emerging disciplines within robotics alongside traditional manufacturing and mobile robots? (Summary)
-A: Emerging disciplines include humanoid robots, social robots, wearable robots, soft robots, and bio-inspired robots, each enabling new types of interaction and applications.⸻
-Q: What defines a serial (open) kinematic chain? (Kinematic Chains)
-A: In a serial kinematic chain, each joint contributes one degree of freedom (DOF), and the number of joints equals the number of DOFs, forming a simple, linear sequence of actuated elements.
-Q: What is systems engineering in the context of robotics vs regular engineering?
-A: Unlike traditional engineering, which often focuses on individual components (e.g., only mechanics or electronics), systems engineering in robotics takes a holistic, interdisciplinary approach that integrates mechanical design, electronics, control systems, software, and external factors like ethics and regulation to ensure the entire robotic system works cohesively and meets complex performance and safety requirements.
-Q: What was the KAMRO, and what could it do? (History of Mobile Robots)
-A: KAMRO, the Karlsruhe autonomous mobile robot, could perform autonomous assembly tasks, expanding AMR capabilities.
-Q: What are common application areas for service mobile robots? [Applications of Mobile Robots]
-A: Service robots are used in transportation, surveillance, exploration, inspection, maintenance, harvesting, housekeeping, and entertainment (Berns & von Puttkamer, 2009).
-Q: How are mobile robot applications categorized based on autonomy and environment? [Applications of Mobile Robots]
-A: Applications are divided into (1) industrial robots with low autonomy and structured environments, (2) service robots with moderate autonomy and semi-structured environments, and (3) personal robots with high autonomy in unstructured environments (Berns & von Puttkamer, 2009).
-Q: What characterizes soft robotics and how does it differ from traditional robotics? (Wearable and Soft Robotics)
-A: Soft robotics uses flexible, deformable materials inspired by biology to build robots with adaptable, compliant structures. Unlike rigid traditional robots, soft robots can mimic natural movement and reduce system complexity (Rus & Tolley, 2015).
-Q: What makes the human hand a good model for robotic dexterity? (Forwards and Backwards Kinematics)
-A: The human hand exemplifies high kinematic dexterity due to its many DOFs and coordinated motion, serving as inspiration for robotic hands aimed at complex manipulation tasks.
-Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
-A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
-Q: What types of mechanical measurands can be derived from strain gauge data? (Mechanical Structure)
-A: Strain gauge data can be used to measure mechanical parameters such as strain, force, pressure, and stress, all of which relate to deformations described by Hooke’s Law.
-Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
-Q: What are examples of modern AMR applications? (History and Cultural Influence)
-A: Modern AMRs include autonomous vacuum cleaners, warehouse transporters, and exploration robots like Mars rovers, enabled by progress in sensing, motion planning, and software.
-Q: What types of sensors are commonly used in mobile robots for navigation and collision avoidance? [Mobile Robot Sensors]
-A: Sensors include tactile switches, bumpers, incremental encoders, sonar, infrared, laser scanners, gyroscopes, GPS, compasses, and cameras (Berns & von Puttkamer, 2009; Hertzberg et al., 2012).
-Q: What are the six defining characteristics of industrial robots according to Hägele & Schäfer (2006)? [Characteristics of Industrial Robots]
-A: (1) They are multi-purpose manipulators adaptable to specific tasks, (2) they modify properties of workpieces via tools, (3) they possess an end effector, (4) they feature at least three programmable axes, (5) they operate automatically without human input, and (6) they are stationary.
-Q: What is a degree of freedom (DOF) in robotics?
-A: A degree of freedom refers to an independent axis of motion; most industrial robots have six DOFs to position tools precisely in three-dimensional space through combinations of joints.
-Q: What are the main trends shaping the field of industrial robotics? [Trends in Industrial Robotics]
-A: Key trends include: (1) decreasing prices due to competition, (2) more collaborative and networked robots, (3) improved computing and vision systems, (4) increased use of fieldbus communication, (5) new financing and training models, and (6) broader application areas such as logistics and packaging (Hägele et al., 2008; Francis, 2019).
-Q: What is the role of the wrist assembly in a robot’s mechanical structure? (Mechanical Structure)
-A: The wrist assembly, located between the main manipulator and the end effector, adds three more joints to enable full orientation control, and its design depends on the robot’s intended application.
-Q: What is meant by “efficient mobile manipulation”? (Challenges and Trends)
-A: It describes the development of mobile robots capable of independently handling tasks at various locations, though challenges like high power consumption remain unresolved.
-Q: What is the configuration and application of a polar robot? (Mechanical Structure)
-A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
-Q: What are the different types of grippers used as end effectors? [End Effectors]
-A: Types include (1) vacuum grippers for fragile/smooth objects, (2) magnetic grippers for ferromagnetic materials, (3) simple mechanical grippers like hooks and scoops, and (4) mechanically actuated grippers with 2–4 fingers or anthropomorphic designs (Kandray, 2010).
-Q: Which countries had the highest number of industrial robot installations in 2018? (Market Overview)
-A: In 2018, China led with 154,032 installations, followed by Japan (55,240), the United States (40,373), South Korea (37,807), and Germany (26,723), according to the International Federation of Robotics.
-Q: What is the relationship between force, strain, and stiffness described by Hooke’s Law? (Mechanical Structure)
-A: According to Hooke’s Law, force F is related to strain ε via F = A·E·ε, where A is the cross-sectional area and E is Young’s Modulus, a material-dependent constant representing stiffness.
-Q: What is the issue with “embodiment of engineering and research results”? (Challenges and Trends)
-A: Robotics being interdisciplinary makes it difficult to transfer research insights meaningfully into engineering applications, requiring coordinated integration.
-Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
-A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installation.
-Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
-A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
-Q: What are the core responsibilities of the control system in an industrial robot? [Control]
-A: The control system processes sensor data, performs motion planning, interprets input commands, and generates output actions to determine and execute the robot’s path and movements (Jazar, 2010; Hägele & Schäfer, 2006).
-Q: What is the formula connecting resistance change and strain in a strain gauge? (Mechanical Structure)
-A: The resistance change ΔR in a strain gauge is directly proportional to the strain ε, expressed as ΔR / R = k·ε, where k is the gauge factor or sensitivity constant.
-Q: What standard governs human-robot collaboration safety, and what are its main requirements? [Common Industrial Robots and Applications]
-A: ISO 10218-1 defines safety for human-robot collaboration, requiring: (1) guiding equipment near the end effector, (2) speed limits (max. 250 mm/s), and (3) safe, monitored distance between human and robot.
-Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
-A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
-Q: What are some military applications of mobile robots? [Applications of Mobile Robots]
-A: Military AMRs are used in bomb disposal and potentially in future combat systems; they reduce risk to human personnel in hazardous scenarios.
-Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
-A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
-Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
-A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
-Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
-A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
-Q: What are some additional application domains for industrial robots beyond manufacturing? [Common Industrial Robots and Applications]
-A: They include food packaging, foundry and forging, biomedical tasks, nuclear material handling, die casting, injection molding, wafer handling, and loading/unloading operations.
-Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
-A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
-Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
-A: The closure constraint in closed kinematic chains refers to the requirement that all joint positions and link lengths must satisfy loop closure equations, ensuring that the end of the chain returns to its starting point—mathematically, the product of all transformations around the loop must equal the identity, maintaining geometric consistency.
-Q: What additional control challenges do mobile robots face compared to industrial robots? [Mobile Robot Control]
-A: Unlike stationary robots, mobile robots must continuously manage navigation, avoid obstacles, and integrate real-time sensor data for localization and image-based path planning (Hertzberg et al., 2012).
-Q: What is a typical method to resolve redundancy in inverse kinematics? (Forwards and Backwards Kinematics)
-A: A common method for resolving redundancy is optimizing individual joint trajectories to meet criteria such as energy efficiency, obstacle avoidance, or motion smoothness.
-Q: What are the six classes of robot intelligence according to JIRA?
-A: The six classes are: (1) manually operated multi-axis devices (e.g. cranes), (2) fixed-sequence task robots, (3) flexible-sequence automation, (4) playback robots that mimic recorded manual input, (5) program-controlled robots, and (6) intelligent robots that adapt to variable environments using sensory data.
-Q: What are the six basic components of an industrial robot system according to Hägele and Schäfer (2006)? [Components of an Industrial Robot System]
-A: The six basic components are: (1) kinematics, (2) actuators, (3) measurement systems, (4) tools and/or picker arm, (5) control, and (6) sensors (if applicable).
-Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
-A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
-Q: Why is actuation a major challenge in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Actuation is challenging due to the limited internal space available for integrating motors, sensors, and transmission mechanisms within small finger segments or joints.
-Q: When is inverse kinematics typically used in robotics? (Forwards and Backwards Kinematics)
-A: Inverse kinematics is used during motion planning when a desired toolpath is defined, and the required joint coordinates must be computed to achieve this motion.
-Q: What role does artificial intelligence play in modern industrial robots? [Trends in Industrial Robotics]
-A: AI enables data analytics, gesture recognition, haptic control of robotic hands, and more efficient use of sensor data to enhance automation and flexibility (Zhou et al., 2019; Jeong et al., 2019; Francis, 2019).
-Q: What types of kinematic structures are used in mobile robots? [Mobile Robot Kinematics]
-A: Kinematic structures include wheels, legs, wings, or biomimetic designs such as humanoid, salamander, shrimp, helicopter, submarine, or tank-like forms (Hertzberg et al., 2012).
-Q: What is a base coordinate system in robotics?
-A: The base coordinate system is a fixed reference frame located at the robot’s assembly or mounting point, serving as the origin for other coordinate transformations.
-Q: What is intelligent-robot control and how does it differ from other control categories? (Kinematic Chains)
-A: Intelligent-robot control enables real-time interaction with the environment by sensing and adapting movement paths dynamically, offering the highest complexity and flexibility among the four control categories.
-Q: What advancements have been made in legged robots? [Trends in Mobile Robotics]
-A: Legged robots have become fast, robust, and efficient, with mobility that rivals animals and humans, driving progress in humanoid robot design (Kajita & Espiau, 2008).
-Q: What additional tasks are required for mobile robot motion planning? [Mobile Robot Kinematics]
-A: Motion planning includes localization (absolute or relative), mapping, navigation, and path planning based on environmental data (Berns & von Puttkamer, 2009).
-Q: How does under-actuation help in dexterous robotic hands? (Forwards and Backwards Kinematics)
-A: Under-actuation allows control of multiple finger joints or segments using fewer actuators by mechanically linking them, addressing space and complexity constraints in multi-fingered robotic hands.
-Q: What does Young’s Modulus indicate and how do its values vary between materials? (Mechanical Structure)
-A: Young’s Modulus measures a material’s stiffness, with higher values indicating greater resistance to deformation; plastics range from 1.4–3.1 GPA, while steel is around 200 GPA.
-Q: What is the miniaturization trend in mobile robotics? [Trends in Mobile Robotics]
-A: Miniaturization enables the development of millimeter- to nanometer-scale robots for medicine, manufacturing, and search-and-rescue, aided by cheaper, smaller components (Paprotny & Bergbreiter, 2014).
-Q: What is the primary function of rotary encoders in robotics? [Measurement Systems]
-A: Rotary encoders measure angular position or velocity of revolute joints, enabling precise joint control.
-Q: What is meant by “ubiquitous robotics”? (New Fields of Robotics)
-A: Ubiquitous robotics refers to the widespread integration of robots in various environments, emphasizing connectivity, real-time information exchange, and the ability to perform semantic perception, reasoning, and actuation within networked systems.
-Q: What is a tool coordinate system?
-A: The tool coordinate system defines a reference frame at the end effector, allowing precise control and alignment of the tool relative to the robot’s motion.
-Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
-A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
-Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
-A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
-Q: What was special about KUKA’s robot arm introduced in 2006? (History of Industrial Robots)
-A: KUKA’s 2006 robot arm had seven degrees of freedom and matched the weight of a human arm, improving dexterity and human-like motion.
-Q: What does “human-friendly task specification” refer to in robotics? (Challenges and Trends)
-A: Human-friendly task specification” in robotics refers to designing robot programming or control interfaces so that humans—especially non-experts—can easily instruct robots to perform tasks without needing to understand complex code or low-level motion planning.
-Q: How are autonomous vehicles contributing to mobile robotics? [Trends in Mobile Robotics]
-A: Vehicles are integrating robotic features like autonomous navigation, advanced sensing, and environmental adaptation, making them intelligent mobile robots (Broggi et al., 2008).
-Q: What is the Cartesian coordinate system and how is it used in robotics?
-A: The Cartesian coordinate system defines positions in 3D space using x, y, and z axes; it is ideal for describing translational movements of robots and is the most commonly used coordinate model.
-Q: What is hierarchical control in robotics? (History of Mobile Robots)
-A: Hierarchical control involves at least three levels: low-level task routines, intermediate-level combinations of tasks, and a top cognitive level for planning and executing actions.
-Q: Which types of industrial robots dominated the global market in 2019? (Market Overview)
-A: In 2019, the most common industrial robots were articulated robots, followed by cylindrical and SCARA robots; together they comprised approximately 80% of all industrial robot installationn
-Q: What characterizes the SCARA configuration and in which sector is it commonly applied? (Mechanical Structure)
-A: The SCARA (Selective Compliance Assembly Robot Arm) configuration features an R ∥ R ∥ P alignment with two rotational and one prismatic joint in parallel, offering high rigidity in the vertical direction and is widely used in electronics manufacturing.
-Q: What trends have shaped modern industrial robots? (History and Cultural Influence)
-A: Key trends include lighter, human-like designs, more DOFs (e.g. 7-DOF arms), parallel kinematic structures, lower costs, synchronized robot coordination, and enhanced software and sensor integration.
-Q: What is the function of proximity switches in robotics? [Measurement Systems]
-A: Proximity switches detect object presence or distance without physical contact using inductive or capacitive sensing principles.
-Q: What innovations did the robot “Shakey” introduce in the 1960s? (History of Mobile Robots)
-A: Shakey included a TV camera, triangulation-based distance sensors, and hierarchical control software capable of environmental perception and motion planning.
-Q: What is hierarchical control in robotics? (History and Cultural Influence)
-A: Hierarchical control structures robot behavior in layers: low-level routines for motion, intermediate task combinations, and high-level cognitive planning for goal execution.
-Q: Why is sustainable manufacturing a trend in robotics? (Challenges and Trends)
-A: The robotics field must address resource scarcity and environmental impact by emphasizing recycling and sustainable material usage.
-Q: How is sensor technology influencing industrial robot development? [Trends in Industrial Robotics]
-A: Due to the data demands of AI and mobile systems, sensor use is increasing, with new systems enabling higher accuracy, better perception, and smarter control strategies.
-Q: What are the three main challenges in developing ubiquitous robots according to Chibani et al. (2013)? (New Fields of Robotics)
-A: Chibani et al. (2013) highlight the challenges of increasing robot autonomy, enabling social awareness and affective interaction, and solving engineering problems specific to ubiquitous robots (“ubirobots”).
-Q: What are the defining traits of Robotics 1.0? (Different Generations of Robotics)
-A: Robotics 1.0 refers to the first generation of industrial robots introduced in the 1960s, characterized by the 4Ds: dull, dirty, dumb, and dangerous. They were used to automate basic industrial processes and provided significant economic value despite limited intelligence.
-Q: What are the three types of alignment between robot joints? (Mechanical Structure)
-A: The three types of alignment between robot joints are: (1) parallel (∥), (2) orthogonal (∟) where axes are at right angles to each other, and (3) perpendicular (⊥) where two axes form a right angle with respect to their common normal.
-Q: What is the closure constraint in closed kinematic chains? (Kinematic Chains)
-A: The closure constraint refers to the requirement that the closed loop formed by multiple links and joints must maintain a consistent geometric relationship, adding complexity to motion planning and control.
-Q: What technical challenge distinguishes mobile robots from industrial robots? (History and Cultural Influence)
-A: Unlike stationary industrial robots, mobile robots require autonomous navigation, environmental adaptability, and mobile power sources like rechargeable batteries.
-Q: Why is inverse kinematics often mathematically complex? (Forwards and Backwards Kinematics)
-A: Inverse kinematics can be mathematically complex because it may involve nonlinear equations, multiple possible solutions, and redundant degrees of freedom, especially in robots with high DOFs.
-Q: What are end effectors in industrial robotics?
-A: End effectors are tools or grippers attached to the end of a robotic arm, used to interact with the environment and perform specific industrial tasks like welding, picking, or assembly.
-Q: What is the main challenge in using industrial robots for machining processes? [Common Industrial Robots and Applications]
-A: Robots generally have lower stiffness than traditional machine tools, making them less suitable for high-force operations unless adapted for low-force incremental tasks like polishing and grinding.
-Q: What are recent improvements in actuator systems for industrial robots? [Trends in Industrial Robotics]
-A: Actuators are becoming more precise (nanometer-scale in research), while also becoming cheaper, lighter, and more flexible in form and function (Scheinman & McCarthy, 2008).
-Q: What is the R ∥ P ∟ P robot configuration called and what are its limitations? (Mechanical Structure)
-A: The R ∥ P ∟ P configuration is called a cylindrical configuration, where a prismatic joint follows a rotational joint and another prismatic joint is orthogonal to the previous; it can reach all points in space but is less versatile than the polar configuration.
-Q: What is the role of couplings and transmissions in actuated robot systems? [Actuators]
-A: Couplings connect actuators to robot links, while transmissions convert movement parameters such as energy, velocity, or torque.
-Q: What are the typical sensing limitations in material transfer applications? [Common Industrial Robots and Applications]
-A: Many robots lack force or vision sensors, which limits their flexibility in handling variably oriented or positioned objects.
-Q: What are soft robots and what advantages do they offer? (Mechanical Structure)
-A: Soft robots are flexible robotic systems inspired by biological models, made from compliant materials that allow high adaptability, safe interaction, and simplified kinematic designs.
-Q: What is the goal of wearable robotics, and what are its potential applications? (Wearable and Soft Robotics)
-A: Wearable robotics aim to integrate robots directly with the human body to enhance or restore function, with applications including exoskeletons, exosuits, medical rehabilitation, prosthetics, and wearable user interfaces. The market is projected to grow significantly in the 2020s (Masia & Vitiello, 2020).
-Q: What are strain sensors used for in robotic systems? (Mechanical Structure)
-A: Strain sensors are used to detect elongation or strain in robot components under mechanical load, enabling the design of semi-rigid systems that compensate for structural deflections affecting positioning accuracy.
-Q: What is the difference between forward and inverse (backward) kinematics in robotics? (Forwards and Backwards Kinematics)
-A: Forward kinematics determines the tool coordinates based on known joint coordinates, while inverse (backward) kinematics calculates the necessary joint coordinates to achieve a desired tool position and orientation.
-Q: What is an example of a robotic system with high DOFs, and what does this enable? (Forwards and Backwards Kinematics)
-A: A humanoid robot with 24 DOFs, as shown by Seiwald & Rixen (2020), allows flexible motion and dual-hand manipulation, resulting in closed kinematic chains and enhanced adaptability.
-Q: How were AMRs used after the Chernobyl disaster in 1986? (History of Mobile Robots)
-A: AMRs were deployed in hazardous areas to perform tasks that would have been life-threatening for humans.
-Q: How is strain (ε) defined in the context of robotic structural deformation? (Mechanical Structure)
-A: Strain ε is defined as the relative change in length of a component under mechanical stress, calculated by ε = Δl / l, where Δl is the elongation and l is the original length.
-Q: What is the joint configuration of a jointed-arm robot and where is it commonly used? (Mechanical Structure)
-A: A jointed-arm robot typically has a configuration of R ∟ R ∥ R with three rotational joints in orthogonal and parallel alignment, and is commonly used in industrial production.
-Q: How is robot programming evolving in industrial robotics? [Trends in Industrial Robotics]
-A: There is a shift from manual programming (e.g. playback robots) toward offline programming, reducing downtime and enabling better flexibility in calibration and updates (Motta, 2006).
-Q: How many degrees of freedom are required for arbitrary positioning and orientation in 3D space? (Mechanical Structure)
-A: To achieve full positioning and arbitrary orientation in 3D space, six degrees of freedom (DOF) are required, typically implemented with six joints.
-Q: What type of robots are typically used for welding applications? [Common Industrial Robots and Applications]
-A: Welding tasks often use NC-controlled articulated or polar robots with up to seven degrees of freedom for kinematic redundancy and high precision.
-Q: What does the kinematic structure of a robot consist of? [Kinematics]
-A: It consists of joints and links forming axes of movement, where joints provide degrees of freedom (DOFs) through either translation or rotation, enabling relative motion between rigid links.
-Q: What characterizes a closed kinematic chain in robots? (Kinematic Chains)
-A: A closed kinematic chain includes loops in its linkage structure, where multiple paths connect between links, enabling higher stiffness and accuracy but requiring more complex motion planning due to closure constraints.
-Q: How does artificial intelligence enhance mobile robots? [Trends in Mobile Robotics]
-A: AI improves perception, decision-making, interaction, and learning in mobile robots through cognitive systems, neural networks, and machine learning (Verrugio & Operto, 2008).
-Q: What distinguishes magnetic grippers from other gripper types? [End Effectors]
-A: Magnetic grippers use permanent or electromagnets to lift objects with magnetic properties and do not require physical force or vacuum to grasp.
-Q: What must be ensured for a robot to be considered a rigid body? (Kinematic Chains)
-A: For a robot to be considered a rigid body, it must be ensured that the mechanical deformations or deflections of its kinematic structure under load are smaller than its positioning accuracy, so that these effects can be neglected in control and modeling.
-Q: What was the projected annual growth rate of the industrial robot market between 2019 and 2027? (Market Overview)
-A: The industrial robot market was projected to grow at an annual rate of 15.1% from a volume of $22 billion in 2019 to $66.5 billion in 2027, according to Fortune Business Insights.
-Q: What are joints and links in robotic kinematics?
-A: Links are rigid bodies, and joints connect them, enabling motion via degrees of freedom (DOF), which can be rotational (revolute, R) or translational (prismatic, P), allowing robots to move in 3D space.
-Q: What distinguishes point-to-point control from continuous path control? (Kinematic Chains)
-A: Point-to-point control sets only the final positions in memory without controlling the intermediate path, whereas continuous path control constantly measures and adjusts joint positions throughout the entire movement.
-Q: What is the purpose of measurement systems in industrial robots? [Measurement Systems]
-A: Measurement systems sense mechanical parameters like position, angle, force, and velocity, enabling robots to adapt and plan movement via control loops.
-Q: What components make up a robot’s kinematic structure? (Mechanical Structure)
-A: The kinematic structure of a robot consists of joints and links, where joints connect links and enable either translational (using prismatic joints) or rotational (using revolute joints) movements.
-Q: What was the projected annual growth rate of the industrial robot market between 2019 and 2027? (Market Overview)
-A: The industrial robot market was projected to grow at an annual rate of 15.1% from a volume of $22 billion in 2019 to $66.5 billion in 2027, according to Fortune Business Insights.
-Q: What is kinematic redundancy and how is it defined? (Forwards and Backwards Kinematics)
-A: Kinematic redundancy refers to the presence of more degrees of freedom than necessary to complete a task, allowing increased flexibility and dexterity; it is formally defined as DOFs > task requirements.
-Q: Why are cylindrical robots often chosen for spray painting applications? [Common Industrial Robots and Applications]
-A: Because of their ability to perform uniform coating with minimal overspray and resource usage, and their motion can be programmed offline.
-Q: What type of joints define a Cartesian or Gantry robot, and what is its spatial capability? (Mechanical Structure)
-A: A Cartesian or Gantry robot uses three translational joints (P ∟ P ∟ P) forming a Cartesian coordinate system, resulting in high reachability in 3D space.
-Q: What is ASIMO and who developed it? (New Fields of Robotics)
-A: ASIMO is a humanoid robot developed by Honda that exemplifies the technological advances and design goals of modern humanoid robotics.
-Q: What was the innovation of the SCARA robot? (History of Industrial Robots)
-A: The SCARA robot introduced a selective compliance design that allowed for simplified, cost- effective assembly in industries such as electronics. Selective Compliance: The robot allows slight movement or flexibility in certain axes—typically the horizontal X-Y plane—so it can adjust or absorb small misalignments during part insertion. Selective compliance is especially beneficial in insertion tasks like: • Peg-in-hole assembly • Connector or cable insertion • PCB component placement • Screw alignment
-Q: What is the difference between incremental and absolute rotary encoders? [Measurement Systems]
-A: Incremental encoders count pulses per revolution and require re-referencing after shutdown, while absolute encoders assign a unique value to each position, retaining it after power loss.
-Q: What are the two main elements of a robot’s mechanical structure according to Crowder? (Mechanical Structure)
-A: According to Crowder (2019), the mechanical structure of a robot consists of (1) the main manipulator, which positions the tool or gripper arm, and (2) the wrist assembly, which determines the orientation of the end effector.
-Q: What is the configuration and application of a polar robot? (Mechanical Structure)
-A: A polar robot uses an R ∟ R ∟ P joint configuration, providing two orthogonal revolute joints followed by a prismatic joint, and is typically used in the automotive industry for its versatile positioning capabilities.
-Q: Why is low-cost actuation critical for robotics adoption? (Challenges and Trends)
-A: Actuators account for a large share of robot costs, so reducing actuator and component costs is vital to make robotics more accessible to a wider market.
-Q: How do tactile sensors function in mobile robots? [Mobile Robot Sensors]
-A: Tactile sensors use mechanical components like springs or bumpers to detect contact; when triggered, they typically interrupt robot movement as a safety response (Berns & von Puttkamer, 2009).
-Q: What is the advantage of brushless motors in robotics? [Actuators]
-A: Brushless motors provide durable actuation without physical contact for polarity switching, but pose greater challenges in control.
-Q: How does Jazar (2020) classify the kinematic chain of a robot? [Kinematics]
-A: Jazar classifies it into three parts: the manipulator, the wrist, and the end effector.
-Q: How does a closed kinematic chain improve a robot’s positioning accuracy? (Forwards and Backwards Kinematics)
-A: Closed kinematic chains create geometric constraints that improve rigidity and positional accuracy, which is especially useful in high-precision applications like surgical teleoperation. • The closed loop introduces closure constraints (loop-closure equations). • These mathematically constrain the end-effector to a specific path or position, reducing error propagation from joint inaccuracies. ⸻
-Q: What was the Stanford Arm and why was it significant? (History and Cultural Influence)
-A: Invented in 1969, the Stanford Arm was a six-DOF robot with efficient geometry for fast computation, laying the foundation for later arms like the MIT Arm and the PUMA system.
-Q: What does the discipline of kinematics describe in robotics?
-A: Kinematics is the study of how robot parts move in space—focusing on position, velocity, and acceleration—without considering the forces or torques that cause this movement; it is used to plan motion paths and end effector trajectories.
-Q: How are industrial robots categorized with respect to kinematics? [Common Industrial Robots and Applications]
-A: They are classified based on their kinematic chain, including configurations like articulated, Cartesian, SCARA, cylindrical, and polar robots, depending on the required motion and task.
-Q: What was the Stanford Cart and why was it notable? (History and Cultural Influence)
-A: The Stanford Cart was an early mobile robot that used stereo cameras to generate 3D images for environmental mapping, a key advance in robotic perception and planning.
+Q: What are the basal ganglia and their function? [2.1 Anatomy of the Human Brain]
+A:
+	•	subcortical nuclei
+	•	motor control
+	•	spontaneity regulation
+	•	affect modulation
+
+The basal ganglia are a group of deep brain structures responsible for voluntary motor control and cognitive-emotional integration. They help regulate movement initiation and mood.
+Q: What is the difference between cognitive and affective mental processes? [3.1 Reward and Avoidance System]
+A:
+	•	cognitive = processing
+	•	affective = excitation
+	•	dual activation
+	•	internal/external triggers
+
+Cognitive processes involve receiving, processing, and storing information, while affective processes involve emotional excitation that motivates behavior. Though often intertwined, one type may dominate, and both can be triggered internally or externally.
+Q: What are the main functions of the limbic system? [2.2 Limbic System]
+A:
+	•	emotional evaluation
+	•	memory formation
+	•	behavioral response
+	•	learning and motivation
+
+The limbic system governs how sensory input is emotionally evaluated, whether an experience is positive or negative, and how it is stored in memory. It also supports adaptive behavioral responses and learning.
+Q: What factors influence the strength and impact of goals? [3.2 Motives and Goals]
+A:
+	•	expectancy-value (feasibility × value)
+	•	feedback
+	•	task complexity
+	•	situational factors
+
+According to goal-setting theory (Locke & Latham, 2002), clearly defined and challenging goals enhance performance. Key factors include feedback, commitment, perceived importance, and the ability to perform the task.
+Q: What is the fornix and what is its function in the limbic system? [2.2 Limbic System]
+A:
+	•	limbic fiber tract
+	•	communication bridge
+	•	hippocampal connection
+	•	structural integration
+
+The fornix is a major white matter tract connecting key limbic structures. It facilitates communication, especially between the hippocampus and hypothalamus, and supports integrated emotional and memory processes.
+Q: What key functions are attributed to the temporal lobe? [2.1 Anatomy of the Human Brain]
+A:
+	•	memory
+	•	auditory processing
+	•	emotions
+	•	speech comprehension
+
+The temporal lobe (lobus temporalis) is involved in memory formation, language comprehension, and emotional regulation. It houses the amygdala and auditory cortex.
+Q: What are goals and how do they regulate behavior? [3.2 Motives and Goals]
+A:
+	•	desired future state
+	•	internal representation
+	•	behavioral direction
+	•	incentive anticipation
+
+Goals are mental representations of desired outcomes. They guide long-term behavior by enabling planning, control, and sustained motivation. Goals differ from wishes through commitment and trigger volitional regulation (Austin & Vancouver, 1996).
+Q: What is the role of the hypothalamus in the limbic system? [2.2 Limbic System]
+A:
+	•	vegetative regulation
+	•	memory involvement
+	•	anterior/posterior split
+	•	limbic integration
+
+The hypothalamus controls key bodily functions: its anterior region manages organ-related autonomic functions, while the posterior region participates in memory processing—both contributing to limbic system operations.
+Q: What are attitudes and how do they influence behavior? [1.1 Explanation of Terms]
+A:
+	•	emotional stance
+	•	self-assessment
+	•	stimulus evaluation
+	•	behavior orientation
+
+Attitudes are learned evaluations or emotional stances toward objects, people, or events. They influence how individuals interpret new information, make decisions, and engage in behavior based on prior beliefs and feelings.
+Q: What is the function of the reward and avoidance system in human behavior? [3.1 Reward and Avoidance System]
+A:
+	•	reward = pursue positive states
+	•	avoidance = prevent negative states
+	•	anticipatory motivation
+	•	emotional signaling
+
+The reward and avoidance system motivates behavior by signaling which stimuli are desirable or aversive. Positive emotions activate the reward system, prompting approach, while anticipated negative emotions activate the avoidance system, prompting withdrawal (Häusel, 2012).
+Q: What is the function of the thalamus, and why is it called the “gateway to consciousness”? [2.1 Anatomy of the Human Brain]
+A:
+	•	sensory relay
+	•	cerebral cortex input
+	•	attention control
+	•	awareness hub
+
+The thalamus relays sensory data to the cortex and modulates attention. It is termed the “gateway to consciousness” due to its central role in awareness and perception.
+Q: What rules apply when building visual hierarchy through font size? [6.2 Effect of Typography]
+A:
+	•	use no more than three font sizes
+	•	assign sizes to heading, subheading, and body text
+	•	recommended sizes: 14–16 px (body), 18–22 px (subheading), up to 32 px (heading)
+
+To build a clear visual hierarchy, font size should reflect the importance of content. Gordon (2021) advises using a maximum of three different font sizes—one each for headings, subheadings, and body text. This structured use of typography helps guide user attention effectively and keeps the layout visually organized.
+Q: What is the difference between the thalamus and the hypothalamus? [2.2 Limbic System]
+A:
+	• thalamus: relay station for sensory input (except smell); regulates consciousness and alertness
+	• hypothalamus: controls autonomic functions and hormones; regulates homeostasis and emotions
+
+The thalamus acts as the brain’s central relay for sensory information and supports consciousness and sleep. In contrast, the hypothalamus, located just below it, governs involuntary body functions such as hunger, temperature, and emotional responses, and manages hormone release via the pituitary gland.
+Q: Which neurotransmitters and hormones contribute to reward and avoidance feelings? [3.1 Reward and Avoidance System]
+A:
+	•	dopamine – motivation, reward
+	•	serotonin – calm, well-being
+	•	norepinephrine – arousal, stress
+	•	acetylcholine – learning, attention
+	•	endorphins – happiness
+	•	oxytocin – bonding, trust
+
+These messengers regulate mental states. Dopamine and endorphins fuel reward; serotonin and acetylcholine promote calm focus and learning; norepinephrine raises arousal; oxytocin fosters social trust (Kroeber-Riel & Gröppel-Klein, 2019).
+Q: What structures are included in the brainstem and what are their functions? [2.1 Anatomy of the Human Brain]
+A:
+	•	midbrain
+	•	pons
+	•	medulla oblongata
+	•	autonomic control
+
+The brainstem includes the midbrain, pons, and medulla oblongata. It manages core life-support functions like breathing, heart rate, and sleep regulation.
+Q: What is the function of the amygdala in emotional processing? [2.2 Limbic System]
+A:
+	•	fear regulation
+	•	memory encoding
+	•	hormone triggering
+	•	defensive behavior
+
+The amygdala processes emotional stimuli, especially fear, and coordinates with the hippocampus to encode emotional memories. It also initiates physiological responses such as hormonal release and behavioral defense reactions.
+Q: What functions are associated with the frontal lobe? [2.1 Anatomy of the Human Brain]
+A:
+	•	motor control
+	•	decision-making
+	•	speech production
+	•	pattern recognition
+
+The frontal lobe (lobus frontalis) controls voluntary movements and is involved in higher-order functions like planning, language production, and recognizing patterns.
+Q: How does the limbic system contribute to memory and learning? [2.2 Limbic System]
+A:
+	•	emotional filtering
+	•	memory tagging
+	•	adaptive learning
+	•	experience evaluation
+
+The limbic system processes sensory data by emotionally tagging it and organizing it in memory. This emotional tagging helps in recognizing similar future events and adapting behavior accordingly.
+Q: What are the roles of the gyrus cinguli and its subdivisions? [2.2 Limbic System]
+A:
+	•	affect regulation
+	•	memory formation
+	•	motor and pain integration
+	•	anterior/posterior parts
+
+The gyrus cinguli is the largest limbic structure and contributes to emotional processing, motor control, attention, and long-term memory. Its anterior and posterior segments serve distinct regulatory and integrative roles.
+Q: What functions are attributed to the septum in the limbic system? [2.2 Limbic System]
+A:
+	•	autonomic regulation
+	•	emotional experience
+	•	memory processing
+	•	limbic communication
+
+The septum helps regulate internal bodily states, emotional tone, and certain memory functions. It acts as a mediator between emotional states and physiological responses.
+Q: What does the cerebellum do and how is it structured? [2.1 Anatomy of the Human Brain]
+A:
+	•	movement coordination
+	•	two hemispheres
+	•	vermis cerebelli
+	•	motor learning
+
+The cerebellum consists of two hemispheres joined by the vermis. It refines movement, supports balance, and plays a key role in motor learning and classical conditioning.
+Q: What are basic and secondary emotions, and how are they distinguished? [3.1 Reward and Avoidance System]
+A:
+	•	basic emotions = innate, universal
+	•	secondary emotions = social, reflective
+	•	Ekman’s classification
+	•	emotional spectrum
+
+Basic emotions (anger, fear, disgust, sadness, happiness) are genetically embedded and culturally universal. Some researchers add shame, surprise, and embarrassment. Secondary emotions—like guilt, pride, envy, and love—arise from deeper self-awareness and complex social relationships (Ekman, 2016).
+Q: What is the overjustification effect and how does it affect motivation? [7.2 Design of the Flow Experience]
+A:
+	•	intrinsic motivation is undermined
+	•	caused by excessive external rewards
+	•	enjoyment becomes task-independent
+
+The overjustification effect occurs when a person who initially engages in an activity out of intrinsic motivation begins to associate it primarily with external rewards (e.g., money, grades). As a result, their natural enjoyment or interest decreases. The task becomes a means to an end rather than something pursued for its own value—potentially disrupting flow and long-term engagement.
+Q: What are the five traits in the Five Factor Model of Personality? [3.3 Personality Traits of the Human Being]
+A:
+	•	extraversion
+	•	agreeableness
+	•	conscientiousness
+	•	neuroticism
+	•	openness to experience
+
+The Big Five model reduces human personality to five major traits. These are sociability (extraversion), empathy (agreeableness), perfectionism (conscientiousness), emotional stability (neuroticism), and curiosity (openness). It’s widely used but lacks detail for some applications.
+Q: What are the components and role of the diencephalon? [2.1 Anatomy of the Human Brain]
+A:
+	•	thalamus
+	•	hypothalamus
+	•	subthalamus
+	•	epithalamus
+
+The diencephalon links the brainstem and cerebrum and regulates sensory input, emotions, vision, and autonomic functions. Each substructure contributes to brain–body coordination.
+Q: How is the term “experience” defined in the context of UX psychology? [1.1 Explanation of Terms]
+A:
+	•	knowledge dimension
+	•	emotional dimension
+	•	learning and feeling
+	•	significant events
+
+In UX psychology, “experience” refers to two key dimensions: (1) experience as knowledge gained through interaction and learning, and (2) experience as emotion—a subjective state triggered by important events or stimuli.
+Q: What is important when using a Mixture of different fonts? [6.1 Basics of Typography]
+A:
+Fonts should be clearly different; if they are too similar, they must differ in size to remain distinguishable.
+Q: What is the presumed function of the mamillary body? [2.2 Limbic System]
+A:
+	•	memory consolidation
+	•	emotional processing
+	•	functional speculation
+	•	limbic participation
+
+Although its exact role is unclear, the mamillary body is believed to be involved in processing emotions and consolidating memory, contributing to limbic system functions.
+Q: What assumptions underlie the theory of bounded rationality? [2.4 Brain Research and Marketing Myths]
+A:
+	•	limited options
+	•	future uncertainty
+	•	incomplete knowledge
+	•	restricted processing
+
+Bounded rationality assumes that people: (1) lack full knowledge of alternatives, (2) cannot predict all future consequences, (3) consider only a subset of options, and (4) have limited ability to process information.
+Q: Does the brain follow fixed organizational rules throughout life? [2.3 Main Components of a Nerve Cell]
+A:
+	•	neuroplasticity
+	•	lifelong change
+	•	adaptability limits
+	•	structural reorganization
+
+The brain demonstrates neuroplasticity—the ability to reorganize itself by forming new neural connections. This flexibility supports learning and recovery but diminishes with age.
+Q: What brain regions are associated with language processing, and how do they demonstrate hemispheric asymmetry? [2.1 Anatomy of the Human Brain]
+A:
+	•	Broca’s area
+	•	Wernicke’s area
+	•	dominant hemisphere
+	•	language lateralization
+
+Language is primarily processed in Broca’s and Wernicke’s areas, usually located in the hemisphere opposite the dominant hand. This represents a clear example of hemispheric asymmetry in brain function.
+Q: What brain region plays a central role in the reward system, and how does it function? [3.1 Reward and Avoidance System]
+A:
+	•	mesolimbic system
+	•	nucleus accumbens
+	•	reward evaluation
+	•	dopamine release
+
+The nucleus accumbens evaluates stimuli for their potential to trigger reward and coordinates with limbic inputs to initiate dopamine release when a stimulus is positively classified, reinforcing behavior (Brandstätter et al., 2018).
+Q: What forms the central nervous system according to Schütz (2015)? [2.1 Anatomy of the Human Brain]
+A:
+	•	brain
+	•	medulla oblongata
+	•	signal transmission
+	•	neural core
+
+According to Schütz (2015), the central nervous system (CNS) includes the brain and medulla oblongata, forming the core of information processing and transmission in the human body.
+Q: What distinguishes emotions, feelings, affects, and moods? [3.1 Reward and Avoidance System]
+A:
+	•	feeling = interpretation
+	•	affect = activation
+	•	mood = diffuse, long-lasting
+	•	emotion = object-related
+
+Feelings are subjective interpretations of emotions, while affects are broader activation states encompassing emotions and moods. Moods last longer and lack specific triggers, whereas emotions are more intense, short-lived, and directed at particular events.
+Q: What is the basal forebrain and what does it control? [2.2 Limbic System]
+A:
+	•	vigilance
+	•	attention regulation
+	•	substantia innominata
+	•	arousal systems
+
+The basal forebrain, also called the substantia innominata, contains several nuclei involved in regulating attention, alertness, and cortical arousal. It plays a key role in cognitive readiness.
+Q: What are the three core needs in McClelland’s theory? [3.2 Motives and Goals]
+A:
+	•	achievement
+	•	power
+	•	affiliation
+
+McClelland’s theory posits that all behavior stems from three core needs. Achievement involves striving for excellence; power reflects the desire to influence others; affiliation relates to the need for social bonds (Harrell & Stahl, 1984).
+Q: What is the cerebrum and what is its basic anatomical structure? [2.1 Anatomy of the Human Brain]
+A:
+	•	telencephalon
+	•	two hemispheres
+	•	corpus callosum
+	•	cortex cerebri
+
+The cerebrum, or telencephalon, is the brain’s largest region, divided into two hemispheres connected by the corpus callosum. It contains the insula and is covered by the cerebral cortex, which enables higher cognitive and sensory functions.
+Q: What does the parietal lobe control? [2.1 Anatomy of the Human Brain]
+A:
+	•	spatial awareness
+	•	tactile processing
+	•	speech processing
+	•	sensory integration
+
+The parietal lobe (lobus parietalis) is responsible for integrating sensory information, especially touch and spatial orientation. It also contributes to language and speech processing.
+Q: What is the limbic system and how is it best understood? [2.2 Limbic System]
+A:
+	•	functional network
+	•	emotional regulation
+	•	memory and motivation
+	•	autonomic influence
+
+The limbic system is not a discrete anatomical structure but a conceptual framework describing a network of brain areas involved in regulating emotion, memory, motivation, and autonomic functions. It includes interconnected regions that work together to influence behavior.

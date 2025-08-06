@@ -80,7 +80,9 @@ def print_formated(
         is_answer = False
 
     # Wrap first (no styling yet)
-    wrapped_lines = textwrap.wrap(string, width=text_box_size)
+    wrapped_lines = []
+    for l in string.splitlines():
+        wrapped_lines.extend(textwrap.wrap(l, width=text_box_size))
 
     # Compute indent once
     indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
@@ -116,16 +118,42 @@ def validate_format(entries: list[Entry]):
         q_marker = entry.question[:2]
         a_marker = entry.answer[:2]
         if q_marker != "Q:" or a_marker != "A:":
-            raise ValueError(f"❌ Format error: Each entry must start with 'Q:' for question and 'A:' for answer. Found: {entry.question} / {entry.answer}")
+            raise ValueError(f"❌ Format error: Each entry must start with 'Q:' for question and 'A:' for answer. Found: Q='{entry.question}' A='{entry.answer}'")
             return       
     print("✅ Format validated successfully.")
             
 def load_vocab_file(path: str) -> List[Entry]:
     with open(path, "r") as f:
         lines = f.read().splitlines()
-    if len(lines) % 2 != 0:
-        raise ValueError("❌ Format error: Vocabulary file must have even number of lines (Q/A pairs).")
-    return [Entry(lines[i], lines[i+1]) for i in range(0, len(lines), 2)]
+
+    entry_list = []
+    i = 0
+    while i < len(lines):
+        if not lines[i].startswith("Q:"):
+            raise ValueError(f"❌ Format error: Expected 'Q:' at line {i+1}, found: {lines[i]}")
+        question = []
+        while i < len(lines) and not lines[i].startswith("A:"):
+            question.append(lines[i])
+            i += 1
+            if i >= len(lines):
+                raise ValueError("❌ Format error: 'A:' missing after question block.")
+            
+
+        answer = []
+        while i < len(lines) and not lines[i].startswith("Q:"):
+            answer.append(lines[i])
+            i += 1
+
+        q_text = "\n".join(question)
+        a_text = "\n".join(answer)
+
+
+        if q_text and a_text:
+            entry_list.append(Entry(question=q_text, answer=a_text))
+        else:
+            print(f"⚠️ Skipped: Incomplete entry → Q='{q_text}' A='{a_text}'")
+
+    return entry_list
 
 def print_header(mode="Trainer", current=0, local_total=0):
     terminal_width, terminal_height = shutil.get_terminal_size()
@@ -203,20 +231,22 @@ def save_vocab(entries: List[Entry]):
 def multi_line_input() -> str:
         terminal_width, _ = shutil.get_terminal_size()
         indent = " " * max(terminal_width // 2 - text_box_size // 2, 0)
-        print_formated("Type '#' on a new line to finish.", style="NORMAL", colour="CYAN")
+        print_formated("Type '#' on a new line to finish.", colour="CYAN", style="NORMAL")
         new_question = ""
         while True:
             # Print the current input
-            user_input = input(indent)
-            clear_line()          
+            user_input = input(indent)    
             if user_input == "#":
                 break
-            new_question += (" " + user_input.strip())
+            new_question += " " + user_input + "\n"
+
         # Normalize the input      
+        new_question = re.sub(r'\r\n', '\n', new_question) # Normalize line endings
+        new_question = re.sub(r'\r+', '\n', new_question) # Normalize line endings
+        new_question = re.sub(r'\n+', '\n', new_question) # Normalize line endings
         new_question = new_question.strip()  # Remove leading/trailing whitespace
-        new_question = re.sub(r'\s+', ' ', new_question)  # Normalize whitespace
-        new_question = re.sub(r'\r\n|\r|\n', ' ', new_question) # Normalize line endings
-        new_question = new_question.strip() # Remove leading/trailing whitespace
+        new_question = re.sub(r"#$", "", new_question)
+        print(new_question)
         return new_question
 
 def entry_editor(entry: Entry) -> Entry:
@@ -224,7 +254,9 @@ def entry_editor(entry: Entry) -> Entry:
     while True:
         print_formated("Do you want to edit this question? [y/n]", style="NORMAL", colour="CYAN")
         edit_confirm = input(" " * max(terminal_width // 2 - text_box_size // 2, 0)).strip().lower()
-        clear_line()      
+        clear_line()
+        clear_line()
+
         if edit_confirm == "n":
             print_formated("Exiting editor...", style="NORMAL", colour="CYAN")
             time.sleep(1)
@@ -233,11 +265,10 @@ def entry_editor(entry: Entry) -> Entry:
             print_formated("Continuing to edit...", style="NORMAL", colour="CYAN")
             break
 
-
     # Edit current entry
     while True:
-        # Get terminal size
         print_formated("Editing current entry...", style="NORMAL", colour="CYAN")
+        # Edit question
         while True:
             print_formated("Please enter the new question and answer in the format 'Q: question'", style="NORMAL", colour="CYAN")
             new_question = multi_line_input()
@@ -245,7 +276,7 @@ def entry_editor(entry: Entry) -> Entry:
                 break
             else:
                 print_formated("❌ Invalid format. Question must start with 'Q:'. Please try again.", style="NORMAL", colour="RED")
-
+        # Edit answer
         while True:       
             print_formated("Now enter the answer in the format 'A: answer'", style="NORMAL", colour="CYAN")
             new_answer = multi_line_input()
@@ -253,9 +284,8 @@ def entry_editor(entry: Entry) -> Entry:
                 break
             else:
                 print_formated("❌ Invalid format. Answer must start with 'A:'. Please try again.", style="NORMAL", colour="RED")
-        # Validate input
-
         
+        # Validate input
         print("\n\n")
         print_formated(f"New Question:", style="NORMAL", colour="CYAN")
         print_formated(f"{new_question}", style="NORMAL", colour="WHITE")
@@ -344,7 +374,8 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Important", "Known", "No
             terminal_width = shutil.get_terminal_size().columns
             print_formated("Not known? [ENTER]     Known? [#]     Mark 'Important' [i]", style="NORMAL", colour="CYAN")
             cmd = input(" " * max(terminal_width // 2 - text_box_size // 2, 0))
-            clear_line()          
+            clear_line()    
+            clear_line()      
 
             if cmd == "":
                 entry.known = False
@@ -362,11 +393,16 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Important", "Known", "No
                 exit_code = "q"
                 return all_vocab, exit_code
             elif cmd == "i":
-                entry.known = False
-                entry.seen = True
-                entry.important = True
-                print(f"✅ {CYAN}Marked as important.{RESET}".center(terminal_width))
-                time.sleep(0.75)
+                if not entry.important: 
+                    entry.known = False
+                    entry.seen = True
+                    entry.important = True
+                    print(f"✅ {CYAN}Marked as important.{RESET}".center(terminal_width))
+                    time.sleep(0.75)
+                elif entry.important:
+                    entry.important = False
+                    print(f"❌ {CYAN}Unmarked as important.{RESET}".center(terminal_width))
+                    time.sleep(0.75)
                 break
             elif cmd == "m":
                 exit_code = "m"
@@ -392,7 +428,7 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Important", "Known", "No
                         print_formated("❌ Deletion cancelled.", style="NORMAL", colour="RED")
                         time.sleep(0.75)
                         break
-            break  # exit inner while after valid input
+            
 
         i += 1  # advance to next entry
                
@@ -439,12 +475,33 @@ def main():
     all_vocab = load_vocab_file(all_path)
     print(all_path)
     validate_format(all_vocab)
+
     global vocab_total
+    vocab_total = len(all_vocab)
+
+    # Drop duplicates based on `id`
+    seen_questions = set()
+    unique_entries = []
+    counter = 0
+    for entry in all_vocab:
+        if entry.question not in seen_questions:
+            seen_questions.add(entry.question)
+            unique_entries.append(entry)
+            counter += 1
+    all_vocab = unique_entries
+    counter = vocab_total - counter
+    if counter:
+        print(f"⚠️ Dropped {counter} duplicate entries based on question text.")
 
     vocab_total = len(all_vocab)
 
     known = []
     not_known = []
+
+    # Initialize sets
+    known_question_set = set()
+    not_known_question_set = set()
+    important_question_set = set()
 
     # Load known vocab
     known_path = Path(Entry.path_known)
@@ -454,11 +511,6 @@ def main():
         print(known_path)
         validate_format(known)
         known_question_set = {e.question for e in known}
-
-    # Initialize sets
-    known_question_set = set()
-    not_known_question_set = set()
-    important_question_set = set()
     
     # Load not known vocab
     not_known_path = Path(Entry.path_not_known)
@@ -469,7 +521,7 @@ def main():
         validate_format(not_known)
         not_known_question_set = {e.question for e in not_known}
 
-    # Load not important vocab
+    # Load important vocab
     important_path = Path(Entry.path_important)
     if os.path.exists(important_path):
         important = load_vocab_file(important_path)
@@ -499,28 +551,24 @@ def main():
         random.shuffle(all_vocab)
         all_vocab, exit_code = run_trainer(all_vocab, label="Important")
         if exit_code == "q":
-            save_vocab(all_vocab)   
             break
         # Unseen entries 
         # Shuffle unseen entries
         random.shuffle(all_vocab)
         all_vocab, exit_code = run_trainer(all_vocab, label="Unseen")
         if exit_code == "q":
-            save_vocab(all_vocab)
             break
         # Not known first
         # Shuffle not known entries
         random.shuffle(all_vocab)
         all_vocab, exit_code = run_trainer(all_vocab, label="Not Known")
         if exit_code == "q":
-            save_vocab(all_vocab)   
             break
         # Seen entries
         # Shuffle seen entries
         random.shuffle(all_vocab)
         all_vocab, exit_code = run_trainer(all_vocab, label="Known")
         if exit_code == "q":
-            save_vocab(all_vocab)
             break
 
 
@@ -534,3 +582,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -42,6 +42,13 @@ def clear_line():
     sys.stdout.write("\033[F\033[K")  # Move cursor up one line and clear the line
     sys.stdout.flush()  # Ensure the command is executed immediately
 
+def activate_ansi_escapes(string):
+    # Turn the literal escape sequences into real ANSI escapes
+    string = (string
+            .replace(r"\033", "\033")   # \033  -> ESC
+            .replace(r"\x1b", "\x1b"))  # \x1b  -> ESC
+    return string
+
 def print_formated(
         string: str, colour: Literal["WHITE", "CYAN", "BLUE", "GREEN", "RED"], 
         style: Literal["BOLD", "NORMAL"], 
@@ -78,6 +85,7 @@ def print_formated(
         is_answer = True
     else:
         is_answer = False
+                         
 
     # Wrap first (no styling yet)
     wrapped_lines = []
@@ -104,6 +112,9 @@ def print_formated(
         final_output += "\n\n"  # Add extra space after answer
     else:
         final_output = "\n".join(formatted_lines) 
+
+    # Activate ANSI sequences
+    final_output = activate_ansi_escapes(final_output)
 
     if position == "LEFT":
         print(final_output)
@@ -428,6 +439,7 @@ def run_trainer(all_vocab: List[Entry], label: Literal["Important", "Known", "No
                         print_formated("❌ Deletion cancelled.", style="NORMAL", colour="RED")
                         time.sleep(0.75)
                         break
+                break
             
 
         i += 1  # advance to next entry

@@ -50,30 +50,134 @@ A: The polar coordinate system is used in 2D space to represent points by their 
 
 
 ## File Format for vocabulary.txt
-•	Exactly one line per question, prefixed by Q:
-
-•	Followed immediately by one line per answer, prefixed by A:
-
-•	No blank lines or extra whitespace
+•	Questions must start with "Q:", Answers with "A:"
 
 •	No repeated Q: or A: lines in a row
 
 •	The number of lines in the file must be even (every Q: must be followed by A:).
 
-•	Each line should start with either Q: or A: (no indentation or space before the prefix).
-
-•	Do not add extra line breaks at the end of the file.
 
 
 Example:
 ```txt
-Q: What is the capital of France?
-A: Paris
-Q: What is the German word for ‘apple’?
-A: Apfel
+Q: How are entities and attributes represented in Chen notation? [3.1 The Entity Relationship Model]
+A:
+	•	rectangle = entity
+	•	oval = attribute
+	•	underlined = primary key
+
+In Chen notation, entities are drawn as rectangles and attributes as ovals connected to their respective entities. A primary key is indicated by underlining the corresponding attribute name.
+ ______________   ______________   ______________
+|  Attribute 1 | |  Attribute 2 | |  Attribute 3 |
+|   (PK)       | |              | |              |
+ --------------   --------------   --------------
+         \             |             /
+          \            |            /
+           \           |           /
+            \          |          /
+             \         |         /
+              \        |        /
+               \       |       /
+                \      |      /
+                 \     |     /
+                  ___________
+                 |   Entity  |
+                 |___________|
+Q: What is the structure of Martin (crow’s foot) notation for entities? [3.1 The Entity Relationship Model]
+A:
+	•	rectangle = entity
+	•	top = primary key
+	•	bottom = other attributes
+
+Martin notation (also known as crow’s foot notation) uses rectangles to represent entities. The entity name and primary key appear in the upper section of the rectangle, optionally marked with a key icon. Other attributes are listed in the lower section.
+
+ +-----------------+
+ |     Attribute 1 |  ← Primary key
+ +-----------------+
+ |     Attribute 2 |
+ |     Attribute 3 |  ← Entity
+ +-----------------+
+
 ``` 
 
-Avoid duplicate consecutive `Q:` or `A:` tags—this will raise a format error when the script validates input.
+### Highlighting text
+You can also highlight text using ANSI codes by…
+-	Embedding escape sequences like `\033[43;30m` before text and `\033[0m` after to reset formatting.
+-	Using the format `\\033[<style>;<foreground>;<background>m` where style, text color, and background color are numeric codes.
+-	Applying styles: 0 reset, 1 bold, 4 underline (optional, can be combined).
+-	Color codes: foreground 30–37 (black–white), background 40–47 (black–white).
+
+Example:
+<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; white-space: pre-wrap; line-height: 1.3; font-size: 0.95em;">
+Q: What do the cardinality notations N, C, CN, and CM represent in ER modeling? [3.2 Relationships and Cardinalities in ER]  
+A:  
+
+•	N   = 1*   <span style="color:yellow;">\033[43;30m</span>(mandatory)<span style="color:yellow;">\033[0m</span>
+•	C   = 0..1 (optional)  
+•	CN  = 0*   (optional)  
+•	CM  = 0*   (optional)  
+
+In ER modeling, <span style="color:yellow;">\033[42;97m</span>cardinality<span style="color:yellow;">\033[0m</span> notations describe how many instances of one entity can be associated with instances of another and whether the relationship is <span style="color:yellow;">\033[44;97m</span>optional<span style="color:yellow;">\033[0m</span>. “N” implies <span style="color:yellow;">\033[41;97m</span>mandatory<span style="color:yellow;">\033[0m</span> multiplicity (at least one), while “C” allows for omission. “CN” and “CM” both indicate an optional relationship to many, i.e., zero or more.  
+
+---
+
+Q: How is a 1:N and 1:CN relationship visually represented in Martin, UML, and Chen notation? [3.2 Relationships and Cardinalities in ER]  
+A:  
+
+•	Martin: line with crow’s foot
+	1:N:  [ENTITY]-|-----------------|<[ENTITY]  
+
+	1:CN  [ENTITY]-|----------------O|<[ENTITY]  
+
+•	UML: 1 to +1..*
+	1:N:  [ENTITY] 1_______________1..*[ENTITY]  
+
+	1:CN  [ENTITY] 1______________0..1 [ENTITY]  
+
+•	Chen: diamond with 1 and N
+	1:N:  [ENTITY] 1-------<>--------N [ENTITY]  
+
+	1:CN:     &lt;NOT POSSIBLE&gt;  
+
+In Martin notation, the 1:N relationship is shown using a straight line from Entity 1 to a crow’s foot on Entity 2. In UML, it is written as 1 on the side of Entity 1 and 1..* (one to many) on Entity 2’s side. In Chen notation, a diamond symbol connects both entities with 1 and N as the <span style="color:yellow;">\033[45;97m</span>cardinalities<span style="color:yellow;">\033[0m</span>. All three represent that each instance of Entity 1 is associated with one or more instances of Entity 2.
+</pre>
+### Output
+
+<!-- Put this directly in README.md (outside triple backticks) -->
+<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; line-height:1.2;">Q: What do the cardinality notations N, C, CN, and CM represent in ER modeling? [3.2 Relationships and Cardinalities in ER]  
+A:  
+
+•	N   = 1*   <span style="background-color:yellow;color:black;">(mandatory)</span>
+•	C   = 0..1 (optional)  
+•	CN  = 0*   (optional)  
+•	CM  = 0*   (optional)  
+
+In ER modeling, <span style="background-color:lightgreen;color:black;">cardinality</span> notations describe how many instances of one entity can be associated with instances of another and whether the relationship is <span style="background-color:lightblue;color:black;">optional</span>. “N” implies <span style="background-color:red;color:white;">mandatory</span> multiplicity (at least one), while “C” allows for omission. “CN” and “CM” both indicate an optional relationship to many, i.e., zero or more.  
+
+---
+
+Q: How is a 1:N and 1:CN relationship visually represented in Martin, UML, and Chen notation? [3.2 Relationships and Cardinalities in ER]  
+A:  
+
+•	Martin: line with crow’s foot
+	1:N:  [ENTITY]-|-----------------|<[ENTITY]  
+
+	1:CN  [ENTITY]-|----------------O|<[ENTITY]  
+
+•	UML: 1 to 1..*
+	1:N:  [ENTITY] 1_______________1..*[ENTITY]  
+
+	1:CN  [ENTITY] 1______________0..1 [ENTITY]  
+
+•	Chen: diamond with 1 and N 
+	1:N:  [ENTITY] 1-------<>--------N [ENTITY]  
+
+	1:CN:     &lt;NOT POSSIBLE&gt;  
+
+In Martin notation, the 1:N relationship is shown using a straight line from Entity 1 to a crow’s foot on Entity 2. In UML, it is written as 1 on the side of Entity 1 and 1..* (one to many) on Entity 2’s side. In Chen notation, a diamond symbol connects both entities with 1 and N as the <span style="background-color:violet;color:black;">cardinalities</span>. All three represent that each instance of Entity 1 is associated with one or more instances of Entity 2.
+</pre>
+
+
 
 
 
@@ -87,6 +191,7 @@ Avoid duplicate consecutive `Q:` or `A:` tags—this will raise a format error w
 ↩ Enter = show answer (mark as known)
 # = mark as known
 m = switch between modes [ known / unkown / unseen ]
+i = mark as important/unimportant
 q = quit
 d = delete
 ```

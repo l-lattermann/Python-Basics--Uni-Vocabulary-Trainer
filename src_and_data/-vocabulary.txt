@@ -1,0 +1,848 @@
+Q: Define NULL Value. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A NULL value indicates missing or unknown information in a record. Though it holds no value, it may still occupy storage space.
+Q: What is the distinction between a database, a DBMS, and a database system? [1.1 Basic Concepts of the Relational Data Model]
+A:
+
+	•	database → stores data
+	•	DBMS → manages access
+	•	database system → DB + DBMS
+
+A database is a structured collection of data stored efficiently on a storage medium like a hard drive. A Database Management System (DBMS) is the software that controls and manages access to the database, typically serving as the interface between applications and the stored data. A database system refers to the complete setup, consisting of both the DBMS and the database itself.
+Q: What is the AS keyword used for in SQL? [2.1 Querying Data (SELECT)]
+A:
+
+ AS     
+	renames a column or table in the result set
+        SELECT Name AS CountryName FROM Country;
+        → renames “Name” column to “CountryName” in output
+
+        SELECT Continent, COUNT() AS CountryCount FROM Country GROUP BY Continent;
+        → column with COUNT() appears as “CountryCount”
+
+The AS keyword assigns an alias to a column or table for clearer results. It does not rename anything in the database—only in the displayed output. This is especially useful when using functions or improving readability.
+Q: What is HAVING used for in SQL? [2.4 Queries with Group Formation (GROUP BY)]
+A:
+
+ HAVING   
+	restricts output after grouping with GROUP BY
+     	SELECT Continent FROM Country
+        WHERE Percentage = 100
+        GROUP BY Continent
+        HAVING COUNT(*) >= 5;
+        → shows continents with ≥5 countries fully located in them
+
+The HAVING clause filters groups, not individual rows. Unlike WHERE, which limits rows before grouping, HAVING applies conditions after grouping has taken place—usually with aggregate functions like COUNT, SUM, or AVG.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Define Relationships” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	link entities
+	•	specify cardinalities
+	•	create conceptual model
+
+After entities are identified, their relationships are defined, including the cardinalities that specify how many instances can be linked. The resulting conceptual data model depicts entities and their interconnections before physical implementation.
+Q: How is a 1:N  and 1:CN relationship visually represented in Martin, UML, and Chen notation? [3.2 Relationships and Cardinalities in ER]
+A:
+
+•	Martin: line with crow’s foot
+	1:N:  [ENTITY]-|-----------------|<[ENTITY]
+
+	1:CN  [ENTITY]-|----------------O|<[ENTITY]
+
+•	UML: 1 to 1..*
+	1:N:  [ENTITY] 1_______________1..*[ENTITY]
+
+	1:CN  [ENTITY] 1______________0..1 [ENTITY]
+
+•	Chen: diamond with 1 and N
+	1:N:  [ENTITY] 1-------<>--------N [ENTITY]
+
+	1:CN:     <NOT POSSIBLE>
+
+
+In Martin notation, the 1:N relationship is shown using a straight line from Entity 1 to a crow’s foot on Entity 2. In UML, it is written as 1 on the side of Entity 1 and 1..* (one to many) on Entity 2’s side. In Chen notation, a diamond symbol connects both entities with 1 and N as the cardinalities. All three represent that each instance of Entity 1 is associated with one or more instances of Entity 2.
+Q: Define Data Record (Tuple). [1.1 Basic Concepts of the Relational Data Model]
+A:
+A data record (or tuple) is a single row in a table and corresponds to one tuple in the relation. It represents one instance of an entity.
+Q: What is ORDER BY used for in SELECT … ORDER BY …? [2.3 Sort Query Output (ORDER BY)]
+A:
+	SELECT Name, Population FROM Country ORDER BY Population DESC;
+
+The ORDER BY clause sorts the result set by one or more columns. Here, countries are sorted in descending order by population.
+Q: How are N:M relationships represented in relational databases? [3.2 Relationships and Cardinalities in ER Models]
+A:
+
+•	via relationship tables
+•	contain only foreign keys from related tables
+•	use composite primary key (e.g., ADDRESSID + CUSTOMERID)
+
+N:M (many-to-many) relationships are implemented using relationship tables that store associations between entities from two different relations. These tables include only the foreign keys referencing the primary keys of the related tables—such as CUSTOMERID and ADDRESSID. The primary key of the relationship table is usually a composite key formed by combining these foreign keys, ensuring that each pairing is unique (e.g., one customer assigned to one billing address).
+Q: What do the cardinality notations N, C, CN, and CM represent in ER modeling? [3.2 Relationships and Cardinalities in ER]
+A:
+
+•	N   = 1*   (mandatory)
+•	C   = 0..1 (optional)
+•	CN  = 0*   (optional)
+•	CM  = 0*   (optional)
+
+In ER modeling, cardinality notations describe how many instances of one entity can be associated with instances of another and whether the relationship is optional. “N” implies mandatory multiplicity (at least one), while “C” allows for omission. “CN” and “CM” both indicate an optional relationship to many, i.e., zero or more.
+
+Q: What is a transitive dependency, and how is it resolved in normalization? [3.3 Normal Forms of Databases]
+A:
+
+	•	attribute depends on another non-key
+	•	violates 3NF
+	•	resolved by decomposition
+
+A transitive dependency occurs when a non-key attribute depends on another non-key attribute rather than the primary key. To reach 3NF, these dependencies must be separated into new tables, preserving direct dependence only on the key.
+Q: What ensures the uniqueness of objects in a relational database? [1.1 Basic Concepts of the Relational Data Model]
+A:
+
+	•	each object must be uniquely identifiable
+	•	duplicate rows with same attribute values are not allowed
+	•	technical attribute = identifier
+	•	identifier = primary key
+
+In a relational database, each object (row) within a relation must be uniquely identifiable, meaning that no two rows can have identical values across all attributes. However, real-world data doesn’t always guarantee such uniqueness based on domain-specific attributes. To enforce this requirement, a technical attribute—called an identifier or ID attribute—is often added to the relation. In relational databases, this identifier is formally referred to as the primary key, and it ensures that each data record remains distinguishable at all times.
+Q: What is GROUP BY used for in SELECT … GROUP BY …? [2.4 Queries with Group Formation (GROUP BY)]
+A:
+	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent;
+
+The GROUP BY clause groups rows by a specified column—in this case Continent—so that aggregate functions like COUNT(*) can be applied per group.
+Q: What is CONCAT used for in SQL? [2.1 Querying Data (SELECT)]
+A:
+ CONCAT(arg1, …, argN)  
+	combines values into a single string
+        SELECT CONCAT(Name, ’ ’, Code) FROM Country;
+        → joins Name and Code with a space in between
+Q: What are the four sublanguages of SQL and what is their purpose? [1.3 SQL and Relational Database Systems]
+A:
+
+	•	DML: Data Manipulation Language → manipulate data (e.g., SELECT, INSERT, UPDATE, DELETE)
+	•	DDL: Data Definition Language → define schema structure (e.g., CREATE, ALTER, DROP)
+	•	TCL: Transaction Control Language → manage transactions (e.g., COMMIT, ROLLBACK)
+	•	DCL: Data Control Language → control user access (e.g., GRANT, REVOKE)
+
+SQL is composed of four functional sublanguages, each targeting a different aspect of database operations. The Data Manipulation Language (DML) handles data-level actions like querying or modifying records. The Data Definition Language (DDL) is used to create or alter the structure of database schemas. Transaction Control Language (TCL) ensures safe and consistent execution of grouped DML commands. Lastly, Data Control Language (DCL) manages user permissions and access control to database resources.
+Q: How is a primary key defined in SQL, and what are its rules? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	use PRIMARY KEY keyword
+	•	no NULL values allowed
+	•	values must be unique in combination
+	
+	CREATE TABLE Address (
+    		AddressID INTEGER,
+    		Street VARCHAR(500),
+  		HouseNumber VARCHAR(50),
+  		City VARCHAR(500),
+  		PostalCode CHAR(5),
+  		\033[44;97mPRIMARY KEY (AddressID)\033[0m
+	);
+
+The PRIMARY KEY constraint specifies one or more columns that uniquely identify each row. A primary key column cannot contain NULL values, and its value (or combination of values) must be unique.
+Q: What are subqueries with exactly one return value used for in SQL? [2.5 Subqueries with Nested SELECT Statements]
+A:
+
+ =, <, >, <=, >=   
+	can be used if subquery returns a single value
+
+        SELECT Name
+        FROM Country
+        WHERE Area =
+           (SELECT MAX(Area) FROM Country);
+           → returns country with largest area
+
+Subqueries that retre typically used with comparison operators like =, <, or >. This is possible when the subquery returns a single column with a single row, often achieved using aggregate functions like MAX() or AVG(). If the subquery returns more than one value, a runtime error occurs.
+Q: Define Foreign Key. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A foreign key is an attribute in one table that references the primary key of another table, forming a relational link between the two.
+Q: What actions can be defined with ON UPDATE and ON DELETE to preserve referential integrity in SQL? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+• CASCADE	– automatically update/delete referencing rows.
+• SET NULL	– set foreign key to NULL (must allow NULL).
+• RESTRICT	– prevent update/delete of referenced row.
+• NO ACTION 	– do nothing (may break integrity).
+• SET DEFAULT 	– set foreign key to a default value.
+
+When a foreign key is defined, ON UPDATE controls behavior when the referenced key changes, and ON DELETE controls behavior when the referenced row is deleted. These options dictate how the DBMS maintains data consistency across related tables.
+Q: How do you use wildcards with the SQL LIKE operator? [2.2 Query Data with Condition (WHERE)]
+A:
+ _      
+	matches exactly one character
+        SELECT Name FROM Country WHERE Code LIKE '_';    
+	->single-character code
+        SELECT Name FROM Country WHERE Code LIKE 'C__';    
+	-> starts with C, 3-letter code
+
+ %      
+	matches any number (including zero) of characters
+        SELECT Name FROM Country WHERE Name LIKE '%A';    
+	-> ends with A
+        SELECT Name FROM Country WHERE Name LIKE 'G%Y';    
+	-> starts with G, ends with Y
+
+The LIKE operator enables pattern-based filtering of string data. The underscore (_) matches exactly one character, useful for filtering by string length or structure. The percent symbol (%) matches any sequence of characters, making it ideal for partial matches at the beginning, middle, or end of values. These wildcards are essential for flexible string querying in SQL.
+Q: Define Database Management System (DBMS). [1.1 Basic Concepts of the Relational Data Model]
+A:
+A DBMS is software used to create, manage, and interact with databases. It provides tools for defining structures, storing data, and ensuring integrity. Examples include MySQL, Oracle, and PostgreSQL.
+Q: What are common SQL binary data types and their characteristics? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	BINARY(n): fixed-length binary data, exactly n bytes.
+	•	VARBINARY(n): variable-length binary data, up to n bytes.
+	•	BOOLEAN: logical true/false values (often stored as 1/0 internally).
+
+Binary types store raw bytes rather than text. BINARY pads unused space, VARBINARY stores only the actual length used, and BOOLEAN stores logical states, though exact storage and accepted literal values may vary by DBMS.
+Q: Why is the third normal form often considered sufficient in practice? [3.3 Normal Forms of Databases]
+A:
+
+	•	low redundancy
+	•	high clarity
+	•	efficient for most use cases
+
+Most practical database systems achieve adequate data integrity and maintainability at 3NF. Going beyond 3NF (e.g., to BCNF or 4NF) yields marginal gains in many applications and can introduce complexity or performance trade-offs.
+Q: What is SELECT used for in SELECT …? [2.1 Querying Data (SELECT)]
+A:
+	SELECT Name, Capital FROM Country;
+
+The SELECT clause specifies which columns to return from the table. In this case, only the columns Name and Capital will be included in the output.
+Q: Which cardinalities can be directly mapped in relational databases? [3.2 Relationships and Cardinalities in ER]
+A:
+
+	•	1:1 (one-to-one)
+	•	1:N (one-to-many)
+
+Relational databases can directly represent 1:1 and 1:N relationships using primary and foreign keys. N:M (many-to-many) relationships cannot be directly mapped; they require an intermediate (junction) table to break the association into two 1:N relationships.
+Q: What type of operation is performed by the SQL SELECT command? [2.1 Querying Data (SELECT)]
+A:
+
+	•	read-only operation
+	•	retrieves data
+	•	does not modify the database
+
+The SQL SELECT command performs a read-only operation that retrieves data from one or more tables without altering the stored data. It is used to display the content of selected columns or rows and is fundamental for querying relational databases.
+Q: What is CONCAT_WS used for in SQL? [2.1 Querying Data (SELECT)]
+A:
+ CONCAT_WS(separator, arg1, …, argN)  
+	combines values into one string using a separator
+        SELECT CONCAT_WS(’ ’, Name, Code, Area, ‘;’) FROM Country;
+        → joins Name, Code, Area and adds space and semicolon as separators
+Q: What are the standard comparison operators used in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
+A:
+ =       
+	equality check
+        SELECT Name FROM Country WHERE Continent = ‘America’;
+
+ <>, !=  
+	inequality check
+        SELECT Name FROM Country WHERE Percentage <> 100;
+
+ >       
+	greater than
+        SELECT Name FROM Country WHERE Population > 10000000;
+
+ <      
+	less than
+        SELECT Name FROM Country WHERE Percentage < 100;
+
+ >=     
+	greater than or equal to
+        SELECT Name FROM Country WHERE Percentage >= 50;
+
+ <=      
+	less than or equal to
+        SELECT Name FROM Country WHERE Percentage <= 100;
+
+The comparison operators =, <> (or !=), <, >, <=, and >= are used in SQL to compare values within conditions. They allow filtering rows based on exact matches, inequality, or numeric/string thresholds. These operators are essential for value-based queries across both text and numeric fields.
+Q: What is cardinality in the context of entity relationships? [3.2 Relationships and Cardinalities in ER Models]
+A:
+	•	defines number of associations between entities
+	•	described as 1:1, 1:N, or N:M
+	•	also called arity or multiplicity
+
+Cardinality describes how many instances of one entity can be associated with instances of another in a relationship. A 1:1 relationship links one entity to exactly one other, 1:N links one to many, and N:M links many entities to many others. These patterns help structure relational schemas and are also referred to as arity or multiplicity in data modeling.
+Q: What are the four basic steps for querying data from a relational database? [2.1 Querying Data (SELECT)]
+A:
+
+•	identify relevant relations → e.g., use CUSTOMER and ADDRESS tables
+•	select specific attributes → e.g., retrieve POSTALCODE, LOCATION
+•	apply restrictions (filters) → e.g., only rows where CUSTOMERNAME = 'David Schwarz'
+•	sort the result set → e.g., order by LOCATION alphabetically
+
+To retrieve data from a relational database, you follow four steps: (1) identify which tables contain the necessary information, including indirect ones like relationship tables; (2) define the attributes (columns) you want returned; (3) filter the dataset based on conditions (such as matching a customer’s name); and (4) sort the results using a specific attribute. For instance, to find all delivery addresses for David Schwarz, you’d connect CUSTOMER, DELIVERYADDRESS, and ADDRESS, filter by his name, and retrieve just the POSTALCODE and LOCATION fields, optionally sorted alphabetically.
+Q: Why does SQL data type availability vary between database systems, and what should a developer check before schema design? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	vendor-specific implementations
+	•	proprietary data types
+	•	check DBMS name, version, documentation
+
+Although SQL defines standard data types, each DBMS vendor decides which ones to implement and may add proprietary types for practical purposes. Therefore, before designing a schema, the developer must know the DBMS manufacturer and version, and consult its technical documentation to ensure correct usage of supported and vendor-specific data types.
+Q: Define Consistency. [1.1 Basic Concepts of the Relational Data Model]
+A:
+Consistency means that all data in the database follow defined rules and constraints. It ensures logical correctness, such as valid foreign key references.
+Q: What is an RDBMS? [1.1 Basic Concepts of the Relational Data Model]
+A:
+
+	•	RDBMS
+	•	relational organization
+	•	DBMS subtype
+
+A Relational Database Management System (RDBMS) is a specific type of database management system designed to handle relationally organized data. In such systems, data is structured in tables with rows and columns, and the RDBMS provides functions for querying, updating, and managing this tabular data according to relational principles.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Identify Entities” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	find relations
+	•	start with technical entities
+	•	refine with details
+
+This step focuses on identifying the main entities (relations) to be represented in the database. Comparable to class identification in object-oriented design, it often starts from a technical data model provided by requirements engineering, rather than from scratch.
+Q: How do you create an artificial, automatically incrementing primary key in MariaDB? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	use integer column
+	•	add AUTO_INCREMENT
+	•	set as PRIMARY KEY
+
+	CREATE TABLE Address (
+        	AddressID \033[44;97mINTEGER AUTO_INCREMENT,\033[0m
+    		Street VARCHAR(500),
+    		HouseNumber VARCHAR(50),
+    		City VARCHAR(500),
+    		PostalCode CHAR(5),
+        	\033[44;97mPRIMARY KEY (AddressID)\033[0m
+	);
+
+In MariaDB, an artificial primary key can be auto-generated by defining it as an integer type with the AUTO_INCREMENT keyword, then marking it as the table’s primary key.
+Q: What are common mapping strategies for inheritance in relational databases? [4.2 Mapping of the Conceptual Data Model into the Physical Data Model]
+A:
+
+	•	single table
+	•	joined subclass table
+	•	table per class
+
+When translating inheritance from a conceptual model to a relational schema, three main strategies are used: single table (all classes in one table, extra columns for subclass attributes), joined subclass table (shared superclass table plus separate tables for subclasses linked by foreign keys), and table per class (each class has its own table, including repeated superclass attributes). Each approach balances normalization, query performance, and schema simplicity differently.
+Q: What is HAVING used for in SELECT … GROUP BY … HAVING …? [2.4 Queries with Group Formation (GROUP BY)]
+A:
+	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent HAVING COUNT(*) > 1;
+
+The HAVING clause restricts groups created by GROUP BY. This query only returns continents that appear more than once in the table.
+Q: Define Entity Set. [1.1 Basic Concepts of the Relational Data Model]
+A:
+An entity set is a collection of entities of the same type that share the same attributes. In databases, it corresponds to all rows of a table.
+Q: What is the structure of UML class diagram? [3.1 The Entity Relationship Model]
+A:
+	•	class = entity
+	•	attributes = listed in box
+	•	primary key = {PK} after name
+
+In UML class diagrams, entities are modeled as classes with attributes listed inside a box. Primary keys are denoted using curly brackets, e.g., {PK}, directly after the attribute name to indicate its role.
+
++---------------------+
+|      Entity         |
+|---------------------|
+| Attribute 1 {ID}    |  <-- Primary key
+| Attribute 2         |
+| Attribute 3         |
++---------------------+
+Q: Define Relation. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A relation is a set of ordered tuples over defined attribute domains. Formally, it is a subset of the Cartesian product of the domains:
+R \subseteq A_1 \times A_2 \times \ldots \times A_n.
+Each tuple contains one value per domain (e.g., ADDRESS = ADDRESSID × STREET × … × CUSTOMERID).
+Q: Define Entity. [1.1 Basic Concepts of the Relational Data Model]
+A:
+An entity is a distinguishable object or concept in the real world that can be uniquely identified, such as a customer or order.
+Q: What is the correct logical order of clauses in an SQL SELECT query? [2.1 Querying Data (SELECT)]
+A:
+
+	•	FROM
+	•	JOIN
+	•	WHERE
+	•	GROUP BY
+	•	HAVING
+	•	SELECT
+	•	ORDER BY
+
+While SQL syntax starts with SELECT, the database engine executes clauses in a specific logical order: it first retrieves data from tables (FROM, with optional JOINs), filters rows (WHERE), groups them (GROUP BY), filters groups (HAVING), selects output columns (SELECT), and finally sorts results (ORDER BY).
+Q: Which two normal forms extend beyond the first, second, and third normal forms? [3.3 Normal Forms of Databases]
+A:
+
+	•	Boyce-Codd Normal Form (BCNF)
+	•	Fourth Normal Form (4NF)
+
+BCNF refines the third normal form by requiring that every determinant is a candidate key, eliminating certain anomalies still possible in 3NF. The fourth normal form goes further by removing multi-valued dependencies, ensuring that data is stored without redundant groupings. <NOT EFFICIENT>
+Q: What are BETWEEN, LIKE, IS NULL, IS NOT NULL, and IN used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
+A:
+ BETWEEN 
+	restrict to value range
+        SELECT Name FROM Country WHERE Population BETWEEN 6000000 AND 100000000;
+
+ LIKE
+	match a pattern
+        SELECT Name FROM Country WHERE Name LIKE ‘G%Y’;
+
+ IS NULL 
+	check for NULL value
+        SELECT Name FROM Country WHERE Code IS NULL;
+
+ IS NOT NULL 	
+	ensure a value exists
+        SELECT Name FROM Country WHERE Code IS NOT NULL;
+
+ IN      
+	check membership in a list
+        SELECT Name FROM Country WHERE Continent IN (‘America’, ‘Europe’);
+
+These SQL operators support advanced filtering. BETWEEN selects values in a given range. LIKE searches using wildcards (%, _). IS NULL and IS NOT NULL handle missing or existing data. IN tests whether values match any in a given set.
+Q: Define Table. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A table is the physical tabular representation of a relation, where rows represent tuples (data records) and columns represent attributes (fields).
+Q: What are ALL, ANY, and EXISTS used for in SQL subqueries? [2.5 Subqueries with Nested SELECT Statements]
+A:
+
+ ALL    
+	compares to every value in the subquery result
+        SELECT Population FROM Country
+        WHERE (Population / Area) > ALL (
+          SELECT Population / Area FROM Country WHERE Continent = ‘Europe’
+        );
+        → returns countries with higher population density than all in Europe
+
+ ANY    
+	compares to at least one value in the subquery result
+        SELECT Name, Area FROM Country
+        WHERE Area >= ANY (
+          SELECT SUM(Area) FROM Country GROUP BY Continent
+        );
+        → returns countries larger than or equal to any continent’s total area
+
+ EXISTS   
+	returns TRUE if the subquery yields any rows
+        SELECT Capital FROM Country a
+        WHERE EXISTS (
+          SELECT Province FROM Country b
+          WHERE b.Province = a.Capital
+        );
+        → returns capitals that appear as provinces in other records
+
+These subquery operators allow advanced, conditionally dynamic filtering. ALL requires all comparisons to be true; ANY requires at least one; EXISTS checks only for the presence of any rows.
+Q: In relational database inheritance mapping, how does the “Table per Class” strategy work, and what are its pros and cons? [4.2 Mapping of the Conceptual Data Model into the Physical Data Model]
+A:
+
+Structure:
+• No superclass table.
+• Each subclass table contains all common attributes + its own specific attributes.
+• Common attributes are duplicated across subclass tables.
+
+• Pros: Simple queries per subclass (no joins).
+• Cons: High redundancy, schema changes require updates to all subclass tables.
+
+
+	Mammal (MammalID, Name, FurColor)
+	Bird   (BirdID, Name, WingSpan)
+	Fish   (FishID, Name, WaterType)
+Q: What are NOT, OR, and AND used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
+A:
+	SELECT Name FROM Country WHERE NOT Continent = 'America';
+
+	SELECT Name FROM Country WHERE Continent = 'America' OR Continent = 'Africa';
+
+	SELECT Name FROM Country WHERE Continent = 'Europe' AND Percentage = 100;
+
+The logical operators NOT, OR, and AND are used in SQL to filter query results based on compound conditions. NOT excludes rows that meet a specified condition. OR returns rows that satisfy at least one of multiple conditions. AND returns only rows that satisfy all specified conditions simultaneously. These operators are essential for building precise and flexible query filters.
+Q: In relational database inheritance mapping, how does the “Joined Subclass Table” strategy work, and what are its pros and cons? [4.2 Mapping of the Conceptual Data Model into the Physical Data Model]
+A:
+
+Structure:
+•	One superclass table with common attributes.
+•	Each subclass table has only its own specific attributes.
+•	Subclass table shares the same primary key as superclass (FK = PK).
+
+•	Pros: No redundancy, good normalization, scales well.
+•	Cons: Requires joins for full objects → slower queries, more complex SQL.
+
+
+	Animal (AnimalID, Name)
+	Mammal (AnimalID, FurColor)
+	Bird   (AnimalID, WingSpan)
+	Fish   (AnimalID, WaterType)
+
+Q: What is GROUP BY used for in SQL? [2.4 Queries with Group Formation (GROUP BY)]
+A:
+ GROUP BY  
+	groups rows with identical values in specified columns
+        SELECT Continent, COUNT(*) FROM Country GROUP BY Continent;
+        → counts how many countries exist per continent
+
+The GROUP BY clause collects rows that share the same value in one or more columns into summary groups. It’s typically used with aggregate functions like COUNT(), SUM(), or AVG() to perform calculations per group. In the example above, each continent forms a group, and COUNT(*) determines how many countries are in each.
+Q: What are some common relational database management systems (RDBMSs)? [1.3 SQL and Relational Database Systems]
+A:
+
+	•	MariaDB → open-source, MySQL spin-off, free for commercial use
+	•	Oracle Database → commercial enterprise-grade RDBMS
+	•	IBM DB2 → commercial, large-scale database solution
+	•	Microsoft SQL Server → commercial, Windows-optimized RDBMS
+
+MariaDB is a popular open-source relational DBMS derived from MySQL and used widely in small to medium-sized applications, offering broad platform support without licensing fees. In contrast, commercial RDBMSs like Oracle Database, IBM DB2, and Microsoft SQL Server are proprietary systems commonly deployed in enterprise environments with advanced scalability, security, and support features.
+Q: What is the general SQL syntax for creating a table, and what elements can it include? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+CREATE TABLE table_name (
+    column_definitions,
+    primary_key_definition,
+    [integrity_rules],
+    [foreign_key_definition],
+    [column_constraints]
+);
+
+A CREATE TABLE statement defines a new table in the database. It specifies column names with data types, identifies the primary key, and may include integrity rules (e.g., NOT NULL, UNIQUE), foreign key definitions for relationships, and additional column constraints such as CHECK conditions or default values.
+
+Q: What is the structure of Martin (crow’s foot) notation for entities? [3.1 The Entity Relationship Model]
+A:
+	•	rectangle = entity
+	•	top = primary key
+	•	bottom = other attributes
+
+Martin notation (also known as crow’s foot notation) uses rectangles to represent entities. The entity name and primary key appear in the upper section of the rectangle, optionally marked with a key icon. Other attributes are listed in the lower section.
+
+ +-----------------+
+ |     Attribute 1 |  ← Primary key
+ +-----------------+
+ |     Attribute 2 |
+ |     Attribute 3 |  ← Entity
+ +-----------------+
+
+Q: What are the core elements of an Entity Relationship (ER) Model? [3.1 The Entity Relationship Model]
+A:
+	•	entities
+	•	attributes
+	•	keys
+	•	relationships
+
+An ER model consists of entities (representing objects or concepts), attributes (descriptive data), keys (unique identifiers), and relationships (connections between entities). These elements form the foundational structure used in designing relational databases before physical implementation.
+Q: What are the conceptual and physical data models, and how are they used in database design? [4.2 Mapping of the Conceptual Data Model into the Physical Data Model]
+A:
+
+	•	Conceptual – domain-oriented, DB-independent
+	•	Physical – DB-specific, includes tables & keys
+
+A conceptual data model is a high-level, domain-oriented representation of entities, attributes, and relationships, created without considering database-specific constraints. It is often produced during requirements engineering. A physical data model adapts this to the constraints of a relational DBMS, specifying tables, primary keys, foreign keys, and permissible relationship types (directly mappable: 1:C and 1:CN). Complex relationships like N:M or inheritance must be transformed into supported forms before implementing the schema.
+Q: What is FROM used for in SELECT … FROM …? [2.1 Querying Data (SELECT)]
+A:
+	SELECT * FROM Country;
+
+The FROM clause tells the system which table to retrieve data from. Here, it selects all columns from the table Country.
+Q: What is WHERE used for in SELECT … WHERE …? [2.2 Query Data with Condition (WHERE)]
+A:
+	SELECT Name, Capital FROM Country WHERE Continent = 'Asia';
+
+The WHERE clause filters rows based on a condition. This query returns only countries located in the continent “Asia”.
+Q: What does the third normal form (3NF) require in addition to the second? [3.3 Normal Forms of Databases]
+A:
+
+	•	no transitive dependencies
+	•	direct dependency on key only
+
+A table is in 3NF if it satisfies 2NF and every non-key attribute depends only on the primary key, not on other non-key attributes. This removes transitive dependencies, ensuring that each table represents a single, non-overlapping topic.
+Q: What are the main advantages of using a database over simple file storage? [1.1 Basic Concepts of the Relational Data Model]
+A:
+
+	•	efficient data access
+	•	support for multi-user access
+	•	fine-grained access control
+	•	crash recovery
+	•	support for complex queries
+
+Databases offer several advantages over flat files, such as optimized access to relevant data, support for concurrent multi-user operations, permission-based access control, and crash safety mechanisms. They also make it possible to perform complex evaluations across multiple datasets with minimal effort.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Defining and Normalizing Attributes” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	list all attributes
+	•	set data types
+	•	normalize to target NF
+
+This step identifies all necessary attributes for each entity, determines their data types, and applies normalization (typically up to 3NF) to reduce redundancy. Additional relations may be created to resolve dependencies.
+Q: What is ORDER BY used for in SQL? [2.3 Sort Query Output (ORDER BY)]
+A:
+ ORDER BY  
+	sorts the result set based on one or more columns
+        SELECT Name FROM Country WHERE Continent = ‘America’ ORDER BY Population DESC;
+        → returns countries in America sorted by population (descending)
+
+The ORDER BY clause allows results of a SQL query to be sorted by one or more columns, making it easier to read and analyze the output. By default, the sorting is ascending (ASC), but it can be set to descending (DESC). If unspecified, ascending order is used.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Determine Primary Key” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	choose simple/compound key
+	•	or use artificial key
+	•	add attributes if needed
+
+This step assigns a unique primary key to each relation, either by using existing attributes (simple or compound) or by adding artificial keys. Artificial keys are technical identifiers that ensure each record is uniquely identifiable.
+Q: What properties can be defined in an SQL column definition, and what is the general syntax? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	name data_type [NOT NULL] [DEFAULT default_value] [UNIQUE] [CHECK (condition)
+
+	Price DECIMAL(8,2) NOT NULL DEFAULT 0.00 UNIQUE CHECK (Price >= 0)
+
+A column definition specifies the column name and data type, and can optionally enforce non-null values, set a default value, require uniqueness, and define conditions that must be met for inserted data.
+Q: When is a table in the second normal form (2NF)? [3.3 Normal Forms of Databases]
+A:
+
+	•	satisfies 1NF
+	•	no partial key dependencies
+
+A table reaches 2NF when it is in 1NF and all non-key attributes are fully functionally dependent on the entire composite primary key—not just parts of it. This prevents redundancy stemming from partial dependencies and typically leads to decomposing tables.
+Q: What are the main aggregate functions in SQL and how are they used? [2.4 Queries with Group Formation (GROUP BY)]
+A:
+
+ COUNT()    
+	counts number of rows
+        SELECT COUNT() AS TotalCountries FROM Country;
+        → total number of countries
+
+ SUM(column)  
+	sums all values in a column
+        SELECT Continent, SUM(Area) AS AreaPerContinent FROM Country GROUP BY Continent;
+        → total area per continent
+
+ AVG(column)  
+	calculates the average value in a column
+        SELECT Continent, AVG(Area) AS AvgArea FROM Country GROUP BY Continent;
+        → average area per country in each continent
+
+ MAX(column)  
+	finds the highest value in a column
+        SELECT Continent, MAX(Area) AS LargestCountry FROM Country GROUP BY Continent;
+        → largest country per continent
+
+ MIN(column)  
+	finds the lowest value in a column
+        SELECT Continent, MIN(Area) AS SmallestCountry FROM Country GROUP BY Continent;
+        → smallest country per continent
+Q: How are entities and attributes represented in Chen notation? [3.1 The Entity Relationship Model]
+A:
+	•	rectangle = entity
+	•	oval = attribute
+	•	underlined = primary key
+
+In Chen notation, entities are drawn as rectangles and attributes as ovals connected to their respective entities. A primary key is indicated by underlining the corresponding attribute name.
+ ______________   ______________   ______________
+|  Attribute 1 | |  Attribute 2 | |  Attribute 3 |
+|   (PK)       | |              | |              |
+ --------------   --------------   --------------
+         \             |             /
+          \            |            /
+           \           |           /
+            \          |          /
+             \         |         /
+              \        |        /
+               \       |       /
+                \      |      /
+                 \     |     /
+                  ___________
+                 |   Entity  |
+                 |___________|
+Q: Define Domain. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A domain is the set of valid values that an attribute can hold.
+Q: How is a foreign key defined in SQL, and how can it be highlighted in the statement? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	use FOREIGN KEY keyword
+	•	reference another table’s column
+	•	ensures referential integrity
+
+	CREATE TABLE Address (
+    		AddressID INTEGER AUTO_INCREMENT,
+    		Street VARCHAR(500),
+    		HouseNumber VARCHAR(50),
+    		City VARCHAR(500),
+    		PostalCode CHAR(5),
+    		PRIMARY KEY (AddressID),
+    		CustomerID INTEGER NOT NULL,
+    		\033[44;97mFOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)\033[0m
+	);
+
+In SQL, a foreign key is declared by adding a column for the key, then using FOREIGN KEY to reference the primary key of another table. This enforces that all values in the foreign key column exist in the referenced table.
+Q: What are the two key conditions for a table to be in the first normal form (1NF)? [3.3 Normal Forms of Databases]
+A:
+
+	•	atomic attribute values
+	•	defined primary key
+
+A table is in 1NF if all attributes contain only atomic (indivisible) values and each record is uniquely identifiable using a primary key. This eliminates composite and nested values and prepares the table for further normalization steps.
+Q: Define Attribute (or Property). [1.1 Basic Concepts of the Relational Data Model]
+A:
+An attribute is a named property of an entity, represented as a column in a table. It has a unique name and a defined domain of valid values.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Determine Consistency Conditions” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	ensure uniqueness
+	•	enforce referential integrity
+	•	validate value ranges
+
+Here, explicit consistency rules are defined to guarantee data quality, such as unique IDs, valid data types, and maintained foreign key integrity. This safeguards the technical correctness of the database under all operations.
+Q: What is the definition of a normal form in relational databases? [3.3 Normal Forms of Databases]
+A:
+
+A normal form is a standardized, fundamental format to which database schemas are transformed during normalization. Each form removes specific types of redundancy and anomalies, leading to more robust, consistent, and maintainable database designs.
+
+
+Q: How can ON DELETE and ON UPDATE be used to preserve referential integrity in SQL? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	ON DELETE → action when referenced row is deleted
+	•	ON UPDATE → action when referenced key is updated
+	•	ensures data consistency in related tables
+
+	CREATE TABLE Address (
+    		AddressID INTEGER AUTO_INCREMENT,
+    		[… ],
+    		CustomerID INTEGER NOT NULL,
+    		FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+    		\033[44;97mON DELETE CASCADE ON UPDATE CASCADE\033[0m
+	);
+
+When defining a foreign key, you can add ON DELETE and ON UPDATE clauses to control what happens if the referenced record changes or is deleted. For example, CASCADE propagates the change to the referencing table automatically.
+Q: Define Artificial Key (Surrogate Key). [1.1 Basic Concepts of the Relational Data Model]
+A:
+An artificial or surrogate key is a system-generated attribute (often an auto-increment integer) used as a primary key when no natural key is available. It carries no real-world meaning.
+Q: What is a composite primary key, and what rules must all primary keys follow? [3.2 Relationships and Cardinalities in ER Models]
+A:
+
+	•	primary key = unique + non-null
+	•	composite key = combination of multiple fields
+	•	(ADDRESSID, CUSTOMERID) in a relationship table
+
+A primary key is a field or set of fields in a relational database table that uniquely identifies each row. It must satisfy two conditions: every value must be unique across the table, and the field(s) must be non-null. A composite primary key is formed when no single field is sufficient for uniqueness, so a combination of fields (e.g., ADDRESSID and CUSTOMERID) is used instead. This is common in relationship tables that link N:M relations.
+Q: What is SQL and how is it standardized? [1.3 SQL and Relational Database Systems]
+A:
+
+	•	SQL = Structured Query Language
+	•	used for querying and manipulating data
+	•	standardized by ISO/IEC 9075
+
+SQL (Structured Query Language) is the internationally standardized language used to define, query, and manipulate data in relational databases. It enables users to perform operations such as SELECT, INSERT, DELETE, and UPDATE. SQL is formalized under the ISO/IEC 9075 standard, ensuring consistency across different relational database management systems.
+Q: What are subqueries used for in SQL SELECT statements? [2.5 Subqueries with Nested SELECT Statements]
+A:
+
+ Used for                                     
+	→ dynamic filtering within queries
+
+SELECT Name, Area
+FROM Country
+WHERE Area > 
+	(SELECT AVG(Area) FROM Country);
+
+→ returns countries above average area
+
+Subqueries (nested SELECT statements) allow comparing table values against dynamically calculated results. They’re used in WHERE or HAVING clauses when the filtering condition must be derived from the current data, like calculating an average or identifying maximum values in real time.
+Q: What does redundancy mean in the context of relational databases? [3.3 Normal Forms of Databases]
+A:
+
+Redundancy refers to the presence of the same information stored in multiple places within a database. It implies that deleting one instance does not lead to information loss, but it also introduces the risk of inconsistent data and increases storage requirements.
+Q: What is DISTINCT used for in a SELECT query? [2.1 Querying Data (SELECT)]
+A:
+	SELECT DISTINCT Continent FROM Country;
+
+The DISTINCT keyword is used to remove duplicate rows from the result set of a SELECT query. It ensures that only unique combinations of values in the selected columns are returned. In this example, even if multiple countries belong to the same continent, each continent will appear only once in the output.
+Q: Define Referential Integrity. [1.1 Basic Concepts of the Relational Data Model]
+A:
+Referential integrity ensures that every foreign key value in a table matches a valid primary key value in the referenced table.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Conversion into Physical Data Model” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	transform conceptual model
+	•	adapt to DBMS
+	•	ensure relational support
+
+Once entities and relationships are set, the conceptual model is converted into a physical data model compatible with a relational DBMS. This step maps abstract structures to a concrete, system-supported schema.
+Q: In relational database inheritance mapping, how does the “Single Table” strategy work, and what are its pros and cons? [4.2 Mapping of the Conceptual Data Model into the Physical Data Model]
+A:
+
+Structure: 
+• All attributes (common + subclass-specific) in one table.
+
+• Pros: Simple queries (no joins), fast for small datasets.
+• Cons: Many NULLs for irrelevant columns, table gets wide and sparse, scaling issues with large hierarchies.
+
+
+	Animal (AnimalID, Type, Name, FurColor, WingSpan, WaterType)
+
+
+Q: What are common SQL numeric data types and their characteristics? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	INT / INTEGER: whole numbers, typically 4 bytes.
+	•	SMALLINT: smaller whole numbers, typically 2 bytes.
+	•	BIGINT: large whole numbers, typically 8 bytes.
+	•	DECIMAL(p,s) / NUMERIC(p,s): exact decimal numbers with p precision and s scale.
+	•	REAL, FLOAT, DOUBLE PRECISION: approximate floating-point numbers.
+
+Numeric types store integer or decimal values. Exact types (INT, DECIMAL) preserve precision, while approximate types (FLOAT, DOUBLE) allow rounding errors but support very large ranges.
+Q: How do you sort by multiple columns with different orders? [2.3 Sort Query Output (ORDER BY)]
+A:
+ ORDER BY col1 ASC, col2 DESC  
+	specifies sort direction for each column individually
+        SELECT Name FROM Country ORDER BY Continent ASC, Percentage DESC, Name ASC;
+        → sorts by continent (A–Z), then by percentage (high to low) within same continent, then name (A–Z) within the same percentage
+
+This allows fine-grained control over sorting priority and direction, useful when ordering based on complex criteria.
+Q: How is the CHECK constraint used to enforce technical integrity conditions in SQL? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	CHECK keyword defines a condition
+	•	evaluated before insert or update
+	•	prevents invalid data entry
+
+	CREATE TABLE VoucherAction (
+    		ActionID INTEGER AUTO_INCREMENT,
+    		StartAction DATE,
+    		EndAction DATE,
+    		VoucherCode CHAR(8),
+    		PRIMARY KEY (ActionID),
+    		\033[44;97mCHECK (StartAction < EndAction)\033[0m
+	);
+
+The CHECK constraint ensures that column values meet a specified logical condition before being stored in the database. If the condition evaluates to FALSE, the operation is rejected.
+Q: What are common SQL date/time data types and their characteristics? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
+
+	•	DATE: calendar date (year, month, day).
+	•	TIME: time of day (hour, minute, second).
+	•	TIMESTAMP: combined date and time.
+	•	INTERVAL: duration between two points in time.
+
+Date/time types handle temporal information. They support comparisons, arithmetic (e.g., adding intervals), and formatting, with precision and time zone support varying by DBMS.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Formulate Transactions” mean/involve? [4.1 Logical Database Design Activities]
+A:
+
+	•	group SQL statements
+	•	ensure consistency
+	•	define CRUD operations
+
+Transactions are designed by grouping related SQL operations into atomic units to maintain database integrity. This includes specifying the exact statements for creating, reading, updating, and deleting data while preserving all consistency constraints.
+Q: Define Primary Key. [1.1 Basic Concepts of the Relational Data Model]
+A:
+A primary key is an attribute or a set of attributes that uniquely identifies each row in a table. It must be unique and never NULL.
+	•	A simple key consists of one attribute.
+	•	A composite key consists of multiple attributes combined.
+Q: How do you sort by multiple columns in the same order? [2.3 Sort Query Output (ORDER BY)]
+A:
+ ORDER BY col1, col2 ASC  
+	sorts by multiple columns, all ascending
+        SELECT Name FROM Country ORDER BY Continent, Name ASC;
+        → sorts first by continent, then alphabetically by name within each continent
+
+This variant sorts rows using multiple columns, applying the same direction (ASC or DESC) to all columns.
+Q: What are common graphical notations used for ER diagrams? [3.1 The Entity Relationship Model]
+A:
+	•	Chen notation
+	•	Martin notation (crow’s foot)
+	•	UML class diagram
+
+Three widely used notations for ER diagrams include Chen notation (conceptual focus), Martin or crow’s foot notation (popular for logical models), and adaptations using UML class diagrams for integration into broader system documentation.

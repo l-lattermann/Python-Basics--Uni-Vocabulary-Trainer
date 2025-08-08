@@ -1,305 +1,267 @@
-Q: What are the basal ganglia and their function? [2.1 Anatomy of the Human Brain]
+Q: Define NULL Value. [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	subcortical nuclei
-	•	motor control
-	•	spontaneity regulation
-	•	affect modulation
+A NULL value indicates missing or unknown information in a record. Though it holds no value, it may still occupy storage space.
+Q: What is the distinction between a database, a DBMS, and a database system? [1.1 Basic Concepts of the Relational Data Model]
+A:
 
-The basal ganglia are a group of deep brain structures responsible for voluntary motor control and cognitive-emotional integration. They help regulate movement initiation and mood.
-Q: What is the difference between cognitive and affective mental processes? [3.1 Reward and Avoidance System]
-A:
-	•	cognitive = processing
-	•	affective = excitation
-	•	dual activation
-	•	internal/external triggers
+	•	database → stores data
+	•	DBMS → manages access
+	•	database system → DB + DBMS
 
-Cognitive processes involve receiving, processing, and storing information, while affective processes involve emotional excitation that motivates behavior. Though often intertwined, one type may dominate, and both can be triggered internally or externally.
-Q: What are the main functions of the limbic system? [2.2 Limbic System]
+A database is a structured collection of data stored efficiently on a storage medium like a hard drive. A Database Management System (DBMS) is the software that controls and manages access to the database, typically serving as the interface between applications and the stored data. A database system refers to the complete setup, consisting of both the DBMS and the database itself.
+Q: What is the AS keyword used for in SQL? [2.1 Querying Data (SELECT)]
 A:
-	•	emotional evaluation
-	•	memory formation
-	•	behavioral response
-	•	learning and motivation
 
-The limbic system governs how sensory input is emotionally evaluated, whether an experience is positive or negative, and how it is stored in memory. It also supports adaptive behavioral responses and learning.
-Q: What factors influence the strength and impact of goals? [3.2 Motives and Goals]
-A:
-	•	expectancy-value (feasibility × value)
-	•	feedback
-	•	task complexity
-	•	situational factors
+ AS     
+	renames a column or table in the result set
+        SELECT Name AS CountryName FROM Country;
+        → renames “Name” column to “CountryName” in output
 
-According to goal-setting theory (Locke & Latham, 2002), clearly defined and challenging goals enhance performance. Key factors include feedback, commitment, perceived importance, and the ability to perform the task.
-Q: What is the fornix and what is its function in the limbic system? [2.2 Limbic System]
-A:
-	•	limbic fiber tract
-	•	communication bridge
-	•	hippocampal connection
-	•	structural integration
+        SELECT Continent, COUNT() AS CountryCount FROM Country GROUP BY Continent;
+        → column with COUNT() appears as “CountryCount”
 
-The fornix is a major white matter tract connecting key limbic structures. It facilitates communication, especially between the hippocampus and hypothalamus, and supports integrated emotional and memory processes.
-Q: What key functions are attributed to the temporal lobe? [2.1 Anatomy of the Human Brain]
+The AS keyword assigns an alias to a column or table for clearer results. It does not rename anything in the database—only in the displayed output. This is especially useful when using functions or improving readability.
+Q: In terms of Activities in the Design Process for Databases, what does the step “Define Relationships” mean/involve? [4.1 Logical Database Design Activities]
 A:
-	•	memory
-	•	auditory processing
-	•	emotions
-	•	speech comprehension
 
-The temporal lobe (lobus temporalis) is involved in memory formation, language comprehension, and emotional regulation. It houses the amygdala and auditory cortex.
-Q: What are goals and how do they regulate behavior? [3.2 Motives and Goals]
-A:
-	•	desired future state
-	•	internal representation
-	•	behavioral direction
-	•	incentive anticipation
+	•	link entities
+	•	specify cardinalities
+	•	create conceptual model
 
-Goals are mental representations of desired outcomes. They guide long-term behavior by enabling planning, control, and sustained motivation. Goals differ from wishes through commitment and trigger volitional regulation (Austin & Vancouver, 1996).
-Q: What is the role of the hypothalamus in the limbic system? [2.2 Limbic System]
+After entities are identified, their relationships are defined, including the cardinalities that specify how many instances can be linked. The resulting conceptual data model depicts entities and their interconnections before physical implementation.
+Q: Define Data Record (Tuple). [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	vegetative regulation
-	•	memory involvement
-	•	anterior/posterior split
-	•	limbic integration
+A data record (or tuple) is a single row in a table and corresponds to one tuple in the relation. It represents one instance of an entity.
+Q: What is ORDER BY used for in SELECT … ORDER BY …? [2.3 Sort Query Output (ORDER BY)]
+A:
+	SELECT Name, Population FROM Country ORDER BY Population DESC;
 
-The hypothalamus controls key bodily functions: its anterior region manages organ-related autonomic functions, while the posterior region participates in memory processing—both contributing to limbic system operations.
-Q: What are attitudes and how do they influence behavior? [1.1 Explanation of Terms]
+The ORDER BY clause sorts the result set by one or more columns. Here, countries are sorted in descending order by population.
+Q: How are N:M relationships represented in relational databases? [3.2 Relationships and Cardinalities in ER Models]
 A:
-	•	emotional stance
-	•	self-assessment
-	•	stimulus evaluation
-	•	behavior orientation
 
-Attitudes are learned evaluations or emotional stances toward objects, people, or events. They influence how individuals interpret new information, make decisions, and engage in behavior based on prior beliefs and feelings.
-Q: What is the function of the reward and avoidance system in human behavior? [3.1 Reward and Avoidance System]
-A:
-	•	reward = pursue positive states
-	•	avoidance = prevent negative states
-	•	anticipatory motivation
-	•	emotional signaling
+•	via relationship tables
+•	contain only foreign keys from related tables
+•	use composite primary key (e.g., ADDRESSID + CUSTOMERID)
 
-The reward and avoidance system motivates behavior by signaling which stimuli are desirable or aversive. Positive emotions activate the reward system, prompting approach, while anticipated negative emotions activate the avoidance system, prompting withdrawal (Häusel, 2012).
-Q: What is the function of the thalamus, and why is it called the “gateway to consciousness”? [2.1 Anatomy of the Human Brain]
+N:M (many-to-many) relationships are implemented using relationship tables that store associations between entities from two different relations. These tables include only the foreign keys referencing the primary keys of the related tables—such as CUSTOMERID and ADDRESSID. The primary key of the relationship table is usually a composite key formed by combining these foreign keys, ensuring that each pairing is unique (e.g., one customer assigned to one billing address).
+Q: What do the cardinality notations N, C, CN, and CM represent in ER modeling? [3.2 Relationships and Cardinalities in ER]
 A:
-	•	sensory relay
-	•	cerebral cortex input
-	•	attention control
-	•	awareness hub
 
-The thalamus relays sensory data to the cortex and modulates attention. It is termed the “gateway to consciousness” due to its central role in awareness and perception.
-Q: What rules apply when building visual hierarchy through font size? [6.2 Effect of Typography]
-A:
-	•	use no more than three font sizes
-	•	assign sizes to heading, subheading, and body text
-	•	recommended sizes: 14–16 px (body), 18–22 px (subheading), up to 32 px (heading)
+•	N   = 1*   (mandatory)
+•	C   = 0..1 (optional)
+•	CN  = 0*   (optional)
+•	CM  = 0*   (optional)
 
-To build a clear visual hierarchy, font size should reflect the importance of content. Gordon (2021) advises using a maximum of three different font sizes—one each for headings, subheadings, and body text. This structured use of typography helps guide user attention effectively and keeps the layout visually organized.
-Q: What is the difference between the thalamus and the hypothalamus? [2.2 Limbic System]
-A:
-	• thalamus: relay station for sensory input (except smell); regulates consciousness and alertness
-	• hypothalamus: controls autonomic functions and hormones; regulates homeostasis and emotions
+In ER modeling, cardinality notations describe how many instances of one entity can be associated with instances of another and whether the relationship is optional. “N” implies mandatory multiplicity (at least one), while “C” allows for omission. “CN” and “CM” both indicate an optional relationship to many, i.e., zero or more.
 
-The thalamus acts as the brain’s central relay for sensory information and supports consciousness and sleep. In contrast, the hypothalamus, located just below it, governs involuntary body functions such as hunger, temperature, and emotional responses, and manages hormone release via the pituitary gland.
-Q: Which neurotransmitters and hormones contribute to reward and avoidance feelings? [3.1 Reward and Avoidance System]
+Q: What is GROUP BY used for in SELECT … GROUP BY …? [2.4 Queries with Group Formation (GROUP BY)]
 A:
-	•	dopamine – motivation, reward
-	•	serotonin – calm, well-being
-	•	norepinephrine – arousal, stress
-	•	acetylcholine – learning, attention
-	•	endorphins – happiness
-	•	oxytocin – bonding, trust
+	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent;
 
-These messengers regulate mental states. Dopamine and endorphins fuel reward; serotonin and acetylcholine promote calm focus and learning; norepinephrine raises arousal; oxytocin fosters social trust (Kroeber-Riel & Gröppel-Klein, 2019).
-Q: What structures are included in the brainstem and what are their functions? [2.1 Anatomy of the Human Brain]
+The GROUP BY clause groups rows by a specified column—in this case Continent—so that aggregate functions like COUNT(*) can be applied per group.
+Q: What is CONCAT used for in SQL? [2.1 Querying Data (SELECT)]
 A:
-	•	midbrain
-	•	pons
-	•	medulla oblongata
-	•	autonomic control
+ CONCAT(arg1, …, argN)  
+	combines values into a single string
+        SELECT CONCAT(Name, ’ ’, Code) FROM Country;
+        → joins Name and Code with a space in between
+Q: What are the four sublanguages of SQL and what is their purpose? [1.3 SQL and Relational Database Systems]
+A:
 
-The brainstem includes the midbrain, pons, and medulla oblongata. It manages core life-support functions like breathing, heart rate, and sleep regulation.
-Q: What is the function of the amygdala in emotional processing? [2.2 Limbic System]
-A:
-	•	fear regulation
-	•	memory encoding
-	•	hormone triggering
-	•	defensive behavior
+	•	DML: Data Manipulation Language → manipulate data (e.g., SELECT, INSERT, UPDATE, DELETE)
+	•	DDL: Data Definition Language → define schema structure (e.g., CREATE, ALTER, DROP)
+	•	TCL: Transaction Control Language → manage transactions (e.g., COMMIT, ROLLBACK)
+	•	DCL: Data Control Language → control user access (e.g., GRANT, REVOKE)
 
-The amygdala processes emotional stimuli, especially fear, and coordinates with the hippocampus to encode emotional memories. It also initiates physiological responses such as hormonal release and behavioral defense reactions.
-Q: What functions are associated with the frontal lobe? [2.1 Anatomy of the Human Brain]
+SQL is composed of four functional sublanguages, each targeting a different aspect of database operations. The Data Manipulation Language (DML) handles data-level actions like querying or modifying records. The Data Definition Language (DDL) is used to create or alter the structure of database schemas. Transaction Control Language (TCL) ensures safe and consistent execution of grouped DML commands. Lastly, Data Control Language (DCL) manages user permissions and access control to database resources.
+Q: What are subqueries with exactly one return value used for in SQL? [2.5 Subqueries with Nested SELECT Statements]
 A:
-	•	motor control
-	•	decision-making
-	•	speech production
-	•	pattern recognition
 
-The frontal lobe (lobus frontalis) controls voluntary movements and is involved in higher-order functions like planning, language production, and recognizing patterns.
-Q: How does the limbic system contribute to memory and learning? [2.2 Limbic System]
-A:
-	•	emotional filtering
-	•	memory tagging
-	•	adaptive learning
-	•	experience evaluation
+ =, <, >, <=, >=   
+	can be used if subquery returns a single value
 
-The limbic system processes sensory data by emotionally tagging it and organizing it in memory. This emotional tagging helps in recognizing similar future events and adapting behavior accordingly.
-Q: What are the roles of the gyrus cinguli and its subdivisions? [2.2 Limbic System]
-A:
-	•	affect regulation
-	•	memory formation
-	•	motor and pain integration
-	•	anterior/posterior parts
+        SELECT Name
+        FROM Country
+        WHERE Area =
+           (SELECT MAX(Area) FROM Country);
+           → returns country with largest area
 
-The gyrus cinguli is the largest limbic structure and contributes to emotional processing, motor control, attention, and long-term memory. Its anterior and posterior segments serve distinct regulatory and integrative roles.
-Q: What functions are attributed to the septum in the limbic system? [2.2 Limbic System]
+Subqueries that retre typically used with comparison operators like =, <, or >. This is possible when the subquery returns a single column with a single row, often achieved using aggregate functions like MAX() or AVG(). If the subquery returns more than one value, a runtime error occurs.
+Q: Define Foreign Key. [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	autonomic regulation
-	•	emotional experience
-	•	memory processing
-	•	limbic communication
+A foreign key is an attribute in one table that references the primary key of another table, forming a relational link between the two.
+Q: What actions can be defined with ON UPDATE and ON DELETE to preserve referential integrity in SQL? [4.3 Creating Tables in SQL Databases from ER Diagrams]
+A:
 
-The septum helps regulate internal bodily states, emotional tone, and certain memory functions. It acts as a mediator between emotional states and physiological responses.
-Q: What does the cerebellum do and how is it structured? [2.1 Anatomy of the Human Brain]
-A:
-	•	movement coordination
-	•	two hemispheres
-	•	vermis cerebelli
-	•	motor learning
+• CASCADE	– automatically update/delete referencing rows.
+• SET NULL	– set foreign key to NULL (must allow NULL).
+• RESTRICT	– prevent update/delete of referenced row.
+• NO ACTION 	– do nothing (may break integrity).
+• SET DEFAULT 	– set foreign key to a default value.
 
-The cerebellum consists of two hemispheres joined by the vermis. It refines movement, supports balance, and plays a key role in motor learning and classical conditioning.
-Q: What are basic and secondary emotions, and how are they distinguished? [3.1 Reward and Avoidance System]
+When a foreign key is defined, ON UPDATE controls behavior when the referenced key changes, and ON DELETE controls behavior when the referenced row is deleted. These options dictate how the DBMS maintains data consistency across related tables.
+Q: What is SELECT used for in SELECT …? [2.1 Querying Data (SELECT)]
 A:
-	•	basic emotions = innate, universal
-	•	secondary emotions = social, reflective
-	•	Ekman’s classification
-	•	emotional spectrum
+	SELECT Name, Capital FROM Country;
 
-Basic emotions (anger, fear, disgust, sadness, happiness) are genetically embedded and culturally universal. Some researchers add shame, surprise, and embarrassment. Secondary emotions—like guilt, pride, envy, and love—arise from deeper self-awareness and complex social relationships (Ekman, 2016).
-Q: What is the overjustification effect and how does it affect motivation? [7.2 Design of the Flow Experience]
+The SELECT clause specifies which columns to return from the table. In this case, only the columns Name and Capital will be included in the output.
+Q: What is CONCAT_WS used for in SQL? [2.1 Querying Data (SELECT)]
 A:
-	•	intrinsic motivation is undermined
-	•	caused by excessive external rewards
-	•	enjoyment becomes task-independent
+ CONCAT_WS(separator, arg1, …, argN)  
+	combines values into one string using a separator
+        SELECT CONCAT_WS(’ ’, Name, Code, Area, ‘;’) FROM Country;
+        → joins Name, Code, Area and adds space and semicolon as separators
+Q: What is cardinality in the context of entity relationships? [3.2 Relationships and Cardinalities in ER Models]
+A:
+	•	defines number of associations between entities
+	•	described as 1:1, 1:N, or N:M
+	•	also called arity or multiplicity
 
-The overjustification effect occurs when a person who initially engages in an activity out of intrinsic motivation begins to associate it primarily with external rewards (e.g., money, grades). As a result, their natural enjoyment or interest decreases. The task becomes a means to an end rather than something pursued for its own value—potentially disrupting flow and long-term engagement.
-Q: What are the five traits in the Five Factor Model of Personality? [3.3 Personality Traits of the Human Being]
+Cardinality describes how many instances of one entity can be associated with instances of another in a relationship. A 1:1 relationship links one entity to exactly one other, 1:N links one to many, and N:M links many entities to many others. These patterns help structure relational schemas and are also referred to as arity or multiplicity in data modeling.
+Q: What is HAVING used for in SELECT … GROUP BY … HAVING …? [2.4 Queries with Group Formation (GROUP BY)]
 A:
-	•	extraversion
-	•	agreeableness
-	•	conscientiousness
-	•	neuroticism
-	•	openness to experience
+	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent HAVING COUNT(*) > 1;
 
-The Big Five model reduces human personality to five major traits. These are sociability (extraversion), empathy (agreeableness), perfectionism (conscientiousness), emotional stability (neuroticism), and curiosity (openness). It’s widely used but lacks detail for some applications.
-Q: What are the components and role of the diencephalon? [2.1 Anatomy of the Human Brain]
+The HAVING clause restricts groups created by GROUP BY. This query only returns continents that appear more than once in the table.
+Q: Define Entity Set. [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	thalamus
-	•	hypothalamus
-	•	subthalamus
-	•	epithalamus
+An entity set is a collection of entities of the same type that share the same attributes. In databases, it corresponds to all rows of a table.
+Q: Define Entity. [1.1 Basic Concepts of the Relational Data Model]
+A:
+An entity is a distinguishable object or concept in the real world that can be uniquely identified, such as a customer or order.
+Q: What are BETWEEN, LIKE, IS NULL, IS NOT NULL, and IN used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
+A:
+ BETWEEN 
+	restrict to value range
+        SELECT Name FROM Country WHERE Population BETWEEN 6000000 AND 100000000;
 
-The diencephalon links the brainstem and cerebrum and regulates sensory input, emotions, vision, and autonomic functions. Each substructure contributes to brain–body coordination.
-Q: How is the term “experience” defined in the context of UX psychology? [1.1 Explanation of Terms]
-A:
-	•	knowledge dimension
-	•	emotional dimension
-	•	learning and feeling
-	•	significant events
+ LIKE
+	match a pattern
+        SELECT Name FROM Country WHERE Name LIKE ‘G%Y’;
 
-In UX psychology, “experience” refers to two key dimensions: (1) experience as knowledge gained through interaction and learning, and (2) experience as emotion—a subjective state triggered by important events or stimuli.
-Q: What is important when using a Mixture of different fonts? [6.1 Basics of Typography]
-A:
-Fonts should be clearly different; if they are too similar, they must differ in size to remain distinguishable.
-Q: What is the presumed function of the mamillary body? [2.2 Limbic System]
-A:
-	•	memory consolidation
-	•	emotional processing
-	•	functional speculation
-	•	limbic participation
+ IS NULL 
+	check for NULL value
+        SELECT Name FROM Country WHERE Code IS NULL;
 
-Although its exact role is unclear, the mamillary body is believed to be involved in processing emotions and consolidating memory, contributing to limbic system functions.
-Q: What assumptions underlie the theory of bounded rationality? [2.4 Brain Research and Marketing Myths]
-A:
-	•	limited options
-	•	future uncertainty
-	•	incomplete knowledge
-	•	restricted processing
+ IS NOT NULL 	
+	ensure a value exists
+        SELECT Name FROM Country WHERE Code IS NOT NULL;
 
-Bounded rationality assumes that people: (1) lack full knowledge of alternatives, (2) cannot predict all future consequences, (3) consider only a subset of options, and (4) have limited ability to process information.
-Q: Does the brain follow fixed organizational rules throughout life? [2.3 Main Components of a Nerve Cell]
-A:
-	•	neuroplasticity
-	•	lifelong change
-	•	adaptability limits
-	•	structural reorganization
+ IN      
+	check membership in a list
+        SELECT Name FROM Country WHERE Continent IN (‘America’, ‘Europe’);
 
-The brain demonstrates neuroplasticity—the ability to reorganize itself by forming new neural connections. This flexibility supports learning and recovery but diminishes with age.
-Q: What brain regions are associated with language processing, and how do they demonstrate hemispheric asymmetry? [2.1 Anatomy of the Human Brain]
+These SQL operators support advanced filtering. BETWEEN selects values in a given range. LIKE searches using wildcards (%, _). IS NULL and IS NOT NULL handle missing or existing data. IN tests whether values match any in a given set.
+Q: What are NOT, OR, and AND used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
 A:
-	•	Broca’s area
-	•	Wernicke’s area
-	•	dominant hemisphere
-	•	language lateralization
+	SELECT Name FROM Country WHERE NOT Continent = 'America';
 
-Language is primarily processed in Broca’s and Wernicke’s areas, usually located in the hemisphere opposite the dominant hand. This represents a clear example of hemispheric asymmetry in brain function.
-Q: What brain region plays a central role in the reward system, and how does it function? [3.1 Reward and Avoidance System]
+	SELECT Name FROM Country WHERE Continent = 'America' OR Continent = 'Africa';
+
+	SELECT Name FROM Country WHERE Continent = 'Europe' AND Percentage = 100;
+
+The logical operators NOT, OR, and AND are used in SQL to filter query results based on compound conditions. NOT excludes rows that meet a specified condition. OR returns rows that satisfy at least one of multiple conditions. AND returns only rows that satisfy all specified conditions simultaneously. These operators are essential for building precise and flexible query filters.
+Q: What are some common relational database management systems (RDBMSs)? [1.3 SQL and Relational Database Systems]
 A:
-	•	mesolimbic system
-	•	nucleus accumbens
-	•	reward evaluation
-	•	dopamine release
 
-The nucleus accumbens evaluates stimuli for their potential to trigger reward and coordinates with limbic inputs to initiate dopamine release when a stimulus is positively classified, reinforcing behavior (Brandstätter et al., 2018).
-Q: What forms the central nervous system according to Schütz (2015)? [2.1 Anatomy of the Human Brain]
+	•	MariaDB → open-source, MySQL spin-off, free for commercial use
+	•	Oracle Database → commercial enterprise-grade RDBMS
+	•	IBM DB2 → commercial, large-scale database solution
+	•	Microsoft SQL Server → commercial, Windows-optimized RDBMS
+
+MariaDB is a popular open-source relational DBMS derived from MySQL and used widely in small to medium-sized applications, offering broad platform support without licensing fees. In contrast, commercial RDBMSs like Oracle Database, IBM DB2, and Microsoft SQL Server are proprietary systems commonly deployed in enterprise environments with advanced scalability, security, and support features.
+Q: What are the main advantages of using a database over simple file storage? [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	brain
-	•	medulla oblongata
-	•	signal transmission
-	•	neural core
 
-According to Schütz (2015), the central nervous system (CNS) includes the brain and medulla oblongata, forming the core of information processing and transmission in the human body.
-Q: What distinguishes emotions, feelings, affects, and moods? [3.1 Reward and Avoidance System]
+	•	efficient data access
+	•	support for multi-user access
+	•	fine-grained access control
+	•	crash recovery
+	•	support for complex queries
+
+Databases offer several advantages over flat files, such as optimized access to relevant data, support for concurrent multi-user operations, permission-based access control, and crash safety mechanisms. They also make it possible to perform complex evaluations across multiple datasets with minimal effort.
+Q: What are the main aggregate functions in SQL and how are they used? [2.4 Queries with Group Formation (GROUP BY)]
 A:
-	•	feeling = interpretation
-	•	affect = activation
-	•	mood = diffuse, long-lasting
-	•	emotion = object-related
 
-Feelings are subjective interpretations of emotions, while affects are broader activation states encompassing emotions and moods. Moods last longer and lack specific triggers, whereas emotions are more intense, short-lived, and directed at particular events.
-Q: What is the basal forebrain and what does it control? [2.2 Limbic System]
+ COUNT()    
+	counts number of rows
+        SELECT COUNT() AS TotalCountries FROM Country;
+        → total number of countries
+
+ SUM(column)  
+	sums all values in a column
+        SELECT Continent, SUM(Area) AS AreaPerContinent FROM Country GROUP BY Continent;
+        → total area per continent
+
+ AVG(column)  
+	calculates the average value in a column
+        SELECT Continent, AVG(Area) AS AvgArea FROM Country GROUP BY Continent;
+        → average area per country in each continent
+
+ MAX(column)  
+	finds the highest value in a column
+        SELECT Continent, MAX(Area) AS LargestCountry FROM Country GROUP BY Continent;
+        → largest country per continent
+
+ MIN(column)  
+	finds the lowest value in a column
+        SELECT Continent, MIN(Area) AS SmallestCountry FROM Country GROUP BY Continent;
+        → smallest country per continent
+Q: Define Attribute (or Property). [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	vigilance
-	•	attention regulation
-	•	substantia innominata
-	•	arousal systems
-
-The basal forebrain, also called the substantia innominata, contains several nuclei involved in regulating attention, alertness, and cortical arousal. It plays a key role in cognitive readiness.
-Q: What are the three core needs in McClelland’s theory? [3.2 Motives and Goals]
+An attribute is a named property of an entity, represented as a column in a table. It has a unique name and a defined domain of valid values.
+Q: Define Artificial Key (Surrogate Key). [1.1 Basic Concepts of the Relational Data Model]
 A:
-	•	achievement
-	•	power
-	•	affiliation
-
-McClelland’s theory posits that all behavior stems from three core needs. Achievement involves striving for excellence; power reflects the desire to influence others; affiliation relates to the need for social bonds (Harrell & Stahl, 1984).
-Q: What is the cerebrum and what is its basic anatomical structure? [2.1 Anatomy of the Human Brain]
+An artificial or surrogate key is a system-generated attribute (often an auto-increment integer) used as a primary key when no natural key is available. It carries no real-world meaning.
+Q: What is a composite primary key, and what rules must all primary keys follow? [3.2 Relationships and Cardinalities in ER Models]
 A:
-	•	telencephalon
-	•	two hemispheres
-	•	corpus callosum
-	•	cortex cerebri
 
-The cerebrum, or telencephalon, is the brain’s largest region, divided into two hemispheres connected by the corpus callosum. It contains the insula and is covered by the cerebral cortex, which enables higher cognitive and sensory functions.
-Q: What does the parietal lobe control? [2.1 Anatomy of the Human Brain]
+	•	primary key = unique + non-null
+	•	composite key = combination of multiple fields
+	•	(ADDRESSID, CUSTOMERID) in a relationship table
+
+A primary key is a field or set of fields in a relational database table that uniquely identifies each row. It must satisfy two conditions: every value must be unique across the table, and the field(s) must be non-null. A composite primary key is formed when no single field is sufficient for uniqueness, so a combination of fields (e.g., ADDRESSID and CUSTOMERID) is used instead. This is common in relationship tables that link N:M relations.
+Q: What is SQL and how is it standardized? [1.3 SQL and Relational Database Systems]
 A:
-	•	spatial awareness
-	•	tactile processing
-	•	speech processing
-	•	sensory integration
 
-The parietal lobe (lobus parietalis) is responsible for integrating sensory information, especially touch and spatial orientation. It also contributes to language and speech processing.
-Q: What is the limbic system and how is it best understood? [2.2 Limbic System]
+	•	SQL = Structured Query Language
+	•	used for querying and manipulating data
+	•	standardized by ISO/IEC 9075
+
+SQL (Structured Query Language) is the internationally standardized language used to define, query, and manipulate data in relational databases. It enables users to perform operations such as SELECT, INSERT, DELETE, and UPDATE. SQL is formalized under the ISO/IEC 9075 standard, ensuring consistency across different relational database management systems.
+Q: What are subqueries used for in SQL SELECT statements? [2.5 Subqueries with Nested SELECT Statements]
 A:
-	•	functional network
-	•	emotional regulation
-	•	memory and motivation
-	•	autonomic influence
 
-The limbic system is not a discrete anatomical structure but a conceptual framework describing a network of brain areas involved in regulating emotion, memory, motivation, and autonomic functions. It includes interconnected regions that work together to influence behavior.
+ Used for                                     
+	→ dynamic filtering within queries
+
+SELECT Name, Area
+FROM Country
+WHERE Area > 
+	(SELECT AVG(Area) FROM Country);
+
+→ returns countries above average area
+
+Subqueries (nested SELECT statements) allow comparing table values against dynamically calculated results. They’re used in WHERE or HAVING clauses when the filtering condition must be derived from the current data, like calculating an average or identifying maximum values in real time.
+Q: What is DISTINCT used for in a SELECT query? [2.1 Querying Data (SELECT)]
+A:
+	SELECT DISTINCT Continent FROM Country;
+
+The DISTINCT keyword is used to remove duplicate rows from the result set of a SELECT query. It ensures that only unique combinations of values in the selected columns are returned. In this example, even if multiple countries belong to the same continent, each continent will appear only once in the output.
+Q: How do you sort by multiple columns with different orders? [2.3 Sort Query Output (ORDER BY)]
+A:
+ ORDER BY col1 ASC, col2 DESC  
+	specifies sort direction for each column individually
+        SELECT Name FROM Country ORDER BY Continent ASC, Percentage DESC, Name ASC;
+        → sorts by continent (A–Z), then by percentage (high to low) within same continent, then name (A–Z) within the same percentage
+
+This allows fine-grained control over sorting priority and direction, useful when ordering based on complex criteria.
+Q: How do you sort by multiple columns in the same order? [2.3 Sort Query Output (ORDER BY)]
+A:
+ ORDER BY col1, col2 ASC  
+	sorts by multiple columns, all ascending
+        SELECT Name FROM Country ORDER BY Continent, Name ASC;
+        → sorts first by continent, then alphabetically by name within each continent
+
+This variant sorts rows using multiple columns, applying the same direction (ASC or DESC) to all columns.

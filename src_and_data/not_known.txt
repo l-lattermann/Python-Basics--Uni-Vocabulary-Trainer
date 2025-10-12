@@ -1,267 +1,687 @@
-Q: Define NULL Value. [1.1 Basic Concepts of the Relational Data Model]
+Q: What mechanism allows the human eye to adjust its focal length? [2.1 Sight and Visual Perception]
 A:
-A NULL value indicates missing or unknown information in a record. Though it holds no value, it may still occupy storage space.
-Q: What is the distinction between a database, a DBMS, and a database system? [1.1 Basic Concepts of the Relational Data Model]
+ • accommodation
+ • lens shape change
+
+Accommodation refers to the adjustment of the eye’s focal length by changing the curvature of the flexible lens to focus light onto the retina.
+
+
+Q: How does attention affect multitasking, and what does the performance-resource-function (PRF) show? [3.2 Stress Due to Multiple Tasks]
 A:
+  •	Attention → selects stimuli, assigns conscious resources
+  •	Automatic tasks → procedural knowledge, can run in parallel (e.g., cycling + talking)
+  •	Complex tasks → need full attention, hard to perform simultaneously
+  •	PRF curve → shows task performance vs. allocated resources
+ • left side → resource-limited
+ • right side → data-limited
+ • peak → optimal performance
 
-	•	database → stores data
-	•	DBMS → manages access
-	•	database system → DB + DBMS
+Attention enables humans to filter stimuli and assign cognitive resources. While automated tasks (like drinking coffee) can be done alongside others, complex tasks requiring full attention compete for limited resources. The PRF model (Norman & Bobrow, 1975) illustrates that performance improves with more resources until it reaches a ceiling: beyond this, data limitations (like poor resolution in an image) prevent further gains.
 
-A database is a structured collection of data stored efficiently on a storage medium like a hard drive. A Database Management System (DBMS) is the software that controls and manages access to the database, typically serving as the interface between applications and the stored data. A database system refers to the complete setup, consisting of both the DBMS and the database itself.
-Q: What is the AS keyword used for in SQL? [2.1 Querying Data (SELECT)]
+Q: How does the brain derive the distance of a focused object? [2.1 Sight and Visual Perception]
 A:
+ • from muscle state regulating lens curvature
 
- AS     
-	renames a column or table in the result set
-        SELECT Name AS CountryName FROM Country;
-        → renames “Name” column to “CountryName” in output
+The brain interprets the contraction or relaxation state of the eye muscles as depth information, helping estimate object distance.
 
-        SELECT Continent, COUNT() AS CountryCount FROM Country GROUP BY Continent;
-        → column with COUNT() appears as “CountryCount”
 
-The AS keyword assigns an alias to a column or table for clearer results. It does not rename anything in the database—only in the displayed output. This is especially useful when using functions or improving readability.
-Q: In terms of Activities in the Design Process for Databases, what does the step “Define Relationships” mean/involve? [4.1 Logical Database Design Activities]
+Do you also want me to make cards for the psychological depth criteria (like perspective, size, occlusion) when you paste that section?
+Q: Which three effects enable humans to localize the direction of sounds? [2.4 Auditory Sense and Auditory Perception]
 A:
+ • Transit time difference → sound reaches one ear earlier (10–30 µs detectable)
+ • Level (intensity) difference → sound attenuated on far side, head creates acoustic shadow at high frequencies
+ • Timbre → higher tones attenuated more, brain interprets direction using experience
 
-	•	link entities
-	•	specify cardinalities
-	•	create conceptual model
-
-After entities are identified, their relationships are defined, including the cardinalities that specify how many instances can be linked. The resulting conceptual data model depicts entities and their interconnections before physical implementation.
-Q: Define Data Record (Tuple). [1.1 Basic Concepts of the Relational Data Model]
+Human auditory localization relies on small differences in arrival time, intensity, and timbre between the ears. Transit time and level differences provide direct physiological cues, while timbre acts as an interpretive cue shaped by prior experience. These mechanisms are essential for spatial hearing and are applied in HCI to design realistic auditory effects in virtual environments.
+Q: Why can virtual reality glasses distort spatial perception? [2.1 Sight and Visual Perception]
 A:
-A data record (or tuple) is a single row in a table and corresponds to one tuple in the relation. It represents one instance of an entity.
-Q: What is ORDER BY used for in SELECT … ORDER BY …? [2.3 Sort Query Output (ORDER BY)]
+ • VR optics fix accommodation & convergence
+ • objects displayed at varying distances appear unnatural
+
+In VR headsets, accommodation and convergence are fixed by the optical design, so displayed objects may not trigger natural depth cues, reducing realism of spatial impressions.
+
+
+Q: Who founded Gestalt psychology, and when? [2.2 Gestalt Laws]
 A:
-	SELECT Name, Population FROM Country ORDER BY Population DESC;
+ • Max Wertheimer
+ • ~1912
+ • Germany
 
-The ORDER BY clause sorts the result set by one or more columns. Here, countries are sorted in descending order by population.
-Q: How are N:M relationships represented in relational databases? [3.2 Relationships and Cardinalities in ER Models]
+Gestalt psychology was founded around 1912 in Germany by Max Wertheimer, together with other psychologists. It focuses on how humans perceive and organize sensory input into meaningful wholes rather than isolated parts.
+Q: What was the technological shift in the late 1970s that expanded computer use?
+A: Personal computing
+
+Q: What usability principles should be followed when system errors occur in HCI? [4.1 System Error Handling]
 A:
+	1.	Clarity of information – The system must explain the error in understandable language (not just error codes).
+	2.	Guidance for resolution – The system should tell users exactly what to do next (e.g., “Please restart the application”).
 
-•	via relationship tables
-•	contain only foreign keys from related tables
-•	use composite primary key (e.g., ADDRESSID + CUSTOMERID)
-
-N:M (many-to-many) relationships are implemented using relationship tables that store associations between entities from two different relations. These tables include only the foreign keys referencing the primary keys of the related tables—such as CUSTOMERID and ADDRESSID. The primary key of the relationship table is usually a composite key formed by combining these foreign keys, ensuring that each pairing is unique (e.g., one customer assigned to one billing address).
-Q: What do the cardinality notations N, C, CN, and CM represent in ER modeling? [3.2 Relationships and Cardinalities in ER]
+Good error handling reduces user frustration and maintains trust. Some systems even mask negative experiences (like slow connections) with positive design cues to preserve a smooth user experience.
+Q: What are the limitations of questionnaires for measuring cognitive load over time? [3.3 Measuring Cognitive Load]
 A:
+  •	Self-report bias → influenced by mood, memory, or social desirability
+  •	Limited sensitivity → may miss subtle changes in load
+  •	Lack of context → do not capture task-specific factors (distractions, fatigue)
+  •	Participant burden → repeated use causes fatigue, lowers data quality
 
-•	N   = 1*   (mandatory)
-•	C   = 0..1 (optional)
-•	CN  = 0*   (optional)
-•	CM  = 0*   (optional)
+While questionnaires like NASA TLX are useful for short-term snapshots of cognitive load, they have drawbacks for long-term or continuous assessment. Self-reporting can be biased, sensitivity to fine-grained changes is limited, contextual factors are overlooked, and repeated administration can exhaust participants, reducing data reliability.
 
-In ER modeling, cardinality notations describe how many instances of one entity can be associated with instances of another and whether the relationship is optional. “N” implies mandatory multiplicity (at least one), while “C” allows for omission. “CN” and “CM” both indicate an optional relationship to many, i.e., zero or more.
-
-Q: What is GROUP BY used for in SELECT … GROUP BY …? [2.4 Queries with Group Formation (GROUP BY)]
+Q: What is the sensory register, and what are its main components? [3.1 Memory Types and Cognitive Processes]
 A:
-	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent;
+  •	Definition → fleeting storage of raw sensory input
+  •	Duration → 0.5–1 s (visual), 4–5 s (auditory)
+  •	Registers → iconic (visual), echonic (auditory), haptic (touch)
 
-The GROUP BY clause groups rows by a specified column—in this case Continent—so that aggregate functions like COUNT(*) can be applied per group.
-Q: What is CONCAT used for in SQL? [2.1 Querying Data (SELECT)]
+The sensory register (sensory memory) temporarily stores unprocessed stimuli from the senses before conscious processing. It contains modality-specific sub-registers: iconic (sight), echonic (hearing), and haptic (touch). Stored data are passed to short-term memory, with support from long-term memory for recognition and pattern matching.
+
+
+Q: What are the four key properties of Gestalt psychology often used in design? [2.2 Gestalt Laws]
 A:
- CONCAT(arg1, …, argN)  
-	combines values into a single string
-        SELECT CONCAT(Name, ’ ’, Code) FROM Country;
-        → joins Name and Code with a space in between
-Q: What are the four sublanguages of SQL and what is their purpose? [1.3 SQL and Relational Database Systems]
+ • emergence
+ • reification
+ • multistability
+ • invariance
+
+Gestalt psychology identifies four important perceptual properties: emergence, reification, multistability, and invariance. These explain how humans perceive patterns and objects as wholes and are applied in design to make user interfaces more intuitive.
+
+
+Q: What is proprioception, and what does it detect? [2.5 Sense of Touch and Proprioception]
 A:
+ • Meaning → self-perception (Latin: proprio = own, recipere = to take in)
+ • Function → detects posture changes
+ • Signals → head, torso, limb position, plus weight, tension, force, speed in motion
 
-	•	DML: Data Manipulation Language → manipulate data (e.g., SELECT, INSERT, UPDATE, DELETE)
-	•	DDL: Data Definition Language → define schema structure (e.g., CREATE, ALTER, DROP)
-	•	TCL: Transaction Control Language → manage transactions (e.g., COMMIT, ROLLBACK)
-	•	DCL: Data Control Language → control user access (e.g., GRANT, REVOKE)
+Proprioception refers to the body’s ability to sense its own position and movement. It provides continuous feedback on posture, limb orientation, and dynamic factors such as weight, force, and speed. This sense is essential for coordinated motion and interaction with digital or physical 
 
-SQL is composed of four functional sublanguages, each targeting a different aspect of database operations. The Data Manipulation Language (DML) handles data-level actions like querying or modifying records. The Data Definition Language (DDL) is used to create or alter the structure of database schemas. Transaction Control Language (TCL) ensures safe and consistent execution of grouped DML commands. Lastly, Data Control Language (DCL) manages user permissions and access control to database resources.
-Q: What are subqueries with exactly one return value used for in SQL? [2.5 Subqueries with Nested SELECT Statements]
+Q: What is conditioning in memory processes? [3.1 Memory Types and Cognitive Processes]
 A:
+  •	Definition → learning via stimulus–response association
+  •	Mechanism → neutral stimulus acquires response-triggering ability
+  •	Example → Pavlov’s dog salivating at a bell
 
- =, <, >, <=, >=   
-	can be used if subquery returns a single value
-
-        SELECT Name
-        FROM Country
-        WHERE Area =
-           (SELECT MAX(Area) FROM Country);
-           → returns country with largest area
-
-Subqueries that retre typically used with comparison operators like =, <, or >. This is possible when the subquery returns a single column with a single row, often achieved using aggregate functions like MAX() or AVG(). If the subquery returns more than one value, a runtime error occurs.
-Q: Define Foreign Key. [1.1 Basic Concepts of the Relational Data Model]
-A:
-A foreign key is an attribute in one table that references the primary key of another table, forming a relational link between the two.
-Q: What actions can be defined with ON UPDATE and ON DELETE to preserve referential integrity in SQL? [4.3 Creating Tables in SQL Databases from ER Diagrams]
-A:
-
-• CASCADE	– automatically update/delete referencing rows.
-• SET NULL	– set foreign key to NULL (must allow NULL).
-• RESTRICT	– prevent update/delete of referenced row.
-• NO ACTION 	– do nothing (may break integrity).
-• SET DEFAULT 	– set foreign key to a default value.
-
-When a foreign key is defined, ON UPDATE controls behavior when the referenced key changes, and ON DELETE controls behavior when the referenced row is deleted. These options dictate how the DBMS maintains data consistency across related tables.
-Q: What is SELECT used for in SELECT …? [2.1 Querying Data (SELECT)]
-A:
-	SELECT Name, Capital FROM Country;
-
-The SELECT clause specifies which columns to return from the table. In this case, only the columns Name and Capital will be included in the output.
-Q: What is CONCAT_WS used for in SQL? [2.1 Querying Data (SELECT)]
-A:
- CONCAT_WS(separator, arg1, …, argN)  
-	combines values into one string using a separator
-        SELECT CONCAT_WS(’ ’, Name, Code, Area, ‘;’) FROM Country;
-        → joins Name, Code, Area and adds space and semicolon as separators
-Q: What is cardinality in the context of entity relationships? [3.2 Relationships and Cardinalities in ER Models]
-A:
-	•	defines number of associations between entities
-	•	described as 1:1, 1:N, or N:M
-	•	also called arity or multiplicity
-
-Cardinality describes how many instances of one entity can be associated with instances of another in a relationship. A 1:1 relationship links one entity to exactly one other, 1:N links one to many, and N:M links many entities to many others. These patterns help structure relational schemas and are also referred to as arity or multiplicity in data modeling.
-Q: What is HAVING used for in SELECT … GROUP BY … HAVING …? [2.4 Queries with Group Formation (GROUP BY)]
-A:
-	SELECT Continent, COUNT(*) FROM Country GROUP BY Continent HAVING COUNT(*) > 1;
-
-The HAVING clause restricts groups created by GROUP BY. This query only returns continents that appear more than once in the table.
-Q: Define Entity Set. [1.1 Basic Concepts of the Relational Data Model]
-A:
-An entity set is a collection of entities of the same type that share the same attributes. In databases, it corresponds to all rows of a table.
-Q: Define Entity. [1.1 Basic Concepts of the Relational Data Model]
-A:
-An entity is a distinguishable object or concept in the real world that can be uniquely identified, such as a customer or order.
-Q: What are BETWEEN, LIKE, IS NULL, IS NOT NULL, and IN used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
-A:
- BETWEEN 
-	restrict to value range
-        SELECT Name FROM Country WHERE Population BETWEEN 6000000 AND 100000000;
-
- LIKE
-	match a pattern
-        SELECT Name FROM Country WHERE Name LIKE ‘G%Y’;
-
- IS NULL 
-	check for NULL value
-        SELECT Name FROM Country WHERE Code IS NULL;
-
- IS NOT NULL 	
-	ensure a value exists
-        SELECT Name FROM Country WHERE Code IS NOT NULL;
-
- IN      
-	check membership in a list
-        SELECT Name FROM Country WHERE Continent IN (‘America’, ‘Europe’);
-
-These SQL operators support advanced filtering. BETWEEN selects values in a given range. LIKE searches using wildcards (%, _). IS NULL and IS NOT NULL handle missing or existing data. IN tests whether values match any in a given set.
-Q: What are NOT, OR, and AND used for in a SQL WHERE clause? [2.2 Query Data with Condition (WHERE)]
-A:
-	SELECT Name FROM Country WHERE NOT Continent = 'America';
-
-	SELECT Name FROM Country WHERE Continent = 'America' OR Continent = 'Africa';
-
-	SELECT Name FROM Country WHERE Continent = 'Europe' AND Percentage = 100;
-
-The logical operators NOT, OR, and AND are used in SQL to filter query results based on compound conditions. NOT excludes rows that meet a specified condition. OR returns rows that satisfy at least one of multiple conditions. AND returns only rows that satisfy all specified conditions simultaneously. These operators are essential for building precise and flexible query filters.
-Q: What are some common relational database management systems (RDBMSs)? [1.3 SQL and Relational Database Systems]
+Conditioning is a form of implicit memory where associations are built between stimuli and responses. Through repeated pairing, a neutral stimulus can elicit a learned response, influencing future behavior unconsciously.
+Q: What are WIMP interfaces and why are they significant in HCI? [1.2 Challenges in Human-Computer Interaction]
 A:
 
-	•	MariaDB → open-source, MySQL spin-off, free for commercial use
-	•	Oracle Database → commercial enterprise-grade RDBMS
-	•	IBM DB2 → commercial, large-scale database solution
-	•	Microsoft SQL Server → commercial, Windows-optimized RDBMS
+ • windows
+ • icons
+ • menus
+ • pointers
+ • graphical user interface
 
-MariaDB is a popular open-source relational DBMS derived from MySQL and used widely in small to medium-sized applications, offering broad platform support without licensing fees. In contrast, commercial RDBMSs like Oracle Database, IBM DB2, and Microsoft SQL Server are proprietary systems commonly deployed in enterprise environments with advanced scalability, security, and support features.
-Q: What are the main advantages of using a database over simple file storage? [1.1 Basic Concepts of the Relational Data Model]
+WIMP interfaces are graphical user interfaces (GUIs) built on the WIMP paradigm: windows, icons, menus, and pointers. They became the dominant standard for personal computers, making interaction more intuitive through visual metaphors and direct manipulation. Their significance lies in lowering the learning barrier for non-expert users and establishing many of the interaction conventions still used in modern operating systems.
+Q: What is the difference between recall and recognition in memory retrieval? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Recall → retrieving without cues (e.g., answering from memory)
+  •	Recognition → identifying from options (e.g., multiple-choice)
+
+Memory retrieval can occur by recall, which requires active reconstruction without hints, or by recognition, which leverages cues and choices. Recognition is usually easier and faster, while recall is cognitively more demanding.
+
+
+Q: What are the six Gestalt laws of grouping and how are they applied in design? [2.2 Gestalt Laws]
+A:
+ • Proximity → nearby elements are grouped (e.g., product image with name/price)
+ • Similarity → visually alike items form groups (e.g., same color for category items)
+ • Closure → incomplete shapes perceived as whole (e.g., padlock logo)
+ • Continuity → elements on a line/curve seen as related (e.g., guiding flow in layouts)
+ • Common Fate → elements with shared movement/direction grouped (e.g., animations in sync with music)
+ • Prägnanz (Good Figure) → complex forms simplified into basic shapes (e.g., simple logos like Nike or Apple)
+
+The Gestalt laws of grouping describe how humans naturally organize visual input into coherent wholes. Designers use these principles to structure layouts, navigation, and icons, making digital products clearer, more intuitive, and visually appealing.
+
+Q: How does color vision deficiency affect perception of colors? [2.1 Sight and Visual Perception]
+A:
+ • missing cone types
+ • difficulty distinguishing gradations
+ • colors perceived as similar
+
+Color vision deficiencies result from missing cones required to perceive certain colors. Affected individuals can still see colors, but certain pairs of color gradations appear similar, making distinctions harder.
+
+Q: What is the role of mental models in understanding and preventing errors in HCI? [4.1 Mental Models and Error Prevention]
+A:
+	•	Mental models represent how users think a system works.
+	•	They reveal gaps between:
+ 1. the designer’s conceptual model,
+ 2. the developer’s implemented model, and
+ 3. the system’s presented model.
+	•	Understanding user mental models helps predict and reduce slips (execution errors) and mistakes (planning errors), both of which can stem from memory loss.
+	•	Common error types: capture, description, mode, data-driven, associated-action, and loss-of-activation errors.
+	•	Murphy’s Law reminds designers that anything that can go wrong will—thus, systems must anticipate and prevent operational, input, and hardware/software dimensioning errors.
+Q: What is the NASA Task Load Index (TLX), and how does it measure cognitive load? [3.3 Measuring Cognitive Load]
+A:
+  •	Method → subjective self-assessment questionnaire
+  •	6 subscales → mental, physical, temporal demand, performance, effort, frustration
+  •	Scale → 0–100 (in 5-point intervals)
+
+The NASA TLX is a widely used questionnaire for subjective measurement of cognitive load. It asks participants to rate six independent workload dimensions on a 0–100 scale. The combined profile gives a multidimensional assessment of task load, providing insight into perceived mental effort, stress, and performance.
+
+Q: What is Information Architecture in HCI? [1.1 Definitions]
 A:
 
-	•	efficient data access
-	•	support for multi-user access
-	•	fine-grained access control
-	•	crash recovery
-	•	support for complex queries
+ • structuring information
+ • navigation
+ • usability
+ • findability
 
-Databases offer several advantages over flat files, such as optimized access to relevant data, support for concurrent multi-user operations, permission-based access control, and crash safety mechanisms. They also make it possible to perform complex evaluations across multiple datasets with minimal effort.
-Q: What are the main aggregate functions in SQL and how are they used? [2.4 Queries with Group Formation (GROUP BY)]
+Information Architecture (IA) refers to the organization, structuring, and labeling of information in digital systems to support usability and findability. In HCI, it provides the blueprint for navigation and content layout, ensuring that users can efficiently locate, understand, and interact with information resources within websites, applications, or other interactive systems.
+Q: How is cognitive load measured using dual-task experiments? [3.3 Measuring Cognitive Load]
+A:
+  •	Setup → main task + secondary task
+  •	Main task → gradually increased in difficulty
+  •	Measurement → errors in secondary task indicate rising load
+
+In dual-task experiments, participants perform a demanding main task and a simpler secondary task simultaneously. As the main task becomes harder, performance in the secondary task declines. The number of errors or slowdowns in the secondary task reveals how much cognitive load the main task consumes.
+
+
+Q: What is the Skill–Rules–Knowledge (SRK) Model and what levels of action does it describe? [3.4 SRK Model]
+A:
+  •	Definition: A model (Embrey, 2005) describing how human actions shift between automatic, rule-based, and knowledge-based behavior depending on experience and familiarity.
+  •	Levels:
+ - Skill level → routine, automatic actions (e.g., typing on a keyboard without thinking). Involves verbalizing automatic actions, recognizing stimuli, executing stereotypical patterns.
+ - Rule level → conscious selection of appropriate action patterns in known situations. Stimuli are linked to stored rules (e.g., following shortcuts, applying procedures).
+ - Knowledge level → problem-solving in unfamiliar situations where neither automatic skills nor rules apply. Requires active reasoning and environmental analysis.
+  •	Design Implication: HCI systems should support all three levels — enabling automation for experts, clear rule-based navigation for intermediates, and flexible guidance for novices.
+
+Q: What does Fitts’ Law explain in HCI and how is it applied? [3.4 Fitts’ Law]
+A:
+  •	Definition: Movement time (MT) depends on distance to target (D) and target size (W).
+  •	Formula:
+ MT = a + b · log₂(D / W + 1)
+ - a = constant (baseline reaction time)
+ - b = device/user speed factor
+ - D = distance to target
+ - W = target width
+  •	Index of Difficulty (ID): log₂(D / W + 1)
+ - Larger D → harder to hit
+ - Larger W → easier to hit
+  •	Design Implications:
+ - Make buttons larger for faster usability.
+ - Use screen edges as natural “stops” for mouse control.
+ - Pop-up menus save time vs. dropdowns (shorter movement path).
+
+Fitts’ Law shows the trade-off between speed and accuracy: targets that are closer and larger are faster to reach. It provides a predictive model for optimizing input devices and interface layout in HCI.
+
+Q: Which color ranges are most easily perceived by humans on screens? [2.1 Sight and Visual Perception]
+A:
+ • red
+ • yellow–green
+ • less detail in blue–violet
+
+Humans perceive red and yellow-to-green ranges more clearly and in greater detail than blue-to-violet. This affects how colors in graphic elements are recognized and should be considered in interface design for readability and visual clarity.
+
+
+Q: What is the Guiard Model in HCI and how does it describe two-handed interaction? [3.4 Guiard Model]
+A:
+  •	Definition: A model (Guiard, 1988) describing the asymmetric division of labor between hands in bimanual interaction.
+  •	Key Idea:
+ - Non-dominant hand → sets the frame of reference, provides stability, positioning, or support.
+ - Dominant hand → performs precise actions within that reference frame.
+  •	Example:
+ - Eating → fork (non-dominant hand) holds food, knife (dominant hand) cuts.
+ - HCI → holding a smartphone with one hand while navigating UI with the other.
+  •	Design Implication: Interfaces should account for asymmetry in hand roles to improve usability in two-handed interaction.
+
+Q: What are the three main processors in the Model Human Processor, and how do they interact with memory? [1.3 Basic Models of Human Information Processing]
 A:
 
- COUNT()    
-	counts number of rows
-        SELECT COUNT() AS TotalCountries FROM Country;
-        → total number of countries
+ • perceptual processor → sensory stimuli
+ • cognitive processor → rational processing & planning
+ • motor processor → action execution
+ • interaction with short- & long-term memory
 
- SUM(column)  
-	sums all values in a column
-        SELECT Continent, SUM(Area) AS AreaPerContinent FROM Country GROUP BY Continent;
-        → total area per continent
-
- AVG(column)  
-	calculates the average value in a column
-        SELECT Continent, AVG(Area) AS AvgArea FROM Country GROUP BY Continent;
-        → average area per country in each continent
-
- MAX(column)  
-	finds the highest value in a column
-        SELECT Continent, MAX(Area) AS LargestCountry FROM Country GROUP BY Continent;
-        → largest country per continent
-
- MIN(column)  
-	finds the lowest value in a column
-        SELECT Continent, MIN(Area) AS SmallestCountry FROM Country GROUP BY Continent;
-        → smallest country per continent
-Q: Define Attribute (or Property). [1.1 Basic Concepts of the Relational Data Model]
+In the Model Human Processor, the perceptual processor receives sensory stimuli via the sensory organs and temporarily stores them in the sensory register, using long-term memory to interpret input. The cognitive processor employs both short- and long-term memory to plan suitable actions, depending on stimulus intensity and representation. Finally, the motor processor translates these plans into physical responses, such as muscle movements or bodily reactions (e.g., tears). All three systems work simultaneously and interact dynamically with memory to support human information processing.
+Q: What are the key characteristics of human auditory perception relevant for HCI design? [2.4 Auditory Sense and Auditory Perception]
 A:
-An attribute is a named property of an entity, represented as a column in a table. It has a unique name and a defined domain of valid values.
-Q: Define Artificial Key (Surrogate Key). [1.1 Basic Concepts of the Relational Data Model]
+ • Frequency range → 20 Hz–20 kHz
+ • Highest sensitivity → 2–4 kHz (speech range)
+ • Loudness unit → decibel (dB)
+ • Hearing threshold → 0 dB at 2 kHz
+ • Practical range → 0–100 dB
+ • Pain threshold → ~120 dB
+
+Humans perceive sounds from 20 Hz to 20 kHz, with maximum sensitivity in the speech range of 2–4 kHz. Loudness is measured in decibels, with 0 dB representing the hearing threshold at 2 kHz. In practice, auditory feedback systems typically work within 0–100 dB, while 120 dB marks the pain threshold. This knowledge is critical for designing effective and safe auditory feedback in HCI.
+Q: What are the three main types of human memory, and how do they differ? [3.1 Memory Types and Cognitive Processes]
 A:
-An artificial or surrogate key is a system-generated attribute (often an auto-increment integer) used as a primary key when no natural key is available. It carries no real-world meaning.
-Q: What is a composite primary key, and what rules must all primary keys follow? [3.2 Relationships and Cardinalities in ER Models]
+  •	Sensory register → ultra-brief storage of raw sensory input (0.5–5 s)
+  •	Short-term memory → active, limited storage (15–30 s), ~4–9 chunks
+  •	Long-term memory → large capacity, permanent storage, slower access (~0.1 s)
+
+Human memory consists of three interacting systems. The sensory register briefly stores unprocessed stimuli from the senses. Short-term memory (or working memory) actively processes limited amounts of information using mechanisms like chunking. Long-term memory serves as the central, durable store for facts, experiences, and skills, though with slower retrieval times.
+
+
+
+Q: What is the Gestalt property of invariance? [2.2 Gestalt Laws]
 A:
+ • recognition independent of rotation, size, perspective
 
-	•	primary key = unique + non-null
-	•	composite key = combination of multiple fields
-	•	(ADDRESSID, CUSTOMERID) in a relationship table
-
-A primary key is a field or set of fields in a relational database table that uniquely identifies each row. It must satisfy two conditions: every value must be unique across the table, and the field(s) must be non-null. A composite primary key is formed when no single field is sufficient for uniqueness, so a combination of fields (e.g., ADDRESSID and CUSTOMERID) is used instead. This is common in relationship tables that link N:M relations.
-Q: What is SQL and how is it standardized? [1.3 SQL and Relational Database Systems]
+Invariance means that objects can be recognized regardless of their orientation, scale, or perspective. For example, a dog is recognizable whether it stands upright, lies on its back, or appears near or far away. In design, this helps ensure UI elements like buttons remain identifiable under different conditions.
+Q: How can physiological methods measure cognitive load, and why combine them with questionnaires? [3.3 Measuring Cognitive Load]
 A:
+  •	Biometric sensors → detect pulse, movement, sweating (e.g., gloves, wearables)
+  •	Camera-based systems → track pupil size, eye blinks, fixations
+  •	Advantage → less obtrusive with modern wearables, affordable and scalable
+  •	Best practice → combine with subjective methods (e.g., questionnaires) for more reliable results
 
-	•	SQL = Structured Query Language
-	•	used for querying and manipulating data
-	•	standardized by ISO/IEC 9075
+Physiological methods rely on the link between cognitive load and physical responses such as heart activity, respiration, or eye movement. Biometric wearables (gloves, smart sensors) or contactless camera-based eye-tracking can capture cognitive strain continuously. Combining these with questionnaires (e.g., NASA TLX) gives a fuller picture by uniting objective measures with subjective experience.
 
-SQL (Structured Query Language) is the internationally standardized language used to define, query, and manipulate data in relational databases. It enables users to perform operations such as SELECT, INSERT, DELETE, and UPDATE. SQL is formalized under the ISO/IEC 9075 standard, ensuring consistency across different relational database management systems.
-Q: What are subqueries used for in SQL SELECT statements? [2.5 Subqueries with Nested SELECT Statements]
+Q: Which human characteristics must be considered when designing human-computer interaction? [1.1 Definitions]
 A:
 
- Used for                                     
-	→ dynamic filtering within queries
+ • physiological & anthropometric
+ • human information processing
+ • culturally-shaped communication
 
-SELECT Name, Area
-FROM Country
-WHERE Area > 
-	(SELECT AVG(Area) FROM Country);
-
-→ returns countries above average area
-
-Subqueries (nested SELECT statements) allow comparing table values against dynamically calculated results. They’re used in WHERE or HAVING clauses when the filtering condition must be derived from the current data, like calculating an average or identifying maximum values in real time.
-Q: What is DISTINCT used for in a SELECT query? [2.1 Querying Data (SELECT)]
+When conceiving human–computer interaction, designers must account for essential human characteristics. These include physiological and anthropometric traits of the body (e.g., size, strength, reach), cognitive aspects of human information processing (e.g., memory, perception, attention), and culturally-shaped communication abilities. Ignoring these dimensions makes it impossible to create systems that effectively and naturally interact with users.
+Q: What are the two main types of human errors in HCI according to Norman (2013)? [4.1 Human Error Types]
 A:
-	SELECT DISTINCT Continent FROM Country;
+	•	Slips – Correct plan, wrong execution; caused by inattention or memory lapses (e.g., typing your old name by habit).
+	•	Mistakes – Wrong plan or goal; occur when the user deliberately performs an incorrect action under a false assumption (e.g., using an unvalidated bus ticket).
 
-The DISTINCT keyword is used to remove duplicate rows from the result set of a SELECT query. It ensures that only unique combinations of values in the selected columns are returned. In this example, even if multiple countries belong to the same continent, each continent will appear only once in the output.
-Q: How do you sort by multiple columns with different orders? [2.3 Sort Query Output (ORDER BY)]
+In HCI, slips relate to execution errors, while mistakes relate to decision or planning errors — both emphasizing the need for clear design feedback and error prevention mechanisms.
+Q: What is processing capacity, and how does it affect interaction with computer systems? [1.3 Basic Models of Human Information Processing]
 A:
- ORDER BY col1 ASC, col2 DESC  
-	specifies sort direction for each column individually
-        SELECT Name FROM Country ORDER BY Continent ASC, Percentage DESC, Name ASC;
-        → sorts by continent (A–Z), then by percentage (high to low) within same continent, then name (A–Z) within the same percentage
 
-This allows fine-grained control over sorting priority and direction, useful when ordering based on complex criteria.
-Q: How do you sort by multiple columns in the same order? [2.3 Sort Query Output (ORDER BY)]
+ • cognitive resources available
+ • varies across individuals
+ • reduced by task practice
+ • develops sensorimotor skills
+ • enables efficient system use
+
+Processing capacity refers to the amount of cognitive resources a person can allocate to perceive, process, and solve tasks (Eppler & Mengis, 2004). Since individuals differ in capacity, the same information load may cause overload in some but not others. Repeated practice reduces the need for controlled processing by automating sensorimotor skills (e.g., mouse and keyboard use). Once routinized, these skills free up processing capacity for higher-level tasks, making interaction with computer systems more efficient (Butz et al., 2022).
+Q: What are common types of system-related errors in HCI according to Butz et al. (2022)? [4.1 System Errors]
 A:
- ORDER BY col1, col2 ASC  
-	sorts by multiple columns, all ascending
-        SELECT Name FROM Country ORDER BY Continent, Name ASC;
-        → sorts first by continent, then alphabetically by name within each continent
+	•	Capture errors – A rare action is replaced by a familiar one (e.g., entering the wrong website password).
+	•	Description errors – Similar or nearby actions get mixed up (e.g., pressing Ctrl + V instead of Ctrl + C).
+	•	Mode errors – Performing an action in the wrong system mode (e.g., accidentally closing a program).
+	•	Data-driven errors – Incorrect input caused by wrong data entry (e.g., mistyping a phone number).
+	•	Associated-action errors – Performing a similar but unintended action (e.g., saying “Come in” instead of “Hello” on the phone).
+	•	Loss-of-activation errors – Forgetting part of a planned action sequence (e.g., going to fetch something but forgetting what).
 
-This variant sorts rows using multiple columns, applying the same direction (ASC or DESC) to all columns.
+These illustrate how automation and routine behaviors can lead to systematic user interface failures in HCI.
+Q: Which photoreceptor cells in the retina enable color perception, and how do they function? [2.1 Sight and Visual Perception]
+A:
+ • rods → light/dark sensitivity
+ • cones → color perception
+ • S cones → blue
+ • M cones → green
+ • L cones → red
+
+The retina contains rods and cones, with cones responsible for color vision. Cones respond to three spectral ranges of visible light: short (S, blue), medium (M, green), and long (L, red) wavelengths. White light activates all three equally, while varying stimulation patterns produce different colors. For instance, exclusive activation of L cones yields red perception, S cones blue, and M cones green (Butz et al., 2022).
+
+Q: What roles do touch, proprioception, and the kinesthetic system play in human perception? [2.5 Sense of Touch and Proprioception]
+A:
+ • Touch receptors → Ruffini (temperature), Meissner (touch), free nerve endings (pain)
+ • Proprioception → self-perception of posture, limb position, weight, tension, force, speed
+ • Kinesthetic system → sense of balance; vestibular apparatus + muscle/tendon receptors detect body position and movement
+
+Touch provides localized sensory feedback from the skin, while proprioception delivers continuous awareness of posture and movement of limbs and body. The kinesthetic system, centered in the vestibular apparatus of the inner ear and supported by muscle/tendon receptors, maintains balance and orientation in space. Together, these systems enable coordinated interaction with both the physical and digital environment.
+Q: What are the two main theories of forgetting? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Decay theory → memories fade over time if not reinforced
+  •	Interference theory → memories disrupted by others
+ • proactive → old blocks new
+ • retroactive → new blocks old
+
+Forgetting is explained by two main approaches. Decay theory suggests unused memories gradually weaken and vanish, while interference theory proposes that other memories disrupt storage or retrieval. In proactive interference, older memories hinder learning new ones, whereas in retroactive interference, newer memories block access to older ones.
+Q: What is a Likert scale, and how is it used in HCI evaluations? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • psychometric scale
+ • agreement/disagreement
+ • attitudes & perceptions
+ • ordinal measurement
+
+A Likert scale is a psychometric rating scale commonly used in HCI evaluations to measure user opinions, attitudes, or perceptions. Participants respond to statements by selecting a level of agreement or disagreement (e.g., 1 = strongly disagree to 5 = strongly agree). This method enables structured measurement of subjective experiences, such as satisfaction or ease of use, often applied in tools like the System Usability Scale (SUS).
+Q: What is short-term memory (working memory), and how is it structured? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Duration → 15–30 s retention
+  •	Capacity → ~4–9 chunks
+  •	Subsystems → phonological loop, visuo-spatial sketchpad, episodic buffer
+  •	Controller → central executive directs attention
+
+Short-term memory functions like RAM, temporarily holding and processing information. It includes a phonological loop (language sounds), a visuo-spatial sketchpad (visual/spatial data), and an episodic buffer (multimodal integration linked to long-term memory). The central executive allocates attention. Chunking allows more efficient use of limited capacity, e.g., grouping credit card digits.
+
+
+Q: What are examples of dialog technology elements in HCI?
+A: Keyboard, mouse, touchscreen, voice, gesture control
+
+Q: What range of wavelengths defines visible light for human perception? [2.1 Sight and Visual Perception]
+A:
+ • 380 nm to 780 nm
+
+Visible light corresponds to electromagnetic oscillations in the wavelength range of approximately 380 to 780 nanometers. Different wavelengths within this spectrum are perceived as different colors, with shorter wavelengths corresponding to violet/blue and longer wavelengths to red. This range underlies how humans perceive graphical elements on digital displays.
+Q: What is reification in Gestalt psychology? [2.2 Gestalt Laws]
+A:
+ • filling in missing information
+ • perception of implied shapes
+
+Reification refers to the brain’s tendency to complete incomplete figures by filling in gaps. For example, fragmented lines may still be perceived as a rectangle, or pictograms like a wheelchair symbol appear complete despite being simplified or implied.
+
+
+Q: Which evaluation method provides direct feedback by observing users?
+A: User testing
+
+Q: What are the seven stages of the Human Action Cycle in HCI? [4.1 Human Action Cycle]
+A:
+Goal Formation Stage
+	1.	Form goal – Define what you want to achieve.
+
+Execution Stage
+2. Form intention – Translate goal into intended actions.
+3. Specify action sequence – Plan ordered steps.
+4. Execute actions – Carry out the sequence.
+
+Evaluation Stage
+5. Perceive system state – Observe the results.
+6. Interpret outcome – Compare perceived vs. expected results.
+7. Evaluate outcome – Assess success relative to the original goal.
+
+This model (Norman, 1988) illustrates how users bridge the Gulf of Execution (translating goals into actions) and the Gulf of Evaluation (understanding outcomes), forming the core of user-centered interface design.
+Q: How many shades of gray can the human eye differentiate, and what is used for digital displays? [2.1 Sight and Visual Perception]
+A:
+ • human eye: ~80–1000 shades
+ • screens: 8-bit = 256 gray levels
+
+The human eye can perceive a wide range of gray shades, estimated between 80 and 1000, depending on brightness, adaptation, and individual perception. For digital screens, an 8-bit range (256 gray levels per channel) is considered sufficient to represent smooth gradients (Butz et al., 2022).
+
+
+Q: What are the two main types of long-term memory? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Declarative (explicit) → episodic (events), semantic (facts)
+  •	Non-declarative (implicit) → procedural (skills), priming, conditioning
+
+Long-term memory divides into declarative memory, which enables conscious recall of facts and experiences, and non-declarative memory, which governs unconscious skills, habits, and conditioned responses. Declarative memory is rule- and knowledge-based, while non-declarative memory underlies practiced motor or cognitive skills.
+
+
+Q: Why are perceptual and cognitive mechanisms central to HCI design? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • sensory stimuli → perception
+ • overall impression
+ • computers as cognitive tools
+ • design requires knowledge of limits
+
+Perception begins with sensory stimuli that are processed into an overall impression. These perceptual and cognitive mechanisms are crucial for HCI because computers act as cognitive tools, communication devices, and memory aids. Understanding how humans process information—along with their limitations—enables designers to create interactive systems that align with human abilities, ensuring usability, efficiency, and intuitive handling.
+Q: What does intuitive handling mean in HCI, and which technologies support it? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • natural language interfaces
+ • gestural interfaces
+ • multimodal interaction
+ • virtual reality
+ • holistic strategies
+
+Intuitive handling in HCI refers to interaction methods that align closely with natural human communication and sensorimotor abilities. Examples include natural language interfaces, gesture-based control, and multimodal systems combining speech and visual input. Virtual reality extends this by enabling users to manipulate digital environments with movements and gestures. While powerful, design and evaluation methods for such interfaces are still developing, with research focusing on holistic approaches that consider cognition, body movement, and spatial aspects together.
+Q: What is declarative (explicit) memory, and what are its two subtypes? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Declarative memory → explicit recall of rules & knowledge
+  •	Episodic memory → events & personal experiences (time/place bound)
+  •	Semantic memory → general facts & knowledge (context-free)
+
+Declarative memory enables conscious recall of information. Episodic memory stores personal experiences tied to a specific context, while semantic memory contains abstract factual knowledge independent of time and place. Together, they allow reasoning, learning, and the application of rules.
+
+Q: Which standardized tool measures usability with 10 statements on a 5-point scale?
+A: System Usability Scale (SUS)
+
+Q: What are the five key design principles in HCI according to Norman? [4.1 HCI Design Principles]
+A:
+	1.	Affordances – Indicate how an object can be used through its design (e.g., a chair invites sitting).
+	2.	Signifiers – Visual or auditory cues that guide user actions (e.g., icons, labels, sounds).
+	3.	Constraints – Limit user actions to prevent errors (e.g., only numbers allowed in a date field).
+	4.	Mapping – Logical relationship between controls and their effects (e.g., turning steering wheel right → car turns right).
+	5.	Feedback – Immediate system response to user actions, confirming successful interaction (too little or too much can confuse).
+
+These principles ensure intuitive, safe, and efficient interaction between humans and interfaces.
+Q: What is Human-Computer Interaction (HCI) and which disciplines contribute to it? [1.1 Definitions]
+A:
+
+ • design of computer technology
+ • user–computer interaction
+ • cognitive science
+ • computer science
+ • human factors engineering
+
+Human-Computer Interaction (HCI) is an interdisciplinary research field that focuses on the design of computer technology and the ways people interact with computers. It draws from cognitive science to understand mental processes, computer science for technical foundations, and human factors engineering to ensure usability, safety, and efficiency in the interaction between humans and systems.
+Q: What is priming in memory processes? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Definition → memory enhancement by prior exposure
+  •	Mechanism → earlier stimulus influences later response
+  •	Effect → faster recognition, easier processing
+
+Priming occurs when exposure to one stimulus unconsciously shapes the response to a subsequent stimulus. It facilitates recognition and processing efficiency, often without the individual being aware of the influence.
+
+
+Q: What are the three types of cognitive load in Cognitive Load Theory (CLT)? [3.3 Measuring Cognitive Load]
+A:
+  •	Intrinsic load → complexity of the task itself (e.g., typing characters on keyboard)
+  •	Extraneous load → imposed by poor design or unclear interface
+  •	Germane load → effort to build schemas & integrate knowledge (e.g., tutorials, guided practice)
+
+Cognitive Load Theory (Sweller, 2020) explains how task performance and learning depend on the amount of cognitive load. Intrinsic load is determined by task complexity, extraneous load stems from the way information is presented, and germane load reflects the mental work required to form lasting schemas in long-term memory. Effective interface and learning design aim to reduce extraneous load and optimize germane load.
+
+Q: What are the four subdomains related to the development process in HCI? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • human
+ • computer
+ • usage
+ • context
+
+The four subdomains in the HCI development process are human, computer, usage, and context. These cover the essential perspectives: the human user (cognitive, perceptual, physical traits), the computer (technical system), the usage (interaction tasks and goals), and the context (social, cultural, and organizational environment). Together, they ensure that interactive systems are designed in a user-centered and context-aware manner.
+Q: What is the science of structuring and organizing content in GUIs?
+A: Information architecture
+
+Q: What must be considered when designing questionnaires for HCI evaluation? [1.2 Challenges in Human-Computer Interaction]
+A:
+ • clarity of wording
+ • avoid ambiguity
+ • avoid bias
+ • neutral phrasing
+
+When planning questionnaires in HCI evaluation, the questions must be formulated clearly and unambiguously to prevent misinterpretation. They should also be designed to avoid bias, ensuring that responses are not influenced or steered toward a particular outcome. Neutral, well-structured items enable reliable collection of user feedback and support meaningful statistical analysis of patterns and trends.
+
+Q: When and for which systems were user interfaces first developed? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • early 1980s
+ • workstation computers
+
+User interfaces were first developed in the early 1980s for workstation computers. These initial designs laid the foundation for graphical user interfaces (GUIs), which later evolved to accommodate broader user groups and devices, addressing new challenges such as usability, scalability, and accessibility.
+Q: What is convergence in vision, and when does it occur? [2.1 Sight and Visual Perception]
+A:
+ • inward rotation of eyes
+ • occurs when focusing < 6 m
+
+Convergence refers to the inward turning of the eyes toward each other when focusing on a nearby object, aligning the visual axes at the fixation point.
+
+
+Q: What is user testing in HCI, and what are its benefits and challenges? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • direct usability feedback
+ • observation techniques
+ • qualitative & quantitative data
+ • time & resource intensive
+
+User testing is an evaluation method in HCI where real users interact with a system or prototype, providing direct feedback on usability and experience. Observational methods like note-taking, audio, or video recording help identify needs and issues. It yields both qualitative insights (e.g., confusion, strategies) and quantitative data (e.g., task success rates). However, it is resource-intensive, requiring participant recruitment, preparation, and complex data analysis, while evaluators must minimize disruption during testing.
+
+
+Q: What does attention do in human information processing?
+A: Allocates cognitive resources to relevant stimuli
+Q: What are the three layers of the eyeball, and what is the function of the lens? [2.1 Sight and Visual Perception]
+A:
+ • sclera → outer white layer
+ • choroid → middle layer
+ • retina → inner layer
+ • lens → refraction & light regulation
+
+The eye, as the central organ of visual perception, consists of the sclera, choroid, and retina. The lens refracts light and regulates the amount entering the eye, projecting images onto the retina. Visual information is then transmitted as nerve impulses to the brain, where it is interpreted as seeing. In HCI, this process underpins the design of graphical elements, which must consider factors such as color, contrast, structure, and external light conditions to ensure effective perception.
+Q: What problem do mobile devices face when shrinking large images and icons, and how can it be solved? [1.2 Challenges in Human-Computer Interaction]
+A:
+ • difficulty scaling raster graphics
+ • distorted or unclear display
+ • solution: vectorized data
+
+Mobile devices struggle to shrink large bitmap images or icons due to limited screen size and resources, often resulting in unclear or distorted visuals. This problem can be solved by using vectorized data, which scales cleanly at any resolution, preserves clarity, and reduces performance load on the device.
+Q: What are the two types of errors described by the Human Action Cycle model? [4.1 Human Action Cycle]
+A:
+	1.	Gulf of Execution – Errors during execution (steps 2–4). Occur when users don’t know how to operate a system correctly (e.g., unable to recall the right command in a command-line interface).
+	2.	Gulf of Evaluation – Errors during evaluation (steps 5–7). Occur when users can’t correctly interpret feedback or system state (e.g., expecting sound feedback while speakers are unplugged).
+
+These “gulfs” highlight mismatches between user goals and system design, emphasizing the need for clear affordances, signifiers, and feedback in interfaces.
+
+Q: Which field investigates the mechanisms of information processing in humans?
+A: Cognitive science
+
+Q: What is the purpose of the Model Human Processor in HCI? [1.3 Basic Models of Human Information Processing]
+A:
+
+	The main motivation for the development of this model was to predict the processing times and the degree of difficulty of control tasks in the interactions between humans and computers.
+
+
+Q: What are the key models and principles linking cognition and motor skills in HCI? [3.4 Summary]
+A:
+  •	Memory systems: sensory register, short-term, long-term → distribute task resources
+  •	Cognitive load measurement: questionnaires (e.g., NASA-TLX) + physiological methods
+  •	Decision time: Hick-Hyman law → more choices = slower responses
+  •	Speed–accuracy tradeoff: Fitts’ Law, Steering Law → movement time depends on distance, size, or path width
+  •	Bimanual coordination: Guiard’s model → nondominant sets reference, dominant executes
+  •	Skill–Rules–Knowledge model: describes how users internalize actions (automatic, rule-based, knowledge-based)
+Q: What are the three stages of skill learning according to Fitts and Posner (1973)? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Cognitive stage → high effort, conscious thinking (slow, error-prone)
+  •	Associative stage → practice improves speed & accuracy, partly unconscious
+  •	Autonomous stage → skill becomes automated, little active thought needed
+
+Learning is an experiential process that changes behavior through cognitive and motor skill acquisition, mainly stored in procedural memory. Fitts and Posner’s model describes three stages: beginners rely on conscious control (cognitive), practice strengthens performance (associative), and with mastery, skills become automatic (autonomous), like playing the piano without deliberate effort.
+Q: What is the Steering Law in HCI and how is it applied? [3.4 Steering Law]
+A:
+  •	Definition: Extends Fitts’ Law to constrained movements where the pointer must follow a path (like through a tunnel).
+  •	Formula:
+ T = a + b · ∫(1 / W(s))ds
+ - T = movement time
+ - a, b = empirically determined constants
+ - W(s) = path width at position s
+ - ∫ = integral over the path length s
+  •	Concept: Narrower paths → slower movement; wider paths → faster movement.
+  •	Applications:
+ - Navigating cascading (hierarchical) menus
+ - Path-following in interfaces (sliders, gestures, tunnel tasks in VR)
+
+The Steering Law predicts movement time for tasks constrained by path geometry, unlike Fitts’ Law, which assumes free pointing.
+
+Q: How do accommodation and convergence work together in depth perception? [2.1 Sight and Visual Perception]
+A:
+ • both provide depth cues
+ • interplay helps estimate spatial depth
+
+The brain combines signals from accommodation (lens adjustment) and convergence (eye rotation) to judge object distance and spatial depth.
+
+
+Q: How is recognition used in GUI design instead of recall? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Icons vs. commands → visual cues replace memorized input
+  •	Recognition easier → users identify rather than recall
+  •	Design principle → reduce cognitive load
+
+In GUI design, recognition is favored over recall to reduce cognitive effort. Instead of requiring users to remember and type commands, interfaces provide icons or menus that can be visually identified. This shift leverages recognition memory, enabling faster, more intuitive interaction with digital systems.
+Q: What characterizes long-term memory, and how does it differ from short-term memory? [3.1 Memory Types and Cognitive Processes]
+A:
+  •	Storage → unlimited capacity
+  •	Duration → years or lifetime
+  •	Access time → ~0.1 s
+  •	Content → facts, experiences, sensory impressions
+
+Long-term memory is the central, durable storage of the brain. Unlike short-term memory, it can store vast amounts of information for years or even a lifetime. Access is slower than short-term memory but allows retrieval of diverse data types such as images, sounds, and concepts. It is essential for learning, skill retention, and contextualizing new information.
+
+Q: Which sensory receptors in the skin respond to temperature, touch, and pain? [2.5 Sense of Touch and Proprioception]
+A:
+ • Ruffini corpuscles → temperature
+ • Meissner corpuscles → touch
+ • Free nerve endings → pain
+
+Skin receptors are unevenly distributed and specialized: Ruffini corpuscles detect temperature, Meissner corpuscles sense light touch, and free nerve endings signal pain. Their combined input allows humans to perceive complex object properties such as weight, shape, and temperature simultaneously.
+Q: What does the load theory of attention and cognitive control state? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • high effort → fewer distractions
+ • low effort → more distractions
+ • attention capacity is limited
+
+The load theory of attention and cognitive control (Lavie et al., 2004) explains that the brain’s ability to filter distractions depends on task difficulty. When a task requires high mental effort, cognitive capacity is fully engaged, leaving little room to process irrelevant stimuli—making distractions less likely. Conversely, during easy tasks, unused capacity allows the brain to involuntarily process irrelevant information, increasing susceptibility to distraction.
+
+Q: How is attention defined in cognitive psychology and HCI? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • focus on relevant stimuli
+ • allocation of mental resources
+ • filtering distractions
+
+Attention is the cognitive process that allocates mental resources to selected stimuli or tasks, enabling individuals to focus on what is relevant while filtering out distractions. In HCI, understanding attention is crucial for designing systems that guide user focus effectively, minimize overload, and support goal-directed interaction.
+Q: What is the difference between preattentive and attentive perception, and how is it relevant in GUI design? [2.3 Attentive and Preattentive Perception]
+A:
+ • Preattentive perception → automatic, unconscious, ~200–250 ms, independent of number of stimuli
+ • Features detected preattentively → color, shape, size, orientation, curvature, motion, depth
+ • Attentive perception → conscious, requires focused attention, used when multiple features combine
+ • Design relevance → enables pop-out effects, selective highlighting, guiding user attention
+
+Preattentive perception occurs in the eye’s nervous system before conscious attention, allowing users to instantly detect simple features such as color or shape differences. In contrast, attentive perception requires deliberate focus to process combinations of features (e.g., brightness + shape). In GUI design, preattentive effects are used to highlight important elements or reduce visual load, while attentive processing is reserved for more complex tasks.
+
+Q: How does stereopsis depend on object distance? [2.1 Sight and Visual Perception]
+A:
+ • closer objects → larger difference
+ • farther objects → smaller difference
+
+The disparity between the two eye images increases for nearby objects and decreases for distant ones, allowing the brain to calculate depth.
+
+Q: How can human errors in HCI be classified according to cognitive level and type? [4.1 Human Error Types]
+A:
+	•	Slips → Occur on a low cognitive level; the plan is correct, but the action is wrong.
+ • Example: Forgetting to lock the door (memory slip).
+ • Action-based slip: Performing the wrong action (e.g., putting salt instead of sugar).
+	•	Mistakes → Occur on a high cognitive level; the plan or goal itself is wrong.
+ • Rule-based mistake: Correct goal, wrong action against rules (e.g., crossing at red light).
+ • Knowledge-based mistake: Incorrect prediction due to lack of knowledge (e.g., misjudging sugar amount).
+
+In short: Slips = wrong execution, Mistakes = wrong intention — both influenced by memory and cognition.
+Q: What are the two main skin layers relevant for touch perception? [2.5 Sense of Touch and Proprioception]
+A:
+ • Epidermis → outermost layer, thickness varies by body part
+ • Dermis → underlying layer, provides structure and consistency
+
+The epidermis forms the outer protective layer of skin, while the dermis beneath it stabilizes and supports it. Both layers contribute to tactile perception, with thickness and structure influencing sensitivity across different body regions.
+Q: How does the System Usability Scale (SUS) measure usability? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • 10 statements
+ • 5-point Likert scale
+ • ease of use
+ • learnability
+ • satisfaction
+
+The System Usability Scale (SUS), developed by Brooke (1996), measures the perceived usability of a system or interface through 10 standardized statements. Users rate each item on a 5-point Likert scale ranging from “strongly disagree” to “strongly agree.” The items cover key aspects of usability, including ease of use, learnability, and overall user satisfaction, making SUS a widely adopted, quick, and reliable tool for comparative usability evaluation.
+Q: What are the key characteristics of smell and taste perception in humans? [2.6 Smell and Taste Perception]
+A:
+ • Visceral senses → linked to digestive system
+ • Chemical stimuli → secretions in mouth & nose activate receptors
+ • Integration → brain merges smell + taste → unified food perception
+ • Loss of smell → alters taste experience (e.g., during a cold)
+ • Olfactory organ → nasal mucosa, nerve cells form olfactory nerve via ethmoid bone
+
+Smell and taste are chemically driven senses that work closely together in food perception. The olfactory organ in the nasal mucosa detects airborne particles, while taste buds in the mouth register dissolved compounds. Because the brain integrates both inputs simultaneously, smells can be mistaken for tastes, and the loss of smell significantly alters taste perception.
+Q: How does the Hick-Hyman law explain decision-making speed in HCI? [3.4 Decision Making and Speed]
+A:
+  •	Everyday decisions use long-term memory for logical choices.
+  •	Hick-Hyman Law: decision time grows with number of choices.
+ Formula: RT = a + b · log₂N
+ - RT = reaction time
+ - a = constant (baseline time)
+ - b = multiplicative constant (depends on context)
+ - N = number of alternatives
+  •	Logarithmic relationship: each doubling of choices increases decision time by a constant.
+  •	Application in HCI:
+ - Long, unsorted menus = slower decisions
+ - Grouping or sorting (alphabetical, categories) = faster decisions
+
+The Hick-Hyman law shows that decision time increases with the entropy of available alternatives. In interface design, this principle underlines the importance of structured menus, categorized options, and reduced clutter to minimize user response times and improve usability.
+

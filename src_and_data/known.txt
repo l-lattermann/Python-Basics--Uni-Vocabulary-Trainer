@@ -1,44 +1,190 @@
-Q: What is HAVING used for in SQL? [2.4 Queries with Group Formation (GROUP BY)]
+Q: Why must energy-saving design be considered in mobile devices?
+A: Limited battery capacity
+
+Q: How can operating systems support users with color vision deficiencies? [2.1 Sight and Visual Perception]
+A:
+ • built-in color filters
+
+Companies like Microsoft provide color filters in their operating systems that can be activated to partially compensate for color vision deficiencies, improving usability and accessibility.
+
+Q: What four subdomains make up HCI according to SIGCHI?
+A: Human, computer, use, context
+
+Q: Which environment uses sensorimotor skills and gestures for interaction?
+A: Virtual reality
+
+Q: Which discipline in HCI optimizes usability, safety, and performance of systems?
+A: Human factors engineering
+
+Q: How does ACM’s SIGCHI define Human-Computer Interaction (HCI)? [1.1 Definitions]
 A:
 
- HAVING   
-	restricts output after grouping with GROUP BY
-     	SELECT Continent FROM Country
-        WHERE Percentage = 100
-        GROUP BY Continent
-        HAVING COUNT(*) >= 5;
-        → shows continents with ≥5 countries fully located in them
+ • development
+ • evaluation
+ • interaction concepts
+ • interactive systems
 
-The HAVING clause filters groups, not individual rows. Unlike WHERE, which limits rows before grouping, HAVING applies conditions after grouping has taken place—usually with aggregate functions like COUNT, SUM, or AVG.
-Q: Define Database Management System (DBMS). [1.1 Basic Concepts of the Relational Data Model]
+According to the Special Interest Group on Computer-Human Interaction (SIGCHI) of the ACM, HCI is a discipline concerned with the development and evaluation of interaction concepts for human–computer interactive systems (Hewett et al., 1992). This definition emphasizes not only the design but also the systematic assessment of interaction to ensure effective and user-centered system behavior.
+
+Q: Which color models correspond to subtractive and additive color mixing, and where are they applied? [2.1 Sight and Visual Perception]
 A:
-A DBMS is software used to create, manage, and interact with databases. It provides tools for defining structures, storing data, and ensuring integrity. Examples include MySQL, Oracle, and PostgreSQL.
-Q: What is an RDBMS? [1.1 Basic Concepts of the Relational Data Model]
+ • subtractive → CMYK → printing
+ • additive → RGB → screens
+
+Subtractive color mixing is used in printing, where pigments like cyan, magenta, yellow, and black (CMYK) absorb portions of light and reflect the remainder, producing various colors on paper. Additive color mixing is applied in active light sources such as computer screens, where red, green, and blue (RGB) light combine in varying proportions to generate colors. Equal intensities of RGB create white light, while different wavelength combinations correspond to other colors within the visible spectrum (380–780 nm).
+Q: Which paradigm introduced windows, icons, menus, and pointers?
+A: WIMP interfaces
+
+Q: Which cultural factor can influence the layout of GUIs such as websites?
+A: Reading and writing direction of scripts
+
+Q: What does the Gestalt property of emergence explain? [2.2 Gestalt Laws]
+A:
+ • whole before parts
+ • overall shape recognition
+
+Emergence describes how people recognize objects based on their overall shape before analyzing individual parts. For example, we identify a dog as a dog first from its outline, then notice details like nose, ears, or tail.
+
+
+Q: How can conflicts between vision and proprioception affect users in VR systems? [2.5 Sense of Touch and Proprioception]
+A:
+ • Mismatch → vision shows motion, equilibrium senses no motion
+ • Symptoms → nausea, dizziness
+ • Effect → users may end tests early
+
+In virtual reality, visual input can simulate motion and acceleration, while the vestibular system registers no actual movement. This sensory conflict between sight and proprioception often results in motion sickness symptoms such as dizziness and nausea, limiting user tolerance and system usability.
+
+Q: Why are men more affected by red-green color blindness than women? [2.1 Sight and Visual Perception]
+A:
+ • defect on X chromosome
+ • 8% of men vs. 0.1% of women
+
+The genetic defect causing red-green color blindness is located on the X chromosome. Since men have only one X chromosome, they are more frequently affected (8%) compared to women (0.1%).
+
+
+Q: What design strategy helps make symbols understandable for color-blind users? [2.1 Sight and Visual Perception]
+A:
+ • combine colors with shapes
+
+Instead of relying only on color (e.g., green vs. red circles), shapes or patterns should be added to symbols, ensuring both color-normal and color-blind users can interpret the information correctly.
+
+
+Q: What type of communication do GUIs enable between user and system?
+A: Two-way communication
+
+Q: What are the two types of knowledge stored in long-term memory? [3.1 Memory Types and Cognitive Processes]
 A:
 
-	•	RDBMS
-	•	relational organization
-	•	DBMS subtype
+ • declarative knowledge
+ • procedural knowledge
 
-A Relational Database Management System (RDBMS) is a specific type of database management system designed to handle relationally organized data. In such systems, data is structured in tables with rows and columns, and the RDBMS provides functions for querying, updating, and managing this tabular data according to relational principles.
-Q: What is FROM used for in SELECT … FROM …? [2.1 Querying Data (SELECT)]
+Long-term memory holds both declarative and procedural knowledge. Declarative knowledge consists of facts, concepts, and principles that can be consciously recalled. Procedural knowledge refers to skills and “knowing how”—the implicit rules, strategies, and action sequences needed to perform tasks. While declarative knowledge is explicit, procedural knowledge is often implicit and acquired through practice, feedback, and experience.
+Q: What does multistability mean in Gestalt psychology? [2.2 Gestalt Laws]
 A:
-	SELECT * FROM Country;
+ • ambiguous images
+ • alternating perception
 
-The FROM clause tells the system which table to retrieve data from. Here, it selects all columns from the table Country.
-Q: What is WHERE used for in SELECT … WHERE …? [2.2 Query Data with Condition (WHERE)]
-A:
-	SELECT Name, Capital FROM Country WHERE Continent = 'Asia';
+Multistability describes how certain ambiguous figures, such as Rubin’s vase, can be perceived in two different ways (a vase or two faces) but never both simultaneously. The brain switches between interpretations.
 
-The WHERE clause filters rows based on a condition. This query returns only countries located in the continent “Asia”.
-Q: What is ORDER BY used for in SQL? [2.3 Sort Query Output (ORDER BY)]
-A:
- ORDER BY  
-	sorts the result set based on one or more columns
-        SELECT Name FROM Country WHERE Continent = ‘America’ ORDER BY Population DESC;
-        → returns countries in America sorted by population (descending)
 
-The ORDER BY clause allows results of a SQL query to be sorted by one or more columns, making it easier to read and analyze the output. By default, the sorting is ascending (ASC), but it can be set to descending (DESC). If unspecified, ascending order is used.
-Q: Define Domain. [1.1 Basic Concepts of the Relational Data Model]
+Q: How does contrast affect the perception of text and graphic elements? [2.1 Sight and Visual Perception]
 A:
-A domain is the set of valid values that an attribute can hold.
+ • high contrast → better perception
+ • low contrast → poor readability
+
+Contrast directly influences how well differences between elements are detected. High contrast activates more sensory cells, improving readability, while low contrast—such as dark blue text on a light blue background—makes text or graphics harder to distinguish.
+
+Q: What are the three main types of human memory in information processing? [3.1 Memory Types and Cognitive Processes]
+A:
+
+ • ultra short-term (sensory): sensor input and attention
+ • short-term (working): processing, decision-making
+ • long-term: learning and skill execution
+
+Ultra short-term memory briefly stores sensory input from the environment and directs attention to relevant stimuli. Short-term or working memory holds limited information for active processing, decision-making, and rehearsal, with susceptibility to interference. Long-term memory stores knowledge permanently, providing the foundation for learning and skill execution by encoding information from working memory.
+
+
+Q: Do touchscreen-based mobile devices count as WIMP interfaces? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • yes
+ • windows
+ • icons
+ • menus
+ • pointers via touch
+
+Mobile devices with touchscreens are also classified as WIMP interfaces because they rely on the same basic elements: windows, icons, menus, and pointers. Instead of a mouse, the pointer function is performed through direct finger input. This adaptation demonstrates the flexibility of 
+Q: Which interaction style combines language, gestures, and multimodal input?
+A: Intuitive handling
+
+Q: How does the eye focus on near versus distant objects? [2.1 Sight and Visual Perception]
+A:
+ • near → lens squeezed, curvature increases
+ • distant → lens relaxed, curvature flattens
+
+Tightening the muscle ring increases lens curvature for near vision, while relaxation flattens the lens for distant vision.
+
+
+Q: What mechanism is most important for generating spatial vision? [2.1 Sight and Visual Perception]
+A:
+ • stereo vision (stereopsis)
+
+Stereo vision arises because each eye captures a slightly different image due to their horizontal separation. The brain integrates these differences into a unified perception of spatial depth.
+
+
+Q: What is a major hardware challenge of mobile devices compared to desktops?
+A: Limited screen size
+
+Q: What percentage of people are affected by color vision deficiencies, and which type is most common? [2.1 Sight and Visual Perception]
+A:
+ • ~9% overall
+ • red-green color blindness most common
+
+About 9% of people worldwide suffer from color vision deficiencies, with red-green color blindness being the most widespread form.
+
+
+Q: What term refers to measuring human body dimensions for ergonomic design?
+A: Anthropometric
+
+Q: What role do rods play in vision, and how does the eye adapt to changing light conditions? [2.1 Sight and Visual Perception]
+A:
+ • rods → brightness perception
+ • high light sensitivity
+ • pupil reflex via iris
+ • retinal biochemical adaptation
+
+Rods are photoreceptor cells specialized in brightness perception and are more sensitive than cones, making them crucial in low-light conditions. The eye adapts to changing light in two ways: rapidly through the iris, which adjusts pupil size like a camera aperture, and more slowly through biochemical changes in the retina’s sensory cells, allowing gradual adaptation to darkness or brightness.
+Q: What is Human Factors Engineering in the context of HCI? [1.1 Definitions]
+A:
+
+ • ergonomics
+ • usability
+ • safety
+ • human–system fit
+
+Human Factors Engineering (also called ergonomics) is the discipline that examines how humans interact with systems, machines, and environments, aiming to optimize usability, safety, and performance. In HCI, it ensures that interfaces and devices are designed according to human physical, cognitive, and perceptual capabilities, reducing errors and improving efficiency through a better human–system fit.
+Q: How does cognitive psychology view humans in the context of information processing? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • perception
+ • knowledge acquisition
+ • information processing system
+
+Cognitive psychology studies the fundamental mechanisms of how people process information, focusing on perception and knowledge acquisition. It conceptualizes humans as an information processing system, similar to a computer, where sensory input is received, processed, stored, and used to guide behavior and decision-making (Butz et al., 2022).
+
+Q: What does the term anthropometric mean in the context of HCI? [1.1 Definitions]
+A:
+
+ • body measurements
+ • size & proportions
+ • ergonomic design
+
+Anthropometric refers to the systematic measurement of human body dimensions, such as height, reach, hand size, or posture. In HCI, anthropometric data are crucial for ergonomic design, ensuring that devices, interfaces, and workspaces fit the physical characteristics of users, thereby improving comfort, usability, and reducing the risk of strain or injury.
+Q: What does two-way communication mean in HCI? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • bidirectional exchange
+ • user ↔ system
+ • input & feedback
+
+Two-way communication in HCI describes the bidirectional interaction between a user and a computer system. The user provides input (e.g., commands, actions), and the system responds with feedback (e.g., output, confirmation, error messages). This dynamic loop is essential for usability, as it allows continuous adjustment, error correction, and meaningful interaction.

@@ -1,215 +1,12 @@
-Q: What mechanism allows the human eye to adjust its focal length? [2.1 Sight and Visual Perception]
-A:
- • accommodation
- • lens shape change
-
-Accommodation refers to the adjustment of the eye’s focal length by changing the curvature of the flexible lens to focus light onto the retina.
-
-
-Q: How does attention affect multitasking, and what does the performance-resource-function (PRF) show? [3.2 Stress Due to Multiple Tasks]
-A:
-  • Attention → selects stimuli, assigns conscious resources
-  • Automatic tasks → procedural knowledge, can run in parallel (e.g., cycling + talking)
-  • Complex tasks → need full attention, hard to perform simultaneously
-  • PRF curve → shows task performance vs. allocated resources
- • left side → resource-limited
- • right side → data-limited
- • peak → optimal performance
-
-Attention enables humans to filter stimuli and assign cognitive resources. While automated tasks (like drinking coffee) can be done alongside others, complex tasks requiring full attention compete for limited resources. The PRF model (Norman & Bobrow, 1975) illustrates that performance improves with more resources until it reaches a ceiling: beyond this, data limitations (like poor resolution in an image) prevent further gains.
-
-Q: How does the brain derive the distance of a focused object? [2.1 Sight and Visual Perception]
-A:
- • from muscle state regulating lens curvature
-
-The brain interprets the contraction or relaxation state of the eye muscles as depth information, helping estimate object distance.
-
-
-Do you also want me to make cards for the psychological depth criteria (like perspective, size, occlusion) when you paste that section?
-Q: Which three effects enable humans to localize the direction of sounds? [2.4 Auditory Sense and Auditory Perception]
-A:
- • Transit time difference → sound reaches one ear earlier (10–30 µs detectable)
- • Level (intensity) difference → sound attenuated on far side, head creates acoustic shadow at high frequencies
- • Timbre → higher tones attenuated more, brain interprets direction using experience
-
-Human auditory localization relies on small differences in arrival time, intensity, and timbre between the ears. Transit time and level differences provide direct physiological cues, while timbre acts as an interpretive cue shaped by prior experience. These mechanisms are essential for spatial hearing and are applied in HCI to design realistic auditory effects in virtual environments.
-Q: Why can virtual reality glasses distort spatial perception? [2.1 Sight and Visual Perception]
-A:
- • VR optics fix accommodation & convergence
- • objects displayed at varying distances appear unnatural
-
-In VR headsets, accommodation and convergence are fixed by the optical design, so displayed objects may not trigger natural depth cues, reducing realism of spatial impressions.
-
-
-Q: Who founded Gestalt psychology, and when? [2.2 Gestalt Laws]
-A:
- • Max Wertheimer
- • ~1912
- • Germany
-
-Gestalt psychology was founded around 1912 in Germany by Max Wertheimer, together with other psychologists. It focuses on how humans perceive and organize sensory input into meaningful wholes rather than isolated parts.
-Q: What was the technological shift in the late 1970s that expanded computer use?
-A: Personal computing
-
-Q: What usability principles should be followed when system errors occur in HCI? [4.1 System Error Handling]
-A:
- 1. Clarity of information – The system must explain the error in understandable language (not just error codes).
- 2. Guidance for resolution – The system should tell users exactly what to do next (e.g., “Please restart the application”).
-
-Good error handling reduces user frustration and maintains trust. Some systems even mask negative experiences (like slow connections) with positive design cues to preserve a smooth user experience.
-Q: Why must energy-saving design be considered in mobile devices?
-A: Limited battery capacity
-
-Q: What are the limitations of questionnaires for measuring cognitive load over time? [3.3 Measuring Cognitive Load]
-A:
-  • Self-report bias → influenced by mood, memory, or social desirability
-  • Limited sensitivity → may miss subtle changes in load
-  • Lack of context → do not capture task-specific factors (distractions, fatigue)
-  • Participant burden → repeated use causes fatigue, lowers data quality
-
-While questionnaires like NASA TLX are useful for short-term snapshots of cognitive load, they have drawbacks for long-term or continuous assessment. Self-reporting can be biased, sensitivity to fine-grained changes is limited, contextual factors are overlooked, and repeated administration can exhaust participants, reducing data reliability.
-
-Q: What is the sensory register, and what are its main components? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Definition → fleeting storage of raw sensory input
-  • Duration → 0.5–1 s (visual), 4–5 s (auditory)
-  • Registers → iconic (visual), echonic (auditory), haptic (touch)
-
-The sensory register (sensory memory) temporarily stores unprocessed stimuli from the senses before conscious processing. It contains modality-specific sub-registers: iconic (sight), echonic (hearing), and haptic (touch). Stored data are passed to short-term memory, with support from long-term memory for recognition and pattern matching.
-
-
-Q: What are the four key properties of Gestalt psychology often used in design? [2.2 Gestalt Laws]
-A:
- • emergence
- • reification
- • multistability
- • invariance
-
-Gestalt psychology identifies four important perceptual properties: emergence, reification, multistability, and invariance. These explain how humans perceive patterns and objects as wholes and are applied in design to make user interfaces more intuitive.
-
-
-Q: What is proprioception, and what does it detect? [2.5 Sense of Touch and Proprioception]
-A:
- • Meaning → self-perception (Latin: proprio = own, recipere = to take in)
- • Function → detects posture changes
- • Signals → head, torso, limb position, plus weight, tension, force, speed in motion
-
-Proprioception refers to the body’s ability to sense its own position and movement. It provides continuous feedback on posture, limb orientation, and dynamic factors such as weight, force, and speed. This sense is essential for coordinated motion and interaction with digital or physical 
-
-Q: How can operating systems support users with color vision deficiencies? [2.1 Sight and Visual Perception]
-A:
- • built-in color filters
-
-Companies like Microsoft provide color filters in their operating systems that can be activated to partially compensate for color vision deficiencies, improving usability and accessibility.
-
-Q: What four subdomains make up HCI according to SIGCHI?
-A: Human, computer, use, context
-
-Q: What is conditioning in memory processes? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Definition → learning via stimulus–response association
-  • Mechanism → neutral stimulus acquires response-triggering ability
-  • Example → Pavlov’s dog salivating at a bell
-
-Conditioning is a form of implicit memory where associations are built between stimuli and responses. Through repeated pairing, a neutral stimulus can elicit a learned response, influencing future behavior unconsciously.
-Q: Which environment uses sensorimotor skills and gestures for interaction?
-A: Virtual reality
-
-Q: What are WIMP interfaces and why are they significant in HCI? [1.2 Challenges in Human-Computer Interaction]
+Q: What is Human Factors Engineering in the context of HCI? [1.1 Definitions]
 A:
 
- • windows
- • icons
- • menus
- • pointers
- • graphical user interface
-
-WIMP interfaces are graphical user interfaces (GUIs) built on the WIMP paradigm: windows, icons, menus, and pointers. They became the dominant standard for personal computers, making interaction more intuitive through visual metaphors and direct manipulation. Their significance lies in lowering the learning barrier for non-expert users and establishing many of the interaction conventions still used in modern operating systems.
-Q: What is the difference between recall and recognition in memory retrieval? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Recall → retrieving without cues (e.g., answering from memory)
-  • Recognition → identifying from options (e.g., multiple-choice)
-
-Memory retrieval can occur by recall, which requires active reconstruction without hints, or by recognition, which leverages cues and choices. Recognition is usually easier and faster, while recall is cognitively more demanding.
-
-
-Q: What are the six Gestalt laws of grouping and how are they applied in design? [2.2 Gestalt Laws]
-A:
- • Proximity → nearby elements are grouped (e.g., product image with name/price)
- • Similarity → visually alike items form groups (e.g., same color for category items)
- • Closure → incomplete shapes perceived as whole (e.g., padlock logo)
- • Continuity → elements on a line/curve seen as related (e.g., guiding flow in layouts)
- • Common Fate → elements with shared movement/direction grouped (e.g., animations in sync with music)
- • Prägnanz (Good Figure) → complex forms simplified into basic shapes (e.g., simple logos like Nike or Apple)
-
-The Gestalt laws of grouping describe how humans naturally organize visual input into coherent wholes. Designers use these principles to structure layouts, navigation, and icons, making digital products clearer, more intuitive, and visually appealing.
-
-Q: How does color vision deficiency affect perception of colors? [2.1 Sight and Visual Perception]
-A:
- • missing cone types
- • difficulty distinguishing gradations
- • colors perceived as similar
-
-Color vision deficiencies result from missing cones required to perceive certain colors. Affected individuals can still see colors, but certain pairs of color gradations appear similar, making distinctions harder.
-
-Q: What is the role of mental models in understanding and preventing errors in HCI? [4.1 Mental Models and Error Prevention]
-A:
-  • Mental models represent how users think a system works.
-  • They reveal gaps between:
- 1. the designer’s conceptual model,
- 2. the developer’s implemented model, and
- 3. the system’s presented model.
-  • Understanding user mental models helps predict and reduce slips (execution errors) and mistakes (planning errors), both of which can stem from memory loss.
-  • Common error types: capture, description, mode, data-driven, associated-action, and loss-of-activation errors.
-  • Murphy’s Law reminds designers that anything that can go wrong will—thus, systems must anticipate and prevent operational, input, and hardware/software dimensioning errors.
-Q: What is the NASA Task Load Index (TLX), and how does it measure cognitive load? [3.3 Measuring Cognitive Load]
-A:
-  • Method → subjective self-assessment questionnaire
-  • 6 subscales → mental, physical, temporal demand, performance, effort, frustration
-  • Scale → 0–100 (in 5-point intervals)
-
-The NASA TLX is a widely used questionnaire for subjective measurement of cognitive load. It asks participants to rate six independent workload dimensions on a 0–100 scale. The combined profile gives a multidimensional assessment of task load, providing insight into perceived mental effort, stress, and performance.
-
-Q: Which discipline in HCI optimizes usability, safety, and performance of systems?
-A: Human factors engineering
-
-Q: What is Information Architecture in HCI? [1.1 Definitions]
-A:
-
- • structuring information
- • navigation
+ • ergonomics
  • usability
- • findability
+ • safety
+ • human–system fit
 
-Information Architecture (IA) refers to the organization, structuring, and labeling of information in digital systems to support usability and findability. In HCI, it provides the blueprint for navigation and content layout, ensuring that users can efficiently locate, understand, and interact with information resources within websites, applications, or other interactive systems.
-Q: How does ACM’s SIGCHI define Human-Computer Interaction (HCI)? [1.1 Definitions]
-A:
-
- • development
- • evaluation
- • interaction concepts
- • interactive systems
-
-According to the Special Interest Group on Computer-Human Interaction (SIGCHI) of the ACM, HCI is a discipline concerned with the development and evaluation of interaction concepts for human–computer interactive systems (Hewett et al., 1992). This definition emphasizes not only the design but also the systematic assessment of interaction to ensure effective and user-centered system behavior.
-
-Q: How is cognitive load measured using dual-task experiments? [3.3 Measuring Cognitive Load]
-A:
-  • Setup → main task + secondary task
-  • Main task → gradually increased in difficulty
-  • Measurement → errors in secondary task indicate rising load
-
-In dual-task experiments, participants perform a demanding main task and a simpler secondary task simultaneously. As the main task becomes harder, performance in the secondary task declines. The number of errors or slowdowns in the secondary task reveals how much cognitive load the main task consumes.
-
-
-Q: What is the Skill–Rules–Knowledge (SRK) Model and what levels of action does it describe? [3.4 SRK Model]
-A:
-  • Definition: A model (Embrey, 2005) describing how human actions shift between automatic, rule-based, and knowledge-based behavior depending on experience and familiarity.
-  • Levels:
- - Skill level → routine, automatic actions (e.g., typing on a keyboard without thinking). Involves verbalizing automatic actions, recognizing stimuli, executing stereotypical patterns.
- - Rule level → conscious selection of appropriate action patterns in known situations. Stimuli are linked to stored rules (e.g., following shortcuts, applying procedures).
- - Knowledge level → problem-solving in unfamiliar situations where neither automatic skills nor rules apply. Requires active reasoning and environmental analysis.
-  • Design Implication: HCI systems should support all three levels — enabling automation for experts, clear rule-based navigation for intermediates, and flexible guidance for novices.
-
+Human Factors Engineering (also called ergonomics) is the discipline that examines how humans interact with systems, machines, and environments, aiming to optimize usability, safety, and performance. In HCI, it ensures that interfaces and devices are designed according to human physical, cognitive, and perceptual capabilities, reducing errors and improving efficiency through a better human–system fit.
 Q: What does Fitts’ Law explain in HCI and how is it applied? [3.4 Fitts’ Law]
 A:
   • Definition: Movement time (MT) depends on distance to target (D) and target size (W).
@@ -229,198 +26,6 @@ A:
 
 Fitts’ Law shows the trade-off between speed and accuracy: targets that are closer and larger are faster to reach. It provides a predictive model for optimizing input devices and interface layout in HCI.
 
-Q: Which color ranges are most easily perceived by humans on screens? [2.1 Sight and Visual Perception]
-A:
- • red
- • yellow–green
- • less detail in blue–violet
-
-Humans perceive red and yellow-to-green ranges more clearly and in greater detail than blue-to-violet. This affects how colors in graphic elements are recognized and should be considered in interface design for readability and visual clarity.
-
-
-Q: What is the Guiard Model in HCI and how does it describe two-handed interaction? [3.4 Guiard Model]
-A:
-  • Definition: A model (Guiard, 1988) describing the asymmetric division of labor between hands in bimanual interaction.
-  • Key Idea:
- - Non-dominant hand → sets the frame of reference, provides stability, positioning, or support.
- - Dominant hand → performs precise actions within that reference frame.
-  • Example:
- - Eating → fork (non-dominant hand) holds food, knife (dominant hand) cuts.
- - HCI → holding a smartphone with one hand while navigating UI with the other.
-  • Design Implication: Interfaces should account for asymmetry in hand roles to improve usability in two-handed interaction.
-
-Q: What are the three main processors in the Model Human Processor, and how do they interact with memory? [1.3 Basic Models of Human Information Processing]
-A:
-
- • perceptual processor → sensory stimuli
- • cognitive processor → rational processing & planning
- • motor processor → action execution
- • interaction with short- & long-term memory
-
-In the Model Human Processor, the perceptual processor receives sensory stimuli via the sensory organs and temporarily stores them in the sensory register, using long-term memory to interpret input. The cognitive processor employs both short- and long-term memory to plan suitable actions, depending on stimulus intensity and representation. Finally, the motor processor translates these plans into physical responses, such as muscle movements or bodily reactions (e.g., tears). All three systems work simultaneously and interact dynamically with memory to support human information processing.
-Q: What are the key characteristics of human auditory perception relevant for HCI design? [2.4 Auditory Sense and Auditory Perception]
-A:
- • Frequency range → 20 Hz–20 kHz
- • Highest sensitivity → 2–4 kHz (speech range)
- • Loudness unit → decibel (dB)
- • Hearing threshold → 0 dB at 2 kHz
- • Practical range → 0–100 dB
- • Pain threshold → ~120 dB
-
-Humans perceive sounds from 20 Hz to 20 kHz, with maximum sensitivity in the speech range of 2–4 kHz. Loudness is measured in decibels, with 0 dB representing the hearing threshold at 2 kHz. In practice, auditory feedback systems typically work within 0–100 dB, while 120 dB marks the pain threshold. This knowledge is critical for designing effective and safe auditory feedback in HCI.
-Q: What are the three main types of human memory, and how do they differ? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Sensory register → ultra-brief storage of raw sensory input (0.5–5 s)
-  • Short-term memory → active, limited storage (15–30 s), ~4–9 chunks
-  • Long-term memory → large capacity, permanent storage, slower access (~0.1 s)
-
-Human memory consists of three interacting systems. The sensory register briefly stores unprocessed stimuli from the senses. Short-term memory (or working memory) actively processes limited amounts of information using mechanisms like chunking. Long-term memory serves as the central, durable store for facts, experiences, and skills, though with slower retrieval times.
-
-
-
-Q: Which color models correspond to subtractive and additive color mixing, and where are they applied? [2.1 Sight and Visual Perception]
-A:
- • subtractive → CMYK → printing
- • additive → RGB → screens
-
-Subtractive color mixing is used in printing, where pigments like cyan, magenta, yellow, and black (CMYK) absorb portions of light and reflect the remainder, producing various colors on paper. Additive color mixing is applied in active light sources such as computer screens, where red, green, and blue (RGB) light combine in varying proportions to generate colors. Equal intensities of RGB create white light, while different wavelength combinations correspond to other colors within the visible spectrum (380–780 nm).
-Q: What is the Gestalt property of invariance? [2.2 Gestalt Laws]
-A:
- • recognition independent of rotation, size, perspective
-
-Invariance means that objects can be recognized regardless of their orientation, scale, or perspective. For example, a dog is recognizable whether it stands upright, lies on its back, or appears near or far away. In design, this helps ensure UI elements like buttons remain identifiable under different conditions.
-Q: Which paradigm introduced windows, icons, menus, and pointers?
-A: WIMP interfaces
-
-Q: Which cultural factor can influence the layout of GUIs such as websites?
-A: Reading and writing direction of scripts
-
-Q: What does the Gestalt property of emergence explain? [2.2 Gestalt Laws]
-A:
- • whole before parts
- • overall shape recognition
-
-Emergence describes how people recognize objects based on their overall shape before analyzing individual parts. For example, we identify a dog as a dog first from its outline, then notice details like nose, ears, or tail.
-
-
-Q: How can physiological methods measure cognitive load, and why combine them with questionnaires? [3.3 Measuring Cognitive Load]
-A:
-  • Biometric sensors → detect pulse, movement, sweating (e.g., gloves, wearables)
-  • Camera-based systems → track pupil size, eye blinks, fixations
-  • Advantage → less obtrusive with modern wearables, affordable and scalable
-  • Best practice → combine with subjective methods (e.g., questionnaires) for more reliable results
-
-Physiological methods rely on the link between cognitive load and physical responses such as heart activity, respiration, or eye movement. Biometric wearables (gloves, smart sensors) or contactless camera-based eye-tracking can capture cognitive strain continuously. Combining these with questionnaires (e.g., NASA TLX) gives a fuller picture by uniting objective measures with subjective experience.
-
-Q: Which human characteristics must be considered when designing human-computer interaction? [1.1 Definitions]
-A:
-
- • physiological & anthropometric
- • human information processing
- • culturally-shaped communication
-
-When conceiving human–computer interaction, designers must account for essential human characteristics. These include physiological and anthropometric traits of the body (e.g., size, strength, reach), cognitive aspects of human information processing (e.g., memory, perception, attention), and culturally-shaped communication abilities. Ignoring these dimensions makes it impossible to create systems that effectively and naturally interact with users.
-Q: How can conflicts between vision and proprioception affect users in VR systems? [2.5 Sense of Touch and Proprioception]
-A:
- • Mismatch → vision shows motion, equilibrium senses no motion
- • Symptoms → nausea, dizziness
- • Effect → users may end tests early
-
-In virtual reality, visual input can simulate motion and acceleration, while the vestibular system registers no actual movement. This sensory conflict between sight and proprioception often results in motion sickness symptoms such as dizziness and nausea, limiting user tolerance and system usability.
-
-Q: Why are men more affected by red-green color blindness than women? [2.1 Sight and Visual Perception]
-A:
- • defect on X chromosome
- • 8% of men vs. 0.1% of women
-
-The genetic defect causing red-green color blindness is located on the X chromosome. Since men have only one X chromosome, they are more frequently affected (8%) compared to women (0.1%).
-
-
-Q: What design strategy helps make symbols understandable for color-blind users? [2.1 Sight and Visual Perception]
-A:
- • combine colors with shapes
-
-Instead of relying only on color (e.g., green vs. red circles), shapes or patterns should be added to symbols, ensuring both color-normal and color-blind users can interpret the information correctly.
-
-
-Q: What are the two main types of human errors in HCI according to Norman (2013)? [4.1 Human Error Types]
-A:
-  • Slips – Correct plan, wrong execution; caused by inattention or memory lapses (e.g., typing your old name by habit).
-  • Mistakes – Wrong plan or goal; occur when the user deliberately performs an incorrect action under a false assumption (e.g., using an unvalidated bus ticket).
-
-In HCI, slips relate to execution errors, while mistakes relate to decision or planning errors — both emphasizing the need for clear design feedback and error prevention mechanisms.
-Q: What type of communication do GUIs enable between user and system?
-A: Two-way communication
-
-Q: What are the two types of knowledge stored in long-term memory? [3.1 Memory Types and Cognitive Processes]
-A:
-
- • declarative knowledge
- • procedural knowledge
-
-Long-term memory holds both declarative and procedural knowledge. Declarative knowledge consists of facts, concepts, and principles that can be consciously recalled. Procedural knowledge refers to skills and “knowing how”—the implicit rules, strategies, and action sequences needed to perform tasks. While declarative knowledge is explicit, procedural knowledge is often implicit and acquired through practice, feedback, and experience.
-Q: What is processing capacity, and how does it affect interaction with computer systems? [1.3 Basic Models of Human Information Processing]
-A:
-
- • cognitive resources available
- • varies across individuals
- • reduced by task practice
- • develops sensorimotor skills
- • enables efficient system use
-
-Processing capacity refers to the amount of cognitive resources a person can allocate to perceive, process, and solve tasks (Eppler & Mengis, 2004). Since individuals differ in capacity, the same information load may cause overload in some but not others. Repeated practice reduces the need for controlled processing by automating sensorimotor skills (e.g., mouse and keyboard use). Once routinized, these skills free up processing capacity for higher-level tasks, making interaction with computer systems more efficient (Butz et al., 2022).
-Q: What does multistability mean in Gestalt psychology? [2.2 Gestalt Laws]
-A:
- • ambiguous images
- • alternating perception
-
-Multistability describes how certain ambiguous figures, such as Rubin’s vase, can be perceived in two different ways (a vase or two faces) but never both simultaneously. The brain switches between interpretations.
-
-
-Q: What are common types of system-related errors in HCI according to Butz et al. (2022)? [4.1 System Errors]
-A:
-  • Capture errors – A rare action is replaced by a familiar one (e.g., entering the wrong website password).
-  • Description errors – Similar or nearby actions get mixed up (e.g., pressing Ctrl + V instead of Ctrl + C).
-  • Mode errors – Performing an action in the wrong system mode (e.g., accidentally closing a program).
-  • Data-driven errors – Incorrect input caused by wrong data entry (e.g., mistyping a phone number).
-  • Associated-action errors – Performing a similar but unintended action (e.g., saying “Come in” instead of “Hello” on the phone).
-  • Loss-of-activation errors – Forgetting part of a planned action sequence (e.g., going to fetch something but forgetting what).
-
-These illustrate how automation and routine behaviors can lead to systematic user interface failures in HCI.
-Q: How does contrast affect the perception of text and graphic elements? [2.1 Sight and Visual Perception]
-A:
- • high contrast → better perception
- • low contrast → poor readability
-
-Contrast directly influences how well differences between elements are detected. High contrast activates more sensory cells, improving readability, while low contrast—such as dark blue text on a light blue background—makes text or graphics harder to distinguish.
-
-Q: Which photoreceptor cells in the retina enable color perception, and how do they function? [2.1 Sight and Visual Perception]
-A:
- • rods → light/dark sensitivity
- • cones → color perception
- • S cones → blue
- • M cones → green
- • L cones → red
-
-The retina contains rods and cones, with cones responsible for color vision. Cones respond to three spectral ranges of visible light: short (S, blue), medium (M, green), and long (L, red) wavelengths. White light activates all three equally, while varying stimulation patterns produce different colors. For instance, exclusive activation of L cones yields red perception, S cones blue, and M cones green (Butz et al., 2022).
-
-Q: What roles do touch, proprioception, and the kinesthetic system play in human perception? [2.5 Sense of Touch and Proprioception]
-A:
- • Touch receptors → Ruffini (temperature), Meissner (touch), free nerve endings (pain)
- • Proprioception → self-perception of posture, limb position, weight, tension, force, speed
- • Kinesthetic system → sense of balance; vestibular apparatus + muscle/tendon receptors detect body position and movement
-
-Touch provides localized sensory feedback from the skin, while proprioception delivers continuous awareness of posture and movement of limbs and body. The kinesthetic system, centered in the vestibular apparatus of the inner ear and supported by muscle/tendon receptors, maintains balance and orientation in space. Together, these systems enable coordinated interaction with both the physical and digital environment.
-Q: What are the three main types of human memory in information processing? [3.1 Memory Types and Cognitive Processes]
-A:
-
- • ultra short-term (sensory): sensor input and attention
- • short-term (working): processing, decision-making
- • long-term: learning and skill execution
-
-Ultra short-term memory briefly stores sensory input from the environment and directs attention to relevant stimuli. Short-term or working memory holds limited information for active processing, decision-making, and rehearsal, with susceptibility to interference. Long-term memory stores knowledge permanently, providing the foundation for learning and skill execution by encoding information from working memory.
-
-
 Q: Do touchscreen-based mobile devices count as WIMP interfaces? [1.2 Challenges in Human-Computer Interaction]
 A:
 
@@ -431,297 +36,27 @@ A:
  • pointers via touch
 
 Mobile devices with touchscreens are also classified as WIMP interfaces because they rely on the same basic elements: windows, icons, menus, and pointers. Instead of a mouse, the pointer function is performed through direct finger input. This adaptation demonstrates the flexibility of 
-Q: Which interaction style combines language, gestures, and multimodal input?
-A: Intuitive handling
-
-Q: How does the eye focus on near versus distant objects? [2.1 Sight and Visual Perception]
+Q: What are the key characteristics of human auditory perception relevant for HCI design? [2.4 Auditory Sense and Auditory Perception]
 A:
- • near → lens squeezed, curvature increases
- • distant → lens relaxed, curvature flattens
+ • Frequency range → 20 Hz–20 kHz
+ • Highest sensitivity → 2–4 kHz (speech range)
+ • Loudness unit → decibel (dB)
+ • Hearing threshold → 0 dB at 2 kHz
+ • Practical range → 0–100 dB
+ • Pain threshold → ~120 dB
 
-Tightening the muscle ring increases lens curvature for near vision, while relaxation flattens the lens for distant vision.
-
-
-Q: What mechanism is most important for generating spatial vision? [2.1 Sight and Visual Perception]
+Humans perceive sounds from 20 Hz to 20 kHz, with maximum sensitivity in the speech range of 2–4 kHz. Loudness is measured in decibels, with 0 dB representing the hearing threshold at 2 kHz. In practice, auditory feedback systems typically work within 0–100 dB, while 120 dB marks the pain threshold. This knowledge is critical for designing effective and safe auditory feedback in HCI.
+Q: How can physiological methods measure cognitive load, and why combine them with questionnaires? [3.3 Measuring Cognitive Load]
 A:
- • stereo vision (stereopsis)
-
-Stereo vision arises because each eye captures a slightly different image due to their horizontal separation. The brain integrates these differences into a unified perception of spatial depth.
-
-
-Q: What are the two main theories of forgetting? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Decay theory → memories fade over time if not reinforced
-  • Interference theory → memories disrupted by others
- • proactive → old blocks new
- • retroactive → new blocks old
-
-Forgetting is explained by two main approaches. Decay theory suggests unused memories gradually weaken and vanish, while interference theory proposes that other memories disrupt storage or retrieval. In proactive interference, older memories hinder learning new ones, whereas in retroactive interference, newer memories block access to older ones.
-Q: What is a Likert scale, and how is it used in HCI evaluations? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • psychometric scale
- • agreement/disagreement
- • attitudes & perceptions
- • ordinal measurement
-
-A Likert scale is a psychometric rating scale commonly used in HCI evaluations to measure user opinions, attitudes, or perceptions. Participants respond to statements by selecting a level of agreement or disagreement (e.g., 1 = strongly disagree to 5 = strongly agree). This method enables structured measurement of subjective experiences, such as satisfaction or ease of use, often applied in tools like the System Usability Scale (SUS).
-Q: What is short-term memory (working memory), and how is it structured? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Duration → 15–30 s retention
-  • Capacity → ~4–9 chunks
-  • Subsystems → phonological loop, visuo-spatial sketchpad, episodic buffer
-  • Controller → central executive directs attention
-
-Short-term memory functions like RAM, temporarily holding and processing information. It includes a phonological loop (language sounds), a visuo-spatial sketchpad (visual/spatial data), and an episodic buffer (multimodal integration linked to long-term memory). The central executive allocates attention. Chunking allows more efficient use of limited capacity, e.g., grouping credit card digits.
-
-
-Q: What are examples of dialog technology elements in HCI?
-A: Keyboard, mouse, touchscreen, voice, gesture control
-
-Q: What range of wavelengths defines visible light for human perception? [2.1 Sight and Visual Perception]
-A:
- • 380 nm to 780 nm
-
-Visible light corresponds to electromagnetic oscillations in the wavelength range of approximately 380 to 780 nanometers. Different wavelengths within this spectrum are perceived as different colors, with shorter wavelengths corresponding to violet/blue and longer wavelengths to red. This range underlies how humans perceive graphical elements on digital displays.
-Q: What is reification in Gestalt psychology? [2.2 Gestalt Laws]
-A:
- • filling in missing information
- • perception of implied shapes
-
-Reification refers to the brain’s tendency to complete incomplete figures by filling in gaps. For example, fragmented lines may still be perceived as a rectangle, or pictograms like a wheelchair symbol appear complete despite being simplified or implied.
-
-
-Q: Which evaluation method provides direct feedback by observing users?
-A: User testing
-
-Q: What is a major hardware challenge of mobile devices compared to desktops?
-A: Limited screen size
-
-Q: What are the seven stages of the Human Action Cycle in HCI? [4.1 Human Action Cycle]
-A:
-Goal Formation Stage
- 1. Form goal – Define what you want to achieve.
-
-Execution Stage
-2. Form intention – Translate goal into intended actions.
-3. Specify action sequence – Plan ordered steps.
-4. Execute actions – Carry out the sequence.
-
-Evaluation Stage
-5. Perceive system state – Observe the results.
-6. Interpret outcome – Compare perceived vs. expected results.
-7. Evaluate outcome – Assess success relative to the original goal.
-
-This model (Norman, 1988) illustrates how users bridge the Gulf of Execution (translating goals into actions) and the Gulf of Evaluation (understanding outcomes), forming the core of user-centered interface design.
-Q: How many shades of gray can the human eye differentiate, and what is used for digital displays? [2.1 Sight and Visual Perception]
-A:
- • human eye: ~80–1000 shades
- • screens: 8-bit = 256 gray levels
-
-The human eye can perceive a wide range of gray shades, estimated between 80 and 1000, depending on brightness, adaptation, and individual perception. For digital screens, an 8-bit range (256 gray levels per channel) is considered sufficient to represent smooth gradients (Butz et al., 2022).
-
-
-Q: What are the two main types of long-term memory? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Declarative (explicit) → episodic (events), semantic (facts)
-  • Non-declarative (implicit) → procedural (skills), priming, conditioning
-
-Long-term memory divides into declarative memory, which enables conscious recall of facts and experiences, and non-declarative memory, which governs unconscious skills, habits, and conditioned responses. Declarative memory is rule- and knowledge-based, while non-declarative memory underlies practiced motor or cognitive skills.
-
-
-Q: Why are perceptual and cognitive mechanisms central to HCI design? [1.3 Basic Models of Human Information Processing]
-A:
-
- • sensory stimuli → perception
- • overall impression
- • computers as cognitive tools
- • design requires knowledge of limits
-
-Perception begins with sensory stimuli that are processed into an overall impression. These perceptual and cognitive mechanisms are crucial for HCI because computers act as cognitive tools, communication devices, and memory aids. Understanding how humans process information—along with their limitations—enables designers to create interactive systems that align with human abilities, ensuring usability, efficiency, and intuitive handling.
-Q: What does intuitive handling mean in HCI, and which technologies support it? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • natural language interfaces
- • gestural interfaces
- • multimodal interaction
- • virtual reality
- • holistic strategies
-
-Intuitive handling in HCI refers to interaction methods that align closely with natural human communication and sensorimotor abilities. Examples include natural language interfaces, gesture-based control, and multimodal systems combining speech and visual input. Virtual reality extends this by enabling users to manipulate digital environments with movements and gestures. While powerful, design and evaluation methods for such interfaces are still developing, with research focusing on holistic approaches that consider cognition, body movement, and spatial aspects together.
-Q: What is declarative (explicit) memory, and what are its two subtypes? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Declarative memory → explicit recall of rules & knowledge
-  • Episodic memory → events & personal experiences (time/place bound)
-  • Semantic memory → general facts & knowledge (context-free)
-
-Declarative memory enables conscious recall of information. Episodic memory stores personal experiences tied to a specific context, while semantic memory contains abstract factual knowledge independent of time and place. Together, they allow reasoning, learning, and the application of rules.
-
-Q: Which standardized tool measures usability with 10 statements on a 5-point scale?
-A: System Usability Scale (SUS)
-
-Q: What percentage of people are affected by color vision deficiencies, and which type is most common? [2.1 Sight and Visual Perception]
-A:
- • ~9% overall
- • red-green color blindness most common
-
-About 9% of people worldwide suffer from color vision deficiencies, with red-green color blindness being the most widespread form.
-
-
-Q: What are the five key design principles in HCI according to Norman? [4.1 HCI Design Principles]
-A:
- 1. Affordances – Indicate how an object can be used through its design (e.g., a chair invites sitting).
- 2. Signifiers – Visual or auditory cues that guide user actions (e.g., icons, labels, sounds).
- 3. Constraints – Limit user actions to prevent errors (e.g., only numbers allowed in a date field).
- 4. Mapping – Logical relationship between controls and their effects (e.g., turning steering wheel right → car turns right).
- 5. Feedback – Immediate system response to user actions, confirming successful interaction (too little or too much can confuse).
-
-These principles ensure intuitive, safe, and efficient interaction between humans and interfaces.
-Q: What is Human-Computer Interaction (HCI) and which disciplines contribute to it? [1.1 Definitions]
-A:
-
- • design of computer technology
- • user–computer interaction
- • cognitive science
- • computer science
- • human factors engineering
-
-Human-Computer Interaction (HCI) is an interdisciplinary research field that focuses on the design of computer technology and the ways people interact with computers. It draws from cognitive science to understand mental processes, computer science for technical foundations, and human factors engineering to ensure usability, safety, and efficiency in the interaction between humans and systems.
-Q: What is priming in memory processes? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Definition → memory enhancement by prior exposure
-  • Mechanism → earlier stimulus influences later response
-  • Effect → faster recognition, easier processing
-
-Priming occurs when exposure to one stimulus unconsciously shapes the response to a subsequent stimulus. It facilitates recognition and processing efficiency, often without the individual being aware of the influence.
-
-
-Q: What term refers to measuring human body dimensions for ergonomic design?
-A: Anthropometric
-
-Q: What role do rods play in vision, and how does the eye adapt to changing light conditions? [2.1 Sight and Visual Perception]
-A:
- • rods → brightness perception
- • high light sensitivity
- • pupil reflex via iris
- • retinal biochemical adaptation
-
-Rods are photoreceptor cells specialized in brightness perception and are more sensitive than cones, making them crucial in low-light conditions. The eye adapts to changing light in two ways: rapidly through the iris, which adjusts pupil size like a camera aperture, and more slowly through biochemical changes in the retina’s sensory cells, allowing gradual adaptation to darkness or brightness.
-Q: What are the three types of cognitive load in Cognitive Load Theory (CLT)? [3.3 Measuring Cognitive Load]
-A:
-  • Intrinsic load → complexity of the task itself (e.g., typing characters on keyboard)
-  • Extraneous load → imposed by poor design or unclear interface
-  • Germane load → effort to build schemas & integrate knowledge (e.g., tutorials, guided practice)
-
-Cognitive Load Theory (Sweller, 2020) explains how task performance and learning depend on the amount of cognitive load. Intrinsic load is determined by task complexity, extraneous load stems from the way information is presented, and germane load reflects the mental work required to form lasting schemas in long-term memory. Effective interface and learning design aim to reduce extraneous load and optimize germane load.
-
-Q: What are the four subdomains related to the development process in HCI? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • human
- • computer
- • usage
- • context
-
-The four subdomains in the HCI development process are human, computer, usage, and context. These cover the essential perspectives: the human user (cognitive, perceptual, physical traits), the computer (technical system), the usage (interaction tasks and goals), and the context (social, cultural, and organizational environment). Together, they ensure that interactive systems are designed in a user-centered and context-aware manner.
-Q: What is Human Factors Engineering in the context of HCI? [1.1 Definitions]
-A:
-
- • ergonomics
- • usability
- • safety
- • human–system fit
-
-Human Factors Engineering (also called ergonomics) is the discipline that examines how humans interact with systems, machines, and environments, aiming to optimize usability, safety, and performance. In HCI, it ensures that interfaces and devices are designed according to human physical, cognitive, and perceptual capabilities, reducing errors and improving efficiency through a better human–system fit.
-Q: How does cognitive psychology view humans in the context of information processing? [1.3 Basic Models of Human Information Processing]
-A:
-
- • perception
- • knowledge acquisition
- • information processing system
-
-Cognitive psychology studies the fundamental mechanisms of how people process information, focusing on perception and knowledge acquisition. It conceptualizes humans as an information processing system, similar to a computer, where sensory input is received, processed, stored, and used to guide behavior and decision-making (Butz et al., 2022).
-
-Q: What is the science of structuring and organizing content in GUIs?
-A: Information architecture
-
-Q: What must be considered when designing questionnaires for HCI evaluation? [1.2 Challenges in Human-Computer Interaction]
-A:
- • clarity of wording
- • avoid ambiguity
- • avoid bias
- • neutral phrasing
-
-When planning questionnaires in HCI evaluation, the questions must be formulated clearly and unambiguously to prevent misinterpretation. They should also be designed to avoid bias, ensuring that responses are not influenced or steered toward a particular outcome. Neutral, well-structured items enable reliable collection of user feedback and support meaningful statistical analysis of patterns and trends.
-
-Q: When and for which systems were user interfaces first developed? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • early 1980s
- • workstation computers
-
-User interfaces were first developed in the early 1980s for workstation computers. These initial designs laid the foundation for graphical user interfaces (GUIs), which later evolved to accommodate broader user groups and devices, addressing new challenges such as usability, scalability, and accessibility.
-Q: What does the term anthropometric mean in the context of HCI? [1.1 Definitions]
-A:
-
- • body measurements
- • size & proportions
- • ergonomic design
-
-Anthropometric refers to the systematic measurement of human body dimensions, such as height, reach, hand size, or posture. In HCI, anthropometric data are crucial for ergonomic design, ensuring that devices, interfaces, and workspaces fit the physical characteristics of users, thereby improving comfort, usability, and reducing the risk of strain or injury.
-Q: What is convergence in vision, and when does it occur? [2.1 Sight and Visual Perception]
-A:
- • inward rotation of eyes
- • occurs when focusing < 6 m
-
-Convergence refers to the inward turning of the eyes toward each other when focusing on a nearby object, aligning the visual axes at the fixation point.
-
-
-Q: What does two-way communication mean in HCI? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • bidirectional exchange
- • user ↔ system
- • input & feedback
-
-Two-way communication in HCI describes the bidirectional interaction between a user and a computer system. The user provides input (e.g., commands, actions), and the system responds with feedback (e.g., output, confirmation, error messages). This dynamic loop is essential for usability, as it allows continuous adjustment, error correction, and meaningful interaction.
-Q: What is user testing in HCI, and what are its benefits and challenges? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • direct usability feedback
- • observation techniques
- • qualitative & quantitative data
- • time & resource intensive
-
-User testing is an evaluation method in HCI where real users interact with a system or prototype, providing direct feedback on usability and experience. Observational methods like note-taking, audio, or video recording help identify needs and issues. It yields both qualitative insights (e.g., confusion, strategies) and quantitative data (e.g., task success rates). However, it is resource-intensive, requiring participant recruitment, preparation, and complex data analysis, while evaluators must minimize disruption during testing.
-
-
-Q: What does attention do in human information processing?
-A: Allocates cognitive resources to relevant stimuli
-Q: What are the three layers of the eyeball, and what is the function of the lens? [2.1 Sight and Visual Perception]
-A:
- • sclera → outer white layer
- • choroid → middle layer
- • retina → inner layer
- • lens → refraction & light regulation
-
-The eye, as the central organ of visual perception, consists of the sclera, choroid, and retina. The lens refracts light and regulates the amount entering the eye, projecting images onto the retina. Visual information is then transmitted as nerve impulses to the brain, where it is interpreted as seeing. In HCI, this process underpins the design of graphical elements, which must consider factors such as color, contrast, structure, and external light conditions to ensure effective perception.
-Q: What problem do mobile devices face when shrinking large images and icons, and how can it be solved? [1.2 Challenges in Human-Computer Interaction]
-A:
- • difficulty scaling raster graphics
- • distorted or unclear display
- • solution: vectorized data
-
-Mobile devices struggle to shrink large bitmap images or icons due to limited screen size and resources, often resulting in unclear or distorted visuals. This problem can be solved by using vectorized data, which scales cleanly at any resolution, preserves clarity, and reduces performance load on the device.
-Q: What are the two types of errors described by the Human Action Cycle model? [4.1 Human Action Cycle]
-A:
- 1. Gulf of Execution – Errors during execution (steps 2–4). Occur when users don’t know how to operate a system correctly (e.g., unable to recall the right command in a command-line interface).
- 2. Gulf of Evaluation – Errors during evaluation (steps 5–7). Occur when users can’t correctly interpret feedback or system state (e.g., expecting sound feedback while speakers are unplugged).
-
-These “gulfs” highlight mismatches between user goals and system design, emphasizing the need for clear affordances, signifiers, and feedback in interfaces.
-
-Q: Which field investigates the mechanisms of information processing in humans?
-A: Cognitive science
+  • Biometric sensors → detect pulse, movement, sweating (e.g., gloves, wearables)
+  • Camera-based systems → track pupil size, eye blinks, fixations
+  • Advantage → less obtrusive with modern wearables, affordable and scalable
+  • Best practice → combine with subjective methods (e.g., questionnaires) for more reliable results
+
+Physiological methods rely on the link between cognitive load and physical responses such as heart activity, respiration, or eye movement. Biometric wearables (gloves, smart sensors) or contactless camera-based eye-tracking can capture cognitive strain continuously. Combining these with questionnaires (e.g., NASA TLX) gives a fuller picture by uniting objective measures with subjective experience.
+
+Q: Why must energy-saving design be considered in mobile devices?
+A: Limited battery capacity
 
 Q: What is the purpose of the Model Human Processor in HCI? [1.3 Basic Models of Human Information Processing]
 A:
@@ -729,14 +64,19 @@ A:
  The main motivation for the development of this model was to predict the processing times and the degree of difficulty of control tasks in the interactions between humans and computers.
 
 
-Q: What are the key models and principles linking cognition and motor skills in HCI? [3.4 Summary]
+Q: How are the secondary colors yellow, cyan, and magenta displayed in the RGB model? [2.1 Visual Perception]
 A:
-  • Memory systems: sensory register, short-term, long-term → distribute task resources
-  • Cognitive load measurement: questionnaires (e.g., NASA-TLX) + physiological methods
-  • Decision time: Hick-Hyman law → more choices = slower responses
-  • Speed–accuracy tradeoff: Fitts’ Law, Steering Law → movement time depends on distance, size, or path width
-  • Bimanual coordination: Guiard’s model → nondominant sets reference, dominant executes
-  • Skill–Rules–Knowledge model: describes how users internalize actions (automatic, rule-based, knowledge-based)
+  • Yellow = (255, 255, 0) → Red + Green
+  • Cyan = (0, 255, 255) → Green + Blue
+  • Magenta = (255, 0, 255) → Red + Blue
+Q: Which discipline in HCI optimizes usability, safety, and performance of systems?
+A: Human factors engineering
+
+Q: What range of wavelengths defines visible light for human perception? [2.1 Sight and Visual Perception]
+A:
+ • 380 nm to 780 nm
+
+Visible light corresponds to electromagnetic oscillations in the wavelength range of approximately 380 to 780 nanometers. Different wavelengths within this spectrum are perceived as different colors, with shorter wavelengths corresponding to violet/blue and longer wavelengths to red. This range underlies how humans perceive graphical elements on digital displays.
 Q: What are the three stages of skill learning according to Fitts and Posner (1973)? [3.1 Memory Types and Cognitive Processes]
 A:
   • Cognitive stage → high effort, conscious thinking (slow, error-prone)
@@ -744,6 +84,34 @@ A:
   • Autonomous stage → skill becomes automated, little active thought needed
 
 Learning is an experiential process that changes behavior through cognitive and motor skill acquisition, mainly stored in procedural memory. Fitts and Posner’s model describes three stages: beginners rely on conscious control (cognitive), practice strengthens performance (associative), and with mastery, skills become automatic (autonomous), like playing the piano without deliberate effort.
+Q: What are the two types of knowledge stored in long-term memory? [3.1 Memory Types and Cognitive Processes]
+A:
+
+ • declarative knowledge
+ • procedural knowledge
+
+Long-term memory holds both declarative and procedural knowledge. Declarative knowledge consists of facts, concepts, and principles that can be consciously recalled. Procedural knowledge refers to skills and “knowing how”—the implicit rules, strategies, and action sequences needed to perform tasks. While declarative knowledge is explicit, procedural knowledge is often implicit and acquired through practice, feedback, and experience.
+Q: What is the science of structuring and organizing content in GUIs?
+A: Information architecture
+
+Q: What are examples of dialog technology elements in HCI?
+A: Keyboard, mouse, touchscreen, voice, gesture control
+
+Q: What is the Technology Acceptance Model (TAM), and which factors determine technology adoption? [3.2.2 Technology Acceptance Model]
+A:
+Definition: The Technology Acceptance Model (TAM) explains how users form intentions to adopt or reject a technology based on perceived usefulness and ease of use.
+Origin: Developed by Davis (1989), grounded in social psychology and behavioral prediction theories.
+Key factors:
+  • Perceived usefulness: Belief that using the technology improves performance or productivity.
+  • Perceived ease of use: Belief that the technology is easy to learn and operate with minimal effort.
+Advantages:
+ • Predicts user acceptance and behavioral intention effectively.
+ • Helps designers focus on usability and practical benefits to improve adoption.
+ • Applicable across diverse technologies and contexts.
+Disadvantages:
+ • Ignores emotional, cultural, and contextual influences on technology use.
+ • Oversimplifies trust and long-term engagement factors.
+ • Assumes rational decision-making, which may not always reflect real user behavior.
 Q: What is the Steering Law in HCI and how is it applied? [3.4 Steering Law]
 A:
   • Definition: Extends Fitts’ Law to constrained movements where the pointer must follow a path (like through a tunnel).
@@ -760,239 +128,26 @@ A:
 
 The Steering Law predicts movement time for tasks constrained by path geometry, unlike Fitts’ Law, which assumes free pointing.
 
-Q: How do accommodation and convergence work together in depth perception? [2.1 Sight and Visual Perception]
-A:
- • both provide depth cues
- • interplay helps estimate spatial depth
-
-The brain combines signals from accommodation (lens adjustment) and convergence (eye rotation) to judge object distance and spatial depth.
-
-
-Q: How is recognition used in GUI design instead of recall? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Icons vs. commands → visual cues replace memorized input
-  • Recognition easier → users identify rather than recall
-  • Design principle → reduce cognitive load
-
-In GUI design, recognition is favored over recall to reduce cognitive effort. Instead of requiring users to remember and type commands, interfaces provide icons or menus that can be visually identified. This shift leverages recognition memory, enabling faster, more intuitive interaction with digital systems.
-Q: What characterizes long-term memory, and how does it differ from short-term memory? [3.1 Memory Types and Cognitive Processes]
-A:
-  • Storage → unlimited capacity
-  • Duration → years or lifetime
-  • Access time → ~0.1 s
-  • Content → facts, experiences, sensory impressions
-
-Long-term memory is the central, durable storage of the brain. Unlike short-term memory, it can store vast amounts of information for years or even a lifetime. Access is slower than short-term memory but allows retrieval of diverse data types such as images, sounds, and concepts. It is essential for learning, skill retention, and contextualizing new information.
-
-Q: Which sensory receptors in the skin respond to temperature, touch, and pain? [2.5 Sense of Touch and Proprioception]
-A:
- • Ruffini corpuscles → temperature
- • Meissner corpuscles → touch
- • Free nerve endings → pain
-
-Skin receptors are unevenly distributed and specialized: Ruffini corpuscles detect temperature, Meissner corpuscles sense light touch, and free nerve endings signal pain. Their combined input allows humans to perceive complex object properties such as weight, shape, and temperature simultaneously.
-Q: What does the load theory of attention and cognitive control state? [1.3 Basic Models of Human Information Processing]
+Q: What does the term anthropometric mean in the context of HCI? [1.1 Definitions]
 A:
 
- • high effort → fewer distractions
- • low effort → more distractions
- • attention capacity is limited
+ • body measurements
+ • size & proportions
+ • ergonomic design
 
-The load theory of attention and cognitive control (Lavie et al., 2004) explains that the brain’s ability to filter distractions depends on task difficulty. When a task requires high mental effort, cognitive capacity is fully engaged, leaving little room to process irrelevant stimuli—making distractions less likely. Conversely, during easy tasks, unused capacity allows the brain to involuntarily process irrelevant information, increasing susceptibility to distraction.
-
-Q: How is attention defined in cognitive psychology and HCI? [1.3 Basic Models of Human Information Processing]
+Anthropometric refers to the systematic measurement of human body dimensions, such as height, reach, hand size, or posture. In HCI, anthropometric data are crucial for ergonomic design, ensuring that devices, interfaces, and workspaces fit the physical characteristics of users, thereby improving comfort, usability, and reducing the risk of strain or injury.
+Q: What are forms in HCI, and what are their advantages and limitations? [3.1.3 Form-Based Interaction]
 A:
-
- • focus on relevant stimuli
- • allocation of mental resources
- • filtering distractions
-
-Attention is the cognitive process that allocates mental resources to selected stimuli or tasks, enabling individuals to focus on what is relevant while filtering out distractions. In HCI, understanding attention is crucial for designing systems that guide user focus effectively, minimize overload, and support goal-directed interaction.
-Q: What is the difference between preattentive and attentive perception, and how is it relevant in GUI design? [2.3 Attentive and Preattentive Perception]
-A:
- • Preattentive perception → automatic, unconscious, ~200–250 ms, independent of number of stimuli
- • Features detected preattentively → color, shape, size, orientation, curvature, motion, depth
- • Attentive perception → conscious, requires focused attention, used when multiple features combine
- • Design relevance → enables pop-out effects, selective highlighting, guiding user attention
-
-Preattentive perception occurs in the eye’s nervous system before conscious attention, allowing users to instantly detect simple features such as color or shape differences. In contrast, attentive perception requires deliberate focus to process combinations of features (e.g., brightness + shape). In GUI design, preattentive effects are used to highlight important elements or reduce visual load, while attentive processing is reserved for more complex tasks.
-
-Q: How does stereopsis depend on object distance? [2.1 Sight and Visual Perception]
-A:
- • closer objects → larger difference
- • farther objects → smaller difference
-
-The disparity between the two eye images increases for nearby objects and decreases for distant ones, allowing the brain to calculate depth.
-
-Q: How can human errors in HCI be classified according to cognitive level and type? [4.1 Human Error Types]
-A:
-  • Slips → Occur on a low cognitive level; the plan is correct, but the action is wrong.
- • Example: Forgetting to lock the door (memory slip).
- • Action-based slip: Performing the wrong action (e.g., putting salt instead of sugar).
-  • Mistakes → Occur on a high cognitive level; the plan or goal itself is wrong.
- • Rule-based mistake: Correct goal, wrong action against rules (e.g., crossing at red light).
- • Knowledge-based mistake: Incorrect prediction due to lack of knowledge (e.g., misjudging sugar amount).
-
-In short: Slips = wrong execution, Mistakes = wrong intention — both influenced by memory and cognition.
-Q: What are the two main skin layers relevant for touch perception? [2.5 Sense of Touch and Proprioception]
-A:
- • Epidermis → outermost layer, thickness varies by body part
- • Dermis → underlying layer, provides structure and consistency
-
-The epidermis forms the outer protective layer of skin, while the dermis beneath it stabilizes and supports it. Both layers contribute to tactile perception, with thickness and structure influencing sensitivity across different body regions.
-Q: How does the System Usability Scale (SUS) measure usability? [1.2 Challenges in Human-Computer Interaction]
-A:
-
- • 10 statements
- • 5-point Likert scale
- • ease of use
- • learnability
- • satisfaction
-
-The System Usability Scale (SUS), developed by Brooke (1996), measures the perceived usability of a system or interface through 10 standardized statements. Users rate each item on a 5-point Likert scale ranging from “strongly disagree” to “strongly agree.” The items cover key aspects of usability, including ease of use, learnability, and overall user satisfaction, making SUS a widely adopted, quick, and reliable tool for comparative usability evaluation.
-Q: What are the key characteristics of smell and taste perception in humans? [2.6 Smell and Taste Perception]
-A:
- • Visceral senses → linked to digestive system
- • Chemical stimuli → secretions in mouth & nose activate receptors
- • Integration → brain merges smell + taste → unified food perception
- • Loss of smell → alters taste experience (e.g., during a cold)
- • Olfactory organ → nasal mucosa, nerve cells form olfactory nerve via ethmoid bone
-
-Smell and taste are chemically driven senses that work closely together in food perception. The olfactory organ in the nasal mucosa detects airborne particles, while taste buds in the mouth register dissolved compounds. Because the brain integrates both inputs simultaneously, smells can be mistaken for tastes, and the loss of smell significantly alters taste perception.
-Q: How does the Hick-Hyman law explain decision-making speed in HCI? [3.4 Decision Making and Speed]
-A:
-  • Everyday decisions use long-term memory for logical choices.
-  • Hick-Hyman Law: decision time grows with number of choices.
- Formula: RT = a + b · log₂N
- - RT = reaction time
- - a = constant (baseline time)
- - b = multiplicative constant (depends on context)
- - N = number of alternatives
-  • Logarithmic relationship: each doubling of choices increases decision time by a constant.
-  • Application in HCI:
- - Long, unsorted menus = slower decisions
- - Grouping or sorting (alphabetical, categories) = faster decisions
-
-The Hick-Hyman law shows that decision time increases with the entropy of available alternatives. In interface design, this principle underlines the importance of structured menus, categorized options, and reduced clutter to minimize user response times and improve usability.
-
-Q: How many images per second can the human eye typically perceive as separate? [2.1 Visual Perception]
-A:
-  • The human eye can distinguish about 10–12 images per second as individual frames.
-  • When the rate exceeds this threshold, the images blend together, creating the illusion of continuous motion — a principle used in film and animation.
-
-Q: What is the critical flicker fusion frequency (CFFF)? [2.1 Visual Perception]
-A:
-  • The critical flicker fusion frequency (CFFF) is the rate at which a flickering light is perceived as a steady, continuous light source.
-  • When the flicker rate exceeds this threshold, the eye can no longer distinguish individual flashes.
-  • This principle is important in display and lighting design to avoid visible flicker and visual fatigue.
-
-Q: Why does the PAL television standard in Europe use 25 frames per second? [2.1 Visual Perception]
-A:
-  • The 25 fps rate is derived from the 50 Hz power grid frequency used in Europe.
-  • 25 fps equals half of the grid frequency, ensuring synchronization between electrical and visual signals.
-  • This minimizes flicker and interference, making PAL (Phase Alternating Line) the predominant TV standard in Europe.
-Q: What is the principle of causality in user interface design? [2.1 Visual Perception]
-A:
-  • The principle of causality describes the user’s ability to perceive a direct connection between an input and its feedback.
-  • Feedback received within 100 ms is perceived as causally linked to the user’s action.
-  • Delays beyond this threshold weaken the perceived connection, requiring visual cues (e.g., loading bars or hourglasses) to maintain user confidence in system responsiveness.
-Q: How are the secondary colors yellow, cyan, and magenta displayed in the RGB model? [2.1 Visual Perception]
-A:
-  • Yellow = (255, 255, 0) → Red + Green
-  • Cyan = (0, 255, 255) → Green + Blue
-  • Magenta = (255, 0, 255) → Red + Blue
-Q: What is the difference between luminance and radiance in visual perception? [2.1 Visual Perception]
-A:
-  • Luminance → Measures the brightness of light perceived by the human eye (light per unit area in a specific direction).
-  • Radiance → Measures the total light energy emitted or reflected by a surface in all directions, regardless of visibility to the eye.
-
-Q: How can designers check that user interfaces are also visible for color-blind users? [2.1 Visual Perception]
-A:
-  •  Method: Print the layout in black and white.
-  •  Reasoning: If all elements remain clearly distinguishable in grayscale, they are likely also recognizable for users with color vision deficiencies.
-: What is spatial frequency and how does it relate to human visual perception? [2.1 Visual Perception]
-A:
-  •  Definition: Spatial frequency measures how often visual elements (light–dark transitions, edges, or patterns) repeat per unit of space — the level of visual detail.
-  •  Units: Measured in cycles per degree (cpd) of visual angle.
-  •  Types:
- • Low spatial frequency → broad shapes, overall form (e.g., silhouette)
- • High spatial frequency → fine detail, edges, texture (e.g., hair, text)
-  •  Neural pathways:
- • Magnocellular → low frequencies (motion, shape)
- • Parvocellular → high frequencies (detail, color)
-  •  Summary: Low frequencies convey form and structure; high frequencies convey edges and texture.
-Q: How can Mach bands be applied in HCI to improve user interface design? [2.1 Visual Perception]
-A:
-  •  Concept: Mach bands exaggerate contrast between adjacent areas, creating the illusion of sharper edges.
-  •  Applications:
- • Digital displays (e.g., LCDs): Adjusting brightness and contrast enhances text and graphic sharpness.
- • Web & app interfaces: Artificial contrast guides user attention to key elements (e.g., buttons, links).
-  •  Benefit: Improves readability, visual clarity, and overall intuitiveness of the interface.
-Q: How does the masking effect influence MP3 audio compression? [2.2 Auditory Perception]
-A:
-  •  Concept: The masking effect means that when a loud sound occurs, nearby quieter sounds in the same frequency range become inaudible.
-  •  Application in MP3: MP3 compression removes these inaudible frequencies to reduce file size.
-  •  Result: Achieves smaller audio files without noticeable loss of sound quality because data outside human hearing thresholds are discarded.
-Q: What is the difference between auditory icons and earcons in HCI? [2.2 Auditory Perception]
-A:
-  •  Auditory icons:
- • Represent real-world sounds linked to actual events or actions.
- • Example: crumpling paper sound for emptying the trash bin.
- • Relies on natural associations — users instantly recognize the meaning.
-  •  Earcons:
- • Abstract, synthetic sound patterns that encode information symbolically.
- • Must be learned by users (e.g., email notification chime, car parking alert).
- • Defined by variable parameters — rhythm, pitch, timbre, volume, duration, spatial position.
-  •  Summary: Auditory icons use familiar sounds to convey meaning directly, while earcons use artificial sounds that require learned interpretation.
-
-Q: How can Gestalt laws be applied to acoustic representations in HCI? [2.2 Auditory Perception]
-A:
-  •  Concept: Gestalt principles also influence how users perceive sounds.
-  •  Applications:
- • Law of proximity: Sounds occurring close in time are perceived as related.
- • Law of similarity: Similar-sounding tones are grouped together perceptually.
- • Cross-modal proximity: When a sound coincides with a visual cue (e.g., a tone playing right after a pop-up), both are perceived as a single event.
-  •  Result: Enhances coherence and intuitiveness between auditory and visual feedback in user interfaces.
-
-Q: What does Moore’s Law state, and why is it important in technology development? [2.4 Technological Foundations]
-A:
-  •  Definition: Moore’s Law, proposed by Gordon Moore (1965), states that the number of transistors per unit area on an integrated circuit doubles roughly every 12–24 months.
-  •  Implication: This doubling leads to exponential increases in computing power and performance while reducing cost per transistor.
-  •  Relevance in HCI: Predicts continual growth in interface capability and computational speed, driving innovation in hardware and user interface design.
-
-Q: What are the key points summarized about human perception and technology in HCI? [2.4 Sensory and Technological Foundations]
-A:
-  •  Display perception: Viewing angle and pixel density affect how contrast, sharpness, and colors are perceived.
-  •  Temporal resolution: Defines how many light stimuli or images per second the human eye can detect — basis for PAL (25 fps) and NTSC (30 fps) standards.
-  •  Causality: Input–feedback delays above 100 ms reduce perceived connection between action and response.
-  •  Color and contrast: Both brightness and contrast strongly influence visual clarity and user experience.
-  •  Auditory design:
- • Auditory icons → natural, real-world sounds.
- • Earcons → synthetic, learned tones.
-  •  Moore’s Law: Predicts the exponential growth of transistor density (~every 12–24 months), driving increases in computing power and interface complexity.
-Q: What defines an interaction in HCI, and what are the main interaction styles? [3.1 Interaction Styles]
-A:
-  •  Definition: An interaction is a purposeful and reciprocal exchange of information between at least two actors, aimed at achieving a goal.
-  •  Key point: Not every information transfer qualifies—true interaction requires mutual influence and intent.
-  •  Primary interaction styles (Shneiderman, 1988):
- 1. Command-based interaction
- 2. Menu selection
- 3. Form-based input
- 4. Direct manipulation
-  •  Additional styles: Natural language, gesture-based, voice-based, and multimodal interactions—used in modern systems to enhance intuitiveness and accessibility.
-Q: What is command-based interaction in HCI, and what are its design rules? [3.1.1 Command Language]
-A:
-Definition: Command-based interaction involves users entering text commands (via a command line or shell) directly into the system, which immediately executes the input.
+Definition: Forms are GUI elements that enable users to input data or make selections through fields, checkboxes, radio buttons, or drop-down menus. They are used for tasks like submitting feedback, placing orders, or entering personal data.
 Advantages:
- • Enables efficient and precise control when users master the command syntax.
- • Allows automation of complex sequences through scripts.
-Design requirements:
- • Use consistent syntax and domain-relevant vocabulary.
- • Provide clear documentation and logical abbreviations.
-Examples:
- • Operating systems like Linux shells (e.g., Bash, PowerShell).
- • Remote controls and car radios, where each button executes a discrete command.
-  •  Drawback: Requires significant learning effort, making it less accessible to novice users.
+ • Reduce input time by using predefined options and commands.
+ • Lower error rate in data entry through structured fields.
+ • Provide clear guidance with labels and instructions.
+Disadvantages:
+ • Limited flexibility — users cannot easily input non-standard or international data formats.
+ • Overly rigid structures may restrict user creativity or adaptability.
+Q: Which environment uses sensorimotor skills and gestures for interaction?
+A: Virtual reality
 
 Q: What are the main types, advantages, and disadvantages of menu-based interaction in HCI? [3.1.2 Menu Selection]
 A:
@@ -1012,67 +167,51 @@ Disadvantages:
  • Limited screen space restricts how many options can be displayed.
  • Complex functions may not fit menu structures.
  • Requires careful perceptual design (e.g., Gestalt laws like good continuation) for clarity.
-Q: What are forms in HCI, and what are their advantages and limitations? [3.1.3 Form-Based Interaction]
+Q: What is the Skill–Rules–Knowledge (SRK) Model and what levels of action does it describe? [3.4 SRK Model]
 A:
-Definition: Forms are GUI elements that enable users to input data or make selections through fields, checkboxes, radio buttons, or drop-down menus. They are used for tasks like submitting feedback, placing orders, or entering personal data.
-Advantages:
- • Reduce input time by using predefined options and commands.
- • Lower error rate in data entry through structured fields.
- • Provide clear guidance with labels and instructions.
-Disadvantages:
- • Limited flexibility — users cannot easily input non-standard or international data formats.
- • Overly rigid structures may restrict user creativity or adaptability.
-Q: What defines the direct manipulation interaction style in HCI, and what are its main pros and cons? [3.1.4 Direct Manipulation]
-A:
-Definition: Direct manipulation allows users to interact with on-screen objects directly (e.g., via mouse, touch, or drag-and-drop) and receive immediate, continuous feedback on their actions.
-Applications: Used in GUIs, CAD, spreadsheets, painting programs, video games, and simulation tools.
+  • Definition: A model (Embrey, 2005) describing how human actions shift between automatic, rule-based, and knowledge-based behavior depending on experience and familiarity.
+  • Levels:
+ - Skill level → routine, automatic actions (e.g., typing on a keyboard without thinking). Involves verbalizing automatic actions, recognizing stimuli, executing stereotypical patterns.
+ - Rule level → conscious selection of appropriate action patterns in known situations. Stimuli are linked to stored rules (e.g., following shortcuts, applying procedures).
+ - Knowledge level → problem-solving in unfamiliar situations where neither automatic skills nor rules apply. Requires active reasoning and environmental analysis.
+  • Design Implication: HCI systems should support all three levels — enabling automation for experts, clear rule-based navigation for intermediates, and flexible guidance for novices.
 
- • Realistic visual metaphors simulate real-world interactions.
- • Continuous visual representation of system state.
- • Enables exploratory and experimental learning.
- • Advantages: Intuitive and easy to learn through direct visual interaction; encourages engagement and user control.
- • Disadvantages: High design effort for accurate, realistic visualizations; ambiguous metaphors can cause incorrect mental models and user errors.
-
-Q: What is User Acceptance Testing (UAT), and how does it differ from functional testing? [3.2.1 User Acceptance Testing]
+Q: How does color vision deficiency affect perception of colors? [2.1 Sight and Visual Perception]
 A:
- • Purpose: Verifies whether a software product meets end-user needs and expectations under real or simulated conditions.
- • Performed by: End-users or business representatives in the final stage of product development.
- • Environment: Conducted in a real-world or realistic environment.
- • Outcome: Binary result — “pass” (meets acceptance criteria) or “fail.”
+ • missing cone types
+ • difficulty distinguishing gradations
+ • colors perceived as similar
 
- • Key differences to functional testing:
-  – UAT validates business and usability requirements, while functional testing checks technical correctness.
-  – UAT happens after the development cycle; functional testing happens during it.
-  – UAT focuses on user satisfaction and acceptance; functional testing focuses on system functionality.
+Color vision deficiencies result from missing cones required to perceive certain colors. Affected individuals can still see colors, but certain pairs of color gradations appear similar, making distinctions harder.
 
- • Advantages:
-  – Identifies usability issues and limitations before release.
-  – Ensures stability and readiness for market launch.
-  – Provides actionable feedback for improvement.
-Q: What is the Technology Acceptance Model (TAM), and which factors determine technology adoption? [3.2.2 Technology Acceptance Model]
+Q: What is the difference between luminance and radiance in visual perception? [2.1 Visual Perception]
 A:
-Definition: The Technology Acceptance Model (TAM) explains how users form intentions to adopt or reject a technology based on perceived usefulness and ease of use.
-Origin: Developed by Davis (1989), grounded in social psychology and behavioral prediction theories.
-Key factors:
-  • Perceived usefulness: Belief that using the technology improves performance or productivity.
-  • Perceived ease of use: Belief that the technology is easy to learn and operate with minimal effort.
-Advantages:
- • Predicts user acceptance and behavioral intention effectively.
- • Helps designers focus on usability and practical benefits to improve adoption.
- • Applicable across diverse technologies and contexts.
-Disadvantages:
- • Ignores emotional, cultural, and contextual influences on technology use.
- • Oversimplifies trust and long-term engagement factors.
- • Assumes rational decision-making, which may not always reflect real user behavior.
-Q: What are the main aspects of user trust in socio-technical systems? [3.2.3 Aspects of Trust]
+  • Luminance → Measures the brightness of light perceived by the human eye (light per unit area in a specific direction).
+  • Radiance → Measures the total light energy emitted or reflected by a surface in all directions, regardless of visibility to the eye.
+
+Q: What percentage of people are affected by color vision deficiencies, and which type is most common? [2.1 Sight and Visual Perception]
 A:
-Definition: Trust in HCI determines how willing users are to rely on a system. Both lack of trust and overtrust can lead to problems—either disuse or misuse of technology.
-Main aspects of trust:
-  • Trust in technology: Confidence in the system’s reliability, accuracy, and security. Built through stable performance and error-free operation.
-  • Trust in people: Confidence in designers, developers, and other users. Built through transparency, accountability, and expertise.
-  • Trust in the system as a whole: Confidence that the system operates in users’ best interests, emphasizing privacy, security, and ethical design.
-  • Trust in feedback and communication: Confidence in system alerts, messages, and support channels. Built through clarity, responsiveness, and empathy.
-  • Trust in the context of use: Confidence that the system fits the user’s environment, task, and skill level. Built through customization, compatibility, and ease of use.
+ • ~9% overall
+ • red-green color blindness most common
+
+About 9% of people worldwide suffer from color vision deficiencies, with red-green color blindness being the most widespread form.
+
+
+Q: How does stereopsis depend on object distance? [2.1 Sight and Visual Perception]
+A:
+ • closer objects → larger difference
+ • farther objects → smaller difference
+
+The disparity between the two eye images increases for nearby objects and decreases for distant ones, allowing the brain to calculate depth.
+
+Q: Which color ranges are most easily perceived by humans on screens? [2.1 Sight and Visual Perception]
+A:
+ • red
+ • yellow–green
+ • less detail in blue–violet
+
+Humans perceive red and yellow-to-green ranges more clearly and in greater detail than blue-to-violet. This affects how colors in graphic elements are recognized and should be considered in interface design for readability and visual clarity.
+
 
 Q: How is user trust measured in HCI, and what factors influence it in online contexts? [3.2.4 Measurement of Trust]
 A:
@@ -1082,14 +221,114 @@ A:
 • Key trust factors → site quality, technical reliability, user experience, and risk-reduction (e.g., guarantees, partnerships, reviews)
 
 Trust in HCI is often assessed through questionnaires adapted from social trust models or via emotional–cognitive analysis. Corbitt et al. (2003) demonstrated that competence and predictability strongly shape online trust, supported by usability, reliability, and security. Complementary physiological and affective measures can reveal trust dynamics when self-reports fall short.
-Q: What is the difference between data security and data protection, and what are their goals? [4.1 Data Security and Protection]
+Q: What are the key models and principles linking cognition and motor skills in HCI? [3.4 Summary]
 A:
-• Data security → ensures confidentiality, integrity, and access control for sensitive data
-• Data protection → safeguards individuals’ rights over how their data are collected, processed, and used
-• Data security strategies → encryption, authentication, access control, secure disposal
-• Data protection strategies → data classification, retention policies, ethical data governance
+  • Memory systems: sensory register, short-term, long-term → distribute task resources
+  • Cognitive load measurement: questionnaires (e.g., NASA-TLX) + physiological methods
+  • Decision time: Hick-Hyman law → more choices = slower responses
+  • Speed–accuracy tradeoff: Fitts’ Law, Steering Law → movement time depends on distance, size, or path width
+  • Bimanual coordination: Guiard’s model → nondominant sets reference, dominant executes
+  • Skill–Rules–Knowledge model: describes how users internalize actions (automatic, rule-based, knowledge-based)
+Q: What problem do mobile devices face when shrinking large images and icons, and how can it be solved? [1.2 Challenges in Human-Computer Interaction]
+A:
+ • difficulty scaling raster graphics
+ • distorted or unclear display
+ • solution: vectorized data
 
-Data security focuses on preventing unauthorized access and data breaches, while data protection emphasizes user privacy, transparency, and ethical handling. Together, they ensure that information is both technically safeguarded and legally and ethically respected.
+Mobile devices struggle to shrink large bitmap images or icons due to limited screen size and resources, often resulting in unclear or distorted visuals. This problem can be solved by using vectorized data, which scales cleanly at any resolution, preserves clarity, and reduces performance load on the device.
+Q: What is proprioception, and what does it detect? [2.5 Sense of Touch and Proprioception]
+A:
+ • Meaning → self-perception (Latin: proprio = own, recipere = to take in)
+ • Function → detects posture changes
+ • Signals → head, torso, limb position, plus weight, tension, force, speed in motion
+
+Proprioception refers to the body’s ability to sense its own position and movement. It provides continuous feedback on posture, limb orientation, and dynamic factors such as weight, force, and speed. This sense is essential for coordinated motion and interaction with digital or physical 
+
+Q: What key factors influence user interaction design, acceptance, and trust in socio-technical systems? [4.1 Summary]
+A:
+Designing for interaction requires balancing usability for both occasional users and experts:
+ • Occasional users → prioritize ease of learning, memory support, and simple task execution.
+ • Experts → rely on automation and mastery of advanced features.
+
+Human-computer interaction (HCI) involves multiple interaction styles, including commands, menus, forms, and direct manipulation. Ensuring usability and user acceptance is vital; this is evaluated through User Acceptance Testing (UAT), which verifies that systems function effectively in real use cases.
+
+With ongoing digital transformation, designers must address new challenges in trust and data protection. Trust depends on system transparency, reliability, and ethical handling of user data, while data security ensures confidentiality and compliance with regulations like the GDPR. Together, these principles support safe, efficient, and user-centered system design.
+Q: What are the seven stages of the Human Action Cycle in HCI? [4.1 Human Action Cycle]
+A:
+Goal Formation Stage
+ 1. Form goal – Define what you want to achieve.
+
+Execution Stage
+2. Form intention – Translate goal into intended actions.
+3. Specify action sequence – Plan ordered steps.
+4. Execute actions – Carry out the sequence.
+
+Evaluation Stage
+5. Perceive system state – Observe the results.
+6. Interpret outcome – Compare perceived vs. expected results.
+7. Evaluate outcome – Assess success relative to the original goal.
+
+This model (Norman, 1988) illustrates how users bridge the Gulf of Execution (translating goals into actions) and the Gulf of Evaluation (understanding outcomes), forming the core of user-centered interface design.
+Q: How is cognitive load measured using dual-task experiments? [3.3 Measuring Cognitive Load]
+A:
+  • Setup → main task + secondary task
+  • Main task → gradually increased in difficulty
+  • Measurement → errors in secondary task indicate rising load
+
+In dual-task experiments, participants perform a demanding main task and a simpler secondary task simultaneously. As the main task becomes harder, performance in the secondary task declines. The number of errors or slowdowns in the secondary task reveals how much cognitive load the main task consumes.
+
+
+Q: What are the three main types of human memory, and how do they differ? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Sensory register → ultra-brief storage of raw sensory input (0.5–5 s)
+  • Short-term memory → active, limited storage (15–30 s), ~4–9 chunks
+  • Long-term memory → large capacity, permanent storage, slower access (~0.1 s)
+
+Human memory consists of three interacting systems. The sensory register briefly stores unprocessed stimuli from the senses. Short-term memory (or working memory) actively processes limited amounts of information using mechanisms like chunking. Long-term memory serves as the central, durable store for facts, experiences, and skills, though with slower retrieval times.
+
+
+
+Q: What are the main design challenges in developing ubiquitous computing systems? [4.2.1 Challenges for Design and Development]
+A:
+Definition: Ubiquitous computing design involves creating interconnected devices that function seamlessly across contexts, input/output modes, and display sizes.
+
+Key challenges:
+ • Location-based and context-sensitive data: Systems must adapt information dynamically to user context — including location, time, mood, and history.
+ • Privacy: Designers must protect users from data misuse, wiretapping, and unauthorized access to personal networks.
+ • Security: Balancing usability with secure authentication, especially on public or shared systems, presents a major design trade-off.
+ • Universal monitoring: Continuous data collection and tracking can compromise user autonomy and freedom.
+ • Resource consumption: Persistent connectivity increases energy demands — both on devices (e.g., smartphones) and supporting cloud infrastructure.
+
+Ubiquitous computing design requires balancing personalization, privacy, and power efficiency while maintaining user trust and seamless interaction across devices and environments.
+Q: What defines an interaction in HCI, and what are the main interaction styles? [3.1 Interaction Styles]
+A:
+  •  Definition: An interaction is a purposeful and reciprocal exchange of information between at least two actors, aimed at achieving a goal.
+  •  Key point: Not every information transfer qualifies—true interaction requires mutual influence and intent.
+  •  Primary interaction styles (Shneiderman, 1988):
+ 1. Command-based interaction
+ 2. Menu selection
+ 3. Form-based input
+ 4. Direct manipulation
+  •  Additional styles: Natural language, gesture-based, voice-based, and multimodal interactions—used in modern systems to enhance intuitiveness and accessibility.
+Q: What is Information Architecture in HCI? [1.1 Definitions]
+A:
+
+ • structuring information
+ • navigation
+ • usability
+ • findability
+
+Information Architecture (IA) refers to the organization, structuring, and labeling of information in digital systems to support usability and findability. In HCI, it provides the blueprint for navigation and content layout, ensuring that users can efficiently locate, understand, and interact with information resources within websites, applications, or other interactive systems.
+Q: How can human errors in HCI be classified according to cognitive level and type? [4.1 Human Error Types]
+A:
+  • Slips → Occur on a low cognitive level; the plan is correct, but the action is wrong.
+ • Example: Forgetting to lock the door (memory slip).
+ • Action-based slip: Performing the wrong action (e.g., putting salt instead of sugar).
+  • Mistakes → Occur on a high cognitive level; the plan or goal itself is wrong.
+ • Rule-based mistake: Correct goal, wrong action against rules (e.g., crossing at red light).
+ • Knowledge-based mistake: Incorrect prediction due to lack of knowledge (e.g., misjudging sugar amount).
+
+In short: Slips = wrong execution, Mistakes = wrong intention — both influenced by memory and cognition.
 Q: What key questions guide data protection management, and how are they addressed? [4.1.1 Data Protection Management]
 A:
   1.  Where should personal data be stored?
@@ -1114,12 +353,785 @@ Key principles:
  • Scope: Applies to diverse data types — biometric, location, and drone-collected data.
 
 The GDPR’s overarching goal is to safeguard individuals’ right to informational self-determination, ensuring transparency, accountability, and privacy in all data processing activities across the EU.
-Q: What key factors influence user interaction design, acceptance, and trust in socio-technical systems? [4.1 Summary]
+Q: What is the NASA Task Load Index (TLX), and how does it measure cognitive load? [3.3 Measuring Cognitive Load]
 A:
-Designing for interaction requires balancing usability for both occasional users and experts:
- • Occasional users → prioritize ease of learning, memory support, and simple task execution.
- • Experts → rely on automation and mastery of advanced features.
+  • Method → subjective self-assessment questionnaire
+  • 6 subscales → mental, physical, temporal demand, performance, effort, frustration
+  • Scale → 0–100 (in 5-point intervals)
 
-Human-computer interaction (HCI) involves multiple interaction styles, including commands, menus, forms, and direct manipulation. Ensuring usability and user acceptance is vital; this is evaluated through User Acceptance Testing (UAT), which verifies that systems function effectively in real use cases.
+The NASA TLX is a widely used questionnaire for subjective measurement of cognitive load. It asks participants to rate six independent workload dimensions on a 0–100 scale. The combined profile gives a multidimensional assessment of task load, providing insight into perceived mental effort, stress, and performance.
 
-With ongoing digital transformation, designers must address new challenges in trust and data protection. Trust depends on system transparency, reliability, and ethical handling of user data, while data security ensures confidentiality and compliance with regulations like the GDPR. Together, these principles support safe, efficient, and user-centered system design.
+Q: What term refers to measuring human body dimensions for ergonomic design?
+A: Anthropometric
+
+Q: What are the two main types of long-term memory? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Declarative (explicit) → episodic (events), semantic (facts)
+  • Non-declarative (implicit) → procedural (skills), priming, conditioning
+
+Long-term memory divides into declarative memory, which enables conscious recall of facts and experiences, and non-declarative memory, which governs unconscious skills, habits, and conditioned responses. Declarative memory is rule- and knowledge-based, while non-declarative memory underlies practiced motor or cognitive skills.
+
+
+Q: How does the System Usability Scale (SUS) measure usability? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • 10 statements
+ • 5-point Likert scale
+ • ease of use
+ • learnability
+ • satisfaction
+
+The System Usability Scale (SUS), developed by Brooke (1996), measures the perceived usability of a system or interface through 10 standardized statements. Users rate each item on a 5-point Likert scale ranging from “strongly disagree” to “strongly agree.” The items cover key aspects of usability, including ease of use, learnability, and overall user satisfaction, making SUS a widely adopted, quick, and reliable tool for comparative usability evaluation.
+Q: Which photoreceptor cells in the retina enable color perception, and how do they function? [2.1 Sight and Visual Perception]
+A:
+ • rods → light/dark sensitivity
+ • cones → color perception
+ • S cones → blue
+ • M cones → green
+ • L cones → red
+
+The retina contains rods and cones, with cones responsible for color vision. Cones respond to three spectral ranges of visible light: short (S, blue), medium (M, green), and long (L, red) wavelengths. White light activates all three equally, while varying stimulation patterns produce different colors. For instance, exclusive activation of L cones yields red perception, S cones blue, and M cones green (Butz et al., 2022).
+
+Q: What are the key characteristics of smell and taste perception in humans? [2.6 Smell and Taste Perception]
+A:
+ • Visceral senses → linked to digestive system
+ • Chemical stimuli → secretions in mouth & nose activate receptors
+ • Integration → brain merges smell + taste → unified food perception
+ • Loss of smell → alters taste experience (e.g., during a cold)
+ • Olfactory organ → nasal mucosa, nerve cells form olfactory nerve via ethmoid bone
+
+Smell and taste are chemically driven senses that work closely together in food perception. The olfactory organ in the nasal mucosa detects airborne particles, while taste buds in the mouth register dissolved compounds. Because the brain integrates both inputs simultaneously, smells can be mistaken for tastes, and the loss of smell significantly alters taste perception.
+Q: What is user testing in HCI, and what are its benefits and challenges? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • direct usability feedback
+ • observation techniques
+ • qualitative & quantitative data
+ • time & resource intensive
+
+User testing is an evaluation method in HCI where real users interact with a system or prototype, providing direct feedback on usability and experience. Observational methods like note-taking, audio, or video recording help identify needs and issues. It yields both qualitative insights (e.g., confusion, strategies) and quantitative data (e.g., task success rates). However, it is resource-intensive, requiring participant recruitment, preparation, and complex data analysis, while evaluators must minimize disruption during testing.
+
+
+Q: Which evaluation method provides direct feedback by observing users?
+A: User testing
+
+Q: When and for which systems were user interfaces first developed? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • early 1980s
+ • workstation computers
+
+User interfaces were first developed in the early 1980s for workstation computers. These initial designs laid the foundation for graphical user interfaces (GUIs), which later evolved to accommodate broader user groups and devices, addressing new challenges such as usability, scalability, and accessibility.
+Q: What is the Gestalt property of invariance? [2.2 Gestalt Laws]
+A:
+ • recognition independent of rotation, size, perspective
+
+Invariance means that objects can be recognized regardless of their orientation, scale, or perspective. For example, a dog is recognizable whether it stands upright, lies on its back, or appears near or far away. In design, this helps ensure UI elements like buttons remain identifiable under different conditions.
+Q: What is the difference between data security and data protection, and what are their goals? [4.1 Data Security and Protection]
+A:
+• Data security → ensures confidentiality, integrity, and access control for sensitive data
+• Data protection → safeguards individuals’ rights over how their data are collected, processed, and used
+• Data security strategies → encryption, authentication, access control, secure disposal
+• Data protection strategies → data classification, retention policies, ethical data governance
+
+Data security focuses on preventing unauthorized access and data breaches, while data protection emphasizes user privacy, transparency, and ethical handling. Together, they ensure that information is both technically safeguarded and legally and ethically respected.
+Q: What are the two types of errors described by the Human Action Cycle model? [4.1 Human Action Cycle]
+A:
+ 1. Gulf of Execution – Errors during execution (steps 2–4). Occur when users don’t know how to operate a system correctly (e.g., unable to recall the right command in a command-line interface).
+ 2. Gulf of Evaluation – Errors during evaluation (steps 5–7). Occur when users can’t correctly interpret feedback or system state (e.g., expecting sound feedback while speakers are unplugged).
+
+These “gulfs” highlight mismatches between user goals and system design, emphasizing the need for clear affordances, signifiers, and feedback in interfaces.
+
+Q: What usability principles should be followed when system errors occur in HCI? [4.1 System Error Handling]
+A:
+ 1. Clarity of information – The system must explain the error in understandable language (not just error codes).
+ 2. Guidance for resolution – The system should tell users exactly what to do next (e.g., “Please restart the application”).
+
+Good error handling reduces user frustration and maintains trust. Some systems even mask negative experiences (like slow connections) with positive design cues to preserve a smooth user experience.
+Q: How does attention affect multitasking, and what does the performance-resource-function (PRF) show? [3.2 Stress Due to Multiple Tasks]
+A:
+  • Attention → selects stimuli, assigns conscious resources
+  • Automatic tasks → procedural knowledge, can run in parallel (e.g., cycling + talking)
+  • Complex tasks → need full attention, hard to perform simultaneously
+  • PRF curve → shows task performance vs. allocated resources
+ • left side → resource-limited
+ • right side → data-limited
+ • peak → optimal performance
+
+Attention enables humans to filter stimuli and assign cognitive resources. While automated tasks (like drinking coffee) can be done alongside others, complex tasks requiring full attention compete for limited resources. The PRF model (Norman & Bobrow, 1975) illustrates that performance improves with more resources until it reaches a ceiling: beyond this, data limitations (like poor resolution in an image) prevent further gains.
+
+Q: How does ACM’s SIGCHI define Human-Computer Interaction (HCI)? [1.1 Definitions]
+A:
+
+ • development
+ • evaluation
+ • interaction concepts
+ • interactive systems
+
+According to the Special Interest Group on Computer-Human Interaction (SIGCHI) of the ACM, HCI is a discipline concerned with the development and evaluation of interaction concepts for human–computer interactive systems (Hewett et al., 1992). This definition emphasizes not only the design but also the systematic assessment of interaction to ensure effective and user-centered system behavior.
+
+Q: What role do rods play in vision, and how does the eye adapt to changing light conditions? [2.1 Sight and Visual Perception]
+A:
+ • rods → brightness perception
+ • high light sensitivity
+ • pupil reflex via iris
+ • retinal biochemical adaptation
+
+Rods are photoreceptor cells specialized in brightness perception and are more sensitive than cones, making them crucial in low-light conditions. The eye adapts to changing light in two ways: rapidly through the iris, which adjusts pupil size like a camera aperture, and more slowly through biochemical changes in the retina’s sensory cells, allowing gradual adaptation to darkness or brightness.
+Q: Which interaction style combines language, gestures, and multimodal input?
+A: Intuitive handling
+
+Q: What is Human-Computer Interaction (HCI) and which disciplines contribute to it? [1.1 Definitions]
+A:
+
+ • design of computer technology
+ • user–computer interaction
+ • cognitive science
+ • computer science
+ • human factors engineering
+
+Human-Computer Interaction (HCI) is an interdisciplinary research field that focuses on the design of computer technology and the ways people interact with computers. It draws from cognitive science to understand mental processes, computer science for technical foundations, and human factors engineering to ensure usability, safety, and efficiency in the interaction between humans and systems.
+Q: What defines the direct manipulation interaction style in HCI, and what are its main pros and cons? [3.1.4 Direct Manipulation]
+A:
+Definition: Direct manipulation allows users to interact with on-screen objects directly (e.g., via mouse, touch, or drag-and-drop) and receive immediate, continuous feedback on their actions.
+Applications: Used in GUIs, CAD, spreadsheets, painting programs, video games, and simulation tools.
+
+ • Realistic visual metaphors simulate real-world interactions.
+ • Continuous visual representation of system state.
+ • Enables exploratory and experimental learning.
+ • Advantages: Intuitive and easy to learn through direct visual interaction; encourages engagement and user control.
+ • Disadvantages: High design effort for accurate, realistic visualizations; ambiguous metaphors can cause incorrect mental models and user errors.
+
+Q: Which human characteristics must be considered when designing human-computer interaction? [1.1 Definitions]
+A:
+
+ • physiological & anthropometric
+ • human information processing
+ • culturally-shaped communication
+
+When conceiving human–computer interaction, designers must account for essential human characteristics. These include physiological and anthropometric traits of the body (e.g., size, strength, reach), cognitive aspects of human information processing (e.g., memory, perception, attention), and culturally-shaped communication abilities. Ignoring these dimensions makes it impossible to create systems that effectively and naturally interact with users.
+Q: What is the difference between auditory icons and earcons in HCI? [2.2 Auditory Perception]
+A:
+  •  Auditory icons:
+ • Represent real-world sounds linked to actual events or actions.
+ • Example: crumpling paper sound for emptying the trash bin.
+ • Relies on natural associations — users instantly recognize the meaning.
+  •  Earcons:
+ • Abstract, synthetic sound patterns that encode information symbolically.
+ • Must be learned by users (e.g., email notification chime, car parking alert).
+ • Defined by variable parameters — rhythm, pitch, timbre, volume, duration, spatial position.
+  •  Summary: Auditory icons use familiar sounds to convey meaning directly, while earcons use artificial sounds that require learned interpretation.
+
+Q: What does attention do in human information processing?
+A: Allocates cognitive resources to relevant stimuli
+Q: What are the main aspects of user trust in socio-technical systems? [3.2.3 Aspects of Trust]
+A:
+Definition: Trust in HCI determines how willing users are to rely on a system. Both lack of trust and overtrust can lead to problems—either disuse or misuse of technology.
+Main aspects of trust:
+  • Trust in technology: Confidence in the system’s reliability, accuracy, and security. Built through stable performance and error-free operation.
+  • Trust in people: Confidence in designers, developers, and other users. Built through transparency, accountability, and expertise.
+  • Trust in the system as a whole: Confidence that the system operates in users’ best interests, emphasizing privacy, security, and ethical design.
+  • Trust in feedback and communication: Confidence in system alerts, messages, and support channels. Built through clarity, responsiveness, and empathy.
+  • Trust in the context of use: Confidence that the system fits the user’s environment, task, and skill level. Built through customization, compatibility, and ease of use.
+
+Q: What does the load theory of attention and cognitive control state? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • high effort → fewer distractions
+ • low effort → more distractions
+ • attention capacity is limited
+
+The load theory of attention and cognitive control (Lavie et al., 2004) explains that the brain’s ability to filter distractions depends on task difficulty. When a task requires high mental effort, cognitive capacity is fully engaged, leaving little room to process irrelevant stimuli—making distractions less likely. Conversely, during easy tasks, unused capacity allows the brain to involuntarily process irrelevant information, increasing susceptibility to distraction.
+
+Q: What are common types of system-related errors in HCI according to Butz et al. (2022)? [4.1 System Errors]
+A:
+  • Capture errors – A rare action is replaced by a familiar one (e.g., entering the wrong website password).
+  • Description errors – Similar or nearby actions get mixed up (e.g., pressing Ctrl + V instead of Ctrl + C).
+  • Mode errors – Performing an action in the wrong system mode (e.g., accidentally closing a program).
+  • Data-driven errors – Incorrect input caused by wrong data entry (e.g., mistyping a phone number).
+  • Associated-action errors – Performing a similar but unintended action (e.g., saying “Come in” instead of “Hello” on the phone).
+  • Loss-of-activation errors – Forgetting part of a planned action sequence (e.g., going to fetch something but forgetting what).
+
+These illustrate how automation and routine behaviors can lead to systematic user interface failures in HCI.
+Q: Why are perceptual and cognitive mechanisms central to HCI design? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • sensory stimuli → perception
+ • overall impression
+ • computers as cognitive tools
+ • design requires knowledge of limits
+
+Perception begins with sensory stimuli that are processed into an overall impression. These perceptual and cognitive mechanisms are crucial for HCI because computers act as cognitive tools, communication devices, and memory aids. Understanding how humans process information—along with their limitations—enables designers to create interactive systems that align with human abilities, ensuring usability, efficiency, and intuitive handling.
+Q: How can operating systems support users with color vision deficiencies? [2.1 Sight and Visual Perception]
+A:
+ • built-in color filters
+
+Companies like Microsoft provide color filters in their operating systems that can be activated to partially compensate for color vision deficiencies, improving usability and accessibility.
+
+Q: What are WIMP interfaces and why are they significant in HCI? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • windows
+ • icons
+ • menus
+ • pointers
+ • graphical user interface
+
+WIMP interfaces are graphical user interfaces (GUIs) built on the WIMP paradigm: windows, icons, menus, and pointers. They became the dominant standard for personal computers, making interaction more intuitive through visual metaphors and direct manipulation. Their significance lies in lowering the learning barrier for non-expert users and establishing many of the interaction conventions still used in modern operating systems.
+Q: Which sensory receptors in the skin respond to temperature, touch, and pain? [2.5 Sense of Touch and Proprioception]
+A:
+ • Ruffini corpuscles → temperature
+ • Meissner corpuscles → touch
+ • Free nerve endings → pain
+
+Skin receptors are unevenly distributed and specialized: Ruffini corpuscles detect temperature, Meissner corpuscles sense light touch, and free nerve endings signal pain. Their combined input allows humans to perceive complex object properties such as weight, shape, and temperature simultaneously.
+Q: What is the difference between recall and recognition in memory retrieval? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Recall → retrieving without cues (e.g., answering from memory)
+  • Recognition → identifying from options (e.g., multiple-choice)
+
+Memory retrieval can occur by recall, which requires active reconstruction without hints, or by recognition, which leverages cues and choices. Recognition is usually easier and faster, while recall is cognitively more demanding.
+
+
+Q: What are the six Gestalt laws of grouping and how are they applied in design? [2.2 Gestalt Laws]
+A:
+ • Proximity → nearby elements are grouped (e.g., product image with name/price)
+ • Similarity → visually alike items form groups (e.g., same color for category items)
+ • Closure → incomplete shapes perceived as whole (e.g., padlock logo)
+ • Continuity → elements on a line/curve seen as related (e.g., guiding flow in layouts)
+ • Common Fate → elements with shared movement/direction grouped (e.g., animations in sync with music)
+ • Prägnanz (Good Figure) → complex forms simplified into basic shapes (e.g., simple logos like Nike or Apple)
+
+The Gestalt laws of grouping describe how humans naturally organize visual input into coherent wholes. Designers use these principles to structure layouts, navigation, and icons, making digital products clearer, more intuitive, and visually appealing.
+
+Q: What is conditioning in memory processes? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Definition → learning via stimulus–response association
+  • Mechanism → neutral stimulus acquires response-triggering ability
+  • Example → Pavlov’s dog salivating at a bell
+
+Conditioning is a form of implicit memory where associations are built between stimuli and responses. Through repeated pairing, a neutral stimulus can elicit a learned response, influencing future behavior unconsciously.
+Q: How many images per second can the human eye typically perceive as separate? [2.1 Visual Perception]
+A:
+  • The human eye can distinguish about 10–12 images per second as individual frames.
+  • When the rate exceeds this threshold, the images blend together, creating the illusion of continuous motion — a principle used in film and animation.
+
+Q: What mechanism allows the human eye to adjust its focal length? [2.1 Sight and Visual Perception]
+A:
+ • accommodation
+ • lens shape change
+
+Accommodation refers to the adjustment of the eye’s focal length by changing the curvature of the flexible lens to focus light onto the retina.
+
+
+Q: How is recognition used in GUI design instead of recall? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Icons vs. commands → visual cues replace memorized input
+  • Recognition easier → users identify rather than recall
+  • Design principle → reduce cognitive load
+
+In GUI design, recognition is favored over recall to reduce cognitive effort. Instead of requiring users to remember and type commands, interfaces provide icons or menus that can be visually identified. This shift leverages recognition memory, enabling faster, more intuitive interaction with digital systems.
+Q: What type of communication do GUIs enable between user and system?
+A: Two-way communication
+
+Q: What are the three main processors in the Model Human Processor, and how do they interact with memory? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • perceptual processor → sensory stimuli
+ • cognitive processor → rational processing & planning
+ • motor processor → action execution
+ • interaction with short- & long-term memory
+
+In the Model Human Processor, the perceptual processor receives sensory stimuli via the sensory organs and temporarily stores them in the sensory register, using long-term memory to interpret input. The cognitive processor employs both short- and long-term memory to plan suitable actions, depending on stimulus intensity and representation. Finally, the motor processor translates these plans into physical responses, such as muscle movements or bodily reactions (e.g., tears). All three systems work simultaneously and interact dynamically with memory to support human information processing.
+Q: What design strategy helps make symbols understandable for color-blind users? [2.1 Sight and Visual Perception]
+A:
+ • combine colors with shapes
+
+Instead of relying only on color (e.g., green vs. red circles), shapes or patterns should be added to symbols, ensuring both color-normal and color-blind users can interpret the information correctly.
+
+
+Q: How do accommodation and convergence work together in depth perception? [2.1 Sight and Visual Perception]
+A:
+ • both provide depth cues
+ • interplay helps estimate spatial depth
+
+The brain combines signals from accommodation (lens adjustment) and convergence (eye rotation) to judge object distance and spatial depth.
+
+
+Q: What is the difference between preattentive and attentive perception, and how is it relevant in GUI design? [2.3 Attentive and Preattentive Perception]
+A:
+ • Preattentive perception → automatic, unconscious, ~200–250 ms, independent of number of stimuli
+ • Features detected preattentively → color, shape, size, orientation, curvature, motion, depth
+ • Attentive perception → conscious, requires focused attention, used when multiple features combine
+ • Design relevance → enables pop-out effects, selective highlighting, guiding user attention
+
+Preattentive perception occurs in the eye’s nervous system before conscious attention, allowing users to instantly detect simple features such as color or shape differences. In contrast, attentive perception requires deliberate focus to process combinations of features (e.g., brightness + shape). In GUI design, preattentive effects are used to highlight important elements or reduce visual load, while attentive processing is reserved for more complex tasks.
+
+Q: How does the eye focus on near versus distant objects? [2.1 Sight and Visual Perception]
+A:
+ • near → lens squeezed, curvature increases
+ • distant → lens relaxed, curvature flattens
+
+Tightening the muscle ring increases lens curvature for near vision, while relaxation flattens the lens for distant vision.
+
+
+Q: What are the three layers of the eyeball, and what is the function of the lens? [2.1 Sight and Visual Perception]
+A:
+ • sclera → outer white layer
+ • choroid → middle layer
+ • retina → inner layer
+ • lens → refraction & light regulation
+
+The eye, as the central organ of visual perception, consists of the sclera, choroid, and retina. The lens refracts light and regulates the amount entering the eye, projecting images onto the retina. Visual information is then transmitted as nerve impulses to the brain, where it is interpreted as seeing. In HCI, this process underpins the design of graphical elements, which must consider factors such as color, contrast, structure, and external light conditions to ensure effective perception.
+Q: What are the three types of cognitive load in Cognitive Load Theory (CLT)? [3.3 Measuring Cognitive Load]
+A:
+  • Intrinsic load → complexity of the task itself (e.g., typing characters on keyboard)
+  • Extraneous load → imposed by poor design or unclear interface
+  • Germane load → effort to build schemas & integrate knowledge (e.g., tutorials, guided practice)
+
+Cognitive Load Theory (Sweller, 2020) explains how task performance and learning depend on the amount of cognitive load. Intrinsic load is determined by task complexity, extraneous load stems from the way information is presented, and germane load reflects the mental work required to form lasting schemas in long-term memory. Effective interface and learning design aim to reduce extraneous load and optimize germane load.
+
+Q: How can designers check that user interfaces are also visible for color-blind users? [2.1 Visual Perception]
+A:
+  •  Method: Print the layout in black and white.
+  •  Reasoning: If all elements remain clearly distinguishable in grayscale, they are likely also recognizable for users with color vision deficiencies.
+: What is spatial frequency and how does it relate to human visual perception? [2.1 Visual Perception]
+A:
+  •  Definition: Spatial frequency measures how often visual elements (light–dark transitions, edges, or patterns) repeat per unit of space — the level of visual detail.
+  •  Units: Measured in cycles per degree (cpd) of visual angle.
+  •  Types:
+ • Low spatial frequency → broad shapes, overall form (e.g., silhouette)
+ • High spatial frequency → fine detail, edges, texture (e.g., hair, text)
+  •  Neural pathways:
+ • Magnocellular → low frequencies (motion, shape)
+ • Parvocellular → high frequencies (detail, color)
+  •  Summary: Low frequencies convey form and structure; high frequencies convey edges and texture.
+Q: What is a major hardware challenge of mobile devices compared to desktops?
+A: Limited screen size
+
+Q: What are the two main theories of forgetting? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Decay theory → memories fade over time if not reinforced
+  • Interference theory → memories disrupted by others
+ • proactive → old blocks new
+ • retroactive → new blocks old
+
+Forgetting is explained by two main approaches. Decay theory suggests unused memories gradually weaken and vanish, while interference theory proposes that other memories disrupt storage or retrieval. In proactive interference, older memories hinder learning new ones, whereas in retroactive interference, newer memories block access to older ones.
+Q: What is convergence in vision, and when does it occur? [2.1 Sight and Visual Perception]
+A:
+ • inward rotation of eyes
+ • occurs when focusing < 6 m
+
+Convergence refers to the inward turning of the eyes toward each other when focusing on a nearby object, aligning the visual axes at the fixation point.
+
+
+Q: Why are men more affected by red-green color blindness than women? [2.1 Sight and Visual Perception]
+A:
+ • defect on X chromosome
+ • 8% of men vs. 0.1% of women
+
+The genetic defect causing red-green color blindness is located on the X chromosome. Since men have only one X chromosome, they are more frequently affected (8%) compared to women (0.1%).
+
+
+Q: What are the limitations of questionnaires for measuring cognitive load over time? [3.3 Measuring Cognitive Load]
+A:
+  • Self-report bias → influenced by mood, memory, or social desirability
+  • Limited sensitivity → may miss subtle changes in load
+  • Lack of context → do not capture task-specific factors (distractions, fatigue)
+  • Participant burden → repeated use causes fatigue, lowers data quality
+
+While questionnaires like NASA TLX are useful for short-term snapshots of cognitive load, they have drawbacks for long-term or continuous assessment. Self-reporting can be biased, sensitivity to fine-grained changes is limited, contextual factors are overlooked, and repeated administration can exhaust participants, reducing data reliability.
+
+Q: How can conflicts between vision and proprioception affect users in VR systems? [2.5 Sense of Touch and Proprioception]
+A:
+ • Mismatch → vision shows motion, equilibrium senses no motion
+ • Symptoms → nausea, dizziness
+ • Effect → users may end tests early
+
+In virtual reality, visual input can simulate motion and acceleration, while the vestibular system registers no actual movement. This sensory conflict between sight and proprioception often results in motion sickness symptoms such as dizziness and nausea, limiting user tolerance and system usability.
+
+Q: How does the Hick-Hyman law explain decision-making speed in HCI? [3.4 Decision Making and Speed]
+A:
+  • Everyday decisions use long-term memory for logical choices.
+  • Hick-Hyman Law: decision time grows with number of choices.
+ Formula: RT = a + b · log₂N
+ - RT = reaction time
+ - a = constant (baseline time)
+ - b = multiplicative constant (depends on context)
+ - N = number of alternatives
+  • Logarithmic relationship: each doubling of choices increases decision time by a constant.
+  • Application in HCI:
+ - Long, unsorted menus = slower decisions
+ - Grouping or sorting (alphabetical, categories) = faster decisions
+
+The Hick-Hyman law shows that decision time increases with the entropy of available alternatives. In interface design, this principle underlines the importance of structured menus, categorized options, and reduced clutter to minimize user response times and improve usability.
+
+Q: Why can virtual reality glasses distort spatial perception? [2.1 Sight and Visual Perception]
+A:
+ • VR optics fix accommodation & convergence
+ • objects displayed at varying distances appear unnatural
+
+In VR headsets, accommodation and convergence are fixed by the optical design, so displayed objects may not trigger natural depth cues, reducing realism of spatial impressions.
+
+
+Q: What is the Guiard Model in HCI and how does it describe two-handed interaction? [3.4 Guiard Model]
+A:
+  • Definition: A model (Guiard, 1988) describing the asymmetric division of labor between hands in bimanual interaction.
+  • Key Idea:
+ - Non-dominant hand → sets the frame of reference, provides stability, positioning, or support.
+ - Dominant hand → performs precise actions within that reference frame.
+  • Example:
+ - Eating → fork (non-dominant hand) holds food, knife (dominant hand) cuts.
+ - HCI → holding a smartphone with one hand while navigating UI with the other.
+  • Design Implication: Interfaces should account for asymmetry in hand roles to improve usability in two-handed interaction.
+
+Q: What is reification in Gestalt psychology? [2.2 Gestalt Laws]
+A:
+ • filling in missing information
+ • perception of implied shapes
+
+Reification refers to the brain’s tendency to complete incomplete figures by filling in gaps. For example, fragmented lines may still be perceived as a rectangle, or pictograms like a wheelchair symbol appear complete despite being simplified or implied.
+
+
+Q: What is priming in memory processes? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Definition → memory enhancement by prior exposure
+  • Mechanism → earlier stimulus influences later response
+  • Effect → faster recognition, easier processing
+
+Priming occurs when exposure to one stimulus unconsciously shapes the response to a subsequent stimulus. It facilitates recognition and processing efficiency, often without the individual being aware of the influence.
+
+
+Q: What must be considered when designing questionnaires for HCI evaluation? [1.2 Challenges in Human-Computer Interaction]
+A:
+ • clarity of wording
+ • avoid ambiguity
+ • avoid bias
+ • neutral phrasing
+
+When planning questionnaires in HCI evaluation, the questions must be formulated clearly and unambiguously to prevent misinterpretation. They should also be designed to avoid bias, ensuring that responses are not influenced or steered toward a particular outcome. Neutral, well-structured items enable reliable collection of user feedback and support meaningful statistical analysis of patterns and trends.
+
+Q: Which three effects enable humans to localize the direction of sounds? [2.4 Auditory Sense and Auditory Perception]
+A:
+ • Transit time difference → sound reaches one ear earlier (10–30 µs detectable)
+ • Level (intensity) difference → sound attenuated on far side, head creates acoustic shadow at high frequencies
+ • Timbre → higher tones attenuated more, brain interprets direction using experience
+
+Human auditory localization relies on small differences in arrival time, intensity, and timbre between the ears. Transit time and level differences provide direct physiological cues, while timbre acts as an interpretive cue shaped by prior experience. These mechanisms are essential for spatial hearing and are applied in HCI to design realistic auditory effects in virtual environments.
+Q: How can Mach bands be applied in HCI to improve user interface design? [2.1 Visual Perception]
+A:
+  •  Concept: Mach bands exaggerate contrast between adjacent areas, creating the illusion of sharper edges.
+  •  Applications:
+ • Digital displays (e.g., LCDs): Adjusting brightness and contrast enhances text and graphic sharpness.
+ • Web & app interfaces: Artificial contrast guides user attention to key elements (e.g., buttons, links).
+  •  Benefit: Improves readability, visual clarity, and overall intuitiveness of the interface.
+Q: Which cultural factor can influence the layout of GUIs such as websites?
+A: Reading and writing direction of scripts
+
+Q: Who founded Gestalt psychology, and when? [2.2 Gestalt Laws]
+A:
+ • Max Wertheimer
+ • ~1912
+ • Germany
+
+Gestalt psychology was founded around 1912 in Germany by Max Wertheimer, together with other psychologists. It focuses on how humans perceive and organize sensory input into meaningful wholes rather than isolated parts.
+Q: Why does the PAL television standard in Europe use 25 frames per second? [2.1 Visual Perception]
+A:
+  • The 25 fps rate is derived from the 50 Hz power grid frequency used in Europe.
+  • 25 fps equals half of the grid frequency, ensuring synchronization between electrical and visual signals.
+  • This minimizes flicker and interference, making PAL (Phase Alternating Line) the predominant TV standard in Europe.
+Q: Which color models correspond to subtractive and additive color mixing, and where are they applied? [2.1 Sight and Visual Perception]
+A:
+ • subtractive → CMYK → printing
+ • additive → RGB → screens
+
+Subtractive color mixing is used in printing, where pigments like cyan, magenta, yellow, and black (CMYK) absorb portions of light and reflect the remainder, producing various colors on paper. Additive color mixing is applied in active light sources such as computer screens, where red, green, and blue (RGB) light combine in varying proportions to generate colors. Equal intensities of RGB create white light, while different wavelength combinations correspond to other colors within the visible spectrum (380–780 nm).
+Q: What is the sensory register, and what are its main components? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Definition → fleeting storage of raw sensory input
+  • Duration → 0.5–1 s (visual), 4–5 s (auditory)
+  • Registers → iconic (visual), echonic (auditory), haptic (touch)
+
+The sensory register (sensory memory) temporarily stores unprocessed stimuli from the senses before conscious processing. It contains modality-specific sub-registers: iconic (sight), echonic (hearing), and haptic (touch). Stored data are passed to short-term memory, with support from long-term memory for recognition and pattern matching.
+
+
+Q: What is processing capacity, and how does it affect interaction with computer systems? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • cognitive resources available
+ • varies across individuals
+ • reduced by task practice
+ • develops sensorimotor skills
+ • enables efficient system use
+
+Processing capacity refers to the amount of cognitive resources a person can allocate to perceive, process, and solve tasks (Eppler & Mengis, 2004). Since individuals differ in capacity, the same information load may cause overload in some but not others. Repeated practice reduces the need for controlled processing by automating sensorimotor skills (e.g., mouse and keyboard use). Once routinized, these skills free up processing capacity for higher-level tasks, making interaction with computer systems more efficient (Butz et al., 2022).
+Q: What does the Gestalt property of emergence explain? [2.2 Gestalt Laws]
+A:
+ • whole before parts
+ • overall shape recognition
+
+Emergence describes how people recognize objects based on their overall shape before analyzing individual parts. For example, we identify a dog as a dog first from its outline, then notice details like nose, ears, or tail.
+
+
+Q: How does cognitive psychology view humans in the context of information processing? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • perception
+ • knowledge acquisition
+ • information processing system
+
+Cognitive psychology studies the fundamental mechanisms of how people process information, focusing on perception and knowledge acquisition. It conceptualizes humans as an information processing system, similar to a computer, where sensory input is received, processed, stored, and used to guide behavior and decision-making (Butz et al., 2022).
+
+Q: What are the two main types of human errors in HCI according to Norman (2013)? [4.1 Human Error Types]
+A:
+  • Slips – Correct plan, wrong execution; caused by inattention or memory lapses (e.g., typing your old name by habit).
+  • Mistakes – Wrong plan or goal; occur when the user deliberately performs an incorrect action under a false assumption (e.g., using an unvalidated bus ticket).
+
+In HCI, slips relate to execution errors, while mistakes relate to decision or planning errors — both emphasizing the need for clear design feedback and error prevention mechanisms.
+Q: What is a Likert scale, and how is it used in HCI evaluations? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • psychometric scale
+ • agreement/disagreement
+ • attitudes & perceptions
+ • ordinal measurement
+
+A Likert scale is a psychometric rating scale commonly used in HCI evaluations to measure user opinions, attitudes, or perceptions. Participants respond to statements by selecting a level of agreement or disagreement (e.g., 1 = strongly disagree to 5 = strongly agree). This method enables structured measurement of subjective experiences, such as satisfaction or ease of use, often applied in tools like the System Usability Scale (SUS).
+Q: What characterizes long-term memory, and how does it differ from short-term memory? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Storage → unlimited capacity
+  • Duration → years or lifetime
+  • Access time → ~0.1 s
+  • Content → facts, experiences, sensory impressions
+
+Long-term memory is the central, durable storage of the brain. Unlike short-term memory, it can store vast amounts of information for years or even a lifetime. Access is slower than short-term memory but allows retrieval of diverse data types such as images, sounds, and concepts. It is essential for learning, skill retention, and contextualizing new information.
+
+Q: What are the four subdomains related to the development process in HCI? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • human
+ • computer
+ • usage
+ • context
+
+The four subdomains in the HCI development process are human, computer, usage, and context. These cover the essential perspectives: the human user (cognitive, perceptual, physical traits), the computer (technical system), the usage (interaction tasks and goals), and the context (social, cultural, and organizational environment). Together, they ensure that interactive systems are designed in a user-centered and context-aware manner.
+Q: What are the two main skin layers relevant for touch perception? [2.5 Sense of Touch and Proprioception]
+A:
+ • Epidermis → outermost layer, thickness varies by body part
+ • Dermis → underlying layer, provides structure and consistency
+
+The epidermis forms the outer protective layer of skin, while the dermis beneath it stabilizes and supports it. Both layers contribute to tactile perception, with thickness and structure influencing sensitivity across different body regions.
+Q: What are the five key design principles in HCI according to Norman? [4.1 HCI Design Principles]
+A:
+ 1. Affordances – Indicate how an object can be used through its design (e.g., a chair invites sitting).
+ 2. Signifiers – Visual or auditory cues that guide user actions (e.g., icons, labels, sounds).
+ 3. Constraints – Limit user actions to prevent errors (e.g., only numbers allowed in a date field).
+ 4. Mapping – Logical relationship between controls and their effects (e.g., turning steering wheel right → car turns right).
+ 5. Feedback – Immediate system response to user actions, confirming successful interaction (too little or too much can confuse).
+
+These principles ensure intuitive, safe, and efficient interaction between humans and interfaces.
+Q: Which standardized tool measures usability with 10 statements on a 5-point scale?
+A: System Usability Scale (SUS)
+
+Q: What is declarative (explicit) memory, and what are its two subtypes? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Declarative memory → explicit recall of rules & knowledge
+  • Episodic memory → events & personal experiences (time/place bound)
+  • Semantic memory → general facts & knowledge (context-free)
+
+Declarative memory enables conscious recall of information. Episodic memory stores personal experiences tied to a specific context, while semantic memory contains abstract factual knowledge independent of time and place. Together, they allow reasoning, learning, and the application of rules.
+
+Q: How does the masking effect influence MP3 audio compression? [2.2 Auditory Perception]
+A:
+  •  Concept: The masking effect means that when a loud sound occurs, nearby quieter sounds in the same frequency range become inaudible.
+  •  Application in MP3: MP3 compression removes these inaudible frequencies to reduce file size.
+  •  Result: Achieves smaller audio files without noticeable loss of sound quality because data outside human hearing thresholds are discarded.
+Q: How is attention defined in cognitive psychology and HCI? [1.3 Basic Models of Human Information Processing]
+A:
+
+ • focus on relevant stimuli
+ • allocation of mental resources
+ • filtering distractions
+
+Attention is the cognitive process that allocates mental resources to selected stimuli or tasks, enabling individuals to focus on what is relevant while filtering out distractions. In HCI, understanding attention is crucial for designing systems that guide user focus effectively, minimize overload, and support goal-directed interaction.
+Q: What mechanism is most important for generating spatial vision? [2.1 Sight and Visual Perception]
+A:
+ • stereo vision (stereopsis)
+
+Stereo vision arises because each eye captures a slightly different image due to their horizontal separation. The brain integrates these differences into a unified perception of spatial depth.
+
+
+Q: Which paradigm introduced windows, icons, menus, and pointers?
+A: WIMP interfaces
+
+Q: How can Gestalt laws be applied to acoustic representations in HCI? [2.2 Auditory Perception]
+A:
+  •  Concept: Gestalt principles also influence how users perceive sounds.
+  •  Applications:
+ • Law of proximity: Sounds occurring close in time are perceived as related.
+ • Law of similarity: Similar-sounding tones are grouped together perceptually.
+ • Cross-modal proximity: When a sound coincides with a visual cue (e.g., a tone playing right after a pop-up), both are perceived as a single event.
+  •  Result: Enhances coherence and intuitiveness between auditory and visual feedback in user interfaces.
+
+Q: How many shades of gray can the human eye differentiate, and what is used for digital displays? [2.1 Sight and Visual Perception]
+A:
+ • human eye: ~80–1000 shades
+ • screens: 8-bit = 256 gray levels
+
+The human eye can perceive a wide range of gray shades, estimated between 80 and 1000, depending on brightness, adaptation, and individual perception. For digital screens, an 8-bit range (256 gray levels per channel) is considered sufficient to represent smooth gradients (Butz et al., 2022).
+
+
+Q: What are the key points summarized about human perception and technology in HCI? [2.4 Sensory and Technological Foundations]
+A:
+  •  Display perception: Viewing angle and pixel density affect how contrast, sharpness, and colors are perceived.
+  •  Temporal resolution: Defines how many light stimuli or images per second the human eye can detect — basis for PAL (25 fps) and NTSC (30 fps) standards.
+  •  Causality: Input–feedback delays above 100 ms reduce perceived connection between action and response.
+  •  Color and contrast: Both brightness and contrast strongly influence visual clarity and user experience.
+  •  Auditory design:
+ • Auditory icons → natural, real-world sounds.
+ • Earcons → synthetic, learned tones.
+  •  Moore’s Law: Predicts the exponential growth of transistor density (~every 12–24 months), driving increases in computing power and interface complexity.
+Q: What was the technological shift in the late 1970s that expanded computer use?
+A: Personal computing
+
+Q: What is User Acceptance Testing (UAT), and how does it differ from functional testing? [3.2.1 User Acceptance Testing]
+A:
+ • Purpose: Verifies whether a software product meets end-user needs and expectations under real or simulated conditions.
+ • Performed by: End-users or business representatives in the final stage of product development.
+ • Environment: Conducted in a real-world or realistic environment.
+ • Outcome: Binary result — “pass” (meets acceptance criteria) or “fail.”
+
+ • Key differences to functional testing:
+  – UAT validates business and usability requirements, while functional testing checks technical correctness.
+  – UAT happens after the development cycle; functional testing happens during it.
+  – UAT focuses on user satisfaction and acceptance; functional testing focuses on system functionality.
+
+ • Advantages:
+  – Identifies usability issues and limitations before release.
+  – Ensures stability and readiness for market launch.
+  – Provides actionable feedback for improvement.
+Q: What four subdomains make up HCI according to SIGCHI?
+A: Human, computer, use, context
+
+Q: What roles do touch, proprioception, and the kinesthetic system play in human perception? [2.5 Sense of Touch and Proprioception]
+A:
+ • Touch receptors → Ruffini (temperature), Meissner (touch), free nerve endings (pain)
+ • Proprioception → self-perception of posture, limb position, weight, tension, force, speed
+ • Kinesthetic system → sense of balance; vestibular apparatus + muscle/tendon receptors detect body position and movement
+
+Touch provides localized sensory feedback from the skin, while proprioception delivers continuous awareness of posture and movement of limbs and body. The kinesthetic system, centered in the vestibular apparatus of the inner ear and supported by muscle/tendon receptors, maintains balance and orientation in space. Together, these systems enable coordinated interaction with both the physical and digital environment.
+Q: What is the critical flicker fusion frequency (CFFF)? [2.1 Visual Perception]
+A:
+  • The critical flicker fusion frequency (CFFF) is the rate at which a flickering light is perceived as a steady, continuous light source.
+  • When the flicker rate exceeds this threshold, the eye can no longer distinguish individual flashes.
+  • This principle is important in display and lighting design to avoid visible flicker and visual fatigue.
+
+Q: What does two-way communication mean in HCI? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • bidirectional exchange
+ • user ↔ system
+ • input & feedback
+
+Two-way communication in HCI describes the bidirectional interaction between a user and a computer system. The user provides input (e.g., commands, actions), and the system responds with feedback (e.g., output, confirmation, error messages). This dynamic loop is essential for usability, as it allows continuous adjustment, error correction, and meaningful interaction.
+Q: What does multistability mean in Gestalt psychology? [2.2 Gestalt Laws]
+A:
+ • ambiguous images
+ • alternating perception
+
+Multistability describes how certain ambiguous figures, such as Rubin’s vase, can be perceived in two different ways (a vase or two faces) but never both simultaneously. The brain switches between interpretations.
+
+
+Q: Which field investigates the mechanisms of information processing in humans?
+A: Cognitive science
+
+Q: What is short-term memory (working memory), and how is it structured? [3.1 Memory Types and Cognitive Processes]
+A:
+  • Duration → 15–30 s retention
+  • Capacity → ~4–9 chunks
+  • Subsystems → phonological loop, visuo-spatial sketchpad, episodic buffer
+  • Controller → central executive directs attention
+
+Short-term memory functions like RAM, temporarily holding and processing information. It includes a phonological loop (language sounds), a visuo-spatial sketchpad (visual/spatial data), and an episodic buffer (multimodal integration linked to long-term memory). The central executive allocates attention. Chunking allows more efficient use of limited capacity, e.g., grouping credit card digits.
+
+
+Q: What is the principle of causality in user interface design? [2.1 Visual Perception]
+A:
+  • The principle of causality describes the user’s ability to perceive a direct connection between an input and its feedback.
+  • Feedback received within 100 ms is perceived as causally linked to the user’s action.
+  • Delays beyond this threshold weaken the perceived connection, requiring visual cues (e.g., loading bars or hourglasses) to maintain user confidence in system responsiveness.
+Q: What does intuitive handling mean in HCI, and which technologies support it? [1.2 Challenges in Human-Computer Interaction]
+A:
+
+ • natural language interfaces
+ • gestural interfaces
+ • multimodal interaction
+ • virtual reality
+ • holistic strategies
+
+Intuitive handling in HCI refers to interaction methods that align closely with natural human communication and sensorimotor abilities. Examples include natural language interfaces, gesture-based control, and multimodal systems combining speech and visual input. Virtual reality extends this by enabling users to manipulate digital environments with movements and gestures. While powerful, design and evaluation methods for such interfaces are still developing, with research focusing on holistic approaches that consider cognition, body movement, and spatial aspects together.
+Q: What are the four key properties of Gestalt psychology often used in design? [2.2 Gestalt Laws]
+A:
+ • emergence
+ • reification
+ • multistability
+ • invariance
+
+Gestalt psychology identifies four important perceptual properties: emergence, reification, multistability, and invariance. These explain how humans perceive patterns and objects as wholes and are applied in design to make user interfaces more intuitive.
+
+
+Q: What are the three main types of human memory in information processing? [3.1 Memory Types and Cognitive Processes]
+A:
+
+ • ultra short-term (sensory): sensor input and attention
+ • short-term (working): processing, decision-making
+ • long-term: learning and skill execution
+
+Ultra short-term memory briefly stores sensory input from the environment and directs attention to relevant stimuli. Short-term or working memory holds limited information for active processing, decision-making, and rehearsal, with susceptibility to interference. Long-term memory stores knowledge permanently, providing the foundation for learning and skill execution by encoding information from working memory.
+
+
+Q: What does Moore’s Law state, and why is it important in technology development? [2.4 Technological Foundations]
+A:
+  •  Definition: Moore’s Law, proposed by Gordon Moore (1965), states that the number of transistors per unit area on an integrated circuit doubles roughly every 12–24 months.
+  •  Implication: This doubling leads to exponential increases in computing power and performance while reducing cost per transistor.
+  •  Relevance in HCI: Predicts continual growth in interface capability and computational speed, driving innovation in hardware and user interface design.
+
+Q: How does contrast affect the perception of text and graphic elements? [2.1 Sight and Visual Perception]
+A:
+ • high contrast → better perception
+ • low contrast → poor readability
+
+Contrast directly influences how well differences between elements are detected. High contrast activates more sensory cells, improving readability, while low contrast—such as dark blue text on a light blue background—makes text or graphics harder to distinguish.
+
+Q: What is the role of mental models in understanding and preventing errors in HCI? [4.1 Mental Models and Error Prevention]
+A:
+  • Mental models represent how users think a system works.
+  • They reveal gaps between:
+ 1. the designer’s conceptual model,
+ 2. the developer’s implemented model, and
+ 3. the system’s presented model.
+  • Understanding user mental models helps predict and reduce slips (execution errors) and mistakes (planning errors), both of which can stem from memory loss.
+  • Common error types: capture, description, mode, data-driven, associated-action, and loss-of-activation errors.
+  • Murphy’s Law reminds designers that anything that can go wrong will—thus, systems must anticipate and prevent operational, input, and hardware/software dimensioning errors.
+Q: What is command-based interaction in HCI, and what are its design rules? [3.1.1 Command Language]
+A:
+Definition: Command-based interaction involves users entering text commands (via a command line or shell) directly into the system, which immediately executes the input.
+Advantages:
+ • Enables efficient and precise control when users master the command syntax.
+ • Allows automation of complex sequences through scripts.
+Design requirements:
+ • Use consistent syntax and domain-relevant vocabulary.
+ • Provide clear documentation and logical abbreviations.
+Examples:
+ • Operating systems like Linux shells (e.g., Bash, PowerShell).
+ • Remote controls and car radios, where each button executes a discrete command.
+  •  Drawback: Requires significant learning effort, making it less accessible to novice users.
+
+Q: How does the brain derive the distance of a focused object? [2.1 Sight and Visual Perception]
+A:
+ • from muscle state regulating lens curvature
+
+The brain interprets the contraction or relaxation state of the eye muscles as depth information, helping estimate object distance.
+
+
+Do you also want me to make cards for the psychological depth criteria (like perspective, size, occlusion) when you paste that section?

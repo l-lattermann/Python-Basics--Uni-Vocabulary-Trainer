@@ -1,109 +1,12 @@
-Q: Why must energy-saving design be considered in mobile devices?
-A: Limited battery capacity
-
-Q: How can operating systems support users with color vision deficiencies? [2.1 Sight and Visual Perception]
-A:
- • built-in color filters
-
-Companies like Microsoft provide color filters in their operating systems that can be activated to partially compensate for color vision deficiencies, improving usability and accessibility.
-
-Q: What four subdomains make up HCI according to SIGCHI?
-A: Human, computer, use, context
-
-Q: Which environment uses sensorimotor skills and gestures for interaction?
-A: Virtual reality
-
-Q: Which discipline in HCI optimizes usability, safety, and performance of systems?
-A: Human factors engineering
-
-Q: How does ACM’s SIGCHI define Human-Computer Interaction (HCI)? [1.1 Definitions]
+Q: What is Human Factors Engineering in the context of HCI? [1.1 Definitions]
 A:
 
- • development
- • evaluation
- • interaction concepts
- • interactive systems
+ • ergonomics
+ • usability
+ • safety
+ • human–system fit
 
-According to the Special Interest Group on Computer-Human Interaction (SIGCHI) of the ACM, HCI is a discipline concerned with the development and evaluation of interaction concepts for human–computer interactive systems (Hewett et al., 1992). This definition emphasizes not only the design but also the systematic assessment of interaction to ensure effective and user-centered system behavior.
-
-Q: Which color models correspond to subtractive and additive color mixing, and where are they applied? [2.1 Sight and Visual Perception]
-A:
- • subtractive → CMYK → printing
- • additive → RGB → screens
-
-Subtractive color mixing is used in printing, where pigments like cyan, magenta, yellow, and black (CMYK) absorb portions of light and reflect the remainder, producing various colors on paper. Additive color mixing is applied in active light sources such as computer screens, where red, green, and blue (RGB) light combine in varying proportions to generate colors. Equal intensities of RGB create white light, while different wavelength combinations correspond to other colors within the visible spectrum (380–780 nm).
-Q: Which paradigm introduced windows, icons, menus, and pointers?
-A: WIMP interfaces
-
-Q: Which cultural factor can influence the layout of GUIs such as websites?
-A: Reading and writing direction of scripts
-
-Q: What does the Gestalt property of emergence explain? [2.2 Gestalt Laws]
-A:
- • whole before parts
- • overall shape recognition
-
-Emergence describes how people recognize objects based on their overall shape before analyzing individual parts. For example, we identify a dog as a dog first from its outline, then notice details like nose, ears, or tail.
-
-
-Q: How can conflicts between vision and proprioception affect users in VR systems? [2.5 Sense of Touch and Proprioception]
-A:
- • Mismatch → vision shows motion, equilibrium senses no motion
- • Symptoms → nausea, dizziness
- • Effect → users may end tests early
-
-In virtual reality, visual input can simulate motion and acceleration, while the vestibular system registers no actual movement. This sensory conflict between sight and proprioception often results in motion sickness symptoms such as dizziness and nausea, limiting user tolerance and system usability.
-
-Q: Why are men more affected by red-green color blindness than women? [2.1 Sight and Visual Perception]
-A:
- • defect on X chromosome
- • 8% of men vs. 0.1% of women
-
-The genetic defect causing red-green color blindness is located on the X chromosome. Since men have only one X chromosome, they are more frequently affected (8%) compared to women (0.1%).
-
-
-Q: What design strategy helps make symbols understandable for color-blind users? [2.1 Sight and Visual Perception]
-A:
- • combine colors with shapes
-
-Instead of relying only on color (e.g., green vs. red circles), shapes or patterns should be added to symbols, ensuring both color-normal and color-blind users can interpret the information correctly.
-
-
-Q: What type of communication do GUIs enable between user and system?
-A: Two-way communication
-
-Q: What are the two types of knowledge stored in long-term memory? [3.1 Memory Types and Cognitive Processes]
-A:
-
- • declarative knowledge
- • procedural knowledge
-
-Long-term memory holds both declarative and procedural knowledge. Declarative knowledge consists of facts, concepts, and principles that can be consciously recalled. Procedural knowledge refers to skills and “knowing how”—the implicit rules, strategies, and action sequences needed to perform tasks. While declarative knowledge is explicit, procedural knowledge is often implicit and acquired through practice, feedback, and experience.
-Q: What does multistability mean in Gestalt psychology? [2.2 Gestalt Laws]
-A:
- • ambiguous images
- • alternating perception
-
-Multistability describes how certain ambiguous figures, such as Rubin’s vase, can be perceived in two different ways (a vase or two faces) but never both simultaneously. The brain switches between interpretations.
-
-
-Q: How does contrast affect the perception of text and graphic elements? [2.1 Sight and Visual Perception]
-A:
- • high contrast → better perception
- • low contrast → poor readability
-
-Contrast directly influences how well differences between elements are detected. High contrast activates more sensory cells, improving readability, while low contrast—such as dark blue text on a light blue background—makes text or graphics harder to distinguish.
-
-Q: What are the three main types of human memory in information processing? [3.1 Memory Types and Cognitive Processes]
-A:
-
- • ultra short-term (sensory): sensor input and attention
- • short-term (working): processing, decision-making
- • long-term: learning and skill execution
-
-Ultra short-term memory briefly stores sensory input from the environment and directs attention to relevant stimuli. Short-term or working memory holds limited information for active processing, decision-making, and rehearsal, with susceptibility to interference. Long-term memory stores knowledge permanently, providing the foundation for learning and skill execution by encoding information from working memory.
-
-
+Human Factors Engineering (also called ergonomics) is the discipline that examines how humans interact with systems, machines, and environments, aiming to optimize usability, safety, and performance. In HCI, it ensures that interfaces and devices are designed according to human physical, cognitive, and perceptual capabilities, reducing errors and improving efficiency through a better human–system fit.
 Q: Do touchscreen-based mobile devices count as WIMP interfaces? [1.2 Challenges in Human-Computer Interaction]
 A:
 
@@ -114,27 +17,58 @@ A:
  • pointers via touch
 
 Mobile devices with touchscreens are also classified as WIMP interfaces because they rely on the same basic elements: windows, icons, menus, and pointers. Instead of a mouse, the pointer function is performed through direct finger input. This adaptation demonstrates the flexibility of 
-Q: Which interaction style combines language, gestures, and multimodal input?
-A: Intuitive handling
+Q: Why must energy-saving design be considered in mobile devices?
+A: Limited battery capacity
 
-Q: How does the eye focus on near versus distant objects? [2.1 Sight and Visual Perception]
+Q: Which discipline in HCI optimizes usability, safety, and performance of systems?
+A: Human factors engineering
+
+Q: What are the two types of knowledge stored in long-term memory? [3.1 Memory Types and Cognitive Processes]
 A:
- • near → lens squeezed, curvature increases
- • distant → lens relaxed, curvature flattens
 
-Tightening the muscle ring increases lens curvature for near vision, while relaxation flattens the lens for distant vision.
+ • declarative knowledge
+ • procedural knowledge
 
-
-Q: What mechanism is most important for generating spatial vision? [2.1 Sight and Visual Perception]
+Long-term memory holds both declarative and procedural knowledge. Declarative knowledge consists of facts, concepts, and principles that can be consciously recalled. Procedural knowledge refers to skills and “knowing how”—the implicit rules, strategies, and action sequences needed to perform tasks. While declarative knowledge is explicit, procedural knowledge is often implicit and acquired through practice, feedback, and experience.
+Q: What does the term anthropometric mean in the context of HCI? [1.1 Definitions]
 A:
- • stereo vision (stereopsis)
 
-Stereo vision arises because each eye captures a slightly different image due to their horizontal separation. The brain integrates these differences into a unified perception of spatial depth.
+ • body measurements
+ • size & proportions
+ • ergonomic design
 
+Anthropometric refers to the systematic measurement of human body dimensions, such as height, reach, hand size, or posture. In HCI, anthropometric data are crucial for ergonomic design, ensuring that devices, interfaces, and workspaces fit the physical characteristics of users, thereby improving comfort, usability, and reducing the risk of strain or injury.
+Q: What are forms in HCI, and what are their advantages and limitations? [3.1.3 Form-Based Interaction]
+A:
+Definition: Forms are GUI elements that enable users to input data or make selections through fields, checkboxes, radio buttons, or drop-down menus. They are used for tasks like submitting feedback, placing orders, or entering personal data.
+Advantages:
+ • Reduce input time by using predefined options and commands.
+ • Lower error rate in data entry through structured fields.
+ • Provide clear guidance with labels and instructions.
+Disadvantages:
+ • Limited flexibility — users cannot easily input non-standard or international data formats.
+ • Overly rigid structures may restrict user creativity or adaptability.
+Q: Which environment uses sensorimotor skills and gestures for interaction?
+A: Virtual reality
 
-Q: What is a major hardware challenge of mobile devices compared to desktops?
-A: Limited screen size
-
+Q: What are the main types, advantages, and disadvantages of menu-based interaction in HCI? [3.1.2 Menu Selection]
+A:
+  •  Definition: Menus present users with a set of selectable options or functions within a graphical layout.
+  •  Types of menus:
+ • Menu bars: Contain hierarchical structures like pull-down or cascade menus.
+ • Pop-up menus: Appear temporarily over content when hovering or right-clicking.
+ • Image menus: Use icons or photos to visually represent choices.
+ • Radio buttons: Allow only one selection among several options.
+ • Checkboxes: Allow multiple selections at once.
+ • Labeled buttons: Standard buttons with text labels indicating their function.
+Advantages:
+ • Easy to learn and intuitive for novice users.
+ • Memory-relieving: Users recognize rather than recall commands.
+ • Supports visual decision-making, freeing cognitive resources for task focus.
+Disadvantages:
+ • Limited screen space restricts how many options can be displayed.
+ • Complex functions may not fit menu structures.
+ • Requires careful perceptual design (e.g., Gestalt laws like good continuation) for clarity.
 Q: What percentage of people are affected by color vision deficiencies, and which type is most common? [2.1 Sight and Visual Perception]
 A:
  • ~9% overall
@@ -146,6 +80,16 @@ About 9% of people worldwide suffer from color vision deficiencies, with red-gre
 Q: What term refers to measuring human body dimensions for ergonomic design?
 A: Anthropometric
 
+Q: How does ACM’s SIGCHI define Human-Computer Interaction (HCI)? [1.1 Definitions]
+A:
+
+ • development
+ • evaluation
+ • interaction concepts
+ • interactive systems
+
+According to the Special Interest Group on Computer-Human Interaction (SIGCHI) of the ACM, HCI is a discipline concerned with the development and evaluation of interaction concepts for human–computer interactive systems (Hewett et al., 1992). This definition emphasizes not only the design but also the systematic assessment of interaction to ensure effective and user-centered system behavior.
+
 Q: What role do rods play in vision, and how does the eye adapt to changing light conditions? [2.1 Sight and Visual Perception]
 A:
  • rods → brightness perception
@@ -154,15 +98,111 @@ A:
  • retinal biochemical adaptation
 
 Rods are photoreceptor cells specialized in brightness perception and are more sensitive than cones, making them crucial in low-light conditions. The eye adapts to changing light in two ways: rapidly through the iris, which adjusts pupil size like a camera aperture, and more slowly through biochemical changes in the retina’s sensory cells, allowing gradual adaptation to darkness or brightness.
-Q: What is Human Factors Engineering in the context of HCI? [1.1 Definitions]
+Q: Which interaction style combines language, gestures, and multimodal input?
+A: Intuitive handling
+
+Q: What is the difference between auditory icons and earcons in HCI? [2.2 Auditory Perception]
 A:
+  •  Auditory icons:
+ • Represent real-world sounds linked to actual events or actions.
+ • Example: crumpling paper sound for emptying the trash bin.
+ • Relies on natural associations — users instantly recognize the meaning.
+  •  Earcons:
+ • Abstract, synthetic sound patterns that encode information symbolically.
+ • Must be learned by users (e.g., email notification chime, car parking alert).
+ • Defined by variable parameters — rhythm, pitch, timbre, volume, duration, spatial position.
+  •  Summary: Auditory icons use familiar sounds to convey meaning directly, while earcons use artificial sounds that require learned interpretation.
 
- • ergonomics
- • usability
- • safety
- • human–system fit
+Q: What are the main aspects of user trust in socio-technical systems? [3.2.3 Aspects of Trust]
+A:
+Definition: Trust in HCI determines how willing users are to rely on a system. Both lack of trust and overtrust can lead to problems—either disuse or misuse of technology.
+Main aspects of trust:
+  • Trust in technology: Confidence in the system’s reliability, accuracy, and security. Built through stable performance and error-free operation.
+  • Trust in people: Confidence in designers, developers, and other users. Built through transparency, accountability, and expertise.
+  • Trust in the system as a whole: Confidence that the system operates in users’ best interests, emphasizing privacy, security, and ethical design.
+  • Trust in feedback and communication: Confidence in system alerts, messages, and support channels. Built through clarity, responsiveness, and empathy.
+  • Trust in the context of use: Confidence that the system fits the user’s environment, task, and skill level. Built through customization, compatibility, and ease of use.
 
-Human Factors Engineering (also called ergonomics) is the discipline that examines how humans interact with systems, machines, and environments, aiming to optimize usability, safety, and performance. In HCI, it ensures that interfaces and devices are designed according to human physical, cognitive, and perceptual capabilities, reducing errors and improving efficiency through a better human–system fit.
+Q: How can operating systems support users with color vision deficiencies? [2.1 Sight and Visual Perception]
+A:
+ • built-in color filters
+
+Companies like Microsoft provide color filters in their operating systems that can be activated to partially compensate for color vision deficiencies, improving usability and accessibility.
+
+Q: What type of communication do GUIs enable between user and system?
+A: Two-way communication
+
+Q: What design strategy helps make symbols understandable for color-blind users? [2.1 Sight and Visual Perception]
+A:
+ • combine colors with shapes
+
+Instead of relying only on color (e.g., green vs. red circles), shapes or patterns should be added to symbols, ensuring both color-normal and color-blind users can interpret the information correctly.
+
+
+Q: How does the eye focus on near versus distant objects? [2.1 Sight and Visual Perception]
+A:
+ • near → lens squeezed, curvature increases
+ • distant → lens relaxed, curvature flattens
+
+Tightening the muscle ring increases lens curvature for near vision, while relaxation flattens the lens for distant vision.
+
+
+Q: How can designers check that user interfaces are also visible for color-blind users? [2.1 Visual Perception]
+A:
+  •  Method: Print the layout in black and white.
+  •  Reasoning: If all elements remain clearly distinguishable in grayscale, they are likely also recognizable for users with color vision deficiencies.
+: What is spatial frequency and how does it relate to human visual perception? [2.1 Visual Perception]
+A:
+  •  Definition: Spatial frequency measures how often visual elements (light–dark transitions, edges, or patterns) repeat per unit of space — the level of visual detail.
+  •  Units: Measured in cycles per degree (cpd) of visual angle.
+  •  Types:
+ • Low spatial frequency → broad shapes, overall form (e.g., silhouette)
+ • High spatial frequency → fine detail, edges, texture (e.g., hair, text)
+  •  Neural pathways:
+ • Magnocellular → low frequencies (motion, shape)
+ • Parvocellular → high frequencies (detail, color)
+  •  Summary: Low frequencies convey form and structure; high frequencies convey edges and texture.
+Q: What is a major hardware challenge of mobile devices compared to desktops?
+A: Limited screen size
+
+Q: Why are men more affected by red-green color blindness than women? [2.1 Sight and Visual Perception]
+A:
+ • defect on X chromosome
+ • 8% of men vs. 0.1% of women
+
+The genetic defect causing red-green color blindness is located on the X chromosome. Since men have only one X chromosome, they are more frequently affected (8%) compared to women (0.1%).
+
+
+Q: How can conflicts between vision and proprioception affect users in VR systems? [2.5 Sense of Touch and Proprioception]
+A:
+ • Mismatch → vision shows motion, equilibrium senses no motion
+ • Symptoms → nausea, dizziness
+ • Effect → users may end tests early
+
+In virtual reality, visual input can simulate motion and acceleration, while the vestibular system registers no actual movement. This sensory conflict between sight and proprioception often results in motion sickness symptoms such as dizziness and nausea, limiting user tolerance and system usability.
+
+Q: Which cultural factor can influence the layout of GUIs such as websites?
+A: Reading and writing direction of scripts
+
+Q: Why does the PAL television standard in Europe use 25 frames per second? [2.1 Visual Perception]
+A:
+  • The 25 fps rate is derived from the 50 Hz power grid frequency used in Europe.
+  • 25 fps equals half of the grid frequency, ensuring synchronization between electrical and visual signals.
+  • This minimizes flicker and interference, making PAL (Phase Alternating Line) the predominant TV standard in Europe.
+Q: Which color models correspond to subtractive and additive color mixing, and where are they applied? [2.1 Sight and Visual Perception]
+A:
+ • subtractive → CMYK → printing
+ • additive → RGB → screens
+
+Subtractive color mixing is used in printing, where pigments like cyan, magenta, yellow, and black (CMYK) absorb portions of light and reflect the remainder, producing various colors on paper. Additive color mixing is applied in active light sources such as computer screens, where red, green, and blue (RGB) light combine in varying proportions to generate colors. Equal intensities of RGB create white light, while different wavelength combinations correspond to other colors within the visible spectrum (380–780 nm).
+Q: What does the Gestalt property of emergence explain? [2.2 Gestalt Laws]
+A:
+ • whole before parts
+ • overall shape recognition
+
+Emergence describes how people recognize objects based on their overall shape before analyzing individual parts. For example, we identify a dog as a dog first from its outline, then notice details like nose, ears, or tail.
+
+
 Q: How does cognitive psychology view humans in the context of information processing? [1.3 Basic Models of Human Information Processing]
 A:
 
@@ -172,14 +212,19 @@ A:
 
 Cognitive psychology studies the fundamental mechanisms of how people process information, focusing on perception and knowledge acquisition. It conceptualizes humans as an information processing system, similar to a computer, where sensory input is received, processed, stored, and used to guide behavior and decision-making (Butz et al., 2022).
 
-Q: What does the term anthropometric mean in the context of HCI? [1.1 Definitions]
+Q: What mechanism is most important for generating spatial vision? [2.1 Sight and Visual Perception]
 A:
+ • stereo vision (stereopsis)
 
- • body measurements
- • size & proportions
- • ergonomic design
+Stereo vision arises because each eye captures a slightly different image due to their horizontal separation. The brain integrates these differences into a unified perception of spatial depth.
 
-Anthropometric refers to the systematic measurement of human body dimensions, such as height, reach, hand size, or posture. In HCI, anthropometric data are crucial for ergonomic design, ensuring that devices, interfaces, and workspaces fit the physical characteristics of users, thereby improving comfort, usability, and reducing the risk of strain or injury.
+
+Q: Which paradigm introduced windows, icons, menus, and pointers?
+A: WIMP interfaces
+
+Q: What four subdomains make up HCI according to SIGCHI?
+A: Human, computer, use, context
+
 Q: What does two-way communication mean in HCI? [1.2 Challenges in Human-Computer Interaction]
 A:
 
@@ -188,3 +233,42 @@ A:
  • input & feedback
 
 Two-way communication in HCI describes the bidirectional interaction between a user and a computer system. The user provides input (e.g., commands, actions), and the system responds with feedback (e.g., output, confirmation, error messages). This dynamic loop is essential for usability, as it allows continuous adjustment, error correction, and meaningful interaction.
+Q: What does multistability mean in Gestalt psychology? [2.2 Gestalt Laws]
+A:
+ • ambiguous images
+ • alternating perception
+
+Multistability describes how certain ambiguous figures, such as Rubin’s vase, can be perceived in two different ways (a vase or two faces) but never both simultaneously. The brain switches between interpretations.
+
+
+Q: What are the three main types of human memory in information processing? [3.1 Memory Types and Cognitive Processes]
+A:
+
+ • ultra short-term (sensory): sensor input and attention
+ • short-term (working): processing, decision-making
+ • long-term: learning and skill execution
+
+Ultra short-term memory briefly stores sensory input from the environment and directs attention to relevant stimuli. Short-term or working memory holds limited information for active processing, decision-making, and rehearsal, with susceptibility to interference. Long-term memory stores knowledge permanently, providing the foundation for learning and skill execution by encoding information from working memory.
+
+
+Q: How does contrast affect the perception of text and graphic elements? [2.1 Sight and Visual Perception]
+A:
+ • high contrast → better perception
+ • low contrast → poor readability
+
+Contrast directly influences how well differences between elements are detected. High contrast activates more sensory cells, improving readability, while low contrast—such as dark blue text on a light blue background—makes text or graphics harder to distinguish.
+
+Q: What is command-based interaction in HCI, and what are its design rules? [3.1.1 Command Language]
+A:
+Definition: Command-based interaction involves users entering text commands (via a command line or shell) directly into the system, which immediately executes the input.
+Advantages:
+ • Enables efficient and precise control when users master the command syntax.
+ • Allows automation of complex sequences through scripts.
+Design requirements:
+ • Use consistent syntax and domain-relevant vocabulary.
+ • Provide clear documentation and logical abbreviations.
+Examples:
+ • Operating systems like Linux shells (e.g., Bash, PowerShell).
+ • Remote controls and car radios, where each button executes a discrete command.
+  •  Drawback: Requires significant learning effort, making it less accessible to novice users.
+

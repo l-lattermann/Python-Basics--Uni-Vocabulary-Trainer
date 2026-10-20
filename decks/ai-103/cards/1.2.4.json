@@ -304,5 +304,268 @@
     "question": "Which authentication method is recommended for a **production** app that calls a model deployed in Microsoft Foundry?",
     "answer": "**Microsoft Entra ID** authentication.",
     "explanation": "Instead of presenting a secret key, the app presents a token based on its own identity. Keys work too, but the course recommends Entra ID for production scenarios."
+  },
+  {
+    "id": "1.2.4-13",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "playground",
+      "sdk"
+    ],
+    "question": "In the Microsoft Foundry playground, where do you find ready-to-copy sample code that calls your deployed model from Python, C# or JavaScript?",
+    "answer": "The **Code** tab.",
+    "explanation": "The samples show authentication, endpoint configuration and request formatting, so you can paste them straight into your application. The chat interface next to it is for trying prompts by hand; the Code tab is the bridge from those experiments to calling the deployment programmatically."
+  },
+  {
+    "id": "1.2.4-16",
+    "type": "mc",
+    "section": "1.2.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "deployment-types",
+      "batch",
+      "data-residency"
+    ],
+    "question": "A nightly job sends a large set of asynchronous requests to a Microsoft Foundry model. No user waits for the results, and all data must stay inside the **EU data zone**. Which deployment type do you choose?",
+    "answer": "**Data Zone Batch**.",
+    "explanation": "Batch types are designed for large asynchronous jobs rather than interactive calls. The *Data Zone* prefix keeps data within one data zone such as the US, EU or APAC. Global Batch serves the same kind of job but may use any Azure region, so it breaks the residency requirement.",
+    "options": [
+      {
+        "text": "Data Zone Batch",
+        "correct": true,
+        "why": "Built for large asynchronous batch jobs, with data kept inside a data zone."
+      },
+      {
+        "text": "Global Batch",
+        "correct": false,
+        "why": "Also for large asynchronous jobs, but it may use any Azure region."
+      },
+      {
+        "text": "Data Zone Standard",
+        "correct": false,
+        "why": "Stays in the data zone, but bills per token for regular, non-batch workloads."
+      },
+      {
+        "text": "Data Zone Provisioned",
+        "correct": false,
+        "why": "Reserves PTUs for predictable throughput; meant for steady online traffic, not a batch job."
+      }
+    ]
+  },
+  {
+    "id": "1.2.4-17",
+    "type": "mc",
+    "section": "1.2.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "deployment-types",
+      "throughput",
+      "data-residency"
+    ],
+    "question": "A Microsoft Foundry deployment must keep data within **a single Azure region** and needs **reserved capacity** for predictable throughput. Which deployment type do you choose?",
+    "answer": "**Regional Provisioned**.",
+    "explanation": "Provisioned types reserve provisioned throughput units (PTUs) instead of billing per token. *Regional* is the narrowest residency scope: one region, narrower than a data zone or global. Regional Standard keeps the same residency but bills per token, which suits low-volume scenarios.",
+    "options": [
+      {
+        "text": "Regional Provisioned",
+        "correct": true,
+        "why": "Reserved PTUs within a single region."
+      },
+      {
+        "text": "Regional Standard",
+        "correct": false,
+        "why": "Single region, but pay-per-token with no reserved capacity."
+      },
+      {
+        "text": "Data Zone Provisioned",
+        "correct": false,
+        "why": "Reserved PTUs, but data may move anywhere within a data zone such as the EU."
+      },
+      {
+        "text": "Global Provisioned",
+        "correct": false,
+        "why": "Reserved PTUs, but it may use any Azure region."
+      }
+    ]
+  },
+  {
+    "id": "1.2.4-18",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "deployment",
+      "foundry-portal"
+    ],
+    "question": "After you select **Deploy** on a model in the Microsoft Foundry portal, which two ways of deploying can you choose?",
+    "answer": "- **Default settings**: deploy quickly with recommended configurations\n- **Custom settings**: customize the deployment options",
+    "explanation": "Default settings are the fast path with the recommended configuration. Custom settings open the deployment options for changes. Among the settings are the deployment name, which defaults to the model name, and the deployment type, which the portal preselects from the model and your environment."
+  },
+  {
+    "id": "1.2.4-19",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "deployment",
+      "deployment-types"
+    ],
+    "question": "Which setting of a Microsoft Foundry model deployment decides its **data residency and throughput guarantees**, and is preselected by the portal?",
+    "answer": "The **deployment type**.",
+    "explanation": "Each model supports a different set of deployment types, and the model card lists them. The portal picks the appropriate type from the model and your environment. Global Standard deployments in Foundry resources should be used whenever possible, because they give the maximum capabilities."
+  },
+  {
+    "id": "1.2.4-20",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "model-catalog",
+      "foundry-portal"
+    ],
+    "question": "Where in the Microsoft Foundry portal do you browse the **model catalog** to pick a model to deploy?",
+    "answer": "**Discover > Models**.",
+    "explanation": "From the portal homepage, select Discover in the navigation, then Models in the left pane. Opening a model card there shows its specifications and supported deployment types, and the Deploy button starts the deployment. Models you have already deployed are listed elsewhere, under Build > Models."
+  },
+  {
+    "id": "1.2.4-21",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "playground",
+      "deployment"
+    ],
+    "question": "You have just deployed a model in Microsoft Foundry and want to try prompts on it right away **without writing code**. Where do you do that?",
+    "answer": "In the Foundry **playground**.",
+    "explanation": "The portal lands you in the playground automatically when a deployment completes, with your deployment preselected. You can also open it from your models list. It shows your input next to the model's output and serves as the development environment for prompt engineering before you integrate the model into an application."
+  },
+  {
+    "id": "1.2.4-22",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "prompts",
+      "playground"
+    ],
+    "question": "In the Microsoft Foundry playground, you want every reply to sound like a customer service representative, whatever the user types. What do you adjust?",
+    "answer": "The **system message**.",
+    "explanation": "A system message sets context, tone and instructions that apply to all user inputs, not just one prompt. Another example is asking for concise, technical explanations. Parameters such as temperature or max tokens shape how text is generated, but they do not give the model a role."
+  },
+  {
+    "id": "1.2.4-23",
+    "type": "mc",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "parameters",
+      "playground"
+    ],
+    "question": "Answers from a model in the Microsoft Foundry playground vary too much between runs; you want more **consistent** output. Which parameter trades creativity against consistency?",
+    "answer": "**Temperature**.",
+    "explanation": "The playground lets you change generation parameters to fine-tune how the model writes. Temperature is the one that sets creativity versus consistency. Max tokens only limits how long a response may get, and top-p controls nucleus sampling.",
+    "options": [
+      {
+        "text": "Temperature",
+        "correct": true,
+        "why": "Controls creativity versus consistency of the generated text."
+      },
+      {
+        "text": "Max tokens",
+        "correct": false,
+        "why": "Limits the response length, not how varied it is."
+      },
+      {
+        "text": "Top-p",
+        "correct": false,
+        "why": "Sets nucleus sampling; creativity versus consistency is the job of temperature."
+      },
+      {
+        "text": "System message",
+        "correct": false,
+        "why": "Sets context, tone and instructions for all inputs; it is not a sampling parameter."
+      }
+    ]
+  },
+  {
+    "id": "1.2.4-24",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "parameters",
+      "playground"
+    ],
+    "question": "Which generation parameter in the Microsoft Foundry playground **limits the length** of a model's response?",
+    "answer": "**Max tokens**.",
+    "explanation": "The playground exposes temperature, max tokens and top-p to fine-tune generation. Max tokens caps how long a response may be. Temperature, in contrast, decides how creative or consistent the text is, and top-p sets nucleus sampling."
+  },
+  {
+    "id": "1.2.4-25",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "parameters",
+      "playground"
+    ],
+    "question": "Which generation parameter in the Microsoft Foundry playground controls **nucleus sampling**?",
+    "answer": "**Top-p**.",
+    "explanation": "Top-p is one of three generation parameters the playground lets you change, next to temperature (creativity versus consistency) and max tokens (response length). Testing them in the playground before writing code shows how each one changes the model's output."
+  },
+  {
+    "id": "1.2.4-26",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "endpoints",
+      "sdk"
+    ],
+    "question": "Your application needs **Foundry-specific functionality** from a model deployed in Microsoft Foundry. Which kind of endpoint does it call?",
+    "answer": "A **project endpoint**.",
+    "explanation": "Foundry offers two kinds of endpoint. Project endpoints give access to Foundry-specific functionality. OpenAI v1 endpoints aim at broad compatibility with OpenAI model APIs instead. The endpoint URL is one of the three details an app needs, next to the authentication key or token and the deployment name."
+  },
+  {
+    "id": "1.2.4-27",
+    "type": "basic",
+    "section": "1.2.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+    "tags": [
+      "endpoints",
+      "sdk"
+    ],
+    "question": "An existing app is written against **OpenAI model APIs** and should call a model deployed in Microsoft Foundry with as few changes as possible. Which kind of endpoint does it use?",
+    "answer": "An **OpenAI v1 endpoint**.",
+    "explanation": "OpenAI v1 endpoints exist for broad compatibility with OpenAI model APIs, so code built for those APIs fits them. Project endpoints are the alternative when the app needs Foundry-specific functionality. In both cases the deployment name goes in the request's model parameter."
   }
 ]

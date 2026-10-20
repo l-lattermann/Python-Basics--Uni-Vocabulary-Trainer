@@ -25,6 +25,38 @@
    "lapses": 0,
    "starred": false,
    "flag": null
+  },
+  "1.2.5-03": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
+  },
+  "1.2.3-10": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
+  },
+  "1.2.3-09": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
+  },
+  "1.2.5-08": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
   }
  },
  "current": {
@@ -32,9 +64,6 @@
   "mode": "mixed",
   "filter": {},
   "pending": [
-   "1.2.5-03",
-   "1.2.3-10",
-   "1.2.3-09",
    "1.2.5-08",
    "1.2.2-06",
    "1.2.2-07",
@@ -113,6 +142,50 @@
      "flag": null
     },
     "correct": true
+   },
+   "1.2.5-03": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": true
+   },
+   "1.2.3-10": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": true
+   },
+   "1.2.3-09": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": true
+   },
+   "1.2.5-08": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": false
    }
   },
   "history": [
@@ -127,12 +200,32 @@
    {
     "id": "1.2.3-07",
     "index": 0
+   },
+   {
+    "id": "1.2.5-03",
+    "index": 0
+   },
+   {
+    "id": "1.2.3-10",
+    "index": 0
+   },
+   {
+    "id": "1.2.3-09",
+    "index": 0
+   },
+   {
+    "id": "1.2.5-08",
+    "index": null
    }
   ],
   "seqs": [
    1792490866573000,
    1792490866573001,
-   1792490866573002
+   1792490866573002,
+   1792492591712000,
+   1792492591712001,
+   1792492591712002,
+   1792492591712003
   ]
  }
 }

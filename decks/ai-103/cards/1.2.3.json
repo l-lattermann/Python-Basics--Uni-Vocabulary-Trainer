@@ -105,6 +105,21 @@
     ]
   },
   {
+    "id": "1.2.3-06",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which dataset do Microsoft Foundry's safety benchmarks use to measure how well a model identifies **adversarial and implicit hate speech**?",
+    "answer": "**ToxiGen**, scored as an F1 score: higher is better.",
+    "explanation": "This is the toxic content detection dimension: it checks detection across references to minority groups. Unlike HarmBench, where a lower Attack Success Rate is safer, a higher ToxiGen score is the good direction. Safety benchmarks matter most for customer-facing apps and regulated industries."
+  },
+  {
     "id": "1.2.3-07",
     "type": "basic",
     "section": "1.2.3",
@@ -239,5 +254,520 @@
       "Select Compare",
       "Review benchmarks, model details, endpoints and supported features"
     ]
+  },
+  {
+    "id": "1.2.3-14",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "Into which four categories does the Microsoft Foundry portal organize model benchmarks, and what does each measure?",
+    "answer": "- **Quality**: accurate, coherent responses\n- **Safety**: resisting harmful or biased output\n- **Cost**: token pricing\n- **Performance**: response speed (latency, throughput)",
+    "explanation": "The categories mirror the Model leaderboard, which ranks top models by quality, safety, estimated cost and throughput. Weighing them against each other is the actual decision: a slightly less accurate model that is much faster or cheaper can serve an app better, and for batch jobs cost can matter more than speed."
+  },
+  {
+    "id": "1.2.3-15",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Which quality benchmark dataset in Microsoft Foundry tests **adversarial question answering**?",
+    "answer": "**Arena-Hard**.",
+    "explanation": "It is one of the public datasets whose accuracy scores feed the Quality index. Its neighbours measure other skills: GPQA graduate-level multi-discipline questions, MMLU-Pro general knowledge, BIG-Bench Hard reasoning. Scores are normalized from 0 to 1, higher being better."
+  },
+  {
+    "id": "1.2.3-16",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Which quality benchmark dataset in Microsoft Foundry assesses a model's general **reasoning capabilities**, as opposed to mathematical reasoning specifically?",
+    "answer": "**BIG-Bench Hard**.",
+    "explanation": "The Quality index averages accuracy across datasets covering reasoning, knowledge, question answering, math and coding. BIG-Bench Hard supplies the reasoning part; MATH targets mathematical reasoning. If your app is reasoning-heavy, the reasoning scenario leaderboard is a better starting point than the overall index.",
+    "options": [
+      {
+        "text": "BIG-Bench Hard",
+        "correct": true,
+        "why": "It is the quality dataset for reasoning capabilities."
+      },
+      {
+        "text": "MATH",
+        "correct": false,
+        "why": "MATH measures mathematical reasoning, not reasoning in general."
+      },
+      {
+        "text": "MMLU-Pro",
+        "correct": false,
+        "why": "MMLU-Pro is a general knowledge assessment."
+      },
+      {
+        "text": "IFEval",
+        "correct": false,
+        "why": "IFEval measures instruction following."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-17",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Which quality benchmark dataset in Microsoft Foundry poses **graduate-level questions across multiple disciplines**?",
+    "answer": "**GPQA**.",
+    "explanation": "GPQA is one of the knowledge-heavy datasets behind the Quality index. It differs from MMLU-Pro, which assesses general knowledge, by its graduate-level difficulty. All quality benchmarks use public datasets and standardized evaluation methods, so scores are comparable across models."
+  },
+  {
+    "id": "1.2.3-18",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Your app generates code. Which **two** quality benchmark datasets in Microsoft Foundry measure **code generation**?",
+    "answer": "**HumanEval+** and **MBPP+**.",
+    "explanation": "Coding skill is one of the capabilities the Quality index averages over, together with reasoning, knowledge, question answering and math. For a coding-centred app, the coding scenario leaderboard ranks models on this use case directly instead of mixing in other tasks.",
+    "options": [
+      {
+        "text": "HumanEval+",
+        "correct": true,
+        "why": "It is one of the two code generation datasets."
+      },
+      {
+        "text": "MBPP+",
+        "correct": true,
+        "why": "It is the other code generation dataset, listed together with HumanEval+."
+      },
+      {
+        "text": "MATH",
+        "correct": false,
+        "why": "MATH measures mathematical reasoning, not code generation."
+      },
+      {
+        "text": "IFEval",
+        "correct": false,
+        "why": "IFEval measures instruction following."
+      },
+      {
+        "text": "BIG-Bench Hard",
+        "correct": false,
+        "why": "BIG-Bench Hard measures reasoning capabilities."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-19",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Which quality benchmark dataset in Microsoft Foundry measures **mathematical reasoning**?",
+    "answer": "**MATH**.",
+    "explanation": "It covers the math part of the Quality index. Do not confuse it with BIG-Bench Hard, which measures reasoning capabilities in general. When an app mainly solves math tasks, start from the math scenario leaderboard rather than the overall Quality index."
+  },
+  {
+    "id": "1.2.3-20",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Which quality benchmark dataset in Microsoft Foundry is a **general knowledge assessment**?",
+    "answer": "**MMLU-Pro**.",
+    "explanation": "Knowledge is one of the abilities the Quality index averages over. MMLU-Pro checks broad general knowledge, while GPQA raises the bar to graduate-level questions across disciplines. Like every benchmark score in the catalog, it is a normalized index from 0 to 1.",
+    "options": [
+      {
+        "text": "MMLU-Pro",
+        "correct": true,
+        "why": "It is the general knowledge assessment among the quality datasets."
+      },
+      {
+        "text": "GPQA",
+        "correct": false,
+        "why": "GPQA asks graduate-level multi-discipline questions, not general knowledge."
+      },
+      {
+        "text": "Arena-Hard",
+        "correct": false,
+        "why": "Arena-Hard tests adversarial question answering."
+      },
+      {
+        "text": "BIG-Bench Hard",
+        "correct": false,
+        "why": "BIG-Bench Hard measures reasoning capabilities."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-21",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Your app relies on the model doing exactly what the prompt instructs. Which quality benchmark dataset in Microsoft Foundry measures this?",
+    "answer": "**IFEval**: instruction following.",
+    "explanation": "IFEval is the instruction-following dataset among the public datasets behind the Quality index. The others cover adversarial question answering, reasoning, graduate-level questions, code generation, math and general knowledge. Scores are normalized from 0 to 1; higher is better."
+  },
+  {
+    "id": "1.2.3-22",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which three safety dimensions do Microsoft Foundry's model safety benchmarks evaluate?",
+    "answer": "- **Harmful behavior detection**: resisting unsafe content\n- **Toxic content detection**: identifying hate speech\n- **Sensitive domain knowledge**: knowledge of dangerous capabilities",
+    "explanation": "Each dimension has its own benchmark: HarmBench with Attack Success Rate, ToxiGen with F1 score, and WMDP for biosecurity, cybersecurity and chemical security. Safety metrics ensure models don't generate harmful, biased or inappropriate content, which matters most in customer-facing apps and regulated industries."
+  },
+  {
+    "id": "1.2.3-23",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which benchmark do Microsoft Foundry's safety benchmarks use to measure how well a model **resists generating unsafe content**?",
+    "answer": "**HarmBench**.",
+    "explanation": "It is the benchmark behind harmful behavior detection. It covers cybercrime and illegal activities, contextual harms like misinformation and harassment, and reproducing copyrighted material. Do not confuse it with ToxiGen, which measures how well a model identifies adversarial and implicit hate speech."
+  },
+  {
+    "id": "1.2.3-24",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which metric does Microsoft Foundry calculate from the **HarmBench** results in its safety benchmarks?",
+    "answer": "**Attack Success Rate (ASR)**.",
+    "explanation": "HarmBench measures how well models resist generating unsafe content across standard harmful behaviors, contextually harmful behaviors and copyright violations. A lower ASR means a safer, more robust model: the opposite direction from quality scores, where higher is better."
+  },
+  {
+    "id": "1.2.3-25",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which three functional areas does the **HarmBench** benchmark test in Microsoft Foundry's safety benchmarks?",
+    "answer": "- **Standard harmful behaviors**: cybercrime, illegal activities\n- **Contextually harmful behaviors**: misinformation, harassment, bullying\n- **Copyright violations**: reproducing copyrighted material",
+    "explanation": "Together they show how well a model resists generating unsafe content, expressed as an Attack Success Rate where lower is safer. Standard harmful behaviors also include general harm. Such scores matter most for customer-facing applications, where harmful output poses significant concerns."
+  },
+  {
+    "id": "1.2.3-26",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "safety"
+    ],
+    "question": "Which benchmark in Microsoft Foundry's safety benchmarks measures a model's knowledge in **biosecurity, cybersecurity and chemical security**?",
+    "answer": "**WMDP** (Weapons of Mass Destruction Proxy).",
+    "explanation": "WMDP covers the sensitive domain knowledge dimension. A higher score means the model knows more about potentially dangerous capabilities. It sits beside HarmBench, which tests resistance to producing unsafe content, and ToxiGen, which tests detection of adversarial and implicit hate speech."
+  },
+  {
+    "id": "1.2.3-27",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "cost"
+    ],
+    "question": "Which Microsoft Foundry cost benchmark shows the price for processing **1 million tokens of the text you send** to a model?",
+    "answer": "**Cost per input tokens**.",
+    "explanation": "Its counterpart, cost per output tokens, prices 1 million tokens the model generates. Estimated cost blends both into one number. Cost benchmarks cover serverless API deployments and Azure OpenAI models and help balance quality requirements against budget."
+  },
+  {
+    "id": "1.2.3-28",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "cost"
+    ],
+    "question": "Which Microsoft Foundry cost benchmark shows the price for **1 million tokens the model generates**?",
+    "answer": "**Cost per output tokens**.",
+    "explanation": "Output tokens are the text the model produces; input tokens are the text you send. Both are quoted per 1 million tokens. Estimated cost merges them assuming three input tokens per output token, giving one comparable number where lower is more cost-effective.",
+    "options": [
+      {
+        "text": "Cost per output tokens",
+        "correct": true,
+        "why": "It prices 1 million tokens of text the model produces."
+      },
+      {
+        "text": "Cost per input tokens",
+        "correct": false,
+        "why": "It prices 1 million tokens of text you send to the model."
+      },
+      {
+        "text": "Estimated cost",
+        "correct": false,
+        "why": "It combines input and output prices at a 3:1 ratio into one number."
+      },
+      {
+        "text": "Generated tokens per second (GTPS)",
+        "correct": false,
+        "why": "GTPS is a throughput metric, not a price."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-29",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "cost"
+    ],
+    "question": "Which Microsoft Foundry cost benchmark gives you **one number per model** to compare cost-effectiveness, with lower being better?",
+    "answer": "**Estimated cost**.",
+    "explanation": "It combines the price per 1 million input tokens and per 1 million output tokens, assuming three input tokens for every output token. The Model leaderboard ranks models by it next to quality, safety and throughput. It helps find a model that meets the required quality at a price that fits your budget."
+  },
+  {
+    "id": "1.2.3-30",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "latency"
+    ],
+    "question": "Which group of Microsoft Foundry performance benchmarks measures **how long** a model takes to process a request?",
+    "answer": "**Latency**.",
+    "explanation": "Latency covers latency mean, the percentiles P50 to P99 and time to first token. Throughput covers generated tokens per second, total tokens per second and time between tokens. The leaderboard summarizes each with one number: mean time to first token (lower is better) and mean generated tokens per second (higher is better).",
+    "options": [
+      {
+        "text": "Latency",
+        "correct": true,
+        "why": "Latency measurements are times: mean, percentiles and time to first token."
+      },
+      {
+        "text": "Throughput",
+        "correct": false,
+        "why": "Throughput measures tokens processed or generated per second."
+      },
+      {
+        "text": "Estimated cost",
+        "correct": false,
+        "why": "Estimated cost is a cost benchmark, not a performance measurement."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-31",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "latency"
+    ],
+    "question": "Which Microsoft Foundry latency benchmark gives the **average** time in seconds to process a request?",
+    "answer": "**Latency mean**.",
+    "explanation": "The percentile latencies sit beside it: P50, the median, and P90, P95 and P99, the times that 90, 95 or 99 % of requests beat. Latency matters for real-time applications, where user experience depends on responsiveness.",
+    "options": [
+      {
+        "text": "Latency mean",
+        "correct": true,
+        "why": "It is the average time in seconds to process a request."
+      },
+      {
+        "text": "Latency P50",
+        "correct": false,
+        "why": "P50 is the median: 50 % of requests complete faster."
+      },
+      {
+        "text": "Latency P99",
+        "correct": false,
+        "why": "P99 is the time 99 % of requests complete faster than."
+      },
+      {
+        "text": "Time to first token (TTFT)",
+        "correct": false,
+        "why": "TTFT is the wait until the first streamed token arrives."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-32",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "latency"
+    ],
+    "question": "Which Microsoft Foundry latency benchmarks give the time within which **50 %, 90 %, 95 % or 99 % of requests** complete?",
+    "answer": "**Latency P50, P90, P95 and P99**; P50 is the median.",
+    "explanation": "Unlike Latency mean, the average processing time, a percentile states a share of requests: a P95 of 2 seconds means 95 % of requests finish faster than 2 seconds. Latency matters for real-time applications, where user experience depends on responsiveness."
+  },
+  {
+    "id": "1.2.3-33",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "throughput"
+    ],
+    "question": "Which Microsoft Foundry throughput benchmark counts **input and output tokens together** processed per second?",
+    "answer": "**Total tokens per second (TTPS)**.",
+    "explanation": "Generated tokens per second (GTPS) counts only the output tokens; the leaderboard uses mean GTPS as its throughput summary, higher being better. High-throughput, low-latency models give better user experiences in interactive applications."
+  },
+  {
+    "id": "1.2.3-34",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "throughput",
+      "streaming"
+    ],
+    "question": "Which Microsoft Foundry throughput benchmark measures the **interval between receiving consecutive tokens** of a response?",
+    "answer": "**Time between tokens**.",
+    "explanation": "It is listed under throughput even though it is measured as a time, next to generated tokens per second and total tokens per second. Time to first token, by contrast, is a latency measurement: the wait until the first streamed token arrives."
+  },
+  {
+    "id": "1.2.3-35",
+    "type": "mc",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "You want to see **quality plotted against cost** for many models at once to find the best balance. Which Microsoft Foundry leaderboard feature do you use?",
+    "answer": "A **trade-off chart**.",
+    "explanation": "It displays two metrics at once; a dropdown pairs quality with cost, throughput or safety. Models toward the top-right do well on both. A model that is slightly less accurate but much faster or cheaper may serve you better than the top quality scorer.",
+    "options": [
+      {
+        "text": "Trade-off chart",
+        "correct": true,
+        "why": "It plots two metrics, such as quality versus cost, for the models."
+      },
+      {
+        "text": "Scenario leaderboard",
+        "correct": false,
+        "why": "It ranks models for one use case, such as coding or math."
+      },
+      {
+        "text": "Side-by-side comparison",
+        "correct": false,
+        "why": "It compares two or three selected models across several dimensions, not a two-metric plot."
+      },
+      {
+        "text": "Benchmarks tab on a model card",
+        "correct": false,
+        "why": "It shows one model's detailed benchmark results."
+      }
+    ]
+  },
+  {
+    "id": "1.2.3-36",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "You have shortlisted **two or three models** in the Microsoft Foundry leaderboard and want to compare their benchmarks, context windows, endpoints and features in one view. Which feature do you use?",
+    "answer": "**Side-by-side comparison**, opened with Compare.",
+    "explanation": "You tick the boxes next to the model names in the leaderboard first. Unlike a trade-off chart, which plots two metrics across models, the comparison view goes into detail on a few models across multiple dimensions."
+  },
+  {
+    "id": "1.2.3-37",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "Which four kinds of information does Microsoft Foundry's side-by-side model comparison show?",
+    "answer": "- **Performance benchmarks**: quality, safety, throughput\n- **Model details**: context window, training data, languages\n- **Supported endpoints**: deployment options\n- **Feature support**: function calling, structured output, vision",
+    "explanation": "The view opens after you tick two or three models in the leaderboard and choose Compare. It adds to the rankings: the leaderboard sorts by quality, safety, estimated cost and throughput, while the comparison also shows the details and capabilities each model brings."
   }
 ]

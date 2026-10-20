@@ -115,14 +115,25 @@ names the difference with its source.
    Skip marketing sentences, history, and anything you could only answer by
    having memorised the page layout.
 3. **One fact per card** (minimum information principle). A list of 7 things
-   is not one card: make the distinctions into separate cards, or ask for the
-   2–4 that matter. If an answer wants to grow past 4 bullets, split.
-4. The question must make sense out of context, months later, shuffled among
+   is not one card: make one card per item, plus at most one overview card
+   that asks for the group. If an answer wants to grow past 4 bullets, split.
+4. **Every defined term is covered.** Whenever the course names things and
+   defines them — a `**Term**: definition` list, a table, a set of metrics,
+   deployment types, evaluators, tools, roles — every single term must be
+   learnable from the cards. Each term is the answer of a card that gives its
+   definition or a scenario ("Which metric checks whether a response stays on
+   the user's question?" → **Relevance**), or a correct option of an mc built
+   for that term. A term that only appears as a distractor, in an
+   explanation or in an addition is **not** covered. Before writing cards,
+   list every such term of the unit under `Terms:` in the review notes; after
+   writing, put the covering card id(s) behind each term. No term may be
+   left without one.
+5. The question must make sense out of context, months later, shuffled among
    1000 others: name the product ("in Microsoft Foundry", "in Azure AI
    Search"), never "according to this unit" or "the tool above".
-5. Exactly one defensible answer. If a reasonable expert could answer
+6. Exactly one defensible answer. If a reasonable expert could answer
    differently, sharpen the question.
-6. Vary the direction: not only "What is X?" but "You need Y — which X?" —
+7. Vary the direction: not only "What is X?" but "You need Y — which X?" —
    the exam asks mostly in scenarios.
 
 How many: as many as the substance carries, roughly one card per 150–250
@@ -182,7 +193,11 @@ You did not write these cards. Read the unit, its neighbours, this file and
    stated when several are correct. Code gaps: the code is valid Python and
    the right option really completes it.
 6. **Coverage**: an exam-relevant fact of the unit that has no card gets
-   one; a card on trivia goes.
+   one; a card on trivia goes. Build your own list of every defined term in
+   the unit (see rule 4 above) without looking at the generator's `Terms:`
+   list, then check that each term is the answer or a correct option of a
+   card. Add a card for every term that is missing, and correct the
+   `Terms:` list in the notes.
 7. Knowledge-check answers: re-derive them yourself; disagree → fix and note.
 
 Edit the card file in place, keep ids stable for cards that stay (renumber

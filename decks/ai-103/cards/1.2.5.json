@@ -315,5 +315,699 @@
     "question": "A Microsoft Foundry evaluation shows **quality** scores below your requirements. Which four kinds of improvement can you consider?",
     "answer": "- **Prompt engineering**\n- A **different model**\n- **RAG integration**\n- **Fine-tuning** (if the model supports it)",
     "explanation": "Prompt engineering refines instructions and system messages. A different model may be better optimized for your use case. RAG grounds responses in your own data. Fine-tuning trains the model on your domain. Each step can grow in complexity and cost, so plan for that, and re-run the evaluation after every change to measure its impact."
+  },
+  {
+    "id": "1.2.5-11",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "relevance"
+    ],
+    "question": "A Microsoft Foundry evaluation should check whether each response actually addresses the user's question or request. Which generation quality metric do you select?",
+    "answer": "**Relevance**.",
+    "explanation": "Relevance looks only at whether the response fits the question. An on-topic answer with invented facts can still do well here; whether the facts come from the provided context is what Groundedness checks. Human reviewers rate the same criterion in a structured review: does the response address the question or request?",
+    "options": [
+      {
+        "text": "Relevance",
+        "correct": true,
+        "why": "It measures whether the response addresses the user's question or request appropriately."
+      },
+      {
+        "text": "Groundedness",
+        "correct": false,
+        "why": "It checks whether the response is based on the provided context rather than speculation."
+      },
+      {
+        "text": "Coherence",
+        "correct": false,
+        "why": "It assesses whether the response flows logically and keeps its ideas consistent."
+      },
+      {
+        "text": "Fluency",
+        "correct": false,
+        "why": "It evaluates linguistic correctness and natural language quality."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-15",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "coherence"
+    ],
+    "question": "Responses of your Microsoft Foundry chat app jump between ideas and contradict themselves within one answer. Which generation quality metric measures this?",
+    "answer": "**Coherence**.",
+    "explanation": "Coherence assesses whether a response flows logically and maintains consistent ideas. Fluency is its closest neighbour but judges something else: linguistic correctness and natural language quality, not the logic that connects the ideas. Both belong to the generation quality metrics, together with groundedness and relevance.",
+    "options": [
+      {
+        "text": "Coherence",
+        "correct": true,
+        "why": "It assesses whether a response flows logically and maintains consistent ideas."
+      },
+      {
+        "text": "Fluency",
+        "correct": false,
+        "why": "It evaluates linguistic correctness and natural language quality, not the logic between ideas."
+      },
+      {
+        "text": "Relevance",
+        "correct": false,
+        "why": "It measures whether the response addresses the user's question."
+      },
+      {
+        "text": "Groundedness",
+        "correct": false,
+        "why": "It checks whether the response is based on the provided context."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-16",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "groundedness"
+    ],
+    "question": "Your Microsoft Foundry app has strict factual accuracy requirements, and you want a plain yes-or-no verdict per response on whether it is grounded in the provided context. Which metric do you select?",
+    "answer": "**Groundedness Pro**.",
+    "explanation": "Groundedness and Groundedness Pro both check whether a response is based on the provided context rather than speculation. Groundedness Pro reduces this to a binary assessment, grounded or not grounded. That is what makes it useful when factual accuracy is a hard requirement.",
+    "options": [
+      {
+        "text": "Groundedness Pro",
+        "correct": true,
+        "why": "It gives a binary assessment: grounded or not grounded."
+      },
+      {
+        "text": "Groundedness",
+        "correct": false,
+        "why": "It checks the same question but is not the binary variant."
+      },
+      {
+        "text": "Relevance",
+        "correct": false,
+        "why": "It measures whether the response addresses the question, not whether it sticks to the context."
+      },
+      {
+        "text": "Coherence",
+        "correct": false,
+        "why": "It assesses logical flow and consistent ideas."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-17",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Groundedness, Relevance, Coherence and Fluency belong to which category of evaluation metrics in Microsoft Foundry?",
+    "answer": "**Generation quality metrics**: they evaluate overall response quality.",
+    "explanation": "The Foundry portal groups its evaluation metrics into categories. Generation quality metrics judge how good a response is: grounded, relevant, coherent, fluent. Risk and safety metrics look for harmful content instead. NLP metrics compare a response mathematically with ground truth data, without an evaluator model.",
+    "options": [
+      {
+        "text": "Generation quality metrics",
+        "correct": true,
+        "why": "This category evaluates overall response quality."
+      },
+      {
+        "text": "Risk and safety metrics",
+        "correct": false,
+        "why": "This category identifies potentially harmful content."
+      },
+      {
+        "text": "NLP metrics",
+        "correct": false,
+        "why": "These are mathematical metrics like F1-score, BLEU and ROUGE that compare with ground truth."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-18",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "You want a Microsoft Foundry evaluation to identify potentially harmful content in your model's responses. Which category of evaluation metrics do you configure?",
+    "answer": "**Risk and safety metrics**.",
+    "explanation": "The category holds six metrics: self-harm, hateful and unfair, violent and sexual content, protected material, and indirect attack (jailbreak). The content harm metrics report a defect rate, the share of responses above a severity threshold, typically Medium. Generation quality metrics judge how good a response is, not how harmful."
+  },
+  {
+    "id": "1.2.5-19",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "A Microsoft Foundry evaluation of a mental-health support chatbot must flag responses that discuss or encourage self-harm. Which risk and safety metric applies?",
+    "answer": "**Self-harm content**.",
+    "explanation": "Self-harm content is one of four content harm metrics, alongside hateful and unfair, violent and sexual content. Like the others, it aggregates as a defect rate: the percentage of responses whose severity exceeds a threshold, typically Medium. A concerning rate calls for content filters, prompt hardening or output validation.",
+    "options": [
+      {
+        "text": "Self-harm content",
+        "correct": true,
+        "why": "It detects responses discussing or encouraging self-harm."
+      },
+      {
+        "text": "Violent content",
+        "correct": false,
+        "why": "It flags responses containing or promoting violence against others."
+      },
+      {
+        "text": "Hateful and unfair content",
+        "correct": false,
+        "why": "It identifies bias, discrimination or hateful statements."
+      },
+      {
+        "text": "Indirect attack (jailbreak)",
+        "correct": false,
+        "why": "It assesses vulnerability to manipulation attempts, not harmful topics."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-20",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "A Microsoft Foundry evaluation must identify responses that show bias or discriminate against groups of people. Which risk and safety metric do you select?",
+    "answer": "**Hateful and unfair content**.",
+    "explanation": "The metric identifies bias, discrimination or hateful statements. As a content harm metric, its result is a defect rate against a severity threshold, typically Medium. Bias also appears in manual evaluation: the Safety criterion of a structured review asks whether a response avoids harmful, biased or inappropriate content."
+  },
+  {
+    "id": "1.2.5-21",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "Which Microsoft Foundry risk and safety metric flags responses that contain or promote violence?",
+    "answer": "**Violent content**.",
+    "explanation": "Violent content belongs to the content harm metrics, with self-harm, hateful and unfair, and sexual content. These four report results the same way: a defect rate, the percentage of responses whose severity exceeds a threshold, typically Medium. Protected material and indirect attack use a plain ratio of true instances instead."
+  },
+  {
+    "id": "1.2.5-22",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "A Microsoft Foundry evaluation of a children's learning app must detect inappropriate sexual content in responses. Which risk and safety metric applies?",
+    "answer": "**Sexual content**.",
+    "explanation": "Sexual content is one of six risk and safety metrics and one of the four content harm metrics. Its defect rate counts the responses whose severity exceeds a threshold, typically Medium. The evaluator library shows the definitions and severity levels of safety evaluators like this one."
+  },
+  {
+    "id": "1.2.5-23",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "Your Microsoft Foundry app writes song lyrics and marketing copy. Which risk and safety metric checks whether responses reproduce copyrighted or proprietary content?",
+    "answer": "**Protected material**.",
+    "explanation": "Protected material is calculated differently from the content harm metrics. Its defect rate is `(true instances / total instances) × 100`: the share of responses in which reproduced material was found. Indirect attack (jailbreak) is calculated the same way."
+  },
+  {
+    "id": "1.2.5-24",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "In a structured human review of a Microsoft Foundry app, which criterion asks whether a response gives sufficient detail and useful information?",
+    "answer": "**Informativeness**.",
+    "explanation": "In a structured review, human evaluators rate responses to a set of test cases on criteria such as relevance, informativeness, engagement, accuracy and safety, typically on a 1–5 scale. Relevance only asks whether the response addresses the question; informativeness asks whether it says enough to be useful.",
+    "options": [
+      {
+        "text": "Informativeness",
+        "correct": true,
+        "why": "It rates whether the response provides sufficient detail and useful information."
+      },
+      {
+        "text": "Relevance",
+        "correct": false,
+        "why": "It rates whether the response addresses the question or request."
+      },
+      {
+        "text": "Engagement",
+        "correct": false,
+        "why": "It rates whether the response is interesting and appropriately conversational."
+      },
+      {
+        "text": "Accuracy",
+        "correct": false,
+        "why": "It rates whether facts and statements are correct."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-25",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "In a structured human review of a Microsoft Foundry app, which criterion rates whether a response is interesting and appropriately conversational?",
+    "answer": "**Engagement**.",
+    "explanation": "Engagement is a subjective quality of the kind manual evaluation captures and automated metrics can't. Human evaluators score it per test case, typically on a 1–5 scale, next to relevance, informativeness, accuracy and safety. Aggregated across many test cases, the ratings become a quantitative measure of overall quality."
+  },
+  {
+    "id": "1.2.5-26",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "In a structured human review of a Microsoft Foundry app, which criterion checks whether the facts and statements in a response are correct?",
+    "answer": "**Accuracy**.",
+    "explanation": "Human evaluators rate accuracy per test case, typically on a 1–5 scale, alongside relevance, informativeness, engagement and safety. Aggregated over many test cases, the ratings give a quantitative quality measure. Interactive testing looks for the same problem less systematically: you note incorrect information while exploring prompts in the playground."
+  },
+  {
+    "id": "1.2.5-27",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "In a structured human review of a Microsoft Foundry app, which criterion rates whether a response avoids harmful, biased or inappropriate content?",
+    "answer": "**Safety**.",
+    "explanation": "Safety is the human counterpart of the automated risk and safety metrics, which detect content such as self-harm, hateful and unfair, violent or sexual content. In a structured review, evaluators rate it per test case on a scale such as 1–5, next to relevance, informativeness, engagement and accuracy."
+  },
+  {
+    "id": "1.2.5-28",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "playground"
+    ],
+    "question": "You enter diverse prompts into a model in the Microsoft Foundry playground and note incorrect information, inappropriate tone or ignored instructions. Which manual evaluation approach is this?",
+    "answer": "**Interactive testing**.",
+    "explanation": "Interactive testing is qualitative and exploratory: it shows a model's strengths and limitations but produces no scores. In the playground you can also test models side by side, with synchronized system instructions and prompts. Structured review and user studies are the other two manual approaches."
+  },
+  {
+    "id": "1.2.5-29",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "Human evaluators rate the responses to a fixed set of test cases on criteria like relevance and accuracy, using a 1–5 scale. Which manual evaluation approach is this?",
+    "answer": "**Structured review**.",
+    "explanation": "The test cases represent the application's use cases. Aggregating the ratings across many test cases turns human judgement into a quantitative measure of overall quality. Interactive testing, by contrast, is unscripted exploration in the playground, and user studies collect feedback from actual users."
+  },
+  {
+    "id": "1.2.5-30",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "You let actual or representative users work with your generative AI app to uncover confusing phrasing, missing context or unmet expectations. Which manual evaluation approach is this?",
+    "answer": "**User studies**.",
+    "explanation": "User studies reveal real-world issues that you might miss in controlled testing. Interactive testing and structured review are the controlled manual approaches: one exploratory in the playground, the other a fixed set of test cases rated by evaluators."
+  },
+  {
+    "id": "1.2.5-31",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "You must judge the brand alignment and contextual appropriateness of a Microsoft Foundry app's responses, which automated metrics can't measure. Which kind of evaluation do you use?",
+    "answer": "**Manual evaluation** by human reviewers.",
+    "explanation": "Manual evaluation is time-intensive but captures subjective quality aspects such as user satisfaction, contextual appropriateness and brand alignment. Its approaches are interactive testing, structured review and user studies. It complements automated evaluation rather than replacing it."
+  },
+  {
+    "id": "1.2.5-32",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "You need evaluation results for thousands of responses that are consistent and objective, without human reviewers. Which kind of evaluation do you use in Microsoft Foundry?",
+    "answer": "**Automated evaluation** with standard metrics.",
+    "explanation": "Automated evaluation scales efficiently and gives consistent, objective measurements. Its metric categories in the Foundry portal include generation quality and risk and safety metrics; NLP metrics add a mathematical option. What it misses are subjective aspects like brand alignment, which is why manual evaluation complements it."
+  },
+  {
+    "id": "1.2.5-33",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Which purpose of evaluating a generative AI model is about finding problems during evaluation instead of in production, so users and the organization's reputation are protected?",
+    "answer": "**Quality assurance**.",
+    "explanation": "Quality assurance identifies issues and makes sure the model gives accurate, relevant responses. It is one of four reasons to evaluate, alongside user satisfaction, continuous improvement, and compliance and safety. Each of the four reasons applies again whenever prompts, features or the model change."
+  },
+  {
+    "id": "1.2.5-34",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Which purpose of model evaluation helps you understand how users experience your application and where improvements make the biggest impact?",
+    "answer": "**User satisfaction**.",
+    "explanation": "Satisfaction improves when a model consistently delivers helpful, appropriate responses, and evaluation shows where it does not. User studies feed this purpose directly: actual or representative users reveal confusing phrasing, missing context or unmet expectations."
+  },
+  {
+    "id": "1.2.5-35",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "You re-run evaluations every time you update prompts, add features or retrain the model, and analyse the results for enhancement opportunities. Which purpose of evaluation does this serve?",
+    "answer": "**Continuous improvement**.",
+    "explanation": "Regular evaluation keeps quality up as the application changes. Establish evaluation benchmarks early in development, then re-run the evaluations after each modification. That measures the impact of a change objectively and shows whether quality regressed."
+  },
+  {
+    "id": "1.2.5-36",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "responsible-ai"
+    ],
+    "question": "Which purpose of model evaluation confirms that the model adheres to policies, avoids harmful content and respects user privacy and data protection requirements?",
+    "answer": "**Compliance and safety** verification.",
+    "explanation": "In an automated evaluation, the risk and safety metrics measure the harmful-content part, for example violent content or protected material. When they show concerns, the remedies are content filters with Azure AI Content Safety, prompt hardening in the system message, and output validation before responses reach users."
+  },
+  {
+    "id": "1.2.5-37",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "Which category of Microsoft Foundry evaluation metrics is calculated mathematically, without an evaluator model?",
+    "answer": "**NLP (natural language processing) metrics**, such as F1-score, BLEU and ROUGE.",
+    "explanation": "They compare the generated text with ground truth data, so they work well when there is a definitive correct answer or reference text. For open-ended generation, where many valid responses exist, they are less suitable. AI-assisted metrics instead let a GPT evaluator model score each response."
+  },
+  {
+    "id": "1.2.5-38",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "You evaluate a text classification task in Microsoft Foundry against ground truth answers. Which NLP metric measures the ratio of shared words, balancing precision and recall?",
+    "answer": "**F1-score**.",
+    "explanation": "F1-score counts the words that the generated answer and the ground truth share. It weighs precision, avoiding incorrect words, against recall, including the important ones. That suits text classification and information retrieval. ROUGE, by contrast, leans toward recall.",
+    "options": [
+      {
+        "text": "F1-score",
+        "correct": true,
+        "why": "It measures shared words and balances precision and recall."
+      },
+      {
+        "text": "ROUGE",
+        "correct": false,
+        "why": "It emphasizes recall over precision and suits summarization."
+      },
+      {
+        "text": "BLEU",
+        "correct": false,
+        "why": "It compares n-grams with a reference and is mainly used for machine translation."
+      },
+      {
+        "text": "METEOR",
+        "correct": false,
+        "why": "It extends BLEU with synonyms, stemming and paraphrasing."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-39",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "The F1-score balances two measures. Which one penalizes incorrect words in the generated answer, and which one rewards including the important words?",
+    "answer": "- **Precision**: avoiding incorrect words\n- **Recall**: including important words",
+    "explanation": "F1-score combines both into one number by comparing the words shared between the generated answer and the ground truth. ROUGE emphasizes recall over precision, which suits summarization: there, covering the key points matters more than avoiding extra words."
+  },
+  {
+    "id": "1.2.5-40",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics",
+      "translation"
+    ],
+    "question": "You evaluate machine translation output in Microsoft Foundry by comparing n-grams between the generated and the reference translations, with no credit for synonyms. Which NLP metric is this?",
+    "answer": "**BLEU** (Bilingual Evaluation Understudy).",
+    "explanation": "BLEU is the metric commonly used for machine translation evaluation. It compares word sequences between generated and reference text. METEOR extends it for more flexible comparison, and GLEU is its sentence-level variant. Like every NLP metric, it needs reference texts.",
+    "options": [
+      {
+        "text": "BLEU",
+        "correct": true,
+        "why": "It compares n-grams between generated and reference texts and is commonly used for machine translation."
+      },
+      {
+        "text": "METEOR",
+        "correct": false,
+        "why": "It extends BLEU and does give credit for synonyms, stemming and paraphrasing."
+      },
+      {
+        "text": "ROUGE",
+        "correct": false,
+        "why": "It emphasizes recall and is mainly used for summarization."
+      },
+      {
+        "text": "F1-score",
+        "correct": false,
+        "why": "It measures shared words and suits text classification and information retrieval."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-41",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "BLEU compares word sequences between generated and reference texts. What are these word sequences called?",
+    "answer": "**n-grams**.",
+    "explanation": "Matching n-grams is the core of BLEU and its sentence-level variant GLEU. METEOR goes beyond exact matches by also accounting for synonyms, stemming and paraphrasing. All of these need a reference text to compare against, so they suit tasks with a definitive correct answer, such as translation."
+  },
+  {
+    "id": "1.2.5-42",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics",
+      "translation"
+    ],
+    "question": "Your translation evaluation in Microsoft Foundry should also give credit when the model uses synonyms, a different word stem or a paraphrase of the reference. Which NLP metric fits?",
+    "answer": "**METEOR**.",
+    "explanation": "METEOR (Metric for Evaluation of Translation with Explicit Ordering) extends BLEU. BLEU compares n-grams with the reference text; METEOR accounts for synonyms, stemming and paraphrasing, which makes the comparison more flexible."
+  },
+  {
+    "id": "1.2.5-43",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "Which variant of BLEU, available as an NLP metric in Microsoft Foundry evaluation, is designed for sentence-level evaluation?",
+    "answer": "**GLEU** (Google-BLEU).",
+    "explanation": "BLEU compares n-grams between generated and reference text and is commonly used for machine translation. GLEU keeps that approach but targets the sentence level. Like every NLP metric, it needs reference texts and works without an evaluator model."
+  },
+  {
+    "id": "1.2.5-44",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "In the Microsoft Foundry **Evaluation** feature, a deployed model should answer your prompts during the evaluation run, so its outputs are generated then. Which evaluation basis do you choose?",
+    "answer": "**Model**.",
+    "explanation": "With Model as the basis, the system generates the outputs during the evaluation. You need a dataset that supplies the inputs, and you set the system prompt for the model. Dataset is the opposite case: the outputs are already in the file and only the scoring runs.",
+    "options": [
+      {
+        "text": "Model",
+        "correct": true,
+        "why": "It evaluates a deployed model and generates the outputs during evaluation."
+      },
+      {
+        "text": "Agent",
+        "correct": false,
+        "why": "It evaluates an agent's responses, not a plain model deployment."
+      },
+      {
+        "text": "Dataset",
+        "correct": false,
+        "why": "It evaluates outputs already present in the dataset; nothing is generated."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-45",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "agents"
+    ],
+    "question": "You want to evaluate the responses of an agent built in Microsoft Foundry, using prompts you define. Which basis do you choose in the **Evaluation** feature?",
+    "answer": "**Agent**.",
+    "explanation": "The three bases are Model, Agent and Dataset. Agent works like Model: responses are produced during the evaluation from user-defined prompts, so a dataset must provide the inputs. Only Dataset evaluates outputs that already exist."
+  },
+  {
+    "id": "1.2.5-46",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "datasets"
+    ],
+    "question": "Your test cases for a Microsoft Foundry model evaluation are in a JSONL file on your laptop. Which dataset option do you choose?",
+    "answer": "**Upload new dataset**.",
+    "explanation": "Uploading takes a CSV or JSONL file from local storage. Once uploaded to the project, the dataset can be picked again later with Use existing dataset. Without any test data, Generate synthetic dataset creates sample data from a topic description."
+  },
+  {
+    "id": "1.2.5-47",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "datasets"
+    ],
+    "question": "Last month you uploaded a test dataset to your Microsoft Foundry project. Which dataset option lets you evaluate a new model against the same data?",
+    "answer": "**Use existing dataset**.",
+    "explanation": "It selects from datasets previously uploaded to the project, so the file is not uploaded again. The other two options are uploading a new CSV or JSONL file and generating a synthetic dataset. Re-running evaluations after each change shows whether quality improved or regressed."
   }
 ]

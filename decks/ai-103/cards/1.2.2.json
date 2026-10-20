@@ -1,0 +1,229 @@
+[
+  {
+    "id": "1.2.2-01",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog",
+      "billing"
+    ],
+    "question": "Your company wants every model it uses from the **Microsoft Foundry** model catalog to be billed directly through its Azure subscription. Which of the two catalog categories should it choose from?",
+    "answer": "**Foundry Models sold directly by Azure** — Azure OpenAI models plus models from Microsoft and other providers.",
+    "explanation": "The catalog splits models into two broad categories. Models sold directly by Azure appear on your Azure bill. Models from partners and community come from trusted partners and the community and carry their own licensing and pricing. Deploying a partner model usually means accepting Azure Marketplace terms first; Azure OpenAI models such as GPT-4o-mini need no Marketplace subscription.",
+    "addition": "Models sold by Azure are also hosted and operated by Azure as part of the Foundry Models service, covered by Azure service-level agreements, and supported by Microsoft.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure"
+  },
+  {
+    "id": "1.2.2-02",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog"
+    ],
+    "question": "In the **Microsoft Foundry** model catalog, what shows a single model's provider, capabilities, benchmark metrics, responsible AI considerations and deployment options?",
+    "answer": "Its **model card**.",
+    "explanation": "Every model in the catalog has a model card that gathers its key information in one place. You open it after searching or filtering the catalog. It is also where you start a deployment and where the Benchmarks tab shows how this one model compares with similar models."
+  },
+  {
+    "id": "1.2.2-03",
+    "type": "mc",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog"
+    ],
+    "question": "You search the **Microsoft Foundry** model catalog for a model that supports **tool calling** (function and API integration). Which filter do you use?",
+    "answer": "The **Capabilities** filter.",
+    "explanation": "Capabilities filters by what a model can do: reasoning, tool calling, multimodal processing. Inference tasks is the near neighbour that trips people up: it filters by the job the model performs, such as summarization or translation, not by a feature like tool calling.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.2.2-model-catalog.png",
+        "alt": "Foundry portal model catalog with the filter list Collections, Capabilities, Source, Inference tasks, Fine-tuning methods and Industry on the left"
+      }
+    ],
+    "options": [
+      {
+        "text": "Capabilities",
+        "correct": true,
+        "why": "It filters by model abilities such as reasoning, tool calling and multimodal processing."
+      },
+      {
+        "text": "Inference tasks",
+        "correct": false,
+        "why": "It filters by task type, such as text generation, summarization, translation or speech synthesis."
+      },
+      {
+        "text": "Collection",
+        "correct": false,
+        "why": "It groups models by where they come from, such as models provided directly in Azure or the Hugging Face repository."
+      },
+      {
+        "text": "Source",
+        "correct": false,
+        "why": "It filters by model provider, such as Azure OpenAI, Microsoft, Cohere, Mistral, Meta or Anthropic."
+      },
+      {
+        "text": "Fine-tuning methods",
+        "correct": false,
+        "why": "It filters by the fine-tuning techniques a model supports."
+      }
+    ]
+  },
+  {
+    "id": "1.2.2-04",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "slm",
+      "model-choice"
+    ],
+    "question": "You need a language model from the **Microsoft Foundry** catalog for common NLP tasks on an **edge device**, where speed and cost matter more than complex reasoning. Which model category fits, with an example?",
+    "answer": "A **small language model (SLM)**, such as Phi-4 or Llama 3 8B.",
+    "explanation": "SLMs trade some reasoning depth for efficiency and low cost, and they can run on lower-end hardware or edge devices. Large language models such as GPT-5, Mistral Large or Llama 3 70B suit deep reasoning, complex content generation and long context, but need more computational resources."
+  },
+  {
+    "id": "1.2.2-05",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "reasoning-models",
+      "model-choice"
+    ],
+    "question": "Your app must solve complex mathematics, coding and logistics problems and show how it reached the result. Which kind of model from the **Microsoft Foundry** catalog do you choose over a standard chat completion model?",
+    "answer": "A **reasoning model**, such as Claude Opus 4.6.",
+    "explanation": "Most catalog language models are chat completion models: they produce coherent, context-appropriate text for chat and content generation. Reasoning models perform better on complex tasks in mathematics, coding, science, strategy and logistics. They break a problem into steps and show their reasoning process."
+  },
+  {
+    "id": "1.2.2-06",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "embeddings",
+      "rag"
+    ],
+    "question": "A RAG app must find relevant documents by **meaning** rather than exact keyword matches. Which type of model from the **Microsoft Foundry** catalog does that, with an example?",
+    "answer": "An **embedding model**, such as `text-embedding-3-large` or `text-embedding-3-small`.",
+    "explanation": "Embedding models turn text into numerical representations. Texts with similar meaning get similar numbers, so you can compare them by meaning. That enables semantic search, recommendation systems and Retrieval Augmented Generation. Cohere's embedding models are another option in the catalog."
+  },
+  {
+    "id": "1.2.2-07",
+    "type": "mc",
+    "section": "1.2.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "multimodal",
+      "model-choice"
+    ],
+    "question": "Your app receives product photos and must answer questions about what each photo shows. Which model from the **Microsoft Foundry** catalog fits?",
+    "answer": "**GPT-4.1**, an image analysis model with multimodal input.",
+    "explanation": "Image analysis models accept text and images in one prompt and answer in natural language. The trap is the name: image generation models create pictures from text, they do not read them.",
+    "options": [
+      {
+        "text": "GPT-4.1",
+        "correct": true,
+        "why": "It accepts multimodal input (text and images) and generates natural language output about the image."
+      },
+      {
+        "text": "GPT-image-1",
+        "correct": false,
+        "why": "It is an image generation model: it creates images from text descriptions."
+      },
+      {
+        "text": "Sora 2",
+        "correct": false,
+        "why": "It is a video generation model: it creates video from text descriptions."
+      },
+      {
+        "text": "text-embedding-3-large",
+        "correct": false,
+        "why": "It converts text into numerical vectors for semantic search; it does not analyse images."
+      }
+    ]
+  },
+  {
+    "id": "1.2.2-08",
+    "type": "mc",
+    "section": "1.2.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "speech",
+      "model-choice"
+    ],
+    "question": "You need to turn recorded customer phone calls into written transcripts. Which model from the **Microsoft Foundry** catalog fits?",
+    "answer": "**GPT-4o-transcribe**, a speech to text model.",
+    "explanation": "The catalog includes both directions of speech models. Speech to text models convert audio that contains speech into text transcriptions. Text to speech models go the other way and produce synthesized speech from text.",
+    "options": [
+      {
+        "text": "GPT-4o-transcribe",
+        "correct": true,
+        "why": "It is a speech to text model that converts spoken audio into transcriptions."
+      },
+      {
+        "text": "GPT-4o-tts",
+        "correct": false,
+        "why": "It is a text to speech model: it turns text into synthesized speech, the opposite direction."
+      },
+      {
+        "text": "GPT-4.1",
+        "correct": false,
+        "why": "The catalog lists it as an image analysis model for text and image input, not as a speech to text model."
+      },
+      {
+        "text": "text-embedding-3-small",
+        "correct": false,
+        "why": "It turns text into numerical vectors; it does not process audio."
+      }
+    ]
+  },
+  {
+    "id": "1.2.2-09",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog",
+      "model-choice"
+    ],
+    "question": "Your app analyses **legal documents** and needs the best accuracy in that domain. What kind of model should you look for in the **Microsoft Foundry** catalog, and which filter finds it?",
+    "answer": "An **industry- or domain-specific model**, found with the **Industry** filter.",
+    "explanation": "Some catalog models are trained on industry-specific data, such as medical literature, legal documents or the text of one language or region. In their own domain they often outperform general-purpose models. Use them when specialized performance in one domain or language matters more than broad general ability."
+  },
+  {
+    "id": "1.2.2-10",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "image-generation",
+      "model-choice"
+    ],
+    "question": "A marketing team needs illustrations and design mockups created from **text descriptions**. Which type of model from the **Microsoft Foundry** catalog fits, with an example?",
+    "answer": "An **image generation model**, such as GPT-image-1.",
+    "explanation": "Image generation models create images from text descriptions, for marketing materials, illustrations or design mockups. Two neighbours are easy to confuse: video generation models such as Sora 2 create video from text, and image analysis models such as GPT-4.1 read images and answer about them instead of creating them."
+  }
+]

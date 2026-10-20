@@ -1,0 +1,73 @@
+[
+  {
+    "id": "1.2.7-01",
+    "type": "order",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["evaluation", "foundry-portal"],
+    "question": "Put the steps of the **Create new evaluation** wizard in the Microsoft Foundry portal in order, for evaluating a deployed model.",
+    "answer": "Target → Data → Configure models → Criteria → Review and submit.",
+    "explanation": "First you pick what is evaluated (here: **Model** and one deployment). The data step supplies the test inputs, uploaded or synthetic. Configure models sets the prompt the model runs with. Criteria picks the AI-judge evaluators. Only in the review step do you name the run and submit it.",
+    "items": [
+      "Target: select Model and the deployment to evaluate",
+      "Data: choose the dataset source, e.g. synthetic generation",
+      "Configure models: set the developer prompt",
+      "Criteria: keep or remove the suggested evaluators",
+      "Review: name the evaluation and submit the run"
+    ]
+  },
+  {
+    "id": "1.2.7-02",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["evaluation", "foundry-portal"],
+    "question": "You have tested a deployed model by hand in the Microsoft Foundry playground and now want a systematic evaluation over many inputs. Where in the playground do you start it?",
+    "answer": "The **Evaluations** tab, then **Create**.",
+    "explanation": "The playground suits quick manual testing of single prompts. An evaluation instead scores a whole dataset of inputs with evaluators. Selecting **Create** on the Evaluations tab opens the **Create new evaluation** wizard, where you then choose **Model** as the target.",
+    "addition": "The current docs name more entry points: **Evaluation** > **Create** in the project's left pane, or a model's or agent's **Evaluation** tab > **Create**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/evaluate-generative-ai-app"
+  },
+  {
+    "id": "1.2.7-03",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["evaluation", "synthetic-data", "foundry-portal"],
+    "question": "You want to evaluate a model in the Microsoft Foundry portal but have no test dataset. Which **Dataset source** do you choose in the evaluation wizard, and what do you configure for it?",
+    "answer": "**Synthetic generation**, configured with:\n- a generator model\n- the number of rows\n- a prompt describing the data\n- optional seed data",
+    "explanation": "With synthetic generation, a deployment writes the test questions automatically when you submit the evaluation. The prompt steers the content, for example travel questions that also include content safety and security tests. It replaces uploading your own test dataset.",
+    "addition": "Synthetic data generation requires a model with **Responses API** capability, so the region must support it.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/evaluate-generative-ai-app"
+  },
+  {
+    "id": "1.2.7-04",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["playground", "model-selection", "foundry-portal"],
+    "question": "You have deployed two models in Microsoft Foundry and want to send the same prompt to both and read the answers side by side. Which playground setting do you use?",
+    "answer": "The **Compare models** list on the right of the model playground.",
+    "explanation": "Select the first deployment in the **Model** list, then the second one under **Compare models**. The playground opens a separate chat pane per model. This makes differences in accuracy, reasoning quality and response style visible, but it stays a manual check of single prompts."
+  },
+  {
+    "id": "1.2.7-05",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["evaluation", "error-analysis", "foundry-portal"],
+    "question": "A Microsoft Foundry evaluation run shows some failed rows. Which option on the run page groups the failures by cause and suggests improvements?",
+    "answer": "**Analyze results**, then pick the model and select **Start analysis**.",
+    "explanation": "The analysis clusters the failed rows by why they failed and shows the details of each failure. It also gives AI suggestions for adjusting your configuration. Many failures can be deliberate refusals of unsafe questions, so check each one against the response you actually want."
+  }
+]

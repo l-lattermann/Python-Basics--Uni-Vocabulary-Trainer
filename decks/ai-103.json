@@ -1,0 +1,1616 @@
+{
+ "schema": 1,
+ "id": "ai-103",
+ "title": "AI-103: Develop AI apps and agents on Azure",
+ "exam_areas": {
+  "plan": {
+   "title": "Plan and manage an Azure AI solution",
+   "weight": "25–30%"
+  },
+  "genai": {
+   "title": "Implement generative AI and agentic solutions",
+   "weight": "30–35%"
+  },
+  "vision": {
+   "title": "Implement computer vision solutions",
+   "weight": "10–15%"
+  },
+  "text": {
+   "title": "Implement text analysis solutions",
+   "weight": "10–15%"
+  },
+  "extraction": {
+   "title": "Implement information extraction solutions",
+   "weight": "10–15%"
+  }
+ },
+ "sections": {
+  "1": "Develop generative AI apps in Azure",
+  "1.1": "Plan and prepare to develop AI solutions on Azure",
+  "1.1.1": "Introduction",
+  "1.1.2": "What is AI?",
+  "1.1.3": "Microsoft Foundry",
+  "1.1.4": "Foundry Tools",
+  "1.1.5": "Developer tools and SDKs",
+  "1.1.6": "Responsible AI",
+  "1.1.7": "Exercise - Prepare for an AI development project",
+  "1.1.8": "Übung (GitHub): Prepare for an AI development project",
+  "1.1.9": "Module assessment",
+  "1.1.10": "Summary",
+  "1.2": "Select, deploy, and evaluate Microsoft Foundry models",
+  "1.2.1": "Introduction",
+  "1.2.2": "Explore the model catalog",
+  "1.2.3": "Select models using benchmarks",
+  "1.2.4": "Deploy models to endpoints",
+  "1.2.5": "Evaluate model performance",
+  "1.2.6": "Exercise - Select, deploy, and evaluate models",
+  "1.2.7": "Übung (GitHub): Explore and compare models",
+  "1.2.8": "Knowledge check",
+  "1.2.9": "Summary",
+  "1.3": "Develop a generative AI chat app with Microsoft Foundry",
+  "1.3.1": "Introduction",
+  "1.3.2": "Explore with the model playground",
+  "1.3.3": "Choose an endpoint and SDK",
+  "1.3.4": "Generate responses with the Responses API",
+  "1.3.5": "Generate responses with the ChatCompletions API",
+  "1.3.6": "Exercise - Create a generative AI chat app",
+  "1.3.7": "Übung (GitHub): Create a generative AI chat app",
+  "1.3.8": "Knowledge check",
+  "1.3.9": "Summary",
+  "1.4": "Develop generative AI apps that use tools",
+  "1.4.1": "Introduction",
+  "1.4.2": "What are tools?",
+  "1.4.3": "Use the code_interpreter tool",
+  "1.4.4": "Use the web_search tool",
+  "1.4.5": "Use the file_search tool",
+  "1.4.6": "Use the function tool",
+  "1.4.7": "Exercise - Create a generative AI chat app that uses tools",
+  "1.4.8": "Übung (GitHub): Create a generative AI app that uses tools",
+  "1.4.9": "Module assessment",
+  "1.4.10": "Summary",
+  "1.5": "Optimize generative AI model performance with Microsoft Foundry",
+  "1.5.1": "Introduction",
+  "1.5.2": "Optimize model output with prompt engineering",
+  "1.5.3": "Ground your model with Retrieval Augmented Generation",
+  "1.5.4": "Fine-tune a model for consistent behavior",
+  "1.5.5": "Compare and combine optimization strategies",
+  "1.5.6": "Exercise - Optimize generative AI model performance",
+  "1.5.7": "Übung (GitHub): Fine-tune a language model",
+  "1.5.8": "Module assessment",
+  "1.5.9": "Summary",
+  "1.6": "Implement a responsible generative AI solution in Microsoft Foundry",
+  "1.6.1": "Introduction",
+  "1.6.2": "Plan a responsible generative AI solution",
+  "1.6.3": "Map potential harms",
+  "1.6.4": "Measure potential harms",
+  "1.6.5": "Mitigate potential harms",
+  "1.6.6": "Manage a responsible generative AI solution",
+  "1.6.7": "Exercise - Apply guardrails to prevent the output of harmful content",
+  "1.6.8": "Übung (GitHub): Apply guardrails to prevent the output of harmful content",
+  "1.6.9": "Module assessment",
+  "1.6.10": "Summary",
+  "2": "Develop AI agents on Azure",
+  "2.1": "Develop AI agents with Microsoft Foundry and Visual Studio Code",
+  "2.1.1": "Introduction",
+  "2.1.2": "Understand AI agents and Microsoft Foundry Agent Service",
+  "2.1.3": "Explore development approaches",
+  "2.1.4": "Build your first agent in Microsoft Foundry",
+  "2.1.5": "Set up Visual Studio Code for agent development",
+  "2.1.6": "Configure and manage agents in Visual Studio Code",
+  "2.1.7": "Extend agent capabilities with tools",
+  "2.1.8": "Test, deploy, and integrate agents",
+  "2.1.9": "Exercise - Build and deploy an AI agent",
+  "2.1.10": "Übung (GitHub): Build AI agents with portal and VS Code",
+  "2.1.11": "Knowledge check",
+  "2.1.12": "Summary",
+  "2.2": "Integrate custom tools into your agent",
+  "2.2.1": "Introduction",
+  "2.2.2": "Why use custom tools",
+  "2.2.3": "Options for implementing custom tools",
+  "2.2.4": "How to integrate custom tools",
+  "2.2.5": "Exercise - Build an agent with custom tools",
+  "2.2.6": "Übung (GitHub): Use a custom function in an AI agent",
+  "2.2.7": "Module assessment",
+  "2.2.8": "Summary",
+  "2.3": "Integrate MCP Tools with Azure AI Agents",
+  "2.3.1": "Introduction",
+  "2.3.2": "Understand MCP tool discovery",
+  "2.3.3": "Integrate agent tools using an MCP server and client",
+  "2.3.4": "Use Azure AI agents with MCP servers",
+  "2.3.5": "Exercise - Connect MCP tools to Azure AI Agents",
+  "2.3.6": "Übung (GitHub): Extend agents with Model Context Protocol (MCP) tools",
+  "2.3.7": "Module assessment",
+  "2.3.8": "Summary",
+  "2.4": "Build knowledge-enhanced AI agents with Foundry IQ",
+  "2.4.1": "Introduction",
+  "2.4.2": "Understanding RAG for agents",
+  "2.4.3": "Explore Foundry IQ",
+  "2.4.4": "Configure data sources for knowledge bases",
+  "2.4.5": "Configure retrieval with Foundry IQ",
+  "2.4.6": "Exercise - Integrate an AI agent with Foundry IQ",
+  "2.4.7": "Übung (GitHub): Integrate an AI agent with Foundry IQ",
+  "2.4.8": "Knowledge check",
+  "2.4.9": "Summary",
+  "2.5": "Integrate your agent with Microsoft 365",
+  "2.5.1": "Introduction",
+  "2.5.2": "Understand Foundry agent publishing options",
+  "2.5.3": "Publish an agent from Foundry portal to Teams",
+  "2.5.4": "Advanced - Use Microsoft 365 Agents Toolkit",
+  "2.5.5": "Access Microsoft 365 data with Work IQ",
+  "2.5.6": "Test and iterate your integrated agent",
+  "2.5.7": "Exercise - Publish a Foundry agent to Teams",
+  "2.5.8": "Übung (GitHub): Deploy agents to Microsoft Teams and Copilot",
+  "2.5.9": "Übung (GitHub): Work IQ - Workplace intelligence for AI agents",
+  "2.5.10": "Knowledge check",
+  "2.5.11": "Summary",
+  "2.6": "Build agent-driven workflows using Microsoft Foundry",
+  "2.6.1": "Introduction",
+  "2.6.2": "Understand Workflows",
+  "2.6.3": "Identify Workflow Patterns",
+  "2.6.4": "Create workflows in Microsoft Foundry",
+  "2.6.5": "Add Agents to a Workflow",
+  "2.6.6": "Apply Power Fx in Workflows",
+  "2.6.7": "Maintain Workflows in Microsoft Foundry",
+  "2.6.8": "Use workflows in code",
+  "2.6.9": "Exercise - Create an Agent-driven Workflow",
+  "2.6.10": "Übung (GitHub): Build a workflow in Microsoft Foundry",
+  "2.6.11": "Module Assessment",
+  "2.6.12": "Summary",
+  "2.7": "Develop an AI agent with Microsoft Agent Framework",
+  "2.7.1": "Introduction",
+  "2.7.2": "Understand Microsoft Agent Framework AI agents",
+  "2.7.3": "Create an Azure AI agent with Microsoft Agent Framework",
+  "2.7.4": "Add tools to Azure AI agent",
+  "2.7.5": "Exercise - Develop an Azure AI agent with the Microsoft Agent Framework SDK",
+  "2.7.6": "Übung (GitHub): Develop an Azure AI chat agent with the Microsoft Agent Framework SDK",
+  "2.7.7": "Knowledge check",
+  "2.7.8": "Summary",
+  "2.8": "Orchestrate a multi-agent solution using the Microsoft Agent Framework",
+  "2.8.1": "Introduction",
+  "2.8.2": "Understand the Microsoft Agent Framework",
+  "2.8.3": "Understand agent orchestration",
+  "2.8.4": "Use concurrent orchestration",
+  "2.8.5": "Use sequential orchestration",
+  "2.8.6": "Use group chat orchestration",
+  "2.8.7": "Use handoff orchestration",
+  "2.8.8": "Use Magentic orchestration",
+  "2.8.9": "Exercise - Develop a multi-agent solution",
+  "2.8.10": "Übung (GitHub): Develop a multi-agent solution with Microsoft Agent Framework",
+  "2.8.11": "Knowledge check",
+  "2.8.12": "Summary",
+  "2.9": "Discover Azure AI Agents with A2A",
+  "2.9.1": "Introduction",
+  "2.9.2": "Define an A2A agent",
+  "2.9.3": "Implement an agent executor",
+  "2.9.4": "Host an A2A server",
+  "2.9.5": "Connect to your A2A agent",
+  "2.9.6": "Exercise - Connect to remote Azure AI Agents with the A2A protocol",
+  "2.9.7": "Übung (GitHub): Connect to remote agents with A2A protocol",
+  "2.9.8": "Module assessment",
+  "2.9.9": "Summary",
+  "3": "Develop natural language solutions in Azure",
+  "3.1": "Analyze text with Azure Language in Foundry Tools",
+  "3.1.1": "Introduction",
+  "3.1.2": "Azure Language in Microsoft Foundry Tools",
+  "3.1.3": "Detect language",
+  "3.1.4": "Extract entities",
+  "3.1.5": "Extract personally identifiable information (PII)",
+  "3.1.6": "Exercise - Analyze text",
+  "3.1.7": "Übung (GitHub): Analyze Text",
+  "3.1.8": "Module assessment",
+  "3.1.9": "Summary",
+  "3.2": "Develop a text analysis agent with the Azure Language MCP server",
+  "3.2.1": "Introduction",
+  "3.2.2": "Understand the Azure Language MCP server",
+  "3.2.3": "Connect and use the Language MCP server with an agent",
+  "3.2.4": "Exercise - Develop a text analysis agent",
+  "3.2.5": "Übung (GitHub): Develop a text analysis agent",
+  "3.2.6": "Knowledge check",
+  "3.2.7": "Summary",
+  "3.3": "Develop a speech-capable generative AI application",
+  "3.3.1": "Introduction",
+  "3.3.2": "Choose a speech-capable model",
+  "3.3.3": "Transcribe speech",
+  "3.3.4": "Synthesize speech",
+  "3.3.5": "Exercise - Use speech-capable generative AI models",
+  "3.3.6": "Übung (GitHub): Use speech-capable generative AI models",
+  "3.3.7": "Module assessment",
+  "3.3.8": "Summary",
+  "3.4": "Create speech-enabled apps with Azure Speech in Microsoft Foundry Tools",
+  "3.4.1": "Introduction",
+  "3.4.2": "Azure Speech in Foundry Tools",
+  "3.4.3": "Use the Speech to Text API",
+  "3.4.4": "Use the Text to Speech API",
+  "3.4.5": "Configure audio format and voices",
+  "3.4.6": "Use Speech Synthesis Markup Language",
+  "3.4.7": "Exercise - Create a speech-enabled app",
+  "3.4.8": "Übung (GitHub): Recognize and synthesize speech",
+  "3.4.9": "Module assessment",
+  "3.4.10": "Summary",
+  "3.5": "Develop a speech agent with the Azure Speech MCP server",
+  "3.5.1": "Introduction",
+  "3.5.2": "Understand the Azure Speech MCP server",
+  "3.5.3": "Connect and use the Speech MCP server with an agent",
+  "3.5.4": "Exercise - Use Azure Speech in an agent",
+  "3.5.5": "Übung (GitHub): Use Azure Speech in an agent",
+  "3.5.6": "Knowledge check",
+  "3.5.7": "Summary",
+  "3.6": "Develop an Azure Speech Voice Live Agent in Microsoft Foundry",
+  "3.6.1": "Introduction",
+  "3.6.2": "Explore the Azure Voice Live API",
+  "3.6.3": "Explore the AI Voice Live client library for Python",
+  "3.6.4": "Create a Voice Live agent",
+  "3.6.5": "Exercise - Develop a Voice Live agent",
+  "3.6.6": "Übung (GitHub): Develop a Voice Live agent",
+  "3.6.7": "Module assessment",
+  "3.6.8": "Summary",
+  "3.7": "Translate text and speech with Microsoft Foundry Tools",
+  "3.7.1": "Introduction",
+  "3.7.2": "Translation in Microsoft Foundry",
+  "3.7.3": "Translate text",
+  "3.7.4": "Translate speech",
+  "3.7.5": "Exercise - Translate text and speech",
+  "3.7.6": "Übung (GitHub): Translate text and speech",
+  "3.7.7": "Module assessment",
+  "3.7.8": "Summary",
+  "4": "Extract insights from visual data on Azure",
+  "4.1": "Develop a vision-enabled generative AI application",
+  "4.1.1": "Introduction",
+  "4.1.2": "Use a vision-capable model in the Microsoft Foundry portal",
+  "4.1.3": "Develop a vision-based chat app",
+  "4.1.4": "Exercise - Develop a vision-enabled chat app",
+  "4.1.5": "Übung (GitHub): Develop a vision-enabled chat app",
+  "4.1.6": "Module assessment",
+  "4.1.7": "Summary",
+  "4.2": "Generate images with AI",
+  "4.2.1": "Introduction",
+  "4.2.2": "What are image-generation models?",
+  "4.2.3": "Explore image-generation models in Microsoft Foundry portal",
+  "4.2.4": "Create a client application that uses an image generation model",
+  "4.2.5": "Exercise - Generate images with AI",
+  "4.2.6": "Übung (GitHub): Generate images with AI",
+  "4.2.7": "Module assessment",
+  "4.2.8": "Summary",
+  "4.3": "Generate videos with Microsoft Foundry",
+  "4.3.1": "Introduction",
+  "4.3.2": "Deploy a video generating model",
+  "4.3.3": "Generate video from a prompt",
+  "4.3.4": "Generate video in Python",
+  "4.3.5": "Exercise - Generate video with Sora 2 in Microsoft Foundry",
+  "4.3.6": "Übung (GitHub): Generate video with Sora in Microsoft Foundry",
+  "4.3.7": "Module assessment",
+  "4.3.8": "Summary",
+  "4.4": "Analyze images with Content Understanding",
+  "4.4.1": "Introduction",
+  "4.4.2": "What is Content Understanding?",
+  "4.4.3": "Analyze images with Content Understanding",
+  "4.4.4": "Exercise - Analyze images with Content Understanding",
+  "4.4.5": "Übung (GitHub): Analyze images with Azure Content Understanding",
+  "4.4.6": "Module assessment",
+  "4.4.7": "Summary",
+  "4.5": "Create a multimodal analysis solution with Azure Content Understanding",
+  "4.5.1": "Introduction",
+  "4.5.2": "What is Azure Content Understanding?",
+  "4.5.3": "Create a Content Understanding analyzer",
+  "4.5.4": "Use the Content Understanding API",
+  "4.5.5": "Exercise - Extract information from multimodal content",
+  "4.5.6": "Übung (GitHub): Extract information from multimodal content",
+  "4.5.7": "Module assessment",
+  "4.5.8": "Summary",
+  "4.6": "Create an Azure Content Understanding client application",
+  "4.6.1": "Introduction",
+  "4.6.2": "Prepare to use the AI Content Understanding API",
+  "4.6.3": "Create a Content Understanding analyzer",
+  "4.6.4": "Analyze content",
+  "4.6.5": "Exercise - Develop a Content Understanding client application",
+  "4.6.6": "Übung (GitHub): Develop a Content Understanding client application",
+  "4.6.7": "Module assessment",
+  "4.6.8": "Summary",
+  "4.7": "Extract data with Azure Document Intelligence",
+  "4.7.1": "Introduction",
+  "4.7.2": "What is Azure Document Intelligence?",
+  "4.7.3": "Use the Document Intelligence Studio",
+  "4.7.4": "Use prebuilt models",
+  "4.7.5": "Train and use custom models",
+  "4.7.6": "Exercise - Analyze documents with Document Intelligence",
+  "4.7.7": "Übung (GitHub): Extract data with Azure Document Intelligence",
+  "4.7.8": "Module assessment",
+  "4.7.9": "Summary",
+  "4.8": "Create a knowledge mining solution with Azure AI Search",
+  "4.8.1": "Introduction",
+  "4.8.2": "What is Azure AI Search?",
+  "4.8.3": "Extract data with an indexer",
+  "4.8.4": "Enrich extracted data with AI skills",
+  "4.8.5": "Search an index",
+  "4.8.6": "Persist extracted information in a knowledge store",
+  "4.8.7": "Exercise - Create a knowledge mining solution",
+  "4.8.8": "Übung (GitHub): Create a knowledge mining solution",
+  "4.8.9": "Übung (GitHub): Build an automated RAG ingestion pipeline with Content Understanding",
+  "4.8.10": "Module assessment",
+  "4.8.11": "Summary",
+  "5": "Exam topics beyond the course",
+  "5.1": "Plan and manage an Azure AI solution",
+  "5.2": "Implement generative AI and agentic solutions",
+  "5.3": "Implement computer vision solutions",
+  "5.4": "Implement text analysis solutions",
+  "5.5": "Implement information extraction solutions"
+ },
+ "cards": [
+  {
+   "id": "1.2.2-01",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "model-catalog",
+    "billing"
+   ],
+   "question": "Your company wants every model it uses from the **Microsoft Foundry** model catalog to be billed directly through its Azure subscription. Which of the two catalog categories should it choose from?",
+   "answer": "**Foundry Models sold directly by Azure** — Azure OpenAI models plus models from Microsoft and other providers.",
+   "explanation": "The catalog splits models into two broad categories. Models sold directly by Azure appear on your Azure bill. Models from partners and community come from trusted partners and the community and carry their own licensing and pricing. Deploying a partner model usually means accepting Azure Marketplace terms first; Azure OpenAI models such as GPT-4o-mini need no Marketplace subscription.",
+   "addition": "Models sold by Azure are also hosted and operated by Azure as part of the Foundry Models service, covered by Azure service-level agreements, and supported by Microsoft.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure"
+  },
+  {
+   "id": "1.2.2-02",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "model-catalog"
+   ],
+   "question": "In the **Microsoft Foundry** model catalog, what shows a single model's provider, capabilities, benchmark metrics, responsible AI considerations and deployment options?",
+   "answer": "Its **model card**.",
+   "explanation": "Every model in the catalog has a model card that gathers its key information in one place. You open it after searching or filtering the catalog. It is also where you start a deployment and where the Benchmarks tab shows how this one model compares with similar models."
+  },
+  {
+   "id": "1.2.2-03",
+   "type": "mc",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "model-catalog"
+   ],
+   "question": "You search the **Microsoft Foundry** model catalog for a model that supports **tool calling** (function and API integration). Which filter do you use?",
+   "answer": "The **Capabilities** filter.",
+   "explanation": "Capabilities filters by what a model can do: reasoning, tool calling, multimodal processing. Inference tasks is the near neighbour that trips people up: it filters by the job the model performs, such as summarization or translation, not by a feature like tool calling.",
+   "explanation_images": [
+    {
+     "src": "media/ai-103/1.2.2-model-catalog.png",
+     "alt": "Foundry portal model catalog with the filter list Collections, Capabilities, Source, Inference tasks, Fine-tuning methods and Industry on the left"
+    }
+   ],
+   "options": [
+    {
+     "text": "Capabilities",
+     "correct": true,
+     "why": "It filters by model abilities such as reasoning, tool calling and multimodal processing."
+    },
+    {
+     "text": "Inference tasks",
+     "correct": false,
+     "why": "It filters by task type, such as text generation, summarization, translation or speech synthesis."
+    },
+    {
+     "text": "Collection",
+     "correct": false,
+     "why": "It groups models by where they come from, such as models provided directly in Azure or the Hugging Face repository."
+    },
+    {
+     "text": "Source",
+     "correct": false,
+     "why": "It filters by model provider, such as Azure OpenAI, Microsoft, Cohere, Mistral, Meta or Anthropic."
+    },
+    {
+     "text": "Fine-tuning methods",
+     "correct": false,
+     "why": "It filters by the fine-tuning techniques a model supports."
+    }
+   ]
+  },
+  {
+   "id": "1.2.2-04",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "slm",
+    "model-choice"
+   ],
+   "question": "You need a language model from the **Microsoft Foundry** catalog for common NLP tasks on an **edge device**, where speed and cost matter more than complex reasoning. Which model category fits, with an example?",
+   "answer": "A **small language model (SLM)**, such as Phi-4 or Llama 3 8B.",
+   "explanation": "SLMs trade some reasoning depth for efficiency and low cost, and they can run on lower-end hardware or edge devices. Large language models such as GPT-5, Mistral Large or Llama 3 70B suit deep reasoning, complex content generation and long context, but need more computational resources."
+  },
+  {
+   "id": "1.2.2-05",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "reasoning-models",
+    "model-choice"
+   ],
+   "question": "Your app must solve complex mathematics, coding and logistics problems and show how it reached the result. Which kind of model from the **Microsoft Foundry** catalog do you choose over a standard chat completion model?",
+   "answer": "A **reasoning model**, such as Claude Opus 4.6.",
+   "explanation": "Most catalog language models are chat completion models: they produce coherent, context-appropriate text for chat and content generation. Reasoning models perform better on complex tasks in mathematics, coding, science, strategy and logistics. They break a problem into steps and show their reasoning process."
+  },
+  {
+   "id": "1.2.2-06",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "embeddings",
+    "rag"
+   ],
+   "question": "A RAG app must find relevant documents by **meaning** rather than exact keyword matches. Which type of model from the **Microsoft Foundry** catalog does that, with an example?",
+   "answer": "An **embedding model**, such as `text-embedding-3-large` or `text-embedding-3-small`.",
+   "explanation": "Embedding models turn text into numerical representations. Texts with similar meaning get similar numbers, so you can compare them by meaning. That enables semantic search, recommendation systems and Retrieval Augmented Generation. Cohere's embedding models are another option in the catalog."
+  },
+  {
+   "id": "1.2.2-07",
+   "type": "mc",
+   "section": "1.2.2",
+   "exam_area": "vision",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "multimodal",
+    "model-choice"
+   ],
+   "question": "Your app receives product photos and must answer questions about what each photo shows. Which model from the **Microsoft Foundry** catalog fits?",
+   "answer": "**GPT-4.1**, an image analysis model with multimodal input.",
+   "explanation": "Image analysis models accept text and images in one prompt and answer in natural language. The trap is the name: image generation models create pictures from text, they do not read them.",
+   "options": [
+    {
+     "text": "GPT-4.1",
+     "correct": true,
+     "why": "It accepts multimodal input (text and images) and generates natural language output about the image."
+    },
+    {
+     "text": "GPT-image-1",
+     "correct": false,
+     "why": "It is an image generation model: it creates images from text descriptions."
+    },
+    {
+     "text": "Sora 2",
+     "correct": false,
+     "why": "It is a video generation model: it creates video from text descriptions."
+    },
+    {
+     "text": "text-embedding-3-large",
+     "correct": false,
+     "why": "It converts text into numerical vectors for semantic search; it does not analyse images."
+    }
+   ]
+  },
+  {
+   "id": "1.2.2-08",
+   "type": "mc",
+   "section": "1.2.2",
+   "exam_area": "text",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "speech",
+    "model-choice"
+   ],
+   "question": "You need to turn recorded customer phone calls into written transcripts. Which model from the **Microsoft Foundry** catalog fits?",
+   "answer": "**GPT-4o-transcribe**, a speech to text model.",
+   "explanation": "The catalog includes both directions of speech models. Speech to text models convert audio that contains speech into text transcriptions. Text to speech models go the other way and produce synthesized speech from text.",
+   "options": [
+    {
+     "text": "GPT-4o-transcribe",
+     "correct": true,
+     "why": "It is a speech to text model that converts spoken audio into transcriptions."
+    },
+    {
+     "text": "GPT-4o-tts",
+     "correct": false,
+     "why": "It is a text to speech model: it turns text into synthesized speech, the opposite direction."
+    },
+    {
+     "text": "GPT-4.1",
+     "correct": false,
+     "why": "The catalog lists it as an image analysis model for text and image input, not as a speech to text model."
+    },
+    {
+     "text": "text-embedding-3-small",
+     "correct": false,
+     "why": "It turns text into numerical vectors; it does not process audio."
+    }
+   ]
+  },
+  {
+   "id": "1.2.2-09",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "model-catalog",
+    "model-choice"
+   ],
+   "question": "Your app analyses **legal documents** and needs the best accuracy in that domain. What kind of model should you look for in the **Microsoft Foundry** catalog, and which filter finds it?",
+   "answer": "An **industry- or domain-specific model**, found with the **Industry** filter.",
+   "explanation": "Some catalog models are trained on industry-specific data, such as medical literature, legal documents or the text of one language or region. In their own domain they often outperform general-purpose models. Use them when specialized performance in one domain or language matters more than broad general ability."
+  },
+  {
+   "id": "1.2.2-10",
+   "type": "basic",
+   "section": "1.2.2",
+   "exam_area": "vision",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+   "tags": [
+    "image-generation",
+    "model-choice"
+   ],
+   "question": "A marketing team needs illustrations and design mockups created from **text descriptions**. Which type of model from the **Microsoft Foundry** catalog fits, with an example?",
+   "answer": "An **image generation model**, such as GPT-image-1.",
+   "explanation": "Image generation models create images from text descriptions, for marketing materials, illustrations or design mockups. Two neighbours are easy to confuse: video generation models such as Sora 2 create video from text, and image analysis models such as GPT-4.1 read images and answer about them instead of creating them."
+  },
+  {
+   "id": "1.2.3-01",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "model-selection"
+   ],
+   "question": "You want to see which models rank highest across **all** models in the Microsoft Foundry catalog on quality, safety, estimated cost and throughput. Which view do you open?",
+   "answer": "The **Model leaderboard** in the model catalog.",
+   "explanation": "The leaderboard ranks the top models per metric, so you can spot the strongest candidates for a metric or scenario before deploying anything. It is the cross-model view; detailed numbers for one model sit on that model's card instead.",
+   "explanation_images": [
+    {
+     "src": "media/ai-103/1.2.3-model-leaderboard.png",
+     "alt": "Model leaderboard page under Discover in the Foundry portal, with bar charts for Quality (quality index, higher is better), Safety (attack success rate, lower is better), Throughput and Estimated cost"
+    }
+   ]
+  },
+  {
+   "id": "1.2.3-02",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "model-catalog"
+   ],
+   "question": "In Microsoft Foundry, where do you find the detailed benchmark results of **one specific** model, with charts placing it against similar models?",
+   "answer": "On the model's model card, in the **Benchmarks** tab.",
+   "explanation": "The Benchmarks tab shows how that single model performs across various metrics and datasets, with comparison charts against similar models. Use it after the Model leaderboard has given you a shortlist and you want to look closer at one candidate."
+  },
+  {
+   "id": "1.2.3-03",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "quality"
+   ],
+   "question": "What does the **Quality index** in the Microsoft Foundry model benchmarks express, and is higher or lower better?",
+   "answer": "The **average accuracy** across several benchmark datasets, normalized from 0 to 1. Higher is better.",
+   "explanation": "The datasets cover reasoning, knowledge, question answering, math and coding, so the index gives one high-level number for general-purpose language tasks. Benchmark scores use public datasets and standardized methods, so models are compared on equal terms. If your app maps to one specific task, start from a scenario leaderboard instead."
+  },
+  {
+   "id": "1.2.3-04",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "safety"
+   ],
+   "question": "Microsoft Foundry's safety benchmarks report an **Attack Success Rate (ASR)** from HarmBench. Is a higher or lower ASR better?",
+   "answer": "**Lower** ASR is better: the model is safer and more robust.",
+   "explanation": "HarmBench measures how well a model resists generating unsafe content. It tests three areas: standard harmful behaviors (cybercrime, illegal activities), contextually harmful behaviors (misinformation, harassment) and copyright violations. This matters most for customer-facing apps where harmful output is a serious risk."
+  },
+  {
+   "id": "1.2.3-05",
+   "type": "mc",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "safety"
+   ],
+   "question": "A model in the Microsoft Foundry safety benchmarks has a **high WMDP score**. What does that indicate?",
+   "answer": "It has **more knowledge of potentially dangerous capabilities** in biosecurity, cybersecurity and chemical security.",
+   "explanation": "WMDP (Weapons of Mass Destruction Proxy) measures model knowledge in sensitive domains. It sits among the safety benchmarks next to HarmBench, where a low Attack Success Rate is good, and ToxiGen, where a high F1 score means better hate-speech detection.",
+   "addition": "Microsoft's benchmark documentation states it outright: a higher WMDP accuracy is worse behavior from a safety standpoint.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/model-benchmarks",
+   "options": [
+    {
+     "text": "More knowledge of potentially dangerous capabilities in biosecurity, cybersecurity and chemical security",
+     "correct": true,
+     "why": "That is exactly what WMDP measures; higher means more of this sensitive knowledge."
+    },
+    {
+     "text": "Better detection of adversarial and implicit hate speech",
+     "correct": false,
+     "why": "That is the ToxiGen benchmark, reported as an F1 score."
+    },
+    {
+     "text": "Stronger resistance to prompts that try to elicit harmful content",
+     "correct": false,
+     "why": "That is HarmBench, and it shows as a low Attack Success Rate, not a WMDP score."
+    },
+    {
+     "text": "Fewer reproductions of copyrighted material",
+     "correct": false,
+     "why": "Copyright violations are one of HarmBench's three areas, measured by Attack Success Rate."
+    }
+   ]
+  },
+  {
+   "id": "1.2.3-07",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "cost"
+   ],
+   "question": "How does the **Estimated cost** in Microsoft Foundry's cost benchmarks combine input and output token prices?",
+   "answer": "It weights them at a **3:1 ratio**: three input tokens for every output token.",
+   "explanation": "Input and output prices are each quoted per 1 million tokens. The estimate merges them into one number so models can be compared directly; lower is more cost-effective. The figures cover serverless API deployments and Azure OpenAI models.",
+   "addition": "Current docs also describe a newer cost benchmark: the actual USD cost of running each model on the quality benchmark datasets, using real input, reasoning and output token counts instead of a fixed token ratio.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/model-benchmarks"
+  },
+  {
+   "id": "1.2.3-08",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "latency"
+   ],
+   "question": "A model in the Microsoft Foundry performance benchmarks shows **Latency P95 = 2 seconds**. What does that mean?",
+   "answer": "**95 % of requests** complete faster than 2 seconds.",
+   "explanation": "Percentile latencies (P50, P90, P95, P99) describe the spread, while Latency mean is only the average time per request. P50 is the median. These matter for real-time apps, where the user experience depends on responsiveness."
+  },
+  {
+   "id": "1.2.3-09",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "latency",
+    "streaming"
+   ],
+   "question": "Your chat app streams responses. Which Microsoft Foundry performance benchmark tells you how long a user waits before the **first text appears**?",
+   "answer": "**Time to first token (TTFT)**.",
+   "explanation": "TTFT measures the time until the first token arrives when streaming. The leaderboard uses mean TTFT as its latency summary, where lower is better. Its throughput counterpart is generated tokens per second, where higher is better."
+  },
+  {
+   "id": "1.2.3-10",
+   "type": "mc",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "throughput"
+   ],
+   "question": "Which Microsoft Foundry throughput benchmark counts **only the output tokens** a model produces per second?",
+   "answer": "**Generated tokens per second (GTPS)**.",
+   "explanation": "The leaderboard summarizes performance with two numbers: mean GTPS (higher is better) and mean time to first token (lower is better). High throughput and low latency matter for interactive apps; for batch jobs, cost can take priority over speed.",
+   "options": [
+    {
+     "text": "Generated tokens per second (GTPS)",
+     "correct": true,
+     "why": "GTPS measures output tokens generated per second."
+    },
+    {
+     "text": "Total tokens per second (TTPS)",
+     "correct": false,
+     "why": "TTPS combines input and output tokens processed per second."
+    },
+    {
+     "text": "Time between tokens",
+     "correct": false,
+     "why": "It is the interval between consecutive tokens, a time and not a token rate."
+    },
+    {
+     "text": "Time to first token (TTFT)",
+     "correct": false,
+     "why": "TTFT is a latency metric: the wait until the first streamed token arrives."
+    }
+   ]
+  },
+  {
+   "id": "1.2.3-11",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "model-selection"
+   ],
+   "question": "Your app mainly does **math** tasks. Which Microsoft Foundry leaderboard view should you start from, rather than the overall Quality index?",
+   "answer": "The **scenario leaderboard** for that use case (here: math).",
+   "explanation": "Scenario leaderboards rank models for specific use cases such as reasoning, coding, math, question answering or groundedness. The overall Quality index averages accuracy across many task types, so it is the wrong first filter when your app maps to one particular scenario."
+  },
+  {
+   "id": "1.2.3-12",
+   "type": "basic",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "model-selection"
+   ],
+   "question": "On a **trade-off chart** in the Microsoft Foundry model leaderboard, where do models appear that perform well on both plotted metrics?",
+   "answer": "Near the **top-right corner**.",
+   "explanation": "A trade-off chart plots quality against a second metric chosen from a dropdown: cost, throughput or safety. It shows the balance: a slightly less accurate model that is much faster or cheaper can serve your app better than the top scorer."
+  },
+  {
+   "id": "1.2.3-13",
+   "type": "order",
+   "section": "1.2.3",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+   "tags": [
+    "benchmarks",
+    "model-selection"
+   ],
+   "question": "Put the steps to compare shortlisted models **side by side** in the Microsoft Foundry portal in order.",
+   "answer": "Leaderboard → tick 2–3 models → Compare → review.",
+   "explanation": "Side-by-side comparison takes two or three models. Besides quality, safety and throughput it shows model details (context window, training data, languages), supported endpoints and feature support such as function calling, structured output and vision.",
+   "items": [
+    "Open the Model leaderboard from the model catalog",
+    "Check the boxes next to two or three models",
+    "Select Compare",
+    "Review benchmarks, model details, endpoints and supported features"
+   ]
+  },
+  {
+   "id": "1.2.4-01",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "data-residency"
+   ],
+   "question": "A Microsoft Foundry chat app must keep its data inside the **EU data zone** and should be billed **per token**. Which deployment type do you choose?",
+   "answer": "**Data Zone Standard**.",
+   "explanation": "Data Zone deployments keep data inside one data zone, such as the US, EU or APAC. *Standard* means pay-per-token billing. Global Standard offers the highest quota but may use any Azure region, so it breaks the compliance requirement.",
+   "addition": "For every deployment type, data stored at rest stays in the resource's Azure geography. The Global / Data Zone / Regional choice decides where prompts and responses are **processed** during inference.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
+  },
+  {
+   "id": "1.2.4-02",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "throughput"
+   ],
+   "question": "You need **predictable high throughput** from a Microsoft Foundry model deployment and have no data residency constraints. Which deployment type do you choose?",
+   "answer": "**Global Provisioned** — reserved provisioned throughput units (PTUs).",
+   "explanation": "Provisioned types reserve capacity in PTUs instead of charging per token, and that reservation is what makes throughput predictable. *Global* means any Azure region may be used. Data Zone Provisioned and Regional Provisioned reserve PTUs too, but you only need them when data must stay in a zone or region.",
+   "addition": "Provisioned types also give lower and more consistent latency. Standard types are best effort: with high, steady volume their latency varies more.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
+  },
+  {
+   "id": "1.2.4-03",
+   "type": "mc",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "batch",
+    "cost"
+   ],
+   "question": "You must summarise two million archived support tickets with a Microsoft Foundry model. Results are needed within a day, data may be processed in any region, and cost must be as low as possible. Which deployment type do you choose?",
+   "answer": "**Global Batch**.",
+   "explanation": "Batch deployments run large asynchronous jobs within 24 hours at a 50 % discount. No user waits for an answer here, so giving up real-time responses costs nothing. *Global* fits because the job has no residency constraint.",
+   "options": [
+    {
+     "text": "Global Batch",
+     "correct": true,
+     "why": "Any region, 50 % discount, built for large asynchronous jobs finished within 24 hours."
+    },
+    {
+     "text": "Global Standard",
+     "correct": false,
+     "why": "Pay-per-token at full price, meant for general interactive workloads."
+    },
+    {
+     "text": "Global Provisioned",
+     "correct": false,
+     "why": "Reserves PTUs for steady, predictable throughput; paying for reserved capacity does not fit a one-off job."
+    },
+    {
+     "text": "Developer",
+     "correct": false,
+     "why": "Only for evaluating fine-tuned models."
+    }
+   ]
+  },
+  {
+   "id": "1.2.4-04",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "data-residency"
+   ],
+   "question": "A Microsoft Foundry deployment must keep data within **a single Azure region**, traffic is low, and you want pay-per-token billing. Which deployment type do you choose?",
+   "answer": "**Regional Standard**.",
+   "explanation": "Regional types are deployed within one region, the narrowest residency scope, narrower than a data zone (US, EU, APAC) or global. Standard bills per token, which suits low-volume scenarios. Regional Provisioned would reserve PTUs, which only pays off for high, steady throughput.",
+   "addition": "Current docs call this type just **Standard** (SKU `Standard`). It processes prompts within the customer-specified Azure geography and may move them between regions inside that geography for operational reasons.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
+  },
+  {
+   "id": "1.2.4-05",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "fine-tuning"
+   ],
+   "question": "What is the **Developer** deployment type in Microsoft Foundry for?",
+   "answer": "**Evaluating fine-tuned models** — nothing else.",
+   "explanation": "Developer deployments bill per token and may use any Azure region. They exist only so you can try out a fine-tuned model. For general workloads, Global Standard is the recommended choice whenever possible.",
+   "addition": "A Developer deployment has a fixed 24-hour lifetime and is deleted automatically afterwards. It has no SLA and no data residency guarantee.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
+  },
+  {
+   "id": "1.2.4-06",
+   "type": "mc",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment-types",
+    "data-residency",
+    "throughput"
+   ],
+   "question": "A Microsoft Foundry deployment must keep data inside the **EU data zone** and also guarantee **predictable high throughput** for an online app. Which deployment type do you choose?",
+   "answer": "**Data Zone Provisioned**.",
+   "explanation": "Two requirements, two halves of the name: *Data Zone* keeps data in the zone (US, EU or APAC), *Provisioned* reserves PTUs for predictable throughput. Each of the other types meets only one of the two requirements.",
+   "options": [
+    {
+     "text": "Data Zone Provisioned",
+     "correct": true,
+     "why": "Reserved PTUs within a data zone: residency and predictable throughput together."
+    },
+    {
+     "text": "Data Zone Standard",
+     "correct": false,
+     "why": "Keeps data in the zone but bills per token with no reserved throughput."
+    },
+    {
+     "text": "Global Provisioned",
+     "correct": false,
+     "why": "Reserves PTUs but may process data in any Azure region."
+    },
+    {
+     "text": "Data Zone Batch",
+     "correct": false,
+     "why": "Made for large asynchronous jobs, not for an online app."
+    }
+   ]
+  },
+  {
+   "id": "1.2.4-07",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment",
+    "sdk"
+   ],
+   "question": "Your code calls a model deployed in Microsoft Foundry. What value goes in the request's `model` parameter?",
+   "answer": "The **deployment name**.",
+   "explanation": "The deployment name routes the request to your specific deployment. By default it is the model name. Give it a meaningful name when you deploy the same model several times, for example with different settings, so each request reaches the right one.",
+   "explanation_images": [
+    {
+     "src": "media/ai-103/1.2.4-deploy-model.png",
+     "alt": "Foundry portal 'Deploy gpt-4.1' dialog with the fields Deployment name (gpt-4.1-2) and Deployment type (Global Standard)"
+    }
+   ]
+  },
+  {
+   "id": "1.2.4-08",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "managed-compute",
+    "deployment"
+   ],
+   "question": "When you deploy a model to **managed compute** in Microsoft Foundry, which two extra settings do you configure?",
+   "answer": "The **virtual machine SKU** and the **instance count**.",
+   "explanation": "Managed compute hosts the model on virtual machines you choose. The SKU picks the VM type from the supported list. The instance count sets how many VMs run, which spreads the load and adds redundancy.",
+   "addition": "The deployment types (Global Standard, Provisioned, Batch and so on) apply only to the serverless API option. Models on managed compute don't use them.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
+  },
+  {
+   "id": "1.2.4-09",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "managed-compute",
+    "quota"
+   ],
+   "question": "You choose a VM SKU for a **managed compute** deployment in Microsoft Foundry. Which quota must your subscription have for that SKU?",
+   "answer": "**Azure Machine Learning compute quota**.",
+   "explanation": "Managed compute runs the model on dedicated virtual machines. Those VMs count against the subscription's Azure Machine Learning compute quota, so without quota for the chosen SKU the deployment cannot be created."
+  },
+  {
+   "id": "1.2.4-10",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "model-catalog",
+    "deployment"
+   ],
+   "question": "You deploy a **partner or community model** from the Microsoft Foundry model catalog. What extra step appears before you can configure the deployment?",
+   "answer": "Accept its **Azure Marketplace** terms of use (**Agree and Proceed**).",
+   "explanation": "Partner and community models come with their own licensing and pricing, so they require an Azure Marketplace subscription. Models sold directly by Azure, such as Azure OpenAI's GPT-4o-mini, are billed through your Azure subscription and skip this step."
+  },
+  {
+   "id": "1.2.4-11",
+   "type": "order",
+   "section": "1.2.4",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment",
+    "foundry-portal"
+   ],
+   "question": "Put the steps of deploying a model from the **Microsoft Foundry portal** in order.",
+   "answer": "Open model card → Deploy → accept terms → configure → Deploy and test.",
+   "explanation": "The Marketplace step appears only for models that need a subscription, typically partner and community models. When the deployment completes, the portal opens the playground, and the deployment list should show the status **Succeeded**.",
+   "items": [
+    "Open the model card via Discover > Models",
+    "Select Deploy and choose default or custom settings",
+    "Accept the Azure Marketplace terms if the model requires them",
+    "Set the deployment name and deployment type",
+    "Select Deploy, then test the model in the playground"
+   ]
+  },
+  {
+   "id": "1.2.4-12",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "foundry-portal",
+    "deployment"
+   ],
+   "question": "Where in the Microsoft Foundry portal do you find your **deployed** models, with their endpoint URL and keys?",
+   "answer": "**Build > Models** — the deployment list.",
+   "explanation": "Discover > Models is the catalog of models you could deploy. Build > Models lists the deployments in your resource. A deployment's details page shows its configuration and status, endpoint URL, keys or tokens and usage metrics, and lets you change settings or delete it."
+  },
+  {
+   "id": "1.2.4-14",
+   "type": "mc",
+   "section": "1.2.4",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "deployment",
+    "sdk"
+   ],
+   "question": "Which **three** pieces of information does an application need from the deployment details to call a model deployed in Microsoft Foundry?",
+   "answer": "**Endpoint URL**, **authentication key or token**, **deployment name**.",
+   "explanation": "The endpoint says where requests go, the key or token proves the caller may use it, and the deployment name in the `model` parameter selects the deployment. Foundry offers project endpoints for Foundry-specific features and OpenAI v1 endpoints for compatibility with OpenAI model APIs.",
+   "options": [
+    {
+     "text": "Endpoint URL",
+     "correct": true,
+     "why": "The address the application sends its requests to."
+    },
+    {
+     "text": "Authentication key or token",
+     "correct": true,
+     "why": "Authenticates each request: a secret key or an Entra ID token."
+    },
+    {
+     "text": "Deployment name",
+     "correct": true,
+     "why": "Goes in the `model` parameter and routes the request to your deployment."
+    },
+    {
+     "text": "Virtual machine SKU",
+     "correct": false,
+     "why": "A setting of managed compute deployments; requests never send it."
+    },
+    {
+     "text": "The model's benchmark quality index",
+     "correct": false,
+     "why": "Helps you choose a model in the catalog; it plays no part in calling one."
+    }
+   ]
+  },
+  {
+   "id": "1.2.4-15",
+   "type": "basic",
+   "section": "1.2.4",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/4-deploy-models",
+   "tags": [
+    "authentication",
+    "entra-id"
+   ],
+   "question": "Which authentication method is recommended for a **production** app that calls a model deployed in Microsoft Foundry?",
+   "answer": "**Microsoft Entra ID** authentication.",
+   "explanation": "Instead of presenting a secret key, the app presents a token based on its own identity. Keys work too, but the course recommends Entra ID for production scenarios."
+  },
+  {
+   "id": "1.2.5-01",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "playground",
+    "evaluation"
+   ],
+   "question": "You compare two models side by side in the Microsoft Foundry playground. What does the playground keep identical for both models?",
+   "answer": "The **system instructions and prompts**: they are synchronized across both chat panes.",
+   "explanation": "Because the input is the same, differences in the output come from the models themselves. This is manual, interactive testing: you read both answers and judge them yourself, which helps you optimize your application design. It produces no scores; for those you run an automated evaluation.",
+   "explanation_images": [
+    {
+     "src": "media/ai-103/1.2.5-playground-compare.png",
+     "alt": "Foundry playground with two chat panes side by side, gpt-4.1-mini and gpt-4.1, answering the same prompt; Compare models button at the top right"
+    }
+   ]
+  },
+  {
+   "id": "1.2.5-02",
+   "type": "mc",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "groundedness",
+    "rag"
+   ],
+   "question": "A RAG chat app built in Microsoft Foundry sometimes adds facts that are not in the retrieved documents. Which generation quality metric detects this?",
+   "answer": "**Groundedness**.",
+   "explanation": "Groundedness checks whether a response is based on the provided context rather than speculation. Relevance only asks whether the response addresses the question, so an invented but on-topic answer can still do well there. Coherence and fluency judge logic and language, not where the facts came from.",
+   "options": [
+    {
+     "text": "Groundedness",
+     "correct": true,
+     "why": "It checks whether the response is based on the provided context rather than speculation."
+    },
+    {
+     "text": "Relevance",
+     "correct": false,
+     "why": "It measures whether the response addresses the user's question, not whether it sticks to the context."
+    },
+    {
+     "text": "Coherence",
+     "correct": false,
+     "why": "It assesses whether the response flows logically and keeps its ideas consistent."
+    },
+    {
+     "text": "Fluency",
+     "correct": false,
+     "why": "It evaluates linguistic correctness and natural language quality."
+    }
+   ]
+  },
+  {
+   "id": "1.2.5-03",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "groundedness"
+   ],
+   "question": "How does **Groundedness Pro** in Microsoft Foundry evaluation differ from the standard Groundedness metric?",
+   "answer": "It gives a **binary** result: grounded or not grounded.",
+   "explanation": "Both metrics check whether a response is based on the provided context rather than speculation. Groundedness Pro reduces this to a yes-or-no verdict per response. That makes it useful when the application has strict factual accuracy requirements.",
+   "addition": "Groundedness Pro (preview) runs on the Azure AI Content Safety service and needs no judge deployment. Standard Groundedness uses your own GPT deployment as LLM judge and scores 1–5, with a default pass threshold of 3.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/rag-evaluators"
+  },
+  {
+   "id": "1.2.5-04",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "content-safety"
+   ],
+   "question": "How does a Microsoft Foundry evaluation report its results for content harm metrics such as violent or self-harm content?",
+   "answer": "As a **defect rate**: the percentage of responses whose severity exceeds a threshold, typically Medium.",
+   "explanation": "The defect rate condenses many per-response severity ratings into one number per metric. Protected material and indirect attack are calculated differently: their defect rate is simply `(true instances / total instances) × 100`, the share of responses in which the problem was found.",
+   "addition": "Content safety evaluators score severity 0–7: Very Low 0–1, Low 2–3, Medium 4–5, High 6–7. The default threshold is 3, so a response fails from Medium upward.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+   "id": "1.2.5-05",
+   "type": "mc",
+   "section": "1.2.5",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "jailbreak",
+    "content-safety"
+   ],
+   "question": "A Microsoft Foundry evaluation should show how vulnerable your app is to manipulation attempts that try to make the model ignore its rules. Which risk and safety metric do you select?",
+   "answer": "**Indirect attack (jailbreak)**.",
+   "explanation": "Indirect attack is the risk and safety metric aimed at manipulation rather than at harmful content itself. Its defect rate is true instances divided by total instances, times 100. A high value is a safety concern; the remedies are content filters, prompt hardening and output validation.",
+   "options": [
+    {
+     "text": "Indirect attack (jailbreak)",
+     "correct": true,
+     "why": "It assesses the model's vulnerability to manipulation attempts."
+    },
+    {
+     "text": "Protected material",
+     "correct": false,
+     "why": "It identifies reproduction of copyrighted or proprietary content."
+    },
+    {
+     "text": "Hateful and unfair content",
+     "correct": false,
+     "why": "It identifies bias, discrimination or hateful statements in responses."
+    },
+    {
+     "text": "Groundedness",
+     "correct": false,
+     "why": "A generation quality metric that checks whether responses are based on the provided context."
+    }
+   ],
+   "addition": "Current docs call it Indirect Attack (XPIA, cross-domain prompt injection): the jailbreak is hidden in a document or other context the model reads, not typed in by the user. It is available for model evaluation only, not for agents.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+   "id": "1.2.5-06",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "llm-judge"
+   ],
+   "question": "When you run AI-assisted evaluation in Microsoft Foundry, what must you specify besides the model being evaluated?",
+   "answer": "A **GPT model as evaluator** that scores the responses.",
+   "explanation": "AI-assisted metrics such as groundedness, relevance, coherence and fluency are not calculated by a formula. The evaluator model reads each response of your deployed model and assigns scores against the selected criteria. NLP metrics like BLEU or ROUGE are the opposite: mathematical, with no evaluator model.",
+   "explanation_images": [
+    {
+     "src": "media/ai-103/1.2.5-evaluation-results.png",
+     "alt": "Foundry evaluation results table: one Fluency score per test row, marked Pass or Fail, with the evaluator's written reason next to it"
+    }
+   ],
+   "addition": "Risk and safety evaluators are the exception: they run on Microsoft's hosted models in the Foundry Evaluation service and need no `deployment_name`. Only LLM-as-judge quality evaluators such as coherence and fluency use your own deployment.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+   "id": "1.2.5-07",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "nlp-metrics"
+   ],
+   "question": "What do NLP evaluation metrics such as F1-score, BLEU and ROUGE usually need in a Microsoft Foundry evaluation?",
+   "answer": "**Ground truth data**: expected or reference responses to compare against.",
+   "explanation": "NLP metrics are mathematical: they compare words or word sequences between the generated text and the reference, without an evaluator model. That works when there is a definitive correct answer, as in translation or classification. For open-ended generation, where many valid responses exist, they are less suitable."
+  },
+  {
+   "id": "1.2.5-08",
+   "type": "mc",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "nlp-metrics",
+    "summarization"
+   ],
+   "question": "You evaluate a summarization model against reference summaries. Covering the key points matters more than avoiding extra words. Which NLP metric fits best?",
+   "answer": "**ROUGE**.",
+   "explanation": "ROUGE (Recall-Oriented Understudy for Gisting Evaluation) emphasizes recall over precision, so it rewards summaries that include the reference's key points. BLEU and its sentence-level variant GLEU come from machine translation. METEOR extends BLEU with synonyms, stemming and paraphrasing.",
+   "options": [
+    {
+     "text": "ROUGE",
+     "correct": true,
+     "why": "It is recall-oriented, which makes it the usual choice for summarization."
+    },
+    {
+     "text": "BLEU",
+     "correct": false,
+     "why": "It compares n-grams with a reference text and is mainly used for machine translation."
+    },
+    {
+     "text": "METEOR",
+     "correct": false,
+     "why": "It extends BLEU with synonyms, stemming and paraphrasing for more flexible translation comparison."
+    },
+    {
+     "text": "F1-score",
+     "correct": false,
+     "why": "It balances precision and recall of shared words and suits text classification and information retrieval."
+    },
+    {
+     "text": "GLEU",
+     "correct": false,
+     "why": "It is a BLEU variant designed for sentence-level evaluation."
+    }
+   ]
+  },
+  {
+   "id": "1.2.5-09",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation"
+   ],
+   "question": "Your test file already contains prompts and the responses your app generated. Which evaluation basis do you choose in the Microsoft Foundry **Evaluation** feature?",
+   "answer": "**Dataset**: it evaluates the pre-generated outputs in the file.",
+   "explanation": "With the Model or Agent basis, Foundry sends your prompts to the deployed model or agent and generates the outputs during the evaluation. With Dataset, nothing is generated: the file must already hold both the inputs and the model-generated responses, and only the scoring runs."
+  },
+  {
+   "id": "1.2.5-10",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "datasets"
+   ],
+   "question": "You upload your own test cases for a model evaluation in Microsoft Foundry. Which file formats can the dataset have?",
+   "answer": "**CSV or JSONL**.",
+   "explanation": "Uploading a new file is one of three dataset options when you evaluate a model or agent. The others are reusing a dataset already uploaded to the project, or letting Foundry generate a synthetic dataset from a description when you have no test data."
+  },
+  {
+   "id": "1.2.5-12",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "evaluators"
+   ],
+   "question": "In a Microsoft Foundry project, where do you look up the annotation prompt that defines how a quality evaluator calculates its metric?",
+   "answer": "In the **Evaluator library** tab of the project's **Evaluation** page.",
+   "explanation": "The library lists Microsoft-curated quality, safety and performance evaluators with name, description, parameters and files. For safety evaluators it shows definitions and severity levels instead of prompts. It also manages your custom evaluators with versioning: compare versions, restore an older one, collaborate with others."
+  },
+  {
+   "id": "1.2.5-13",
+   "type": "mc",
+   "section": "1.2.5",
+   "exam_area": "plan",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "content-safety",
+    "guardrails"
+   ],
+   "question": "A Microsoft Foundry evaluation shows concerning **risk and safety** metrics for your chat app. Which **three** measures address this?",
+   "answer": "**Content filters**, **prompt hardening** and **output validation**.",
+   "explanation": "All three act on harmful output: filters through Azure AI Content Safety, safety instructions in the system message, and checks on responses before users see them. RAG integration belongs to the remedies for low quality scores. Re-run the evaluation after each change to measure its impact and make sure quality doesn't regress.",
+   "options": [
+    {
+     "text": "Implement content filters with Azure AI Content Safety",
+     "correct": true,
+     "why": "Content Safety filters harmful content around the model."
+    },
+    {
+     "text": "Add safety instructions to the system message (prompt hardening)",
+     "correct": true,
+     "why": "Hardened system messages tell the model what it must not produce."
+    },
+    {
+     "text": "Check responses before displaying them to users (output validation)",
+     "correct": true,
+     "why": "Validation stops a harmful response before it reaches a user."
+    },
+    {
+     "text": "Add RAG integration to ground responses in your data",
+     "correct": false,
+     "why": "RAG is a remedy for low quality scores such as groundedness, not a safety control."
+    },
+    {
+     "text": "Switch from AI-assisted metrics to NLP metrics",
+     "correct": false,
+     "why": "That changes how you measure, not what the model produces."
+    }
+   ]
+  },
+  {
+   "id": "1.2.5-14",
+   "type": "basic",
+   "section": "1.2.5",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+   "tags": [
+    "evaluation",
+    "rag",
+    "fine-tuning"
+   ],
+   "question": "A Microsoft Foundry evaluation shows **quality** scores below your requirements. Which four kinds of improvement can you consider?",
+   "answer": "- **Prompt engineering**\n- A **different model**\n- **RAG integration**\n- **Fine-tuning** (if the model supports it)",
+   "explanation": "Prompt engineering refines instructions and system messages. A different model may be better optimized for your use case. RAG grounds responses in your own data. Fine-tuning trains the model on your domain. Each step can grow in complexity and cost, so plan for that, and re-run the evaluation after every change to measure its impact."
+  },
+  {
+   "id": "1.2.7-01",
+   "type": "order",
+   "section": "1.2.7",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+   "tags": [
+    "evaluation",
+    "foundry-portal"
+   ],
+   "question": "Put the steps of the **Create new evaluation** wizard in the Microsoft Foundry portal in order, for evaluating a deployed model.",
+   "answer": "Target → Data → Configure models → Criteria → Review and submit.",
+   "explanation": "First you pick what is evaluated (here: **Model** and one deployment). The data step supplies the test inputs, uploaded or synthetic. Configure models sets the prompt the model runs with. Criteria picks the AI-judge evaluators. Only in the review step do you name the run and submit it.",
+   "items": [
+    "Target: select Model and the deployment to evaluate",
+    "Data: choose the dataset source, e.g. synthetic generation",
+    "Configure models: set the developer prompt",
+    "Criteria: keep or remove the suggested evaluators",
+    "Review: name the evaluation and submit the run"
+   ]
+  },
+  {
+   "id": "1.2.7-02",
+   "type": "basic",
+   "section": "1.2.7",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+   "tags": [
+    "evaluation",
+    "foundry-portal"
+   ],
+   "question": "You have tested a deployed model by hand in the Microsoft Foundry playground and now want a systematic evaluation over many inputs. Where in the playground do you start it?",
+   "answer": "The **Evaluations** tab, then **Create**.",
+   "explanation": "The playground suits quick manual testing of single prompts. An evaluation instead scores a whole dataset of inputs with evaluators. Selecting **Create** on the Evaluations tab opens the **Create new evaluation** wizard, where you then choose **Model** as the target.",
+   "addition": "The current docs name more entry points: **Evaluation** > **Create** in the project's left pane, or a model's or agent's **Evaluation** tab > **Create**.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/evaluate-generative-ai-app"
+  },
+  {
+   "id": "1.2.7-03",
+   "type": "basic",
+   "section": "1.2.7",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+   "tags": [
+    "evaluation",
+    "synthetic-data",
+    "foundry-portal"
+   ],
+   "question": "You want to evaluate a model in the Microsoft Foundry portal but have no test dataset. Which **Dataset source** do you choose in the evaluation wizard, and what do you configure for it?",
+   "answer": "**Synthetic generation**, configured with:\n- a generator model\n- the number of rows\n- a prompt describing the data\n- optional seed data",
+   "explanation": "With synthetic generation, a deployment writes the test questions automatically when you submit the evaluation. The prompt steers the content, for example travel questions that also include content safety and security tests. It replaces uploading your own test dataset.",
+   "addition": "Synthetic data generation requires a model with **Responses API** capability, so the region must support it.",
+   "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/evaluate-generative-ai-app"
+  },
+  {
+   "id": "1.2.7-04",
+   "type": "basic",
+   "section": "1.2.7",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+   "tags": [
+    "playground",
+    "model-selection",
+    "foundry-portal"
+   ],
+   "question": "You have deployed two models in Microsoft Foundry and want to send the same prompt to both and read the answers side by side. Which playground setting do you use?",
+   "answer": "The **Compare models** list on the right of the model playground.",
+   "explanation": "Select the first deployment in the **Model** list, then the second one under **Compare models**. The playground opens a separate chat pane per model. This makes differences in accuracy, reasoning quality and response style visible, but it stays a manual check of single prompts."
+  },
+  {
+   "id": "1.2.7-05",
+   "type": "basic",
+   "section": "1.2.7",
+   "exam_area": "genai",
+   "origin": "generated",
+   "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+   "tags": [
+    "evaluation",
+    "error-analysis",
+    "foundry-portal"
+   ],
+   "question": "A Microsoft Foundry evaluation run shows some failed rows. Which option on the run page groups the failures by cause and suggests improvements?",
+   "answer": "**Analyze results**, then pick the model and select **Start analysis**.",
+   "explanation": "The analysis clusters the failed rows by why they failed and shows the details of each failure. It also gives AI suggestions for adjusting your configuration. Many failures can be deliberate refusals of unsafe questions, so check each one against the response you actually want."
+  },
+  {
+   "id": "1.2.8-01",
+   "type": "mc",
+   "section": "1.2.8",
+   "exam_area": "plan",
+   "origin": "knowledge-check",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+   "tags": [
+    "benchmarks",
+    "model-selection"
+   ],
+   "question": "Which model benchmark indicates the model's ability to process prompts and return comprehensive responses quickly?",
+   "answer": "**Throughput**.",
+   "explanation": "Throughput is a performance benchmark: generated tokens per second, total tokens per second and time between tokens. The Microsoft Foundry leaderboard summarizes it as mean generated tokens per second, where higher is better. It matters most for interactive, real-time apps.",
+   "options": [
+    {
+     "text": "Quality index",
+     "correct": false,
+     "why": "It averages accuracy across reasoning, knowledge, math and coding datasets and says nothing about speed (unit 1.2.3, Select models using benchmarks)."
+    },
+    {
+     "text": "Cost",
+     "correct": false,
+     "why": "Cost benchmarks show the price per 1 million input and output tokens, not how fast a model responds (unit 1.2.3, Select models using benchmarks)."
+    },
+    {
+     "text": "Throughput",
+     "correct": true,
+     "why": "Throughput measures how many tokens a model processes and generates per second, so it shows how quickly it returns responses (unit 1.2.3, Select models using benchmarks)."
+    }
+   ]
+  },
+  {
+   "id": "1.2.8-02",
+   "type": "mc",
+   "section": "1.2.8",
+   "exam_area": "plan",
+   "origin": "knowledge-check",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+   "tags": [
+    "deployment-types",
+    "quota"
+   ],
+   "question": "Which deployment type in Microsoft Foundry is best for general use while offering the largest quota?",
+   "answer": "**Global Standard**.",
+   "explanation": "Global Standard runs in any Azure region and bills per token. Microsoft Foundry recommends it whenever possible for maximum capabilities. Choose Data Zone Standard when data must stay inside a data zone, and Regional Standard for single-region data residency or low-volume scenarios.",
+   "options": [
+    {
+     "text": "Data Zone Batch",
+     "correct": false,
+     "why": "It is meant for large asynchronous batch jobs that must stay inside a data zone, not for general interactive use (unit 1.2.4, Deploy models to endpoints)."
+    },
+    {
+     "text": "Global Standard",
+     "correct": true,
+     "why": "It uses any Azure region on a pay-per-token basis, is best for general workloads and provides the highest quota (unit 1.2.4, Deploy models to endpoints)."
+    },
+    {
+     "text": "Developer",
+     "correct": false,
+     "why": "It is only for evaluating fine-tuned models, not for general use (unit 1.2.4, Deploy models to endpoints)."
+    }
+   ]
+  },
+  {
+   "id": "1.2.8-03",
+   "type": "mc",
+   "section": "1.2.8",
+   "exam_area": "genai",
+   "origin": "knowledge-check",
+   "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+   "tags": [
+    "evaluation",
+    "metrics"
+   ],
+   "question": "Which evaluation metric measures linguistic correctness and natural language quality?",
+   "answer": "**Fluency**.",
+   "explanation": "Fluency is one of the generation quality metrics in Microsoft Foundry automated evaluation, next to groundedness, relevance and coherence. It judges how well the text is written. It does not judge whether the content is true or on topic.",
+   "options": [
+    {
+     "text": "Fluency",
+     "correct": true,
+     "why": "Fluency evaluates linguistic correctness and natural language quality (unit 1.2.5, Evaluate model performance)."
+    },
+    {
+     "text": "Groundedness",
+     "correct": false,
+     "why": "Groundedness checks whether a response is based on the provided context rather than speculation (unit 1.2.5, Evaluate model performance)."
+    },
+    {
+     "text": "Relevance",
+     "correct": false,
+     "why": "Relevance checks whether a response addresses the user's question or request (unit 1.2.5, Evaluate model performance)."
+    }
+   ]
+  }
+ ]
+}

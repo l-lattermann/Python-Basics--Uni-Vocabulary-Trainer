@@ -1,0 +1,319 @@
+[
+  {
+    "id": "1.2.5-01",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "playground",
+      "evaluation"
+    ],
+    "question": "You compare two models side by side in the Microsoft Foundry playground. What does the playground keep identical for both models?",
+    "answer": "The **system instructions and prompts**: they are synchronized across both chat panes.",
+    "explanation": "Because the input is the same, differences in the output come from the models themselves. This is manual, interactive testing: you read both answers and judge them yourself, which helps you optimize your application design. It produces no scores; for those you run an automated evaluation.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.2.5-playground-compare.png",
+        "alt": "Foundry playground with two chat panes side by side, gpt-4.1-mini and gpt-4.1, answering the same prompt; Compare models button at the top right"
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-02",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "groundedness",
+      "rag"
+    ],
+    "question": "A RAG chat app built in Microsoft Foundry sometimes adds facts that are not in the retrieved documents. Which generation quality metric detects this?",
+    "answer": "**Groundedness**.",
+    "explanation": "Groundedness checks whether a response is based on the provided context rather than speculation. Relevance only asks whether the response addresses the question, so an invented but on-topic answer can still do well there. Coherence and fluency judge logic and language, not where the facts came from.",
+    "options": [
+      {
+        "text": "Groundedness",
+        "correct": true,
+        "why": "It checks whether the response is based on the provided context rather than speculation."
+      },
+      {
+        "text": "Relevance",
+        "correct": false,
+        "why": "It measures whether the response addresses the user's question, not whether it sticks to the context."
+      },
+      {
+        "text": "Coherence",
+        "correct": false,
+        "why": "It assesses whether the response flows logically and keeps its ideas consistent."
+      },
+      {
+        "text": "Fluency",
+        "correct": false,
+        "why": "It evaluates linguistic correctness and natural language quality."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-03",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "groundedness"
+    ],
+    "question": "How does **Groundedness Pro** in Microsoft Foundry evaluation differ from the standard Groundedness metric?",
+    "answer": "It gives a **binary** result: grounded or not grounded.",
+    "explanation": "Both metrics check whether a response is based on the provided context rather than speculation. Groundedness Pro reduces this to a yes-or-no verdict per response. That makes it useful when the application has strict factual accuracy requirements.",
+    "addition": "Groundedness Pro (preview) runs on the Azure AI Content Safety service and needs no judge deployment. Standard Groundedness uses your own GPT deployment as LLM judge and scores 1–5, with a default pass threshold of 3.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/rag-evaluators"
+  },
+  {
+    "id": "1.2.5-04",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "How does a Microsoft Foundry evaluation report its results for content harm metrics such as violent or self-harm content?",
+    "answer": "As a **defect rate**: the percentage of responses whose severity exceeds a threshold, typically Medium.",
+    "explanation": "The defect rate condenses many per-response severity ratings into one number per metric. Protected material and indirect attack are calculated differently: their defect rate is simply `(true instances / total instances) × 100`, the share of responses in which the problem was found.",
+    "addition": "Content safety evaluators score severity 0–7: Very Low 0–1, Low 2–3, Medium 4–5, High 6–7. The default threshold is 3, so a response fails from Medium upward.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+    "id": "1.2.5-05",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "jailbreak",
+      "content-safety"
+    ],
+    "question": "A Microsoft Foundry evaluation should show how vulnerable your app is to manipulation attempts that try to make the model ignore its rules. Which risk and safety metric do you select?",
+    "answer": "**Indirect attack (jailbreak)**.",
+    "explanation": "Indirect attack is the risk and safety metric aimed at manipulation rather than at harmful content itself. Its defect rate is true instances divided by total instances, times 100. A high value is a safety concern; the remedies are content filters, prompt hardening and output validation.",
+    "options": [
+      {
+        "text": "Indirect attack (jailbreak)",
+        "correct": true,
+        "why": "It assesses the model's vulnerability to manipulation attempts."
+      },
+      {
+        "text": "Protected material",
+        "correct": false,
+        "why": "It identifies reproduction of copyrighted or proprietary content."
+      },
+      {
+        "text": "Hateful and unfair content",
+        "correct": false,
+        "why": "It identifies bias, discrimination or hateful statements in responses."
+      },
+      {
+        "text": "Groundedness",
+        "correct": false,
+        "why": "A generation quality metric that checks whether responses are based on the provided context."
+      }
+    ],
+    "addition": "Current docs call it Indirect Attack (XPIA, cross-domain prompt injection): the jailbreak is hidden in a document or other context the model reads, not typed in by the user. It is available for model evaluation only, not for agents.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+    "id": "1.2.5-06",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "llm-judge"
+    ],
+    "question": "When you run AI-assisted evaluation in Microsoft Foundry, what must you specify besides the model being evaluated?",
+    "answer": "A **GPT model as evaluator** that scores the responses.",
+    "explanation": "AI-assisted metrics such as groundedness, relevance, coherence and fluency are not calculated by a formula. The evaluator model reads each response of your deployed model and assigns scores against the selected criteria. NLP metrics like BLEU or ROUGE are the opposite: mathematical, with no evaluator model.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.2.5-evaluation-results.png",
+        "alt": "Foundry evaluation results table: one Fluency score per test row, marked Pass or Fail, with the evaluator's written reason next to it"
+      }
+    ],
+    "addition": "Risk and safety evaluators are the exception: they run on Microsoft's hosted models in the Foundry Evaluation service and need no `deployment_name`. Only LLM-as-judge quality evaluators such as coherence and fluency use your own deployment.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  },
+  {
+    "id": "1.2.5-07",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "What do NLP evaluation metrics such as F1-score, BLEU and ROUGE usually need in a Microsoft Foundry evaluation?",
+    "answer": "**Ground truth data**: expected or reference responses to compare against.",
+    "explanation": "NLP metrics are mathematical: they compare words or word sequences between the generated text and the reference, without an evaluator model. That works when there is a definitive correct answer, as in translation or classification. For open-ended generation, where many valid responses exist, they are less suitable."
+  },
+  {
+    "id": "1.2.5-08",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics",
+      "summarization"
+    ],
+    "question": "You evaluate a summarization model against reference summaries. Covering the key points matters more than avoiding extra words. Which NLP metric fits best?",
+    "answer": "**ROUGE**.",
+    "explanation": "ROUGE (Recall-Oriented Understudy for Gisting Evaluation) emphasizes recall over precision, so it rewards summaries that include the reference's key points. BLEU and its sentence-level variant GLEU come from machine translation. METEOR extends BLEU with synonyms, stemming and paraphrasing.",
+    "options": [
+      {
+        "text": "ROUGE",
+        "correct": true,
+        "why": "It is recall-oriented, which makes it the usual choice for summarization."
+      },
+      {
+        "text": "BLEU",
+        "correct": false,
+        "why": "It compares n-grams with a reference text and is mainly used for machine translation."
+      },
+      {
+        "text": "METEOR",
+        "correct": false,
+        "why": "It extends BLEU with synonyms, stemming and paraphrasing for more flexible translation comparison."
+      },
+      {
+        "text": "F1-score",
+        "correct": false,
+        "why": "It balances precision and recall of shared words and suits text classification and information retrieval."
+      },
+      {
+        "text": "GLEU",
+        "correct": false,
+        "why": "It is a BLEU variant designed for sentence-level evaluation."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-09",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Your test file already contains prompts and the responses your app generated. Which evaluation basis do you choose in the Microsoft Foundry **Evaluation** feature?",
+    "answer": "**Dataset**: it evaluates the pre-generated outputs in the file.",
+    "explanation": "With the Model or Agent basis, Foundry sends your prompts to the deployed model or agent and generates the outputs during the evaluation. With Dataset, nothing is generated: the file must already hold both the inputs and the model-generated responses, and only the scoring runs."
+  },
+  {
+    "id": "1.2.5-10",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "datasets"
+    ],
+    "question": "You upload your own test cases for a model evaluation in Microsoft Foundry. Which file formats can the dataset have?",
+    "answer": "**CSV or JSONL**.",
+    "explanation": "Uploading a new file is one of three dataset options when you evaluate a model or agent. The others are reusing a dataset already uploaded to the project, or letting Foundry generate a synthetic dataset from a description when you have no test data."
+  },
+  {
+    "id": "1.2.5-12",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "evaluators"
+    ],
+    "question": "In a Microsoft Foundry project, where do you look up the annotation prompt that defines how a quality evaluator calculates its metric?",
+    "answer": "In the **Evaluator library** tab of the project's **Evaluation** page.",
+    "explanation": "The library lists Microsoft-curated quality, safety and performance evaluators with name, description, parameters and files. For safety evaluators it shows definitions and severity levels instead of prompts. It also manages your custom evaluators with versioning: compare versions, restore an older one, collaborate with others."
+  },
+  {
+    "id": "1.2.5-13",
+    "type": "mc",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety",
+      "guardrails"
+    ],
+    "question": "A Microsoft Foundry evaluation shows concerning **risk and safety** metrics for your chat app. Which **three** measures address this?",
+    "answer": "**Content filters**, **prompt hardening** and **output validation**.",
+    "explanation": "All three act on harmful output: filters through Azure AI Content Safety, safety instructions in the system message, and checks on responses before users see them. RAG integration belongs to the remedies for low quality scores. Re-run the evaluation after each change to measure its impact and make sure quality doesn't regress.",
+    "options": [
+      {
+        "text": "Implement content filters with Azure AI Content Safety",
+        "correct": true,
+        "why": "Content Safety filters harmful content around the model."
+      },
+      {
+        "text": "Add safety instructions to the system message (prompt hardening)",
+        "correct": true,
+        "why": "Hardened system messages tell the model what it must not produce."
+      },
+      {
+        "text": "Check responses before displaying them to users (output validation)",
+        "correct": true,
+        "why": "Validation stops a harmful response before it reaches a user."
+      },
+      {
+        "text": "Add RAG integration to ground responses in your data",
+        "correct": false,
+        "why": "RAG is a remedy for low quality scores such as groundedness, not a safety control."
+      },
+      {
+        "text": "Switch from AI-assisted metrics to NLP metrics",
+        "correct": false,
+        "why": "That changes how you measure, not what the model produces."
+      }
+    ]
+  },
+  {
+    "id": "1.2.5-14",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "rag",
+      "fine-tuning"
+    ],
+    "question": "A Microsoft Foundry evaluation shows **quality** scores below your requirements. Which four kinds of improvement can you consider?",
+    "answer": "- **Prompt engineering**\n- A **different model**\n- **RAG integration**\n- **Fine-tuning** (if the model supports it)",
+    "explanation": "Prompt engineering refines instructions and system messages. A different model may be better optimized for your use case. RAG grounds responses in your own data. Fine-tuning trains the model on your domain. Each step can grow in complexity and cost, so plan for that, and re-run the evaluation after every change to measure its impact."
+  }
+]

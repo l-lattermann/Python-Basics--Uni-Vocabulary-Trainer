@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1.2.8-01",
+    "type": "mc",
+    "section": "1.2.8",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+    "tags": ["benchmarks", "model-selection"],
+    "question": "Which model benchmark indicates the model's ability to process prompts and return comprehensive responses quickly?",
+    "answer": "**Throughput**.",
+    "explanation": "Throughput is a performance benchmark: generated tokens per second, total tokens per second and time between tokens. The Microsoft Foundry leaderboard summarizes it as mean generated tokens per second, where higher is better. It matters most for interactive, real-time apps.",
+    "options": [
+      {"text": "Quality index", "correct": false, "why": "It averages accuracy across reasoning, knowledge, math and coding datasets and says nothing about speed (unit 1.2.3, Select models using benchmarks)."},
+      {"text": "Cost", "correct": false, "why": "Cost benchmarks show the price per 1 million input and output tokens, not how fast a model responds (unit 1.2.3, Select models using benchmarks)."},
+      {"text": "Throughput", "correct": true, "why": "Throughput measures how many tokens a model processes and generates per second, so it shows how quickly it returns responses (unit 1.2.3, Select models using benchmarks)."}
+    ]
+  },
+  {
+    "id": "1.2.8-02",
+    "type": "mc",
+    "section": "1.2.8",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+    "tags": ["deployment-types", "quota"],
+    "question": "Which deployment type in Microsoft Foundry is best for general use while offering the largest quota?",
+    "answer": "**Global Standard**.",
+    "explanation": "Global Standard runs in any Azure region and bills per token. Microsoft Foundry recommends it whenever possible for maximum capabilities. Choose Data Zone Standard when data must stay inside a data zone, and Regional Standard for single-region data residency or low-volume scenarios.",
+    "options": [
+      {"text": "Data Zone Batch", "correct": false, "why": "It is meant for large asynchronous batch jobs that must stay inside a data zone, not for general interactive use (unit 1.2.4, Deploy models to endpoints)."},
+      {"text": "Global Standard", "correct": true, "why": "It uses any Azure region on a pay-per-token basis, is best for general workloads and provides the highest quota (unit 1.2.4, Deploy models to endpoints)."},
+      {"text": "Developer", "correct": false, "why": "It is only for evaluating fine-tuned models, not for general use (unit 1.2.4, Deploy models to endpoints)."}
+    ]
+  },
+  {
+    "id": "1.2.8-03",
+    "type": "mc",
+    "section": "1.2.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/7-knowledge-check",
+    "tags": ["evaluation", "metrics"],
+    "question": "Which evaluation metric measures linguistic correctness and natural language quality?",
+    "answer": "**Fluency**.",
+    "explanation": "Fluency is one of the generation quality metrics in Microsoft Foundry automated evaluation, next to groundedness, relevance and coherence. It judges how well the text is written. It does not judge whether the content is true or on topic.",
+    "options": [
+      {"text": "Fluency", "correct": true, "why": "Fluency evaluates linguistic correctness and natural language quality (unit 1.2.5, Evaluate model performance)."},
+      {"text": "Groundedness", "correct": false, "why": "Groundedness checks whether a response is based on the provided context rather than speculation (unit 1.2.5, Evaluate model performance)."},
+      {"text": "Relevance", "correct": false, "why": "Relevance checks whether a response addresses the user's question or request (unit 1.2.5, Evaluate model performance)."}
+    ]
+  }
+]

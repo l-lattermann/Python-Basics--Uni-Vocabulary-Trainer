@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "id": "sample",
+  "title": "Sample: Azure AI Foundry basics",
+  "exam_areas": {
+    "plan": {"title": "Plan and manage an Azure AI solution", "weight": "25-30%"},
+    "genai": {"title": "Implement generative AI solutions", "weight": "25-30%"},
+    "vision": {"title": "Implement computer vision solutions", "weight": "10-15%"},
+    "text": {"title": "Implement natural language processing solutions", "weight": "15-20%"},
+    "extraction": {"title": "Implement information extraction solutions", "weight": "10-15%"}
+  },
+  "sections": {
+    "1": "Plan and manage an Azure AI solution",
+    "1.1": "Choose the right Azure AI service",
+    "1.2": "Secure Azure AI resources",
+    "2": "Develop generative AI apps in Azure",
+    "2.1": "Select, deploy, and evaluate Microsoft Foundry models",
+    "2.1.1": "Select models using benchmarks",
+    "2.2": "Build retrieval-augmented generation (RAG) apps",
+    "2.3": "Call deployed models from code",
+    "3": "Develop computer vision solutions",
+    "3.1": "Detect objects in images"
+  },
+  "cards": [
+    {
+      "id": "1.1-01",
+      "type": "basic",
+      "section": "1.1",
+      "exam_area": "extraction",
+      "origin": "generated",
+      "tags": ["service-choice"],
+      "question": "Which Azure service extracts text, key-value pairs and tables from invoices and receipts?",
+      "answer": "**Azure AI Document Intelligence**, with its prebuilt invoice and receipt models."
+    },
+    {
+      "id": "1.2-01",
+      "type": "basic",
+      "section": "1.2",
+      "exam_area": "plan",
+      "origin": "knowledge-check",
+      "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/managed-identity",
+      "question": "An app running in Azure must call an Azure OpenAI deployment **without storing an API key**. How should it authenticate?",
+      "answer": "With a **managed identity** and Microsoft Entra ID authentication.",
+      "explanation": "Give the managed identity an RBAC role on the resource, for example **Cognitive Services OpenAI User**. The app then requests an Entra ID token and sends it as a bearer token instead of an `api-key` header.",
+      "addition": "Key-based (local) authentication can be switched off entirely by setting `disableLocalAuth` to `true` on the resource. After that, only Entra ID tokens are accepted.",
+      "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/disable-local-auth"
+    },
+    {
+      "id": "2.1.1-01",
+      "type": "mc",
+      "section": "2.1.1",
+      "exam_area": "genai",
+      "origin": "generated",
+      "question": "You want to compare candidate models on quality, cost and throughput **before** you deploy one. Where in Microsoft Foundry do you look?",
+      "answer": "The **model leaderboards** (benchmarks) in the model catalog.",
+      "explanation": "The leaderboards rank models on standard benchmark datasets, so you can shortlist models without deploying them first.",
+      "options": [
+        {"text": "The model leaderboards in the model catalog", "correct": true},
+        {"text": "Azure Monitor metrics of the Foundry resource", "correct": false, "why": "Monitor shows metrics of deployments that already exist, not comparisons between candidates."},
+        {"text": "The Content Safety try-out page", "correct": false, "why": "It tests moderation of text and images, not model quality."},
+        {"text": "The deployment's rate limit settings", "correct": false, "why": "Rate limits control quota for one deployment; they say nothing about quality."}
+      ]
+    },
+    {
+      "id": "2.1-01",
+      "type": "mc",
+      "section": "2.1",
+      "exam_area": "genai",
+      "origin": "knowledge-check",
+      "question": "Which of these are deployment types for Azure OpenAI models? *(Select all that apply.)*",
+      "answer": "**Global Standard**, **Data Zone Standard** and **Provisioned**.",
+      "options": [
+        {"text": "Global Standard", "correct": true, "why": "Pay per token; requests can be processed in any Azure region."},
+        {"text": "Data Zone Standard", "correct": true, "why": "Pay per token; processing stays within a data zone such as the EU or the US."},
+        {"text": "Provisioned", "correct": true, "why": "Reserved throughput units for predictable latency."},
+        {"text": "Spot", "correct": false, "why": "Spot pricing exists for virtual machines, not for model deployments."}
+      ]
+    },
+    {
+      "id": "2.3-01",
+      "type": "mc",
+      "section": "2.3",
+      "exam_area": "genai",
+      "origin": "generated",
+      "tags": ["python", "sdk"],
+      "question": "Complete the code so it sends a chat request to an Azure OpenAI deployment.\n\n```python\nfrom openai import AzureOpenAI\n\nclient = AzureOpenAI(\n    azure_endpoint=endpoint,\n    api_key=key,\n    api_version=\"2024-10-21\",\n)\nresponse = client.chat.completions.___(\n    model=\"gpt-4o-mini\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello\"}],\n)\nprint(response.choices[0].message.content)\n```",
+      "answer": "`create`",
+      "explanation": "`client.chat.completions.create(...)` sends the request. With Azure OpenAI, `model` is the **deployment name**, not the base model name.",
+      "options": [
+        {"text": "`create`", "correct": true},
+        {"text": "`generate`", "correct": false},
+        {"text": "`complete`", "correct": false},
+        {"text": "`send`", "correct": false}
+      ]
+    },
+    {
+      "id": "2.2-01",
+      "type": "order",
+      "section": "2.2",
+      "exam_area": "genai",
+      "origin": "generated",
+      "question": "Put the steps of answering one question with **retrieval-augmented generation** in order.",
+      "answer": "Question → retrieve → ground the prompt → generate.",
+      "explanation": "The model only sees what is in the prompt. Retrieval must therefore finish before the prompt is built.",
+      "items": [
+        "Receive the user's question",
+        "Retrieve relevant chunks from the search index",
+        "Add the retrieved chunks to the prompt as grounding data",
+        "Generate the answer with the chat model"
+      ]
+    },
+    {
+      "id": "2.2-02",
+      "type": "order",
+      "section": "2.2",
+      "exam_area": "genai",
+      "origin": "outline-gap",
+      "question": "Put the steps of building a vector index for a RAG app in order.",
+      "answer": "Store → chunk → embed → index.",
+      "items": [
+        "Upload the source documents to storage",
+        "Split the documents into chunks",
+        "Create an embedding for each chunk",
+        "Write chunks and vectors into an Azure AI Search index"
+      ]
+    },
+    {
+      "id": "3.1-01",
+      "type": "basic",
+      "section": "3.1",
+      "exam_area": "vision",
+      "origin": "generated",
+      "question": "An object detection model marks each object it finds like the red rectangle in this image. What is that rectangle called?",
+      "question_images": [
+        {"src": "media/sample/bounding-box.png", "alt": "A blue oval surrounded by a red rectangle"}
+      ],
+      "answer": "A **bounding box**.",
+      "explanation": "For every detected object, object detection returns a label, a confidence score and a bounding box given in pixel coordinates."
+    }
+  ]
+}

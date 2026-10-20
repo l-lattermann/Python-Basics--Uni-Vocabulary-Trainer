@@ -53,7 +53,7 @@
   "1.2.5-08": {
    "box": 1,
    "due": 2,
-   "reviews": 2,
+   "reviews": 3,
    "lapses": 0,
    "starred": false,
    "flag": null
@@ -77,12 +77,28 @@
   "1.2.3-13": {
    "box": 1,
    "due": 2,
-   "reviews": 1,
+   "reviews": 2,
    "lapses": 0,
    "starred": false,
    "flag": null
   },
   "1.2.4-03": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
+  },
+  "1.2.4-05": {
+   "box": 1,
+   "due": 2,
+   "reviews": 1,
+   "lapses": 0,
+   "starred": false,
+   "flag": null
+  },
+  "1.2.2-02": {
    "box": 1,
    "due": 2,
    "reviews": 1,
@@ -96,10 +112,6 @@
   "mode": "mixed",
   "filter": {},
   "pending": [
-   "1.2.5-08",
-   "1.2.3-13",
-   "1.2.4-05",
-   "1.2.2-02",
    "1.2.7-01",
    "1.2.5-02",
    "1.2.5-10",
@@ -259,6 +271,28 @@
      "flag": null
     },
     "correct": true
+   },
+   "1.2.4-05": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": true
+   },
+   "1.2.2-02": {
+    "before": {
+     "box": 0,
+     "due": null,
+     "reviews": 0,
+     "lapses": 0,
+     "starred": false,
+     "flag": null
+    },
+    "correct": true
    }
   },
   "history": [
@@ -309,6 +343,22 @@
    {
     "id": "1.2.4-03",
     "index": 2
+   },
+   {
+    "id": "1.2.4-05",
+    "index": 2
+   },
+   {
+    "id": "1.2.3-13",
+    "index": 1
+   },
+   {
+    "id": "1.2.5-08",
+    "index": 0
+   },
+   {
+    "id": "1.2.2-02",
+    "index": 0
    }
   ],
   "seqs": [
@@ -323,7 +373,11 @@
    1792492591712005,
    1792492591712006,
    1792492591712007,
-   1792492591712008
+   1792492591712008,
+   1792492591712009,
+   1792492591712010,
+   1792492591712011,
+   1792492591712012
   ]
  }
 }

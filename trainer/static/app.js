@@ -39,7 +39,7 @@ const ORIGINS = {generated: 'Kurs', 'knowledge-check': 'Knowledge check', 'outli
 const MODES = [['mixed', 'Gemischt'], ['new', 'Nur neue Karten'], ['review', 'Nur wiederholen'], ['exam', 'Prüfungsmodus']];
 const SESSION_SIZE = 50, NEW_PER_SESSION = 15, REPEAT_AFTER = 3;
 const SCALES = [1, .94, .88, .82, .76, .7, .64, .58, .52, .46, .4];
-const KEYS = {ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', ' ': 'space', Escape: 'esc',
+const KEYS = {ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', ' ': 'space', Enter: 'space', Escape: 'esc',
   d: 'd', f: 'f', j: 'j', k: 'k', l: 'l'};
 
 const root = document.getElementById('root');

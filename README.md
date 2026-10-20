@@ -27,7 +27,7 @@ python3 -m trainer --deck sample   # a specific deck
 | Key | |
 |---|---|
 | `↑` `↓` | move the cursor (menus, options, steps) |
-| `Space` | reveal · select · grab/drop a step · continue |
+| `Space` / `Enter` | reveal · select · grab/drop a step · continue |
 | `←` / `F` | didn't know it |
 | `→` / `J` | knew it · submit a choice or an order |
 | `D` | undo the last rating |

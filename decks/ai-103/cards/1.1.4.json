@@ -12,7 +12,7 @@
     ],
     "question": "What are **Foundry Tools** in Microsoft Foundry, what do they gain you over a solution built on generative AI agents alone, and under which **two** older names do they still appear in some APIs and SDKs?",
     "answer": "- **Foundry Tools** — a set of out-of-the-box **prebuilt APIs and models** for common AI tasks\n- Gain: a **more cost-effective and predictable** solution\n- Older names: **Azure AI Services**, before that **Azure Cognitive Services**",
-    "explanation": "Generative models and agents are the focus of most AI projects, but many tasks are common enough that ready-made functionality covers them: analysing text, converting speech, translating, extracting fields from forms. Integrating that functionality is cheaper and behaves more predictably than leaving the task to an agent. The old names survive in some APIs and SDKs, so expect them in code and documentation."
+    "explanation": "Generative models and agents are the focus of most AI projects, but many tasks are common enough that ready-made functionality covers them: analysing text, converting speech, translating, extracting fields from forms. Integrating that functionality is cheaper and behaves more predictably than leaving the task to an agent. The old names are still reflected in some APIs and SDKs, so expect them in code."
   },
   {
     "id": "1.1.4-02",

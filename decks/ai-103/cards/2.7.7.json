@@ -10,7 +10,7 @@
     "question": "What are the key steps to create a Microsoft Foundry Agent using the Microsoft Agent Framework?",
     "answer": "Create an **`AzureAIAgentClient`**, define a **ChatAgent** with instructions and tools, and create an **`AgentThread`** for conversations.",
     "explanation": "The sequence is client, then agent, then conversation. The chat client is the bridge to the Foundry Agent Service: it takes the credential, the project endpoint and the model deployment name. The agent gets its instructions (the system prompt) and optional tools from code. The thread or session holds the conversation state, and you send user messages to it to run the agent.",
-    "addition": "Current Python names: `AzureAIAgentClient` was replaced by `FoundryChatClient`, and `ChatAgent` was renamed to `Agent` (constructor parameter `client=` instead of `chat_client=`). The course exercise already uses the new names.",
+    "addition": "Current Python names: `AzureAIAgentClient` was replaced by `FoundryChatClient` (or `FoundryAgent` when your app does not own the agent definition), and `ChatAgent` was renamed to `Agent` (constructor parameter `client=` instead of `chat_client=`). The course exercise already uses `FoundryChatClient` and `Agent`.",
     "addition_source": "https://learn.microsoft.com/en-us/agent-framework/support/upgrade/python-2026-significant-changes",
     "options": [
       {

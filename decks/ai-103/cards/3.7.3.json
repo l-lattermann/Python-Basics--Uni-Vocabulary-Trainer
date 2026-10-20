@@ -64,15 +64,15 @@
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
     "tags": ["translator", "python-sdk"],
-    "question": "You call **Azure Translator**'s `translate` method with texts in unknown languages and want French and English results. Which **two** statements are true?",
-    "answer": "Omit **`from_language`** to get **automatic source language detection**; pass the targets as a list in **`to_language`**, e.g. `[\"fr\", \"en\"]`.",
-    "explanation": "The input is a list of `InputTextItem` objects, each holding one string. Each result carries `detected_language` and a list of `translations`, one per valid target code, each with its `to` code and `text`. One call can therefore translate several inputs into several languages: \"Hola\" and \"こんにちは\" both come back as \"Bonjour\" and \"Hello\".",
+    "question": "You call **Azure Translator**'s `translate` method with texts in unknown languages and want French and English results. Which **three** statements are true?",
+    "answer": "- Pass the texts in `body` as a list of **`InputTextItem`** objects\n- Omit **`from_language`** to get **automatic source language detection**\n- Pass the targets as a list in **`to_language`**, e.g. `[\"fr\", \"en\"]`",
+    "explanation": "Each result carries `detected_language` with the source the service found, and a list of `translations`, one per valid target code, each with its `to` code and `text`. One call can therefore translate several inputs into several languages: \"Hola\" (detected as `es`) and \"こんにちは\" (`ja`) both come back as \"Bonjour\" and \"Hello\". Set `from_language` to an ISO code such as \"en\" only when you know the source.",
     "options": [
       {"text": "Omit `from_language`, and Azure Translator detects each input's source language automatically.", "correct": true, "why": "`from_language` is optional; without it the service detects the source, here Spanish and Japanese."},
       {"text": "Pass `to_language=[\"fr\", \"en\"]`; you get one translation per valid target code.", "correct": true, "why": "`to_language` takes a list of ISO codes and returns a translation for each."},
       {"text": "Call `translate` once per target language, because `to_language` accepts a single code.", "correct": false, "why": "`to_language` is a list, so one call covers several targets."},
-      {"text": "Pass the source texts as a single string in `body`.", "correct": false, "why": "`body` is a list of `InputTextItem` objects, each containing one text."},
-      {"text": "Set `from_script=\"Latn\"` so the output is written in Latin script.", "correct": false, "why": "`from_script` and `to_script` belong to `transliterate`, which changes the script, not the language."}
+      {"text": "Pass the texts in `body` as a list of `InputTextItem` objects, one per string.", "correct": true, "why": "`translate` takes its source text as a list of `InputTextItem` objects, each containing one text string."},
+      {"text": "Read each input's detected source language from the `to` field of its translations.", "correct": false, "why": "`to` is the target language code of one translation; the source is in the result's `detected_language`."}
     ]
   },
   {

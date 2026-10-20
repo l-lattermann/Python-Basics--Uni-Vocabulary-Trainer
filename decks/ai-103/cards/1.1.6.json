@@ -108,7 +108,7 @@
     ],
     "question": "Which practice does Microsoft recommend to optimise an AI application for **inclusiveness**?",
     "answer": "Include input from **as diverse a group of people as possible** in the **design, development and testing** of the application.",
-    "explanation": "Inclusiveness means AI systems should empower everyone and engage people. AI should bring benefits to all parts of society, regardless of physical ability, gender, sexual orientation, ethnicity or other factors. Diverse input is the course's one concrete practice for this, and it applies at every stage: in the design, in the development and in the testing of the application, not only in a final check."
+    "explanation": "Inclusiveness means AI systems should empower everyone and engage people: AI should bring benefits to all parts of society, regardless of physical ability, gender, sexual orientation, ethnicity or other factors. Do not confuse it with fairness. Fairness checks that a model's predictions do not favour or penalise groups, as in loan approval. Inclusiveness asks whom the system serves and who shapes it, which is why diverse people take part at every stage, not only in a final check."
   },
   {
     "id": "1.1.6-07",
@@ -123,7 +123,7 @@
     ],
     "question": "Under Microsoft's **transparency** principle, what should users of an AI system based on a machine learning model be made aware of?",
     "answer": "- The system's **purpose**, how it works and its **limitations**\n- **Factors affecting accuracy**, such as the number of training cases and the most influential features\n- The **confidence score** of predictions\n- With personal data: how it is **used and retained**, and **who has access**",
-    "explanation": "Transparency means AI systems should be understandable. Because AI seems human-like, users tend to trust its decisions a great deal; knowing the system's limits and how sure each prediction is lets them judge it. The personal-data point uses a facial recognition system as its example: it takes images of people to recognise them, so users must learn how their images are used and retained and who can see them."
+    "explanation": "Transparency means AI systems should be understandable. The disclosures work on two levels. For the system as a whole, users learn what it is for and what it cannot do. For each prediction, the confidence score shows how sure the model is. Training-set size and influential features are examples of what limits accuracy. Telling users how personal data is handled is also transparency; actually protecting that data is privacy and security."
   },
   {
     "id": "1.1.6-08",

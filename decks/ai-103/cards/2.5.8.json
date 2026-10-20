@@ -6,7 +6,11 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05a-m365-teams-integration.html",
-    "tags": ["agent-publishing", "teams", "foundry-portal"],
+    "tags": [
+      "agent-publishing",
+      "teams",
+      "foundry-portal"
+    ],
     "question": "Put the steps in order to take a document-grounded agent from the Microsoft Foundry portal into Microsoft Teams.",
     "answer": "Create agent → instructions → **Upload files** under Tools → test in playground → **Publish to Teams and Microsoft 365 Copilot** → scope and Submit.",
     "explanation": "Uploading files in the **Tools** section gives the agent file search over the documents. Testing in the playground comes before publishing: if Teams answers turn generic later, the checks are whether file search is enabled, the documents were uploaded and indexed, and the playground answers correctly. After **Submit**, the agent appears in Teams under **Apps** → **Your agents**, sometimes only after 1–2 minutes.",
@@ -26,10 +30,13 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05a-m365-teams-integration.html",
-    "tags": ["agent-publishing", "teams"],
-    "question": "When you publish a Microsoft Foundry agent to Teams, what does the portal generate for you, and which **two icons** and **app scopes** do you set?",
+    "tags": [
+      "agent-publishing",
+      "teams"
+    ],
+    "question": "When you publish a Microsoft Foundry agent to Teams, what does the portal create for you automatically, and which **two icons** and which **app scope** do you set in the Teams app form?",
     "answer": "- Generated: an **Azure Bot Service**, a **Teams app manifest** and a downloadable **app package** with icons and configuration\n- **Color icon** — 192×192 PNG, full color\n- **Outline icon** — 32×32 PNG, white outline on transparent background, shown in the Teams sidebar\n- App scope: **Personal** for one-to-one chat, optionally **Team** for channels",
-    "explanation": "You never build the bot or the manifest yourself; the publishing flow does it. The icons matter when direct publishing fails with a **400** error and you switch to the **Download & customize** tab to upload the package manually. That upload fails if the icon sizes are wrong, the `manifest.zip` is corrupted or the Teams admin has disabled custom app uploads. An agent that installs but does not answer: wait about 30 seconds and check that the Azure Bot Service was created."
+    "explanation": "You never build the bot or the manifest yourself; the publishing flow does it. If direct publishing returns a **400** error and your Microsoft 365 account may publish custom apps, the **Download & customize** tab is the fallback. A manual upload fails if the icons have the wrong sizes, the `manifest.zip` is corrupted or the Teams admin has disabled custom app uploads. An agent that installs but does not answer: wait about 30 seconds and check that the Azure Bot Service was created."
   },
   {
     "id": "2.5.8-03",
@@ -38,9 +45,12 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05a-m365-teams-integration.html",
-    "tags": ["agent-publishing", "copilot"],
+    "tags": [
+      "agent-publishing",
+      "copilot"
+    ],
     "question": "Your Microsoft Foundry agent is already published to Teams. How do you make it available in **Microsoft 365 Copilot**, and how do users reach it there?",
     "answer": "- The **same publishing flow** (**Publish to Teams and Microsoft 365 Copilot**) serves both\n- The agent becomes a **Copilot extension** (declarative agent)\n- Users **@mention** it in Copilot or pick it under **Your agents** in the agent store\n- Needs a **Microsoft 365 Copilot license**",
-    "explanation": "One publish puts the agent in Teams and Copilot, and Copilot routes the user's query to it. Users get the agent's knowledge alongside Copilot's own capabilities. With **shared** scope it is available at once; with **organization** scope an admin first approves it in the Microsoft 365 admin center under **Requests**, then it appears under **Built by your org**. Deleting the agent in Foundry also removes its Azure Bot Service and published deployments, and the Copilot extension stops working."
+    "explanation": "One publish puts the agent in Teams and Copilot, and Copilot routes the user's query to it. Users get the agent's knowledge alongside Copilot's own capabilities and switch between the two seamlessly; Teams alone works with a standard Microsoft 365 account. With **shared** scope (the lab's Teams section calls it **Individual scope**) the agent is available at once; with **organization** scope an admin first approves it in the Microsoft 365 admin center under **Requests**, then it appears under **Built by your org**. Deleting the agent in Foundry also removes its Azure Bot Service and published deployments, and the Copilot extension becomes inactive."
   }
 ]

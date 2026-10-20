@@ -9,9 +9,9 @@
     "tags": ["content-understanding", "authentication"],
     "question": "What configuration values are needed to use the Azure Content Understanding API?",
     "answer": "The **endpoint and key** of the Microsoft Foundry resource.",
-    "explanation": "A client connects to the Foundry resource's endpoint and sends one of its API keys, in the SDK as `AzureKeyCredential`, over REST in the `Ocp-Apim-Subscription-Key` header. You find both in the Azure portal or on the Foundry portal project home page. Subscription, tenant and resource group only locate the resource in Azure; the API call never needs them.",
+    "explanation": "A client connects to the Foundry resource's endpoint and sends one of its API keys, in the SDK as `AzureKeyCredential`, over REST in the `Ocp-Apim-Subscription-Key` header. You find both in the Azure portal or on the Foundry portal project home page. Inside a Foundry project, code can also sign in with Microsoft Entra ID through the Foundry SDK and retrieve these connection details. The client code never passes a subscription, tenant or resource group.",
     "options": [
-      {"text": "The name of the resource group where the Azure service is deployed.", "correct": false, "why": "Unit 4.6.2 lists only the endpoint and an API key as connection values; the resource group organizes Azure resources and is not part of any API call."},
+      {"text": "The name of the resource group where the Azure service is deployed.", "correct": false, "why": "Unit 4.6.2 lists only the endpoint and an API key as connection values; no client code in units 4.6.3 and 4.6.4 passes a resource group."},
       {"text": "The Azure subscription ID and tenant ID.", "correct": false, "why": "Unit 4.6.2 does not use them: the client authenticates with the resource's endpoint and key, not with subscription or tenant IDs."},
       {"text": "The endpoint and key for the Foundry resource.", "correct": true, "why": "Unit 4.6.2: to connect from a client application you need the Microsoft Foundry resource endpoint and one of its API keys."}
     ]
@@ -42,8 +42,8 @@
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/06-knowledge-check",
     "tags": ["content-understanding", "field-extraction"],
     "question": "How are the extracted fields returned?",
-    "answer": "As **type-specific values**.",
-    "explanation": "Each field in `contents[].fields` carries its `type` and a value property named after that type, for a string field `valueString`. Your code checks the type and reads the matching property. Beside the fields, a document analyzer also returns the Markdown and the OCR layout: pages, words, lines and paragraphs. Each field also has a confidence score and its source location.",
+    "answer": "As **type-specific values**: each field has a `type` and a value that matches it, for a `string` field `valueString`.",
+    "explanation": "In the REST response, every named field in `contents[].fields` is its own object with `type`, the typed value, `spans`, `confidence` and `source`. Your code checks `type` and reads the matching property, for example `field_data['valueString']`. The Python SDK gives typed access instead: you check `field_data.type` and read `field_data.value`.",
     "options": [
       {"text": "As type-specific values.", "correct": true, "why": "Unit 4.6.4: each field has a `type` and a value such as `valueString`; the sample code extracts the type-specific values."},
       {"text": "As a list of strings.", "correct": false, "why": "Unit 4.6.4: fields come back as a dictionary of named field objects with type, value, confidence and spans, not plain strings."},

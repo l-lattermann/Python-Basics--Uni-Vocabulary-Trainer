@@ -146,6 +146,6 @@
     ],
     "question": "What makes a generative AI model **multimodal** with respect to visual content?",
     "answer": "It can both **process visual input** and **generate visual output** in the form of images and videos.",
-    "explanation": "Computer vision is the ability of AI apps and agents to accept, interpret and process visual input from images, videos and live camera streams, for example recognizing the products in a shopping basket. Generative AI models are increasingly multimodal, which adds the other direction: besides processing visual input, they generate new visual content as images and videos."
+    "explanation": "Computer vision on its own only reads visual content: it accepts, interprets and processes images, videos and live camera streams, as when a grocery checkout recognizes the products in a basket. Generative AI models are increasingly multimodal, and that closes the loop. A model that interprets a picture is no longer limited to working with what it sees; it can also create new visual content."
   }
 ]

@@ -39,8 +39,8 @@
         "why": "Concurrent broadcasts the same task to all agents at once and collects independent results; nobody plans or adapts the work."
       }
     ],
-    "answer": "**Magentic orchestration** — a dedicated **Magentic manager** coordinates specialized agents and builds a dynamic **task ledger** of goals, subgoals and execution plans.",
-    "explanation": "The manager keeps a shared context, tracks progress and decides which agent acts next based on the evolving context and the agents' capabilities. It breaks the problem into subtasks and refines the solution iteratively. The pattern cares as much about building and documenting the approach as about the final result, so the ledger doubles as a reviewable plan. It fits complex, open-ended problems that need input from several specialists and where a step-by-step plan adds value before the tasks run.",
+    "answer": "- **Magentic orchestration** — a dedicated **Magentic manager** coordinates specialized agents and decides which one acts next\n- It builds a dynamic **task ledger** of goals, subgoals and execution plans\n- Fits **open-ended** problems with no predetermined path, input from several specialists, a **documented plan for human review**, and tools that act on external systems",
+    "explanation": "The manager keeps a shared context, tracks progress and picks the next agent based on the evolving context, task progress and the agents' capabilities. It breaks the problem into subtasks, assigns them and refines the solution iteratively. The pattern cares as much about building and documenting the approach as about the final result, so the ledger doubles as a reviewable plan. Choose it when a step-by-step, dynamically built plan adds value before the tasks run and must adapt as new information emerges.",
     "explanation_images": [
       {
         "src": "media/ai-103/2.8.8-magentic-orchestration.png",
@@ -61,7 +61,7 @@
     ],
     "question": "When should you **avoid** Magentic orchestration for a multi-agent solution in the Microsoft Agent Framework?",
     "answer": "- The solution path is **fixed or deterministic**\n- **No ledger or plan of approach** is needed, or the task is simple enough for a **lighter pattern**\n- **Speed** is the priority\n- You expect frequent **stalls or loops** without a clear way out",
-    "explanation": "Magentic spends effort on planning before it executes: the manager builds and refines a task ledger, tracks progress and reassigns work. That overhead pays off only when the plan cannot be defined in advance and must adapt as new information comes in. With a known path, sequential or concurrent orchestration gets the same result faster and more cheaply. Because the pattern emphasizes planning over fast execution, latency-critical tasks suffer. A task that keeps stalling burns rounds without converging."
+    "explanation": "Magentic spends effort on planning before it executes: the manager builds and refines a task ledger, tracks progress and reassigns work. That overhead pays off only when the plan cannot be defined in advance and must adapt as new information emerges. With a known path, a fixed-order pattern such as sequential orchestration is enough. Because the pattern emphasizes planning over fast execution, latency-critical tasks suffer. A task that keeps stalling or looping without a clear resolution path never converges, however often the plan is revised."
   },
   {
     "id": "2.8.8-03",
@@ -76,7 +76,7 @@
       "sdk"
     ],
     "question": "In the Microsoft Agent Framework Python SDK, which class builds a Magentic workflow, what controls the **standard manager**, and how do you run the workflow and get its result?",
-    "answer": "- **`MagenticBuilder`** — add the agents (e.g. `ChatAgent`) as participants, an async event callback in streaming mode, and the standard manager\n- **Standard manager** — a chat client for planning and progress tracking, limited by **max round count**, **stall count** and **reset count**\n- **`run_stream`** with the task\n- Final result in the **`WorkflowOutputEvent`**",
-    "explanation": "The standard manager is the planner: its chat client creates the plan and tracks progress, and the three counts control how the orchestration behaves. The module's diagram shows the stall count at work: when no progress is made for more rounds than the limit, the manager goes back and updates the task ledger with a new plan. The callback receives orchestrator messages, agent streaming updates, agent messages and final results. You iterate the events in an async loop and read the solution from `WorkflowOutputEvent`."
+    "answer": "- **`MagenticBuilder`** — add the agents (e.g. `ChatAgent`) as participants, an async event callback in streaming mode, and the standard manager\n- **Standard manager** — a chat client for planning and progress tracking, configured with **max round count**, **stall count** and **reset count**\n- **`run_stream`** with the task\n- Final result in the **`WorkflowOutputEvent`**",
+    "explanation": "The standard manager is the planner: its chat client creates the plan and tracks progress, and the three counts control how the orchestration behaves. The Magentic flow diagram shows the stall count at work: when no progress is made for more rounds than the limit, the manager goes back and updates the task ledger with a new plan. The callback receives orchestrator messages, agent streaming updates, agent messages and final results. You iterate the events in an async loop and read the solution from `WorkflowOutputEvent`."
   }
 ]

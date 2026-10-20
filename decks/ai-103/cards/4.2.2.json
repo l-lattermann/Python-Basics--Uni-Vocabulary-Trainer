@@ -6,10 +6,13 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/2-what-is-dall-e",
-    "tags": ["image-generation", "model-catalog"],
-    "question": "Name the **two** model series that Microsoft Foundry offers for generating images from a text prompt.",
+    "tags": [
+      "image-generation",
+      "model-catalog"
+    ],
+    "question": "Name **two** model series in Microsoft Foundry that generate images from a text prompt, with their providers.",
     "answer": "- **gpt-image-1** series — OpenAI's image-generation models\n- **FLUX** series — Black Forest Labs' image-generation models",
-    "explanation": "These two are examples, not the full list. Microsoft Foundry hosts more image-generation models, and the model catalog shows them all. In the Foundry portal you narrow the catalog down by filtering on the *text to image* inference task. Both series take a natural-language description and return a new image."
+    "explanation": "These two are examples, not the full list: Microsoft Foundry supports more image-generation models, and the model catalog shows them all. In the Foundry portal you narrow the catalog down by filtering on the *text to image* inference task. Both series take a natural-language description and return a new image."
   },
   {
     "id": "4.2.2-02",
@@ -18,10 +21,13 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/2-what-is-dall-e",
-    "tags": ["image-generation", "generative-ai"],
+    "tags": [
+      "image-generation",
+      "generative-ai"
+    ],
     "question": "What does an **image-generation model** in Microsoft Foundry do?",
     "answer": "It is a **generative AI model** that creates graphical data from **natural-language input**: you describe an image, and it generates a matching one.",
-    "explanation": "The input is a prompt, not a picture. A prompt such as *A robot eating spaghetti* is enough for the model to draw an illustration of exactly that scene. This makes it useful wherever the desired image can be described in words, such as illustrations for articles, marketing images or a new logo."
+    "explanation": "The input is a description in words. A prompt such as *A robot eating spaghetti* is enough for the model to draw an illustration of exactly that scene. This makes it useful wherever the desired image can be described, such as illustrations or photorealistic images for articles and marketing, or a unique product or company logo."
   },
   {
     "id": "4.2.2-03",
@@ -30,15 +36,34 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/2-what-is-dall-e",
-    "tags": ["image-generation", "generative-ai"],
+    "tags": [
+      "image-generation",
+      "generative-ai"
+    ],
     "question": "You send the prompt *A robot eating spaghetti* to a gpt-image-1 deployment in Microsoft Foundry. Where does the returned image come from?",
     "answer": "The model **generates a new, original image** based on the data it was trained on.",
     "explanation": "An image-generation model is not a search system. It does not look up a fitting picture in a curated image catalog; it creates graphics that did not exist before. That is the difference between *finding* an image and *generating* one: a search returns something that already exists, a generator produces something new.",
     "options": [
-      {"text": "The model generates a new, original image based on its training data", "correct": true, "why": "Image-generation models create new graphics from the prompt; nothing is retrieved."},
-      {"text": "The model retrieves the best-matching picture from a curated image catalog", "correct": false, "why": "The course states explicitly that generated images are not retrieved from a curated catalog."},
-      {"text": "Azure AI Search runs a vector search over an indexed image collection and returns the top hit", "correct": false, "why": "That is image retrieval, a search scenario; an image-generation model does not search an index."},
-      {"text": "The model edits a reference image that the playground attaches automatically", "correct": false, "why": "A reference image is optional and only used when you provide one; a plain text prompt is enough to generate an image."}
+      {
+        "text": "The model generates a new, original image based on its training data",
+        "correct": true,
+        "why": "Image-generation models create new graphics from the prompt; nothing is retrieved."
+      },
+      {
+        "text": "The model retrieves the best-matching picture from a curated image catalog",
+        "correct": false,
+        "why": "Generated images are original; they are not retrieved from a curated image catalog."
+      },
+      {
+        "text": "Azure AI Search runs a vector search over an indexed image collection and returns the top hit",
+        "correct": false,
+        "why": "That is image retrieval, a search scenario; an image-generation model does not search an index."
+      },
+      {
+        "text": "The model edits a reference image that the playground attaches automatically",
+        "correct": false,
+        "why": "A reference image is optional and only used when you provide one; a plain text prompt is enough to generate an image."
+      }
     ]
   }
 ]

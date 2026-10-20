@@ -1,21 +1,5 @@
 [
   {
-    "id": "1.4.3-01",
-    "type": "basic",
-    "section": "1.4.3",
-    "exam_area": "genai",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
-    "tags": [
-      "tools",
-      "code-interpreter",
-      "responses-api"
-    ],
-    "question": "What does the **code_interpreter** tool give a model when you add it to a request in the OpenAI Responses API?",
-    "answer": "A **sandboxed Python runtime** in which the model writes and runs Python code during the conversation, then uses the real results in its answer.",
-    "explanation": "Without the tool, a model can only discuss code or algorithms. With it, the model tests its own logic, processes data and returns results that were actually computed — the course calls this the step from a thinker to a doer. Asked for the square root of 16, the model generates `math.sqrt(16)`, runs it and answers \"4\"; the generated code is visible when you inspect the response object."
-  },
-  {
     "id": "1.4.3-02",
     "type": "basic",
     "section": "1.4.3",
@@ -143,7 +127,7 @@
       "**Code runs** — in a sandbox with libraries like pandas, numpy, math",
       "**Results returned** — model gets the output and puts it into its response"
     ],
-    "explanation": "Your app only does the first step. Everything after it happens on the model side: the model alone decides whether the task needs code at all, and the code runs in the sandbox, not in your application. Because the output goes back to the model, not straight to the user, the model can phrase it as an answer or fix its code after an error."
+    "explanation": "Your app only does the first step. Everything after it happens on the model side: the model alone decides whether the task needs code at all, and the code runs in the sandbox, not in your application. Because the output goes back to the model, not straight to the user, the model can phrase it as an answer or fix its code after an error. Asked for the square root of 16, the model generates `math.sqrt(16)`, runs it and answers \"4\"; the generated code is visible when you inspect the response object."
   },
   {
     "id": "1.4.3-07",

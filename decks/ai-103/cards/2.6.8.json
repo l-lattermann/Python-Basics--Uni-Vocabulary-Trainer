@@ -12,7 +12,7 @@
     ],
     "question": "You designed and saved a workflow in the Microsoft Foundry portal and now want to run it from a Python backend. What are the steps?",
     "answer": "- Connect to the project with the **Azure AI Projects SDK** (`AIProjectClient`)\n- Create a **conversation** (`openai_client.conversations.create()`)\n- Call `openai_client.responses.create()` with the conversation id, the workflow referenced **by name** as an `agent_reference`, and the `input`",
-    "explanation": "The visual designer generates the workflow's YAML definition, and saving stores the workflow in the project. Code never rebuilds the workflow: it only names it. `AIProjectClient` handles authentication and gives access to the OpenAI-compatible API that runs conversations and workflows. The conversation is the context the workflow runs in. You can also download the YAML from the portal and keep it in your codebase.\n\n```python\nstream = openai_client.responses.create(\n    conversation=conversation.id,\n    extra_body={\"agent\": {\"name\": \"triage-workflow\", \"type\": \"agent_reference\"}},\n    input=\"Users can't reset their password from the mobile app.\",\n    stream=True,\n)\n```",
+    "explanation": "The visual designer generates the workflow's YAML definition, and saving stores the workflow in the project. Code never rebuilds the workflow: it only names it. `AIProjectClient` handles authentication and gives access to the OpenAI-compatible API that runs conversations and workflows. The conversation is the context the workflow runs in. You can also download the YAML from the portal and keep it in your codebase.",
     "addition": "Foundry retires workflows on December 1, 2026. New workflows should use Microsoft Agent Framework; the exported YAML definition is the portable artifact and keeps running when deployed as a hosted agent.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/workflow"
   },
@@ -68,7 +68,7 @@
     ],
     "question": "When you invoke a Microsoft Foundry workflow from code, what can the **`input`** parameter carry? Name the **four** kinds the course lists.",
     "answer": "- A **user question** that agents analyze and answer\n- A **support ticket description** for classification and routing\n- A **data payload** that triggers processing logic\n- An **empty string** that just starts the workflow",
-    "explanation": "`input` is the prompt or message the workflow uses to drive its logic. Which kind fits depends on how the workflow is designed: a Q&A workflow expects a question, a triage workflow a ticket text, a processing workflow structured data. A workflow that gathers everything itself, for example by asking the user, needs no input at all, so an empty string is valid."
+    "explanation": "`input` is the prompt or message the workflow uses to drive its logic. Which kind fits depends on how the workflow is designed: a Q&A workflow expects a question, a triage workflow a ticket text, a processing workflow structured data. An empty string is also valid: it simply starts the workflow without specific input."
   },
   {
     "id": "2.6.8-04",
@@ -104,7 +104,7 @@
       {
         "text": "Send an additional message with the input to the same conversation",
         "correct": true,
-        "why": "The course says the app resumes a paused workflow by sending more messages to the conversation."
+        "why": "A paused workflow resumes when the app sends more messages to its conversation with the requested input."
       },
       {
         "text": "Create a new conversation and invoke the workflow again by name",

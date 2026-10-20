@@ -6,7 +6,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "tool-calling"],
+    "tags": [
+      "agents",
+      "tool-calling"
+    ],
     "question": "Put the steps of the automatic **tool-calling lifecycle** of a Microsoft Foundry agent in order.",
     "items": [
       "User sends a message to the agent",
@@ -16,8 +19,8 @@
       "Agent incorporates the results into a natural language response",
       "Response is returned to the user"
     ],
-    "answer": "Message → **decide on tools** → invoke with parameters → tools return results → agent writes the answer → reply to the user.",
-    "explanation": "Tools are programmatic functions the agent can invoke. The agent itself decides whether a request needs a tool at all; a plain question can skip steps 3 and 4. Because the whole lifecycle runs automatically, you add capabilities such as real-time data, code execution or knowledge-base search without writing your own orchestration code."
+    "answer": "The agent calls **tools** (programmatic functions) itself: message → **decide on tools** → invoke with parameters → tools return results → agent writes the answer → reply to the user.",
+    "explanation": "The agent decides on its own whether a request needs a tool at all; a request that needs none goes straight to the answer. When it does use one, it processes the result and works it into a natural-language reply. Because the whole lifecycle runs automatically, you add capabilities such as real-time data, code execution or knowledge-base search without writing your own orchestration code."
   },
   {
     "id": "2.1.7-02",
@@ -26,7 +29,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "tools"],
+    "tags": [
+      "agents",
+      "tools"
+    ],
     "question": "Name the **five** most commonly used tools for a Microsoft Foundry agent and what each does.",
     "answer": "- **Code Interpreter** — writes and runs Python in a sandbox\n- **File Search** — RAG over documents uploaded to a vector store\n- **Bing Web Search** — real-time internet information with citations\n- **Azure AI Search** — retrieval from existing enterprise search indexes\n- **OpenAPI tools** — call external APIs described by an OpenAPI 3.0 spec",
     "explanation": "Code Interpreter handles calculations, data analysis, charts and file processing, for example exact compound interest. File Search indexes PDF, .docx, .txt, .md and more for semantic search. Bing Web Search reaches beyond the model's training data, such as current events. For OpenAPI tools you supply the specification, and Foundry handles parameter mapping and response parsing. Agents can combine several tools in one request."
@@ -38,15 +44,35 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "rag", "azure-ai-search"],
+    "tags": [
+      "agents",
+      "rag",
+      "azure-ai-search"
+    ],
     "question": "A Microsoft Foundry agent must ground its answers in the company's **existing enterprise-scale search indexes**, which already hold structured and unstructured data. Which tool do you add?",
     "answer": "**Azure AI Search**.",
-    "explanation": "Both tools ground answers in your own knowledge, but they start from different places. File Search works with documents uploaded directly to the agent and indexes them in a vector store. Azure AI Search connects to indexed data sources that already exist at enterprise scale, so nothing is re-uploaded to the agent.",
+    "explanation": "Both tools ground answers in your own knowledge, but they start from different places. File Search works with documents uploaded directly to the agent and indexes them in a vector store. Azure AI Search connects to indexed data sources that already exist at enterprise scale, for structured and unstructured search scenarios.",
     "options": [
-      {"text": "Azure AI Search", "correct": true, "why": "It connects the agent to existing search indexes for structured and unstructured search."},
-      {"text": "File Search", "correct": false, "why": "File Search searches documents you upload to the agent's vector store, not existing enterprise indexes."},
-      {"text": "Bing Web Search", "correct": false, "why": "Bing Web Search brings in public, real-time internet information, not internal company data."},
-      {"text": "Code Interpreter", "correct": false, "why": "Code Interpreter runs Python code in a sandbox; it does not retrieve from search indexes."}
+      {
+        "text": "Azure AI Search",
+        "correct": true,
+        "why": "It connects the agent to existing search indexes for structured and unstructured search."
+      },
+      {
+        "text": "File Search",
+        "correct": false,
+        "why": "File Search searches documents you upload to the agent's vector store, not existing enterprise indexes."
+      },
+      {
+        "text": "Bing Web Search",
+        "correct": false,
+        "why": "Bing Web Search brings in public, real-time internet information, not internal company data."
+      },
+      {
+        "text": "Code Interpreter",
+        "correct": false,
+        "why": "Code Interpreter runs Python code in a sandbox; it does not retrieve from search indexes."
+      }
     ]
   },
   {
@@ -56,7 +82,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "tools"],
+    "tags": [
+      "agents",
+      "tools"
+    ],
     "question": "Name the **four** specialized tools in the Microsoft Foundry tool catalog that let an agent act on user interfaces, create images or run custom code.",
     "answer": "- **Browser Automation** — interact with web pages, fill forms, extract content\n- **Computer Use** — interact with desktop applications\n- **Image Generation** — create images from text descriptions\n- **Custom Code Interpreter** — customizable code execution for specialized environments",
     "explanation": "Browser Automation and Computer Use differ by target: web pages versus desktop applications. Custom Code Interpreter is the variant of Code Interpreter for when the standard sandbox does not fit your environment. The catalog keeps growing, so the Foundry portal shows the current list."
@@ -68,10 +97,14 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "tools", "memory"],
+    "tags": [
+      "agents",
+      "tools",
+      "memory"
+    ],
     "question": "Name the **five** specialized tools in the Microsoft Foundry tool catalog that connect an agent to enterprise data, research, other agents or memory.",
     "answer": "- **SharePoint** — access SharePoint content and document libraries\n- **Microsoft Fabric** — connect to Fabric data agents for analytics\n- **Deep Research** — in-depth research across multiple sources\n- **Agent-to-Agent** — delegate tasks to other agents\n- **Memory** — store and retrieve information across sessions",
-    "explanation": "SharePoint and Microsoft Fabric bring in data the organization already keeps, documents in one case and analytics in the other. Deep Research goes beyond a single web search by working across many sources. Agent-to-Agent lets one agent hand work to another. Memory makes interactions personalized and context-aware because the agent remembers across sessions, not only within one conversation."
+    "explanation": "SharePoint and Microsoft Fabric bring in data the organization already keeps, documents in one case and analytics in the other. Deep Research works in depth across multiple sources, where Bing Web Search returns real-time web results. Agent-to-Agent lets one agent hand work to another. Memory makes interactions personalized and context-aware because the agent remembers across sessions, not only within one conversation."
   },
   {
     "id": "2.1.7-06",
@@ -80,7 +113,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "yaml", "vs-code"],
+    "tags": [
+      "agents",
+      "yaml",
+      "vs-code"
+    ],
     "question": "In a Microsoft Foundry agent's YAML file (Foundry Toolkit for VS Code), how do you enable Code Interpreter, Bing grounding and File Search, and which extra parameter does each need?",
     "answer": "One entry per tool in the **`tools`** array:\n- `type: code_interpreter` — no parameters\n- `type: bing_grounding` — a **`connection_id`**\n- `type: file_search` — **`vector_store_ids`**",
     "explanation": "```yaml\ntools:\n  - type: code_interpreter\n  - type: bing_grounding\n    bing_grounding:\n      connection_id: \"your-connection-id\"\n  - type: file_search\n    file_search:\n      vector_store_ids:\n        - \"vectorstore-123\"\n```\nEditing YAML suits you when you know exactly which tools you need or apply changes from templates. The alternative is the Agent Designer: **Tools** section → **Add Tool** (+). Adding File Search there prompts you to create or select a vector store."
@@ -92,12 +129,18 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["mcp", "agents"],
+    "tags": [
+      "mcp",
+      "agents"
+    ],
     "question": "Name the **three** types of Model Context Protocol (MCP) servers the Microsoft Foundry tool catalog supports.",
     "answer": "- **Remote MCP servers** — hosted externally, reached over the network; most common in production\n- **Local MCP servers** — run on your machine during development, for testing\n- **Custom MCP servers** — your own MCP server implementations",
     "explanation": "MCP is a standardized way to add custom tools to agents. MCP servers sit in the **Catalog** section of the tool catalog, next to Configured (built-in) and Custom. In VS Code you browse them in the extension's tool registry, add and configure them, test them in the integrated playground, then deploy the agent to production.",
     "explanation_images": [
-      {"src": "media/ai-103/2.1.7-vscode-tool-catalog.png", "alt": "Tool Catalog tab of the Foundry Toolkit for VS Code with the Catalog tab selected, listing MCP servers such as Playwright and MarkItDown, each with a Connect button"}
+      {
+        "src": "media/ai-103/2.1.7-vscode-tool-catalog.png",
+        "alt": "Tool Catalog tab of the Foundry Toolkit for VS Code with the Catalog tab selected, listing MCP servers such as Playwright and MarkItDown, each with a Connect button"
+      }
     ]
   },
   {
@@ -107,10 +150,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["mcp", "agents"],
+    "tags": [
+      "mcp",
+      "agents"
+    ],
     "question": "Name the **four** benefits of adding tools to Microsoft Foundry agents through MCP servers.",
     "answer": "- **Standardized protocol** — predictable, reliable tool communication\n- **Reusable components** — build once, use across agents and projects\n- **Community-driven tools** — tools from MCP registries\n- **Simplified integration** — consistent interfaces, less maintenance",
-    "explanation": "The common thread is consistency: an MCP server offers the same tool interface to every agent implementation. That is why a tool can be reused across projects, why community tools from registries plug in without custom development, and why integration and maintenance stay simpler than with one-off connectors."
+    "explanation": "The common thread is consistency: an MCP server offers the same tool interface to every agent implementation. That is why a tool can be reused across projects, why community tools from registries plug in without custom development, and why integration and maintenance stay simpler."
   },
   {
     "id": "2.1.7-09",
@@ -119,7 +165,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/7-extend-agent-capabilities",
-    "tags": ["agents", "tools", "mcp"],
+    "tags": [
+      "agents",
+      "tools",
+      "mcp"
+    ],
     "question": "Name the **six** best practices for configuring tools on Microsoft Foundry agents.",
     "answer": "- **Start with built-in tools** — tested, maintained, optimized\n- **Match tools to requirements** — every tool adds latency\n- **Provide clear instructions** — when to use each tool, and when not\n- **Keep knowledge bases current** — update File Search documents\n- **Test tool behavior** — in the integrated playground\n- **Consider toolboxes** — bundle tools behind one managed MCP endpoint",
     "explanation": "An instruction like \"Use Code Interpreter for any mathematical calculations\" steers tool choice. Outdated File Search documents lead to incorrect responses. Testing means sending messages that should trigger a tool, checking it is invoked correctly, and trying error scenarios. Toolboxes suit enterprises with many agents: centralized authentication, versioning and governance, and a tool update reaches every consuming agent without redeployment."

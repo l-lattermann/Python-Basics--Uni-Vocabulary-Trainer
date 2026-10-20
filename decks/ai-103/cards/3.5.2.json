@@ -7,9 +7,9 @@
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
     "tags": ["mcp", "agent-tools"],
-    "question": "Name the **three** components of the client-server architecture of the **Model Context Protocol (MCP)** that AI agents use to reach external tools.",
-    "answer": "- **Host** — the application that runs the agent, such as Microsoft Foundry or a custom app\n- **Client** — a component inside the host that manages connections to MCP servers and handles communication\n- **Server** — a program that exposes tools, resources and prompts the agent can discover and call",
-    "explanation": "MCP is an open protocol for how agents interact with external tools, data sources and services. The split puts the agent and its connection handling on one side and the tools on the other. With the Azure Speech MCP server, Foundry is the host running the agent, and the speech server is the MCP server that offers the speech-to-text and text-to-speech tools."
+    "question": "What is the **Model Context Protocol (MCP)**, and which **three** components make up its client-server architecture?",
+    "answer": "An **open protocol** for how AI agents interact with external tools, data sources and services:\n- **Host** — the application that runs the agent, such as Microsoft Foundry or a custom app\n- **Client** — a component inside the host that manages connections to MCP servers and handles communication\n- **Server** — a program that exposes tools, resources and prompts the agent can discover and call",
+    "explanation": "The host and its client sit on the agent's side; the server sits on the tools' side. The client is not a separate app: it lives inside the host and talks to the servers for it. With the Azure Speech MCP server, Foundry is the host running the agent, and the speech server is the MCP server that offers the speech-to-text and text-to-speech tools."
   },
   {
     "id": "3.5.2-02",

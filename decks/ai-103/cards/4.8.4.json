@@ -6,12 +6,19 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/4-ai-skills",
-    "tags": ["azure-ai-search", "enrichment", "skillset"],
+    "tags": [
+      "azure-ai-search",
+      "enrichment",
+      "skillset"
+    ],
     "question": "In an **Azure AI Search** enrichment pipeline, what is a **skillset**, and how does the indexer use it?",
     "answer": "A **skillset** is the set of AI skills the indexer's enrichment pipeline uses to create **AI-enriched fields**. The indexer applies each skill **in order**, refining the index document at each step.",
     "explanation": "Order matters because skills build on each other. Each skill adds its output fields to the document, and a later skill can take those outputs as its input. For example, an OCR skill runs on every image in `normalized_images`, and a merge skill then combines the original `content` with the image text into `merged_content`. At the end, the indexer maps the skill outputs explicitly to index fields.",
     "explanation_images": [
-      {"src": "media/ai-103/4.8.4-skillset.png", "alt": "An indexer pulls documents from a data source through a pipeline of skills that call AI services, and writes the enriched documents to an Azure AI Search index."}
+      {
+        "src": "media/ai-103/4.8.4-skillset.png",
+        "alt": "An indexer pulls documents from a data source through a pipeline of skills that call AI services, and writes the enriched documents to an Azure AI Search index."
+      }
     ]
   },
   {
@@ -21,10 +28,13 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/4-ai-skills",
-    "tags": ["azure-ai-search", "enrichment"],
-    "question": "Name the **seven** kinds of enrichment that the **built-in skills** of Azure AI Search can add to a skillset.",
+    "tags": [
+      "azure-ai-search",
+      "enrichment"
+    ],
+    "question": "Name **seven** kinds of enrichment that the **built-in skills** of Azure AI Search can add to a skillset.",
     "answer": "- **Language detection** — which language the text is written in\n- **Entity extraction** — places, locations and other entities\n- **Key phrase extraction** — the main phrases of a text\n- **Translation** — text into another language\n- **PII detection** — find and extract, or remove, personal data\n- **Text from images** (OCR) — read text inside images\n- **Image captions and tags** — describe an image",
-    "explanation": "Built-in skills bring functionality from Foundry Tools such as Azure Vision and Azure Language into the pipeline, so you add them to a skillset without writing code. The first five work on text. The last two work on images, typically on each image in the `normalized_images` collection that the indexer extracts during document cracking. Anything beyond this list needs a custom skill."
+    "explanation": "Built-in skills bring functionality from Foundry Tools such as Azure Vision and Azure Language into the pipeline, so you add them to a skillset instead of writing your own code. The first five work on text. The last two work on images, typically once per image in the `normalized_images` collection the indexer builds. When you need logic none of them offers, such as extracting form fields, you write a custom skill."
   },
   {
     "id": "4.8.4-03",
@@ -33,15 +43,35 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/4-ai-skills",
-    "tags": ["azure-ai-search", "pii", "enrichment"],
+    "tags": [
+      "azure-ai-search",
+      "pii",
+      "enrichment"
+    ],
     "question": "A law firm indexes contracts with **Azure AI Search**. Names, phone numbers and other personal data must be **removed** from the indexed text, and the team wants to write **no code**. What do you add to the skillset?",
     "answer": "The built-in **PII detection** skill.",
     "explanation": "Identifying and extracting or removing personally identifiable information is one of the enrichments the built-in skills provide. Because it is built in, it only has to be added to the skillset; the indexer then applies it to the text like any other skill. A custom skill would also need code and a hosting service.",
     "options": [
-      {"text": "The built-in PII detection skill", "correct": true, "why": "It identifies personally identifiable information in text and can extract or remove it, with no custom code."},
-      {"text": "The built-in entity extraction skill", "correct": false, "why": "It detects and extracts places, locations and other entities, but it does not remove personal data from the text."},
-      {"text": "The built-in key phrase extraction skill", "correct": false, "why": "It pulls out the key phrases of a text and leaves personal data untouched."},
-      {"text": "A custom skill hosted as an Azure Function", "correct": false, "why": "A custom skill means writing and hosting your own code, which the team wants to avoid when a built-in skill already does the job."}
+      {
+        "text": "The built-in PII detection skill",
+        "correct": true,
+        "why": "It identifies personally identifiable information in text and can extract or remove it, with no custom code."
+      },
+      {
+        "text": "The built-in entity extraction skill",
+        "correct": false,
+        "why": "It detects and extracts places, locations and other entities, but it does not remove personal data from the text."
+      },
+      {
+        "text": "The built-in key phrase extraction skill",
+        "correct": false,
+        "why": "It pulls out the key phrases of a text and leaves personal data untouched."
+      },
+      {
+        "text": "A custom skill hosted as an Azure Function",
+        "correct": false,
+        "why": "A custom skill means writing and hosting your own code, which the team wants to avoid when a built-in skill already does the job."
+      }
     ]
   },
   {
@@ -51,7 +81,11 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/4-ai-skills",
-    "tags": ["azure-ai-search", "custom-skill", "azure-functions"],
+    "tags": [
+      "azure-ai-search",
+      "custom-skill",
+      "azure-functions"
+    ],
     "question": "Your **Azure AI Search** pipeline must extract the fields of a form with an **Azure Document Intelligence** model. No built-in skill does this. What do you add to the skillset?",
     "answer": "A **custom skill**, for example an **Azure Function** that passes data from the index document to the Document Intelligence model and returns the extracted fields as new values for the index.",
     "explanation": "Custom skills run your own logic on input data from the index document and return new field values that the indexer can put into the index. They are often thin wrappers around a service built for extracting data from documents. The pipeline treats their output like a built-in skill's output, so built-in and custom skills can work side by side in one skillset.",
@@ -65,17 +99,37 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/4-ai-skills",
-    "tags": ["azure-ai-search", "enrichment", "billing"],
+    "tags": [
+      "azure-ai-search",
+      "enrichment",
+      "billing"
+    ],
     "question": "An **Azure AI Search** indexer must run **built-in AI skills** over several thousand documents. What must the indexer have access to?",
     "answer": "A **Foundry Tools resource** attached from your Azure subscription, in the **same region** as the Azure AI Search resource.",
-    "explanation": "Built-in skills run on Foundry Tools, so the indexer needs a Foundry Tools resource. Azure AI Search includes a restricted one, but it only covers indexing 20 or fewer documents. That is enough to try enrichment out, not for a real workload. For more documents you attach your own resource, and the course requires it to be in the search resource's region.",
-    "addition": "Current docs: the free allowance is 20 documents per indexer per day, and resetting the indexer resets it. The same-region rule applies to key-based billing. Keyless billing through the search service's managed identity, with the Cognitive Services User role on the resource, has no region requirement.",
+    "explanation": "Built-in skills run on Foundry Tools, so the indexer needs a Foundry Tools resource. Azure AI Search includes a restricted one, but it only covers indexing 20 or fewer documents. That is enough to try enrichment out, not for a real workload. For more documents you attach your own resource, and it must be in the same region as the search resource.",
+    "addition": "Current docs: the free allowance is 20 documents per indexer per day, and resetting the indexer resets it. The attached resource is used for billing; the built-in skills run on resources hosted by Azure AI Search. Keyless billing through the search service's managed identity (Cognitive Services User role) has no region requirement.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/search/cognitive-search-attach-cognitive-services",
     "options": [
-      {"text": "A Foundry Tools resource in your subscription, in the same region as the search resource", "correct": true, "why": "Built-in skills need a Foundry Tools resource, and an attached one is not limited to 20 documents."},
-      {"text": "The restricted resource included in Azure AI Search", "correct": false, "why": "It is limited to indexing 20 or fewer documents, far too few for several thousand."},
-      {"text": "An Azure Function app that hosts the skills", "correct": false, "why": "An Azure Function hosts custom skills; built-in skills need no hosting of your own."},
-      {"text": "A knowledge store defined in the skillset", "correct": false, "why": "A knowledge store persists projections of the enriched data; it does not run any skills."}
+      {
+        "text": "A Foundry Tools resource in your subscription, in the same region as the search resource",
+        "correct": true,
+        "why": "Built-in skills need a Foundry Tools resource, and an attached one is not limited to 20 documents."
+      },
+      {
+        "text": "The restricted resource included in Azure AI Search",
+        "correct": false,
+        "why": "It is limited to indexing 20 or fewer documents, far too few for several thousand."
+      },
+      {
+        "text": "An Azure Function app that hosts the skills",
+        "correct": false,
+        "why": "An Azure Function hosts custom skills; built-in skills need no hosting of your own."
+      },
+      {
+        "text": "A knowledge store defined in the skillset",
+        "correct": false,
+        "why": "A knowledge store persists projections of the enriched data; it does not run any skills."
+      }
     ]
   }
 ]

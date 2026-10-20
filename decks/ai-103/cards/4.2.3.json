@@ -9,7 +9,7 @@
     "tags": ["image-generation", "playground"],
     "question": "You want to try an image-generation model such as FLUX or gpt-image-1 in Microsoft Foundry **without writing code**: submit prompts and look at the generated images. What do you use?",
     "answer": "The **model playground** in the Microsoft Foundry portal, inside a Foundry project.",
-    "explanation": "You first create a Microsoft Foundry project, then open the deployed image model's playground. There you type a prompt such as *A robot eating spaghetti* and the generated image appears right in the portal. The playground is for experimenting; once a prompt works, the same request goes into a client app through an SDK.",
+    "explanation": "You first create a Microsoft Foundry project, then open the deployed image model's playground. There you type a prompt such as *A robot eating spaghetti* and the generated image appears right in the portal. The playground is for experimenting; once a prompt works, the same model, prompt and size go into a client app through an SDK.",
     "explanation_images": [
       {"src": "media/ai-103/4.2.3-images-playground.png", "alt": "Playground tab of the FLUX.1-Kontext-pro model in the Microsoft Foundry portal, showing the prompt 'A robot eating spaghetti', a 1024x1024 size selector, an image-upload button and the generated image."}
     ]

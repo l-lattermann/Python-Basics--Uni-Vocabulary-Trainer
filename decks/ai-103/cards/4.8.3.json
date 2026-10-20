@@ -12,7 +12,7 @@
     ],
     "question": "In an Azure AI Search solution, what are the roles of the **data source**, the **indexer** and the **index**?",
     "answer": "- **Data source** — the storage location of the original data, e.g. a blob container of documents or a database\n- **Indexer** — extracts and enriches the data and creates and updates the index\n- **Index** — holds the searchable content that queries run against",
-    "explanation": "The index is the heart of the solution, but you never fill it by hand: the indexer automates the extraction of data fields through an enrichment pipeline. It cracks the source documents, applies incremental steps to build a hierarchical JSON document with the fields the index definition needs, and writes the result. The populated index can then be queried to return specified fields from documents that match the query criteria.",
+    "explanation": "The index is the heart of the solution, and the indexer is what fills it: it automates the extraction of data fields through an enrichment pipeline. It cracks the source documents, applies incremental steps to build a hierarchical JSON document with the fields the index definition needs, and writes the result. The populated index can then be queried to return specified fields from documents that match the query criteria.",
     "explanation_images": [
       {
         "src": "media/ai-103/4.8.3-indexer.png",
@@ -106,8 +106,8 @@
     "question": "In an Azure AI Search skillset, what is a skill's **context**, and what does it let you do?",
     "answer": "The **context** is the level in the hierarchical document where the skill is applied. The skill runs **once for each item** at that level, e.g. OCR once per image in `normalized_images`.",
     "explanation": "Because the document is a tree, a skill does not have to run on the document as a whole. Setting its context to the images collection makes an OCR skill process every image separately, and each image gets its own `Text` field below it in the tree. The output is stored at that same level, so the extracted text stays attached to the image it came from.",
-    "addition": "Contexts are written as paths that start at `/document`; `*` stands for every item of a collection. An OCR skill per image uses `\"context\": \"/document/normalized_images/*\"`.",
-    "addition_source": "https://learn.microsoft.com/en-us/azure/search/cognitive-search-concept-image-scenarios"
+    "addition": "Contexts are paths that start at `/document`, which is also the default context; appending `/*` catches every item of a collection. An OCR skill per image uses `\"context\": \"/document/normalized_images/*\"`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/cognitive-search-concept-annotations-syntax"
   },
   {
     "id": "4.8.3-07",
@@ -122,7 +122,7 @@
       "ocr"
     ],
     "question": "An Azure AI Search skillset already runs OCR on each image in `normalized_images`. You want **one field** that holds all the text of a document, **including the text found in its images**. What do you add?",
-    "answer": "A **merge skill** that combines `content` with the OCR text of each image into a new **`merged_content`** field.",
+    "answer": "A **merge skill** that combines `content` with the OCR `Text` of each image into a new **`merged_content`** field — skill outputs can be **inputs for later skills**.",
     "explanation": "This works because skill outputs can be inputs for later skills in the pipeline. The OCR skill stores a `Text` field under each image; the merge skill reads those fields together with the original `content` and writes its own output back into the document. Searching `merged_content` then finds words that appeared only inside images.",
     "options": [
       {
@@ -160,7 +160,7 @@
     ],
     "question": "At the end of the enrichment pipeline, an Azure AI Search indexer maps the document's fields to index fields in **two** ways. Name them.",
     "answer": "- **Fields extracted directly from the source** — all mapped, **implicitly** (same name) or **explicitly** (a defined mapping)\n- **Output fields from skills** — always mapped **explicitly**, from their hierarchical location to the target index field",
-    "explanation": "The split follows where a field comes from. Source fields sit at the top of the document and often already carry the index field's name, so a name match is enough. Skill outputs are spread across the hierarchy, for example the OCR `Text` under each image, so the indexer needs to be told which location feeds which index field."
+    "explanation": "The split follows where a field comes from. A source field whose name matches an index field needs no definition at all; a mapping is only defined to rename it or transform its value. Skill outputs sit at different levels of the hierarchy, for example the OCR `Text` under each image, so each one must be mapped from its location to the target index field."
   },
   {
     "id": "4.8.3-09",
@@ -176,7 +176,7 @@
     "question": "A source field in an Azure AI Search data source should land in an index field with a **more useful name**, or its value should be **transformed by a function** on the way. Which kind of mapping do you need?",
     "answer": "An **explicit field mapping** that matches the source field to the index field. An **implicit** mapping only works when both fields have the **same name**.",
     "explanation": "Implicit mappings happen automatically: the indexer sends each source field to the index field with the same name, and you define nothing. As soon as the names differ, or the value must change while it is mapped, you define the mapping yourself. Renaming a cryptic source field to something more useful is the typical case.",
-    "addition": "Explicit source mappings go in the indexer's `fieldMappings` array (`sourceFieldName`, `targetFieldName`, optional `mappingFunction`). Supported functions include `base64Encode`, `base64Decode`, `extractTokenAtPosition`, `jsonArrayToStringCollection`, `urlEncode` and `urlDecode`.",
+    "addition": "Explicit source mappings go in the indexer's `fieldMappings` array (`sourceFieldName`, `targetFieldName`, optional `mappingFunction`). Supported functions: `base64Encode`, `base64Decode`, `extractTokenAtPosition`, `fixedLengthEncode`, `jsonArrayToStringCollection`, `toJson`, `urlEncode` and `urlDecode`.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/search/search-indexer-field-mappings"
   },
   {
@@ -191,7 +191,7 @@
       "field-mapping",
       "skillsets"
     ],
-    "question": "Your Azure AI Search index has a `language` field, and a skill in the skillset writes a `language` output. After indexing, the index field is **empty**. What is the fix?",
+    "question": "Your Azure AI Search index has a retrievable `language` field, and a skill in the skillset writes a `language` output. After indexing, search results show **no value** in that field. What is the fix?",
     "answer": "Add an **explicit mapping** from the skill output's location in the document to the `language` index field — skill outputs are **never mapped implicitly**.",
     "explanation": "The matching name does not help. Implicit, same-name mapping applies only to fields extracted directly from the source data. Every output field of a skill has to be mapped explicitly from its hierarchical location in the enriched document to the target field in the index.",
     "addition": "These mappings go in the indexer's `outputFieldMappings` array, not in `fieldMappings`. Skill output exists only in memory during indexing; each mapping's `sourceFieldName` is a path starting with `/document` that names the enriched node.",
@@ -208,9 +208,9 @@
         "why": "A different name cannot help: skill outputs reach the index only through an explicit mapping, whatever the names are."
       },
       {
-        "text": "Make the `language` field retrievable",
+        "text": "Make the `language` field searchable",
         "correct": false,
-        "why": "Retrievable controls whether a field is returned in search results; it does not bring data into the field."
+        "why": "Searchable makes a field available for full-text search; it does not bring data into the field."
       },
       {
         "text": "Set the skill's context to `normalized_images`",

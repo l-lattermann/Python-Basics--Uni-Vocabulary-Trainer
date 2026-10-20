@@ -6,10 +6,14 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/6-test-iterate-agent",
-    "tags": ["agent-publishing", "teams", "testing"],
+    "tags": [
+      "agent-publishing",
+      "teams",
+      "testing"
+    ],
     "question": "The Microsoft Foundry playground does not simulate the published experience. Name the **four** things you verify by testing a published Foundry agent in Microsoft Teams.",
     "answer": "- **Rendering** — the Teams UI renders responses correctly\n- **Authentication** — auth flows work as expected\n- **Response times** — acceptable in production\n- **Agent identity permissions** — the published identity has what it needs",
-    "explanation": "The playground is for development testing; it runs with your project's setup, not with the published agent's identity, Bot Service and Teams client. So these four only show up after publishing. Do not test alone: colleagues phrase questions differently and spot confusing responses you would miss. Also try the different Teams clients — desktop, web and mobile — because some issues are platform-specific."
+    "explanation": "The playground tests the agent itself, but not the published path. After publishing, the agent runs under its own Microsoft Entra identity, separate from your development project, and Azure Bot Service carries the messages between Teams and the agent. Problems in that path only show up in Teams. Do not test alone: colleagues phrase questions differently and spot confusing responses you would miss. Also try the Teams desktop, web and mobile clients, because some issues are platform-specific."
   },
   {
     "id": "2.5.6-02",
@@ -18,15 +22,35 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/6-test-iterate-agent",
-    "tags": ["agent-publishing", "teams", "troubleshooting"],
+    "tags": [
+      "agent-publishing",
+      "teams",
+      "troubleshooting"
+    ],
     "question": "You published a Microsoft Foundry agent to Teams, but it **does not respond at all** to messages there. What do you check first?",
-    "answer": "The **Azure Bot Service** resource: that it exists in the Azure portal and what its logs show.",
-    "explanation": "Azure Bot Service routes messages between Microsoft 365 and the agent, so no answer at all points at that link. Possible causes are a Bot Service that is not running, a wrong Bot Service configuration, or network issues between Teams and the agent. Resolve it in this order: verify the Bot Service resource exists, check its logs for errors, then confirm the agent is published and the package was uploaded correctly.",
+    "answer": "Check the **Azure Bot Service**: verify the resource exists in the Azure portal and read its logs, then confirm the agent is published and the package was uploaded.\n\nCauses: Bot Service **not running**, **misconfigured**, or **network issues** between Teams and the agent.",
+    "explanation": "Azure Bot Service is created when you publish from the Foundry portal and routes every message between Microsoft 365 and the agent. If it is missing, stopped or wrongly configured, or the network between Teams and the agent fails, no message reaches the agent and nothing comes back. The other symptoms have their own fixes: failing tools need RBAC roles on the published identity, an agent users cannot find needs the right scope or approval, slow answers need simpler instructions or tools.",
     "options": [
-      {"text": "Verify the Azure Bot Service resource exists and check its logs for errors", "correct": true, "why": "Bot Service carries every message between Teams and the agent; if it is missing, stopped or misconfigured, nothing comes back."},
-      {"text": "Assign RBAC roles to the published agent identity on the resources its tools use", "correct": false, "why": "That fixes tools that work in Foundry but fail in Teams; the agent still answers in that case."},
-      {"text": "Verify admin approval in the Microsoft 365 admin center", "correct": false, "why": "Pending approval stops users from finding an organization-scope agent; it does not make a reachable agent silent."},
-      {"text": "Simplify the agent instructions", "correct": false, "why": "That addresses slow responses, not missing ones."}
+      {
+        "text": "Verify the Azure Bot Service resource exists and check its logs for errors",
+        "correct": true,
+        "why": "Bot Service carries every message between Teams and the agent; if it is missing, stopped or misconfigured, nothing comes back."
+      },
+      {
+        "text": "Assign RBAC roles to the published agent identity on the resources its tools use",
+        "correct": false,
+        "why": "That fixes tools that work in Foundry but fail in Teams; the agent still answers in that case."
+      },
+      {
+        "text": "Verify admin approval in the Microsoft 365 admin center",
+        "correct": false,
+        "why": "Pending approval stops users from finding an organization-scope agent; it does not make a reachable agent silent."
+      },
+      {
+        "text": "Simplify the agent instructions",
+        "correct": false,
+        "why": "That addresses slow responses, not missing ones."
+      }
     ]
   },
   {
@@ -36,7 +60,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/6-test-iterate-agent",
-    "tags": ["agent-publishing", "teams", "troubleshooting"],
+    "tags": [
+      "agent-publishing",
+      "teams",
+      "troubleshooting"
+    ],
     "question": "Users **cannot find** your published Microsoft Foundry agent in Teams. Name the **three** possible causes and the fix for each.",
     "answer": "- **Wrong publish scope** — for shared scope, share the direct link with users\n- **Admin approval pending** (organization scope) — verify approval in the Microsoft 365 admin center\n- **Tenant policies block custom apps** — check the tenant settings for custom app permissions",
     "explanation": "All three are about distribution, not about the agent itself — it may work perfectly for you. A shared-scope agent is not listed for the whole organization, so others need the link. An organization-scope agent only appears for everyone after an administrator approves it. And even then, a tenant that does not allow custom apps keeps it hidden."
@@ -48,7 +76,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/6-test-iterate-agent",
-    "tags": ["agent-publishing", "latency", "troubleshooting"],
+    "tags": [
+      "agent-publishing",
+      "latency",
+      "troubleshooting"
+    ],
     "question": "Your Microsoft Foundry agent published to Teams **answers slowly**. Name the **three** possible causes and the fix for each.",
     "answer": "- **Complex agent instructions** — simplify them where possible\n- **Tools that query large data sets** — optimize the tool configurations\n- **Network latency** — test from different network locations to isolate it",
     "explanation": "Each cause sits in a different place: the instructions make the model process longer, the tools spend time fetching data, the network adds time on the way. Testing from several locations tells you whether the delay follows the network or the agent. Acceptable response time is one of the things you check in Teams after publishing, because the playground cannot show production latency."
@@ -60,7 +92,11 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/6-test-iterate-agent",
-    "tags": ["monitoring", "application-insights", "agent-publishing"],
+    "tags": [
+      "monitoring",
+      "application-insights",
+      "agent-publishing"
+    ],
     "question": "You monitor a Microsoft Foundry agent published to Teams. Name the **four** metrics the Foundry portal shows and the **four** things Application Insights integration adds.",
     "answer": "Foundry portal metrics:\n- **Request volume** and patterns\n- **Response times**\n- **Error rates**\n- **Tool invocation statistics**\n\nApplication Insights:\n- **Trace** individual conversations\n- **Analyze error patterns**\n- **Measure end-to-end latency**\n- **Set up alerts** for anomalies",
     "explanation": "Monitoring should catch issues before users report them. The Foundry metrics show trends, so review them regularly. Application Insights goes down to single conversations, but only if you configured the integration. The third source is users: set up a Teams channel or email address for feedback and review it periodically. When you fix something, update the agent in the Foundry portal and republish; for organization scope, tenant policies decide whether the update needs re-approval."

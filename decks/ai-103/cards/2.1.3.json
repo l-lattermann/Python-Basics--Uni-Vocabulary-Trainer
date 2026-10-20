@@ -28,7 +28,7 @@
     ],
     "question": "Name the **five** scenarios for which the **Foundry Toolkit for Visual Studio Code** is the ideal way to develop Microsoft Foundry agents.",
     "answer": "- **Developer-centric workflows** — build agents next to your application code in one environment\n- **Version control integration** — track agent configurations in Git with the codebase\n- **Rapid iteration** — change and test immediately without switching tools\n- **Code-first development** — edit YAML configurations directly for precise control\n- **Local development** — work on agent designs offline before deploying to Azure",
-    "explanation": "The extension installs from the Visual Studio Code Marketplace and connects to your existing Foundry projects. Its real difference from the portal is that agent definitions become files: they sit in Git beside the app and can be edited precisely as YAML. So pick VS Code when you need tight integration with application code or version-controlled configuration, and the portal when you want visual configuration, central management or a quick prototype without local setup."
+    "explanation": "Portal and extension both offer complete agent development and differ mainly in interface style. What the extension changes is where the agent lives: its configuration is a YAML file you edit precisely and commit to Git beside the app. It installs from the Visual Studio Code Marketplace and connects to your existing Foundry projects. Pick VS Code for tight integration with application code or version-controlled configuration; pick the portal for visual configuration, central management or a quick prototype without local setup."
   },
   {
     "id": "2.1.3-03",
@@ -80,7 +80,7 @@
     ],
     "question": "List the **eight** steps of the typical agent development workflow in Microsoft Foundry Agent Service, in order.",
     "answer": "1. **Connect** to the Foundry project\n2. **Create** the agent with a descriptive name and purpose\n3. **Configure** instructions that define its behavior\n4. **Add tools** to extend what it can do\n5. **Test** in integrated playgrounds\n6. **Iterate** on the design from test results\n7. **Deploy** to production\n8. **Integrate** into your applications",
-    "explanation": "The pattern is the same whichever interface you choose: the Foundry portal and the VS Code extension both support every step and differ mainly in interface style. In the course the agent is created in the Foundry portal, while its instructions can be configured in the portal or in VS Code. Test and Iterate form a loop — you refine instructions and tools until the playground results are right, and only then deploy and integrate."
+    "explanation": "The pattern is the same whichever interface you choose: the Foundry portal and the VS Code extension both support every step and differ mainly in interface style. The agent itself is created in the Foundry portal; its instructions can then be configured in the portal or in VS Code. Test and Iterate form a loop — you refine instructions and tools until the playground results are right, and only then deploy and integrate."
   },
   {
     "id": "2.1.3-06",

@@ -71,22 +71,6 @@
     "explanation": "All four need information that changed after training or must be checked against public sources. Watch the trap with file_search: **Policy Monitoring** tracks public regulations on the web, while file_search's **Policy Q&A** answers employee questions from internal HR policy PDFs. Public and current points to web_search; private and your own documents points to file_search."
   },
   {
-    "id": "1.4.4-04",
-    "type": "basic",
-    "section": "1.4.4",
-    "exam_area": "genai",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/04-web-search",
-    "tags": [
-      "tools",
-      "web-search",
-      "responses-api"
-    ],
-    "question": "How do you enable the **web_search** tool in a Python `responses.create()` call to a model deployed in Microsoft Foundry, and how do you steer when it searches?",
-    "answer": "- Add it to the **`tools`** list: `tools=[{\"type\": \"web_search\"}]` — no other setting is required\n- Steer it with the **`instructions`**, e.g. \"Use web search when current information is required.\"\n- Read the answer from `response.output_text`",
-    "explanation": "The model still decides on its own whether a prompt needs a search; the instructions only guide that choice. Of the built-in tools, web_search has the simplest definition: file_search also needs `vector_store_ids`, and code_interpreter needs a `container`. The output varies from run to run, because it depends on the web results at that moment."
-  },
-  {
     "id": "1.4.4-05",
     "type": "order",
     "section": "1.4.4",

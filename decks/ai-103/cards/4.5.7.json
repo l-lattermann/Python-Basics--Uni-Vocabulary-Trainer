@@ -43,7 +43,7 @@
     "tags": ["content-understanding", "schema"],
     "question": "What should you define for the information you want to extract from content?",
     "answer": "**A schema**.",
-    "explanation": "In Azure Content Understanding the schema lists the fields the analyzer should identify. You base it on an uploaded sample file and an analyzer template; the template and field types available depend on the file's content type. Because the service is generative, a sample is often enough: it maps values to the schema fields automatically, and explicit labels can improve results. You then build the analyzer from the finished schema.",
+    "explanation": "In Azure Content Understanding the schema lists the fields the analyzer should identify. You can base it on an uploaded sample file and an analyzer template; the templates and field types available depend on the file's content type. Because the service is generative, a sample is often enough: in many cases it maps values to the schema fields automatically, and explicitly labeling fields can improve results. You then build the analyzer from the finished schema.",
     "options": [
       {"text": "A schema.", "correct": true, "why": "Unit 4.5.3: an analyzer extracts specific information based on a schema that you define, and defining the schema is the first step after creating a project."},
       {"text": "An index.", "correct": false, "why": "An index belongs to search solutions such as Azure AI Search; unit 4.5.3 defines the fields to extract in a schema, not an index."},

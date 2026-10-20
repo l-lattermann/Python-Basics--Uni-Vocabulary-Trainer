@@ -23,7 +23,7 @@
     "tags": ["foundry-iq", "azure-ai-search"],
     "question": "Name the **four** key benefits an agent gets when a Microsoft Foundry IQ knowledge base uses an existing **Azure AI Search index** as its data source.",
     "answer": "- **Semantic ranking** — contextually relevant results, not just keyword matches\n- **Custom scoring** — prioritizes results by your business logic\n- **Faceted navigation** — filters results by categories or attributes\n- **Multi-language support** — handles content in different languages",
-    "explanation": "Choose this source when you already invested in Azure AI Search and want to reuse existing indexes. Such an index can hold data from several origins that you already processed and indexed. The agent queries it to retrieve information for user questions. Semantic ranking, filters and custom scoring profiles are the sophisticated search features that make this source worth choosing over a simpler one."
+    "explanation": "Choose this source when you already invested in Azure AI Search and want to reuse existing indexes. Such an index can hold data from several origins that you already processed and indexed. The agent queries it to retrieve information for user questions. It matters most when you need sophisticated search features such as semantic ranking, filters or custom scoring profiles."
   },
   {
     "id": "2.4.4-03",
@@ -130,7 +130,7 @@
     "explanation": "A single knowledge base can combine multiple data sources. The internal source keeps security and governance on proprietary knowledge. The real-time web source supplies current information when internal knowledge provides no answer.",
     "options": [
       {"text": "Enable Web grounding as an additional source in the same knowledge base", "correct": true, "why": "Foundry IQ lets one knowledge base combine sources, with the web as a supplement for current information."},
-      {"text": "Replace the SharePoint source with the Web source", "correct": false, "why": "The agent would lose the proprietary SharePoint knowledge and rely only on Bing results it controls less."},
+      {"text": "Replace the SharePoint source with the Web source", "correct": false, "why": "The agent would lose the proprietary SharePoint knowledge and rely only on Bing results, over which you have less control."},
       {"text": "Switch from SharePoint Remote to SharePoint Indexed", "correct": false, "why": "Indexing changes speed and search features, but the content is still only internal SharePoint data."},
       {"text": "Add an Azure Blob Storage source", "correct": false, "why": "Blob Storage serves document files you store yourself; it brings in no current public information."}
     ]

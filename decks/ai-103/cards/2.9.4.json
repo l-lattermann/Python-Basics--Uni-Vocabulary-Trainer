@@ -6,7 +6,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/4-host-a2a-agent-server",
-    "tags": ["a2a", "multi-agent"],
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
     "question": "Name the **three** core components that work together to host an agent as an **A2A (Agent-to-Agent) server** in Python.",
     "answer": "- **Agent Card** — describes capabilities, skills and input/output modes; exposed for discovery\n- **Request Handler** — routes requests to the Agent Executor (`execute`, `cancel`) and manages the task lifecycle with a Task Store\n- **Server Application** — a **Starlette** web app run by an ASGI server such as **Uvicorn**",
     "explanation": "Hosting makes the agent reachable over HTTP. The server is the bridge between the agent's logic and the outside world: it publishes the Agent Card so clients and other agents can discover the agent, receives incoming A2A requests and forwards them to the Agent Executor, and manages task lifecycles, including streaming responses and stateful interactions. The Server Application exposes both the Agent Card and the request handler endpoints on a network interface and port."
@@ -18,16 +21,39 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/4-host-a2a-agent-server",
-    "tags": ["a2a", "multi-agent"],
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
     "question": "You host a simple \"Hello World\" agent as an A2A server. Which component must the **request handler** be given so that it can track tasks, streaming data and resubscriptions?",
     "answer": "A **Task Store**, linked to the Agent Executor in the request handler.",
     "explanation": "The request handler does two jobs: it routes each incoming request to the right Agent Executor method (`execute` or `cancel`), and it manages the task lifecycle. For the second job it relies on the Task Store. Even a simple agent with one greeting skill needs a task store, otherwise interactions are not handled reliably.",
     "options": [
-      {"text": "A Task Store", "correct": true, "why": "It tracks tasks, streaming data and resubscriptions for the request handler, and even simple agents need one."},
-      {"text": "An EventQueue", "correct": false, "why": "The Agent Executor uses the EventQueue to send messages, task updates and artifacts back to the client; it does not track task state."},
-      {"text": "The RequestContext", "correct": false, "why": "It gives the Agent Executor the details of one incoming request, such as user input and task context."},
-      {"text": "An extended Agent Card", "correct": false, "why": "It describes the agent's capabilities to authenticated users; it plays no part in task tracking."},
-      {"text": "The Uvicorn ASGI server", "correct": false, "why": "Uvicorn only listens on a network interface and port to serve the Starlette application."}
+      {
+        "text": "A Task Store",
+        "correct": true,
+        "why": "It tracks tasks, streaming data and resubscriptions for the request handler, and even simple agents need one."
+      },
+      {
+        "text": "An EventQueue",
+        "correct": false,
+        "why": "The Agent Executor uses the EventQueue to send messages, task updates and artifacts back to the client; it does not track task state."
+      },
+      {
+        "text": "The RequestContext",
+        "correct": false,
+        "why": "It gives the Agent Executor the details of one incoming request, such as user input and task context."
+      },
+      {
+        "text": "An extended Agent Card",
+        "correct": false,
+        "why": "It describes the agent's capabilities to authenticated users; it plays no part in task tracking."
+      },
+      {
+        "text": "The Uvicorn ASGI server",
+        "correct": false,
+        "why": "Uvicorn only listens on a network interface and port to serve the Starlette application."
+      }
     ]
   },
   {
@@ -37,7 +63,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/4-host-a2a-agent-server",
-    "tags": ["a2a", "multi-agent"],
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
     "question": "Put the steps for setting up an **A2A agent server** in Python in the correct order.",
     "items": [
       "Define the agent's skills and Agent Card",
@@ -47,7 +76,7 @@
       "The agent listens for incoming requests and responds according to its skills"
     ],
     "answer": "Skills and **Agent Card** → **request handler** (executor + task store) → **server application** → start with **Uvicorn** → listen and respond.",
-    "explanation": "Each step consumes what the step before produced: the request handler needs the executor and a task store, the server application needs both the Agent Card and the request handler, and only the ASGI server makes the application reachable on the network. A \"Hello World\" agent may expose a single greeting skill; a more complex agent can serve several skills or an extended Agent Card for authenticated users."
+    "explanation": "The order follows the dependencies: the request handler links the Agent Executor with a task store, the server application then takes both the Agent Card and the request handler, and only the ASGI server makes the application reachable on the network. A \"Hello World\" agent may expose a single greeting skill; a more complex agent can serve several skills or an extended Agent Card for authenticated users."
   },
   {
     "id": "2.9.4-04",
@@ -56,9 +85,12 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/4-host-a2a-agent-server",
-    "tags": ["a2a", "agent-discovery"],
+    "tags": [
+      "a2a",
+      "agent-discovery"
+    ],
     "question": "A client or routing agent needs to discover what a hosted **A2A agent** can do. At which endpoint does the server typically expose the Agent Card, and which card variant can it offer to **authenticated** users?",
     "answer": "- At the standard endpoint **`/.well-known/agent-card.json`**\n- An **extended Agent Card** for authenticated users (a server can also publish multiple card versions)",
-    "explanation": "Because the path is standard, a client only needs the server's base URL: it fetches the card from the well-known endpoint and initializes its connection with it. The card describes the agent's capabilities, skills and input/output modes, so anyone can discover the agent without prior configuration, while the extended card reveals more to callers who have authenticated."
+    "explanation": "Because the path is standard, a client only needs the server's base URL: it fetches the card from the well-known endpoint and initializes its connection with it. The card describes the agent's capabilities, skills and input/output modes, so clients and routing agents learn what the agent can do and how to interact with it."
   }
 ]

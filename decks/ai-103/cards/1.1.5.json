@@ -67,7 +67,7 @@
     ],
     "question": "Name the **five** tasks the **Foundry Toolkit extension for Visual Studio Code** simplifies when you build Microsoft Foundry generative AI apps.",
     "answer": "- **Browse and manage project resources** — deployed models, agents, connections, vector stores\n- **Deploy models** from the model catalog\n- **Test models and agents** in integrated playgrounds\n- **Configure declarative and hosted agents** with a visual designer and YAML files\n- **Generate integration code** to connect agents to your apps",
-    "explanation": "Many of these tasks can also be done in the Microsoft Foundry portal, but developers still need to write, test and deploy code. The toolkit brings the project into Visual Studio Code: you deploy a model from the catalog, try it or an agent in a playground, define the agent visually or in YAML, and then generate the code that connects it to your app, all in one editor.",
+    "explanation": "The Microsoft Foundry portal handles many development tasks, but developers also need to write, test and deploy code. The toolkit brings the project into Visual Studio Code: you deploy a model from the catalog, try it or an agent in a playground, define the agent visually or in YAML, and then generate the code that connects it to your app, all in one editor.",
     "explanation_images": [
       {
         "src": "media/ai-103/1.1.5-foundry-toolkit-vscode.png",
@@ -86,7 +86,7 @@
       "vs-code",
       "github"
     ],
-    "question": "Name the **four** development tools recommended for building AI apps on Azure, two editors and two GitHub offerings, and what each one is for.",
+    "question": "Which **four** developer tools, two editors and two GitHub offerings, suit building AI apps on Azure, and what is each one for?",
     "answer": "- **Visual Studio** — an **IDE**, suits .NET developers building Windows apps\n- **Visual Studio Code** — a **code editor**, suits web developers using many open-source languages and libraries\n- **GitHub** — source control and DevOps management\n- **GitHub Copilot** — AI assistant for developer productivity",
     "explanation": "Both editors are suitable for AI apps on Azure. Pick the one that supports the languages, SDKs and APIs you need and that you are most comfortable with. Visual Studio and VS Code both integrate natively with GitHub, which makes it a central part of team development, and both give access to GitHub Copilot inside the editor."
   },

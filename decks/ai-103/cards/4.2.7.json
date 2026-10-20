@@ -6,14 +6,29 @@
     "exam_area": "vision",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/6-knowledge-check",
-    "tags": ["image-generation", "model-catalog"],
+    "tags": [
+      "image-generation",
+      "model-catalog"
+    ],
     "question": "You want to find a model in Microsoft Foundry to generate images. Which inference task should you filter by?",
     "answer": "**Text to image**.",
     "explanation": "An image-generation model takes a natural language description and creates a new, original image from it, so its input is text and its output is an image. In the Foundry model catalog you filter by inference task to find these *text to image* models, for example the OpenAI gpt-image-1 series or the Black Forest Labs FLUX series.",
     "options": [
-      {"text": "Text to image", "correct": true, "why": "Unit 4.2.2: in the Foundry portal you filter the model catalog by inference task to find *text to image* models, which generate images from natural language prompts."},
-      {"text": "Image to text", "correct": false, "why": "Image to text runs the other way: the model takes an image as input and describes it, as the multimodal models of module 4.1 do; unit 4.2.2 names text to image for generation."},
-      {"text": "Embeddings", "correct": false, "why": "Embedding models turn input into vectors for similarity search; they produce no images, and unit 4.2.2 names text to image as the task to filter by."}
+      {
+        "text": "Text to image",
+        "correct": true,
+        "why": "Unit 4.2.2: in the Foundry portal you filter the model catalog by inference task to find *text to image* models, which generate images from natural language prompts."
+      },
+      {
+        "text": "Image to text",
+        "correct": false,
+        "why": "Image to text runs the other way: the model takes an image as input and produces text about it; unit 4.2.2 names text to image as the task for generating images."
+      },
+      {
+        "text": "Embeddings",
+        "correct": false,
+        "why": "Embedding models turn input into vectors for similarity search; they produce no images, and unit 4.2.2 names text to image as the task to filter by."
+      }
     ]
   },
   {
@@ -23,14 +38,29 @@
     "exam_area": "vision",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/6-knowledge-check",
-    "tags": ["image-generation", "sdk"],
+    "tags": [
+      "image-generation",
+      "sdk"
+    ],
     "question": "Which OpenAI API can you use with image-generation models?",
     "answer": "The **Images** API.",
-    "explanation": "With the OpenAI Python SDK you call `client.images.generate(...)` and pass the model name, the prompt, the number of images `n` and the `size`. The response carries the image as Base64 data in `data[0].b64_json`, which you decode and save as a PNG file. The same API works for non-OpenAI models deployed in Foundry, such as FLUX.1-Kontext-pro.",
+    "explanation": "Unit 4.2.4 calls `client.images.generate(...)` with the model name, the prompt, `n` and `size`. The same Images API serves non-OpenAI models deployed in Foundry, such as FLUX.1-Kontext-pro. The option reads \"Image\", but the API is called *Images*. Video models such as Sora 2 use the separate Videos API instead.",
     "options": [
-      {"text": "Video", "correct": false, "why": "Unit 4.2.4 generates images with the Images API; this module uses no video API."},
-      {"text": "Image", "correct": true, "why": "Unit 4.2.4: the Python code uses the OpenAI *Images* API (`client.images.generate`) to request an image from a model."},
-      {"text": "Graphics", "correct": false, "why": "The OpenAI SDK has no Graphics API; unit 4.2.4 names the Images API."}
+      {
+        "text": "Video",
+        "correct": false,
+        "why": "The Videos API (`client.videos.create`) serves video models such as Sora 2 in module 4.3; unit 4.2.4 sends image requests through the Images API."
+      },
+      {
+        "text": "Image",
+        "correct": true,
+        "why": "Unit 4.2.4: the Python code uses the OpenAI *Images* API (`client.images.generate`) to request an image from a model."
+      },
+      {
+        "text": "Graphics",
+        "correct": false,
+        "why": "The OpenAI SDK offers no Graphics API; unit 4.2.4 names the Images API for image generation."
+      }
     ]
   }
 ]

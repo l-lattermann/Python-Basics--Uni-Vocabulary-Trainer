@@ -6,8 +6,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
-    "tags": ["agents", "foundry-portal"],
-    "question": "Put the steps of building and shipping a first agent in the **Microsoft Foundry portal** (no code) in order.",
+    "tags": [
+      "agents",
+      "foundry-portal"
+    ],
+    "question": "Put the steps of creating, testing and deploying an agent in the **Microsoft Foundry portal** (no code) in order.",
     "answer": "Project → **Build > Agents > Create** → name, description, model → instructions → **Playground** test → deploy and call via SDK or REST.",
     "explanation": "The model must already be deployed in the project, or you deploy one from the same dropdown. After creation the portal opens the configuration view, where the Instructions field defines the agent's role and behaviour. The Playground tab keeps the conversation history for the session, so you can check multi-turn behaviour before deploying. Deployment generates the connection information your application needs.",
     "items": [
@@ -26,10 +29,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
-    "tags": ["agents", "tools"],
+    "tags": [
+      "agents",
+      "tools"
+    ],
     "question": "Name the **three** categories into which the Microsoft Foundry **tool catalog** sorts the tools you can add to an agent.",
     "answer": "- **Configured** — built-in tools ready to use, e.g. Code Interpreter, File Search\n- **Catalog** — extra tools added from a registry, e.g. Bing Web Search, Azure AI Search, SharePoint, MCP servers\n- **Custom** — your own tools via OpenAPI specifications or custom implementations",
-    "explanation": "The categories grow in effort: Configured tools work immediately, Catalog tools are prebuilt but have to be added, Custom tools you describe yourself. The module advises starting with built-in tools before building custom ones, because they are tested and maintained by the platform. You reach the catalog from the agent's **Tools** section or via **Build > Tools**; an MCP server you want to reuse is found under Catalog."
+    "explanation": "The categories grow in effort: Configured tools work immediately, Catalog tools are prebuilt but have to be added, Custom tools you describe yourself. The module advises starting with built-in tools before building custom ones, because they are tested, maintained and optimized for the platform. You reach the catalog from the agent's **Tools** section or via **Build > Tools**; an MCP server you want to reuse is found under Catalog."
   },
   {
     "id": "2.1.4-03",
@@ -38,9 +44,12 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
-    "tags": ["agents", "parameters"],
-    "question": "Besides the instructions, which **two** model parameters can you set for an agent in the Microsoft Foundry portal, and what does each control?",
-    "answer": "- **Temperature** — response randomness (creativity)\n- **Top P** — response diversity, by limiting the vocabulary choices during generation",
-    "explanation": "Lower Temperature (0.1–0.3) gives consistent, focused answers; higher values (0.7–1.0) give more creative, varied ones. Business agents with structured tasks usually do well between 0.3 and 0.7. Top P mostly stays at its default of 1.0; lower it only when you want more constrained, predictable output. The same settings appear again when you configure the agent in VS Code."
+    "tags": [
+      "agents",
+      "parameters"
+    ],
+    "question": "In the Microsoft Foundry portal, an agent that handles structured business tasks gives answers that are too random and inconsistent. Which model parameter do you adjust, and which one usually stays at its default?",
+    "answer": "- Lower **Temperature** — it controls response randomness; about 0.3–0.7 suits structured business tasks\n- Leave **Top P** at its default 1.0 — it controls diversity by limiting vocabulary choices",
+    "explanation": "Temperature is the direct lever for randomness: low values (0.1–0.3) give consistent, focused answers, high values (0.7–1.0) creative, varied ones. Top P works on a different axis, the range of words the model may pick from; you lower it only when you want more constrained, predictable output. The portal offers both beside the instructions; the same two settings return in the VS Code Agent Designer and the agent's YAML file."
   }
 ]

@@ -6,12 +6,19 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/02-generate-image.html",
-    "tags": ["image-generation", "foundry-portal", "deployment"],
+    "tags": [
+      "image-generation",
+      "foundry-portal",
+      "deployment"
+    ],
     "question": "You build a Python app that generates images with a **gpt-image** model in **Microsoft Foundry**. Put the steps in order.",
     "answer": "Project → deploy gpt-image-2 → test in playground → configure `.env` → `az login` → run the app.",
     "explanation": "The model catalog is on the **Discover** page under the **Models** tab; deploying with default settings opens the model's playground. There you pick a size in the box at the bottom, enter a prompt such as *A robot eating spaghetti*, and refine the image with follow-up prompts. The app's `.env` needs the Azure OpenAI endpoint and the deployment name. `az login` comes right before running because the code authenticates with your Azure sign-in.",
     "explanation_images": [
-      {"src": "media/ai-103/4.2.6-images-playground.png", "alt": "Playground of an image model in the Microsoft Foundry portal: the prompt 'A robot eating spaghetti' in the box at the bottom, a 1024x1024 size selector and an image-upload button below it, and the generated image above."}
+      {
+        "src": "media/ai-103/4.2.6-images-playground.png",
+        "alt": "Playground of an image model in the Microsoft Foundry portal: the prompt 'A robot eating spaghetti' in the box at the bottom, a 1024x1024 size selector and an image-upload button below it, and the generated image above."
+      }
     ],
     "items": [
       "Create a Foundry project (New Foundry enabled) in the Foundry portal",
@@ -23,27 +30,19 @@
     ]
   },
   {
-    "id": "4.2.6-02",
-    "type": "basic",
-    "section": "4.2.6",
-    "exam_area": "vision",
-    "origin": "generated",
-    "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/02-generate-image.html",
-    "tags": ["image-generation", "openai-sdk", "base64"],
-    "question": "Your Python app calls a **gpt-image** deployment in Microsoft Foundry through the OpenAI SDK. Which method generates the image, and where in the response is the picture?",
-    "answer": "- **`client.images.generate(model=..., prompt=..., n=1)`**\n- The image comes back as **Base64** in **`data[0].b64_json`**\n- Decode it with `base64.b64decode` and save it as a `.png` file",
-    "explanation": "The `model` parameter takes your deployment name from the `.env` file. `n=1` asks for one image per prompt. The gpt-image model returns the image data itself as a Base64 string. The app must decode those bytes before it can write them to a file such as `images/image_1.png`.\n\n```python\nimg = client.images.generate(model=model_deployment, prompt=input_text, n=1)\njson_response = json.loads(img.model_dump_json())\nimage_data = json_response[\"data\"][0].get(\"b64_json\")\nimage_bytes = base64.b64decode(image_data)\n```"
-  },
-  {
     "id": "4.2.6-03",
     "type": "basic",
     "section": "4.2.6",
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/02-generate-image.html",
-    "tags": ["image-generation", "playground", "openai-sdk"],
-    "question": "In the Microsoft Foundry image playground, a follow-up prompt like *Show the robot in a restaurant* refines the previous image. Your Python app sends the same follow-up with `client.images.generate` and gets an unrelated image. Why?",
-    "answer": "Each **`images.generate`** call is a **separate request with no conversation history**; the app keeps no context from the previous prompt.",
-    "explanation": "The playground lets you build on an image step by step with follow-up prompts until you are happy with it. The lab's simple client only loops over user input and sends each prompt on its own. The model therefore treats every prompt as a new request. To refine an image from code, the app would have to keep that context itself; the lab leaves this out on purpose."
+    "tags": [
+      "image-generation",
+      "playground",
+      "openai-sdk"
+    ],
+    "question": "You want to refine an image from a **gpt-image** model in **Microsoft Foundry** step by step, e.g. move *a robot eating spaghetti* into a restaurant. Where does a follow-up prompt build on the previous image, and where does it not?",
+    "answer": "- **Playground** in the Foundry portal: a **follow-up prompt** such as *Show the robot in a restaurant* refines the last image\n- A simple Python app calling **`client.images.generate`**: each prompt is a **new request** with no conversation history",
+    "explanation": "In the playground you keep entering prompts in the box at the bottom of the page until you are happy with the image. The lab's Python client only loops over user input and sends each prompt on its own; it implements no logic to keep conversation history. The model therefore treats every prompt as new, and the same follow-up sent from the app produces an unrelated picture. Iterating on one image is a playground step before you write code."
   }
 ]

@@ -6,14 +6,29 @@
     "exam_area": "genai",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/10-knowledge-check",
-    "tags": ["workflows", "power-fx"],
+    "tags": [
+      "workflows",
+      "power-fx"
+    ],
     "question": "Which node type would you use to handle multiple tickets in a workflow without duplicating nodes?",
     "answer": "The **For-Each** node.",
     "explanation": "For Each is a flow node in the Microsoft Foundry workflow designer. It uses Power Fx to iterate over a collection and runs the same set of actions for each item. Combined with variables and conditions, one loop handles a whole list of support tickets. Without it you would copy the same nodes once per ticket.",
     "options": [
-      {"text": "If/Else node", "correct": false, "why": "It branches execution on a condition; it runs once and does not loop over a list (2.6.4, 2.6.6)."},
-      {"text": "For-Each node", "correct": true, "why": "It loops over a list of items and performs the same actions for each one, such as multiple support tickets (2.6.4, 2.6.6)."},
-      {"text": "Send message node", "correct": false, "why": "It is a basic chat node that sends a message to the user; it has no looping logic (2.6.4)."}
+      {
+        "text": "If/Else node",
+        "correct": false,
+        "why": "It branches execution on a condition; it runs once and does not loop over a list (2.6.4, 2.6.6)."
+      },
+      {
+        "text": "For-Each node",
+        "correct": true,
+        "why": "It loops over a list of items and performs the same actions for each one, such as multiple support tickets (2.6.4, 2.6.6)."
+      },
+      {
+        "text": "Send message node",
+        "correct": false,
+        "why": "It is a basic chat node that sends a message to the user; it has no looping logic (2.6.4)."
+      }
     ]
   },
   {
@@ -23,14 +38,29 @@
     "exam_area": "genai",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/10-knowledge-check",
-    "tags": ["workflows", "structured-output"],
+    "tags": [
+      "workflows",
+      "structured-output"
+    ],
     "question": "Which of the following best describes how structured agent outputs are used in workflows?",
     "answer": "They provide **predictable data** that can be stored in variables, evaluated with conditions, and trigger workflow steps.",
-    "explanation": "In a Microsoft Foundry workflow you define a response format such as a JSON schema on the Invoke agent node (Details tab). The output then follows a fixed shape. You store it in a variable via the node's Action settings. If/Else conditions and later agents can read that variable, so the agent's answer drives routing instead of replacing the flow nodes.",
+    "explanation": "In a Microsoft Foundry workflow you define a response format such as a JSON schema on the Invoke agent node (Details tab). The output then follows a fixed shape. You store it in a variable via the node's Action settings. If/Else conditions and later agents read that variable, so the agent's answer decides the route. The flow nodes still do the routing; the output only feeds them.",
     "options": [
-      {"text": "They are ignored once generated, since agents always handle routing automatically", "correct": false, "why": "Routing comes from flow nodes such as If/Else that read the stored output; agents do not route the workflow by themselves (2.6.4, 2.6.5)."},
-      {"text": "They provide predictable data that can be stored in variables, evaluated with conditions, and trigger workflow steps", "correct": true, "why": "A JSON schema gives the output a predictable shape, which is stored in a variable and drives routing logic and later nodes (2.6.5)."},
-      {"text": "They replace the need for loops and If/Else nodes", "correct": false, "why": "Structured outputs feed loops and If/Else conditions; effective automation still relies on all node types working together (2.6.4, 2.6.6)."}
+      {
+        "text": "They are ignored once generated, since agents always handle routing automatically",
+        "correct": false,
+        "why": "Routing comes from flow nodes such as If/Else that read the stored output; agents do not route the workflow by themselves (2.6.4, 2.6.5)."
+      },
+      {
+        "text": "They provide predictable data that can be stored in variables, evaluated with conditions, and trigger workflow steps",
+        "correct": true,
+        "why": "A JSON schema gives the output a predictable shape, which is stored in a variable and drives routing logic and later nodes (2.6.5)."
+      },
+      {
+        "text": "They replace the need for loops and If/Else nodes",
+        "correct": false,
+        "why": "Structured outputs feed the conditions of If/Else nodes and the variables loops work with; effective automation relies on the coordinated use of all node types (2.6.4, 2.6.6)."
+      }
     ]
   }
 ]

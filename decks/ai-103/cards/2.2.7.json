@@ -6,14 +6,29 @@
     "exam_area": "genai",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/6-knowledge-check",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "What are custom tools, and how can they help you develop effective agents with Microsoft Foundry Agent Service?",
     "answer": "**Callable functions** that an agent can use to extend its capabilities.",
     "explanation": "Adding a tool makes custom functionality available to the agent, and the agent decides on its own when to call it. Example: asked about snow at a ski resort, the agent sees it has a weather tool, calls the external API and reports the result. Foundry Agent Service offers function calling, Azure Functions, OpenAPI specification tools and Azure Logic Apps as ways to implement them.",
     "options": [
-      {"text": "Callable functions that an agent can use to extend its capabilities.", "correct": true, "why": "Tools make custom functionality available for the agent to call, depending on how it decides to respond to the prompt (unit 2.2.2, Why use custom tools)."},
-      {"text": "Extensions for Visual Studio Code that make it easier to create and deploy agents.", "correct": false, "why": "Custom tools are part of the agent definition and are called by the agent at run time, not developer IDE extensions (unit 2.2.3, Options for implementing custom tools)."},
-      {"text": "Fine-tuned models that the agent can use to generate custom output.", "correct": false, "why": "A tool is a function, an Azure Function, an OpenAPI-described API or a Logic App the agent calls; none of the options is a fine-tuned model (unit 2.2.3, Options for implementing custom tools)."}
+      {
+        "text": "Callable functions that an agent can use to extend its capabilities.",
+        "correct": true,
+        "why": "Tools make custom functionality available for the agent to call, depending on how it decides to respond to the prompt (unit 2.2.2, Why use custom tools)."
+      },
+      {
+        "text": "Extensions for Visual Studio Code that make it easier to create and deploy agents.",
+        "correct": false,
+        "why": "The VS Code extension for agent development is the Foundry Toolkit, a developer tool (unit 2.1.5); custom tools are functions in the agent definition that the agent itself calls at run time (unit 2.2.2)."
+      },
+      {
+        "text": "Fine-tuned models that the agent can use to generate custom output.",
+        "correct": false,
+        "why": "A tool is a function, an Azure Function, an OpenAPI-described API or a Logic App the agent calls; none of the options is a fine-tuned model (unit 2.2.3, Options for implementing custom tools)."
+      }
     ]
   },
   {
@@ -23,14 +38,30 @@
     "exam_area": "genai",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/6-knowledge-check",
-    "tags": ["agents", "openapi", "custom-tools"],
+    "tags": [
+      "agents",
+      "openapi",
+      "custom-tools"
+    ],
     "question": "You need to integrate functionality from an OpenAPI 3.0-based web service into an agent solution. What should you do?",
     "answer": "Add the web service as an **OpenAPI specification tool** to the agent definition.",
     "explanation": "You describe the API in a JSON spec file, load it and wrap it in an `OpenApiTool` with an `OpenApiFunctionDefinition` (name, spec, description, auth). The tool goes into the `tools` list of the `PromptAgentDefinition`. The agent then calls the API on its own when a prompt needs it. Three authentication types are supported: anonymous, API key and managed identity.",
     "options": [
-      {"text": "Add the JSON schema of the web service to the agent's instructions.", "correct": false, "why": "Instructions only tell the model how to behave; the agent can call an external API only through a registered tool (unit 2.2.4, How to integrate custom tools)."},
-      {"text": "Rewrite the web service as a Python function and hard-code it in your agent app.", "correct": false, "why": "Unnecessary: OpenAPI tools connect the agent directly to an existing API described by an OpenAPI 3.0 spec (unit 2.2.3, Options for implementing custom tools)."},
-      {"text": "Add the web service as an OpenAPI specification tool to the agent definition", "correct": true, "why": "OpenAPI specification tools connect an agent to an external API through its OpenAPI 3.0 spec, registered as an `OpenApiTool` in the agent definition (units 2.2.3 and 2.2.4)."}
+      {
+        "text": "Add the JSON schema of the web service to the agent's instructions.",
+        "correct": false,
+        "why": "Instructions only tell the model how to behave; the agent can call an external API only through a registered tool (unit 2.2.4, How to integrate custom tools)."
+      },
+      {
+        "text": "Rewrite the web service as a Python function and hard-code it in your agent app.",
+        "correct": false,
+        "why": "Unnecessary: OpenAPI tools connect the agent directly to an existing API described by an OpenAPI 3.0 spec (unit 2.2.3, Options for implementing custom tools)."
+      },
+      {
+        "text": "Add the web service as an OpenAPI specification tool to the agent definition",
+        "correct": true,
+        "why": "OpenAPI specification tools connect an agent to an external API through its OpenAPI 3.0 spec, registered as an `OpenApiTool` in the agent definition (units 2.2.3 and 2.2.4)."
+      }
     ]
   },
   {
@@ -40,14 +71,30 @@
     "exam_area": "genai",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/6-knowledge-check",
-    "tags": ["agents", "function-calling", "custom-tools"],
+    "tags": [
+      "agents",
+      "function-calling",
+      "custom-tools"
+    ],
     "question": "Your agent application code includes a local function that you want the agent to call. What kind of tool should you add to the agent's definition?",
     "answer": "**Function calling** (a function tool).",
     "explanation": "You describe the function to the agent as a `FunctionTool` with its name, a JSON schema of its parameters and a description. The agent then returns which function to call with which arguments, and the function runs in your own code. Meaningful names and well-documented parameters let the agent work out when to call it. Azure Functions instead run serverless and event-driven, triggered for example by a storage queue.",
     "options": [
-      {"text": "Function calling", "correct": true, "why": "Function calling describes custom functions in your code to the agent, which returns the function to call and its arguments (units 2.2.3 and 2.2.4)."},
-      {"text": "Code interpreter", "correct": false, "why": "Code Interpreter is a built-in tool in which the agent writes and runs its own Python code in a sandbox; it does not call a function from your app (unit 2.1.7, Extend agent capabilities with tools)."},
-      {"text": "Azure Functions", "correct": false, "why": "The Azure Function tool calls a function already deployed to Azure via triggers and bindings such as storage queues, not a local function in the app (unit 2.2.4, How to integrate custom tools)."}
+      {
+        "text": "Function calling",
+        "correct": true,
+        "why": "Function calling describes custom functions in your code to the agent, which returns the function to call and its arguments (units 2.2.3 and 2.2.4)."
+      },
+      {
+        "text": "Code interpreter",
+        "correct": false,
+        "why": "Code Interpreter is a built-in tool in which the agent writes and runs its own Python code in a sandbox; it does not call a function from your app (unit 2.1.7, Extend agent capabilities with tools)."
+      },
+      {
+        "text": "Azure Functions",
+        "correct": false,
+        "why": "The Azure Function tool calls a function already deployed to Azure via triggers and bindings such as storage queues, not a local function in the app (unit 2.2.4, How to integrate custom tools)."
+      }
     ]
   }
 ]

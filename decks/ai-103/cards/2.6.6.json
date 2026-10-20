@@ -6,10 +6,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/6-apply-power-fx",
-    "tags": ["workflows", "power-fx"],
+    "tags": [
+      "workflows",
+      "power-fx"
+    ],
     "question": "In a Microsoft Foundry workflow, which language do you write the conditions of If/Else nodes, the values of variables and the collections of For-each loops in?",
-    "answer": "**Power Fx** — the low-code, Excel-like formula language that is the glue of a workflow:\n- **If/Else** nodes evaluate a Power Fx condition to branch\n- **Set variable** nodes compute values with it\n- **For-each** nodes use it to iterate over a collection",
-    "explanation": "A Power Fx formula is an expression that evaluates to a value. It lets a workflow manipulate data, evaluate conditions and control execution without complex code, so the flow reacts to user input, agent outputs or stored data. Typical decision point: check an agent's confidence score, then continue automatically or escalate to a human. Combined with variables and conditions, a For-each loop handles a list of inputs, such as several support tickets, without duplicating nodes or logic."
+    "answer": "**Power Fx** — the low-code, Excel-like language that is the glue of a workflow; each **formula** is an expression that evaluates to a value:\n- **If/Else** nodes evaluate a Power Fx condition to branch\n- **Set variable** nodes compute values with it\n- **For-each** nodes use it to iterate over a collection",
+    "explanation": "Power Fx lets a workflow manipulate data, evaluate conditions and control execution without complex code, so the flow reacts to user input, agent outputs or stored data. Typical decision point: check an agent's confidence score, then continue automatically or escalate to a human. Combined with variables and conditions, a For-each loop handles a list of inputs, such as several support tickets, without duplicating nodes or logic."
   },
   {
     "id": "2.6.6-02",
@@ -18,7 +21,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/6-apply-power-fx",
-    "tags": ["workflows", "power-fx", "variables"],
+    "tags": [
+      "workflows",
+      "power-fx",
+      "variables"
+    ],
     "question": "Name the **two** kinds of variables that Power Fx formulas can reference in a Microsoft Foundry workflow.",
     "answer": "- **System variables** — context about the workflow or conversation: current activity, last message, user info\n- **Local variables** — data captured or created during execution, used in later nodes",
     "explanation": "System variables come from the platform; you read them to know where the conversation stands. Local variables are yours: a node stores a user's input or an agent's output in them, and later nodes reference them, for example `Local.Input` or `Local.Confidence > 0.8`. Referencing variables is what lets a workflow adapt to context and to the results of previous steps."
@@ -30,8 +37,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/6-apply-power-fx",
-    "tags": ["workflows", "power-fx"],
-    "question": "Name the **six** Power Fx formulas that Microsoft Foundry workflows use to work with **text values and conditions**.",
+    "tags": [
+      "workflows",
+      "power-fx"
+    ],
+    "question": "Name **six** basic Power Fx formulas that a Microsoft Foundry workflow uses for **text values and conditions**, and what each returns.",
     "answer": "- **`Upper(Local.Input)`** — string to all caps\n- **`Lower(Local.Input)`** — string to all lowercase\n- **`Len(Local.Input)`** — number of characters\n- **`Concatenate(Local.FirstName, \" \", Local.LastName)`** — joins strings into one\n- **`Local.Confidence > 0.8`** — conditional check, returns true/false\n- **`If(Local.Confidence > 0.8, \"Proceed\", \"Escalate\")`** — returns one of two values",
     "explanation": "The comparison and `If()` differ in what they return. A bare comparison yields true or false, which is exactly what an If/Else node needs to choose a branch. `If()` yields one of two values, so you use it where a value is wanted, such as setting a variable to \"Proceed\" or \"Escalate\" from the agent's confidence score."
   },
@@ -42,8 +52,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/6-apply-power-fx",
-    "tags": ["workflows", "power-fx"],
-    "question": "Name the **six** Power Fx formulas that Microsoft Foundry workflows use to work with **lists, tables and empty values**.",
+    "tags": [
+      "workflows",
+      "power-fx"
+    ],
+    "question": "Name **six** basic Power Fx formulas that a Microsoft Foundry workflow uses for **lists, tables and empty values**, and what each returns.",
     "answer": "- **`Sum([10, 20, 30])`** — adds the numbers in a simple list\n- **`Sum(Local.ItemList, Amount)`** — adds the `Amount` property of each record\n- **`Count(Local.ItemList)`** — number of items\n- **`IsBlank(Local.Input)`** — true if a variable or input is empty\n- **`IsEmpty(Local.ItemList)`** — true if a table has no records\n- **`ForAll(Local.ItemList, Upper(Name))`** — applies a formula to each item",
     "explanation": "`Sum` takes either a plain list of numbers or a table plus the column to add up. `IsBlank` and `IsEmpty` are easy to mix up: `IsBlank` checks a single variable or input, `IsEmpty` checks whether a table holds any records. `ForAll` applies a formula to every item inside one expression, while a For-each node repeats whole workflow steps for each item."
   },
@@ -54,15 +67,34 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/6-apply-power-fx",
-    "tags": ["workflows", "power-fx"],
+    "tags": [
+      "workflows",
+      "power-fx"
+    ],
     "question": "In a Microsoft Foundry workflow, an agent stores the open support tickets it found as a table in `Local.ItemList`. An If/Else node must skip the For-each loop when the table has **no records**. Which Power Fx formula do you use as the condition?",
     "answer": "**`IsEmpty(Local.ItemList)`**",
     "explanation": "`IsEmpty` returns true when a table has no records, and an If/Else node needs exactly such a true/false value to branch. `IsBlank` is the check for a single variable or input that is empty. `Count` and `Len` return numbers, not true or false.",
     "options": [
-      {"text": "`IsEmpty(Local.ItemList)`", "correct": true, "why": "Returns true if a table has no records, which is the condition the If/Else node needs."},
-      {"text": "`IsBlank(Local.ItemList)`", "correct": false, "why": "IsBlank checks whether a variable or input is empty; the course names IsEmpty for a table without records."},
-      {"text": "`Count(Local.ItemList)`", "correct": false, "why": "Count returns the number of items, a number rather than the true/false an If/Else condition needs."},
-      {"text": "`Len(Local.ItemList)`", "correct": false, "why": "Len returns the number of characters in a string; it does not work on a table of records."}
+      {
+        "text": "`IsEmpty(Local.ItemList)`",
+        "correct": true,
+        "why": "Returns true if a table has no records, which is the condition the If/Else node needs."
+      },
+      {
+        "text": "`IsBlank(Local.ItemList)`",
+        "correct": false,
+        "why": "IsBlank returns true if a single variable or input is empty; the check for a table without records is IsEmpty."
+      },
+      {
+        "text": "`Count(Local.ItemList)`",
+        "correct": false,
+        "why": "Count returns the number of items, a number rather than the true/false an If/Else condition needs."
+      },
+      {
+        "text": "`Len(Local.ItemList)`",
+        "correct": false,
+        "why": "Len returns the number of characters in a string, not whether a table holds any records."
+      }
     ]
   }
 ]

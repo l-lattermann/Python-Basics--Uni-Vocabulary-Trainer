@@ -6,10 +6,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["workflows", "agent-framework"],
+    "tags": [
+      "workflows",
+      "agent-framework"
+    ],
     "question": "What is a **workflow** in the Microsoft Agent Framework, and which **three** core components is it built from?",
-    "answer": "A structured sequence of steps that completes a task, with AI agents and other components:\n- **Executors** — the workers: take input messages, act, produce outputs\n- **Edges** — define how messages flow between executors and in what order\n- **Events** — built-in signals for observability and debugging\n\nWorkflows also support **checkpointing**: saving and resuming workflow state.",
-    "explanation": "An executor can be an AI agent or a piece of custom logic, so a workflow mixes LLM steps with ordinary code. For a travel request, one executor analyzes the request and another books the flight or hotel. Edges decide which executor runs next. Events let you watch progress, errors and performance. Workflows give developers control over how tasks run and are the basis for multi-agent orchestration."
+    "answer": "A structured sequence of steps that completes a task, with AI agents and other components:\n- **Executors** — the workers (AI agents or custom logic): take input messages, act, produce outputs\n- **Edges** — define how messages flow between executors and in what order\n- **Events** — built-in signals for observability and debugging\n\nWorkflows also support **checkpointing**: saving and resuming workflow state.",
+    "explanation": "Because an executor can be an AI agent or custom logic, one workflow mixes LLM steps with ordinary code. For a travel request, one executor analyzes the request and another books the flight or hotel. Edges decide which executor runs next. Events let you monitor progress, track errors and analyze performance. Workflows give developers control over how tasks are executed, and they are what enables multi-agent orchestration."
   },
   {
     "id": "2.8.3-02",
@@ -18,7 +21,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["workflows", "agent-framework"],
+    "tags": [
+      "workflows",
+      "agent-framework"
+    ],
     "question": "Name the **five** edge types a Microsoft Agent Framework workflow supports for routing messages between executors.",
     "answer": "- **Direct** — one executor to the next, in sequence\n- **Conditional** — fires only when a condition is met\n- **Switch-case** — routes to different executors by predefined conditions\n- **Fan-out** — sends one message to several executors at once\n- **Fan-in** — combines messages from several executors into one",
     "explanation": "Travel examples from the course: after an agent gathers user input, a direct edge passes it to the booking executor. A conditional edge branches to an executor that suggests other dates when no rooms are free. A switch-case edge sends VIP customers to a premium executor and everyone else to the standard one. Fan-out sends one request to a flight agent and a hotel agent; fan-in lets a summary executor compile both into one itinerary."
@@ -30,7 +36,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["workflows", "observability"],
+    "tags": [
+      "workflows",
+      "observability"
+    ],
     "question": "Name the **six** built-in events a Microsoft Agent Framework workflow emits during execution.",
     "answer": "- **WorkflowStartedEvent** — workflow execution begins\n- **WorkflowOutputEvent** — the workflow produces an output\n- **WorkflowErrorEvent** — an error occurs\n- **ExecutorInvokeEvent** — an executor starts processing a task\n- **ExecutorCompleteEvent** — an executor finishes its work\n- **RequestInfoEvent** — an external request is issued",
     "explanation": "The events exist for observability and debugging: they let you monitor progress, track errors and analyze performance. Three describe the whole workflow (start, output, error), two describe a single executor (invoke, complete), and one marks a request to the outside. In code, you read a workflow's results by iterating over its events and picking out the WorkflowOutputEvent instances."
@@ -42,16 +51,39 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["workflows", "agent-framework"],
+    "tags": [
+      "workflows",
+      "agent-framework"
+    ],
     "question": "A Microsoft Agent Framework travel workflow sends one request to a flight agent and a hotel agent at the same time. A summary executor then compiles both results into one itinerary. Which **two** edge types does the workflow use?",
     "answer": "**Fan-out** edges to reach both agents, and **fan-in** edges to combine their results.",
-    "explanation": "Fan-out and fan-in are the pair for parallel work: fan-out splits one message into several simultaneous calls, fan-in gathers the separate results back into one message for the final step. Switch-case and conditional edges choose between paths; they never run several executors on the same message.",
+    "explanation": "Fan-out and fan-in are the pair for parallel work: fan-out splits one message into several simultaneous calls, fan-in gathers the separate results back into one message for the final step. Switch-case and conditional edges choose a path by condition instead of reaching several executors at once.",
     "options": [
-      {"text": "Fan-out", "correct": true, "why": "It sends a single message to several executors simultaneously, here the flight and the hotel agent."},
-      {"text": "Fan-in", "correct": true, "why": "It combines the messages from several executors into one, here for the summary executor."},
-      {"text": "Switch-case", "correct": false, "why": "It routes a message to one of several executors by condition, like VIP versus standard customers, not to all of them."},
-      {"text": "Conditional", "correct": false, "why": "It fires only when a condition is met, like branching to alternatives when no rooms are free."},
-      {"text": "Direct", "correct": false, "why": "It connects exactly one executor to the next in sequence, so it can neither split nor merge."}
+      {
+        "text": "Fan-out",
+        "correct": true,
+        "why": "It sends a single message to several executors simultaneously, here the flight and the hotel agent."
+      },
+      {
+        "text": "Fan-in",
+        "correct": true,
+        "why": "It combines the messages from several executors into one, here for the summary executor."
+      },
+      {
+        "text": "Switch-case",
+        "correct": false,
+        "why": "It routes a message to one of several executors by condition, like VIP versus standard customers, not to all of them."
+      },
+      {
+        "text": "Conditional",
+        "correct": false,
+        "why": "It fires only when a condition is met, like branching to alternatives when no rooms are free."
+      },
+      {
+        "text": "Direct",
+        "correct": false,
+        "why": "It connects exactly one executor to the next in sequence, so it can neither split nor merge."
+      }
     ]
   },
   {
@@ -61,7 +93,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["multi-agent", "orchestration"],
+    "tags": [
+      "multi-agent",
+      "orchestration"
+    ],
     "question": "Name the **five** orchestration patterns built into the Microsoft Agent Framework SDK.",
     "answer": "- **Concurrent** — same task to all agents at once, results collected independently\n- **Sequential** — each agent's output feeds the next, in a fixed order\n- **Handoff** — control moves between agents by context or rules; one agent works at a time\n- **Group chat** — shared conversation, a chat manager picks who speaks next\n- **Magentic** — a manager plans, delegates and adapts across specialists",
     "explanation": "Pick by the shape of the task. Concurrent suits parallel analysis and ensemble decisions; sequential suits pipelines and progressive refinement; handoff suits escalation, fallback and expert routing. Group chat suits brainstorming and consensus and can include a human. Magentic suits open-ended problems whose solution path evolves. All exist because one agent is bound to one set of instructions; several agents bring distinct skills, combined outputs and dynamic routing."
@@ -73,10 +108,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/3-understand-agent-orchestration",
-    "tags": ["multi-agent", "orchestration"],
+    "tags": [
+      "multi-agent",
+      "orchestration"
+    ],
     "question": "Put the steps of the **unified orchestration workflow** in the Microsoft Agent Framework SDK in order.",
     "answer": "Define agents → create the orchestration → (callbacks/transforms) → start runtime → invoke → retrieve results.",
-    "explanation": "The flow is the same for every pattern, which is the point: all patterns share one core interface. You can therefore swap concurrent for sequential or group chat without rewriting agent logic or learning a new API. A manager agent is added only when the pattern needs one, and results come back asynchronously without blocking.",
+    "explanation": "The flow is the same for every pattern, which is the point: all patterns share one core interface. You can therefore swap concurrent for sequential or group chat without rewriting agent logic or learning a new API. A manager agent is added only when the pattern needs one. The SDK hides the agent communication, coordination and result aggregation, so you focus on the workflow design.",
     "items": [
       "Define your agents and describe their capabilities",
       "Select and create an orchestration pattern, optionally with a manager agent",

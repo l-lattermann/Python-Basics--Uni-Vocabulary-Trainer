@@ -26,11 +26,11 @@
     "tags": ["azure-ai-search", "skillsets"],
     "question": "Which service supports built-in AI skills in Azure AI Search?",
     "answer": "**Foundry Tools** (for example Azure Vision and Azure Language).",
-    "explanation": "Built-in skills such as language detection, entity and key phrase extraction, translation, PII detection, OCR and image captions come from Foundry Tools. The indexer needs access to a Foundry Tools resource: either the restricted one included in Azure AI Search, limited to 20 documents, or your own resource in the same region as the search resource. Azure Functions is the typical host for custom skills instead.",
+    "explanation": "Built-in skills such as language detection, entity and key phrase extraction, translation, PII detection, OCR and image captions come from Foundry Tools. The indexer needs access to a Foundry Tools resource: either the restricted one included in Azure AI Search, limited to 20 documents, or your own resource in the same region as the search resource. Azure Functions comes in only for custom skills: the module's example wraps a Document Intelligence model in one.",
     "options": [
-      {"text": "Azure Functions", "correct": false, "why": "Azure Functions is a common way to implement a custom skill, not the source of built-in skills (unit 4.8.4)."},
+      {"text": "Azure Functions", "correct": false, "why": "Azure Functions is one way to implement a custom skill, not the source of built-in skills (unit 4.8.4)."},
       {"text": "Foundry Tools", "correct": true, "why": "Built-in skills include functionality from Foundry Tools such as Azure Vision and Azure Language (unit 4.8.4)."},
-      {"text": "Azure Cosmos DB", "correct": false, "why": "Cosmos DB is a database that can serve as a data source for an indexer; it provides no AI skills (unit 4.8.3)."}
+      {"text": "Azure Cosmos DB", "correct": false, "why": "Cosmos DB is a database; the module names databases only as possible data sources for an indexer, never as a source of skills (units 4.8.3, 4.8.4)."}
     ]
   },
   {

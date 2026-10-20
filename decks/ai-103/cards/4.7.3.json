@@ -34,7 +34,7 @@
     ],
     "question": "Put the steps of extracting data from an invoice with a **prebuilt model** in **Azure Document Intelligence Studio** in order.",
     "answer": "Create resource → pick prebuilt model → enter endpoint and key → upload document → review fields and confidence.",
-    "explanation": "The Studio runs no analysis of its own: it calls your Document Intelligence or Foundry Tools resource, so the resource must exist first and the Studio needs its endpoint and key. You can upload the document or give its URL. The result lists each extracted field with a confidence score, which tells you how sure the model is about that value.",
+    "explanation": "The Studio works against your own Document Intelligence or Foundry Tools resource, so the resource must exist first and the Studio needs its endpoint and key. You pick the prebuilt model that matches the document type, such as Invoice, Receipt or ID Document. You can upload the document or give its URL. The result lists each extracted field together with a confidence score.",
     "items": [
       "Create an Azure Document Intelligence or Foundry Tools resource in the Azure portal",
       "Open the Studio and select a prebuilt model, such as Invoice",
@@ -57,7 +57,7 @@
     ],
     "question": "Put the steps of building a **custom extraction model** in **Azure Document Intelligence Studio** in order.",
     "answer": "Resource → sample forms in Blob Storage → **CORS** → custom model project → label → train and test.",
-    "explanation": "The sample forms live in your own Blob Storage container, not in the Studio. That is why CORS must be configured: without it the browser-based Studio cannot reach the container. The project then links the container and the resource. Testing uses a document that was not part of training, so the accuracy you see reflects new documents.",
+    "explanation": "The sample forms live in your own Blob Storage container, not in the Studio. That is why CORS must be configured: without it the Studio cannot access the container. The project then links the container and the resource. You label the fields visually, and the Studio writes the training files for you. After training you review the accuracy metrics, then test on a document that was not used in training.",
     "items": [
       "Create an Azure Document Intelligence or Foundry resource",
       "Upload at least 5–6 sample forms to an Azure Blob Storage container",
@@ -79,9 +79,9 @@
       "studio",
       "custom-models"
     ],
-    "question": "Training a custom **Azure Document Intelligence** model with the REST API needs `ocr.json`, `labels.json` and `fields.json` files next to the sample forms. What changes when you train in **Document Intelligence Studio** instead?",
-    "answer": "The Studio **generates `ocr.json`, `labels.json` and `fields.json` automatically** while you label the forms visually — you write no JSON by hand.",
-    "explanation": "With the REST API or SDK you prepare the files yourself: one `ocr.json` per form from the Analyze document function, one `labels.json` per form mapping fields to their location, and a single `fields.json` describing the fields to extract. In the Studio you draw labels on the sample documents and it produces all three. The Studio covers the whole process of labeling, training and testing."
+    "question": "Your team wants to train a custom **Azure Document Intelligence** extraction model but does not want to write the `ocr.json`, `labels.json` and `fields.json` training files by hand. What do you use?",
+    "answer": "**Document Intelligence Studio** — you label the fields visually and it **generates `ocr.json`, `labels.json` and `fields.json` automatically**.",
+    "explanation": "The REST API and SDK route expects these files next to the sample forms in the blob container, so there you prepare them yourself. The Studio covers the whole process of labeling, training and testing a custom model in one visual interface. You draw labels on the sample documents, and the Studio produces the OCR results, the labels and the field definitions from them."
   },
   {
     "id": "4.7.3-05",
@@ -96,8 +96,8 @@
     ],
     "question": "Name the **seven** optional add-on capabilities you can enable in **Azure Document Intelligence**.",
     "answer": "- **High resolution extraction** — more accurate text from high-resolution documents\n- **Formula extraction** — mathematical formulas\n- **Font property extraction** — font style, weight and color\n- **Barcode extraction** — detect and read barcodes\n- **Searchable PDF** — turn scanned documents into searchable PDFs\n- **Query fields** — extract specific fields with natural language queries\n- **Key-value pairs** — key-value relationships via the layout model",
-    "explanation": "Add-ons are switched on per extraction scenario rather than always running. Query fields fits when a model lacks a field you need, because you ask for it by name instead of training. Searchable PDF changes the output itself, not the extracted data. Key-value pairs is the only one the course ties to a specific model, the layout model. Some add-ons are premium features that cost extra.",
-    "addition": "Free: barcode extraction, language detection, key-value pairs, searchable PDF. Billed add-ons: font, formula, high resolution and query fields. You enable them with the `features` parameter of the analyze request, e.g. `features=queryFields`; searchable PDF works only with `prebuilt-read`.",
+    "explanation": "Add-ons are optional: you enable the ones your extraction scenario needs instead of running all of them. Most add more detail to what is read from the page — formulas, fonts, barcodes, or more accurate text from high-resolution documents. Searchable PDF instead turns a scanned document into a new, searchable PDF file. Query fields let you ask for specific fields in natural language. Key-value pairs is the one the course ties to a specific model, the layout model. Some add-ons are premium features that cost extra.",
+    "addition": "Free: barcodes, language detection, key-value pairs, searchable PDF (only with `prebuilt-read`). Billed: font, formula, high resolution, query fields. Enable them via the `features` parameter, e.g. `features=queryFields`. Query fields add fields to a prebuilt or custom model's schema without extra training.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-add-on-capabilities"
   }
 ]

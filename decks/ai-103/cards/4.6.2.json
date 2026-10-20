@@ -6,12 +6,19 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/02-prepare-content-understanding",
-    "tags": ["content-understanding", "endpoints", "provisioning"],
+    "tags": [
+      "content-understanding",
+      "endpoints",
+      "provisioning"
+    ],
     "question": "You want a client app to call the **Azure Content Understanding API**. Which resource do you provision, in which **two** ways, and which **two** values does the app need to connect?",
-    "answer": "- A **Microsoft Foundry resource**, created directly in the **Azure portal**\n- …or via a **Microsoft Foundry project**, which includes one by default\n- The resource **endpoint**\n- One of its **API keys**",
-    "explanation": "The project route is worth it when you want visual tools to create and manage Content Understanding schemas and analyzers. You read endpoint and key in the Azure portal on the resource's **Keys and Endpoint** page (Content Understanding tab), or on the Foundry portal's project home page. Inside a project you can skip the key: the Microsoft Foundry SDK connects with Microsoft Entra ID authentication and retrieves the resource's connection details.",
+    "answer": "- **Microsoft Foundry resource**, created in the **Azure portal**\n- Or a **Microsoft Foundry project**, which includes a Foundry resource by default\n- To connect: the resource **endpoint**\n- …and one of its **API keys**",
+    "explanation": "The project route is worth it when you want visual tools to create and manage Content Understanding schemas and analyzers. You read endpoint and key in the Azure portal on the resource's **Keys and Endpoint** page (Content Understanding tab), or on the Foundry portal's project home page. Inside a project, code can also use the Microsoft Foundry SDK to connect to the project with Microsoft Entra ID authentication and retrieve the resource's connection details.",
     "explanation_images": [
-      {"src": "media/ai-103/4.6.2-azure-portal-keys.png", "alt": "Azure portal, Keys and Endpoint page of a Foundry resource: KEY 1, KEY 2, region, and the Content Understanding endpoint tab."}
+      {
+        "src": "media/ai-103/4.6.2-azure-portal-keys.png",
+        "alt": "Azure portal, Keys and Endpoint page of a Foundry resource: KEY 1, KEY 2, region, and the Content Understanding endpoint tab."
+      }
     ]
   },
   {
@@ -21,16 +28,39 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/02-prepare-content-understanding",
-    "tags": ["content-understanding", "model-deployment"],
+    "tags": [
+      "content-understanding",
+      "model-deployment"
+    ],
     "question": "Before you can use the **Azure Content Understanding API**, your Microsoft Foundry resource needs default model deployments. Which **three** models does Content Understanding require?",
     "answer": "**GPT-4.1**, **GPT-4.1-mini** and **text-embedding-3-large**.",
-    "explanation": "Content Understanding relies on generative models to process content: two completion models and one embedding model. You must deploy them as defaults before your first API call, in the Azure portal or through the API. An analyzer definition names its models in a `models` object, for example `completion: gpt-4.1` and `embedding: text-embedding-3-large`.",
+    "explanation": "Content Understanding uses generative models to process content, so these defaults must exist before you use the API. You configure them in the Azure portal or through the API. An analyzer definition names the models it uses in its `models` object, for example `completion: gpt-4.1` and `embedding: text-embedding-3-large`.",
     "options": [
-      {"text": "GPT-4.1", "correct": true, "why": "The standard completion model Content Understanding requires as a default deployment."},
-      {"text": "GPT-4.1-mini", "correct": true, "why": "The mini completion model is also on the list of required default deployments."},
-      {"text": "text-embedding-3-large", "correct": true, "why": "The required embedding model; analyzer definitions name it under `models.embedding`."},
-      {"text": "text-embedding-3-small", "correct": false, "why": "A real embedding model, but the course names the large variant as the required one."},
-      {"text": "GPT-4o", "correct": false, "why": "A multimodal chat model, but not one of the default deployments Content Understanding requires."}
+      {
+        "text": "GPT-4.1",
+        "correct": true,
+        "why": "The standard completion model Content Understanding requires as a default deployment."
+      },
+      {
+        "text": "GPT-4.1-mini",
+        "correct": true,
+        "why": "The mini completion model is also on the list of required default deployments."
+      },
+      {
+        "text": "text-embedding-3-large",
+        "correct": true,
+        "why": "The required embedding model; analyzer definitions name it under `models.embedding`."
+      },
+      {
+        "text": "text-embedding-3-small",
+        "correct": false,
+        "why": "A real embedding model, but the course names the large variant as the required one."
+      },
+      {
+        "text": "GPT-4o",
+        "correct": false,
+        "why": "A multimodal chat model, but not one of the default deployments Content Understanding requires."
+      }
     ],
     "addition": "Current docs set the defaults per resource with `PATCH {endpoint}/contentunderstanding/defaults` and a `modelDeployments` map, or in Content Understanding Studio with auto-deployment of a standard, a mini and an embeddings model. Different analyzers require different models.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/how-to/migration-preview-to-ga"
@@ -42,9 +72,12 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/02-prepare-content-understanding",
-    "tags": ["content-understanding", "sdk"],
+    "tags": [
+      "content-understanding",
+      "sdk"
+    ],
     "question": "You build a Python client for **Azure Content Understanding**. Which package do you install, which Python version does it need, and what is the alternative without the SDK?",
     "answer": "- `pip install` **`azure-ai-contentunderstanding`**\n- Python **3.9** or later\n- Alternative: call the **REST API** from any language that can send HTTP requests",
-    "explanation": "The package provides the `ContentUnderstandingClient` class, which the following units use to create analyzers and analyze content. The REST route is the language-neutral option: the same endpoint and key, sent as plain HTTP calls. Don't confuse this package with the Microsoft Foundry SDK, which connects to a Foundry project and retrieves the resource's connection details."
+    "explanation": "The package provides the `ContentUnderstandingClient` class, which you use to create analyzers and to analyze content. The REST route is the language-neutral option: plain HTTP calls to the resource endpoint with the API key in the header. Don't confuse this package with the Microsoft Foundry SDK, which connects to a Foundry project and retrieves the resource's connection details."
   }
 ]

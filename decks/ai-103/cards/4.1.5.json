@@ -13,7 +13,7 @@
     ],
     "question": "You build a Python chat app that sends images to a multimodal model in **Microsoft Foundry**. Put the steps in order.",
     "answer": "Project → deploy model → test in playground → configure app → `az login` → run.",
-    "explanation": "The model catalog sits on the **Discover** page under the **Models** tab. After deployment the chat playground opens, where the attach button (📎) under the chat box adds an image to a text prompt. Testing there first proves the model handles images before you write code. The app then needs two values from the portal: the Azure OpenAI endpoint and the deployment name. `az login` comes last because the code authenticates with your Azure CLI sign-in.",
+    "explanation": "The model catalog sits on the **Discover** page under the **Models** tab. After deployment the chat playground opens, where the attach button (📎) under the chat box adds an image to a text prompt. Testing there first proves the model handles images before you write code. The app then needs two values from the portal: the Azure OpenAI endpoint and the deployment name. `az login` comes right before the run because the code authenticates with your Azure CLI sign-in instead of an API key.",
     "explanation_images": [
       {
         "src": "media/ai-103/4.1.5-chat-playground-image.png",
@@ -43,7 +43,7 @@
     ],
     "question": "Your app uses the OpenAI Python SDK (`OpenAI(base_url=...)`) against a model deployed in a **Microsoft Foundry** project. Which endpoint goes into its configuration, and where in the Foundry portal do you find it?",
     "answer": "- The **Azure OpenAI endpoint**: `https://{foundry-resource-name}.openai.azure.com/openai/v1`\n- **Not** the project endpoint\n- Shown on the project's **home page**\n- Plus the **model deployment name** (default: the model name)",
-    "explanation": "The project home page shows three values side by side: the API key, the project endpoint and the Azure OpenAI endpoint. They are easy to confuse. The OpenAI SDK client talks to the model through the Azure OpenAI endpoint, so that is the one you pass as `base_url`. The deployment name goes into the `model` parameter of each request; in the lab it is `gpt-5.2` unless you changed it."
+    "explanation": "The project home page shows three values together: the API key, the project endpoint and the Azure OpenAI endpoint. They are easy to confuse. The OpenAI SDK client talks to the model through the Azure OpenAI endpoint, so that is the one you pass as `base_url`. The deployment name goes into the `model` parameter of each request; in the lab it is `gpt-5.2` unless you changed it."
   },
   {
     "id": "4.1.5-03",

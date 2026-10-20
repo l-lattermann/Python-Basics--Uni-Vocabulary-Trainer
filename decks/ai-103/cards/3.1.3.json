@@ -6,7 +6,10 @@
     "exam_area": "text",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/3-detect-language",
-    "tags": ["language-detection", "azure-language"],
+    "tags": [
+      "language-detection",
+      "azure-language"
+    ],
     "question": "A chat app built on **Azure Language in Foundry Tools** must find out which language a user writes in, so it can reply in that language. Which capability do you call, and what does it return for each document?",
     "answer": "**Language detection**, returning per document:\n- the **primary language** name (e.g. `English`)\n- its **ISO 6391 code** (e.g. `en`)\n- a **confidence score** from 0 to 1",
     "explanation": "Language detection fits wherever the language of incoming text is unknown: a content store that collects arbitrary text, or a chat session whose replies should match the user. You parse the result to pick the language, and the score tells you how sure the model is — values close to 1 mean high confidence. Short, simple text like \"Bonjour le monde!\" scores high because its language is easy to identify."
@@ -18,15 +21,34 @@
     "exam_area": "text",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/3-detect-language",
-    "tags": ["language-detection", "python-sdk"],
+    "tags": [
+      "language-detection",
+      "python-sdk"
+    ],
     "question": "Complete the Python code so that it detects the language of each document with the `azure-ai-textanalytics` SDK.\n\n```python\ndocuments = [\"Hello World!\", \"Bonjour le monde!\"]\nresponse = client.___(documents=documents)\nfor doc in response:\n    print(doc.id, doc.primary_language.name,\n          doc.primary_language.iso6391_name,\n          doc.primary_language.confidence_score)\n```",
     "answer": "`detect_language`",
-    "explanation": "`client` is a `TextAnalyticsClient` for the Foundry resource. Every Azure Language analysis takes the same input — a list of documents — and returns one result per document, so only the method name changes between tasks. Each result carries the document's `id` and a `primary_language` object holding the name, the ISO 6391 code and the confidence score.",
+    "explanation": "`client` is a `TextAnalyticsClient` for the Foundry resource. Every Azure Language analysis takes the same input — a list of documents — and returns one result per document; what changes between tasks is the method and the fields you read from each result. Here each result carries the document's `id` and a `primary_language` object holding the name, the ISO 6391 code and the confidence score.",
     "options": [
-      {"text": "`detect_language`", "correct": true, "why": "This is the TextAnalyticsClient method for language detection; its results expose `primary_language`."},
-      {"text": "`recognize_entities`", "correct": false, "why": "This runs named entity recognition and returns `entities`, not a `primary_language`."},
-      {"text": "`recognize_pii_entities`", "correct": false, "why": "This finds and redacts personal details; its results have no `primary_language`."},
-      {"text": "`analyze_sentiment`", "correct": false, "why": "This scores sentiment, one of the deprecated capabilities kept for existing apps; it does not identify the language."}
+      {
+        "text": "`detect_language`",
+        "correct": true,
+        "why": "This is the TextAnalyticsClient method for language detection; its results expose `primary_language`."
+      },
+      {
+        "text": "`recognize_entities`",
+        "correct": false,
+        "why": "This runs named entity recognition and returns `entities`, not a `primary_language`."
+      },
+      {
+        "text": "`recognize_pii_entities`",
+        "correct": false,
+        "why": "This finds and redacts personal details; its results have no `primary_language`."
+      },
+      {
+        "text": "`analyze_sentiment`",
+        "correct": false,
+        "why": "This scores sentiment, one of the deprecated capabilities kept for existing apps; it does not identify the language."
+      }
     ]
   },
   {
@@ -36,9 +58,12 @@
     "exam_area": "text",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/3-detect-language",
-    "tags": ["language-detection", "limits"],
-    "question": "In **Azure Language** language detection, what are the input size limits, and what comes back for mixed-language text and for text the analyzer cannot parse?",
-    "answer": "- Each document **under 5,120 characters**\n- At most **1,000 documents** (IDs) per collection\n- **Mixed languages** → the language with the largest share, with a **lower score**\n- **Unparseable text** → name and ISO code `(unknown)`, score **0**",
-    "explanation": "The character limit applies per document, so long text has to be split before it is sent. A sentence like \"I know a cool AI developer. He has a certain je ne sais quoi!\" still returns English, but the lower score signals that the call was marginal. A score of 0 with `(unknown)` usually points to a problem on your side, such as broken character encoding when the text was converted to a string."
+    "tags": [
+      "language-detection",
+      "limits"
+    ],
+    "question": "In **Azure Language** language detection, what does a request contain, what are its size limits, and what comes back for mixed-language text and for text the analyzer cannot parse?",
+    "answer": "- A collection of **documents**, each with a unique **id** and the **text**\n- Each document **under 5,120 characters**, at most **1,000 documents** (IDs) per collection\n- **Mixed languages** → the language with the largest share, with a **lower score**\n- **Unparseable text** → name and ISO code `(unknown)`, score **0**",
+    "explanation": "The request has the same shape as every Azure Language call, and the response holds one result per document. The size limit applies per document, the item limit per collection. A sentence like \"I know a cool AI developer. He has a certain je ne sais quoi!\" still returns English, but the lower score reflects the marginal strength of that assessment. `(unknown)` with a score of 0 means the analyzer could not parse the text at all — for example because of character encoding issues when the text was converted to a string."
   }
 ]

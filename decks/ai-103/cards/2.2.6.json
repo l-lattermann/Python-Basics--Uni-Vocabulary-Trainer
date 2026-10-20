@@ -11,7 +11,7 @@
       "function-calling",
       "sdk"
     ],
-    "question": "A Python app uses the Microsoft Foundry SDK to build a **Foundry agent with custom function tools**. Put the steps of one chat turn, from defining the tools to cleaning up, in order.",
+    "question": "A Python app uses the Microsoft Foundry SDK to build a **Foundry agent with custom function tools** and chat with it. Put the steps in order, from defining the tools to deleting the agent.",
     "answer": "Define `FunctionTool`s → `agents.create_version` → add the user message to a conversation → `responses.create` → run each `function_call` locally → send the outputs back on the same conversation → `delete_version`.",
     "explanation": "The agent never runs your code. It only answers with `function_call` items that name a function and its JSON arguments. Your app runs the matching Python function and returns the result, and only then does the agent write its final answer. In the lab, one prompt (\"next event from South America and the cost of 5 hours of premium telescope time\") made the agent call **two** functions in the same turn.",
     "items": [
@@ -48,11 +48,10 @@
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/02-agent-custom-tools.html",
     "tags": [
       "agents",
-      "function-calling",
-      "tool-schemas"
+      "function-calling"
     ],
-    "question": "You register a Python function `calculate_observation_cost(telescope_tier, hours, priority)` as a **`FunctionTool`** for a Microsoft Foundry agent. Which settings describe its arguments to the agent?",
-    "answer": "- **`name`** and **`description`** of the function\n- **`parameters`**: a **JSON schema** — `\"type\": \"object\"`, one `properties` entry per argument with `type` and `description`\n- **`required`** list, `\"additionalProperties\": False`, and `strict=True`",
-    "explanation": "The JSON schema tells the agent each argument's name, type and meaning; the descriptions carry example values such as 'standard', 'advanced', 'premium'. The property names must match the Python parameters: the app runs `calculate_observation_cost(**json.loads(item.arguments))`. The tools are then passed to the agent in `PromptAgentDefinition(tools=[event_tool, cost_tool, report_tool])`."
+    "question": "The response of your Microsoft Foundry agent contains `function_call` items for your custom function tools. Which fields of each item does the app use to run the right Python function and return its result?",
+    "answer": "- **`item.name`** — which local function to run\n- **`item.arguments`** — the arguments as a JSON string: `func(**json.loads(item.arguments))`\n- **`item.call_id`** — goes into the `FunctionCallOutput` with the result",
+    "explanation": "The app loops over `response.output` and checks `item.type == \"function_call\"`, because one turn can request several functions. An `if`/`elif` on `item.name` maps each tool name to its Python function, such as `next_visible_event` or `calculate_observation_cost`. The arguments are unpacked straight into that function, so the property names in the `FunctionTool` JSON schema must match its parameter names."
   }
 ]

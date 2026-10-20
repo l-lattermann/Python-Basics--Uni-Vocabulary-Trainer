@@ -79,7 +79,7 @@
   ],
   "question": "In an Azure Content Understanding field schema, a `Condition` field must return only `new`, `used` or `damaged` for each product image. How do you define it?",
   "answer": "Set `\"method\": \"**classify**\"` and list the allowed values in an **`enum`** array: `[\"new\", \"used\", \"damaged\"]`.",
-  "explanation": "Classify categorises content into predefined options, and `enum` is where those options live. The field still has a `type` (`string`) and a `description` that tells the model what to judge. In the result, the field comes back with `valueString` set to one of the enum values and a confidence score, so the output is predictable enough to drive a workflow."
+  "explanation": "Classify categorises content into predefined options, and `enum` is where those options live. The field still has a `type` (`string`) and a `description` that tells the model what to judge. In the result, the field comes back with `valueString` set to one of the enum values and a confidence score, for example `\"new\"` with 0.89 in the course's product-image response."
  },
  {
   "id": "4.4.3-05",
@@ -95,7 +95,7 @@
   ],
   "question": "You define a custom Azure Content Understanding analyzer for product photos in JSON. Which **two** top-level properties make it an image analyzer and say what to extract?",
   "answer": "- **`baseAnalyzerId`** — the analyzer to build on, here `prebuilt-image`\n- **`fieldSchema`** — a `fields` object; each field has a `type`, a `method` and a `description`",
-  "explanation": "The base analyzer sets the content type the analyzer handles — image here, as opposed to document, audio or video. The field schema then lists only the data you want. Each field's `description` matters: it tells the model what to look for, such as \"Name of the product visible in the image\". A top-level `description` names the analyzer itself."
+  "explanation": "The base analyzer sets the content type the analyzer handles — image here, as opposed to document, audio or video. The field schema then lists only the data you want. Each field's `description` says in words what the field holds, such as \"Name of the product visible in the image\". A top-level `description` names the analyzer itself."
  },
  {
   "id": "4.4.3-06",
@@ -110,7 +110,7 @@
   ],
   "question": "Name the **six** input formats Azure Content Understanding supports for image analysis.",
   "answer": "- **JPEG** — standard photographic images\n- **PNG** — images with transparency support\n- **BMP** — bitmap images\n- **TIFF** — high-quality scanned documents\n- **HEIF** — high-efficiency image format\n- **PDF** — single or multi-page documents with embedded images",
-  "explanation": "Five are plain image formats; PDF is the odd one out. It counts as image input because a PDF can carry embedded images across several pages. TIFF is the typical format for scans, PNG the one to pick when transparency matters. Whatever the format, the analysis and the result shape are the same."
+  "explanation": "Five are plain image formats; PDF is the odd one out. It counts as image input because a PDF can carry embedded images across several pages. TIFF is the typical format for scans, PNG the one to pick when transparency matters."
  },
  {
   "id": "4.4.3-07",
@@ -214,6 +214,6 @@
   ],
   "question": "Name the **four** tips for getting more accurate results when analyzing images with Azure Content Understanding.",
   "answer": "- **Image quality** — higher resolution gives more accurate extractions\n- **Lighting and contrast** — text and visual elements clearly visible\n- **Single focus** — one clear subject beats a cluttered scene\n- **Consistent orientation** — upright images are processed more reliably than rotated ones",
-  "explanation": "All four are about the input, not the analyzer: a good schema cannot recover text the model cannot see. In practice they tell you what to fix when confidence scores come back low, for example rescanning at higher resolution, or cropping a shelf photo to the one product you want described."
+  "explanation": "All four concern the input image, not the analyzer or its schema: the same analyzer extracts more accurately from a better image. They pay off through the confidence scores. Every extracted field carries one, and low-confidence values are routed to human reviewers, so a clear, upright, well-lit image with one subject means more values processed automatically and less manual checking."
  }
 ]

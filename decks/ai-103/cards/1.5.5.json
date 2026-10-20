@@ -37,22 +37,6 @@
     "explanation": "Every strategy pays per token; the difference is what comes on top. Prompt engineering needs no infrastructure changes, so you can start immediately. RAG adds a search service and an index that must be kept up to date. Fine-tuning has the highest upfront investment: preparing training data, paying for training compute and hosting the custom model. Effort and cost rise together along the same order."
   },
   {
-    "id": "1.5.5-03",
-    "type": "basic",
-    "section": "1.5.5",
-    "exam_area": "genai",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
-    "tags": [
-      "optimization",
-      "rag",
-      "fine-tuning"
-    ],
-    "question": "What is each model optimization strategy **best for**: prompt engineering, RAG and fine-tuning?",
-    "answer": "- **Prompt engineering** — guiding tone, format and behavior; quick iteration; instructions and examples\n- **RAG** — factual accuracy, domain-specific knowledge, dynamic or frequently changing data\n- **Fine-tuning** — behavioral consistency, style enforcement, shorter prompts, model distillation",
-    "explanation": "Prompt engineering and fine-tuning both shape behavior, but prompts are quick to iterate while fine-tuning enforces the behavior reliably. Only RAG brings in knowledge the model was not trained on, which is why it owns the \"facts\" column. Only fine-tuning is listed for shorter prompts, because the patterns live in the weights, and for distillation: transferring a large model's capabilities to a smaller, cheaper one."
-  },
-  {
     "id": "1.5.5-04",
     "type": "basic",
     "section": "1.5.5",
@@ -81,22 +65,6 @@
     "question": "What does a RAG solution require you to set up and maintain, and what limits the **quality** of its responses?",
     "answer": "- Requires a **search service**, an **index** you create and maintain, and **embedding** processing\n- Response quality depends on the **search index quality** and how well the data is **chunked and indexed**",
     "explanation": "RAG gives the model up-to-date, relevant data at query time, which significantly improves factual accuracy. That benefit only holds if retrieval returns the right passages. A poorly built index or badly chunked documents hand the model the wrong context, and the answer is grounded in the wrong facts. This is why RAG sits in the middle of the cost table: infrastructure and storage on top of per-token cost."
-  },
-  {
-    "id": "1.5.5-06",
-    "type": "basic",
-    "section": "1.5.5",
-    "exam_area": "genai",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
-    "tags": [
-      "fine-tuning",
-      "optimization",
-      "cost"
-    ],
-    "question": "Compared with prompt engineering and RAG, what are the advantages and drawbacks of **fine-tuning** a model?",
-    "answer": "- **Pro:** most consistent behavior — patterns embedded in the **model's weights**\n- **Pro:** lower per-request cost through **shorter prompts**\n- **Con:** highest **upfront investment** — training data, training compute, hosting\n- **Con:** may need **retraining** when the base model or requirements change",
-    "explanation": "A model might not follow complex prompt instructions consistently; trained patterns are part of the model itself. That is also why prompts can shrink: the examples no longer need to travel with every request. The price is paid up front and again later, because the custom model is tied to one base model version and one set of requirements."
   },
   {
     "id": "1.5.5-07",

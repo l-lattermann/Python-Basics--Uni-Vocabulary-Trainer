@@ -6,18 +6,25 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/07-agent-framework.html",
-    "tags": ["foundry-toolkit", "foundry-project", "model-deployment"],
+    "tags": [
+      "foundry-toolkit",
+      "foundry-project",
+      "model-deployment"
+    ],
     "question": "Without leaving Visual Studio Code, you set up a Microsoft Foundry project and a model deployment for a Microsoft Agent Framework app. Put the steps in order, from the extension to the app's `.env` file.",
     "answer": "**Foundry Toolkit** extension → **Create Project** → **Model Catalog** > **Deploy** → deployment settings > **Deploy to Microsoft Foundry** → **Copy Project Endpoint** → endpoint and deployment name into `.env`.",
-    "explanation": "The Foundry Toolkit extension lets you work with Foundry project resources from VS Code instead of the Foundry portal; older labels still call it **AI Toolkit**. The Model Catalog also opens from the **+** next to **Models** or with **F1** > **Foundry Toolkit: Show model catalog**. The finished deployment appears under **Models**. The app needs exactly two values from this setup: the project endpoint and the model deployment name.",
+    "explanation": "The Foundry Toolkit extension lets you work with Foundry project resources from VS Code instead of the Foundry portal; older labels still call it **AI Toolkit**. If a default project is already active, right-click it > **Switch Default Project** to create another. The Model Catalog also opens from the **+** next to **Models** or with **F1** > **Foundry Toolkit: Show model catalog**. The finished deployment appears under **Models**. The app needs two values from this setup: the project endpoint and the deployment name.",
     "explanation_images": [
-      {"src": "media/ai-103/2.7.6-copy-project-endpoint.png", "alt": "Foundry Toolkit pane in VS Code: right-click menu on the default project with Copy Project Endpoint"}
+      {
+        "src": "media/ai-103/2.7.6-copy-project-endpoint.png",
+        "alt": "Foundry Toolkit pane in VS Code: right-click menu on the default project with Copy Project Endpoint"
+      }
     ],
     "items": [
       "Install the **Foundry Toolkit** extension (**Extensions**, Ctrl+Shift+X) and sign in to Azure",
       "**Microsoft Foundry Resources** > **Create Project**: subscription, resource group, project name",
       "**Deploy a model** opens the **Model Catalog**: find gpt-5 > **Deploy**",
-      "Deployment name, type **Global Standard**, default version and tokens per minute > **Deploy to Microsoft Foundry**",
+      "Deployment name, type **Global Standard** (or **Standard**), default version and tokens per minute > **Deploy to Microsoft Foundry**",
       "Right-click the project > **Copy Project Endpoint**",
       "In `.env`: paste the endpoint, set `MODEL_DEPLOYMENT_NAME`"
     ]
@@ -29,7 +36,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/07-agent-framework.html",
-    "tags": ["agent-framework", "function-calling"],
+    "tags": [
+      "agent-framework",
+      "function-calling"
+    ],
     "question": "You build an expense-claim agent in Python with the Microsoft Agent Framework and a Foundry project. Put the coding steps in order, from the tool function to running the app.",
     "answer": "`@tool` function → `FoundryChatClient` → `Agent(..., tools=[...])` in `async with` → `await agent.run(...)` → `az login` and run the script.",
     "explanation": "The tool is a plain Python function; `approval_mode=\"never_require\"` lets the agent call it without asking a human first, and each parameter's `Field(description=...)` tells the model what to pass. The client is the bridge to the Foundry project. The `Agent` combines client, name, instructions and tools, and is opened as an async context manager. One `run` call sends the prompt with the expenses data and returns the response; the agent calls `submit_claim` on its own.",
@@ -48,9 +58,12 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/07-agent-framework.html",
-    "tags": ["keyless-credentials", "agent-framework"],
+    "tags": [
+      "keyless-credentials",
+      "agent-framework"
+    ],
     "question": "A Python app built with the Microsoft Agent Framework passes `AzureCliCredential()` to its `FoundryChatClient`. Which command must you run before starting the app, and which two other values does the client get?",
     "answer": "- **`az login`** — signs in to Azure; `AzureCliCredential` reuses that sign-in\n- **`project_endpoint`** — the Foundry project endpoint (`PROJECT_ENDPOINT` in `.env`)\n- **`model`** — the model deployment name (`MODEL_DEPLOYMENT_NAME` in `.env`)",
-    "explanation": "No API key or connection string sits in the code: the credential comes from your Azure CLI session, so without `az login` the client cannot authenticate. `AzureCliCredential` fits code run on your own machine. `DefaultAzureCredential` picks the right credential by environment instead: the Azure CLI during development, a managed identity in production. Endpoint and deployment name are the two pieces of information every connection to a Foundry project needs."
+    "explanation": "No API key or connection string sits in the code: `AzureCliCredential` authenticates with the account you signed in to through the Azure CLI, so without `az login` the client cannot connect. `DefaultAzureCredential` instead picks the credential by environment: the Azure CLI during development, a managed identity in production. Endpoint and deployment name are the two pieces of information every connection to a Foundry project needs."
   }
 ]

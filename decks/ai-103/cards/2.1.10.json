@@ -12,7 +12,7 @@
     ],
     "question": "Put the steps of building a grounded IT support agent in the **Microsoft Foundry portal** (new Foundry experience) in order.",
     "answer": "Project → agent → **instructions** → tools and files → save → test in the playground.",
-    "explanation": "The project comes first because it organizes the models, resources and data the agent uses; creating it can also create the Foundry resource. The new agent opens in the playground with a deployed model already selected. Tools must be added before files can be attached to them. The Foundry Toolkit in VS Code and the Python client later load this saved agent by its name.",
+    "explanation": "The project comes first because it organizes the models, resources and data the agent uses; creating it can also create the Foundry resource. The new agent opens in the playground with a deployed model already selected. Tools must be added before files can be attached to them. In VS Code, the Foundry Toolkit then lists the saved agent under **Set Default Project → Prompt Agents**; selecting it opens the Agent Builder playground. A Python client loads it by its name.",
     "items": [
       "Create a new project (Foundry resource, region, subscription, resource group under Advanced options)",
       "Create an agent and set its Agent name",
@@ -51,7 +51,7 @@
       "foundry-toolkit"
     ],
     "question": "A Python app must chat with an agent that was created in the Microsoft Foundry portal. Which settings and calls connect it to that agent?",
-    "answer": "- **PROJECT_ENDPOINT** in `.env` (Foundry Toolkit → right-click project → **Copy Endpoint**)\n- `project_client.agents.get(agent_name=...)`\n- `conversations.create()`, then `conversations.items.create()` for each user message\n- `responses.create(conversation=..., extra_body={\"agent_reference\": {...}})`",
+    "answer": "- **PROJECT_ENDPOINT** (Foundry Toolkit → right-click project → **Copy Endpoint**) and `AGENT_NAME` in `.env`\n- `project_client.agents.get(agent_name=...)`\n- `conversations.create()`, then `conversations.items.create()` for each user message\n- `responses.create(conversation=..., extra_body={\"agent_reference\": {...}})`",
     "explanation": "`AIProjectClient` connects to the project endpoint with `DefaultAzureCredential`, so the user signs in with `az login` first. `get_openai_client()` returns the client for the Responses API. The agent is not redefined in code: it is looked up by name, and each response names it via `agent_reference`, with an empty `input` because the message is already in the conversation. Instructions and tools stay as configured in the portal. Without Copy Endpoint, take the endpoint from the project overview page in the portal."
   }
 ]

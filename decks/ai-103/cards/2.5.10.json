@@ -29,10 +29,10 @@
     "answer": "**Organization scope requires admin approval** before the agent is available to all users.",
     "explanation": "Shared scope is available immediately without approval and appears under **Your agents** in Teams; it suits personal testing and small pilots. Organization scope makes the agent available to the whole tenant under **Built by your org**, but only after an admin selects **Approve request and activate** in the Microsoft 365 admin center (Agents > All > Requested). It suits production.",
     "options": [
-      {"text": "Shared scope requires more Azure resources", "correct": false, "why": "Units 2.5.2 and 2.5.3 describe the same Bot Service, Entra app and package for both scopes; they differ only in distribution and approval."},
+      {"text": "Shared scope requires more Azure resources", "correct": false, "why": "Unit 2.5.3: the wizard creates the Bot Service, Entra app and package before you pick the scope in step 5; the scopes differ only in distribution and approval."},
       {"text": "Organization scope requires admin approval before the agent is available to all users", "correct": true, "why": "Unit 2.5.2's scope table: shared is available immediately without admin approval, organization is available to everyone in the tenant and requires admin approval."},
       {"text": "Shared scope only works in the Foundry playground", "correct": false, "why": "Unit 2.5.2: a shared-scope agent appears under Your agents in Teams, not in the playground."},
-      {"text": "Organization scope provides better agent performance", "correct": false, "why": "Units 2.5.2 and 2.5.6 tie performance to instructions, tools and network, never to the publish scope."}
+      {"text": "Organization scope provides better agent performance", "correct": false, "why": "Unit 2.5.6 traces slow responses to complex instructions, tools that query large data sets and network latency, never to the publish scope."}
     ]
   },
   {
@@ -50,7 +50,7 @@
       {"text": "Permissions are automatically transferred to the published agent", "correct": false, "why": "Unit 2.5.2: development-time permissions on your project identity don't transfer automatically."},
       {"text": "Tools are disabled after publishing", "correct": false, "why": "Unit 2.5.3: tools keep working once the new identity has the right RBAC roles; you test them in Teams after publishing."},
       {"text": "The published agent gets a new identity and needs permissions reassigned", "correct": true, "why": "Units 2.5.2 and 2.5.3: publishing creates a distinct agent identity, and you assign RBAC roles to it on the resources its tools access."},
-      {"text": "Permissions only work in organization scope", "correct": false, "why": "Unit 2.5.3: the identity and its RBAC roles are the same for both scopes; scope only controls distribution."}
+      {"text": "Permissions only work in organization scope", "correct": false, "why": "Unit 2.5.3: you reassign RBAC roles to the new identity the same way for either scope; scope only controls who finds the agent and whether an admin must approve it."}
     ]
   },
   {

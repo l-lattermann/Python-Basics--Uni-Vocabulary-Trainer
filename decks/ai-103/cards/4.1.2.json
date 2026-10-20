@@ -6,10 +6,13 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/2-deploy-multimodal-model",
-    "tags": ["multimodal", "model-choice"],
-    "question": "Your chat app on Microsoft Foundry must answer prompts that contain **photos** as well as text. What kind of generative AI model do you have to deploy?",
-    "answer": "A **multimodal model** — one that accepts **image** input (and in some cases **audio**) in addition to text.",
-    "explanation": "A text-only model cannot handle a prompt that includes an image, so vision-based chat starts with choosing and deploying a multimodal model. Such vision-enabled models do more than name the objects in a picture: some reason over what they see, for example interpreting a chart or judging whether an object is damaged. Everything else in the app — endpoint, prompts, responses — works as in a text-based chat."
+    "tags": [
+      "multimodal",
+      "model-choice"
+    ],
+    "question": "In Microsoft Foundry, what makes a generative AI model **multimodal**, and why does a chat app that answers questions about photos need one?",
+    "answer": "A **multimodal model** accepts **image** input (and in some cases **audio**) in addition to text. Only such a model can handle a prompt that includes an image.",
+    "explanation": "Vision-based chat therefore starts with choosing and deploying a multimodal model. Beyond identifying objects in a picture, some vision-enabled models reason over what they see, for example interpreting a chart or judging whether an object is damaged. The rest of the app works as in a text-based chat: connect to the model's endpoint, submit prompts made of messages, and process the responses."
   },
   {
     "id": "4.1.2-02",
@@ -18,16 +21,39 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/2-deploy-multimodal-model",
-    "tags": ["multimodal", "model-choice"],
+    "tags": [
+      "multimodal",
+      "model-choice"
+    ],
     "question": "You build a recipe assistant that answers questions about photos of ingredients. Which **three** models from the Microsoft Foundry model catalog are multimodal and can take the photo as input?",
-    "answer": "**Phi-4-multimodal-instruct**, **gpt-4.1** and **gpt-4.1-mini**.",
-    "explanation": "These are the multimodal examples Microsoft Foundry offers among others: a Microsoft model and two OpenAI models. In the course's code, gpt-4.1 is called through the Responses API, while Phi-4-multimodal-instruct goes through the ChatCompletions API, the fallback for models that don't support Responses. The playground screenshot in the course shows gpt-4.1-mini answering a question about a mango photo.",
+    "answer": "- **Phi-4-multimodal-instruct** — Microsoft\n- **gpt-4.1** — OpenAI\n- **gpt-4.1-mini** — OpenAI",
+    "explanation": "The course names one Microsoft and two OpenAI models as examples; the Foundry catalog holds more. The provider shows up later in code: gpt-4.1 is called through the Responses API, while Phi-4-multimodal-instruct goes through the ChatCompletions API, which you use for models that don't support Responses. The course's chat playground screenshot shows gpt-4.1-mini answering a question about a mango photo.",
     "options": [
-      {"text": "Phi-4-multimodal-instruct", "correct": true, "why": "Microsoft's multimodal Phi model; it accepts text and image input."},
-      {"text": "gpt-4.1", "correct": true, "why": "An OpenAI model in Foundry that accepts images in a prompt."},
-      {"text": "gpt-4.1-mini", "correct": true, "why": "The smaller gpt-4.1 variant is also multimodal and accepts image input."},
-      {"text": "Phi-4-mini-instruct", "correct": false, "why": "A small text-only Phi model; image input needs the multimodal variant."},
-      {"text": "text-embedding-3-large", "correct": false, "why": "An embedding model returns vectors for search, not chat responses to an image."}
+      {
+        "text": "Phi-4-multimodal-instruct",
+        "correct": true,
+        "why": "Microsoft's multimodal Phi model; it accepts text and image input."
+      },
+      {
+        "text": "gpt-4.1",
+        "correct": true,
+        "why": "An OpenAI model in Foundry that accepts images in a prompt."
+      },
+      {
+        "text": "gpt-4.1-mini",
+        "correct": true,
+        "why": "The smaller gpt-4.1 variant is also multimodal and accepts image input."
+      },
+      {
+        "text": "Phi-4-mini-instruct",
+        "correct": false,
+        "why": "A small text-only Phi model; image input needs the multimodal variant."
+      },
+      {
+        "text": "text-embedding-3-large",
+        "correct": false,
+        "why": "An embedding model returns vectors for search, not chat responses to an image."
+      }
     ]
   },
   {
@@ -37,12 +63,18 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/2-deploy-multimodal-model",
-    "tags": ["multimodal", "playground"],
+    "tags": [
+      "multimodal",
+      "playground"
+    ],
     "question": "You have deployed a multimodal model in Microsoft Foundry and want to try an image-based prompt **without writing any code**. Where and how do you do it?",
     "answer": "In the **chat playground** of the Microsoft Foundry portal: **upload an image from a local file** and add text to the same message.",
     "explanation": "The image and the text go into one message, and the model responds to both together — for example a mango photo with \"What desserts could I make with this?\". The playground is the quick check after deployment. A client app later sends the same kind of mixed message from code, as a multi-part user message with a text item and an image item.",
     "explanation_images": [
-      {"src": "media/ai-103/4.1.2-chat-playground-image.png", "alt": "Chat playground in the Microsoft Foundry portal for gpt-4.1-mini, with mango.jpeg attached to the prompt \"What desserts could I make with this?\" and the model's dessert suggestions"}
+      {
+        "src": "media/ai-103/4.1.2-chat-playground-image.png",
+        "alt": "Chat playground in the Microsoft Foundry portal for gpt-4.1-mini, with mango.jpeg attached to the prompt \"What desserts could I make with this?\" and the model's dessert suggestions"
+      }
     ]
   }
 ]

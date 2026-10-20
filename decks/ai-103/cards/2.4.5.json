@@ -21,7 +21,7 @@
     "tags": ["agents", "prompt-engineering", "citations"],
     "question": "Name the **three** behaviors that effective retrieval instructions for a Microsoft Foundry agent with a Foundry IQ knowledge base must specify.",
     "answer": "- **When to retrieve** — always search the knowledge base, never rely on training data\n- **How to cite** — the exact format for source attribution\n- **What to do when unsure** — a defined fallback when the answer isn't found",
-    "explanation": "Agent instructions are the contract that decides retrieval behavior. \"Answer HR questions using the knowledge base.\" is too vague: the agent might search or not, cite or not. The course's version says \"You must ALWAYS search the knowledge base\", \"NEVER answer from your own knowledge\", requires citations as `【doc_id:search_id†source_name】`, and falls back to \"I don't have that information… Please contact HR directly\"."
+    "explanation": "Agent instructions are the contract that decides retrieval behavior. \"Answer HR questions using the knowledge base.\" is too vague: the agent might search or not, cite or not. Effective instructions say \"You must ALWAYS search the knowledge base\", \"NEVER answer from your own knowledge\", requires citations as `【doc_id:search_id†source_name】`, and falls back to \"I don't have that information… Please contact HR directly\"."
   },
   {
     "id": "2.4.5-03",
@@ -53,9 +53,9 @@
     "answer": "**`\"agent_reference\"`** — the request references the existing agent by name.",
     "explanation": "You test retrieval behavior through a conversation: get an OpenAI client from the project client, create a conversation, then send queries with `responses.create`. The `extra_body` routes the request to the named agent, so its instructions and knowledge tool apply. `response.output_text` lets you check whether the answer searched, cited and stayed grounded.",
     "options": [
-      {"text": "\"agent_reference\"", "correct": true, "why": "This is the type the unit uses to send a response request to an existing agent by name."},
+      {"text": "\"agent_reference\"", "correct": true, "why": "This type tells `responses.create` to send the request to an existing agent, found by its name."},
       {"text": "\"mcp\"", "correct": false, "why": "MCP is how the knowledge base is connected to the agent as a tool, not how a request names the agent."},
-      {"text": "\"prompt_agent\"", "correct": false, "why": "The agent was defined with `PromptAgentDefinition`, but the request references it with `agent_reference`."},
+      {"text": "\"hr-assistant\"", "correct": false, "why": "That is the agent's name, which already goes in the `name` field via `agent.name`."},
       {"text": "\"conversation\"", "correct": false, "why": "The conversation is passed separately in the `conversation` argument."}
     ]
   },
@@ -92,7 +92,7 @@
     "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
     "tags": ["agents", "prompt-engineering"],
     "question": "Name the **three** agent types that need different retrieval instructions with a Foundry IQ knowledge base in Microsoft Foundry, and what sets each apart.",
-    "answer": "- **Customer-facing support agents** — high accuracy, never guess; hand off to a specialist\n- **Internal research assistants** — synthesize across documents, cite all sources, state confidence\n- **Specialized domain experts** — answer only their domain, cite document and section, refer interpretation to experts",
+    "answer": "- **Customer-facing support agents** — high accuracy, never guess; hand off to a specialist\n- **Internal research assistants** — synthesize across documents, cite all sources, state confidence\n- **Specialized domain experts** — answer only their domain, cite document and section, refer interpretation or legal advice to the compliance team",
     "explanation": "Support agents search for every product question and stick to official documentation, not general knowledge. Research assistants search all relevant knowledge bases and suggest related topics. A compliance assistant keeps answers strictly factual, notes each policy's effective date, and refers legal advice to the compliance team. The pattern is the same: define scope, specify retrieval requirements, set citation standards, handle edge cases explicitly."
   },
   {

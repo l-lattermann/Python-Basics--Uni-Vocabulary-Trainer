@@ -26,7 +26,7 @@
       "index"
     ],
     "question": "Name the **six** attributes you can configure on a field of an **Azure AI Search index**.",
-    "answer": "- **key** — defines the unique key of index records\n- **searchable** — can be queried with full-text search\n- **filterable** — usable in filter expressions\n- **sortable** — usable to order results\n- **facetable** — used to determine values for facets\n- **retrievable** — can be included in search results",
+    "answer": "- **key** — defines the unique key of index records\n- **searchable** — can be queried with full-text search\n- **filterable** — usable in filter expressions\n- **sortable** — usable to order results\n- **facetable** — supplies the values for **facets** (UI filters over a list of known field values)\n- **retrievable** — can be included in search results",
     "explanation": "Each attribute unlocks one query operation on that field: matching words (searchable), restricting results to documents that meet constraints (filterable), ordering (sortable), listing known values as UI filter options (facetable) and returning the value (retrievable). Retrievable is the only one that is on by default — every field is retrievable unless you explicitly remove the attribute."
   },
   {
@@ -94,9 +94,9 @@
       "full-text-search",
       "lucene"
     ],
-    "question": "**Azure AI Search** full-text queries use the Lucene query syntax. Name its **two** variants and what each is for.",
-    "answer": "- **Simple** — intuitive syntax for basic searches that match the literal terms a user submits\n- **Full** — extended syntax for complex filtering, **regular expressions** and other sophisticated queries",
-    "explanation": "Full-text search parses text-based document contents to find query terms, instead of simple field value matching; most search solutions use it. You choose the variant per request with the `queryType` parameter (`simple` or `full`). A user typing a few words into a search box fits Simple; a query that needs regex or an OData `$filter` alongside the expression calls for Full."
+    "question": "What is **full-text search** in **Azure AI Search**, and which **two** variants of its Lucene query syntax are there?",
+    "answer": "- **Full-text search** — parses text-based document contents to find the query terms, based on the **Lucene** query syntax\n- **Simple** — intuitive syntax for basic searches that match the literal terms a user submits\n- **Full** — extended syntax for complex filtering, **regular expressions** and other sophisticated queries",
+    "explanation": "You could retrieve index entries by simple field value matching, but most search solutions use full-text search instead. The Lucene syntax gives it a rich set of operations for searching, filtering and sorting. You choose the variant per request with the `queryType` parameter (`simple` or `full`). A user typing a few words into a search box fits Simple; a query that needs regex or an OData `$filter` alongside the expression calls for Full."
   },
   {
     "id": "4.8.5-06",
@@ -162,7 +162,7 @@
       "full-text-search"
     ],
     "question": "Put the **four** stages of query processing in **Azure AI Search** full-text search in order.",
-    "answer": "**Query parsing** → **lexical analysis** → **document retrieval** → **scoring**.",
+    "answer": "**Query parsing** → **lexical analysis** → **document retrieval** → **scoring** (TF/IDF).",
     "explanation": "Parsing turns the expression into a tree of subqueries. Lexical analysis then normalises those terms with linguistic rules, so they can match the terms stored in the index. Only then are matching documents identified, and finally each result gets a relevance score from a term frequency/inverse document frequency (TF/IDF) calculation.",
     "addition": "Current docs: services created after July 2020 score full-text results with the **BM25** algorithm (`BM25Similarity`), a TF-IDF-like function; classic TF-IDF scoring (`ClassicSimilarity`) remains only on older services.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/search/index-similarity-and-scoring",
@@ -170,7 +170,7 @@
       "Query parsing — build a tree of subqueries from the search expression",
       "Lexical analysis — refine query terms with linguistic rules",
       "Document retrieval — match terms against the index to find documents",
-      "Scoring — assign each result a relevance score"
+      "Scoring — assign each result a relevance score (TF/IDF)"
     ]
   },
   {
@@ -202,7 +202,7 @@
     ],
     "question": "What happens to query terms during **lexical analysis** in **Azure AI Search**?",
     "answer": "- Text is converted to **lower case**\n- Nonessential **stopwords** (\"the\", \"a\", \"is\") are removed\n- Words are reduced to their **root form** (\"comfortable\" → \"comfort\")\n- **Composite words** are split into their constituent terms",
-    "explanation": "Lexical analysis is the second stage of query processing, between parsing and document retrieval. It refines the terms with linguistic rules so that a user's wording still matches the terms stored in the index: a search for \"Comfortable\" can find documents that say \"comfort\", and filler words do not have to match at all."
+    "explanation": "Lexical analysis is the second stage of query processing, between parsing and document retrieval. It refines the terms with linguistic rules, so that what goes on to be matched against the indexed terms is the normalised core of the user's wording: lower-case roots without filler words. Stopwords therefore never have to match at all."
   },
   {
     "id": "4.8.5-11",

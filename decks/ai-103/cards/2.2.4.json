@@ -6,9 +6,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["custom-tools", "agents", "python"],
+    "tags": [
+      "custom-tools",
+      "agents",
+      "python"
+    ],
     "question": "Name the **three** ways to integrate a custom tool into a Microsoft Foundry Agent Service agent with the Python SDK, and the tool class each one uses.",
-    "answer": "- **Function calling** — `FunctionTool`: a function in your own code, described by a JSON schema\n- **Azure Functions** — `AzureFunctionTool`: a deployed serverless function, reached through triggers such as a storage queue\n- **OpenAPI specification** — `OpenApiTool`: an external HTTP API described by an OpenAPI 3.0 spec",
+    "answer": "- **Function calling** — `FunctionTool`: a function in your own code, described by a JSON schema\n- **Azure Functions** — `AzureFunctionTool`: a deployed serverless function, started by triggers such as HTTP requests or queue messages\n- **OpenAPI specification** — `OpenApiTool`: an external HTTP API described by an OpenAPI 3.0 spec",
     "explanation": "All three end up the same way: the tool object goes into the `tools` list of a `PromptAgentDefinition`, and `project_client.agents.create_version(...)` creates the agent with it. The choice depends on what already exists. Logic you write yourself fits function calling. A company that already runs Azure Functions reuses them for event-driven workflows. A public API with an OpenAPI description plugs in without wrapper code. You can combine several options in one agent."
   },
   {
@@ -18,7 +22,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["function-calling", "python"],
+    "tags": [
+      "function-calling",
+      "python"
+    ],
     "question": "You register a local Python function as a **function calling** tool for a Foundry agent. What does the `FunctionTool` definition contain?",
     "answer": "- **`name`** — the function's name, e.g. `recent_snowfall`\n- **`parameters`** — a JSON schema: `properties`, `required`, `additionalProperties: False`\n- **`description`** — what the function does\n- **`strict=True`** — arguments must follow the schema exactly",
     "explanation": "The function itself is ordinary Python, for example one that returns snowfall totals for a city as a JSON string. It can call other APIs or start a program. The agent never sees its code. It only sees the name, the description and the parameter descriptions, and from these it decides when a prompt needs the function and which arguments to pass. That is why the descriptions have to be meaningful.",
@@ -32,15 +39,35 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["python", "sdk", "agents"],
+    "tags": [
+      "python",
+      "sdk",
+      "agents"
+    ],
     "question": "Complete the code so it creates a Foundry agent that can use a function tool.\n\n```python\ntools: list[Tool] = [function_tool]\n\nagent = project_client.agents.___(\n    agent_name=\"snowfall-agent\",\n    definition=PromptAgentDefinition(\n        model=\"gpt-4.1\",\n        instructions=\"You are a weather assistant tracking snowfall.\",\n        tools=tools,\n    ),\n)\n```",
     "answer": "`create_version`",
     "explanation": "`create_version` takes the agent's name and a `PromptAgentDefinition`. The definition bundles the model deployment, the instructions and the `tools` list. The same call registers all three custom tool kinds: a `FunctionTool`, an `AzureFunctionTool` or an `OpenApiTool` each go into `tools`. Nothing else is needed to make the tool available; the agent decides at run time whether to use it.",
     "options": [
-      {"text": "`create_version`", "correct": true, "why": "It creates a new version of the named agent from the `PromptAgentDefinition`, tools included."},
-      {"text": "`create_agent`", "correct": false, "why": "That is the older Agents SDK call, which takes `model`, `name` and `tools` directly instead of a `definition`."},
-      {"text": "`create_thread`", "correct": false, "why": "A thread holds a conversation; it does not define an agent or its tools."},
-      {"text": "`create_run`", "correct": false, "why": "A run executes an existing agent on a thread; it does not create the agent."}
+      {
+        "text": "`create_version`",
+        "correct": true,
+        "why": "It creates a new version of the named agent from the `PromptAgentDefinition`, tools included."
+      },
+      {
+        "text": "`create_agent`",
+        "correct": false,
+        "why": "That is the older Agents SDK call, which takes `model`, `name` and `tools` directly instead of a `definition`."
+      },
+      {
+        "text": "`create_thread`",
+        "correct": false,
+        "why": "A thread holds a conversation; it does not define an agent or its tools."
+      },
+      {
+        "text": "`create_run`",
+        "correct": false,
+        "why": "A run executes an existing agent on a thread; it does not create the agent."
+      }
     ]
   },
   {
@@ -50,15 +77,34 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["azure-functions", "custom-tools"],
+    "tags": [
+      "azure-functions",
+      "custom-tools"
+    ],
     "question": "Your company already runs a serverless function in its Azure subscription that looks up snowfall for a location. It is triggered by messages on a storage queue. You want a Foundry agent to use it. Which tool do you add to the agent definition?",
     "answer": "An **Azure Function tool** (`AzureFunctionTool`).",
     "explanation": "Azure Functions provide serverless computing for real-time processing. They fit event-driven workflows, where the function responds to triggers such as HTTP requests or queue messages. The function is developed and deployed first; the agent then gets an Azure Function tool that points at it. The agent sends its request through a storage queue and processes the result, so the existing function is reused as it is.",
     "options": [
-      {"text": "An Azure Function tool (`AzureFunctionTool`)", "correct": true, "why": "It connects the agent to a deployed Azure Function through its queue input and output bindings."},
-      {"text": "A function calling tool (`FunctionTool`)", "correct": false, "why": "Function calling describes a function in your own app's code, not a deployed serverless function behind a queue."},
-      {"text": "An OpenAPI specification tool (`OpenApiTool`)", "correct": false, "why": "It calls an HTTP API described by an OpenAPI spec; the function here is reached through queue messages."},
-      {"text": "Code interpreter", "correct": false, "why": "It runs Python code the model writes in a sandbox; it does not call your existing function."}
+      {
+        "text": "An Azure Function tool (`AzureFunctionTool`)",
+        "correct": true,
+        "why": "It connects the agent to a deployed Azure Function through its queue input and output bindings."
+      },
+      {
+        "text": "A function calling tool (`FunctionTool`)",
+        "correct": false,
+        "why": "Function calling describes a function in your own app's code, not a deployed serverless function behind a queue."
+      },
+      {
+        "text": "An OpenAPI specification tool (`OpenApiTool`)",
+        "correct": false,
+        "why": "It calls an HTTP API described by an OpenAPI spec; the function here is reached through queue messages."
+      },
+      {
+        "text": "Code interpreter",
+        "correct": false,
+        "why": "It runs Python code the model writes in a sandbox; it does not call your existing function."
+      }
     ]
   },
   {
@@ -68,7 +114,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["azure-functions", "python"],
+    "tags": [
+      "azure-functions",
+      "python"
+    ],
     "question": "A Foundry agent calls a queue-triggered Azure Function. Which **three** parts does the `AzureFunctionDefinition` of its `AzureFunctionTool` contain?",
     "answer": "- **`input_binding`** — the storage queue the agent sends its request to\n- **`output_binding`** — the storage queue the agent reads the result from\n- **`function`** — the function's `name`, `description` and JSON-schema `parameters`",
     "explanation": "Both bindings use an `AzureFunctionStorageQueue` with a `queue_name` and a `queue_service_endpoint`. Bindings are what connect a function to its input and output data; the trigger decides when it runs. Here the request lands on the input queue, the queue trigger starts the function, and its answer arrives on the output queue. The `function` part works like a function calling definition: the agent reads its description and parameters to decide when to use it."
@@ -80,9 +129,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["openapi", "authentication", "managed-identity"],
+    "tags": [
+      "openapi",
+      "authentication",
+      "managed-identity"
+    ],
     "question": "Name the **three** authentication types a Foundry Agent Service **OpenAPI** tool supports for calling the external API.",
-    "answer": "- **Anonymous** — no credentials, for public APIs\n- **API key** — a key sent with each request\n- **Managed identity** — keyless, with a Microsoft Entra identity",
+    "answer": "- **Anonymous** — no credentials, for public APIs (`OpenApiAnonymousAuthDetails`)\n- **API key** — a key sent with each request\n- **Managed identity** — keyless, with a Microsoft Entra identity",
     "explanation": "The auth type is set when you build the tool, in the `auth` argument of `OpenApiFunctionDefinition`. The course's weather example calls the public wttr.in API, so it uses `OpenApiAnonymousAuthDetails()`. An API that needs credentials uses one of the other two types instead.",
     "addition": "For managed identity, the **Foundry project's** managed identity needs an RBAC role on the target service; without it the call fails with `401 Unauthorized`. An API key is stored in a project connection, one API key scheme per OpenAPI tool.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/openapi"
@@ -94,7 +147,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["openapi", "python"],
+    "tags": [
+      "openapi",
+      "python"
+    ],
     "question": "You want a Foundry agent to call an external weather REST API through an **OpenAPI tool**. What do you prepare, and how is it registered?",
     "answer": "- A **JSON spec file** describing the API: `servers` URL, `paths`, each operation with `operationId` and `parameters`\n- Load it (e.g. with `jsonref`)\n- Wrap it in **`OpenApiTool(openapi=OpenApiFunctionDefinition(name, spec, description, auth))`**\n- Add the tool to the agent definition's `tools`",
     "explanation": "OpenAPI tools let an agent use external APIs through a standardized description, which keeps integration simple and compatible across services. Foundry Agent Service uses OpenAPI 3.0 specified tools. The spec tells the agent what each operation does and which parameters it takes, down to hints such as \"Always use j1 value for this parameter\". You write no client code; the agent fetches the data itself when a prompt needs it.",
@@ -108,28 +164,12 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["custom-tools", "agents"],
+    "tags": [
+      "custom-tools",
+      "agents"
+    ],
     "question": "A developer asks where in their Foundry agent app they should write the code that calls the custom tool functions. What is the answer?",
     "answer": "Nowhere: custom tools are **declarative**. The **agent itself decides** when and how to call a tool, based on the messages in the prompt.",
-    "explanation": "This is the concept developers most often struggle with. You only describe the tool to the agent and add it to its definition. The agent then \"figures out\" on its own when a prompt needs the tool and which arguments to pass. It can only do that well when the functions have meaningful names and well-documented parameters, so those descriptions do the work that explicit call code would do in a normal program."
-  },
-  {
-    "id": "2.2.4-09",
-    "type": "order",
-    "section": "2.2.4",
-    "exam_area": "genai",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/4-how-use-custom-tools",
-    "tags": ["function-calling", "python"],
-    "question": "Put the steps of giving a Foundry agent a **function calling** tool in order.",
-    "answer": "Write the function → describe it as a `FunctionTool` → add it to `tools` → create the agent version → the agent calls it when needed.",
-    "explanation": "The function exists first; the `FunctionTool` only describes it with a name, JSON-schema parameters and a description. The tools list then goes into the `PromptAgentDefinition` passed to `create_version`. From there on no code of yours decides when to call it: the agent picks the function when a prompt needs data it can retrieve.",
-    "items": [
-      "Write the Python function, e.g. `recent_snowfall(location)`",
-      "Describe it in a `FunctionTool` with name, parameters and description",
-      "Add the `FunctionTool` to the `tools` list",
-      "Create the agent with `create_version` and a `PromptAgentDefinition` that holds the tools",
-      "The agent calls the function when a prompt needs its data"
-    ]
+    "explanation": "Developers often struggle with this concept. You only describe the tool to the agent and add it to its definition. The agent then \"figures out\" on its own when a prompt needs the tool and which arguments to pass. It can only do that well when the functions have meaningful names and well-documented parameters, so those descriptions do the work that explicit call code would do in a normal program."
   }
 ]

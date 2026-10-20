@@ -34,7 +34,7 @@
     ],
     "question": "Your generative AI solution only has to classify short, specific text inputs, and you want to lower the risk of harmful output at the **model layer**. Which **two** mitigations apply there?",
     "answer": "- **Select an appropriate model** — a simpler model that does the job instead of a powerful, versatile one like GPT-4\n- **Fine-tune** a foundation model on your own training data",
-    "explanation": "A large general-purpose model can generate far more than a narrow task needs, and everything it can generate is a possible harm. A simpler model that still provides the required function carries a lower risk of harmful content. Fine-tuning works in the same direction: training on your own data makes responses more likely to be relevant and scoped to your scenario."
+    "explanation": "The model layer is the generative AI model at the heart of the solution. GPT-4 is powerful and versatile, but a solution that only classifies small, specific text inputs does not need that: a simpler model can provide the required functionality with a lower risk of generating harmful content. Fine-tuning works in the same direction: training a foundation model on your own data makes its responses more likely to be relevant and scoped to your scenario."
   },
   {
     "id": "1.6.5-03",
@@ -47,9 +47,9 @@
       "content-filters",
       "guardrails"
     ],
-    "question": "In the safety system of Microsoft Foundry, what do **guardrails** base the suppression of prompts and responses on, and which **four** harm categories and **four** severity levels does that classification use?",
+    "question": "In Microsoft Foundry, what do **guardrails** base the suppression of prompts and responses on? Name the **four** harm categories and the **four** severity levels of that classification.",
     "answer": "- **Guardrails** apply criteria to the classification made by **content filters**\n- Harm **categories**: **hate and fairness**, **sexual**, **violence**, **self-harm**\n- **Severity levels**: **safe**, **low**, **medium**, **high**",
-    "explanation": "Guardrails and content filters belong to the safety system layer: platform-level configurations and capabilities, not part of the model or the prompt. Content filters classify prompts and responses into the four harm categories, each at one of the four severity levels. The guardrail then applies its criteria to that classification and suppresses the content that crosses them."
+    "explanation": "Guardrails and content filters belong to the safety system layer: platform-level configurations and capabilities that help mitigate harm, separate from the model and from the prompt. Content filters classify prompts and responses into the four harm categories, each at one of the four severity levels. The guardrail applies its criteria to that classification and suppresses the prompts and responses that meet them."
   },
   {
     "id": "1.6.5-04",

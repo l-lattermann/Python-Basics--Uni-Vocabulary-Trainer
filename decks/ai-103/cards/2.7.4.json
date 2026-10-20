@@ -7,7 +7,7 @@
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
     "tags": ["agent-framework", "tools"],
-    "question": "Which **two** broad categories of tools does the Microsoft Agent Framework support, and who runs each?",
+    "question": "In the Microsoft Agent Framework, which **two** broad categories of tools can an agent use, who executes each, and how can another agent become one of its tools?",
     "answer": "- **Service-provided tools** — hosted by the provider; you enable them in the agent configuration and the provider executes them\n- **Custom function tools** — your own Python functions, passed to the agent at creation; the framework generates their schema and runs them\n- An inner **agent** can itself be converted into a function tool for an outer agent",
     "explanation": "Without tools an agent can only produce text from what it already knows; tools let it call APIs, run code or search files. You can register several tools in one list, and the model picks the right one from the conversation and the tool descriptions — no routing logic needed. Wrapping a specialised agent as a tool lets a coordinating agent delegate to it, a modular design that leads into multi-agent orchestration."
   },

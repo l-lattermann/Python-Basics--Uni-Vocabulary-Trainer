@@ -28,9 +28,7 @@
       {"text": "extract", "correct": true, "why": "The address is written on the card, so its value can be read directly from the document."},
       {"text": "generate", "correct": false, "why": "Generate is for values inferred about the document, not for text that already appears in it."},
       {"text": "classify", "correct": false, "why": "Classify picks one of a predefined set of categories; an email address is free text read from the card."}
-    ],
-    "addition": "The REST reference lists three generation methods: `extract` (values as they appear in the content), `generate` (values generated freely from the content) and `classify` (values classified against a predefined set of categories).",
-    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
+    ]
   },
   {
     "id": "4.6.3-03",
@@ -48,7 +46,9 @@
       {"text": "begin_analyze", "correct": false, "why": "It submits content to an existing analyzer for analysis; it does not create an analyzer."},
       {"text": "begin_analyze_binary", "correct": false, "why": "It analyzes raw file bytes with an existing analyzer instead of creating one."},
       {"text": "get_analyzer", "correct": false, "why": "It retrieves an existing analyzer's definition; it takes no body and returns no poller."}
-    ]
+    ],
+    "addition": "The SDK reference names the second parameter `resource`, not `body`: `begin_create_analyzer(analyzer_id, resource, *, allow_replace=None)`. It accepts a `ContentAnalyzer` object or a JSON dict, and `allow_replace=True` overwrites an analyzer of the same name.",
+    "addition_source": "https://learn.microsoft.com/en-us/python/api/azure-ai-contentunderstanding/azure.ai.contentunderstanding.contentunderstandingclient"
   },
   {
     "id": "4.6.3-04",
@@ -74,7 +74,7 @@
     "tags": ["content-understanding", "rest-api", "async-operations"],
     "question": "Your app sent a `PUT` request to create an Azure Content Understanding analyzer through the REST API. How does it find out when the analyzer has been created?",
     "answer": "Read the **`Operation-Location`** header of the `PUT` response — a callback URL — and send **`GET`** requests to it until the returned `status` is no longer `Running`.",
-    "explanation": "Analyzer creation is asynchronous, so the `PUT` response carries no finished analyzer. The header points to the operation, and each `GET` with the same key header returns its current status. The REST client has to write this polling loop itself. The SDK hides it: `poller.result()` does the same waiting. Analysis requests work the same way, but there the ID comes in the response body.",
+    "explanation": "Analyzer creation is asynchronous, so the `PUT` response carries no finished analyzer. The header points to the operation, and each `GET` with the same key header returns its current status. The REST client has to write this polling loop itself. The SDK hides it: `poller.result()` does the same waiting. In the course's analysis code, the app instead reads the operation `id` from the response body and builds the `analyzerResults` URL itself.",
     "addition": "The sample `Operation-Location` has the form `{endpoint}/contentunderstanding/analyzers/{analyzerId}/operations/{operationId}?api-version=2025-11-01`. The analyzer resource itself reports `creating`, then `ready` or `failed`.",
     "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
   }

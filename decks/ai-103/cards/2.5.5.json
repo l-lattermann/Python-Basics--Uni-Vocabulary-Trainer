@@ -71,28 +71,9 @@
    "work-iq",
    "mcp"
   ],
-  "question": "Name the **three** ways to install or configure **Microsoft Work IQ**.",
-  "answer": "- **npm** — `npm install -g @microsoft/workiq`, or run it without installing via `npx -y @microsoft/workiq mcp`\n- **GitHub Copilot CLI plugin** — `/plugin install workiq@copilot-plugins`\n- **VS Code MCP configuration** — a `workiq` server entry with command `npx` and args `-y @microsoft/workiq mcp`",
-  "explanation": "The `mcp` argument starts Work IQ as an MCP server; that is why both the npx command and the VS Code entry end with it. In GitHub Copilot CLI you first add the plugins marketplace once (`/plugin marketplace add github/copilot-plugins`), then install the plugin and restart the CLI. The VS Code entry's `\"tools\": [\"*\"]` makes every Work IQ tool available to the assistant."
- },
- {
-  "id": "2.5.5-06",
-  "type": "order",
-  "section": "2.5.5",
-  "exam_area": "genai",
-  "origin": "generated",
-  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/5-access-m365-data-workiq",
-  "tags": [
-   "work-iq"
-  ],
-  "question": "Put the steps for getting started with the **Microsoft Work IQ** CLI on your machine in order.",
-  "answer": "Install with npm → **accept the EULA** → ask a question.",
-  "explanation": "The End User License Agreement must be accepted before the first use. The first query is also where missing prerequisites show up: without admin consent for the Work IQ application in the Entra tenant, the CLI reports that admin consent is required and shows a consent URL to send to your IT administrator; without a Microsoft 365 Copilot license, Work IQ cannot be used at all.",
-  "items": [
-   "Install Work IQ globally with `npm install -g @microsoft/workiq`",
-   "Accept the End User License Agreement with `workiq accept-eula`",
-   "Query your Microsoft 365 data with `workiq ask -q \"What meetings do I have today?\"`"
-  ]
+  "question": "Name the **three** ways to install or configure **Microsoft Work IQ**, and the command you must run before its first use.",
+  "answer": "- **npm** — `npm install -g @microsoft/workiq`, or run without installing via `npx -y @microsoft/workiq mcp`\n- **GitHub Copilot CLI plugin** — `/plugin install workiq@copilot-plugins`\n- **VS Code MCP configuration** — a `workiq` server entry: command `npx`, args `-y @microsoft/workiq mcp`\n- **Before first use** — `workiq accept-eula` accepts the End User License Agreement",
+  "explanation": "Both the npx command and the VS Code entry end with `mcp`, the argument that runs Work IQ as an MCP server. In GitHub Copilot CLI you add the plugins marketplace once (`/plugin marketplace add github/copilot-plugins`), install the plugin and restart the CLI. The VS Code entry's `\"tools\": [\"*\"]` makes every Work IQ tool available to the assistant. Whichever route you take, the EULA must be accepted before Work IQ answers its first query."
  },
  {
   "id": "2.5.5-07",
@@ -123,7 +104,7 @@
   ],
   "question": "**Microsoft Work IQ** inherits the security model of Microsoft 365 Copilot. Name its **four** security properties.",
   "answer": "- **Permission-based access** — only data the user may already view\n- **No data storage** — retrieves on demand, keeps no Microsoft 365 data\n- **Enterprise security** — all access follows the organization's security policies\n- **Admin visibility** — administrators can monitor and control usage",
-  "explanation": "All four follow from how Work IQ reads data: through Microsoft Graph, with the authenticated identity of the person asking. It adds no access of its own, keeps no copy that would need protecting, and stays inside the policies and oversight the organization already applies to Microsoft 365 Copilot. Queries are auditable by the organization, and data protection policies apply to them."
+  "explanation": "Work IQ brings no security model of its own; it inherits Microsoft 365 Copilot's. So an agent that uses Work IQ never sees more than the person asking it, and no copy of Microsoft 365 data builds up that would need separate protection. Every access stays inside the organization's existing security policies, and administrators can monitor and control how Work IQ is used."
  },
  {
   "id": "2.5.5-09",
@@ -159,6 +140,43 @@
     "text": "Work IQ returns the document but logs the query for administrators to review",
     "correct": false,
     "why": "Queries are auditable, but auditing never grants access to data the user cannot view."
+   }
+  ]
+ },
+ {
+  "id": "2.5.5-10",
+  "type": "mc",
+  "section": "2.5.5",
+  "exam_area": "genai",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/5-access-m365-data-workiq",
+  "tags": [
+   "work-iq",
+   "mcp"
+  ],
+  "question": "A developer wants **GitHub Copilot in Visual Studio Code** to pull requirements from recent Microsoft 365 meetings and emails into its answers automatically, without running any commands. How should **Microsoft Work IQ** be used?",
+  "answer": "Run Work IQ in **MCP server mode** by adding it to the VS Code MCP configuration; Copilot then calls its tools when relevant.",
+  "explanation": "The difference between the two modes is who triggers the query. In CLI mode the developer runs `workiq ask` in the terminal, which suits scripts and quick one-off questions. In MCP server mode the assistant discovers Work IQ's tools and decides itself when to call them, so the developer just asks Copilot and the meeting context arrives in the chat. Both modes read the same data with the same permissions.",
+  "options": [
+   {
+    "text": "Add Work IQ as an MCP server in the VS Code MCP configuration",
+    "correct": true,
+    "why": "In MCP server mode the AI assistant calls Work IQ's tools automatically when a question needs workplace context."
+   },
+   {
+    "text": "Run `workiq ask -q \"…\"` in the terminal for each question",
+    "correct": false,
+    "why": "That is CLI mode: it works, but the developer has to run every query explicitly."
+   },
+   {
+    "text": "Publish a Foundry agent to Microsoft Teams with organization scope",
+    "correct": false,
+    "why": "Publishing makes an agent available to Teams users; it does not give GitHub Copilot in VS Code access to Microsoft 365 data."
+   },
+   {
+    "text": "Scaffold a project with the Microsoft 365 Agents Toolkit",
+    "correct": false,
+    "why": "The Agents Toolkit is for custom SSO, middleware and multi-environment deployment of an agent, not for feeding Microsoft 365 data to Copilot in VS Code."
    }
   ]
  }

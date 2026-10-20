@@ -6,19 +6,46 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/5-use-sequential-orchestration",
-    "tags": ["orchestration", "multi-agent", "agent-framework"],
-    "question": "With the Microsoft Agent Framework you build a content pipeline: a writer agent drafts, a reviewer agent critiques the draft, and an editor agent polishes it. Each step needs the previous step's result, and the order never changes. Which orchestration pattern fits?",
+    "tags": [
+      "orchestration",
+      "multi-agent",
+      "agent-framework"
+    ],
+    "question": "With the Microsoft Agent Framework you build a content pipeline: a writer agent drafts, a reviewer agent critiques the draft, and an editor agent polishes it. Each step needs the previous step's result, the order never changes, and nothing goes back to the writer. Which orchestration pattern fits?",
     "options": [
-      {"text": "Sequential orchestration", "correct": true, "why": "Agents run as a fixed pipeline and each agent's output becomes the next agent's input, which suits draft, review, polish."},
-      {"text": "Concurrent orchestration", "correct": false, "why": "Concurrent sends the same task to all agents at once and they don't share results, so the reviewer could not see the draft."},
-      {"text": "Handoff orchestration", "correct": false, "why": "Handoff transfers control dynamically based on context or rules; here the order is fixed beforehand."},
-      {"text": "Group chat orchestration", "correct": false, "why": "Group chat lets a chat manager choose who speaks next in a shared conversation; it fits brainstorming, not a fixed pipeline."},
-      {"text": "Magentic orchestration", "correct": false, "why": "Magentic uses a manager that plans and adapts for open-ended problems whose solution path evolves."}
+      {
+        "text": "Sequential orchestration",
+        "correct": true,
+        "why": "Agents run as a fixed pipeline and each agent's output becomes the next agent's input, which suits draft, review, polish."
+      },
+      {
+        "text": "Concurrent orchestration",
+        "correct": false,
+        "why": "Concurrent sends the same task to all agents at once and they don't share results, so the reviewer could not see the draft."
+      },
+      {
+        "text": "Handoff orchestration",
+        "correct": false,
+        "why": "Handoff transfers control dynamically based on context or rules; here the order is fixed beforehand."
+      },
+      {
+        "text": "Group chat orchestration",
+        "correct": false,
+        "why": "Group chat lets a chat manager choose who speaks next in a shared conversation; it fits brainstorming, not a fixed pipeline."
+      },
+      {
+        "text": "Magentic orchestration",
+        "correct": false,
+        "why": "Magentic uses a manager that plans and adapts for open-ended problems whose solution path evolves."
+      }
     ],
     "answer": "**Sequential orchestration** — agents run one after another in a **fixed, predefined order**, and each agent's **output becomes the next agent's input**.",
     "explanation": "The pattern fits work that must happen step by step, where each stage adds what the next one needs: document review, data transformation pipelines, multi-stage reasoning, and gradual refinement like drafting, reviewing and polishing. The agents don't decide what happens next; the order is set when you build the workflow. That makes the workflow predictable and improves quality through stepwise refinement.",
     "explanation_images": [
-      {"src": "media/ai-103/2.8.5-sequential-orchestration.png", "alt": "Sequential orchestration: the input passes through agent 1, agent 2 and agent 3 in a fixed order, each agent's output feeding the next, until the final result."}
+      {
+        "src": "media/ai-103/2.8.5-sequential-orchestration.png",
+        "alt": "Sequential orchestration: the input passes through agent 1, agent 2 and agent 3 in a fixed order, each agent's output feeding the next, until the final result."
+      }
     ]
   },
   {
@@ -28,7 +55,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/5-use-sequential-orchestration",
-    "tags": ["orchestration", "multi-agent"],
+    "tags": [
+      "orchestration",
+      "multi-agent"
+    ],
     "question": "When should you **avoid** sequential orchestration for a multi-agent solution in the Microsoft Agent Framework?",
     "answer": "- Stages could run **independently in parallel** without losing quality\n- **One agent** can do the whole task\n- Early stages may fail and **nothing can stop or correct** downstream steps\n- Agents must **collaborate dynamically**, or the flow needs **iteration, backtracking or dynamic routing**",
     "explanation": "A pipeline only pays off when every stage depends on the one before it and the stages cannot run at the same time. Parallel-capable work belongs in concurrent orchestration instead. Because each output feeds the next agent, a bad early result spreads through every later stage. The fixed order also means no agent can loop back or choose the next step. Use it where you know how each agent performs and can handle delays or failures in a step without stopping the whole process."
@@ -40,10 +70,14 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/5-use-sequential-orchestration",
-    "tags": ["orchestration", "agent-framework", "sdk"],
+    "tags": [
+      "orchestration",
+      "agent-framework",
+      "sdk"
+    ],
     "question": "Put the steps in order to implement sequential orchestration with the Microsoft Agent Framework SDK in Python.",
     "answer": "Chat client → `create_agent` → **`SequentialBuilder`** `.participants()` `.build()` → **`run_stream`** → watch for **`WorkflowOutputEvent`** → read the final conversation.",
-    "explanation": "The agents are added in the order they should run, so the participant list defines the pipeline. `run_stream` emits workflow events as the task passes from agent to agent; you iterate them in an async loop. The final output is the complete conversation history, showing what each agent contributed. Concurrent orchestration uses the same builder shape with `ConcurrentBuilder`, but calls `run` and reads results with `get_outputs()`.",
+    "explanation": "You add the agents as participants and build the workflow once, so the pipeline is fixed before it runs. `run_stream` produces workflow events as the task passes from agent to agent; you iterate them in an async loop. The final output is the complete conversation history, showing what each agent contributed. Concurrent orchestration uses the same builder shape with `ConcurrentBuilder`, but calls `run` and reads results with `get_outputs()`.",
     "items": [
       "Create a chat client, for example `AzureOpenAIChatClient`, with credentials",
       "Create each agent with the client's `create_agent` method, giving it a name and instructions",
@@ -51,6 +85,8 @@
       "Call the workflow's `run_stream` method with the task",
       "Iterate the events in an async loop and pick out `WorkflowOutputEvent` instances",
       "Extract the final conversation from the workflow outputs"
-    ]
+    ],
+    "addition": "Agents run strictly in the order of the `participants` list. The current Python SDK differs from the course: agents come from `as_agent`, the builder is `SequentialBuilder(participants=[...])`, streaming is `run(..., stream=True)`, and the terminal output is the last agent's response, not the full conversation.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/sequential"
   }
 ]

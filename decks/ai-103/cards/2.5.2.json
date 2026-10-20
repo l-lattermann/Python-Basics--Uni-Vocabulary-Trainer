@@ -6,28 +6,29 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/2-understand-publishing-options",
-    "tags": ["agent-publishing", "agent-identity"],
+    "tags": [
+      "agent-publishing",
+      "agent-identity"
+    ],
     "question": "When you publish an agent in Microsoft Foundry, Foundry creates an **Agent Application** resource. Name the **three** things it gives the agent.",
     "answer": "- **Dedicated invocation URL** — a stable endpoint that stays the same as agent versions change\n- **Agent identity** — its own Microsoft Entra identity, separate from the development project\n- **User data isolation** — one user's inputs and interactions aren't available to other users",
     "explanation": "Publishing turns the agent from a development asset into a managed Azure resource. The Agent Application is a routing layer: publish a new version and traffic moves to it without the public endpoint changing. The new identity has a catch. Development-time permissions of the project identity don't transfer. A tool that calls Azure AI Search, for example, fails until you grant the published agent's identity the right roles."
   },
   {
     "id": "2.5.2-02",
-    "type": "order",
+    "type": "basic",
     "section": "2.5.2",
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/2-understand-publishing-options",
-    "tags": ["agent-publishing", "m365", "bot-service"],
-    "question": "Put in order what the Microsoft Foundry portal's publishing wizard does when you publish an agent **directly** to Microsoft 365 (Teams and Copilot).",
-    "answer": "**Azure Bot Service** resource → **Entra ID app registration** → **Microsoft 365 publishing package** → ready for distribution.",
-    "explanation": "The Bot Service resource routes messages between Microsoft 365 and your agent; the Entra ID application handles authentication; the package is what gets distributed, making the agent discoverable in the Teams agent store. Direct publishing suits quick deployments with all agent logic kept in Foundry. Custom single sign-on, middleware logic or multi-environment pipelines call for the Microsoft 365 Agents Toolkit and a proxy app instead.",
-    "items": [
-      "Create an Azure Bot Service resource in your subscription",
-      "Register a Microsoft Entra ID application",
-      "Generate a Microsoft 365 publishing package",
-      "Prepare the agent for distribution"
-    ]
+    "tags": [
+      "agent-publishing",
+      "m365",
+      "bot-service"
+    ],
+    "question": "You need to bring a Microsoft Foundry agent into Teams and Microsoft 365 Copilot. Name the **two** approaches and when each fits.",
+    "answer": "- **Direct publishing from the Foundry portal** — a wizard creates an **Azure Bot Service** resource, registers a **Microsoft Entra ID** app and generates a **Microsoft 365 publishing package**; for quick deployments with all agent logic in Foundry\n- **Microsoft 365 Agents Toolkit** — a **proxy application** that connects to the Foundry agent; for custom SSO, advanced middleware logic or multi-environment deployment pipelines",
+    "explanation": "Each piece the wizard creates has one job. The Bot Service resource routes messages between Microsoft 365 and your agent. The Entra ID application handles authentication. The publishing package is what gets distributed and makes the agent discoverable in the Teams agent store. Direct publishing is the straightforward default. The Agents Toolkit is for complex scenarios only, when you need one of those three extras."
   },
   {
     "id": "2.5.2-03",
@@ -36,10 +37,13 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/2-understand-publishing-options",
-    "tags": ["agent-publishing", "m365"],
-    "question": "Name the **two** distribution scopes you choose between when publishing a Microsoft Foundry agent to Microsoft 365, with where each appears in Teams.",
-    "answer": "- **Shared** — available immediately, no admin approval; appears under **Your agents**\n- **Organization** — available to everyone in the tenant under **Built by your org**; requires admin approval",
-    "explanation": "The difference is approval and reach. Shared scope fits personal testing and small team pilots, because nobody has to sign off. Organization scope is for production deployments: a Microsoft 365 administrator must approve the agent before the whole tenant can find it. A typical path is to pilot in Shared scope, then republish with Organization scope once the agent is proven.",
+    "tags": [
+      "agent-publishing",
+      "m365"
+    ],
+    "question": "You want to pilot a Microsoft Foundry agent in Teams with a small team right away, and roll it out to the whole tenant later. Which **two** Microsoft 365 publish scopes fit these stages, and how do they differ?",
+    "answer": "- **Shared** — personal testing and small team pilots; available immediately, no admin approval; appears under **Your agents** in Teams\n- **Organization** — production deployments; everyone in the tenant, under **Built by your org**; requires admin approval",
+    "explanation": "The trade-off is reach against sign-off. Shared scope needs nobody's approval, so it suits the early phase when you or a small pilot group try the agent out. Organization scope makes the agent available to everyone in the tenant, which is why a Microsoft 365 administrator must approve it first. Pilot in Shared scope, then publish with Organization scope once the agent is ready for production.",
     "addition": "The Foundry portal now labels the scopes **Just you** (REST `publishScope: Shared`, also called Individual scope) and **People in your organization** (REST `publishScope: Tenant`).",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/publish-copilot"
   },
@@ -50,7 +54,10 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/2-understand-publishing-options",
-    "tags": ["agent-publishing", "bot-service"],
+    "tags": [
+      "agent-publishing",
+      "bot-service"
+    ],
     "question": "Besides Microsoft 365 (Teams and Copilot), name the **three** other channels a Microsoft Foundry agent can be published to.",
     "answer": "- **Web application preview** — browser-based interface for demos and stakeholder testing\n- **Stable API endpoint** — REST API for embedding the agent in custom applications\n- **Azure Bot Service channels** — Slack, Telegram, Twilio (SMS), Facebook and others",
     "explanation": "These channels matter when users live outside Microsoft 365 or the agent belongs inside your own application. Pick by audience: stakeholders who only need to try the agent get the web preview; developers integrating it into an app call the stable API endpoint; customers on a messaging platform such as Slack or SMS are reached through the Azure Bot Service channels."
@@ -62,7 +69,11 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/2-understand-publishing-options",
-    "tags": ["agent-publishing", "rbac", "m365"],
+    "tags": [
+      "agent-publishing",
+      "rbac",
+      "m365"
+    ],
     "question": "Name the **six** prerequisites for publishing a Microsoft Foundry agent to Microsoft 365 (Teams and Copilot).",
     "answer": "- **Azure AI Project Manager** role on the Foundry project\n- **Azure AI User** role on the agent application scope\n- A subscription where you can create **Azure Bot Service** resources\n- Permission to **register applications in Microsoft Entra ID**\n- A **Microsoft 365 tenant** that allows custom apps and bots\n- A **Microsoft Agent 365 license**",
     "explanation": "Each prerequisite matches something publishing does. It creates a Bot Service resource and registers an Entra ID application, so you need rights for both. The agent reaches users as a custom app, so the tenant must allow custom apps and bots. The Agent 365 license covers agent security features: discovery, posture management and real-time threat detection in Defender.",

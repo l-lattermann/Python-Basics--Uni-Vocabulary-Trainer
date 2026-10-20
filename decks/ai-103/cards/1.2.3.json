@@ -40,7 +40,7 @@
     "question": "Microsoft Foundry's quality benchmarks use **eight** public datasets. Name them with what each measures, and say what the **Quality index** does with them.",
     "answer": "- **Quality index** — average accuracy across these datasets, 0 to 1, higher is better\n- **Arena-Hard** — adversarial question answering\n- **BIG-Bench Hard** — reasoning capabilities\n- **GPQA** — graduate-level multi-discipline questions\n- **HumanEval+** and **MBPP+** — code generation\n- **MATH** — mathematical reasoning\n- **MMLU-Pro** — general knowledge\n- **IFEval** — instruction following",
     "explanation": "The datasets span reasoning, knowledge, question answering, math and coding, so the Quality index is one high-level number for general-purpose language tasks. Public datasets and standardized methods keep scores comparable across models. Keep two pairs apart: BIG-Bench Hard is reasoning in general, MATH is mathematical reasoning; MMLU-Pro is general knowledge, GPQA is graduate level. When your app maps to one task, a scenario leaderboard is the better starting point.",
-    "addition": "The current docs list a different Quality index set: BIG-Bench Hard, ChemBench, FrontierScience, GPQA, MBPP+, MMLU-Pro, MuSR and tau2 telecom. Arena-Hard and MATH now appear only in scenario leaderboards; HumanEval+ and IFEval are no longer listed.",
+    "addition": "The current docs list a different Quality index set: BIG-Bench Hard, ChemBench, FrontierScience, GPQA, MBPP+, MMLU-Pro, MuSR and tau2 telecom. Arena-Hard and MATH now appear only in scenario leaderboards; HumanEval+ and IFEval are in neither list.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/model-benchmarks"
   },
   {

@@ -20,23 +20,8 @@
       "Project **Home** page: copy the **Azure OpenAI Endpoint** (not the project endpoint)",
       "VS Code: clone the repo, create a **Venv**, run `pip install -r requirements.txt`",
       "`.env`: set the endpoint and `MODEL_DEPLOYMENT` to the exact deployment name",
-      "Terminal: `az login`, then `python chat-app.py`"
+      "Terminal: `az login` (add `--tenant` with subscriptions in several tenants), then `python chat-app.py`"
     ]
-  },
-  {
-    "id": "1.3.7-02",
-    "type": "basic",
-    "section": "1.3.7",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/03-foundry-sdk.html",
-    "tags": [
-      "keyless-auth",
-      "openai-sdk"
-    ],
-    "question": "A local Python app uses the OpenAI SDK with Microsoft Entra ID (no API key) to call a Microsoft Foundry deployment through the Azure OpenAI endpoint. What do you pass as `api_key`, which token scope does it request, and which command must run before the app?",
-    "answer": "- `api_key` = a **bearer token provider**: `get_bearer_token_provider(DefaultAzureCredential(), ...)`\n- Scope: `https://ai.azure.com/.default`\n- Command: **`az login`** (add `--tenant` with subscriptions in several tenants)",
-    "explanation": "`DefaultAzureCredential` picks up the identity you signed in with through the Azure CLI, so the app needs no secret. The token provider fetches Entra ID tokens for that scope and hands them to the `OpenAI` client in place of a key. The endpoint goes in `base_url`. A project API key would also work, but Entra ID authentication is preferred whenever possible. The async version imports the same two names from `azure.identity.aio` and closes the credential in `finally`."
   },
   {
     "id": "1.3.7-03",
@@ -58,7 +43,7 @@
       "`responses.create(model=..., instructions=..., input=...)`, print `output_text`",
       "Add `previous_response_id=last_response_id`, then store `last_response_id = response.id`",
       "Add `stream=True`: print `event.delta` on `response.output_text.delta`, take the ID on `response.completed`",
-      "`chat-async.py`: `AsyncOpenAI` client, `await async_client.responses.create(...)`"
+      "`chat-async.py`: `AsyncOpenAI` client with the credential from `azure.identity.aio`, `await async_client.responses.create(...)`"
     ]
   }
 ]

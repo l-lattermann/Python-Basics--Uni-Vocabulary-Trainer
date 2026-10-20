@@ -11,9 +11,9 @@
       "ocr",
       "language-detection"
     ],
-    "question": "You analyze a multilingual PDF with the **Read** model in Document Intelligence Studio and need the language of each piece of text. Which setting do you enable, and where do you see the result?",
-    "answer": "- Enable **Language** under *Optional detection* in **Analyze options**, then *Run Analysis*\n- Read the **`locale`** of each span at the end of the JSON in the **Result** tab",
-    "explanation": "The Read model extracts printed and handwritten text and can detect the language of the text. The **Content** tab only shows the extracted text, so you compare it with the original for accuracy. The language appears only in the JSON of the **Result** tab: a German document returns mostly `de` spans, but a span with an English phrase is tagged `en`. Language detection works per span, not per document."
+    "question": "You analyze a multilingual PDF with the **Read** model in **Azure Document Intelligence Studio** and need the language of each piece of text. Where do you start, which setting do you enable, and where do you see the result?",
+    "answer": "- Studio home → *Document analysis* → **Read** tile\n- **Analyze options** → *Optional detection* → enable **Language** → *Save*, then *Run Analysis*\n- **Result** tab (JSON): the **`locale`** of each span, e.g. `de`, `en`",
+    "explanation": "The Read model extracts printed and handwritten text and detects its language. The **Content** tab shows only the extracted text, so there you compare it with the original for accuracy. The language appears only in the JSON of the **Result** tab, at its end: a German document returns mostly `de` spans, but a span holding an English phrase is tagged `en`. Language is detected per span, not once for the whole document."
   },
   {
     "id": "4.7.7-02",
@@ -27,9 +27,9 @@
       "python-sdk",
       "authentication"
     ],
-    "question": "A Python app analyzes invoices with the `azure-ai-documentintelligence` SDK and the **prebuilt-invoice** model. Where do you get the values for the client, and which call starts the analysis?",
-    "answer": "- Azure portal → your Document Intelligence resource → *Resource Management* → **Keys and Endpoint**\n- `DocumentIntelligenceClient(endpoint, AzureKeyCredential(key))`\n- **`begin_analyze_document(model_id, AnalyzeDocumentRequest(url_source=...))`**, then `poller.result()`",
-    "explanation": "The endpoint and one of the two keys go into the app's `.env` file. `begin_analyze_document` does not return the result directly: it returns a **poller**, and `poller.result()` delivers the analysis. Each item in `result.documents` has `fields` such as `VendorName`, `CustomerName` and `InvoiceTotal`. Every field carries its value (`valueString`, `valueCurrency`) and a **confidence** score. A custom model is called the same way, only with its own model ID."
+    "question": "A Python app analyzes invoices with the `azure-ai-documentintelligence` SDK and the **prebuilt-invoice** model. Where do you find the values for the client, and how do you read an extracted field such as the vendor name with its confidence?",
+    "answer": "- Azure portal → your Document Intelligence resource → *Resource Management* → **Keys and Endpoint**\n- `DocumentIntelligenceClient(endpoint=..., credential=AzureKeyCredential(key))`\n- `poller.result()` → `result.documents` → **`document.fields.get(\"VendorName\")`**\n- Value in **`valueString`** (amounts: `valueCurrency`), score in **`confidence`**",
+    "explanation": "The endpoint and one of the keys go into the app's `.env` file. `begin_analyze_document(\"prebuilt-invoice\", AnalyzeDocumentRequest(url_source=...))` returns a poller, not the result; `poller.result()` delivers it. Each document has a fixed set of invoice fields such as `VendorName`, `CustomerName` and `InvoiceTotal`. A field can be missing, so check it before reading it. The confidence tells you how sure the model is about each value."
   },
   {
     "id": "4.7.7-03",
@@ -40,18 +40,19 @@
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/03-document-intelligence.html",
     "tags": [
       "document-intelligence",
-      "custom-models"
+      "custom-models",
+      "python-sdk"
     ],
-    "question": "Put the steps of training and using a **custom extraction model** with Document Intelligence Studio in order.",
-    "answer": "Upload forms → create project → train (Template) → wait for *succeeded* → call by model ID.",
-    "explanation": "The training forms must already sit in a Blob Storage container, because the Studio project connects to that container as its training data source. In the **Train** dialog you name the **Model ID** and pick the **Build Mode**; the exercise uses **Template** for its fixed-layout forms. The app then sends a test form to `begin_analyze_document` with that model ID and prints fields you defined, such as `Merchant`.",
+    "question": "Your **Azure Document Intelligence Studio** project (from the *Custom extraction model* tile) is connected to the blob container with the training forms. Put the steps from training the custom model to extracting fields with it from Python in order.",
+    "answer": "Train (Model ID, **Template**) → *Go to Models*, wait for **succeeded** → model ID into `.env` → analyze a test form → read its fields.",
+    "explanation": "The **Train** button sits at the top right of the project page. In its dialog you name the **Model ID** and pick the **Build Mode**; the exercise uses **Template**, the build mode for forms with a consistent layout. Training takes a while, so you wait on the Models page. The app then needs the endpoint, the key and that Model ID. It calls `begin_analyze_document` with the model ID, and the output shows the fields defined in training, such as `Merchant` and `CompanyPhoneNumber`.",
     "items": [
-      "Upload the sample forms to a Blob Storage container",
-      "In the Studio, select the Custom extraction model tile and create a project",
-      "Link the Document Intelligence resource and the storage container to the project",
-      "Select Train and set a Model ID and the Build Mode Template",
-      "Under Models, wait until the model status is succeeded",
-      "Analyze a new form from the SDK using the model ID"
+      "Select Train at the top right of the project page",
+      "Enter a Model ID and select the Build Mode Template",
+      "Select Go to Models and wait until the model status is succeeded",
+      "Put the endpoint, key and Model ID into the app's .env file",
+      "Call begin_analyze_document with the model ID on a test form",
+      "Print the extracted fields, such as Merchant"
     ]
   }
 ]

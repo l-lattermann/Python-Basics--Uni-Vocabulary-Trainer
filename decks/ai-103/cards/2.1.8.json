@@ -6,7 +6,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "testing"],
+    "tags": [
+      "agents",
+      "testing"
+    ],
     "question": "Name the **five** testing strategies for a Microsoft Foundry agent in the playground (Foundry portal or VS Code) before it reaches users.",
     "answer": "- **Happy path testing** — common, expected requests\n- **Edge case testing** — ambiguous, incomplete or unusual inputs\n- **Boundary testing** — out-of-scope requests; does it respect its instructions?\n- **Multi-turn conversation testing** — keeps context across exchanges\n- **Tool invocation testing** — right tool, right time, results used correctly",
     "explanation": "Each strategy probes a different failure. Happy path proves the basics work. Edge cases show how the agent handles uncertainty. Boundary tests check the limits written into its instructions. Multi-turn tests check that it builds on earlier answers. Tool invocation tests check when tools are called and how their results flow into the reply. Record the results so you can track improvements and catch regressions after later changes."
@@ -18,10 +21,14 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "deployment", "hosted-agents"],
+    "tags": [
+      "agents",
+      "deployment",
+      "hosted-agents"
+    ],
     "question": "You deploy a **hosted agent** from the Foundry Toolkit for VS Code with **+Build > Deploy to Microsoft Foundry**. Which **two** deployment methods can you choose?",
     "answer": "- **Code (ZIP Code Deploy)** — packages your source code and deploys it directly, no container image\n- **Container (BYOI)** — deploys a pre-built container image from Azure Container Registry",
-    "explanation": "Pick ZIP Code Deploy when you only have source code; pick BYOI (bring your own image) when you already build an image into Azure Container Registry. In VS Code you first select **Save to Foundry** to push configuration changes, then deploy and confirm the model. In the portal, deploying is just **Save** on the agent's page plus confirming version settings. Either way the agent stays in your project, where team members can access and test it."
+    "explanation": "Pick ZIP Code Deploy when you only have source code; pick BYOI when you already build an image into Azure Container Registry. In VS Code you first select **Save to Foundry** to push configuration changes, then deploy and confirm the model. In the portal, deploying is just **Save** on the agent's page plus confirming version settings. Either way the agent stays in your project, where team members can access and test it."
   },
   {
     "id": "2.1.8-03",
@@ -30,7 +37,11 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "rbac", "endpoints"],
+    "tags": [
+      "agents",
+      "rbac",
+      "endpoints"
+    ],
     "question": "Name the **three** things every agent created in Microsoft Foundry is provisioned with automatically, so that external apps can call it.",
     "answer": "- **Stable endpoint** — invocation URL that stays the same across agent versions\n- **Entra agent identity** — its own Microsoft Entra identity and RBAC scope, separate from the project identity\n- **Authentication policy** — Entra ID only; callers need the **Foundry User** role; no API keys",
     "explanation": "The endpoint speaks the Responses API protocol: `…/api/projects/<project>/agents/<agent>/endpoint/protocols/openai/responses`. When you save a new version, the endpoint routes traffic to it automatically, so existing integrations keep working. Publishing then means distributing the agent, for example to Microsoft Teams and Microsoft 365 Copilot in one step from the portal, without rebuilding. A caller that gets `403 Forbidden` is missing the Foundry User role on the agent resource.",
@@ -44,15 +55,35 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "rbac", "managed-identity"],
+    "tags": [
+      "agents",
+      "rbac",
+      "managed-identity"
+    ],
     "question": "A Microsoft Foundry agent's tool calls worked in the project playground. After publishing, the same tool calls fail with **authorization errors**. What do you do?",
     "answer": "Assign RBAC roles on the needed resources to the **agent's own Entra agent identity**.",
     "explanation": "Each agent gets a dedicated Entra identity. Permissions granted to the project's shared identity do not transfer to it automatically. So every resource the agent's tools reach needs a role assignment for the agent identity itself. This is a different problem from a `403 Forbidden` on the endpoint: that one is about the caller, who needs the Foundry User role on the agent resource.",
     "options": [
-      {"text": "Assign RBAC roles on the target resources to the agent's Entra agent identity", "correct": true, "why": "The agent calls tools with its own identity, which starts without the project identity's permissions."},
-      {"text": "Assign more RBAC roles to the project's shared identity", "correct": false, "why": "The published agent no longer uses the project identity, so its permissions don't help."},
-      {"text": "Give the calling users the Foundry User role on the agent resource", "correct": false, "why": "That fixes a 403 for callers of the endpoint, not the agent's own access to tool resources."},
-      {"text": "Switch the agent endpoint to API key authentication", "correct": false, "why": "Agent endpoints support only Microsoft Entra ID authentication; API keys aren't supported."}
+      {
+        "text": "Assign RBAC roles on the target resources to the agent's Entra agent identity",
+        "correct": true,
+        "why": "The agent calls tools with its own identity, which starts without the project identity's permissions."
+      },
+      {
+        "text": "Assign more RBAC roles to the project's shared identity",
+        "correct": false,
+        "why": "The published agent no longer uses the project identity, so its permissions don't help."
+      },
+      {
+        "text": "Give the calling users the Foundry User role on the agent resource",
+        "correct": false,
+        "why": "That fixes a 403 for callers of the endpoint, not the agent's own access to tool resources."
+      },
+      {
+        "text": "Switch the agent endpoint to API key authentication",
+        "correct": false,
+        "why": "Agent endpoints support only Microsoft Entra ID authentication; API keys aren't supported."
+      }
     ]
   },
   {
@@ -62,7 +93,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "integration"],
+    "tags": [
+      "agents",
+      "integration"
+    ],
     "question": "Name the **four** common patterns for integrating a published Microsoft Foundry agent into applications.",
     "answer": "- **Web applications** — send user messages to the endpoint, show replies in the UI\n- **API-driven workflows** — backend services call the agent on events or schedules\n- **Chatbot interfaces** — map user sessions to conversations, real-time exchange\n- **Background automation** — scheduled recurring calls that update business systems",
     "explanation": "The patterns differ in who triggers the call. A user drives web apps and chatbots, so you keep conversation history on the client. An event or schedule drives API-driven workflows and background automation, and the response is processed in code to drive downstream actions. For a start, the Foundry Toolkit for VS Code generates sample code: select the agent in **My Resources**, select **View Code**, choose a folder. It covers authenticating, connecting, sending messages and processing responses."
@@ -74,9 +108,13 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/8-test-deploy-integrate",
-    "tags": ["agents", "monitoring", "production"],
+    "tags": [
+      "agents",
+      "monitoring",
+      "production"
+    ],
     "question": "Name the **five** operational areas to plan for when running a Microsoft Foundry agent in production.",
-    "answer": "- **Monitoring** — response times, tool success, errors, tokens via Application Insights\n- **Security** — managed identities, least privilege, data retention\n- **Cost management** — token usage, response length limits, rate limiting\n- **Error handling** — retries with exponential backoff, input validation\n- **Conversation management** — client stores history",
+    "answer": "- **Monitoring** — response times, tool success, errors, tokens via Application Insights\n- **Security** — managed identities, least privilege, data retention\n- **Cost management** — token usage, response length limits, rate limiting\n- **Error handling** — retries with exponential backoff, input validation\n- **Conversation management** — stateless Responses API only; client stores history",
     "explanation": "Conversation management is the surprise: agent endpoints currently support only the **stateless** Responses API, so for multi-turn chats your client must keep the history and send it along. Error handling and cost management meet at rate limits: backoff handles them when they hit, response length limits and your own rate limiting prevent spikes. Application Insights is where tool invocation failures and token consumption become visible."
   }
 ]

@@ -147,7 +147,9 @@
     ],
     "question": "A **document**-based **Azure Content Understanding** analyzer extracts the name and email from a scanned business card. What does its result contain?",
     "answer": "- The **extracted fields**, such as `ContactName` and `EmailAddress`\n- The **OCR layout**: locations of lines, words and paragraphs on each page\n- A **markdown** version of the text",
-    "explanation": "Each field in the JSON carries its `type`, its value, a `confidence` score, a `source` string with its coordinates on the page, and `spans`. A span is an `offset` and `length` into the markdown: `ContactName` has offset 0 and length 10, which is exactly \"John Smith\". The OCR part lists every word and line with its own confidence and location, and the page entry gives `pageNumber`, `width` and `height` in the stated `unit`, here pixels."
+    "explanation": "The fields are what the analyzer's schema asks for; the rest comes from the document itself. In the JSON, each field carries its `type`, a type-specific value, a `confidence` score, `spans` and a `source`. The OCR part lists every word and line of each page with its own content, confidence and location, and the page entry gives `pageNumber`, `width` and `height` in the stated `unit`, here pixels.",
+    "addition": "A span is a 0-based character `offset` and `length` into the content's `markdown`: `ContactName` at offset 0, length 10 is \"John Smith\". `source` is an encoded position of the value on the page, such as `D(1,69,234,…)`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result"
   },
   {
     "id": "4.6.4-09",

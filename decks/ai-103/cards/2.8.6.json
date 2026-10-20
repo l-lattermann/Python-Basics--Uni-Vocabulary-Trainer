@@ -33,9 +33,9 @@
       "orchestration",
       "multi-agent"
     ],
-    "question": "You are choosing a Microsoft Agent Framework orchestration pattern. Which **two** situations argue **against** group chat orchestration?",
-    "answer": "**Real-time speed requirements** that make discussion overhead impractical, and a chat manager that **can't tell when the task is complete**.",
-    "explanation": "Group chat pays for its flexibility with discussion rounds, and it needs a clear end point to stop. The course names three more reasons to avoid it: simple delegation or a linear pipeline is enough; the workflow must be hierarchical or deterministic without discussion; and the flow gets too complex with many agents. Keep a group chat to three agents or fewer so it stays controllable.",
+    "question": "You are choosing a Microsoft Agent Framework orchestration pattern. Which **three** situations argue **against** group chat orchestration?",
+    "answer": "**Real-time speed requirements** that make discussion overhead impractical, a chat manager that **can't tell when the task is complete**, and **many agents** that make the flow hard to manage (keep it to three or fewer).",
+    "explanation": "Group chat pays for its flexibility with discussion rounds, needs a clear end point to stop, and gets harder to steer with every extra agent. The course names two more reasons to avoid it: simple delegation or a linear pipeline is enough, or the workflow must be hierarchical or deterministic without discussion. Maker-checker loops and human participation are, by contrast, reasons to choose it.",
     "options": [
       {
         "text": "Real-time speed requirements make the discussion overhead impractical",
@@ -48,6 +48,11 @@
         "why": "Without a clear termination point the conversation has no reliable way to end."
       },
       {
+        "text": "The conversation would involve many agents, and the flow becomes hard to manage",
+        "correct": true,
+        "why": "The course advises limiting a group chat to three or fewer agents for easier control."
+      },
+      {
         "text": "Agents must take turns creating and reviewing a draft",
         "correct": false,
         "why": "Iterative maker-checker loops are a main reason to use group chat."
@@ -56,11 +61,6 @@
         "text": "A human must be able to guide or intervene while the agents work",
         "correct": false,
         "why": "Real-time human oversight or participation is a listed strength of group chat."
-      },
-      {
-        "text": "The whole conversation must be auditable afterwards",
-        "correct": false,
-        "why": "Group chat collects all output in a single thread, which makes it transparent and auditable."
       }
     ]
   },
@@ -92,9 +92,9 @@
       "orchestration",
       "multi-agent"
     ],
-    "question": "Name the **four** methods a Microsoft Agent Framework group chat manager calls in each round, in their call order.",
-    "answer": "- **`should_request_user_input`** — is human input needed before the next agent?\n- **`should_terminate`** — should the conversation end, e.g. max rounds reached?\n- **`filter_results`** — if ending, summarize or process the final conversation\n- **`select_next_agent`** — if continuing, choose the next speaker",
-    "explanation": "User input and termination are checked first, so the conversation never moves forward past a needed human answer or a reached limit. Only then does it branch: end with `filter_results`, or continue with `select_next_agent`. To change any of these steps, write a custom manager that extends the base `GroupChatManager` class and override the matching method.",
+    "question": "A custom Microsoft Agent Framework group chat manager extends which base class, and which **four** methods does the manager call in each round, in call order?",
+    "answer": "Base class **`GroupChatManager`**; each round it calls:\n- **`should_request_user_input`** — is human input needed before the next agent?\n- **`should_terminate`** — should the conversation end, e.g. max rounds reached?\n- **`filter_results`** — if ending, summarize or process the final conversation\n- **`select_next_agent`** — if continuing, choose the next speaker",
+    "explanation": "User input and termination are checked first, so the conversation never moves forward past a needed human answer or a reached limit. Only then does it branch: end with `filter_results`, or continue with `select_next_agent`. Overriding these methods in your custom manager is how you control when to ask the user, when to stop, how results are filtered or summarized, and how the next agent is chosen.",
     "addition": "The current Agent Framework Python docs set speaker selection through `GroupChatBuilder` parameters instead — `selection_func`, `orchestrator_agent` or a custom `orchestrator` — plus a `termination_condition`.",
     "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/group-chat"
   },
@@ -113,7 +113,7 @@
     "question": "In the Microsoft Agent Framework SDK, which class builds a workflow in which agents talk in one conversation coordinated by a chat manager?",
     "answer": "**`GroupChatBuilder`** — add the agents with `participants()`, then call `build()`.",
     "explanation": "The surrounding steps match the other patterns: create a chat client such as `AzureOpenAIChatClient`, create named agents with `create_agent`, call the workflow's `run` method with the task, and read the results with `get_outputs()`. Each returned message carries the author name and content, so you can see which agent said what.",
-    "addition": "The course's steps say this workflow runs all agents concurrently, copied from concurrent orchestration. In group chat the orchestrator selects one speaker per turn and broadcasts each response to all other agents.",
+    "addition": "The course's steps say this workflow runs the agents in parallel and concurrently. The docs say the orchestrator picks one speaker per turn and broadcasts each response to all other agents before choosing the next.",
     "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/group-chat",
     "options": [
       {

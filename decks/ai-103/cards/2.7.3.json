@@ -6,7 +6,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/3-create-azure-ai-agent",
-    "tags": ["agent-framework", "agents", "sdk"],
+    "tags": [
+      "agent-framework",
+      "agents",
+      "sdk"
+    ],
     "question": "Put the steps in order to build and talk to a Foundry agent with the **Microsoft Agent Framework** in Python.",
     "answer": "Foundry project with a deployed model → **DefaultAzureCredential** → **Foundry chat client** → agent with instructions → **session** → send messages.",
     "explanation": "Code can only start once a project and a model deployment exist. The credential comes before the client because the client needs it. The **Foundry chat client** is the bridge to the Foundry Agent Service: it handles authentication, request routing and service-side session management. The agent is created from that client. Only the **session** then holds the conversation: its execution method processes the prompt, coordinates any tool calls and returns the model's response.",
@@ -25,10 +29,14 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/3-create-azure-ai-agent",
-    "tags": ["agent-framework", "keyless-auth", "agents"],
+    "tags": [
+      "agent-framework",
+      "keyless-auth",
+      "agents"
+    ],
     "question": "Name the **five** inputs you provide with the **Microsoft Agent Framework** to connect a Foundry chat client to your Microsoft Foundry project and create an agent on it.",
-    "answer": "- **Credential** — `DefaultAzureCredential`, no keys in code\n- **Project endpoint** — the URL of the Foundry project\n- **Model deployment name** — the deployed model the agent uses\n- **Instructions** — system prompt: role, goals, constraints\n- **Tools** (optional) — custom functions the agent can call",
-    "explanation": "The first three go into the Foundry chat client; the last two define the agent. `DefaultAzureCredential` picks the right credential for the environment: the Azure CLI login during development, a managed identity in production. That is why no connection string or API key is hardcoded. For tools, the framework registers them and generates their schemas automatically, so the model knows when and how to call each one.",
+    "answer": "- **Credential** — `DefaultAzureCredential`: Azure CLI login in dev, managed identity in production; no keys in code\n- **Project endpoint** — the URL of the Foundry project\n- **Model deployment name** — the deployed model the agent uses\n- **Instructions** — system prompt: role, goals, constraints\n- **Tools** (optional) — custom functions the agent can call",
+    "explanation": "The first three go into the Foundry chat client; the last two define the agent. `DefaultAzureCredential` resolves the right credential for the environment by itself, so the same code runs on a developer laptop and in production without a hardcoded connection string or API key. For tools, the framework registers them and generates their schemas automatically, so the model knows when and how to call each one.",
     "addition": "Current Python shape: `Agent(client=FoundryChatClient(project_endpoint=..., model=..., credential=...), instructions=...)`. The docs also advise a specific credential such as `ManagedIdentityCredential` in production instead of `DefaultAzureCredential`.",
     "addition_source": "https://learn.microsoft.com/en-us/agent-framework/agents/providers/microsoft-foundry"
   },
@@ -39,7 +47,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/3-create-azure-ai-agent",
-    "tags": ["agent-framework", "agent-memory", "multi-turn"],
+    "tags": [
+      "agent-framework",
+      "agent-memory",
+      "multi-turn"
+    ],
     "question": "A **Microsoft Agent Framework** session can keep conversation history in **two** ways. Name them. Which one lets a conversation continue after your app restarts or scales out to several instances?",
     "answer": "- **Persistent history** — service-side storage in the Foundry Agent Service; survives restarts and scale-out\n- **Local history** — in memory in the session object, for providers without service-side history; lost on process restart",
     "explanation": "One call to the agent's run method is one exchange: one message, one response. The **session** is what remembers the earlier turns. With the Foundry provider, the history lives in the service, not in your application's memory, so any instance can pick the conversation up. Local history suits short-lived or stateless apps. Service-side history is one reason the Foundry Agent Service is the recommended provider for production.",
@@ -53,10 +65,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/3-create-azure-ai-agent",
-    "tags": ["agent-framework", "streaming"],
-    "question": "Name the **two** response modes of a **Microsoft Agent Framework** agent's run method. Which one fits a chat UI that should show the answer while the model is still generating it?",
-    "answer": "- **Non-streaming (synchronous)** — waits, then returns one complete response object\n- **Streaming (asynchronous)** — returns a response stream you iterate asynchronously, with partial updates; the choice for the chat UI",
-    "explanation": "Non-streaming is the simplest pattern and works when output need not appear step by step. Streaming improves user-facing interfaces because text shows up progressively. In both modes the response has a `text` property that aggregates all text content of the agent's output, so you read the final answer the same way.",
+    "tags": [
+      "agent-framework",
+      "streaming"
+    ],
+    "question": "Name the **two** response modes of a **Microsoft Agent Framework** agent's run method. Which one fits a chat UI that should show the answer while the model is still generating it, and which property gives you the final text in both modes?",
+    "answer": "- **Non-streaming (synchronous)** — waits, then returns one complete response object\n- **Streaming (asynchronous)** — returns a response stream you iterate asynchronously, with partial updates; the choice for the chat UI\n- **`text` property** — aggregates all text content of the output, in both modes",
+    "explanation": "Non-streaming is the simplest pattern and works when output need not appear step by step. Streaming suits user-facing interfaces because text shows up progressively instead of after a wait. Because the response exposes `text` either way, switching modes does not change how you extract the final answer.",
     "addition": "In Python, `await agent.run(\"…\")` returns an `AgentResponse`. `agent.run(\"…\", stream=True)` returns a `ResponseStream`; iterate it with `async for update in …` and read `update.text`.",
     "addition_source": "https://learn.microsoft.com/en-us/agent-framework/agents/running-agents"
   }

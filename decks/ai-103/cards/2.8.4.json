@@ -6,12 +6,19 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/4-use-concurrent-orchestration",
-    "tags": ["orchestration", "multi-agent", "agent-framework"],
+    "tags": [
+      "orchestration",
+      "multi-agent",
+      "agent-framework"
+    ],
     "question": "In the Microsoft Agent Framework, how does **concurrent orchestration** distribute a task, and how do the agents relate to each other?",
     "answer": "- The **same task** goes to **multiple agents at the same time**\n- Each agent works **independently**; agents don't share results with each other\n- Outputs are **gathered and combined** — or each agent keeps its own separate result\n- Run **all registered agents** every time, or **select agents** per task",
     "explanation": "Instead of agents working one after another, they all work at once. That speeds up the process and covers the problem from many angles. Combining the outputs is usual but not required: an agent can produce its own result, such as calling tools or updating its own data store. Independence has one exception: an agent may call other agents by running its own orchestration inside its process. To choose agents per task, agents need to know which other agents are available.",
     "explanation_images": [
-      {"src": "media/ai-103/2.8.4-concurrent-flow.png", "alt": "Concurrent orchestration: one input fans out to several agents in parallel, and their results are collected into one output."}
+      {
+        "src": "media/ai-103/2.8.4-concurrent-flow.png",
+        "alt": "Concurrent orchestration: one input fans out to several agents in parallel, and their results are collected into one output."
+      }
     ]
   },
   {
@@ -21,10 +28,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/4-use-concurrent-orchestration",
-    "tags": ["orchestration", "multi-agent"],
+    "tags": [
+      "orchestration",
+      "multi-agent"
+    ],
     "question": "Name the **four** kinds of multi-agent decision-making that suit **concurrent orchestration** in the Microsoft Agent Framework.",
     "answer": "- **Brainstorming** — generating ideas\n- **Ensemble reasoning** — combining different reasoning methods\n- **Quorum** — deciding by voting or consensus\n- **Time-sensitive tasks** — parallel agents cut the wait time",
-    "explanation": "All four need independent contributions that are only brought together at the end. The pattern fits when tasks can run at the same time, with a fixed group of agents or agents selected dynamically for the task. It also fits when the task gains from different specialized skills, for example technical, business and creative agents that each work alone but solve the same problem. Diversity of approaches and speed are the two payoffs."
+    "explanation": "All four need independent contributions that are brought together only at the end. The pattern fits when tasks can run at the same time, with a fixed group or with agents selected dynamically, and when different specialized skills (technical, business, creative) each work alone on the same problem. Don't confuse it with group chat: there agents brainstorm by building on each other's ideas in one shared conversation, and the module's knowledge check picks group chat for collaborative brainstorming."
   },
   {
     "id": "2.8.4-03",
@@ -33,16 +43,39 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/4-use-concurrent-orchestration",
-    "tags": ["orchestration", "multi-agent"],
+    "tags": [
+      "orchestration",
+      "multi-agent"
+    ],
     "question": "You consider **concurrent orchestration** for a multi-agent solution in the Microsoft Agent Framework. Which **three** conditions argue **against** it?",
     "answer": "**Ordered dependencies** between agents, **resource limits** such as model quotas, and **no way to resolve conflicting results**.",
     "explanation": "Concurrent agents work blind to each other, so anything that needs order, shared state or reconciliation breaks the pattern. The course names three more reasons to avoid it: the task needs a strict sequence or predictable, repeatable results; agents can't reliably coordinate changes to shared data or external systems while running at once; and combining the results is too complicated or lowers the overall quality.",
     "options": [
-      {"text": "Agents must build on each other's work in a specific order", "correct": true, "why": "Concurrent agents don't see each other's output; ordered dependencies call for sequential orchestration."},
-      {"text": "Model usage quotas make running several agents in parallel inefficient", "correct": true, "why": "Resource limits like quotas can make parallel runs inefficient or impossible."},
-      {"text": "There is no clear way to resolve contradictions between the agents' results", "correct": true, "why": "Independent agents can disagree, and without a conflict rule the results can't be combined."},
-      {"text": "The task benefits from technical, business and creative perspectives", "correct": false, "why": "Different specialized skills working independently on the same problem is a reason to use the pattern."},
-      {"text": "Speed matters and running agents one by one takes too long", "correct": false, "why": "Cutting wait time by running agents in parallel is one of the pattern's main uses."}
+      {
+        "text": "Agents must build on each other's work in a specific order",
+        "correct": true,
+        "why": "Concurrent agents don't see each other's output; ordered dependencies call for sequential orchestration."
+      },
+      {
+        "text": "Model usage quotas make running several agents in parallel inefficient",
+        "correct": true,
+        "why": "Resource limits like quotas can make parallel runs inefficient or impossible."
+      },
+      {
+        "text": "There is no clear way to resolve contradictions between the agents' results",
+        "correct": true,
+        "why": "Independent agents can disagree, and without a conflict rule the results can't be combined."
+      },
+      {
+        "text": "The task benefits from technical, business and creative perspectives",
+        "correct": false,
+        "why": "Different specialized skills working independently on the same problem is a reason to use the pattern."
+      },
+      {
+        "text": "Speed matters and running agents one by one takes too long",
+        "correct": false,
+        "why": "Cutting wait time by running agents in parallel is one of the pattern's main uses."
+      }
     ]
   },
   {
@@ -52,16 +85,40 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/4-use-concurrent-orchestration",
-    "tags": ["orchestration", "agent-framework", "python"],
+    "tags": [
+      "orchestration",
+      "agent-framework",
+      "python"
+    ],
     "question": "Three agents built with the Microsoft Agent Framework must answer the same question **in parallel**. Complete the code:\n\n```python\nasync def main():\n    workflow = ___().participants([tech_agent, business_agent, creative_agent]).build()\n    events = await workflow.run(\"Propose a launch plan for our new app\")\n    outputs = events.get_outputs()\n    for msg in outputs[0]:\n        print(f\"{msg.author_name}: {msg.text}\")\n```",
-    "answer": "**`ConcurrentBuilder`**",
-    "explanation": "The steps: create a chat client such as `AzureOpenAIChatClient`, create named agents with instructions via `create_agent`, add them with `participants()` and call `build()`. `run` executes all agents at once and returns events; `get_outputs()` extracts the combined conversations of all agents. Each message carries the author name and content, so you can tell which agent gave which response.",
+    "answer": "**`ConcurrentBuilder`** — add the agents with `participants()`, then `build()`; `run` returns events, and `get_outputs()` extracts the combined conversations.",
+    "explanation": "Before the builder come the chat client, such as `AzureOpenAIChatClient` with credentials, and the agents, each created with `create_agent` and given a name and instructions that define its role. The workflow runs all participants at once on the same input. The aggregated output holds every agent's response; each message carries the author name and content, so you can tell which agent gave which answer.",
     "options": [
-      {"text": "`ConcurrentBuilder`", "correct": true, "why": "Builds a workflow that runs all participant agents in parallel on the same task."},
-      {"text": "`SequentialBuilder`", "correct": false, "why": "Runs the agents one after another, each one's output becoming the next one's input."},
-      {"text": "`GroupChatBuilder`", "correct": false, "why": "Builds a shared conversation in which a manager chooses which agent speaks next."},
-      {"text": "`MagenticBuilder`", "correct": false, "why": "Builds a manager-driven orchestration that plans and delegates for open-ended problems."},
-      {"text": "`WorkflowBuilder`", "correct": false, "why": "Connects executors with edges you define yourself; it is not the ready-made parallel pattern."}
+      {
+        "text": "`ConcurrentBuilder`",
+        "correct": true,
+        "why": "Builds a workflow that runs all participant agents in parallel on the same task."
+      },
+      {
+        "text": "`SequentialBuilder`",
+        "correct": false,
+        "why": "Runs the agents one after another, each one's output becoming the next one's input."
+      },
+      {
+        "text": "`GroupChatBuilder`",
+        "correct": false,
+        "why": "Builds a shared conversation in which a manager chooses which agent speaks next."
+      },
+      {
+        "text": "`MagenticBuilder`",
+        "correct": false,
+        "why": "Builds a manager-driven orchestration that plans and delegates for open-ended problems."
+      },
+      {
+        "text": "`WorkflowBuilder`",
+        "correct": false,
+        "why": "Connects executors with edges you define yourself; it is not the ready-made parallel pattern."
+      }
     ]
   }
 ]

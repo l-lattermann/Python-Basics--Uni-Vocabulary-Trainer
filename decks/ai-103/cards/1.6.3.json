@@ -12,7 +12,7 @@
     ],
     "question": "Put the **four** steps of the **Map** stage of Microsoft's responsible generative AI process in order.",
     "answer": "**Identify** harms → **prioritize** them → **test and verify** them → **document and share** them.",
-    "explanation": "Map is the first of the four stages (Map, Measure, Mitigate, Manage). Each step narrows the list: you identify every plausible harm, rank them so effort goes to the worst first, test which ones really occur and under which conditions, then document the evidence for stakeholders. The list is not finished after step 4: you maintain it and add new harms as they are found, including ones that testing uncovers.",
+    "explanation": "Map is the first of the four stages (Map, Measure, Mitigate, Manage). Each step builds on the one before: you identify every plausible harm, rank them so effort goes to the worst first, test which ones really occur and under which conditions, then document the evidence for stakeholders. The list is not finished after step 4: you maintain it and add new harms as they are found, including ones that testing uncovers.",
     "explanation_images": [
       {
         "src": "media/ai-103/1.6.3-map-harms-steps.png",
@@ -139,7 +139,7 @@
     "question": "What is **red team testing** of a generative AI solution, and what does it deliver in the Map stage?",
     "answer": "- A team of testers **deliberately probes** the solution for weaknesses and tries to produce **harmful results**\n- It **verifies** whether prioritized harms occur, and under which conditions\n- It can reveal **previously unidentified harms**",
     "explanation": "Red teaming comes from security, where it finds vulnerabilities that compromise a system's integrity. Applied to harmful content, it builds on and complements existing cybersecurity practice. For a kitchen copilot, testers ask for poison recipes or for quick recipes with ingredients that must be cooked thoroughly. The red team's successes are documented and reviewed to judge how likely harmful output really is in normal use.",
-    "addition": "Microsoft Foundry automates this with the **AI Red Teaming Agent**: it uses Microsoft's open-source PyRIT framework to simulate adversarial probing, scores each attack-response pair with the risk and safety evaluators, and reports the **Attack Success Rate (ASR)**.",
+    "addition": "Microsoft Foundry automates this with the **AI Red Teaming Agent**: it uses Microsoft's open-source PyRIT framework to simulate adversarial probing, scores each attack-response pair with the risk and safety evaluators, and reports the **Attack Success Rate (ASR)**, the percentage of attacks that succeed.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/ai-red-teaming-agent"
   },
   {

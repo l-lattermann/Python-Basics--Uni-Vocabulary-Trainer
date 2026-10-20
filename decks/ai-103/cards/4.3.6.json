@@ -13,7 +13,7 @@
     ],
     "question": "Put the steps in order to generate and then edit a first video with **Sora 2** in the Microsoft Foundry portal.",
     "answer": "Project → deploy **Sora-2** from Discover > Models → prompt and duration in the playground → **Generate** → edit in the **video details pane**.",
-    "explanation": "Access to video generation models is restricted: your subscription may need to be registered for Sora-2, and some regions cannot deploy it, so check before you start. After deployment the playground opens on its own. Generation takes 1 to 5 minutes. Content moderation filters check the prompt; a prompt recognized as harmful returns no video. To change a finished video you do not start over — you send a follow-up instruction in the details pane, such as adding background music.",
+    "explanation": "Access to video generation models is restricted: your subscription may need to be registered for Sora-2, and Sora 2 might be unavailable for new deployments in some regions, so check before you start. After deployment the playground opens on its own. Generation takes 1 to 5 minutes. Content moderation filters check the prompt; a prompt recognized as harmful returns no video. To change a finished video you do not start over — you send a follow-up instruction in the details pane, such as adding background music.",
     "items": [
       "Create a Foundry project, setting resource, subscription, resource group and region under Advanced options",
       "On the Discover page, open the Models tab, search for Sora-2 and deploy it",
@@ -21,22 +21,6 @@
       "Select Generate and wait for the video to appear",
       "In the video details pane, submit an edit instruction such as \"Use an inviting instrumental as the background music\""
     ]
-  },
-  {
-    "id": "4.3.6-02",
-    "type": "basic",
-    "section": "4.3.6",
-    "exam_area": "vision",
-    "origin": "generated",
-    "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/03-generate-video.html",
-    "tags": [
-      "video-generation",
-      "python",
-      "sdk"
-    ],
-    "question": "A Python app uses the OpenAI SDK against a **Sora 2** deployment in Microsoft Foundry. Which `client.videos` calls start a video from a reference image, wait for it, save it and remix it?",
-    "answer": "- **`create(..., input_reference=open(path, \"rb\"))`** — start the job\n- **`retrieve(video_id)`** — poll until `completed`, `failed` or `cancelled`\n- **`download_content(video_id, variant=\"video\")`** → `write_to_file(...)`\n- **`remix(video_id=..., prompt=...)`** — new job, poll again",
-    "explanation": "Video generation is asynchronous: `create` returns at once with a video ID and a status, not with the video. The app therefore calls `retrieve` in a loop, every 20 seconds in the lab, and stops on one of the three end states. Only a `completed` video is downloaded. `create` also takes `model` (the deployment name), `prompt`, `size` such as `1280x720` and `seconds` such as `'4'`. A remix gets its own new video ID, so it is polled and downloaded like any other job."
   },
   {
     "id": "4.3.6-03",
@@ -50,8 +34,8 @@
       "responsible-ai",
       "content-filtering"
     ],
-    "question": "Name the **four** content restrictions that the **Sora 2** model in Microsoft Foundry enforces, so a prompt or input breaking one is rejected.",
+    "question": "Name the **four** content restrictions the **Sora 2** model in Microsoft Foundry enforces on prompts and input images.",
     "answer": "- **Audience** — only content suitable for under-18 audiences\n- **Copyright** — copyrighted characters and copyrighted music are rejected\n- **Real people** — no real people, including public figures\n- **Faces in input images** — input images with human faces are currently rejected",
-    "explanation": "These are built-in Responsible AI protections of the model itself. On top of them, Azure moderates input and output of all image generation models and adds content filtering and abuse monitoring. Typical scenario: a reference image of a person fails, while a landscape or object image works. A prompt asking for a famous actor or a well-known cartoon character fails as well."
+    "explanation": "These are built-in Responsible AI protections of the model itself. On top of them, Azure moderates input and output of all image generation models and adds content filtering and abuse monitoring. Typical scenario: a reference image of a person fails, while a landscape or object image works. A prompt asking for a famous actor or a copyrighted cartoon character fails as well."
   }
 ]

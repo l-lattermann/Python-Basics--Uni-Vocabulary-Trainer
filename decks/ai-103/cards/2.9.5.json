@@ -56,7 +56,7 @@
     "options": [
       {"text": "As a streaming request", "correct": true, "why": "Streaming delivers responses incrementally and asynchronously, including partial results before the final output."},
       {"text": "As a non-streaming request", "correct": false, "why": "A non-streaming request waits for one complete response, so nothing reaches the user until the job finishes."},
-      {"text": "As a non-streaming request, then polling the returned task object for its status", "correct": false, "why": "Follow-up calls on a task object check its status or retrieve the result; they do not stream the agent's partial output."}
+      {"text": "As a non-streaming request, then polling the returned task object for its status", "correct": false, "why": "Follow-up calls on a task object only check its status or fetch the result when the client asks; they do not deliver output incrementally as the agent produces it."}
     ]
   }
 ]

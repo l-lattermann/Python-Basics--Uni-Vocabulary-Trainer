@@ -6,14 +6,29 @@
     "exam_area": "plan",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/8-knowledge-check",
-    "tags": ["foundry", "portal"],
+    "tags": [
+      "foundry",
+      "portal"
+    ],
     "question": "Which web portal should you use to work with assets in a Microsoft Foundry project?",
     "answer": "**The Microsoft Foundry portal**.",
     "explanation": "The Foundry portal is the web-based visual interface for Foundry projects. Most AI development starts there: you find, compare, deploy and test models, create and test agents, create MCP connections to tools and Foundry IQ knowledge sources, manage resource configuration and user access, and look up endpoints and keys. To automate the same project operations in scripts or CI/CD pipelines, you use the Microsoft Foundry SDK instead.",
     "options": [
-      {"text": "The Azure portal", "correct": false, "why": "Unit 1.1.3 names the Foundry portal, not the Azure portal, as the interface for developing and managing Foundry projects and their assets."},
-      {"text": "Microsoft Copilot", "correct": false, "why": "Microsoft Copilot is not a portal for project assets; the module never names it as a Foundry development tool."},
-      {"text": "The Microsoft Foundry portal", "correct": true, "why": "Unit 1.1.3: the Microsoft Foundry portal is the web-based visual interface for working with AI projects and their models, agents, tools and knowledge connections."}
+      {
+        "text": "The Azure portal",
+        "correct": false,
+        "why": "Unit 1.1.3 names the Foundry portal, not the Azure portal, as the interface for developing and managing Foundry projects and their assets."
+      },
+      {
+        "text": "Microsoft Copilot",
+        "correct": false,
+        "why": "Microsoft Copilot is not a portal for project assets; the module never names it as a Foundry development tool."
+      },
+      {
+        "text": "The Microsoft Foundry portal",
+        "correct": true,
+        "why": "Unit 1.1.3: the Microsoft Foundry portal is the web-based visual interface for working with AI projects and their models, agents, tools and knowledge connections."
+      }
     ]
   },
   {
@@ -23,14 +38,29 @@
     "exam_area": "plan",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/8-knowledge-check",
-    "tags": ["foundry-tools", "service-choice"],
+    "tags": [
+      "foundry-tools",
+      "service-choice"
+    ],
     "question": "Which component of Microsoft Foundry provides pre-built services for common AI tasks?",
     "answer": "**Foundry Tools**.",
     "explanation": "Foundry Tools are out-of-the-box prebuilt APIs and models: Azure Language, Speech, Translator, Document Intelligence and Content Understanding. They are hosted in the Foundry resource and often give a more cost-effective and predictable solution than generative AI agents alone. Foundry Models, by contrast, is the model catalog you deploy LLMs from, and Foundry IQ is the central knowledge connection for agents. Foundry Tools were formerly called Azure AI Services, and before that Azure Cognitive Services.",
     "options": [
-      {"text": "Foundry Tools", "correct": true, "why": "Unit 1.1.4: Foundry Tools are a set of out-of-the-box prebuilt APIs and models for common AI tasks such as text analysis, speech, translation and document extraction."},
-      {"text": "Foundry Models", "correct": false, "why": "Unit 1.1.3: Foundry Models is the catalog of models from Microsoft, OpenAI and other providers that you deploy as LLMs, not a set of prebuilt task services."},
-      {"text": "Foundry IQ", "correct": false, "why": "Unit 1.1.3: Foundry IQ creates a single, central MCP-based connection to knowledge sources for agents, not prebuilt AI services."}
+      {
+        "text": "Foundry Tools",
+        "correct": true,
+        "why": "Unit 1.1.4: Foundry Tools are a set of out-of-the-box prebuilt APIs and models for common AI tasks such as text analysis, speech, translation and document extraction."
+      },
+      {
+        "text": "Foundry Models",
+        "correct": false,
+        "why": "Unit 1.1.3: Foundry Models is the catalog of models from Microsoft, OpenAI and other providers that you deploy as LLMs, not a set of prebuilt task services."
+      },
+      {
+        "text": "Foundry IQ",
+        "correct": false,
+        "why": "Unit 1.1.3: Foundry IQ creates a single, central MCP-based connection to knowledge sources for agents, not prebuilt AI services."
+      }
     ]
   },
   {
@@ -40,14 +70,29 @@
     "exam_area": "plan",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/8-knowledge-check",
-    "tags": ["vs-code", "developer-tools"],
+    "tags": [
+      "vs-code",
+      "developer-tools"
+    ],
     "question": "Which extension should you use in Visual Studio Code to work with Foundry projects?",
     "answer": "**Foundry Toolkit for Visual Studio Code**.",
     "explanation": "The Foundry Toolkit simplifies the Foundry workflow inside VS Code: browse and manage project resources (deployed models, agents, connections, vector stores), deploy models from the catalog, test models and agents in integrated playgrounds, configure declarative and hosted agents with a visual designer and YAML files, and generate integration code. GitHub Copilot is an AI assistant that improves developer productivity; it does not manage Foundry project resources.",
     "options": [
-      {"text": "Python extension for Visual Studio Code", "correct": false, "why": "It adds Python language support to the editor; unit 1.1.5 names no Foundry project features for it."},
-      {"text": "GitHub Copilot", "correct": false, "why": "Unit 1.1.5: GitHub Copilot is an AI assistant that improves developer productivity, not a tool for managing Foundry project resources."},
-      {"text": "Foundry Toolkit for Visual Studio Code", "correct": true, "why": "Unit 1.1.5: the Foundry Toolkit extension lets you browse and manage project resources, deploy and test models and agents, and generate integration code."}
+      {
+        "text": "Python extension for Visual Studio Code",
+        "correct": false,
+        "why": "It is not a Foundry tool; unit 1.1.5 does not mention it and names the Foundry Toolkit as the extension for working with Foundry projects."
+      },
+      {
+        "text": "GitHub Copilot",
+        "correct": false,
+        "why": "Unit 1.1.5: GitHub Copilot is an AI assistant that improves developer productivity, not a tool for managing Foundry project resources."
+      },
+      {
+        "text": "Foundry Toolkit for Visual Studio Code",
+        "correct": true,
+        "why": "Unit 1.1.5: the Foundry Toolkit extension lets you browse and manage project resources, deploy and test models and agents, and generate integration code."
+      }
     ]
   }
 ]

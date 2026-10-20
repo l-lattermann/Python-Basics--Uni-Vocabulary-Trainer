@@ -48,7 +48,7 @@
     ],
     "question": "Name the **four** ways you can access Azure Document Intelligence.",
     "answer": "- **REST API** — direct HTTP requests\n- **Client library SDKs** — Python, C#, Java and JavaScript\n- **Document Intelligence Studio** — online tool to explore, test and build visually\n- **Microsoft Foundry portal** — integrate with other Foundry tools",
-    "explanation": "The REST API sits underneath everything, so any language that can send HTTP requests can use the service, even without an SDK. The SDKs wrap those calls for the four listed languages; the module's exercise uses the Python SDK. The Studio is the no-code route for trying models on your own documents and building custom ones, while the Foundry portal is where Document Intelligence meets the other Foundry tools."
+    "explanation": "The REST API sits underneath everything, so any language that can send HTTP requests can use the service, even without an SDK. The SDKs wrap those calls for the four listed languages; the module's exercise uses the Python SDK. The Studio is the visual route for exploring and testing models on your own documents and building custom ones, while the Foundry portal is where Document Intelligence meets the other Foundry tools."
   },
   {
     "id": "4.7.2-04",
@@ -76,9 +76,9 @@
         "why": "It is single-service: its endpoint and key work only for Document Intelligence, not for the other Foundry tools."
       },
       {
-        "text": "One Azure Document Intelligence resource per document type you analyze",
+        "text": "A separate single-service resource for each tool, including an Azure Document Intelligence resource",
         "correct": false,
-        "why": "Resources are not split by document type; one resource serves read, layout, prebuilt and custom models alike."
+        "why": "Each single-service resource has its own endpoint and key, so the app would juggle several of them instead of one."
       },
       {
         "text": "A Document Intelligence Studio project",
@@ -100,7 +100,7 @@
     ],
     "question": "Which **input requirements** must a document meet before Azure Document Intelligence can analyze it?",
     "answer": "- **Format**: JPEG, PNG, BMP, PDF (text or scanned) or TIFF; the read model also takes Office files\n- **File size**: under **500 MB** (standard tier), under **4 MB** (free tier)\n- **Images**: 50 × 50 to 10,000 × 10,000 pixels\n- **PDFs**: under 17 × 17 inches (A3) and not password-protected",
-    "explanation": "These limits decide whether a request fails before any model runs. The tier matters most in practice: a scan that works on the standard tier can be rejected on the free tier purely because of its size. Scanned PDFs are fine, because OCR reads the image; a password-protected PDF is not, because the service cannot open it at all.",
+    "explanation": "These limits decide whether a request fails before any model runs. The tier matters most in practice: a scan that works on the standard tier can be rejected on the free tier purely because of its size. Scanned PDFs are fine, because the service reads them with OCR. A password-protected PDF is rejected on every tier.",
     "addition": "In API v4.0 the layout model also accepts Office files (DOCX, PPTX, XLS); prebuilt and custom models do not. The free tier (F0) analyzes only the first two pages of a request; the standard tier up to 2,000.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/service-limits"
   },
@@ -117,7 +117,7 @@
     ],
     "question": "Which **two** of these documents will Azure Document Intelligence **reject** as input?",
     "answer": "The **password-protected PDF** and the **8 MB JPEG on the free tier**.",
-    "explanation": "Input requirements are checked per document: the format must be supported, the file must be under the tier's size limit (4 MB free, 500 MB standard), images must lie between 50 × 50 and 10,000 × 10,000 pixels, and PDFs must be under 17 × 17 inches and not password-protected.",
+    "explanation": "Two kinds of limit are at work here. The file-size limit depends on the tier: 4 MB on the free tier, 500 MB on the standard tier, so the same scan can pass on one resource and fail on another. The password rule does not depend on the tier at all. Scanned PDFs, common image formats within the pixel range, and Office files for the read model all pass.",
     "options": [
       {
         "text": "A password-protected PDF on the standard tier",

@@ -8,7 +8,7 @@
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/4-speech-translation",
     "tags": ["speech-translation", "speech-sdk", "python"],
     "question": "Name the **three** Azure Speech SDK objects a Python app uses to translate spoken input into text, and the job of each.",
-    "answer": "- **SpeechTranslationConfig** — connects to the Azure Speech resource and sets the source and target languages\n- **AudioConfig** — specifies the source audio stream, e.g. the default microphone\n- **TranslationRecognizer** — built from both configs; performs the translation",
+    "answer": "- **SpeechTranslationConfig** — connects to the Azure Speech resource (key plus **endpoint** or **region**) and sets the source and target languages\n- **AudioConfig** — specifies the source audio stream, e.g. the default microphone\n- **TranslationRecognizer** — built from both configs; performs the translation",
     "explanation": "Microsoft Foundry offers Azure Speech as a tool in a Foundry resource. `SpeechTranslationConfig` takes the resource key as `subscription` plus either the `endpoint` or the `region` of the resource. The language settings live on the same object, not on the audio config: the audio config only says where the sound comes from. `TranslationRecognizer(translation_config=..., audio_config=...)` then joins the two and does the work."
   },
   {
@@ -19,7 +19,7 @@
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/4-speech-translation",
     "tags": ["speech-translation", "speech-sdk", "python"],
-    "question": "Complete the Azure Speech SDK code so that US English speech is translated into French **and** Japanese.\n\n```python\ntranslation_cfg = speech_sdk.translation.SpeechTranslationConfig(\n    subscription=key, endpoint=endpoint)\ntranslation_cfg.speech_recognition_language = 'en-US'\ntranslation_cfg.___('fr')\ntranslation_cfg.___('ja')\naudio_cfg = speech_sdk.AudioConfig(use_default_microphone=True)\n```",
+    "question": "Complete the Azure Speech SDK code so that US English speech is translated into French **and** Japanese.\n\n```python\ntranslation_cfg = speech_sdk.translation.SpeechTranslationConfig(\n    subscription=key, endpoint=endpoint)\ntranslation_cfg.speech_recognition_language = 'en-US'\nfor lang in ['fr', 'ja']:\n    translation_cfg.___(lang)\naudio_cfg = speech_sdk.AudioConfig(use_default_microphone=True)\n```",
     "answer": "`add_target_language` — called once per target language.",
     "explanation": "The source language is a single property, `speech_recognition_language`, set to a locale such as `en-US`. Target languages are a list, so each one is added with its own `add_target_language` call. That is how one recognition produces translations into several languages at once. Both settings belong to `SpeechTranslationConfig`; `AudioConfig` only picks the input, here the default microphone.",
     "options": [
@@ -39,7 +39,7 @@
     "tags": ["speech-translation", "speech-sdk", "python"],
     "question": "An Azure Speech `TranslationRecognizer` has translated one spoken sentence with `recognize_once_async().get()`. Where in the result do you find the original words and the translations?",
     "answer": "- **`result.text`** — the transcription of what was said, in the source language\n- **`result.translations`** — a dictionary keyed by target language code (`'fr'`, `'ja'`) holding each translated text",
-    "explanation": "`recognize_once_async().get()` captures one utterance from the configured audio input and returns its translation result. Saying \"hello\" with English as source and French and Japanese as targets gives `text` = 'Hello.' and translations 'Bonjour.' and 'こんにちは。'. Because `translations` is keyed by language, the usual pattern is a loop over its keys, printing or speaking each entry."
+    "explanation": "`recognize_once_async().get()` takes the spoken input from the configured audio source, here the microphone, and returns its translation result. Saying \"hello\" with English as source and French and Japanese as targets gives `text` = 'Hello.' and translations 'Bonjour.' and 'こんにちは。'. Because `translations` is keyed by language, the usual pattern is a loop over its keys, printing or speaking each entry."
   },
   {
     "id": "3.7.4-04",
@@ -74,8 +74,8 @@
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/4-speech-translation",
     "tags": ["speech-translation", "speech-synthesis", "python"],
     "question": "Complete the code for **event-based synthesis** with Azure Speech, which saves the translated French audio to a file.\n\n```python\ntranslation_cfg.add_target_language('fr')\ntranslation_cfg.voice_name = 'fr-FR-HenriNeural'\n\ndef synthesis_callback(evt):\n    if len(evt.result.audio) > 0:\n        open('translation.wav', 'wb+').write(evt.result.audio)\n\ntranslator.___.connect(synthesis_callback)\n```",
-    "answer": "`synthesizing` — the `TranslationRecognizer` event that carries the translated audio.",
-    "explanation": "Event-based synthesis needs three things: the voice set as `voice_name` on the translation config, a handler connected to the recognizer's **Synthesizing** event, and in that handler the audio bytes from the result (`GetAudio()`, in Python `evt.result.audio`). An empty byte array marks the end of the audio. It works only for one target language, which is why exactly one voice is set.",
+    "answer": "`synthesizing` — the `TranslationRecognizer` event that carries the translated audio. The full recipe:\n- **voice_name** — the voice, set on the translation config\n- **Synthesizing** event — gets the handler\n- **GetAudio()** — in the handler, reads the audio bytes (Python: `evt.result.audio`)",
+    "explanation": "Event-based synthesis needs no `SpeechSynthesizer`: the translated audio arrives through the recognizer's own event, and the handler here writes it to a WAV file that is played afterwards. An empty byte array marks the end of the audio. It works only for 1:1 translation into one target language, which is why exactly one target and one voice are set.",
     "options": [
       {"text": "`synthesizing`", "correct": true, "why": "Its event arguments carry the byte stream of the translated audio."},
       {"text": "`recognized`", "correct": false, "why": "It delivers the recognized and translated text, not the synthesized audio stream."},

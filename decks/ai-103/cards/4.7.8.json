@@ -26,7 +26,7 @@
     "tags": ["document-intelligence", "custom-models", "training"],
     "question": "You're building a custom model in Azure Document Intelligence. What training artifacts are required when training with the REST API?",
     "answer": "**Sample forms** plus **`ocr.json`**, **`labels.json`** and **`fields.json`** files in a blob container.",
-    "explanation": "Each sample form gets an `ocr.json` (from the Analyze document function) and a `labels.json` that maps fields to their location in the form. One `fields.json` describes the fields to extract. You then create a SAS URL for the container, call **Build model**, and read the model ID with **Get model**. Five to six sample forms are enough to start; more and more varied samples give better accuracy.",
+    "explanation": "Each sample form gets an `ocr.json` (from the Analyze document function) and a `labels.json` that maps fields to their location in the form. One `fields.json` describes the fields to extract. You then create a SAS URL for the container, call **Build model**, and read the model ID with **Get model**. Use at least five to six sample forms; a larger, more varied set gives a more accurate model.",
     "options": [
       {"text": "Only the sample form documents in a blob container.", "correct": false, "why": "Unit 4.7.5: training is supervised, so the forms need the layout and label JSON files beside them; forms alone carry no labels."},
       {"text": "Sample forms along with ocr.json, labels.json, and fields.json files in a blob container.", "correct": true, "why": "Unit 4.7.5: store the sample forms in a blob container with an ocr.json and labels.json per form and a single fields.json."},

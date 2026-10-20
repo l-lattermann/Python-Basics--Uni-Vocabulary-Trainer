@@ -48,8 +48,8 @@
       "multi-agent"
     ],
     "question": "Name the **two** primary operations an A2A Agent Executor defines and the **two** objects it uses to read requests and return results.",
-    "answer": "- **Execute** — processes the request and generates the response\n- **Cancel** — handles a request to cancel an ongoing task\n- **RequestContext** — details of the incoming request (user input, task context)\n- **EventQueue** — channel for results and events back to the client",
-    "explanation": "Execute does the real work: it reads the user input and task context from the RequestContext and puts its results on the EventQueue as messages, task updates or artifacts. Cancel only matters for long-running tasks; a simple agent may not support it and just reports that cancellation isn't supported. The executor never answers the caller directly — everything goes out through the event queue."
+    "answer": "- **Execute** — processes the request and generates the response\n- **Cancel** — handles a request to cancel an ongoing task\n- **RequestContext** — details of the incoming request (user input, task context)\n- **EventQueue** — channel back to the client for messages, task updates and artifacts",
+    "explanation": "Execute does the real work: it reads the user input and task context from the RequestContext, runs the agent's logic and puts the outcome on the EventQueue. Cancel handles a request to stop a task that is still ongoing; a simple agent may not support it and only reports that cancellation isn't supported. The executor does not answer the caller directly — results go out as events through the queue, and the routing mechanism delivers them."
   },
   {
     "id": "2.9.3-03",

@@ -33,7 +33,7 @@
     "tags": ["azure-ai-search", "rag", "knowledge-mining"],
     "question": "Name the **three** kinds of application Azure AI Search is used for.",
     "answer": "- **Enterprise search** — helps employees or customers find information in websites or applications\n- **Retrieval augmented generation (RAG)** — vector-based indexes supply grounding data for prompts in generative AI apps\n- **Knowledge mining** — indexing infers insights and extracts granular data assets from documents for data analytics",
-    "explanation": "All three use the same index, but for a different consumer. In enterprise search a person types a query and reads the results. In RAG a generative AI app queries the vector index and puts the hits into the prompt. In knowledge mining the index is a means to an end: the insights extracted during indexing feed data analytics.",
+    "explanation": "All three are built on an Azure AI Search index; they differ in who consumes it. In enterprise search a person types a query and reads the results. In RAG a generative AI app queries the vector index and puts the hits into the prompt. In knowledge mining the index is a means to an end: the insights extracted during indexing feed data analytics.",
     "explanation_images": [
       {"src": "media/ai-103/4.8.2-ai-search-applications.png", "alt": "Azure AI Search serving three applications: a website search, a chat app, and documents turned into structured data"}
     ]

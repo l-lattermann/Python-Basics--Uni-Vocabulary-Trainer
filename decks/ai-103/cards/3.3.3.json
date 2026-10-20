@@ -9,7 +9,7 @@
     "tags": ["speech-to-text", "model-choice"],
     "question": "Name the **three** gpt-4o-family models in Microsoft Foundry that support **speech-to-text** (transcription).",
     "answer": "- **gpt-4o-transcribe**\n- **gpt-4o-mini-transcribe**\n- **gpt-4o-transcribe-diarize**",
-    "explanation": "Speech transcription means you submit audio content to a model and it responds with a text transcript of the speech in it. Typical uses are documenting calls and meetings or generating captions for videos. The transcription models all end in `-transcribe`; their text-to-speech counterparts end in `-tts` (`gpt-4o-tts`, `gpt-4o-mini-tts`). Model availability varies by region, so check the regional availability table in the Foundry documentation before you pick where to deploy.",
+    "explanation": "Speech transcription means you submit audio content to a model and it responds with a text transcript of the speech in it. Typical uses are documenting calls and meetings or generating captions for videos. The transcription models all carry `-transcribe` in their name; their text-to-speech counterparts end in `-tts` (`gpt-4o-tts`, `gpt-4o-mini-tts`). Model availability varies by region, so check the regional availability table in the Foundry documentation before you pick where to deploy.",
     "addition": "**Diarization** means identifying who spoke when in an audio stream. `gpt-4o-transcribe-diarize` therefore produces speaker-attributed transcripts, useful for meetings and customer calls.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new"
   },

@@ -6,17 +6,20 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/09-multi-remote-agents-with-a2a.html",
-    "tags": ["a2a", "multi-agent"],
-    "question": "You make a Microsoft Foundry title agent discoverable over the Agent-to-Agent (A2A) protocol in its Python `server.py`. Put the objects in the order you create them, from the skills to the app that runs.",
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
+    "question": "You make a Microsoft Foundry title agent discoverable over the Agent-to-Agent (A2A) protocol in its Python `server.py`, then start the solution. Put the steps in order, from the skills to running the app.",
     "answer": "`AgentSkill` list → **`AgentCard`** → `create_foundry_agent_executor(agent_card)` → `DefaultRequestHandler` with `InMemoryTaskStore` → **`A2AStarletteApplication`** → `az login`, `python run_all.py`.",
-    "explanation": "Each object takes the one before it. The skill (id `generate_blog_title`, name, description, tags, examples) goes into the card's `skills`. The card adds name, description, the server `url`, `version`, text as default input and output mode, and `AgentCapabilities()`. The executor wraps the Foundry title agent, the request handler links it to a task store, and the A2A application shares the card and handles incoming requests. `run_all.py` launches every agent server and the client.",
+    "explanation": "Each object takes the one before it. The skill (id `generate_blog_title`, name, description, tags, examples) goes into the card's `skills`. The card adds name, description, the server `url`, `version`, text as default input and output mode, and `AgentCapabilities()`. The executor wraps the Foundry title agent, the request handler links it to a task store, and the A2A application shares the card and handles incoming requests. `az login` comes before `run_all.py` because the agents connect to the Foundry project with your authenticated Azure session.",
     "items": [
       "`skills = [AgentSkill(id=..., name=..., description=..., tags=..., examples=...)]`",
       "`agent_card = AgentCard(name=..., url=f'http://{host}:{port}/', version=..., default_input_modes=['text'], capabilities=AgentCapabilities(), skills=skills, ...)`",
       "`agent_executor = create_foundry_agent_executor(agent_card)`",
       "`request_handler = DefaultRequestHandler(agent_executor=agent_executor, task_store=InMemoryTaskStore())`",
       "`a2a_app = A2AStarletteApplication(agent_card=agent_card, http_handler=request_handler)`",
-      "Terminal: `az login`, then `python run_all.py`"
+      "Terminal: `az login`, then `python run_all.py` (starts every agent server and the client)"
     ]
   },
   {
@@ -26,7 +29,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/09-multi-remote-agents-with-a2a.html",
-    "tags": ["a2a", "multi-agent", "orchestration"],
+    "tags": [
+      "a2a",
+      "multi-agent",
+      "orchestration"
+    ],
     "question": "A Python routing agent has picked the remote A2A agent that should handle a task. Put the steps in order with which it sends the task to that agent with the A2A SDK.",
     "answer": "Look up the **A2A client** by agent name → build the message payload → wrap it in a **`SendMessageRequest`** → `await client.send_message(...)`.",
     "explanation": "The routing agent is the orchestrator. It starts a thread and lets `create_and_process` pick the best-matching remote agent for the user's message. The message then travels over HTTP to that agent, and the routing agent returns its response to the user. The payload is a user message whose `parts` hold the task as text. `send_message` is async: without `await` the agent run does not complete.",
@@ -44,7 +51,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/09-multi-remote-agents-with-a2a.html",
-    "tags": ["a2a", "multi-agent"],
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
     "question": "Your A2A `AgentExecutor` wraps a Microsoft Foundry agent in Python. Which two methods must the class implement, and which `TaskUpdater` calls report progress and completion to the caller?",
     "answer": "- **`execute`** and **`cancel`** — the two required methods\n- **`update_status(TaskState.working, message=...)`** — progress and intermediate responses\n- **`complete(message=...)`** — marks the task done with the final message",
     "explanation": "`execute` passes the message parts and context id to a helper that gets or creates the Foundry agent. It sends a working status (\"Title Agent is processing your request...\"), then runs the conversation. Each response goes out as another working update, so the caller sees results while the task runs. Messages are built with `new_agent_text_message(text, context_id=...)`. Finally `complete` sends the last response, or \"Task completed.\" if there was none."

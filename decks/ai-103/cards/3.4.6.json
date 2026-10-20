@@ -10,9 +10,9 @@
       "speech",
       "ssml"
     ],
-    "question": "Plain text gives you little control over how Azure Speech in Foundry Tools speaks it. Name the **six** things **Speech Synthesis Markup Language (SSML)** lets you control in synthesized speech.",
-    "answer": "- **Speaking style** — e.g. \"excited\" or \"cheerful\" with a neural voice\n- **Pauses** — insert breaks or silence\n- **Phonemes** — phonetic pronunciation, e.g. \"SQL\" as \"sequel\"\n- **Prosody** — pitch, timbre and speaking rate\n- **Say-as rules** — read a string as a date, time, telephone number …\n- **Recorded audio** — insert recorded speech or background noise",
-    "explanation": "SSML is an XML-based syntax that describes how the output should sound, not just what is said. Keep the pairs apart: a **phoneme** changes how one word is pronounced, **prosody** changes the voice's overall pitch, timbre and rate, and **say-as** tells the service what kind of value a string is, so a date is read as a date. A speaking style only works with a neural voice. Inserted audio fits a standard recorded message or simulated background noise."
+    "question": "Plain text gives you little control over how Azure Speech in Foundry Tools speaks it. Name the **six** things **Speech Synthesis Markup Language (SSML)** lets you do in synthesized speech.",
+    "answer": "- **Speaking style** — e.g. \"excited\" or \"cheerful\" with a neural voice\n- **Pauses or silence** — insert breaks into the speech\n- **Phonemes** — phonetic pronunciation, e.g. \"SQL\" as \"sequel\"\n- **Prosody** — pitch, timbre and speaking rate\n- **Say-as rules** — read a string as a date, time, telephone number …\n- **Recorded audio** — insert recorded speech or background noise",
+    "explanation": "SSML is an XML-based syntax that describes how the output should sound, not just what is said. Keep three of them apart: a **phoneme** changes how one word is pronounced, **prosody** adjusts the pitch, timbre and speaking rate of the voice, and **say-as** tells the service what kind of value a string is, so a date is read as a date. A speaking style such as \"cheerful\" is set when you use a neural voice. Inserted audio fits a standard recorded message or simulated background noise."
   },
   {
     "id": "3.4.6-02",

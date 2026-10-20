@@ -26,10 +26,10 @@
     "tags": ["multi-agent", "orchestration", "agent-framework"],
     "question": "For brainstorming and collaborative problem solving among multiple agents, which orchestration pattern is most suitable?",
     "answer": "**Group Chat** orchestration.",
-    "explanation": "In group chat orchestration, agents (and optionally a human) share one conversation. A chat manager decides who speaks next, so agents build on each other's ideas, debate and reach consensus. Magentic also uses a manager, but it plans and delegates work for open-ended tasks rather than running a discussion.",
+    "explanation": "In group chat orchestration, agents (and optionally a human) share one conversation. A chat manager decides who speaks next, so agents build on each other's ideas, debate and reach consensus. Magentic also uses a manager, but it plans and delegates work for open-ended tasks rather than running a discussion. Concurrent orchestration also lists brainstorming, but its agents work independently and never see each other's output.",
     "options": [
       {"text": "Group Chat", "correct": true, "why": "Units 2.8.3 and 2.8.6: group chat coordinates a shared conversation managed by a chat manager and is best for brainstorming, collaborative problem solving and consensus."},
-      {"text": "Magentic", "correct": false, "why": "Units 2.8.3 and 2.8.8: Magentic is a manager-driven approach that plans and delegates for complex, open-ended problems, not a shared discussion."},
+      {"text": "Magentic", "correct": false, "why": "Units 2.8.3 and 2.8.8: Magentic is a manager-driven approach that plans, delegates and records a task ledger for complex, open-ended problems, not a shared discussion."},
       {"text": "Sequential", "correct": false, "why": "Units 2.8.3 and 2.8.5: sequential passes output from one agent to the next in a fixed order, a pipeline with no back-and-forth."}
     ]
   },

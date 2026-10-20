@@ -13,7 +13,7 @@
     ],
     "question": "What does the **Azure AI Voice Live client library for Python** (`azure-ai-voicelive`) do, which programming model does it require, and which credentials does `connect()` accept?",
     "answer": "- A real-time **speech-to-speech client**: `connect()` opens a **WebSocket session** that streams microphone audio and receives server events\n- **Async-only** since version 1.0.0 (`async with connect(...)`, `async for event in connection`)\n- **`AzureKeyCredential`** — API key\n- **`DefaultAzureCredential`** (`azure.identity.aio`) — Microsoft Entra ID, recommended for production",
-    "explanation": "`connect()` takes the `endpoint`, a `credential` and the `model`, and is used as an async context manager, so the connection closes cleanly. The synchronous API is deprecated, so every sample uses async/await and `asyncio.run(main())`. An API key is the quick start, read from a `.env` file or the environment. For production, swap in `DefaultAzureCredential` from the async `azure.identity.aio` package — the rest of the code stays the same.",
+    "explanation": "`connect()` takes the `endpoint`, a `credential` and the `model`, and is opened with `async with`. The synchronous API is deprecated, so every sample uses async/await and `asyncio.run(main())`. An API key is the quick start, read from a `.env` file or the environment. For production, Microsoft Entra authentication is recommended: pass `DefaultAzureCredential` from the async `azure.identity.aio` package as the `credential` — the rest of the code stays the same.",
     "addition": "The current SDK README says the synchronous API has been **removed**, not only deprecated. For the async WebSocket connection it installs as `pip install azure-ai-voicelive[aiohttp]`.",
     "addition_source": "https://learn.microsoft.com/en-us/python/api/overview/azure/ai-voicelive-readme?view=azure-python"
   },
@@ -31,7 +31,7 @@
     ],
     "question": "Name the **four** `ServerEventType` values a basic Azure AI Voice Live Python client handles in its `async for event in connection` loop, and what the client does on each.",
     "answer": "- **`SESSION_UPDATED`** — session is ready; start audio capture\n- **`INPUT_AUDIO_BUFFER_SPEECH_STARTED`** — user started speaking; stop playback and cancel the current response\n- **`RESPONSE_AUDIO_DELTA`** — play the audio chunk in `event.delta`\n- **`ERROR`** — report `event.error.message`",
-    "explanation": "The client iterates over the connection and branches on `event.type`. The speech-started event is the one that handles interruptions: the client must cancel agent playback immediately. If it doesn't, it keeps playing the last agent response until the API has processed the interrupt, and the agent \"talks over\" the user. Audio arrives in small delta chunks, so playback starts before the full response exists."
+    "explanation": "The client iterates over the connection and branches on `event.type`. The speech-started event is the one that handles interruptions: the client must cancel agent playback immediately. If it doesn't, it keeps playing the last agent response until the API has processed the interrupt, and the agent \"talks over\" the user. `RESPONSE_AUDIO_DELTA` carries the agent's speech chunk by chunk in `event.delta`, and the client plays each chunk as it arrives."
   },
   {
     "id": "3.6.3-03",
@@ -45,9 +45,9 @@
       "speech",
       "sdk"
     ],
-    "question": "You configure a Voice Live session with the Azure AI Voice Live Python SDK. Which line completes the code?\n\n```python\nasync with connect(endpoint=ENDPOINT, credential=AzureKeyCredential(API_KEY), model=MODEL) as conn:\n    session = RequestSession(\n        modalities=[Modality.TEXT, Modality.AUDIO],\n        instructions=\"You are a helpful assistant.\",\n        turn_detection=ServerVad(threshold=0.5, prefix_padding_ms=300, silence_duration_ms=500),\n    )\n    ___\n```",
+    "question": "You configure a Voice Live session with the Azure AI Voice Live Python SDK. Which line completes the code?\n\n```python\nasync def main():\n    async with connect(endpoint=ENDPOINT, credential=AzureKeyCredential(API_KEY), model=MODEL) as conn:\n        session = RequestSession(\n            modalities=[Modality.TEXT, Modality.AUDIO],\n            instructions=\"You are a helpful assistant.\",\n            turn_detection=ServerVad(threshold=0.5, prefix_padding_ms=300, silence_duration_ms=500),\n        )\n        ___\n```",
     "answer": "**`await conn.session.update(session=session)`** — sends the `RequestSession` to the service.",
-    "explanation": "`RequestSession` is the typed form of the `session.update` client event: modalities, instructions, input and output audio formats (`PCM16`) and turn detection with `ServerVad` (threshold, prefix padding, silence duration). Building the object alone changes nothing; `conn.session.update` sends it. The client then loops over the connection's events, for example until `RESPONSE_DONE`.",
+    "explanation": "`RequestSession` holds the session configuration: modalities, instructions, input and output audio formats (`PCM16`) and turn detection with `ServerVad` (threshold, prefix padding, silence duration). Building the object alone changes nothing; `await conn.session.update(session=session)` sends it to the service. The client then loops over the connection's events, for example until `RESPONSE_DONE`.",
     "options": [
       {
         "text": "`await conn.session.update(session=session)`",

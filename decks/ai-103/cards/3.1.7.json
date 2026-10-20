@@ -24,21 +24,6 @@
     ]
   },
   {
-    "id": "3.1.7-02",
-    "type": "basic",
-    "section": "3.1.7",
-    "exam_area": "text",
-    "origin": "generated",
-    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/01-analyze-text.html",
-    "tags": [
-      "azure-language",
-      "endpoints"
-    ],
-    "question": "Your Microsoft Foundry project endpoint is `https://my-res.services.ai.azure.com/api/projects/my-proj`. Which **endpoint value** do you put in the config of a Python app that calls Azure Language through `TextAnalyticsClient`?",
-    "answer": "The **Foundry resource endpoint**: `https://my-res.services.ai.azure.com` — the project endpoint with the **`/api/projects/{project_name}` suffix removed**.",
-    "explanation": "The project home page in the Foundry portal shows the API key, the project endpoint and the OpenAI endpoint, but not the resource endpoint. The project endpoint is simply the resource endpoint with the project path appended, so you copy it and cut the suffix. Azure Language is a Foundry Tool of the resource, which is why the client needs the resource-level address, ending at the *.com* domain."
-  },
-  {
     "id": "3.1.7-03",
     "type": "basic",
     "section": "3.1.7",

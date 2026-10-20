@@ -24,7 +24,7 @@
     "explanation": "Every Speech SDK call starts from a `SpeechConfig`: it is the initial object that gives access to the Azure Speech endpoint. The key goes into the `subscription` parameter. Recognizer and synthesizer objects are created later from the `SpeechConfig`. The package is installed with `pip install azure-cognitiveservices-speech`; SDKs for C#, JavaScript and other languages follow the same pattern.",
     "options": [
       {"text": "`SpeechConfig`", "correct": true, "why": "It is the initial object and encapsulates the connection details (endpoint or region, and key) of the Foundry resource."},
-      {"text": "`AudioConfig`", "correct": false, "why": "It defines the audio input source, such as the default microphone or a file, not the connection to the service."},
+      {"text": "`AudioConfig`", "correct": false, "why": "It defines where audio comes from or goes to (microphone, speaker or file), not the connection to the service."},
       {"text": "`SpeechRecognizer`", "correct": false, "why": "It is the proxy client for the Speech to text API and is built from a `SpeechConfig`, so it comes later."},
       {"text": "`SpeechSynthesizer`", "correct": false, "why": "It is the proxy client for the Text to speech API and is built from a `SpeechConfig`, so it comes later."}
     ]

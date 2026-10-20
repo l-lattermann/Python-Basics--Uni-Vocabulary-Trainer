@@ -6,14 +6,29 @@
     "exam_area": "extraction",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/5-knowledge-check",
-    "tags": ["content-understanding", "grounding"],
+    "tags": [
+      "content-understanding",
+      "grounding"
+    ],
     "question": "What is the purpose of grounding in Content Understanding?",
     "answer": "**Grounding** identifies the specific regions in the content where each value was extracted.",
     "explanation": "Grounding sits next to confidence scores in the Content Understanding pipeline. The analyzer result returns it in the `source` property of each field, so a reviewer can see where in the image a value was found. Together with confidence scores it keeps extracted values accurate while cutting the cost of human review.",
     "options": [
-      {"text": "To connect Content Understanding to Azure storage", "correct": false, "why": "The components table in 4.4.2 lists no storage link under grounding; grounding is about where a value sits in the content."},
-      {"text": "To identify the specific regions in content where each value was extracted", "correct": true, "why": "4.4.2 defines grounding exactly this way, and 4.4.3 shows it as the `source` information of each field."},
-      {"text": "To filter out harmful content from images", "correct": false, "why": "Filtering harmful images is content safety; the module's units 4.4.2 and 4.4.3 never give grounding that role."}
+      {
+        "text": "To connect Content Understanding to Azure storage",
+        "correct": false,
+        "why": "4.4.2 defines grounding as locating where each value sits in the content; a storage account is a resource the Studio project needs (4.4.5), not grounding's job."
+      },
+      {
+        "text": "To identify the specific regions in content where each value was extracted",
+        "correct": true,
+        "why": "4.4.2 defines grounding exactly this way, and 4.4.3 shows it as the `source` information of each field."
+      },
+      {
+        "text": "To filter out harmful content from images",
+        "correct": false,
+        "why": "4.4.2 gives harmful-content filtering to the integrated Azure AI Content Safety, not to grounding."
+      }
     ]
   },
   {
@@ -23,14 +38,29 @@
     "exam_area": "extraction",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/5-knowledge-check",
-    "tags": ["content-understanding", "confidence"],
+    "tags": [
+      "content-understanding",
+      "confidence"
+    ],
     "question": "What does a confidence score of 0.95 indicate for an extracted field?",
     "answer": "**High confidence** (0.9+): the value can be trusted for automated processing.",
     "explanation": "Content Understanding gives every extracted field a confidence score from 0 to 1. The course sets three bands: 0.9 and above is processed automatically, 0.7 to 0.9 deserves human review in critical applications, and below 0.7 needs manual verification. A workflow uses these bands to route only the uncertain fields to people.",
     "options": [
-      {"text": "The extraction failed and needs manual review", "correct": false, "why": "Per 4.4.3, manual verification is recommended only for low confidence below 0.7."},
-      {"text": "The value can be trusted for automated processing", "correct": true, "why": "4.4.3 puts 0.9 and above in the high-confidence band that can go straight to automated processing."},
-      {"text": "The field was classified rather than extracted", "correct": false, "why": "Whether a field is extracted, classified or generated is set by its `method` in the schema (4.4.3), not by its confidence score."}
+      {
+        "text": "The extraction failed and needs manual review",
+        "correct": false,
+        "why": "Per 4.4.3, manual verification is recommended only for low confidence below 0.7."
+      },
+      {
+        "text": "The value can be trusted for automated processing",
+        "correct": true,
+        "why": "4.4.3 puts 0.9 and above in the high-confidence band that can go straight to automated processing."
+      },
+      {
+        "text": "The field was classified rather than extracted",
+        "correct": false,
+        "why": "Whether a field is extracted, classified or generated is set by its `method` in the schema (4.4.3), not by its confidence score."
+      }
     ]
   },
   {
@@ -40,14 +70,29 @@
     "exam_area": "extraction",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/5-knowledge-check",
-    "tags": ["content-understanding", "prebuilt-analyzers"],
+    "tags": [
+      "content-understanding",
+      "prebuilt-analyzers"
+    ],
     "question": "Which prebuilt analyzer would you use to extract vendor names and item totals from a purchase receipt?",
     "answer": "**prebuilt-receipt**.",
-    "explanation": "Content Understanding ships prebuilt analyzers for common scenarios. `prebuilt-receipt` pulls vendor names, items, totals and dates from receipt images. `prebuilt-invoice` targets invoices with line items and amounts, and `prebuilt-image` does general image analysis without a receipt schema. Pick the one whose document type matches the input.",
+    "explanation": "Content Understanding ships prebuilt analyzers for common scenarios. `prebuilt-receipt` pulls vendor names, items, totals and dates from receipt images. `prebuilt-invoice` targets invoices with line items, amounts and vendor information, and `prebuilt-image` does general-purpose analysis: content extraction and figure description. Pick the one whose document type matches the input.",
     "options": [
-      {"text": "prebuilt-image", "correct": false, "why": "4.4.3 describes it as general-purpose image analysis with content extraction and figure description, not receipt fields."},
-      {"text": "prebuilt-invoice", "correct": false, "why": "4.4.3 scopes it to invoice details such as line items and amounts; a purchase receipt is a different document type."},
-      {"text": "prebuilt-receipt", "correct": true, "why": "4.4.3 lists it for extracting vendor names, items, totals and dates from receipt images."}
+      {
+        "text": "prebuilt-image",
+        "correct": false,
+        "why": "4.4.3 describes it as general-purpose image analysis with content extraction and figure description, not receipt fields."
+      },
+      {
+        "text": "prebuilt-invoice",
+        "correct": false,
+        "why": "4.4.3 scopes it to invoice details such as line items and amounts; a purchase receipt is a different document type."
+      },
+      {
+        "text": "prebuilt-receipt",
+        "correct": true,
+        "why": "4.4.3 lists it for extracting vendor names, items, totals and dates from receipt images."
+      }
     ]
   }
 ]

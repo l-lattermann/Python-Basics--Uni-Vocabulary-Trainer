@@ -6,14 +6,29 @@
     "exam_area": "text",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/9-knowledge-check",
-    "tags": ["entities", "azure-language"],
+    "tags": [
+      "entities",
+      "azure-language"
+    ],
     "question": "How should you create an application that analyzes news articles and extracts key people, places, and dates that are mentioned for indexing?",
     "answer": "Use Azure Language in Foundry Tools to extract **named entities**.",
     "explanation": "Named entity recognition (`recognize_entities`) returns each mention with a category such as Person, Location, DateTime or Organization. That is exactly the people, places and dates an index needs. PII extraction targets personal details to protect, not general facts in a news story.",
     "options": [
-      {"text": "Use a generative AI model with a custom function tool that matches strings using a regular expression.", "correct": false, "why": "Regular expressions only find fixed text patterns; Azure Language already detects people, locations and dates as categorized entities (unit 3.1.4, Extract entities)."},
-      {"text": "Use Azure Language in Foundry Tools to extract PII entities.", "correct": false, "why": "PII extraction identifies and redacts sensitive personal details such as names, phone numbers and SSNs, which is for protecting privacy, not indexing news (unit 3.1.5, Extract personally identifiable information)."},
-      {"text": "Use Azure Language in Foundry Tools to extract named entities.", "correct": true, "why": "Named entity recognition detects references to people, locations, time periods and organizations and groups them into categories (units 3.1.2 and 3.1.4)."}
+      {
+        "text": "Use a generative AI model with a custom function tool that matches strings using a regular expression.",
+        "correct": false,
+        "why": "A hand-written pattern-matching tool would rebuild what Azure Language already provides: named entity recognition returns people, locations and dates as categorized entities (unit 3.1.4, Extract entities)."
+      },
+      {
+        "text": "Use Azure Language in Foundry Tools to extract PII entities.",
+        "correct": false,
+        "why": "PII extraction identifies and redacts sensitive personal details such as names, phone numbers and SSNs, which is for protecting privacy, not indexing news (unit 3.1.5, Extract personally identifiable information)."
+      },
+      {
+        "text": "Use Azure Language in Foundry Tools to extract named entities.",
+        "correct": true,
+        "why": "Named entity recognition detects references to people, locations, time periods and organizations and groups them into categories (units 3.1.2 and 3.1.4)."
+      }
     ]
   },
   {
@@ -23,14 +38,29 @@
     "exam_area": "text",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/9-knowledge-check",
-    "tags": ["pii", "azure-language"],
+    "tags": [
+      "pii",
+      "azure-language"
+    ],
     "question": "You want to publish extracts from customer testimonials on a web site. You need to remove personal details from the text before publishing it. What should you do?",
     "answer": "Use Azure Language in Foundry Tools to find and **redact PII entities**.",
-    "explanation": "`recognize_pii_entities` finds names, addresses, phone numbers, email addresses and similar details. Each result's `redacted_text` masks them with asterisks, so the rest of the testimonial stays publishable. The course names removing PII from customer feedback before sharing it as a typical use.",
+    "explanation": "`recognize_pii_entities` finds names, addresses, phone numbers, email addresses and similar details. Each result's `redacted_text` masks them with asterisks or a specified character, so the rest of the testimonial stays publishable. The course names removing PII from customer feedback before sharing it as a typical use.",
     "options": [
-      {"text": "Use Azure Language in Foundry Tools to find and redact PII entities.", "correct": true, "why": "PII detection identifies sensitive personal information and returns a redacted version of the text with it masked (unit 3.1.5, Extract personally identifiable information)."},
-      {"text": "Use Azure Language in Foundry Tools to detect the language and publish only the testimonials in English.", "correct": false, "why": "Language detection only returns the language and a confidence score; English testimonials would still contain the personal details (unit 3.1.3, Detect language)."},
-      {"text": "Use a gpt-4.1 model to create new AI-generated customer reviews.", "correct": false, "why": "Invented reviews would no longer be extracts from real testimonials; the module's tool for removing personal details is PII redaction (unit 3.1.5, Extract personally identifiable information)."}
+      {
+        "text": "Use Azure Language in Foundry Tools to find and redact PII entities.",
+        "correct": true,
+        "why": "PII detection identifies sensitive personal information and returns a redacted version of the text with it masked (unit 3.1.5, Extract personally identifiable information)."
+      },
+      {
+        "text": "Use Azure Language in Foundry Tools to detect the language and publish only the testimonials in English.",
+        "correct": false,
+        "why": "Language detection only returns the language and a confidence score; English testimonials would still contain the personal details (unit 3.1.3, Detect language)."
+      },
+      {
+        "text": "Use a gpt-4.1 model to create new AI-generated customer reviews.",
+        "correct": false,
+        "why": "Invented reviews would no longer be extracts from real testimonials; the module's tool for removing personal details is PII redaction (unit 3.1.5, Extract personally identifiable information)."
+      }
     ]
   }
 ]

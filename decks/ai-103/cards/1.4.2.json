@@ -58,8 +58,8 @@
       "tools"
     ],
     "question": "Complete the call so the model deployed in Microsoft Foundry can use the web_search tool.\n\n```python\nresponse = client.responses.create(\n    model=model_deployment,\n    instructions=\"You are a helpful AI assistant.\",\n    input=\"Find me some information about vintage computers.\",\n    ___=[{\"type\": \"web_search\"}],\n)\nprint(response.output_text)\n```",
-    "answer": "`tools`",
-    "explanation": "`responses.create()` takes the available tools as a JSON list in `tools`. Each entry is one tool definition: a `type` such as `web_search` or `code_interpreter`, plus any tool-specific settings. You can pass one tool or several in the same list.",
+    "answer": "`tools` — the JSON list of tool definitions; `{\"type\": \"web_search\"}` needs no other setting. The final text is read from `response.output_text`.",
+    "explanation": "`responses.create()` takes the available tools as a JSON list in `tools`. Each entry is one tool definition: a `type` such as `web_search` or `code_interpreter`, plus any tool-specific settings. web_search has the simplest definition: file_search also needs `vector_store_ids`, and code_interpreter needs a `container`. You can pass one tool or several in the same list. With web_search, the output varies from run to run, because it depends on the web results at that moment.",
     "options": [
       {
         "text": "`tools`",

@@ -30,7 +30,7 @@
       "middleware"
     ],
     "question": "With the **Microsoft 365 Agents Toolkit** approach, how does a message from Teams or Microsoft 365 Copilot reach an agent in **Microsoft Foundry**?",
-    "answer": "Through a **proxy application** built with the Agents Toolkit:\n- Teams/Copilot → **Azure Bot Service** → proxy app\n- the proxy runs your **custom middleware**, then forwards the request to the **Foundry agent's endpoint**\n- the response returns along the same path",
+    "answer": "Through a **proxy application** built with the **Microsoft 365 Agents Toolkit**:\n- Teams/Copilot → **Azure Bot Service** → proxy app\n- the proxy runs your **custom middleware**, then forwards the request to the **Foundry agent's endpoint**\n- the response returns along the same path",
     "explanation": "Instead of publishing the Foundry agent itself to Microsoft 365, you put a proxy between Microsoft 365 and the agent. The proxy authenticates to the agent with the agent's credentials. Because every message passes through your code, you control each step of the flow; that is where custom SSO, logging or transformations live. The cost is extra deployment complexity: direct publishing creates the Bot Service, the Entra ID app and the package for you, while the proxy you write, deploy and register yourself."
   },
   {
@@ -70,7 +70,7 @@
     ],
     "question": "You built a proxy app for a **Microsoft Foundry** agent with the **Microsoft 365 Agents Toolkit**. Before provisioning any Azure resources, you want to send it test messages in a local environment that simulates Teams. What do you use?",
     "answer": "The **Microsoft 365 Agents Playground**, opened in the browser by running the project in debug mode.",
-    "explanation": "The Agents Playground ships with the Agents Toolkit and simulates Teams on your machine. It tests the whole proxy path, your middleware and the call to the Foundry agent, while nothing is deployed yet. The Foundry playground tests only the agent itself and does not simulate the published experience. Uploading a package to Teams needs an app that already exists as a package.",
+    "explanation": "The Agents Playground ships with the Agents Toolkit and simulates Teams on your machine. It tests the whole proxy path, your middleware and the call to the Foundry agent, while nothing is deployed yet. The Foundry playground tests only the agent itself and does not simulate the published experience. Only after these local tests pass do you provision Azure resources, deploy the proxy and register it in Teams.",
     "options": [
       {
         "text": "Microsoft 365 Agents Playground",
@@ -108,7 +108,7 @@
       "agents-toolkit",
       "publishing"
     ],
-    "question": "Compare **direct publishing from the Microsoft Foundry portal** with an **Agents Toolkit proxy** for bringing an agent into Teams, on five aspects.",
+    "question": "Compare **direct publishing from the Microsoft Foundry portal** with a **Microsoft 365 Agents Toolkit proxy** for bringing an agent into Teams: how do they differ on the **five** compared aspects?",
     "answer": "- **Setup time** — minutes vs. hours to days\n- **Code required** — none vs. a proxy application\n- **Customization** — limited vs. extensive\n- **Debugging** — Foundry portal vs. full IDE debugging\n- **Best for** — standard deployments vs. complex enterprise needs",
     "explanation": "Direct publishing handles the majority of integration scenarios, so it is the default. Production alone is no reason for the toolkit: direct publishing with organization scope is the course's path for production deployments. Switch to the proxy only when a specific requirement, such as custom SSO or middleware, justifies hours of setup and a proxy application in your deployment."
   }

@@ -11,8 +11,8 @@
       "authentication"
     ],
     "question": "A client app must call the **Azure Content Understanding** REST API. What does each call need, and which two ways can the app authenticate?",
-    "answer": "- Sent over HTTP to the **Content Understanding endpoint** of the Microsoft Foundry resource\n- Auth option 1: one of the resource's **authorization keys** in the request header\n- Auth option 2: **Microsoft Entra ID**, connecting to the project through the Microsoft Foundry API",
-    "explanation": "The Content Understanding API is the programmatic way to create, manage and consume analyzers. Every call goes to the endpoint of the Foundry resource that hosts your analyzers. You find the endpoint and the keys in the Azure portal or in the Microsoft Foundry portal. Instead of passing a key, the app can also connect to the project programmatically with your Entra ID through the Microsoft Foundry API.",
+    "answer": "- Sent over HTTP to the **Content Understanding endpoint** of the Microsoft Foundry resource; endpoint and keys are in the **Azure portal** or the **Foundry portal**\n- Auth option 1: one of the resource's **authorization keys** in the request header\n- Auth option 2: **Microsoft Entra ID**, connecting to the project through the Microsoft Foundry API",
+    "explanation": "The Content Understanding API is the programmatic way to create, manage and consume analyzers. Every call goes to the endpoint of the Foundry resource that hosts your analyzers, so the app needs that endpoint first. A key in the header is the simplest way in. Instead of passing a key, the app can connect to the project programmatically with your Entra ID through the Microsoft Foundry API.",
     "addition": "In the REST API the key goes in the `Ocp-Apim-Subscription-Key` header. An Entra ID access token is requested for the scope `https://cognitiveservices.azure.com/.default`.",
     "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result?view=rest-contentunderstanding-2025-11-01"
   },
@@ -104,7 +104,7 @@
     "tags": [
       "content-understanding"
     ],
-    "question": "Your app reads scanned invoices from local disk; they are not reachable by any URL. Which **Azure Content Understanding** API operation submits the file data directly to your analyzer?",
+    "question": "Your app reads scanned invoices from local disk; they are not reachable by any URL. Which **Azure Content Understanding** API operation takes the raw file bytes as the request body and sends them to your analyzer?",
     "answer": "**`analyzeBinary`** — it takes the binary file data in the request.",
     "explanation": "The plain `analyze` operation expects a JSON body with an `inputs` list, where each entry names a `url` that points to the file's location. That only works when the file is hosted somewhere the service can reach. `analyzeBinary` sends the bytes themselves. Either way, the request starts an asynchronous operation that you poll for the results.",
     "options": [
@@ -114,16 +114,18 @@
         "why": "It accepts binary file data directly, so no hosted URL is needed."
       },
       {
-        "text": "`analyze` with the file in the `inputs` list",
+        "text": "`analyze` with the file's local disk path as the `url` in `inputs`",
         "correct": false,
-        "why": "`analyze` takes a `url` for the content file location in `inputs`, which these files do not have."
+        "why": "The `url` must point to a location the service can reach; a path on your own disk is not one."
       },
       {
         "text": "`analyzerResults`",
         "correct": false,
         "why": "This endpoint returns the status and results of an operation that was already submitted; it does not accept content."
       }
-    ]
+    ],
+    "addition": "`analyze` can also carry the file itself: an entry in `inputs` takes either a `url` or `data`, the Base64-encoded content. `analyzeBinary` instead sends the raw bytes as the whole request body.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/analyze?view=rest-contentunderstanding-2025-11-01"
   },
   {
     "id": "4.5.4-06",

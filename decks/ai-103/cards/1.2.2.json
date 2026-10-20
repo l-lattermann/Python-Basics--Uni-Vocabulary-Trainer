@@ -31,53 +31,6 @@
     "explanation": "Every model in the catalog has a model card that gathers its key information in one place. You open it after searching or filtering the catalog. It is also where you start a deployment and review the supported deployment types, and its Benchmarks tab shows how this one model compares with similar models."
   },
   {
-    "id": "1.2.2-03",
-    "type": "mc",
-    "section": "1.2.2",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
-    "tags": [
-      "model-catalog"
-    ],
-    "question": "You search the **Microsoft Foundry** model catalog for a model that supports **tool calling** (function and API integration). Which filter do you use?",
-    "answer": "The **Capabilities** filter.",
-    "explanation": "Capabilities filters by what a model can do: reasoning, tool calling, multimodal processing. Inference tasks is the near neighbour that trips people up: it filters by the job the model performs, such as summarization or translation, not by a feature like tool calling.",
-    "explanation_images": [
-      {
-        "src": "media/ai-103/1.2.2-model-catalog.png",
-        "alt": "Foundry portal model catalog with the filter list Collections, Capabilities, Source, Inference tasks, Fine-tuning methods and Industry on the left"
-      }
-    ],
-    "options": [
-      {
-        "text": "Capabilities",
-        "correct": true,
-        "why": "It filters by model abilities such as reasoning, tool calling and multimodal processing."
-      },
-      {
-        "text": "Inference tasks",
-        "correct": false,
-        "why": "It filters by task type, such as text generation, summarization, translation or speech synthesis."
-      },
-      {
-        "text": "Collection",
-        "correct": false,
-        "why": "It groups models by where they come from, such as models provided directly in Azure or the Hugging Face repository."
-      },
-      {
-        "text": "Source",
-        "correct": false,
-        "why": "It filters by model provider, such as Azure OpenAI, Microsoft, Cohere, Mistral, Meta or Anthropic."
-      },
-      {
-        "text": "Fine-tuning methods",
-        "correct": false,
-        "why": "It filters by the fine-tuning techniques a model supports."
-      }
-    ]
-  },
-  {
     "id": "1.2.2-07",
     "type": "mc",
     "section": "1.2.2",
@@ -180,5 +133,43 @@
     "question": "Name the **six** types of task-specific (specialized) models in the **Microsoft Foundry** model catalog, each with its example model.",
     "answer": "- **Embedding** — text into numbers for semantic search, RAG (text-embedding-3-large)\n- **Image generation** — images from text (GPT-image-1)\n- **Video generation** — video from text (Sora 2)\n- **Image analysis** — text and image input, text output (GPT-4.1)\n- **Text to speech** — synthesized speech from text (GPT-4o-tts)\n- **Speech to text** — transcripts from speech audio (GPT-4o-transcribe)",
     "explanation": "Embeddings let an app find information by meaning rather than exact keywords, which drives semantic search, recommendation systems and RAG; text-embedding-3-small and Cohere's models are further options. Two traps: image analysis reads images, image generation creates them, for marketing materials, illustrations or design mockups. Text to speech and speech to text are opposite directions: check whether the audio is the input or the output."
+  },
+  {
+    "id": "1.2.2-27",
+    "type": "mc",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "slm",
+      "llm",
+      "model-choice"
+    ],
+    "question": "A field app must run a language model **on an edge device** with modest hardware. It handles common NLP tasks, and speed and cost matter more than the hardest reasoning. Which kind of model from the **Microsoft Foundry** catalog fits?",
+    "answer": "A **small language model (SLM)**, such as Phi-4 or Llama 3 8B.",
+    "explanation": "SLMs give up the deepest reasoning in exchange for efficiency and cost-effectiveness, and they can run on lower-end hardware or edge devices. LLMs such as GPT-5 or Llama 3 70B handle deep reasoning, complex content generation and extensive context understanding, but they require more computational resources. Choose the LLM for sophisticated applications that need that depth; choose the SLM when speed, cost or hardware set the limit.",
+    "options": [
+      {
+        "text": "Small language model (SLM), e.g. Phi-4",
+        "correct": true,
+        "why": "It offers efficiency and cost-effectiveness for common NLP tasks and can run on lower-end hardware or edge devices."
+      },
+      {
+        "text": "Large language model (LLM), e.g. GPT-5",
+        "correct": false,
+        "why": "It is built for deep reasoning and complex content generation and requires more computational resources."
+      },
+      {
+        "text": "Reasoning model, e.g. Claude Opus 4.6",
+        "correct": false,
+        "why": "It targets complex problems in mathematics, coding, science, strategy and logistics, not fast, cheap common tasks."
+      },
+      {
+        "text": "Embedding model, e.g. text-embedding-3-small",
+        "correct": false,
+        "why": "It converts text into numerical representations for semantic search; it does not generate text responses."
+      }
+    ]
   }
 ]

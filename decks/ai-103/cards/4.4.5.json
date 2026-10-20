@@ -6,7 +6,11 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/04-content-understanding.html",
-    "tags": ["content-understanding", "analyzers", "image-analysis"],
+    "tags": [
+      "content-understanding",
+      "analyzers",
+      "image-analysis"
+    ],
     "question": "You build a custom image analyzer that generates descriptions and tags in **Azure Content Understanding Studio**. Put the steps in order.",
     "answer": "Connect resource → create project → upload image → define schema → run analysis → build analyzer.",
     "explanation": "In the lab the schema has two fields, both with method **Generate**: `Description` (String) and `Tags` (List of Strings). Running the analysis on the sample image first lets you check that the generated values are accurate before you publish. **Build analyzer** publishes it under a unique name, which application code later uses to call it. The analyzer then appears in the analyzer list, where its **Code Example** tab shows the code to use it.",
@@ -26,10 +30,14 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/04-content-understanding.html",
-    "tags": ["content-understanding", "foundry-portal", "deployment"],
-    "question": "Before you create a custom-schema project in **Azure Content Understanding Studio**, which resources does it need, and where do you connect the Foundry resource?",
-    "answer": "- **Settings** icon > **Setup Azure resource** > **Add resource**: select your Foundry resource\n- Tick **Enable auto-deployment for required models**\n- A **storage account** (Blob Storage or ADLS Gen2, same region)\n- A **chat completion model** such as gpt-5.2, chosen in the project's **Advanced settings**",
-    "explanation": "Content Understanding Studio is its own web app at `contentunderstanding.ai.azure.com`, separate from the Foundry portal. Auto-deployment deploys the models it needs if your resource has no default deployment; this takes several minutes. The resource then appears under **Connected Azure AI Foundry Resources**. The storage account holds the content assets you analyze; you create it in the Azure portal, in the Foundry resource group. The new project creates a container in it."
+    "tags": [
+      "content-understanding",
+      "foundry-portal",
+      "deployment"
+    ],
+    "question": "A project of type \"Extract content and field with custom schema\" in **Azure Content Understanding Studio** needs **three** resources. Which are they, and where do you set up each?",
+    "answer": "- **Foundry resource** — connected under **Settings** > **Setup Azure resource** > **Add resource**, with **Enable auto-deployment for required models** ticked\n- **Storage account** — Blob Storage or ADLS Gen2, same region, created in the Azure portal\n- **Chat completion model** such as gpt-5.2 — selected in the project's **Advanced settings**",
+    "explanation": "Content Understanding Studio is its own web app at `contentunderstanding.ai.azure.com`, separate from the Foundry portal. Auto-deployment deploys the models it needs if your resource has no default deployment; this takes several minutes. The resource then appears under **Connected Azure AI Foundry Resources**. The storage account holds the content assets you analyze and sits in the resource group of your Foundry resource; the new project creates a container in it."
   },
   {
     "id": "4.4.5-03",
@@ -38,9 +46,13 @@
     "exam_area": "vision",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-vision/Instructions/Exercises/04-content-understanding.html",
-    "tags": ["content-understanding", "endpoints", "keyless-credentials"],
-    "question": "A Python app calls your custom analyzer with `ContentUnderstandingClient`. Which two values go into its configuration, where in **Content Understanding Studio** do you find them, and how does it authenticate without a key?",
-    "answer": "- **Foundry resource endpoint** `https://{resource}.services.ai.azure.com/`, not the project or Azure OpenAI endpoint\n- The **analyzer name** given at Build analyzer\n- Both on the analyzer's **Code Example** tab\n- **`DefaultAzureCredential`** after **`az login`**",
-    "explanation": "The Code Example tab shows Python code whose `main` function holds the endpoint. Below it sits the resource key, which a client could use instead. The lab uses Microsoft Entra ID instead: `DefaultAzureCredential` picks up your Azure CLI sign-in, so `az login` runs before the app (with `--tenant` if you have several tenants). The analyzer name is passed as `analyzer_id` to `client.begin_analyze(...)`, and `poller.result()` returns the generated `Description` and `Tags` fields."
+    "tags": [
+      "content-understanding",
+      "endpoints",
+      "keyless-credentials"
+    ],
+    "question": "A Python app calls your custom analyzer with `ContentUnderstandingClient`. Which **two** values go into its `.env` file, where in **Azure Content Understanding Studio** do you get them, and how does the app authenticate without a key?",
+    "answer": "- **Foundry resource endpoint** `https://{resource}.services.ai.azure.com/` — from the analyzer's **Code Example** tab; not the project or Azure OpenAI endpoint\n- **Analyzer name** — the unique name you gave at **Build analyzer**\n- Authentication: **`DefaultAzureCredential`** (Microsoft Entra ID) after **`az login`**",
+    "explanation": "The Code Example tab shows Python code whose `main` function holds the endpoint. Below it sits the resource key, which a client could use instead. The lab uses Microsoft Entra ID: you sign in with `az login` in the terminal before running the app (with `--tenant` if you have subscriptions in several tenants). The analyzer name is passed as `analyzer_id` to `client.begin_analyze(...)`, and `poller.result()` returns the generated `Description` and `Tags` fields."
   }
 ]

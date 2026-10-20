@@ -81,40 +81,24 @@
   },
   {
     "id": "3.2.3-05",
-    "type": "mc",
     "section": "3.2.3",
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "type": "order",
     "tags": [
       "agents",
       "responses-api",
       "sdk"
     ],
-    "question": "Complete the code so the prompt goes to the Microsoft Foundry agent **Text-Analysis-Agent**, which uses the Azure Language MCP server.\n\n```python\nresponse = openai_client.responses.create(\n    input=[{\"role\": \"user\", \"content\": user_prompt}],\n    ___={\n        \"agent_reference\": {\"name\": \"Text-Analysis-Agent\",\n                            \"type\": \"agent_reference\"}\n    },\n)\nprint(response.output_text)\n```",
-    "answer": "**`extra_body`** — the agent is referenced by name in its `agent_reference` field.",
-    "explanation": "The client gets `openai_client` from an `AIProjectClient` (packages `azure-ai-projects` and `azure-identity`), built from the project endpoint and `DefaultAzureCredential`, by calling `get_openai_client()`. The key part is the agent reference: you name the agent in `extra_body` instead of a model. The agent then picks and calls the MCP tools and returns its answer in `output_text`.",
-    "options": [
-      {
-        "text": "`extra_body`",
-        "correct": true,
-        "why": "The Foundry SDK passes the `agent_reference` with the agent's name through `extra_body` of `responses.create()`."
-      },
-      {
-        "text": "`model`",
-        "correct": false,
-        "why": "`model` names a model deployment, not an agent; the agent is referenced by name in `extra_body`."
-      },
-      {
-        "text": "`tools`",
-        "correct": false,
-        "why": "The MCP tool is already part of the agent; `tools` would attach tools to the request, not select the agent."
-      },
-      {
-        "text": "`instructions`",
-        "correct": false,
-        "why": "`instructions` holds system-level guidance text; the agent's own instructions are stored with the agent."
-      }
+    "question": "You write a Python client that sends prompts to a **Microsoft Foundry agent** (one that uses the Azure Language MCP server) with the `azure-ai-projects` and `azure-identity` packages. Put the steps in order.",
+    "answer": "**`AIProjectClient`** (endpoint + `DefaultAzureCredential`) → **`get_openai_client()`** → **`responses.create()`** with the agent in `extra_body` → read `output_text`.",
+    "explanation": "The Foundry SDK reaches agents through the OpenAI Responses API, so you first need a project client and then the OpenAI client it hands out. `DefaultAzureCredential` uses your Azure CLI sign-in during development. You don't name a model: the agent is referenced by name in the `agent_reference` field of `extra_body`. The agent then picks and calls the MCP tools itself, and `output_text` holds its final answer.",
+    "items": [
+      "Create an `AIProjectClient` with the Foundry project endpoint and `DefaultAzureCredential`",
+      "Get an OpenAI client by calling `get_openai_client()` on the project client",
+      "Call `responses.create()` with the user prompt and `extra_body={\"agent_reference\": {\"name\": ..., \"type\": \"agent_reference\"}}`",
+      "Read the agent's answer from `response.output_text`"
     ]
   },
   {

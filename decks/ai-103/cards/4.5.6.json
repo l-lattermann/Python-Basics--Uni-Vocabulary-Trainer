@@ -19,8 +19,8 @@
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/01-content-understanding.html",
     "tags": ["content-understanding", "storage"],
-    "question": "You want to build custom Azure Content Understanding analyzers in **Content Understanding Studio**. What must you connect before you create the first project?",
-    "answer": "- Your **Foundry resource**: Settings > **+ Add resource**, with autodeployment of the required models (**GPT-4.1**, **GPT-4.1-mini**, **text-embedding-3-large**)\n- An **Azure Blob Storage account** in the same resource group, connected with a blob container in the project's Advanced settings",
+    "question": "You want to build custom Azure Content Understanding analyzers in **Content Understanding Studio**. Which two Azure resources do you connect, and where in the Studio?",
+    "answer": "- Your **Foundry resource**: Settings > **+ Add resource**, with autodeployment of the required models (**GPT-4.1**, **GPT-4.1-mini**, **text-embedding-3-large**)\n- An **Azure Blob Storage account** in the same resource group and region, connected with a blob container in the project's Advanced settings",
     "explanation": "Content Understanding Studio is a separate web tool, at contentunderstanding.ai.azure.com, for building and testing analyzers with custom schemas. Custom analyzers depend on generative and embedding models. The checkbox *Enable autodeployment for required models if no defaults are available* deploys them for you. The storage account holds the data used to build the analyzers. If the new project cannot reach storage, wait: permissions on a new resource take a few minutes to propagate."
   },
   {

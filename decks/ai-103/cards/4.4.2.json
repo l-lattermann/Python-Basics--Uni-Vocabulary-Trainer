@@ -11,7 +11,7 @@
     ],
     "question": "What does **Azure Content Understanding** in Microsoft Foundry do, and what kind of result does it return?",
     "answer": "A **Foundry Tool** that uses **generative AI** to turn unstructured documents, images, video and audio into **structured output** for automation and analytics workflows.",
-    "explanation": "The point is straight-through processing of unstructured data: content goes in, usable data comes out, with no manual step in between. You don't write prompts for an LLM. You describe the data you want once as a schema, and the service extracts, classifies or generates those values. The result arrives in a predictable shape that automation, analytics or search can consume directly."
+    "explanation": "The course frames it as straight-through processing of unstructured data, which speeds up time to value. You need no complex prompt engineering: you describe the data you want once as a schema, and the service extracts, classifies or generates those values. The result arrives in a predictable shape, Markdown for search or JSON for automation, so automation, analytics or search can consume it directly."
   },
   {
     "id": "4.4.2-02",
@@ -153,31 +153,36 @@
       "responsible-ai",
       "content-safety"
     ],
-    "question": "Azure Content Understanding has built-in Responsible AI protections. Which Azure service does it integrate to detect and prevent harmful content such as violence and hate speech?",
-    "answer": "**Azure AI Content Safety** — it filters violence, hate speech and exploitation. Processing **biometric data** from faces also needs notice to and consent from the data subjects.",
-    "explanation": "The filtering is built in, but compliance doesn't end there. Content Understanding's face description can identify facial attributes in images and video, and that makes the result biometric data. Before you process it, your solution has to give the people concerned appropriate notice and get their consent.",
+    "question": "You build an Azure Content Understanding solution that runs face description on photos and videos of customers. Which **two** statements about its built-in Responsible AI protections are true?",
+    "answer": "- **Azure AI Content Safety** is integrated and filters harmful content: violence, hate speech, exploitation\n- **Biometric data** from face description needs appropriate notice to and consent from the data subjects",
+    "explanation": "The filtering is built in, so you don't add a separate content filter yourself. Compliance doesn't end there. Face description can identify facial attributes in both images and video, and that makes the result biometric data. Before your solution processes it, the people concerned must be given appropriate notice and must consent.",
     "addition": "The current docs describe it differently: Content Understanding inherits the **guardrails in Microsoft Foundry** applied to your model deployments. Detections appear as warnings or errors in the response, and analysis can succeed with warnings while some field values are withheld.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview",
     "options": [
       {
-        "text": "Azure AI Content Safety",
+        "text": "It integrates Azure AI Content Safety, which filters harmful content such as violence, hate speech and exploitation.",
         "correct": true,
-        "why": "Content Understanding integrates it to detect and prevent harmful content."
+        "why": "The course names Content Safety as the integrated service that detects and prevents harmful content."
       },
       {
-        "text": "Azure AI Face",
-        "correct": false,
-        "why": "Face detects and analyzes faces; it doesn't filter harmful content."
+        "text": "Processing the biometric data that face description produces requires appropriate notice to and consent from the data subjects.",
+        "correct": true,
+        "why": "The course lists notice and consent as a requirement for biometric data processing."
       },
       {
-        "text": "Azure Language PII detection",
+        "text": "Harmful-content filtering stays off until you call a separate Azure AI Content Safety resource from your own code.",
         "correct": false,
-        "why": "It finds personal data in text; it doesn't block violence or hate speech."
+        "why": "The protections are built in; the service integrates Content Safety itself."
       },
       {
-        "text": "Microsoft Purview",
+        "text": "Face description works only on video content, not on images.",
         "correct": false,
-        "why": "Purview governs and classifies data across an organization; it isn't the content filter inside Content Understanding."
+        "why": "The course says it identifies facial attributes in video and image content."
+      },
+      {
+        "text": "Facial attributes don't count as biometric data, so no consent is needed.",
+        "correct": false,
+        "why": "The course ties face description to biometric data processing, which requires notice and consent."
       }
     ]
   }

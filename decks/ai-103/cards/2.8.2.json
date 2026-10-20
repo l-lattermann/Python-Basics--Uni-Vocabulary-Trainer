@@ -12,8 +12,8 @@
       "orchestration"
     ],
     "question": "Name the **two** core concepts and the **three** core features of the Microsoft Agent Framework SDK.",
-    "answer": "- **Agents** — AI entities that reason and act using LLMs, tools and conversation history\n- **Agent orchestration** — agents collaborating via patterns behind one unified interface\n- **Chat clients** — one interface to many AI providers\n- **Tools and function integration** — custom functions and built-in tools agents call\n- **Conversation management** — history kept across interactions",
-    "explanation": "The Microsoft Agent Framework is an open-source SDK for building agents that process input, decide and act autonomously by combining LLMs with ordinary program logic. The two concepts say what you build: single agents, and teams of them. Because orchestration patterns share one interface for construction and invocation, you can switch patterns without rewriting agent logic. The three features are what powers each agent: which model it talks to, what it can do, and what it remembers."
+    "answer": "- **Agents** — AI entities that reason and act using LLMs, tools and conversation history\n- **Agent orchestration** — agents collaborate via patterns behind one unified interface\n- **Chat clients** — one interface to many AI providers (`BaseChatClient`)\n- **Tools and function integration** — custom functions plus built-in **Code Interpreter**, **File Search**, **Web Search**\n- **Conversation management** — history across interactions (`AgentSession`)",
+    "explanation": "The Microsoft Agent Framework is an open-source SDK for agents that process input, make decisions and execute tasks autonomously by combining large language models with traditional programming logic. The two concepts are what you build: single agents, and teams of them working toward a common goal. All orchestration patterns share one interface, so you can switch patterns without rewriting agent logic. The three features power each agent: which provider it talks to, which tools it invokes automatically, and what it remembers."
   },
   {
     "id": "2.8.2-02",
@@ -50,7 +50,7 @@
       }
     ],
     "answer": "**`BaseChatClient`** — the chat client abstraction that puts all providers behind one interface.",
-    "explanation": "Chat clients give connections to AI services from different providers a common interface. That provider-agnostic design lets you switch providers without changing your code, so the same agents can grow from a simple chatbot into an enterprise solution. The framework can also bring in agents from other sources, including Microsoft Foundry Agent Service, and supports both multi-agent collaboration and human-in-the-loop work."
+    "explanation": "Chat clients put connections to AI services from different providers behind one common interface; Azure OpenAI, OpenAI and Anthropic are among the supported providers. This provider-agnostic design lets you switch providers without changing your code, which keeps systems adaptable, from simple chatbots to complex enterprise solutions. Beyond that, the framework can integrate agents from other sources, such as Microsoft Foundry Agent Service, and supports multi-agent collaboration and human-in-the-loop processes."
   },
   {
     "id": "2.8.2-03",
@@ -61,11 +61,10 @@
     "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/2-understand-agent-framework",
     "tags": [
       "agent-framework",
-      "memory",
-      "tools"
+      "memory"
     ],
-    "question": "In the Microsoft Agent Framework, how does an agent keep context across several interactions, and which built-in tools can it use besides custom functions?",
-    "answer": "- **`AgentSession`** — holds the conversation history between interactions\n- Messages carry the roles **USER**, **ASSISTANT**, **SYSTEM** and **TOOL**\n- Built-in tools: **Code Interpreter**, **File Search**, **Web Search**",
-    "explanation": "With the session, an agent tracks earlier interactions and adapts its responses to them. The structured message system tags each message with one of the four roles, which gives the agent persistent conversation context. Tools extend what the agent can do, and it invokes them automatically: to call external APIs, execute code, search files or access web information. The framework supports both custom function tools and these built-in tools."
+    "question": "An agent built with the Microsoft Agent Framework must remember what the user said in earlier turns and adapt its replies. Which component keeps that context, and which roles structure the stored messages?",
+    "answer": "- **`AgentSession`** — keeps the conversation history across multiple interactions\n- Message roles: **USER**, **ASSISTANT**, **SYSTEM**, **TOOL**",
+    "explanation": "Conversation management is one of the framework's three core features, next to chat clients and tools. With an `AgentSession`, the agent tracks previous interactions and adapts its responses to them — conversation history is one of the inputs an agent uses to make decisions. The structured message system tags every message with one of the four roles, which gives the agent a persistent conversation context."
   }
 ]

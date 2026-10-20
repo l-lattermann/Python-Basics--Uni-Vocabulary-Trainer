@@ -6,7 +6,10 @@
     "exam_area": "text",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/6-knowledge-check",
-    "tags": ["translator", "python-sdk"],
+    "tags": [
+      "translator",
+      "python-sdk"
+    ],
     "question": "What function of an Azure Translator **TextTranslationClient** object should you use to convert the Chinese word \"你好\" to the English word \"Hello\"?",
     "answer": "**translate** — it converts text from a source language into one or more target languages.",
     "explanation": "Changing the language is translation. You pass the text as a list of `InputTextItem` objects and the target language codes in `to_language`. `from_language` is optional; without it, Azure Translator detects the source language itself. Transliteration only changes the script, and `get_supported_languages` only lists languages.",
@@ -35,10 +38,14 @@
     "exam_area": "text",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/6-knowledge-check",
-    "tags": ["translator", "python-sdk", "transliteration"],
+    "tags": [
+      "translator",
+      "python-sdk",
+      "transliteration"
+    ],
     "question": "What function of an Azure Translator **TextTranslationClient** object should you use to convert the Russian word \"спасибо\" in Cyrillic characters to \"spasibo\" in Latin characters?",
     "answer": "**transliterate** — it keeps the language and changes only the script.",
-    "explanation": "\"spasibo\" is still Russian, just written in Latin letters, so this is transliteration, not translation. The `transliterate` method takes the `language` of the text plus a `from_script` and a `to_script` code. The unit shows Japanese Hiragana (`Jpan`) turned into Latin script (`Latn`): 'こんにちは' becomes \"Kon'nichiwa\".",
+    "explanation": "\"spasibo\" is still the Russian word, only written in Latin letters: the language stays and the script changes, which is transliteration. `translate` would instead return the text in another language. `transliterate` takes the text's `language` plus a `from_script` and a `to_script` code, such as `Latn` for Latin script.",
     "options": [
       {
         "text": "get_supported_language",
@@ -64,15 +71,19 @@
     "exam_area": "text",
     "origin": "knowledge-check",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/6-knowledge-check",
-    "tags": ["speech", "speech-translation", "python-sdk"],
+    "tags": [
+      "speech",
+      "speech-translation",
+      "python-sdk"
+    ],
     "question": "Which Azure Speech SDK object should you use to specify the language(s) into which you want speech translated?",
     "answer": "**SpeechTranslationConfig** — set the target languages with `add_target_language()`.",
-    "explanation": "`SpeechTranslationConfig` connects to the Speech resource and holds both language settings: `speech_recognition_language` for the source and one `add_target_language()` call per target. `AudioConfig` only names the audio source, such as the default microphone. A separate `SpeechConfig` is needed only when you synthesize the translated text into speech.",
+    "explanation": "`SpeechTranslationConfig` connects to the Azure Speech resource and holds both language settings: `speech_recognition_language` for the source and one `add_target_language()` call per target. `AudioConfig` only names the audio source, such as the default microphone. A separate `SpeechConfig` appears only in manual synthesis, where a `SpeechSynthesizer` speaks each translation aloud.",
     "options": [
       {
         "text": "SpeechConfig",
         "correct": false,
-        "why": "The unit creates a SpeechConfig only for speech synthesis of the translated text, not to set translation languages (unit 3.7.4, Translate speech)."
+        "why": "The unit creates a SpeechConfig only for manual synthesis, to speak the translated text aloud, not to set the translation languages (unit 3.7.4, Translate speech)."
       },
       {
         "text": "SpeechTranslationConfig",

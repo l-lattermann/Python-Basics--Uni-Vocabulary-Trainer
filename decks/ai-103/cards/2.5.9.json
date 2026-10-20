@@ -47,8 +47,8 @@
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05b-work-iq-integration.html",
     "tags": ["work-iq", "foundry-iq", "knowledge-base"],
-    "question": "A Microsoft Foundry agent must compare what employees **discuss** about the expense policy with what the **official policy documents** say. Which source provides each side, and what must the Foundry project have for the documents?",
+    "question": "A Microsoft Foundry agent must compare what employees **discuss** about the expense policy in emails, meetings and Teams with what the **official policy documents** say. Which **two** IQ sources does it combine, which side does each provide, and what must the Foundry project have for the documents?",
     "answer": "- **Work IQ** — workplace data: emails, meetings, Teams discussions (what people actually do and say)\n- **Foundry IQ** — the knowledge base: official docs, policies, procedures\n- Foundry IQ needs **Azure AI Search** with an indexed knowledge base in the project",
-    "explanation": "In the lab's *Combined Intelligence* scenario one agent searches both sources. It compares informal discussion with official documentation, finds gaps or contradictions, and labels each source in its summary. Neither source alone is enough: Work IQ shows current practice, Foundry IQ shows the documented rule. Together they give complete context for a decision. Only the Foundry IQ side needs an Azure resource; Work IQ runs on the user's Microsoft 365 Copilot license."
+    "explanation": "In the lab's *Combined Intelligence* scenario one agent searches both sources. It compares informal discussion with official documentation, finds gaps or contradictions, and labels each source in its summary. Neither source alone is enough: Work IQ shows current practice, Foundry IQ shows the documented rule. Together they give complete context for a decision. Beyond the Foundry project itself, only the Foundry IQ side needs an extra Azure resource; Work IQ runs on the user's Microsoft 365 Copilot license."
   }
 ]

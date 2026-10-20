@@ -45,7 +45,7 @@
     "answer": "By specifying the **agent name in the `agent_reference` field in `extra_body`**.",
     "explanation": "The client creates an `AIProjectClient` with `DefaultAzureCredential`, gets an OpenAI client with `get_openai_client()`, and calls `responses.create()`:\n\n```python\nextra_body={\"agent_reference\": {\"name\": \"Text-Analysis-Agent\", \"type\": \"agent_reference\"}}\n```\n\nThe agent's reply is in `response.output_text`.",
     "options": [
-      {"text": "By passing the agent's API key as a request header to the endpoint.", "correct": false, "why": "Unit 3.2.3 authenticates the client with DefaultAzureCredential, and an agent has no API key of its own to identify it."},
+      {"text": "By passing the agent's API key as a request header to the endpoint.", "correct": false, "why": "Unit 3.2.3 authenticates the client with DefaultAzureCredential and names the agent in extra_body; no API key header is involved."},
       {"text": "By specifying the agent name in the agent_reference field in extra_body.", "correct": true, "why": "Unit 3.2.3: the key part is referencing the agent by name in the extra_body parameter of responses.create()."},
       {"text": "By passing the agent's endpoint URL as the model parameter value.", "correct": false, "why": "Unit 3.2.3 uses the project endpoint only to create the AIProjectClient; the agent is selected through agent_reference, not the model parameter."}
     ]

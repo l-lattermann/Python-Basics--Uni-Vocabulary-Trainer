@@ -1,154 +1,139 @@
 [
-  {
-    "id": "2.5.3-01",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "rbac",
-      "teams"
-    ],
-    "question": "Before you publish a Microsoft Foundry agent to Teams and Microsoft 365 Copilot, which **roles and subscription setup** must be in place?",
-    "answer": "- **Azure AI Project Manager** on the Foundry project — to publish\n- **Azure AI User** — to invoke or chat with the published agent\n- The **Microsoft.BotService** resource provider registered in the subscription\n- Rights to create Azure resources and to register Microsoft Entra ID apps",
-    "explanation": "Publishing provisions real resources: it creates an Azure Bot Service resource and registers an application in Microsoft Entra ID. That is why the subscription must allow both, and why the Bot Service provider has to be registered first — you check it in the Azure portal under the subscription's **Resource providers**. The two roles split the work: one person publishes, users who only talk to the agent need the lighter role. Test the agent in the Foundry playground beforehand; issues are easier to fix before publishing."
-  },
-  {
-    "id": "2.5.3-02",
-    "type": "order",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "teams"
-    ],
-    "question": "Put the steps for publishing an agent from the Microsoft Foundry portal to Teams and Microsoft 365 Copilot in order.",
-    "answer": "Pick agent → Publish to Teams and M365 Copilot → create Bot Service → metadata → scope → Prepare Agent.",
-    "explanation": "The portal walks you through it as a wizard. At the Bot Service step it automatically generates an **application ID** and a **tenant ID**; note them, because you need them for troubleshooting. You then choose **Create an Azure Bot Service** in the dropdown and wait until the resource exists in your subscription. Packaging after **Prepare Agent** typically takes 1–2 minutes.",
-    "items": [
-      "Select the agent in your Foundry project and review its configuration",
-      "Select **Publish**, then **Publish to Teams and Microsoft 365 Copilot**",
-      "In the **Azure Bot Service** dropdown, select **Create an Azure Bot Service**",
-      "Fill in the metadata (name, description, icons, publisher, privacy policy, terms of use)",
-      "Choose the publish scope (shared or organization)",
-      "Select **Prepare Agent** to build the package"
-    ]
-  },
-  {
-    "id": "2.5.3-03",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "teams"
-    ],
-    "question": "Name the **six** metadata fields you fill in when publishing a Microsoft Foundry agent to Teams and Microsoft 365 Copilot.",
-    "answer": "- **Name** — display name in the Teams store\n- **Description** — what the agent does\n- **Icons** — small and large PNG icons\n- **Publisher information** — organization name and contact details\n- **Privacy policy** — URL to the org's privacy policy\n- **Terms of use** — URL to the terms of service",
-    "explanation": "Gather these before you start, so the wizard does not stall. The icons have fixed sizes: the small one is **32x32** pixels, the large one **192x192** pixels, both PNG. Never put secrets, API keys or sensitive information into any of these fields — users who discover the agent in the store can see them."
-  },
-  {
-    "id": "2.5.3-04",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "teams"
-    ],
-    "question": "When you publish a Microsoft Foundry agent to Microsoft 365, which **two** publish scopes can you choose, and where does each put the agent in the Teams agent store?",
-    "answer": "- **Shared scope** — under **Your agents**; available immediately\n- **Organization scope** — under **Built by your org**; requires admin approval",
-    "explanation": "The scope decides who gets the agent and how fast. Shared scope skips any approval, so it suits testing and small teams. Organization scope reaches everyone in the tenant, which is why a Microsoft 365 administrator must approve it first; it is the choice for production deployments. Even after approval, the organization's app policies still control which users can access the agent."
-  },
-  {
-    "id": "2.5.3-05",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "approval"
-    ],
-    "question": "You published a Microsoft Foundry agent with **organization scope**. Where does a Microsoft 365 administrator approve it?",
-    "answer": "In the **Microsoft 365 admin center**: **Agents** > **All** > **Requested**, find the agent and select **Approve request and activate**.",
-    "explanation": "Organization scope makes the agent available tenant-wide, so it waits as a pending request until an administrator acts. You direct your admin to the request; you cannot approve it from the Foundry portal. Once approved, the agent appears under **Built by your org** in the Teams agent store for all users in the tenant, subject to the organization's app policies."
-  },
-  {
-    "id": "2.5.3-06",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "teams"
-    ],
-    "question": "After you select **Prepare Agent** while publishing a Microsoft Foundry agent to Teams, what **two** options do you have when the package is ready?",
-    "answer": "- **Download the package** — to test it yourself before distribution\n- **Continue the in-product publishing flow** — to distribute it directly",
-    "explanation": "The download is a `.zip` file. To test it, open Teams, go to **Apps** > **Manage your apps** > **Upload an app**, select **Upload a custom app** and choose the file. Teams installs it; you then send a test message and check that the agent responds, the content is accurate, response times are acceptable and configured tools work. Do this before broad distribution."
-  },
-  {
-    "id": "2.5.3-07",
-    "type": "mc",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-identity",
-      "rbac",
-      "agent-publishing"
-    ],
-    "question": "A Microsoft Foundry agent's Azure AI Search tool worked in the playground, but **fails after you publish** the agent to Teams. What fixes it?",
-    "answer": "Assign the needed **RBAC roles to the published agent's identity** on the Azure AI Search resource.",
-    "explanation": "Publishing creates a distinct agent identity. The permissions you had during development do not carry over to it, so every Azure resource a tool reaches — Azure AI Search, storage accounts, Cosmos DB — needs a role assignment for the new identity. You find the identity on the published agent in the Foundry portal and assign the roles in the Azure portal.",
-    "options": [
-      {
-        "text": "Assign RBAC roles on the search resource to the published agent's identity",
-        "correct": true,
-        "why": "The published agent runs under its own new identity, which has no permissions until you assign them."
-      },
-      {
-        "text": "Republish the agent with organization scope",
-        "correct": false,
-        "why": "Scope only controls distribution and approval; the identity still lacks permissions."
-      },
-      {
-        "text": "Register the Microsoft.BotService resource provider",
-        "correct": false,
-        "why": "The provider is needed to create the Bot Service during publishing, not for tool access to Azure AI Search."
-      },
-      {
-        "text": "Give the users the Azure AI User role",
-        "correct": false,
-        "why": "That role lets users invoke the agent; the tool calls the search resource as the agent's identity, not as the user."
-      }
-    ]
-  },
-  {
-    "id": "2.5.3-08",
-    "type": "basic",
-    "section": "2.5.3",
-    "exam_area": "plan",
-    "origin": "generated",
-    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
-    "tags": [
-      "agent-publishing",
-      "teams"
-    ],
-    "question": "You changed an agent in Microsoft Foundry that is already published to Teams. How do users get the new version?",
-    "answer": "**Republish**: test in the playground, repeat the publishing process to build a **new package**, then\n- **Shared scope** — upload the new package to Teams\n- **Organization scope** — may need **re-approval**, depending on org policy",
-    "explanation": "Changes in the Foundry portal do not flow into Teams on their own; what users see is the deployed package. So every change goes through the same publishing process again. Whether an organization-scope update needs another admin approval is set by your organization's policies, not by Foundry. Users get the updated version once the new package is deployed."
-  }
+ {
+  "id": "2.5.3-01",
+  "type": "basic",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "rbac",
+   "teams"
+  ],
+  "question": "You will publish a Microsoft Foundry agent to Teams and Microsoft 365 Copilot; your colleagues will only chat with it. Which **role** does each side need, and what must the Azure subscription allow?",
+  "answer": "- **Azure AI Project Manager** on the Foundry project — you, to publish\n- **Azure AI User** — colleagues, to invoke or chat with the published agent\n- **Microsoft.BotService** resource provider registered\n- Rights to create Azure resources and to register Microsoft Entra ID apps",
+  "explanation": "Publishing provisions real resources: it creates an Azure Bot Service resource and registers an application in Microsoft Entra ID. That is why the subscription must allow both, and why the Bot Service provider has to be registered first. You check it in the Azure portal under the subscription's **Resource providers**. Publishing and using are separate permissions, so a person who only chats with the agent does not need the publishing role. Test the agent in the Foundry playground beforehand; issues are easier to fix before publishing."
+ },
+ {
+  "id": "2.5.3-02",
+  "type": "order",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "teams"
+  ],
+  "question": "Put the steps for publishing an agent from the Microsoft Foundry portal to Teams and Microsoft 365 Copilot in order.",
+  "answer": "Pick agent → Publish to Teams and M365 Copilot → create Bot Service → metadata → scope → Prepare Agent.",
+  "explanation": "The portal walks you through it as a wizard. At the Bot Service step it automatically generates an **application ID** and a **tenant ID**; note them, because you need them for troubleshooting. You then choose **Create an Azure Bot Service** in the dropdown and wait until the resource exists in your subscription. Packaging after **Prepare Agent** typically takes 1–2 minutes.",
+  "items": [
+   "Select the agent in your Foundry project and review its configuration",
+   "Select **Publish**, then **Publish to Teams and Microsoft 365 Copilot**",
+   "In the **Azure Bot Service** dropdown, select **Create an Azure Bot Service**",
+   "Fill in the metadata (name, description, icons, publisher, privacy policy, terms of use)",
+   "Choose the publish scope (shared or organization)",
+   "Select **Prepare Agent** to build the package"
+  ]
+ },
+ {
+  "id": "2.5.3-03",
+  "type": "basic",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "teams"
+  ],
+  "question": "Name the **six** metadata fields you fill in when publishing a Microsoft Foundry agent to Teams and Microsoft 365 Copilot.",
+  "answer": "- **Name** — display name in the Teams store\n- **Description** — what the agent does\n- **Icons** — small and large PNG icons\n- **Publisher information** — organization name and contact details\n- **Privacy policy** — URL to the org's privacy policy\n- **Terms of use** — URL to the terms of service",
+  "explanation": "Gather these before you start, so the wizard does not stall. The icons have fixed sizes: the small one is **32x32** pixels, the large one **192x192** pixels, both PNG. Never put secrets, API keys or sensitive information into any of these fields — users who discover the agent in the store can see them."
+ },
+ {
+  "id": "2.5.3-05",
+  "type": "basic",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "approval"
+  ],
+  "question": "You published a Microsoft Foundry agent with **organization scope**. Where does a Microsoft 365 administrator approve it?",
+  "answer": "In the **Microsoft 365 admin center**: **Agents** > **All** > **Requested**, find the agent and select **Approve request and activate**.",
+  "explanation": "Organization scope makes the agent available tenant-wide, so it waits as a pending request until an administrator acts. As the publisher, you direct your Microsoft 365 administrator to the request in the admin center. Once approved, the agent appears under **Built by your org** in the Teams agent store for all users in the tenant. App policies in your organization still control which users can access it."
+ },
+ {
+  "id": "2.5.3-06",
+  "type": "basic",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "teams"
+  ],
+  "question": "After you select **Prepare Agent** while publishing a Microsoft Foundry agent to Teams, what **two** options do you have when the package is ready?",
+  "answer": "- **Download the package** — to test it yourself before distribution\n- **Continue the in-product publishing flow** — to distribute it directly",
+  "explanation": "The download is a `.zip` file. To test it, open Teams, go to **Apps** > **Manage your apps** > **Upload an app**, select **Upload a custom app** and choose the file. Teams installs it; you then send a test message and check that the agent responds, the content is accurate, response times are acceptable and configured tools work. Do this before broad distribution."
+ },
+ {
+  "id": "2.5.3-07",
+  "type": "mc",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-identity",
+   "rbac",
+   "agent-publishing"
+  ],
+  "question": "A Microsoft Foundry agent's Azure AI Search tool worked in the playground, but **fails after you publish** the agent to Teams. What fixes it?",
+  "answer": "Assign the needed **RBAC roles to the published agent's identity** on the Azure AI Search resource.",
+  "explanation": "Publishing creates a distinct agent identity. The permissions you had during development do not carry over to it, so every Azure resource a tool reaches — Azure AI Search, storage accounts, Cosmos DB — needs a role assignment for the new identity. You find the identity on the published agent in the Foundry portal and assign the roles in the Azure portal.",
+  "options": [
+   {
+    "text": "Assign RBAC roles on the search resource to the published agent's identity",
+    "correct": true,
+    "why": "The published agent runs under its own new identity, which has no permissions until you assign them."
+   },
+   {
+    "text": "Republish the agent with organization scope",
+    "correct": false,
+    "why": "Scope only controls distribution and approval; the identity still lacks permissions."
+   },
+   {
+    "text": "Register the Microsoft.BotService resource provider",
+    "correct": false,
+    "why": "The provider is needed to create the Bot Service during publishing, not for tool access to Azure AI Search."
+   },
+   {
+    "text": "Give the users the Azure AI User role",
+    "correct": false,
+    "why": "That role lets users invoke the agent; the tool calls the search resource as the agent's identity, not as the user."
+   }
+  ]
+ },
+ {
+  "id": "2.5.3-08",
+  "type": "basic",
+  "section": "2.5.3",
+  "exam_area": "plan",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/3-publish-agent-foundry-portal",
+  "tags": [
+   "agent-publishing",
+   "teams"
+  ],
+  "question": "You changed an agent in Microsoft Foundry that is already published to Teams. How do users get the new version?",
+  "answer": "**Republish**: test in the playground, repeat the publishing process to build a **new package**, then\n- **Shared scope** — upload the new package to Teams\n- **Organization scope** — may need **re-approval**, depending on org policy",
+  "explanation": "Changes in the Foundry portal do not flow into Teams on their own; what users see is the deployed package. So every change goes through the same publishing process again. Whether an organization-scope update needs another admin approval is set by your organization's policies, not by Foundry. Users get the updated version once the new package is deployed."
+ }
 ]

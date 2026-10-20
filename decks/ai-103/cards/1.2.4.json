@@ -30,7 +30,7 @@
     ],
     "question": "Name the **five** provisioned and batch deployment types in Microsoft Foundry and what each one gives you.",
     "answer": "- **Global Provisioned** — reserved **provisioned throughput units (PTUs)**, any region; predictable high throughput\n- **Data Zone Provisioned** — reserved PTUs within a data zone\n- **Regional Provisioned** — reserved PTUs within a single region\n- **Global Batch** — any region, 50 % discount, large asynchronous jobs within 24 hours\n- **Data Zone Batch** — large asynchronous batch jobs within a data zone",
-    "explanation": "Provisioned types reserve capacity in PTUs instead of charging per token. That reservation is what makes throughput predictable, so they suit steady, high-volume online traffic. Batch types are for big asynchronous jobs where no user waits for the answer, which is why they can be cheaper. The Global / Data Zone / Regional prefix works as for the Standard types: it only decides where data may go. Each model card lists the types that model supports.",
+    "explanation": "Provisioned types reserve capacity in PTUs instead of charging per token. That reservation is what makes throughput predictable, so they suit steady, high-volume traffic. Batch types are for big asynchronous jobs where no user waits for the answer. The Global / Data Zone / Regional prefix works as for the Standard types: it only decides where data may go. Each model card lists the types that model supports.",
     "addition": "Provisioned types also give lower and more consistent latency. Standard types are best effort: with high, steady volume their latency varies more.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
   },
@@ -45,9 +45,9 @@
       "deployment-types",
       "data-residency"
     ],
-    "question": "A Microsoft Foundry chat app must keep its data inside the **EU data zone** and should be billed **per token**. Which deployment type do you choose?",
+    "question": "A Microsoft Foundry chat app must keep its data inside the **EU data zone**, may use any region within that zone, and should be billed **per token**. Which deployment type do you choose?",
     "answer": "**Data Zone Standard**.",
-    "explanation": "Data Zone deployments keep data inside one data zone, such as the US, EU or APAC. *Standard* means pay-per-token billing. Global Standard offers the highest quota but may use any Azure region, so it breaks the compliance requirement.",
+    "explanation": "Data Zone deployments keep data inside one data zone, such as the US, EU or APAC. *Standard* means pay-per-token billing. Global Standard offers the highest quota but may use any Azure region, so it breaks the compliance requirement. Regional Standard would also keep data in the EU, but ties the deployment to a single region.",
     "addition": "For every deployment type, data stored at rest stays in the resource's Azure geography. The Global / Data Zone / Regional choice decides where prompts and responses are **processed** during inference.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types"
   },
@@ -63,7 +63,7 @@
       "data-residency",
       "throughput"
     ],
-    "question": "A Microsoft Foundry deployment must keep data inside the **EU data zone** and also guarantee **predictable high throughput** for an online app. Which deployment type do you choose?",
+    "question": "A Microsoft Foundry deployment must keep data inside the **EU data zone**, may use any region within that zone, and must also guarantee **predictable high throughput** for an online app. Which deployment type do you choose?",
     "answer": "**Data Zone Provisioned**.",
     "explanation": "Two requirements, two halves of the name: *Data Zone* keeps data in the zone (US, EU or APAC), *Provisioned* reserves PTUs for predictable throughput. Each of the other types meets only one of the two requirements.",
     "options": [
@@ -141,7 +141,7 @@
     ],
     "question": "Put the steps of deploying a model from the **Microsoft Foundry portal** in order.",
     "answer": "Model card in the **model catalog** (**Discover > Models**) → Deploy (default or custom) → **Agree and Proceed** to Marketplace terms if needed → name and type → Deploy, then the playground.",
-    "explanation": "The model card shows the model's specifications and the deployment types it supports. The Marketplace step appears only for models that need an Azure Marketplace subscription, common for partner and community models. Models sold directly by Azure, such as GPT-4o-mini, are billed without it. When the deployment completes, the portal opens the playground, and the deployment list should show the status **Succeeded**.",
+    "explanation": "The model card shows the model's specifications and the deployment types it supports. The Marketplace step appears only for models that need an Azure Marketplace subscription, common for partner and community models. Models sold directly by Azure, such as GPT-4o-mini, don't need it. When the deployment completes, the portal opens the playground, and the deployment list should show the status **Succeeded**.",
     "items": [
       "Open the model card in the model catalog via Discover > Models",
       "Select Deploy and choose default or custom settings",

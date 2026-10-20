@@ -6,10 +6,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/2-why-use-custom-tools",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "Name the **three** benefits that custom tools bring to an agent in Microsoft Foundry Agent Service.",
     "answer": "- **Enhanced productivity** — automate repetitive tasks and streamline workflows\n- **Improved accuracy** — precise, consistent outputs with less human error\n- **Tailored solutions** — address specific business needs and optimize processes",
-    "explanation": "Each benefit answers a different problem. Productivity is about time: the agent takes over repetitive steps that are specific to your use case. Accuracy is about reliability: a tool returns the same precise result every time instead of a person doing it by hand. Tailored solutions are about fit: the tool connects the agent to your own business processes, which a general model cannot know."
+    "explanation": "Each benefit answers a different problem. Productivity is about time: the agent takes over repetitive steps and workflows that are specific to your use case. Accuracy is about reliability: a tool returns precise, consistent output, so fewer errors creep in than when a person does the step by hand. Tailored solutions are about fit: the tool connects the agent to your own business processes and optimizes them."
   },
   {
     "id": "2.2.2-02",
@@ -18,10 +21,13 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/2-why-use-custom-tools",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "Microsoft Foundry Agent Service already has built-in tools. When do you give an agent a **custom tool** instead, and what is it based on?",
     "answer": "When the agent must complete **specific tasks or actions** that the AI model would struggle with on its own. A **custom tool** is based on **your own code** or a **third-party service or API**.",
-    "explanation": "The built-in tools cover gathering knowledge and generating code. Business actions such as looking up a customer's orders or fetching live weather data need access to systems the model cannot reach. Adding a custom tool makes that functionality available, and the agent uses it depending on how it decides to respond to the user's prompt."
+    "explanation": "The built-in tools cover gathering knowledge and generating code. Business actions such as looking up a customer's orders or fetching live weather data from a meteorological service are tasks of this kind. Adding a custom tool makes that functionality available to the agent, and the agent uses it depending on how it decides to respond to the user's prompt."
   },
   {
     "id": "2.2.2-03",
@@ -30,12 +36,18 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/2-why-use-custom-tools",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "A Foundry agent has a custom tool that calls an external meteorological API. Put the steps of answering a weather question in order.",
     "answer": "User asks → agent decides to call the tool → tool returns the report → agent answers.",
-    "explanation": "The key step is the second one: the agent itself recognises that the question needs data it can get through the tool, and calls it. Your code does not call the tool explicitly. Only after the tool returns the weather report does the agent formulate its answer to the user.",
+    "explanation": "The key step is the second one: the agent itself recognises that the question needs data it can get through the tool, and calls it. A tool only makes functionality available; whether it is used depends on how the agent decides to respond to the prompt. Only after the tool returns the weather report does the agent formulate its answer to the user.",
     "explanation_images": [
-      {"src": "media/ai-103/2.2.2-agent-tool-flow.png", "alt": "1: user asks about weather at a ski resort; 2: the agent calls a custom tool that talks to a meteorological service; 3: the agent replies with the weather"}
+      {
+        "src": "media/ai-103/2.2.2-agent-tool-flow.png",
+        "alt": "1: user asks about weather at a ski resort; 2: the agent calls a custom tool that talks to a meteorological service; 3: the agent replies with the weather"
+      }
     ],
     "items": [
       "A user asks the agent about the weather at a ski resort",
@@ -51,7 +63,10 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/2-why-use-custom-tools",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "Name the **five** common custom-tool scenarios for Foundry agents and the system each tool connects the agent to.",
     "answer": "- **Customer support automation** — CRM system\n- **Inventory management** — inventory management system\n- **Healthcare appointment scheduling** — scheduling tool with patient records\n- **IT helpdesk support** — ticketing and knowledge base systems\n- **E-learning and training** — learning management system (LMS)",
     "explanation": "The pattern is the same each time: the custom tool links the agent to a system of record, and the agent then acts on it. Support agents retrieve order histories, process refunds and report shipping status. Inventory agents check stock, predict restocking and order from suppliers. Scheduling agents suggest slots and send reminders. Helpdesk agents troubleshoot, escalate and track tickets. E-learning agents recommend courses and track progress."
@@ -63,15 +78,34 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/2-why-use-custom-tools",
-    "tags": ["agents", "custom-tools"],
+    "tags": [
+      "agents",
+      "custom-tools"
+    ],
     "question": "A retailer wants its Microsoft Foundry agent to retrieve customers' order histories, process refunds and give real-time shipping updates. What should you add to the agent?",
     "answer": "A **custom tool** that connects the agent to the company's **CRM system**.",
     "explanation": "Order histories, refunds and shipping states live in the retailer's own CRM, and refunds are actions, not just answers. Only a tool that reaches into that system lets the agent read live data and act on it. The course names the outcome: faster resolution of customer queries, less work for the support team and higher customer satisfaction.",
     "options": [
-      {"text": "A custom tool that connects the agent to the CRM system", "correct": true, "why": "The tool gives the agent live access to orders and lets it act, such as processing a refund."},
-      {"text": "The built-in code interpreter tool", "correct": false, "why": "Code interpreter runs generated code in a sandbox; it has no access to the retailer's CRM."},
-      {"text": "A model fine-tuned on past order data", "correct": false, "why": "Fine-tuning changes how the model responds but gives it neither real-time data nor the ability to process refunds."},
-      {"text": "Order details pasted into the agent's instructions", "correct": false, "why": "Instructions are static text; they cannot hold live shipping status or execute a refund."}
+      {
+        "text": "A custom tool that connects the agent to the CRM system",
+        "correct": true,
+        "why": "The tool gives the agent live access to orders and lets it act, such as processing a refund."
+      },
+      {
+        "text": "The built-in code interpreter tool",
+        "correct": false,
+        "why": "Code interpreter runs generated code in a sandbox; it has no access to the retailer's CRM."
+      },
+      {
+        "text": "A model fine-tuned on past order data",
+        "correct": false,
+        "why": "Fine-tuning changes how the model responds but gives it neither real-time data nor the ability to process refunds."
+      },
+      {
+        "text": "Order details pasted into the agent's instructions",
+        "correct": false,
+        "why": "Instructions are static text; they cannot hold live shipping status or execute a refund."
+      }
     ]
   }
 ]

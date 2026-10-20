@@ -6,12 +6,18 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/2-understand-workflows",
-    "tags": ["workflows", "orchestration"],
+    "tags": [
+      "workflows",
+      "orchestration"
+    ],
     "question": "What is a **workflow** in Microsoft Foundry, and what is it built from?",
     "answer": "- A **visual, declarative** way to orchestrate AI-driven actions without writing code\n- Built from **connected nodes**, each with one function: invoke an agent, evaluate a condition, manage data or talk to the user\n- The platform manages **execution and state**",
-    "explanation": "You describe what should happen and when; Foundry runs the steps and keeps track of state. The arranged nodes form the execution path, so they decide how a request moves through the system and where decisions are made. That fits business processes that mix AI reasoning, logic and user interaction. The example shows two agents, Set variable nodes and an If/Else that ends, sends a message or loops back with Go to.",
+    "explanation": "You describe what should happen and when; Foundry runs the steps and keeps track of state. The arranged nodes form the execution path, so they decide how a request moves through the system and where decisions are made. That fits business processes that mix AI reasoning, logic and user interaction. The screenshot shows a group chat workflow: two agents, Set variable nodes, and an If/Else that ends the run, sends a message or loops back with Go to.",
     "explanation_images": [
-      {"src": "media/ai-103/2.6.2-group-chat-workflow.png", "alt": "Group chat workflow in the Foundry designer: Start, Set variable, student-agent, teacher-agent, Set variable, If/Else condition branching to End, Send message, or Go to back to the student agent"}
+      {
+        "src": "media/ai-103/2.6.2-group-chat-workflow.png",
+        "alt": "Group chat workflow in the Foundry designer: Start, Set variable, student-agent, teacher-agent, Set variable, If/Else condition branching to End, Send message, or Go to back to the student agent"
+      }
     ]
   },
   {
@@ -21,15 +27,35 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/2-understand-workflows",
-    "tags": ["workflows", "multi-agent", "human-in-the-loop"],
+    "tags": [
+      "workflows",
+      "multi-agent",
+      "human-in-the-loop"
+    ],
     "question": "A single support agent in Microsoft Foundry handles complex, ambiguous tickets poorly. You want separate agents for classification, decision-making and resolution, and a person must be asked when the agents' confidence is low. What do you build?",
     "answer": "A **workflow** that orchestrates the specialized agents and can pause for human input or escalate.",
     "explanation": "Single-agent solutions often struggle with complex or ambiguous tasks. A workflow combines agents with different responsibilities into one process, which makes the automation more robust and scalable. Workflows also balance automation with oversight: when confidence is low or context is missing, they pause, request human input or escalate the decision. Real systems need reliability and control as much as efficiency.",
     "options": [
-      {"text": "A workflow that chains the specialized agents and pauses for human input or escalation", "correct": true, "why": "Workflows coordinate multiple agents and support pausing, human input and escalation when confidence is low."},
-      {"text": "One agent with longer instructions and more tools", "correct": false, "why": "It stays a single agent, which is exactly what struggles with complex, ambiguous tasks, and it has no built-in pause for a person."},
-      {"text": "A guardrail configured on the existing agent", "correct": false, "why": "Guardrails restrict what one agent may say or do; they do not split work across agents or route a case to a human."},
-      {"text": "A knowledge base attached to the existing agent", "correct": false, "why": "A knowledge base gives the agent more grounding data; it does not coordinate several agents or escalate low-confidence cases."}
+      {
+        "text": "A workflow that chains the specialized agents and pauses for human input or escalation",
+        "correct": true,
+        "why": "Workflows coordinate multiple agents and support pausing, human input and escalation when confidence is low."
+      },
+      {
+        "text": "One agent with longer instructions and more tools",
+        "correct": false,
+        "why": "It stays a single agent, the setup that struggles with complex, ambiguous tasks, and it adds no step that pauses the process for a person."
+      },
+      {
+        "text": "A guardrail configured on the existing agent",
+        "correct": false,
+        "why": "Guardrails restrict what one agent may say or do; they do not split work across agents or route a case to a human."
+      },
+      {
+        "text": "A knowledge base attached to the existing agent",
+        "correct": false,
+        "why": "A knowledge base gives the agent more grounding data; it does not coordinate several agents or escalate low-confidence cases."
+      }
     ]
   }
 ]

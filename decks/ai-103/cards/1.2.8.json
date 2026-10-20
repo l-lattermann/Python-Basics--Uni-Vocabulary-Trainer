@@ -43,7 +43,7 @@
     "tags": ["evaluation", "metrics"],
     "question": "Which evaluation metric measures linguistic correctness and natural language quality?",
     "answer": "**Fluency**.",
-    "explanation": "Fluency is one of the generation quality metrics in Microsoft Foundry automated evaluation, next to groundedness, relevance and coherence. It judges how well the text is written. It does not judge whether the content is true or on topic.",
+    "explanation": "Fluency is one of the generation quality metrics in Microsoft Foundry automated evaluation, next to groundedness, relevance and coherence. It judges how well the text is written. Whether the content rests on the provided context or addresses the question is checked by groundedness and relevance, not by fluency.",
     "options": [
       {"text": "Fluency", "correct": true, "why": "Fluency evaluates linguistic correctness and natural language quality (unit 1.2.5, Evaluate model performance)."},
       {"text": "Groundedness", "correct": false, "why": "Groundedness checks whether a response is based on the provided context rather than speculation (unit 1.2.5, Evaluate model performance)."},

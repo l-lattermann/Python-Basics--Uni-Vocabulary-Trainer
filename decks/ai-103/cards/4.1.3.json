@@ -119,9 +119,9 @@
       "responses-api",
       "multimodal"
     ],
-    "question": "Your app uses the Azure OpenAI endpoint to send image prompts to **Phi-4-multimodal-instruct**, a model that does not support the Responses API. Which API and Python method do you use?",
+    "question": "Your app uses the Azure OpenAI endpoint of Microsoft Foundry to send image prompts to a multimodal model that does **not** support the Responses API. Which API and Python method do you use?",
     "answer": "The **ChatCompletions API**: `client.chat.completions.create(model=..., messages=[...])`.",
-    "explanation": "The Responses API, called with `client.responses.create`, is the one used with gpt-4.1. When a model on the Azure OpenAI endpoint doesn't support it, ChatCompletions is the fallback. The vision technique stays the same: a multi-part user message with a text item and an image item, given as a web URL or a Base64 data URL. Only the parameter names, the content item types and the way you read the reply differ."
+    "explanation": "The Responses API, called with `client.responses.create`, is the default for models that support it, such as gpt-4.1. When a model on the Azure OpenAI endpoint doesn't, ChatCompletions is the fallback; Phi-4-multimodal-instruct is the typical example. The vision technique stays the same: a multi-part user message with a text item and an image item, given as a web URL or a Base64 data URL. Only the call, the instruction role, the content items and the way you read the reply differ."
   },
   {
     "id": "4.1.3-06",
@@ -136,7 +136,7 @@
       "sdk"
     ],
     "question": "Name the **four** places where a vision prompt in Python differs between the **Responses API** and the **ChatCompletions API**.",
-    "answer": "- **Call** — `client.responses.create(input=[...])` vs. `client.chat.completions.create(messages=[...])`\n- **Instruction role** — `developer` vs. `system`\n- **Content item types** — `input_text` / `input_image` vs. `text` / `image_url`\n- **Reply** — `response.output_text` vs. `response.choices[0].message.content`",
-    "explanation": "Everything else is shared. The image file is read and Base64-encoded the same way, the data URL has the same format, and the user message is multi-part in both. One more detail sits inside the image item: Responses takes `image_url` as a plain string, ChatCompletions as an object with a `url` key. The course pairs them with models: the Responses example sends gpt-4.1 a `developer` message, the ChatCompletions example sends Phi-4-multimodal-instruct a `system` message."
+    "answer": "- **Call** — `client.responses.create(input=[...])` vs. `client.chat.completions.create(messages=[...])`\n- **Instruction role** — `developer` vs. `system`\n- **Content items** — `input_text` / `input_image` with `image_url` as a string vs. `text` / `image_url` with `{\"url\": ...}`\n- **Reply** — `response.output_text` vs. `response.choices[0].message.content`",
+    "explanation": "Everything else is shared. The image file is read and Base64-encoded the same way, the data URL has the same format, and the user message is multi-part in both. The most common slip sits inside the image item: Responses takes the URL directly, ChatCompletions nests it in an object. The course pairs the APIs with models: the Responses example sends gpt-4.1 a `developer` message, the ChatCompletions example sends Phi-4-multimodal-instruct a `system` message."
   }
 ]

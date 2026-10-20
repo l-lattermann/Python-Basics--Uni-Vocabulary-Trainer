@@ -66,8 +66,8 @@
     ],
     "question": "In an OpenAI SDK `images.generate` call to an image model in Microsoft Foundry, what does each of the parameters `model`, `prompt`, `n` and `size` control?",
     "answer": "- **`model`** — which deployed image model handles the request\n- **`prompt`** — the natural-language description of the image\n- **`n`** — how many images to generate\n- **`size`** — the resolution, e.g. `\"1024x1024\"`",
-    "explanation": "These are the same choices you make in the Foundry model playground: pick the model, type a description and set the resolution. The code just makes them explicit. The prompt is the creative input; the model produces an original image from it rather than retrieving one from a catalog. Which sizes are valid depends on the model.",
-    "addition": "`n` accepts 1–10 images per call, default 1. GPT-image-1 series models accept only `1024x1024`, `1024x1536` or `1536x1024`; square images generate fastest. Set `model` to your deployment name.",
+    "explanation": "These are the choices you also make in the Foundry model playground: pick the model, type a description and set the resolution. In code they become explicit arguments. Like the playground, `size` only takes what the model supports. The module's exercise passes the deployment name from its `.env` file as `model`, sends the user's input as `prompt` and leaves `size` out.",
+    "addition": "`n` is the number of images per request: 1–10, default 1. GPT-image-1 series models accept only `1024x1024`, `1024x1536` or `1536x1024`; square images generate fastest.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e"
   }
 ]

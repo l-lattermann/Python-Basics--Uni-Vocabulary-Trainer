@@ -6,16 +6,40 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "agents", "tools"],
+    "tags": [
+      "mcp",
+      "agents",
+      "tools"
+    ],
     "question": "You connect an agent in **Microsoft Foundry Agent Service** to a remote MCP server with the built-in **MCP tool** (`MCPTool`) instead of your own MCP client. Which **three** steps do you no longer have to write yourself?",
     "answer": "No **MCP client session**, no **function-tool wrappers** (`FunctionTool`) and no **`session.call_tool`** calls: the Agent Service handles all three.",
     "explanation": "In a self-built integration your client opens a session, lists the server's tools, wraps each one in an async function and registers them as a `FunctionTool`. With the Agent Service you create one MCP tool object that points at the server and add it to the agent. The server's tools are then invoked automatically when needed during the agent run, and their results appear in the response.",
     "options": [
-      {"text": "Open an MCP client session to the server", "correct": true, "why": "The Agent Service connects to the MCP server for you; you only create the MCP tool object."},
-      {"text": "Wrap each server tool in an async function and bundle them into a `FunctionTool`", "correct": true, "why": "No function tools are added to the agent; the MCP tool object takes their place."},
-      {"text": "Invoke the server's tools with `session.call_tool`", "correct": true, "why": "Tools are invoked automatically when necessary during the agent run."},
-      {"text": "Give the server's address as `server_url`", "correct": false, "why": "The MCP tool still needs the server's URL to know where to connect."},
-      {"text": "Add the MCP tool object to the agent's tools list", "correct": false, "why": "The agent can only use the MCP tool once it is in its tools list."}
+      {
+        "text": "Open an MCP client session to the server",
+        "correct": true,
+        "why": "The Agent Service connects to the MCP server for you; you only create the MCP tool object."
+      },
+      {
+        "text": "Wrap each server tool in an async function and bundle them into a `FunctionTool`",
+        "correct": true,
+        "why": "No function tools are added to the agent; the MCP tool object takes their place."
+      },
+      {
+        "text": "Invoke the server's tools with `session.call_tool`",
+        "correct": true,
+        "why": "Tools are invoked automatically when necessary during the agent run."
+      },
+      {
+        "text": "Give the server's address as `server_url`",
+        "correct": false,
+        "why": "The MCP tool still needs the server's URL to know where to connect."
+      },
+      {
+        "text": "Add the MCP tool object to the agent's tools list",
+        "correct": false,
+        "why": "The agent can only use the MCP tool once it is in its tools list."
+      }
     ]
   },
   {
@@ -25,7 +49,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "agents", "tools"],
+    "tags": [
+      "mcp",
+      "agents",
+      "tools"
+    ],
     "question": "What **two** things do you need to connect an agent in **Microsoft Foundry Agent Service** to a remote **MCP server**, and how do you connect one agent to **several** MCP servers?",
     "answer": "- A **remote MCP server endpoint** (e.g. `https://api.githubcopilot.com/mcp/`)\n- A Foundry agent configured to use the **MCP tool**\n- Several servers: add each one to the agent as a **separate `MCPTool`**",
     "explanation": "The Agent Service supports remote MCP servers: the server runs elsewhere and the agent reaches it by its URL. The server supplies tools and contextual data that extend the agent beyond its built-in functions. Because every server is its own tool object with its own unique label, one agent can combine tools from different servers, depending on what the task needs."
@@ -37,7 +65,11 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "tools", "sdk"],
+    "tags": [
+      "mcp",
+      "tools",
+      "sdk"
+    ],
     "question": "Name the **four** parameters of an `MCPTool` that connects an agent in **Microsoft Foundry Agent Service** to an MCP server.",
     "answer": "- **`server_label`** — unique identifier for the server (e.g. `GitHub`)\n- **`server_url`** — the server's URL\n- **`allowed_tools`** (optional) — list of the tools the agent may access\n- **`require_approval`** (optional) — whether tool calls need human approval first",
     "explanation": "The first two are always needed: the label tells the server apart from other MCP tools on the same agent, the URL says where to connect. The two optional ones limit risk. `allowed_tools` restricts the agent to specific tools of a server that exposes more than it needs. `require_approval` makes the agent pause and wait for approval before it invokes any tool on that server.",
@@ -51,11 +83,15 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "approval", "agents"],
+    "tags": [
+      "mcp",
+      "approval",
+      "agents"
+    ],
     "question": "An agent in **Microsoft Foundry Agent Service** calls tools on an MCP server. Which values does the MCP tool's `require_approval` take, which is the default, and how do you approve a pending tool call?",
     "answer": "- **`always`** (default) — a developer approves every call\n- **`never`** — no approval needed\n- A call waiting for approval returns an **`mcp_approval_request`**\n- Approve with a follow-up **`mcp_approval_response`**: `approval_request_id` + `approve` boolean",
-    "explanation": "Leaving the setting out is the safe choice: every tool call waits for a human. The approval request says which tool the model is trying to invoke, so you can decide whether to let it run. Your follow-up message names the request it answers by its ID and says yes or no with the boolean. With `never`, tools run without pausing and their results appear directly in the agent's response.",
-    "addition": "The course also calls `require_approval` a boolean; it is a string (`always`/`never`). It also accepts a per-tool form: `{\"never\": [\"tool_a\"]}` or `{\"always\": [\"tool_b\"]}`.",
+    "explanation": "If you leave the setting out, you get `always`: every tool call waits for a developer's approval. The approval request says which tool the model is trying to invoke, so you can decide whether to let it run. Your follow-up message names the request it answers by its ID and says yes or no with the boolean. With `never`, tools run without pausing and their results appear directly in the agent's response.",
+    "addition": "The course's parameter list calls `require_approval` a boolean; it actually takes `\"always\"` or `\"never\"`, or a per-tool form: `{\"never\": [\"tool_a\"]}` (these tools skip approval) or `{\"always\": [\"tool_b\"]}` (these tools need it).",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/model-context-protocol"
   },
   {
@@ -65,10 +101,14 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "authentication", "tools"],
+    "tags": [
+      "mcp",
+      "authentication",
+      "tools"
+    ],
     "question": "A remote MCP server requires an **API key or OAuth token**. How does the `MCPTool` of an agent in **Microsoft Foundry Agent Service** pass it to the server?",
     "answer": "As **custom headers** on the MCP tool, applied with **`update_headers`**: authentication keys (API keys, OAuth tokens) and any other headers the server requires.",
-    "explanation": "With the Agent Service you write no MCP client session of your own, so there is no place in your code to attach credentials to the connection. They go onto the MCP tool object instead: you create the tool, apply the headers with `update_headers`, and only then add the tool to the agent. The same mechanism carries headers the server needs for reasons other than authentication.",
+    "explanation": "Custom headers carry what a server needs beyond its URL: authentication keys such as API keys or OAuth tokens, and any other headers it requires. They belong to the MCP tool object, not to the agent or to a client session of your own: you create the `MCPTool`, apply the headers with `update_headers`, and only then add the tool to the agent's tools list.",
     "addition": "Current docs recommend storing API keys or bearer tokens in a Foundry **project connection** and referencing it with the MCP tool's `project_connection_id`, instead of hard-coding credentials in your app.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/model-context-protocol"
   },
@@ -79,16 +119,20 @@
     "exam_area": "genai",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/4-use-azure-ai-agents-with-mcp",
-    "tags": ["mcp", "agents", "sdk"],
+    "tags": [
+      "mcp",
+      "agents",
+      "sdk"
+    ],
     "question": "Put the steps for letting an agent in **Microsoft Foundry Agent Service** invoke a remote MCP server's tools automatically in order.",
-    "answer": "Create `MCPTool` → `update_headers` → set `require_approval` → add the tool to an agent → invoke a prompt.",
-    "explanation": "Everything about the server is configured on the tool object before any agent sees it: where the server is, which headers it needs, and whether calls need approval. Only then is the tool added to the agent's tools list. When you invoke a prompt, the agent calls the server's tools as needed and the results appear in the response; with approval required, you first get an approval request instead.",
+    "answer": "Create `MCPTool` → apply headers and set `require_approval` → add the tool to an agent → invoke a prompt → answer any approval request.",
+    "explanation": "Everything about the server is configured on the tool object before any agent sees it: where the server is, which headers it needs, and whether calls need approval. Only then is the tool added to the agent's tools list. When you invoke a prompt, the agent calls the server's tools as needed and the results appear in the response. With approval required, an `mcp_approval_request` comes back first, and the tool runs only after your `mcp_approval_response`.",
     "items": [
       "Create the `MCPTool` object with the server label and URL",
-      "Apply the headers the server requires with `update_headers`",
-      "Set `require_approval` to `always` or `never`",
+      "Apply the server's headers with `update_headers` and set `require_approval`",
       "Create an agent and add the `MCPTool` to its tools list",
-      "Invoke a prompt and read the tool results in the agent's response"
+      "Invoke a prompt on the agent",
+      "Answer any `mcp_approval_request` with an `mcp_approval_response` and read the tool results in the response"
     ]
   }
 ]

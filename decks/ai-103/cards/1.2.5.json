@@ -26,7 +26,7 @@
     ],
     "question": "How do **manual** and **automated** evaluation of a generative AI model in Microsoft Foundry differ?",
     "answer": "- **Manual evaluation** — human reviewers; time-intensive; captures subjective aspects such as user satisfaction, contextual appropriateness and brand alignment\n- **Automated evaluation** — standard metrics; scales efficiently with consistent, objective measurements",
-    "explanation": "Neither replaces the other. Automated metrics score thousands of responses the same way every time, but they can't judge whether a reply fits the brand or the situation. Human review catches exactly that, at the cost of time. Combining manual testing, automated metrics and comprehensive evaluation flows builds confidence that the model performs well and serves users safely."
+    "explanation": "Neither replaces the other. Automated metrics score any number of responses the same way every time, but they can't judge whether a reply fits the brand or the situation. Human review catches exactly that, at the cost of time. Combining manual testing, automated metrics and comprehensive evaluation flows builds confidence that the model performs well and serves users safely."
   },
   {
     "id": "1.2.5-49",
@@ -95,7 +95,7 @@
     ],
     "question": "Name the **six** risk and safety metrics a Microsoft Foundry evaluation uses to identify potentially harmful content.",
     "answer": "- **Self-harm content** — discussing or encouraging self-harm\n- **Hateful and unfair content** — bias, discrimination, hateful statements\n- **Violent content** — containing or promoting violence\n- **Sexual content** — inappropriate sexual content\n- **Protected material** — reproduced copyright or proprietary content\n- **Indirect attack (jailbreak)** — vulnerability to manipulation attempts",
-    "explanation": "The first four are content harm metrics: each reports a defect rate, the share of responses above a severity threshold. Protected material and indirect attack count true instances out of all instances instead. Indirect attack is the odd one out: it measures how easily the model is manipulated, not harmful content itself. Concerning results call for content filters, prompt hardening or output validation.",
+    "explanation": "The first four are content harm metrics, judged by severity: their defect rate is the share of responses above a severity threshold. Protected material and indirect attack are found or not found, so their defect rate is the share of true instances. Indirect attack is the odd one out: it measures how easily the model is manipulated, not harmful content itself. Concerning results call for content filters, prompt hardening or output validation.",
     "addition": "Current docs call it Indirect Attack (XPIA, cross-domain prompt injection): the jailbreak is hidden in a document or other context the model reads, not typed in by the user. It is available for model evaluation only, not for agents.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
   },
@@ -168,7 +168,7 @@
     ],
     "question": "Which Microsoft Foundry portal feature runs systematic evaluations with test datasets and several metrics at once, and which **three** bases can such an evaluation have?",
     "answer": "**Evaluation**:\n- **Model** — a deployed model answers your prompts; outputs are generated during the evaluation\n- **Agent** — an agent's responses to user-defined prompts\n- **Dataset** — pre-generated outputs already in the test dataset",
-    "explanation": "Model and Agent need a dataset that supplies the inputs, and for a model you also set its system prompt. Dataset is the case where your file already holds prompts and the responses your app generated: nothing is generated, only the scoring runs. The job runs asynchronously, processing each row against the selected metrics, and the results show aggregate scores plus the details of each test prompt."
+    "explanation": "Model and Agent need a dataset that supplies the inputs, and you configure the metrics, the field mappings for the data and, for a model, its system prompt. Dataset is the case where your file already holds prompts and the responses your app generated: nothing is generated, only the scoring runs. The job runs asynchronously, processing each row against the selected metrics, and the results show aggregate scores plus the details of each test prompt."
   },
   {
     "id": "1.2.5-55",
@@ -183,7 +183,7 @@
     ],
     "question": "Name the **three** options for supplying test data when you evaluate a model or agent in the Microsoft Foundry **Evaluation** feature.",
     "answer": "- **Upload new dataset** — a **CSV or JSONL** file from local storage\n- **Use existing dataset** — one previously uploaded to the project\n- **Generate synthetic dataset** — sample data created from a topic description",
-    "explanation": "Use existing dataset lets you evaluate a new model against last month's data without uploading it again. Synthetic generation is the way out when you lack test data: you specify the resource that generates the data, the number of rows and a prompt describing it, and can upload files to make it more relevant to your task."
+    "explanation": "Use existing dataset reuses data already uploaded to the project, so a second model can be scored on the same test cases. Synthetic generation is the way out when you lack test data: you specify the resource that generates the data, the number of rows and a prompt describing it, and can upload files to make it more relevant to your task."
   },
   {
     "id": "1.2.5-12",

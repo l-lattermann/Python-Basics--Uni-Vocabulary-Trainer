@@ -42,7 +42,7 @@
     ],
     "question": "Put the steps of testing a deployed Sora 2 model in the **Video playground** of the Microsoft Foundry portal in order.",
     "answer": "Open the deployed model → Playground tab → prompt → settings → Generate.",
-    "explanation": "The playground is the no-code way to try prompts and settings before writing an app. Generation usually takes 1 to 5 minutes depending on the settings, and the finished video then appears on the page. Resolution and duration set here are the same `size` and `seconds` values the API takes.",
+    "explanation": "The Video playground lets you test a deployed Sora 2 model by hand before you write an application. Generation usually takes 1 to 5 minutes depending on the settings, and the finished video then appears on the page. The resolution and duration you set here correspond to the `size` and `seconds` parameters of the API.",
     "items": [
       "Navigate to your deployed Sora 2 model in the Foundry portal",
       "Select the **Playground** tab",
@@ -85,7 +85,7 @@
     ],
     "question": "You submit a prompt to a Sora 2 deployment in Microsoft Foundry and the service recognizes it as harmful content. What happens?",
     "answer": "**No video is returned** — the content generation APIs include a **content moderation filter** that blocks it.",
-    "explanation": "The filter is part of the content generation APIs, so it applies whether you generate in the Video playground or from code. It checks the prompt you submit: when Azure OpenAI recognizes it as harmful content, the request yields no generated video at all, not a weakened one. Only prompts that pass moderation produce a video."
+    "explanation": "The filter is built into the content generation APIs, not added by your application. Azure OpenAI checks the prompt you submit; when it recognizes the prompt as harmful content, the request returns no generated video. So a request can be correctly formed and still produce nothing, because the prompt itself was rejected."
   },
   {
     "id": "4.3.3-06",
@@ -146,11 +146,6 @@
         "text": "The quoted line \"I still remember when I was young.\"",
         "correct": false,
         "why": "The dialogue gives the model words to sync with the character, not a visual style."
-      },
-      {
-        "text": "The word \"interview\" alone",
-        "correct": false,
-        "why": "Without the documentary style cue it names a situation, not a camera, lighting or color choice."
       }
     ]
   },

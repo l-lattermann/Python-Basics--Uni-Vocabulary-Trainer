@@ -27,8 +27,8 @@
       "agents"
     ],
     "question": "Name the **three** advantages the **Model Context Protocol (MCP)** gives AI agents over integrating each API directly.",
-    "answer": "- **Dynamic Tool Discovery** — the agent automatically receives the list of available tools and their descriptions from a server\n- **Interoperability Across LLMs** — works with different LLMs, so you can switch or evaluate core models without reworking integrations\n- **Standardized Security** — one consistent authentication method across multiple MCP servers",
-    "explanation": "Traditional APIs often need manual coding for each integration and another update whenever the API changes. MCP replaces that with an **\"integrate once\"** approach, which improves adaptability and reduces maintenance. Standardized security means you no longer manage separate keys or authentication protocols for each API, which makes agent deployments easier to scale."
+    "answer": "- **Dynamic Tool Discovery** — the agent automatically receives the available tools and their descriptions from a server: **\"integrate once\"**\n- **Interoperability Across LLMs** — switch or evaluate core models without reworking integrations\n- **Standardized Security** — one consistent authentication method across multiple MCP servers",
+    "explanation": "Traditional APIs often need manual coding for each integration and another update whenever the API changes. With MCP you integrate once, which improves adaptability and reduces maintenance. Because MCP works with different large language models, the tool integrations do not tie you to one model. Standardized security means you no longer manage separate keys or authentication protocols for each API, which makes agent deployments easier to scale."
   },
   {
     "id": "2.3.2-03",
@@ -97,7 +97,7 @@
     ],
     "question": "On a Python **MCP server**, how do you expose a function as a tool that MCP clients can discover, and what is a tool in MCP?",
     "answer": "- Decorate the function with **`@mcp.tool`**\n- A **tool** is an MCP primitive type that lets a server expose executable functionality to clients",
-    "explanation": "Every function decorated with `@mcp.tool` becomes part of the server's catalog. A client that connects to the server fetches these tools dynamically and generates function wrappers that are added to the agent's tool definitions. Adding a decorated function on the server therefore adds a tool without touching the agent, which is what makes tools usable for actions beyond language generation."
+    "explanation": "Every function decorated with `@mcp.tool` becomes part of the server's catalog. A client that connects to the server fetches these tools dynamically and generates function wrappers that are added to the agent's tool definitions. Adding a decorated function on the server therefore adds a tool without touching the agent. Tools are what let an agent perform actions that go beyond language generation."
   },
   {
     "id": "2.3.2-06",
@@ -125,7 +125,7 @@
       "mcp",
       "agents"
     ],
-    "question": "Several teams build agents that call the same internal tools. The architect wants each agent to stay simple and **focus on delegating work** rather than managing tool details, so the tools live on an MCP server. Which benefit of dynamic tool discovery does this describe?",
+    "question": "An architect wants every AI agent to stay simple and **focus on delegating work**, leaving the details of each tool to an MCP server that the agents discover at runtime. Which benefit of dynamic tool discovery with MCP does this describe?",
     "answer": "**Modularity**.",
     "explanation": "Modularity is the benefit about the agent's own shape: it delegates to tools and leaves their details to the MCP server. The neighbouring benefits are about other things — growth without redeploying (Scalability), one place for fixes (Maintainability) and many tool types (Flexibility).",
     "options": [

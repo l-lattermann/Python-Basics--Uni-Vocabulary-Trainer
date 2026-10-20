@@ -6,9 +6,13 @@
     "exam_area": "text",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/04-azure-speech.html",
-    "tags": ["azure-speech", "foundry-portal", "python-sdk"],
-    "question": "You build a Python voice-mail app with **Azure Speech in Foundry Tools** that records a spoken greeting and transcribes voice messages. Put the steps in order, from the Microsoft Foundry portal to the running app.",
-    "answer": "**Foundry project** (Advanced options: **Foundry resource**, **Subscription**, **Resource group**, **Region**) → clone the lab, **Venv** and `pip install -r requirements.txt` → set the **endpoint** in `.env` → add Speech SDK code → `az login` → `python voice-mail.py`.",
+    "tags": [
+      "azure-speech",
+      "foundry-portal",
+      "python-sdk"
+    ],
+    "question": "You build a Python voice-mail app with **Azure Speech in Foundry Tools** that records a spoken greeting and transcribes voice messages. Put the lab steps in order, from the Microsoft Foundry portal to the clean-up.",
+    "answer": "**Foundry project** (Advanced options: **Foundry resource**, **Subscription**, **Resource group**, **Region**) → clone the lab, **Venv**, `pip install -r requirements.txt` → **endpoint** in `.env` → Speech SDK code → `az login`, `python voice-mail.py` → **Delete resource group**.",
     "explanation": "The lab folder holds **messages** (recorded audio), **.env** (configuration), **requirements.txt** (packages) and **voice-mail.py** (the app). Remember the Foundry resource name when you create the project: the `.env` endpoint is built from it. The code signs in with Entra ID, so `az login` must run before the app; option 1 synthesizes the greeting, option 2 transcribes the messages. Afterwards, delete the resource group in the Azure portal to stop costs.",
     "items": [
       "Foundry portal: create a project (**New Foundry**, **Advanced options**) and note the Foundry resource name",
@@ -26,23 +30,15 @@
     "exam_area": "plan",
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/04-azure-speech.html",
-    "tags": ["keyless", "azure-speech", "python-sdk"],
+    "tags": [
+      "keyless",
+      "azure-speech",
+      "python-sdk"
+    ],
     "question": "A Python app must call **Azure Speech in Foundry Tools** without a key, signed in through Microsoft Entra ID. How do you create the `SpeechConfig`, and what endpoint does it take?",
     "answer": "- `SpeechConfig(token_credential=DefaultAzureCredential(), endpoint=foundry_endpoint)`\n- **`token_credential`** replaces the `subscription` key\n- Endpoint: **`https://{YOUR_FOUNDRY_RESOURCE}.cognitiveservices.azure.com/`**\n- Locally, **`az login`** supplies the identity",
     "explanation": "`DefaultAzureCredential` comes from `azure.identity` and picks up the identity you signed in with; during development that is your Azure CLI login. No key sits in the `.env` file, only the endpoint. That endpoint is the Cognitive Services endpoint of the Foundry resource, whose name usually has the form `{project_name}-resource`. If you have subscriptions in several tenants, `az login --tenant` picks the right one.",
     "addition": "Entra ID authentication to Speech requires a custom subdomain endpoint (`https://{name}.cognitiveservices.azure.com`) and the role **Cognitive Services Speech User** or **Cognitive Services Speech Contributor** on the resource.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-configure-azure-ad-auth"
-  },
-  {
-    "id": "3.4.8-03",
-    "type": "basic",
-    "section": "3.4.8",
-    "exam_area": "text",
-    "origin": "generated",
-    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/04-azure-speech.html",
-    "tags": ["text-to-speech", "python-sdk"],
-    "question": "With the Azure Speech Python SDK, you want a greeting spoken by the voice `en-US-Serena:DragonHDLatestNeural` and saved as `greeting.wav` instead of played on the speaker. Which settings and call do you use?",
-    "answer": "- **`AudioOutputConfig(filename=\"greeting.wav\")`** as the synthesizer's `audio_config`\n- **`speech_config.speech_synthesis_voice_name`** = the voice name\n- **`speak_text_async(text).get()`** on the `SpeechSynthesizer`\n- Success: `ResultReason.SynthesizingAudioCompleted`",
-    "explanation": "The `AudioOutputConfig` decides where the audio goes; with a file name it is written to a WAV file rather than the default speaker. The voice is a property of the `SpeechConfig`, so it is set before the synthesizer is created. The transcription half of the app mirrors this: `AudioConfig(filename=file_path)` feeds a recorded message into a `SpeechRecognizer`, and `recognize_once_async().get()` returns `RecognizedSpeech` with the text."
   }
 ]

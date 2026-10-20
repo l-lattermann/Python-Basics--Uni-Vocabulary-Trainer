@@ -6,12 +6,18 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/6-knowledge-store",
-    "tags": ["knowledge-store", "knowledge-mining"],
+    "tags": [
+      "knowledge-store",
+      "knowledge-mining"
+    ],
     "question": "In Azure AI Search, what is a **knowledge store**, and why would you add one to an enrichment pipeline?",
     "answer": "- A **knowledge store** persists **projections** of the AI-enriched data outside the search index\n- Use: enriched data for **analysis and integration** beyond search (ETL, reporting, extracted images)",
-    "explanation": "The index is the primary output of indexing, but the enriched data in it is useful elsewhere too. An index is just a collection of JSON objects, one per record — handy for an ETL process, a relational reporting schema or saving extracted images. So you define a knowledge store in the skillset; each time the indexer runs the pipeline to create or update the index, it also generates and persists the projections.",
+    "explanation": "The index is the primary output of indexing, and it serves search. Yet the enriched data inside it — the extracted text, entities, key phrases and images — is often wanted by other processes too. Rather than export it by hand, you let the pipeline write it out in the shapes those consumers need. The knowledge store is defined in the skillset, and each time the indexer runs the pipeline to create or update the index, it also generates and persists the projections.",
     "explanation_images": [
-      {"src": "media/ai-103/4.8.6-knowledge-store.png", "alt": "Indexing pipeline: documents pass through AI skills into a search index, while a side branch writes tables, images and JSON objects as projections to a knowledge store."}
+      {
+        "src": "media/ai-103/4.8.6-knowledge-store.png",
+        "alt": "Indexing pipeline: documents pass through AI skills into a search index, while a side branch writes tables, images and JSON objects as projections to a knowledge store."
+      }
     ],
     "addition": "Physically, a knowledge store is Azure Storage — Table Storage, Blob Storage or both. Any tool that connects to Azure Storage (Power BI, Data Factory, Storage Explorer) can read it; Azure AI Search itself has no query support for knowledge store content.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/search/knowledge-store-concept-intro"
@@ -23,7 +29,10 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/6-knowledge-store",
-    "tags": ["knowledge-store", "projections"],
+    "tags": [
+      "knowledge-store",
+      "projections"
+    ],
     "question": "Name the **three** kinds of projection an Azure AI Search knowledge store can hold, and the scenario each serves.",
     "answer": "- **Object projections** — enriched records as **JSON** files, e.g. for an ETL data-orchestration process\n- **Table projections** — records normalized into a **relational schema** for analysis and reporting\n- **File projections** — **images** extracted from documents, saved as files",
     "explanation": "All three come from the same enriched data; they differ in shape. An index record is already a JSON object, so an object projection simply exports it for downstream ETL. Tables break the records into related tables that analysis and reporting tools can work with. File projections keep the embedded images the indexer pulled out of the documents. Pick by consumer: data pipeline → objects, reporting → tables, images → files.",
@@ -37,15 +46,34 @@
     "exam_area": "extraction",
     "origin": "generated",
     "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/6-knowledge-store",
-    "tags": ["knowledge-store", "skillsets"],
+    "tags": [
+      "knowledge-store",
+      "skillsets"
+    ],
     "question": "You want Azure AI Search to persist enriched data as tables and JSON objects in a knowledge store. In which component do you **define** the knowledge store?",
     "answer": "In the **skillset** — the definition of the enrichment pipeline.",
     "explanation": "The knowledge store belongs to the skillset because it captures the output of the enrichment pipeline that the skillset describes. The indexer only runs that pipeline: whenever it creates or updates the index, the knowledge store's projections are generated and persisted as a side effect. The index itself holds the searchable records, not the projections.",
     "options": [
-      {"text": "The skillset", "correct": true, "why": "The knowledge store is defined in the skillset that encapsulates the enrichment pipeline."},
-      {"text": "The index", "correct": false, "why": "The index is the primary, searchable output; the knowledge store is a separate output defined elsewhere."},
-      {"text": "The indexer", "correct": false, "why": "The indexer runs the pipeline and thereby generates the projections, but it does not define the knowledge store."},
-      {"text": "The data source", "correct": false, "why": "The data source only describes where the input documents come from."}
+      {
+        "text": "The skillset",
+        "correct": true,
+        "why": "The knowledge store is defined in the skillset that encapsulates the enrichment pipeline."
+      },
+      {
+        "text": "The index",
+        "correct": false,
+        "why": "The index is the primary, searchable output; the knowledge store is a separate output defined elsewhere."
+      },
+      {
+        "text": "The indexer",
+        "correct": false,
+        "why": "The indexer runs the pipeline and thereby generates the projections, but it does not define the knowledge store."
+      },
+      {
+        "text": "The data source",
+        "correct": false,
+        "why": "The data source only describes where the input documents come from."
+      }
     ],
     "addition": "The skillset's `knowledgeStore` element has two parts: an Azure Storage connection string and a `projections` array of `tables`, `objects` and `files`. The indexer never deletes projections — they remain even after the indexer or skillset is deleted.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/search/knowledge-store-concept-intro"

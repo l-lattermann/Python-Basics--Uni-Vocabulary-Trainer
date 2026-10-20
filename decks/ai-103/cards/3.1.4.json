@@ -10,9 +10,9 @@
       "ner",
       "azure-language"
     ],
-    "question": "**Named entity recognition** in Azure Language in Foundry Tools groups the entities it finds into categories. Name the **seven** example categories the course lists.",
+    "question": "Named entity recognition (NER) in Azure Language in Foundry Tools labels each entity it finds with a category. Name **seven** of its categories: four for who, where, when and which company, and three for contact and web details.",
     "answer": "- **Person** — people, e.g. \"Bill Gates\"\n- **Location** — places, e.g. \"Albuquerque\"\n- **DateTime** — dates and times, e.g. \"April 4, 1975\"\n- **Organization** — companies and institutions, e.g. \"Microsoft\"\n- **Address** — postal addresses\n- **Email** — email addresses\n- **URL** — web addresses",
-    "explanation": "Named entity recognition (NER) finds the things a text mentions and labels each one with a category; categories can also have subcategories. The seven are examples, not the full set: the service returns further ones such as **PersonType** for a role like \"CEO\". You use NER when you want to know *who, where and when* a text talks about, for example to index news articles by people, places and dates."
+    "explanation": "NER finds the things a text mentions and labels each one with a category; categories can also have subcategories. The seven are examples, not the full set: the service returns further ones such as **PersonType**, which it gives for \"CEO\". You use NER when you want to know *who, where and when* a text talks about, for example to index news articles by people, places and dates."
   },
   {
     "id": "3.1.4-02",
@@ -26,8 +26,8 @@
       "python",
       "sdk"
     ],
-    "question": "Complete the code so it lists the people, places, organizations and dates mentioned in each document, using the Azure Language Python SDK (`TextAnalyticsClient`).\n\n```python\ndocuments = [\"Satya Nadella became CEO of Microsoft on February 4, 2014.\"]\n\nresponse = client.___(documents=documents)\nfor doc in response:\n    for entity in doc.entities:\n        print(f\"{entity.text} ({entity.category})\")\n```",
-    "answer": "`recognize_entities`",
+    "question": "Complete the code so it lists the people, places, organizations and dates mentioned in each document, using the Python SDK for Azure Language in Foundry Tools (`TextAnalyticsClient`).\n\n```python\ndocuments = [\"Satya Nadella became CEO of Microsoft on February 4, 2014.\"]\n\nresponse = client.___(documents=documents)\nfor doc in response:\n    for entity in doc.entities:\n        print(f\"{entity.text} ({entity.category})\")\n```",
+    "answer": "**`recognize_entities`** — runs named entity recognition.",
     "explanation": "`recognize_entities` runs named entity recognition. Its input is a list of documents, like every other Azure Language call, and the response holds one result per document. Each entity carries its `text` and its `category`, so this example prints \"Satya Nadella (Person)\", \"CEO (PersonType)\", \"Microsoft (Organization)\" and \"February 4, 2014. (DateTime)\".",
     "options": [
       {
@@ -38,7 +38,7 @@
       {
         "text": "`recognize_pii_entities`",
         "correct": false,
-        "why": "It finds sensitive personal details for extraction or redaction — the PII task, not general named entity recognition."
+        "why": "It also returns categorized entities, but it targets sensitive personal details such as phone numbers and social security numbers for extraction or redaction — not general named entities like places."
       },
       {
         "text": "`detect_language`",

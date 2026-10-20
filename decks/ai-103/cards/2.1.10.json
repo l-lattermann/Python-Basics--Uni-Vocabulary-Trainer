@@ -1,0 +1,57 @@
+[
+  {
+    "id": "2.1.10-01",
+    "type": "order",
+    "section": "2.1.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/01-build-agent-portal-and-vscode.html",
+    "tags": [
+      "agents",
+      "foundry-portal"
+    ],
+    "question": "Put the steps of building a grounded IT support agent in the **Microsoft Foundry portal** (new Foundry experience) in order.",
+    "answer": "Project → agent → **instructions** → tools and files → save → test in the playground.",
+    "explanation": "The project comes first because it organizes the models, resources and data the agent uses; creating it can also create the Foundry resource. The new agent opens in the playground with a deployed model already selected. Tools must be added before files can be attached to them. The Foundry Toolkit in VS Code and the Python client later load this saved agent by its name.",
+    "items": [
+      "Create a new project (Foundry resource, region, subscription, resource group under Advanced options)",
+      "Create an agent and set its Agent name",
+      "Enter the agent's Instructions in the playground",
+      "Add the File search and Code interpreter tools and upload their files",
+      "Save the agent",
+      "Test it with prompts in the playground chat"
+    ]
+  },
+  {
+    "id": "2.1.10-02",
+    "type": "basic",
+    "section": "2.1.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/01-build-agent-portal-and-vscode.html",
+    "tags": [
+      "file-search",
+      "code-interpreter",
+      "foundry-portal"
+    ],
+    "question": "In the Microsoft Foundry agent playground, where do you upload a policy document for **file search**, and where a CSV for **code interpreter** to analyze?",
+    "answer": "- **Policy document**: Tools section → **Upload files** (right of Add) → Attach files → **Attach**, then wait for indexing\n- **CSV**: **+ Files** to the right of the **Code interpreter** tool",
+    "explanation": "The two tools use files differently. File search indexes the document so the agent can ground answers on it, for example on the password-reset policy. Code interpreter receives the CSV as data and runs code on it to compute averages, find trends or draw charts. Both tools are first added via **Add** in the Tools section; a policy question then triggers file search, an analysis request triggers code interpreter."
+  },
+  {
+    "id": "2.1.10-03",
+    "type": "basic",
+    "section": "2.1.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/01-build-agent-portal-and-vscode.html",
+    "tags": [
+      "agents",
+      "sdk",
+      "foundry-toolkit"
+    ],
+    "question": "A Python app must chat with an agent that was created in the Microsoft Foundry portal. Which settings and calls connect it to that agent?",
+    "answer": "- **PROJECT_ENDPOINT** in `.env` (Foundry Toolkit → right-click project → **Copy Endpoint**)\n- `project_client.agents.get(agent_name=...)`\n- `conversations.create()`, then `conversations.items.create()` for each user message\n- `responses.create(conversation=..., extra_body={\"agent_reference\": {...}})`",
+    "explanation": "`AIProjectClient` connects to the project endpoint with `DefaultAzureCredential`, so the user signs in with `az login` first. `get_openai_client()` returns the client for the Responses API. The agent is not redefined in code: it is looked up by name, and each response names it via `agent_reference`, with an empty `input` because the message is already in the conversation. Instructions and tools stay as configured in the portal. Without Copy Endpoint, take the endpoint from the project overview page in the portal."
+  }
+]

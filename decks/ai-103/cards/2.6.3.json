@@ -1,0 +1,44 @@
+[
+  {
+    "id": "2.6.3-01",
+    "type": "basic",
+    "section": "2.6.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/3-identify-workflow-patterns",
+    "tags": ["workflows", "multi-agent"],
+    "question": "Name the **three** predefined workflow patterns Microsoft Foundry offers for orchestrating agents.",
+    "answer": "- **Sequential** — fixed step-by-step path; each node passes its output to the next\n- **Human-in-the-loop** — pauses for user input or approval, then resumes\n- **Group chat** — control shifts dynamically between multiple agents",
+    "explanation": "The patterns differ in how decisions are made and whether a person takes part. Sequential suits pipelines such as validate input → enrich data → generate a response; it is predictable and the easiest place to start. Human-in-the-loop balances automation with oversight. Group chat drops the fixed path: agents build on each other's outputs and adapt to changing inputs. Choose the pattern before you design the workflow; the designer can also start from a pattern instead of a blank canvas."
+  },
+  {
+    "id": "2.6.3-02",
+    "type": "mc",
+    "section": "2.6.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/3-identify-workflow-patterns",
+    "tags": ["workflows", "multi-agent"],
+    "question": "In Microsoft Foundry, you build a customer support workflow in which several specialized agents (billing, technical, account) collaborate. Which agent handles the request next should depend on context and intermediate results, not on a fixed order. Which workflow pattern fits?",
+    "answer": "A **group chat** workflow.",
+    "explanation": "Group chat is the pattern for dynamic orchestration across multiple agents: control moves between them based on context, rules or intermediate results, and each agent can build on the others' outputs. That is what complex, multi-domain requests such as customer support or multi-domain question answering need. A sequential workflow would force every request through the same fixed chain of steps.",
+    "options": [
+      {"text": "Group chat", "correct": true, "why": "Control shifts between specialized agents based on context, rules or intermediate results."},
+      {"text": "Sequential", "correct": false, "why": "Every node runs in a fixed order; it cannot hand control to whichever agent fits the request."},
+      {"text": "Human-in-the-loop", "correct": false, "why": "It adds pauses for a person's input or approval; it does not route work between agents."},
+      {"text": "A single agent with one combined set of instructions", "correct": false, "why": "Single-agent solutions often struggle with complex or ambiguous tasks; combining specialized agents is what workflows are for."}
+    ]
+  },
+  {
+    "id": "2.6.3-03",
+    "type": "basic",
+    "section": "2.6.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/3-identify-workflow-patterns",
+    "tags": ["workflows", "human-in-the-loop"],
+    "question": "A Microsoft Foundry workflow must not issue a refund until a person has confirmed it. Which workflow pattern do you use, and how does it behave at that point?",
+    "answer": "**Human-in-the-loop**: the workflow explicitly **asks a question**, **waits** for the response, then **resumes** based on that input.",
+    "explanation": "This pattern balances automation with oversight. Typical uses are approvals, confirmations, and cases where a person must supply missing context — or where an agent's confidence is too low to act alone. When the workflow is called from code, the application has to handle the pause: it sends another message to the conversation with the requested input, and the workflow continues."
+  }
+]

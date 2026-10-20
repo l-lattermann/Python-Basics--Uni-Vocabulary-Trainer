@@ -1,0 +1,284 @@
+[
+  {
+    "id": "1.5.3-01",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "grounding",
+      "rag"
+    ],
+    "question": "What does it mean to **ground** a prompt for a language model, and how does a grounded response differ from an ungrounded one?",
+    "answer": "- **Grounding** — send relevant data from a trusted source along with the user's question; the model bases its response on that data\n- **Ungrounded** — the model has only its training data and may invent details\n- **Grounded** — the model answers from your actual data",
+    "explanation": "Prompt engineering can steer a model, but it cannot give it knowledge it lacks. Training data has a cutoff date and doesn't include your organization's private information. Ungrounded, \"Which hotels do you offer in Paris?\" can return fluent, well-structured answers with fictional hotel names. Grounded with the agency's hotel catalog, the model names real hotels, prices and availability. Grounding makes responses specific, current and relevant.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.5.3-grounded.png",
+        "alt": "An ungrounded model returns generic responses from training data; a grounded model returns responses backed by supplied data."
+      }
+    ]
+  },
+  {
+    "id": "1.5.3-02",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "rag",
+      "grounding"
+    ],
+    "question": "What is **Retrieval Augmented Generation (RAG)** in a generative AI app built with Microsoft Foundry?",
+    "answer": "The most common grounding technique: a pattern that **retrieves relevant information from a data source and adds it to the prompt** before the model generates its response.",
+    "explanation": "RAG is the practical way to ground a model. Instead of relying solely on what the model learned in training, the app looks up relevant, up-to-date data at query time and hands it to the model as context. The model itself is not changed — only the prompt it receives is enriched, so the answer rests on your data rather than on general training knowledge."
+  },
+  {
+    "id": "1.5.3-03",
+    "type": "order",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "rag"
+    ],
+    "question": "Put the three steps of the **Retrieval Augmented Generation (RAG)** pattern in order.",
+    "answer": "**Retrieve** → **Augment** → **Generate**.",
+    "explanation": "The name spells the order. Retrieval comes first because the app can only add context it has found. Augmenting means the retrieved text becomes part of the prompt; in the Foundry SDK example it is injected into the system message. Only then is the enlarged prompt sent to the model, which answers from that context instead of from its training data alone.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.5.3-rag-pattern.png",
+        "alt": "The RAG pattern: retrieve grounding data, augment the prompt with it, generate a grounded response."
+      }
+    ],
+    "items": [
+      "Retrieve: search a data source for information relevant to the user's question",
+      "Augment: add the retrieved information to the prompt as context",
+      "Generate: send the augmented prompt to the language model for a grounded response"
+    ]
+  },
+  {
+    "id": "1.5.3-04",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "embeddings",
+      "vector-search",
+      "rag"
+    ],
+    "question": "What is an **embedding**, and how do you create one in Microsoft Foundry?",
+    "answer": "A **vector** — a list of floating-point numbers that captures the meaning of a word, sentence or document. You create it by sending the content to an **embedding model**, such as an Azure OpenAI embedding model in Foundry.",
+    "explanation": "Embeddings are what make **vector search** possible in RAG. \"The children played joyfully in the park.\" and \"Kids happily ran around the playground.\" share almost no words, yet their vectors lie close together in multidimensional space because their meanings are similar. So a search can find relevant documents even when the user's wording differs from the text.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.5.3-vector-embeddings.jpg",
+        "alt": "Text plotted as vectors in multidimensional space; the distance between vectors reflects semantic similarity."
+      }
+    ]
+  },
+  {
+    "id": "1.5.3-05",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "embeddings",
+      "vector-search"
+    ],
+    "question": "In vector search for a RAG solution, which measure tells how similar two embeddings are, and which value means \"very similar\"?",
+    "answer": "**Cosine similarity** — it calculates the angle between the two vectors; a value **near 1** means very similar.",
+    "explanation": "Two texts with the same meaning produce vectors that point in nearly the same direction, so the angle between them is small and the cosine approaches 1. Because the comparison works on meaning rather than words, it finds relevant documents even when the exact words in the question and the document don't match. This is what lets a RAG app retrieve a passage about \"kids\" for a question about \"children\"."
+  },
+  {
+    "id": "1.5.3-06",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "azure-ai-search",
+      "rag"
+    ],
+    "question": "Which Azure service provides the **retrieval component** for RAG solutions in Microsoft Foundry, and what does it let you do?",
+    "answer": "**Azure AI Search** — bring your own data, create a **searchable index**, and query it to retrieve relevant information for the prompt.",
+    "explanation": "Azure AI Search covers the Retrieve step of the RAG pattern. The index holds vector representations of your content, built with an embedding model. At question time the system queries that index and the results become the context that is added to the prompt. The model deployment in Foundry then does the Generate step."
+  },
+  {
+    "id": "1.5.3-07",
+    "type": "order",
+    "section": "1.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "azure-ai-search",
+      "rag",
+      "indexing"
+    ],
+    "question": "Put the steps in order to use **Azure AI Search** for RAG with Microsoft Foundry, from your data to retrieved results.",
+    "answer": "**Add your data** → **create an index** with an embedding model → **query the index** at question time.",
+    "explanation": "Data comes into Microsoft Foundry from **Azure Blob Storage**, **Azure Data Lake Storage Gen2** or **Microsoft OneLake**, or by uploading files directly. The index is stored in Azure AI Search and holds the embeddings of your content. At query time the question goes through the same kind of embedding, so question and content can be compared by meaning.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.5.3-index.png",
+        "alt": "An Azure AI Search index is queried to retrieve grounding data for a user question."
+      }
+    ],
+    "items": [
+      "Add your data to Microsoft Foundry (Blob Storage, Data Lake Storage Gen2, OneLake or direct upload)",
+      "Create an index, using an embedding model to generate vector representations; it is stored in Azure AI Search",
+      "When a user asks, convert the question to an embedding",
+      "Search the index for the most similar content and return the relevant results"
+    ]
+  },
+  {
+    "id": "1.5.3-08",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "azure-ai-search",
+      "vector-search",
+      "hybrid-search"
+    ],
+    "question": "Name the **four** search techniques Azure AI Search supports for retrieval in a RAG solution.",
+    "answer": "- **Keyword search** — matches exact query terms to text in the index\n- **Semantic search** — semantic models match the meaning of the query, not exact keywords\n- **Vector search** — embeddings find semantically similar content\n- **Hybrid search** — combines keyword, semantic and vector search",
+    "explanation": "Keyword search only finds documents that contain the user's words; a question about \"kids\" misses a text about \"children\". Semantic and vector search close that gap by working on meaning — vector search through embeddings compared with measures such as cosine similarity. Hybrid search puts the techniques together, which is why the course recommends it for generative AI applications."
+  },
+  {
+    "id": "1.5.3-09",
+    "type": "mc",
+    "section": "1.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "hybrid-search",
+      "azure-ai-search",
+      "rag"
+    ],
+    "question": "You build a generative AI chat app that retrieves grounding data from an Azure AI Search index. Which search technique is recommended for the most accurate results?",
+    "answer": "**Hybrid search**.",
+    "explanation": "Keyword search matches only exact terms, so a differently worded question misses relevant content; semantic and vector search match meaning. Hybrid search combines keyword, semantic and vector search, so it gets the most accurate results, and the course recommends it for generative AI applications.",
+    "addition": "In Azure AI Search docs, hybrid search is strictly one request with full-text and vector queries, run in parallel and merged with **Reciprocal Rank Fusion (RRF)**. Semantic ranking is optional on top. Keyword search stays stronger for exact matches like product codes, names and dates.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+    "options": [
+      {
+        "text": "Hybrid search",
+        "correct": true,
+        "why": "It combines keyword, semantic and vector search and is the recommended technique for generative AI applications."
+      },
+      {
+        "text": "Keyword search",
+        "correct": false,
+        "why": "It matches only exact terms, so questions worded differently from the documents miss relevant content."
+      },
+      {
+        "text": "Vector search",
+        "correct": false,
+        "why": "It finds semantically similar content, but alone it lacks the exact-term matching that hybrid search adds."
+      },
+      {
+        "text": "Semantic search",
+        "correct": false,
+        "why": "It matches meaning, but on its own it is only one of the three techniques hybrid search combines."
+      }
+    ]
+  },
+  {
+    "id": "1.5.3-10",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "rag",
+      "sdk",
+      "python"
+    ],
+    "question": "In a Python RAG app built with the Microsoft Foundry SDK (`azure-ai-projects`), how do you get a model client, and where do you put the documents returned from Azure AI Search?",
+    "answer": "- Create an **`AIProjectClient`** with the project endpoint and `DefaultAzureCredential`\n- Call **`project.get_openai_client()`** for an authenticated OpenAI client\n- Call the **Responses API** (`client.responses.create`)\n- Inject the retrieved documents into the **system message**",
+    "explanation": "The search index is connected to the model through your Foundry project. `DefaultAzureCredential` authenticates the project client, and the OpenAI client you get from it is already authenticated. The retrieved text (`retrieved_context`) is appended to the system message, for example \"Use the following hotel data to answer: …\". The user's question stays in the user message, and the response is grounded in your data instead of general training knowledge."
+  },
+  {
+    "id": "1.5.3-11",
+    "type": "mc",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "rag",
+      "responses-api",
+      "python"
+    ],
+    "question": "Complete the code so it sends a grounded request through a Microsoft Foundry project.\n\n```python\nclient = project.get_openai_client()\nresponse = client.___(\n    model=\"gpt-4o\",\n    input=[\n        {\"role\": \"system\", \"content\": \"Use this hotel data: \" + retrieved_context},\n        {\"role\": \"user\", \"content\": \"Which hotels do you offer in Paris?\"},\n    ],\n)\n```",
+    "answer": "**`responses.create`** — the Responses API call; the answer is read from `response.output_text`.",
+    "explanation": "The client from `get_openai_client()` is an authenticated OpenAI client, and the course uses its Responses API to generate the grounded answer. The `input` list carries a system message with the retrieved context and the user's question. The printed result is `response.output_text`.",
+    "options": [
+      {
+        "text": "`responses.create`",
+        "correct": true,
+        "why": "The Responses API takes `model` and an `input` list of messages and returns `output_text`."
+      },
+      {
+        "text": "`chat.completions.create`",
+        "correct": false,
+        "why": "The Chat Completions API takes a `messages` parameter, not `input`."
+      },
+      {
+        "text": "`embeddings.create`",
+        "correct": false,
+        "why": "It turns text into vectors for indexing or vector search; it does not generate an answer."
+      },
+      {
+        "text": "`responses.retrieve`",
+        "correct": false,
+        "why": "It fetches an earlier stored response by its ID instead of generating a new one."
+      }
+    ]
+  },
+  {
+    "id": "1.5.3-12",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "rag",
+      "optimization"
+    ],
+    "question": "Name the **four** situations in which Retrieval Augmented Generation (RAG) is most effective for a generative AI app.",
+    "answer": "- **Domain-specific knowledge** — private data the model wasn't trained on (catalog, policies, knowledge base)\n- **Frequently changing information** — inventory, pricing, news\n- **Critical factual accuracy** — answers must rest on real data\n- **Training-data cutoff** — events after the cutoff must be accessible",
+    "explanation": "All four share one cause: the needed facts are not in the model's weights. RAG retrieves them at query time, so current data is used without retraining the model. That separates RAG from fine-tuning, which shapes behavior and style. For the travel agency, RAG lets customers ask about specific hotels, destinations and booking policies from the actual catalog."
+  },
+  {
+    "id": "1.5.3-13",
+    "type": "basic",
+    "section": "1.5.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/3-retrieval-augmented-generation",
+    "tags": [
+      "foundry-iq",
+      "grounding",
+      "agents"
+    ],
+    "question": "You build AI agents in Microsoft Foundry that need grounded knowledge, but you don't want to manage your own search infrastructure. What should you consider?",
+    "answer": "**Foundry IQ** — a managed knowledge store that simplifies grounding for AI agents.",
+    "explanation": "A RAG setup with Azure AI Search is self-managed: you add data, build and maintain an Azure AI Search index, and inject the results into the prompt yourself. Foundry IQ takes the knowledge part off your hands when the consumer is an agent. It is the alternative when you'd rather not run that search infrastructure yourself."
+  }
+]

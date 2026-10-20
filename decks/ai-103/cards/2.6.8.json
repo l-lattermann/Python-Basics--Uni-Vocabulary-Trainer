@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2.6.8-01",
+    "type": "basic",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "sdk"
+    ],
+    "question": "You designed and saved a workflow in the Microsoft Foundry portal and now want to run it from a Python backend. What are the steps?",
+    "answer": "- Connect to the project with the **Azure AI Projects SDK** (`AIProjectClient`)\n- Create a **conversation** (`openai_client.conversations.create()`)\n- Call `openai_client.responses.create()` with the conversation id, the workflow referenced **by name** as an `agent_reference`, and the `input`",
+    "explanation": "The visual designer generates the workflow's YAML definition, and saving stores the workflow in the project. Code never rebuilds the workflow: it only names it. `AIProjectClient` handles authentication and gives access to the OpenAI-compatible API that runs conversations and workflows. The conversation is the context the workflow runs in. You can also download the YAML from the portal and keep it in your codebase.\n\n```python\nstream = openai_client.responses.create(\n    conversation=conversation.id,\n    extra_body={\"agent\": {\"name\": \"triage-workflow\", \"type\": \"agent_reference\"}},\n    input=\"Users can't reset their password from the mobile app.\",\n    stream=True,\n)\n```",
+    "addition": "Foundry retires workflows on December 1, 2026. New workflows should use Microsoft Agent Framework; the exported YAML definition is the portable artifact and keeps running when deployed as a hosted agent.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/workflow"
+  },
+  {
+    "id": "2.6.8-02",
+    "type": "mc",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "sdk"
+    ],
+    "question": "Complete the Python code that runs the Microsoft Foundry workflow `triage-workflow` and streams its events.\n\n```python\nconversation = openai_client.conversations.create()\nstream = openai_client.___(\n    conversation=conversation.id,\n    extra_body={\"agent\": {\"name\": \"triage-workflow\", \"type\": \"agent_reference\"}},\n    input=\"Users can't reset their password from the mobile app.\",\n    stream=True,\n)\n```",
+    "answer": "`responses.create` — a workflow runs through the **Responses API**, with the workflow named as an agent reference.",
+    "explanation": "The OpenAI-compatible client from the Foundry project executes the workflow through a response inside a conversation. The conversation is created first and only provides the context. The `extra_body` agent reference points the response at the saved workflow by name, so no model or workflow definition is passed in code. `stream=True` makes the call return events while the workflow runs.",
+    "options": [
+      {
+        "text": "`responses.create`",
+        "correct": true,
+        "why": "The workflow is executed as a response in the conversation, with the workflow referenced in `extra_body`."
+      },
+      {
+        "text": "`conversations.create`",
+        "correct": false,
+        "why": "This call only creates the conversation context; it already ran in the line above and does not execute the workflow."
+      },
+      {
+        "text": "`chat.completions.create`",
+        "correct": false,
+        "why": "Chat Completions calls a model deployment directly and takes no conversation id or agent reference."
+      },
+      {
+        "text": "`beta.threads.runs.create`",
+        "correct": false,
+        "why": "This is the older Assistants threads-and-runs API, not the conversation and responses calls Foundry workflows use."
+      }
+    ],
+    "addition": "`openai_client` comes from `project_client.get_openai_client()` on an `AIProjectClient` built with the project endpoint and an Entra ID credential such as `DefaultAzureCredential` (`pip install azure-ai-projects`).",
+    "addition_source": "https://learn.microsoft.com/en-us/python/api/overview/azure/ai-projects-readme"
+  },
+  {
+    "id": "2.6.8-03",
+    "type": "basic",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "sdk"
+    ],
+    "question": "When you invoke a Microsoft Foundry workflow from code, what can the **`input`** parameter carry? Name the **four** kinds the course lists.",
+    "answer": "- A **user question** that agents analyze and answer\n- A **support ticket description** for classification and routing\n- A **data payload** that triggers processing logic\n- An **empty string** that just starts the workflow",
+    "explanation": "`input` is the prompt or message the workflow uses to drive its logic. Which kind fits depends on how the workflow is designed: a Q&A workflow expects a question, a triage workflow a ticket text, a processing workflow structured data. A workflow that gathers everything itself, for example by asking the user, needs no input at all, so an empty string is valid."
+  },
+  {
+    "id": "2.6.8-04",
+    "type": "basic",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "streaming",
+      "monitoring"
+    ],
+    "question": "Your Python app streams a Microsoft Foundry workflow run. Name the **two** common event types and what each signals.",
+    "answer": "- **`response.completed`** — the workflow finished and returned its final response\n- **`response.output_item.done`** — one output item finished, such as a **workflow action** (`ItemType.WORKFLOW_ACTION`)",
+    "explanation": "With streaming on, events arrive while the workflow runs. Use `response.output_item.done` to show real-time progress: when the item is a workflow action, read its `action_id` and `status`. Use `response.completed` to collect the result: loop over `event.response.output` and print each `output_text` content item. Events can also trigger external actions based on workflow state. Without streaming, you wait for the whole run and process only the final response."
+  },
+  {
+    "id": "2.6.8-05",
+    "type": "mc",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "human-in-the-loop"
+    ],
+    "question": "Your app runs a Microsoft Foundry workflow from Python. The workflow contains a human-in-the-loop step and pauses to wait for user input. How does the app resume it?",
+    "answer": "Send an **additional message to the same conversation** with the requested input; the workflow then continues.",
+    "explanation": "The conversation created before the first `responses.create` call holds the workflow's context. A human-in-the-loop pause means the workflow waits inside that conversation for input. The app supplies it as a further message to the same conversation, and execution resumes from where it stopped. Your app has to be ready to handle such pauses whenever the workflow design includes them.",
+    "options": [
+      {
+        "text": "Send an additional message with the input to the same conversation",
+        "correct": true,
+        "why": "The course says the app resumes a paused workflow by sending more messages to the conversation."
+      },
+      {
+        "text": "Create a new conversation and invoke the workflow again by name",
+        "correct": false,
+        "why": "A new conversation starts a fresh run without the paused run's context instead of resuming it."
+      },
+      {
+        "text": "Call `responses.create` again with `stream=False`",
+        "correct": false,
+        "why": "Streaming only controls whether events arrive live or the final response at the end; it does not supply the requested input."
+      },
+      {
+        "text": "Edit the workflow's YAML definition and save a new version",
+        "correct": false,
+        "why": "Saving creates a new workflow version for future runs; it does not answer the question the running workflow is waiting on."
+      }
+    ]
+  },
+  {
+    "id": "2.6.8-06",
+    "type": "basic",
+    "section": "2.6.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/8-use-workflows-in-code",
+    "tags": [
+      "workflows",
+      "ci-cd"
+    ],
+    "question": "Name the **five** scenarios the course lists for integrating Microsoft Foundry workflows into code, with the benefit of each.",
+    "answer": "- **Web applications** — embed AI-driven workflows in user-facing apps\n- **APIs and microservices** — expose workflow capabilities through REST endpoints\n- **Batch processing** — invoke workflows programmatically for bulk operations\n- **Testing and validation** — automate workflow testing in CI/CD pipelines\n- **Custom interfaces** — build specialized UIs for specific workflow use cases",
+    "explanation": "All five rest on the same split: design and test the workflow visually in the Foundry portal, then call it by name from any software. Web apps and custom interfaces put the workflow in front of users. APIs and batch jobs run it behind the scenes, one request or many items at a time. Testing in CI/CD treats the workflow like any other component that must pass before release."
+  }
+]

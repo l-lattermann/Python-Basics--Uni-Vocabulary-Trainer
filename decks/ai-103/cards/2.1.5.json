@@ -1,0 +1,64 @@
+[
+  {
+    "id": "2.1.5-01",
+    "type": "basic",
+    "section": "2.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/5-set-up-vs-code",
+    "tags": ["foundry-toolkit", "agents", "vs-code"],
+    "question": "You created an agent in the Microsoft Foundry portal and now want to configure it in VS Code. In which of the **three** sections of the **Foundry Toolkit for VS Code** does it appear, and what do the three sections hold?",
+    "answer": "- **Resources** — deployed models, declarative agents, hosted agents, connections, vector stores; the portal agent appears here automatically\n- **Tools** — model catalog, playgrounds, deployment features\n- **Help and Feedback** — documentation and support",
+    "explanation": "The extension gives direct access to Foundry Agent Service from the editor and combines visual design tools with code-based configuration. A common split: create the agent in the Foundry portal, then manage and configure it in VS Code. Changes made in VS Code can be saved directly back to Foundry, so the same agent can be worked on in both places.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/2.1.5-foundry-toolkit-sections.png",
+        "alt": "Foundry Toolkit in VS Code: the RESOURCES tree with Models, Declarative Agents and Hosted Agents, the TOOLS list with Model Catalog, playgrounds, Local Visualizer and Deploy Hosted Agents, the HELP AND FEEDBACK links, and the Agent Builder with a Save to Foundry button."
+      }
+    ]
+  },
+  {
+    "id": "2.1.5-02",
+    "type": "order",
+    "section": "2.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/5-set-up-vs-code",
+    "tags": ["foundry-toolkit", "vs-code", "foundry-project"],
+    "question": "The **Foundry Toolkit for VS Code** is installed. Put the steps in order to open your Microsoft Foundry project in the extension.",
+    "answer": "Azure icon → sign in → subscription → **Foundry** → right-click the project → **Open in Foundry Extension**.",
+    "items": [
+      "Select the Azure icon in the VS Code activity bar",
+      "Sign in to your Azure account in the Azure Resources pane if prompted",
+      "Expand your Azure subscription in the resource tree",
+      "Expand the Foundry section to see your projects",
+      "Right-click your Microsoft Foundry project",
+      "Select Open in Foundry Extension"
+    ],
+    "explanation": "The connection starts from the general **Azure** view, not from the Foundry Toolkit itself. Afterwards the Foundry Toolkit panel shows the project's existing agents, model deployments, connections and vector stores. Installing comes first: open **Extensions** (Ctrl+Shift+X, Cmd+Shift+X on Mac), search for **Foundry Toolkit**, select **Install**; the Foundry Toolkit icon then appears in the activity bar."
+  },
+  {
+    "id": "2.1.5-03",
+    "type": "basic",
+    "section": "2.1.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/5-set-up-vs-code",
+    "tags": ["model-deployment", "foundry-toolkit", "agents"],
+    "question": "Your Microsoft Foundry project has no model deployment yet, and your agent needs one. Where do you create it in the **Foundry Toolkit for VS Code**, and which **three** deployment settings do you configure?",
+    "answer": "**Resources → Model deployments → +**, pick a model (e.g. GPT-4.1), then set:\n- **Deployment name** — the name you select when configuring agents\n- **Model version** — the specific version of the model\n- **Capacity settings** — throughput for your needs",
+    "explanation": "Agents cannot run without a deployed model. After you select **Deploy** and the deployment finishes, the model shows up in the model dropdowns when you configure an agent. That is why the deployment name should be descriptive: it is what you recognise and pick later in the agent's model selection."
+  },
+  {
+    "id": "2.1.5-04",
+    "type": "basic",
+    "section": "2.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/5-set-up-vs-code",
+    "tags": ["foundry-toolkit", "agents", "vs-code"],
+    "question": "Name the **five** things the Foundry Toolkit for VS Code lets you do to manage **multiple agents**.",
+    "answer": "- **Browse agents** — in the Resources view, organized by project\n- **Switch between agents** — select them from the list\n- **Compare configurations** — open several YAML files side by side\n- **Duplicate agents** — create variations without starting from scratch\n- **Archive unused agents** — keep the workspace organized",
+    "explanation": "These matter once projects grow and you run several agents with different purposes. Comparing works because each declarative agent's configuration is a YAML file, so two agents can be read side by side in the editor. Duplicating is the quick way to a variant of an existing agent; archiving keeps agents you no longer use out of the way, so the list stays easy to navigate."
+  }
+]

@@ -1,0 +1,281 @@
+[
+  {
+    "id": "4.3.3-01",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "video-generation",
+      "sora"
+    ],
+    "question": "Name the **six** API parameters that control a Sora 2 video generation request in Microsoft Foundry.",
+    "answer": "- **prompt** — natural language description of the video (required)\n- **model** — `sora-2` or `sora-2-pro`\n- **size** — `1280x720` (landscape) or `720x1280` (portrait)\n- **seconds** — duration `4`, `8` or `12` (default 4)\n- **input_reference** — JPEG, PNG or WebP image for the first frame\n- **remix_video_id** — ID of a previous video to remix",
+    "explanation": "Video generation is asynchronous: you submit a request with the prompt and these settings, then fetch the finished video when it is ready. Only the prompt is required. Size and seconds take fixed values, not free numbers. The last two parameters add more control: a reference image anchors the opening frame, while a remix video ID starts from a video you already generated instead of from scratch."
+  },
+  {
+    "id": "4.3.3-02",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "video-generation",
+      "sora"
+    ],
+    "question": "You need an 8-second Sora 2 video in which the model follows your instructions as reliably as possible. What does Microsoft recommend?",
+    "answer": "Generate **two 4-second clips** and stitch them together instead of one 8-second clip.",
+    "explanation": "Sora 2 follows instructions more reliably in shorter clips. The `seconds` parameter accepts only 4, 8 or 12, with 4 as the default, so two default-length clips give the same total length. Each clip then carries less action, which fits the general advice that a shot should have one clear camera move and one clear subject action."
+  },
+  {
+    "id": "4.3.3-03",
+    "type": "order",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "video-generation",
+      "playground"
+    ],
+    "question": "Put the steps of testing a deployed Sora 2 model in the **Video playground** of the Microsoft Foundry portal in order.",
+    "answer": "Open the deployed model → Playground tab → prompt → settings → Generate.",
+    "explanation": "The playground is the no-code way to try prompts and settings before writing an app. Generation usually takes 1 to 5 minutes depending on the settings, and the finished video then appears on the page. Resolution and duration set here are the same `size` and `seconds` values the API takes.",
+    "items": [
+      "Navigate to your deployed Sora 2 model in the Foundry portal",
+      "Select the **Playground** tab",
+      "Enter a prompt describing the video",
+      "Configure settings such as resolution and duration",
+      "Select **Generate**"
+    ]
+  },
+  {
+    "id": "4.3.3-04",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "playground",
+      "sdk"
+    ],
+    "question": "You tested a prompt in the Microsoft Foundry **Video playground** and now want sample code for your application with the same settings. Where do you get it?",
+    "answer": "Select **View code** at the top of the playground — it shows **cURL** samples prefilled with your current settings.",
+    "explanation": "The playground is for trying prompts and settings by hand; View code turns what you tested into a request you can reuse in an application. Because the sample is prefilled, the prompt, resolution and duration you chose carry over without retyping them.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/4.3.3-video-playground.png",
+        "alt": "Foundry portal page for the sora-2 deployment: Playground tab selected, a View code button next to the model selector, a generated video, and a prompt box with aspect ratio 16:9 and duration 4 settings"
+      }
+    ]
+  },
+  {
+    "id": "4.3.3-05",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "content-filter",
+      "responsible-ai"
+    ],
+    "question": "You submit a prompt to a Sora 2 deployment in Microsoft Foundry and the service recognizes it as harmful content. What happens?",
+    "answer": "**No video is returned** — the content generation APIs include a **content moderation filter** that blocks it.",
+    "explanation": "The filter is part of the content generation APIs, so it applies whether you generate in the Video playground or from code. It checks the prompt you submit: when Azure OpenAI recognizes it as harmful content, the request yields no generated video at all, not a weakened one. Only prompts that pass moderation produce a video."
+  },
+  {
+    "id": "4.3.3-06",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "prompting",
+      "video-generation"
+    ],
+    "question": "Name the **five** elements of a well-structured Sora 2 video prompt, described like a shot on a storyboard.",
+    "answer": "- **Camera framing** — shot type (wide, medium, close-up) and angle\n- **Subject description** — anchor the subject with distinctive details\n- **Action** — movement in beats: small steps, gestures, pauses\n- **Lighting and palette** — mood via light direction and color anchors\n- **Style** — the aesthetic, set early (\"1970s film\", \"handheld documentary\")",
+    "explanation": "Prompting Sora 2 is like briefing a cinematographer. The more specific you are about what the shot should achieve, the more control and consistency you get. Leaving some details open is also a choice: it can lead to creative, unexpected results. Style comes early because it shapes the other elements — a style cue lets the model choose fitting camera, lighting and color."
+  },
+  {
+    "id": "4.3.3-07",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "prompting",
+      "video-generation"
+    ],
+    "question": "How do you turn these weak Sora 2 prompts into strong ones: \"A beautiful street at night\", \"Person moves quickly\", \"Cinematic look\"?",
+    "answer": "Replace vague words with **concrete, visible details**:\n- Scene → \"Wet asphalt, zebra crosswalk, neon signs reflecting in puddles\"\n- Motion → \"Cyclist pedals three times, brakes, and stops at crosswalk\"\n- Look → \"Anamorphic 2.0x lens, shallow DOF, volumetric light\"",
+    "explanation": "Words like \"beautiful\", \"quickly\" or \"cinematic\" are judgments the model has to guess at. Strong prompts name things the camera can show: surfaces, objects, light. Motion becomes countable beats with a clear end, and the look becomes camera and lens terms a cinematographer would use."
+  },
+  {
+    "id": "4.3.3-08",
+    "type": "mc",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "prompting",
+      "video-generation"
+    ],
+    "question": "This Sora 2 prompt is used as a model example: *In a 90s documentary-style interview, an old Swedish man sits in a study and says, \"I still remember when I was young.\"* Which part makes the model choose appropriate camera, lighting and color?",
+    "answer": "**\"90s documentary\"** — the style cue.",
+    "explanation": "Each part of the example does one job. The style cue sets the aesthetic, so the model picks camera, lighting and color itself. The subject and setting are concrete but still leave room for creative interpretation. The quoted dialogue gives the model specific words to sync with the character.",
+    "options": [
+      {
+        "text": "\"90s documentary\"",
+        "correct": true,
+        "why": "Setting the style lets the model choose a fitting camera, lighting and color."
+      },
+      {
+        "text": "\"old Swedish man sits in a study\"",
+        "correct": false,
+        "why": "This describes subject and setting and leaves room for creative interpretation; it does not set the look."
+      },
+      {
+        "text": "The quoted line \"I still remember when I was young.\"",
+        "correct": false,
+        "why": "The dialogue gives the model words to sync with the character, not a visual style."
+      },
+      {
+        "text": "The word \"interview\" alone",
+        "correct": false,
+        "why": "Without the documentary style cue it names a situation, not a camera, lighting or color choice."
+      }
+    ]
+  },
+  {
+    "id": "4.3.3-09",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "reference-image",
+      "video-generation"
+    ],
+    "question": "In a Sora 2 request, what does the `input_reference` image do, and which **two** requirements must it meet?",
+    "answer": "It anchors the **first frame**; the prompt defines what happens next.\n- Resolution **must match the target video size** (`1280x720` or `720x1280`)\n- Format **JPEG, PNG or WebP**",
+    "explanation": "A reference image gives more control over composition and style than a prompt alone. You fix how the video starts and let the prompt drive the motion. Because the image becomes the opening frame, its resolution has to equal the requested `size` — a landscape `1280x720` video needs a `1280x720` image."
+  },
+  {
+    "id": "4.3.3-10",
+    "type": "order",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "remix",
+      "video-generation"
+    ],
+    "question": "Put the steps of **remixing** an existing Sora 2 video in order.",
+    "answer": "Generate → note the video ID → call remix with ID and new prompt.",
+    "explanation": "Remix works on a finished video, so the video ID from the completed job is the input. The new prompt describes only the change, not the whole scene again. Keeping the change focused lets the remix preserve the original's scene transitions, visual layout and overall structure.",
+    "items": [
+      "Generate a video and note its video ID from the completed job",
+      "Call the remix endpoint with the original video ID and an updated prompt",
+      "Describe only the changes you want, keeping them focused"
+    ]
+  },
+  {
+    "id": "4.3.3-11",
+    "type": "mc",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "remix",
+      "video-generation"
+    ],
+    "question": "A Sora 2 video is almost right, but you want a teal, sand and rust color palette. The shot, layout and transitions must stay as they are. What do you do?",
+    "answer": "**Remix** the video with a narrow prompt: \"same lighting, new palette: teal, sand, rust\".",
+    "explanation": "Remix modifies specific aspects of an existing video while preserving its core elements: scene transitions, visual layout and overall structure. It is meant for targeted adjustments without regenerating from scratch. For best results limit a remix to one clearly articulated change; narrow, precise edits keep more fidelity to the source.",
+    "options": [
+      {
+        "text": "Remix the video with a prompt that names only the palette change",
+        "correct": true,
+        "why": "Remix keeps transitions, layout and structure and applies one targeted adjustment."
+      },
+      {
+        "text": "Regenerate from scratch with the original prompt plus the new palette",
+        "correct": false,
+        "why": "A new generation is a new creative variation; the shot and layout are not guaranteed to stay."
+      },
+      {
+        "text": "Remix the video and also change lens, lighting and action in the same prompt",
+        "correct": false,
+        "why": "Several changes at once lower fidelity; limit a remix to one clear adjustment."
+      },
+      {
+        "text": "Pass the old video as `input_reference`",
+        "correct": false,
+        "why": "`input_reference` takes a JPEG, PNG or WebP image for the first frame, not a video."
+      }
+    ]
+  },
+  {
+    "id": "4.3.3-12",
+    "type": "basic",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "prompting",
+      "video-generation"
+    ],
+    "question": "Name the **four** tips for better results when generating video with Sora 2.",
+    "answer": "- **Keep it simple** — one clear camera move and one clear subject action per shot\n- **Use beats for timing** — \"takes four steps to the window, pauses, pulls the curtain\"\n- **Be consistent** — reuse the same phrasing for characters across shots\n- **Iterate** — treat each generation as a creative variation",
+    "explanation": "Small changes to camera, lighting or action can shift the result dramatically, so generation is a collaborative process: you give direction, the model delivers variations, and the second or third try is sometimes the best. Beats replace a vague \"actor walks across the room\" with steps the model can time. Consistent wording is what keeps a character looking the same from shot to shot."
+  },
+  {
+    "id": "4.3.3-13",
+    "type": "mc",
+    "section": "4.3.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/3-generate-video-from-prompt",
+    "tags": [
+      "prompting",
+      "video-generation"
+    ],
+    "question": "You generate several Sora 2 shots of the same character, but the character looks different in each one. Which practice helps most?",
+    "answer": "**Be consistent** — reuse the same phrasing for the character in every shot's prompt.",
+    "explanation": "Continuity across shots comes from the prompt text: if each prompt describes the character in other words, the model has no reason to render the same person. Reusing the distinctive details that anchor the subject keeps it recognisable.",
+    "options": [
+      {
+        "text": "Reuse the same phrasing for the character in every prompt",
+        "correct": true,
+        "why": "Consistent wording maintains continuity of characters across shots."
+      },
+      {
+        "text": "Use beats for timing",
+        "correct": false,
+        "why": "Beats control the timing of an action, not how a character looks."
+      },
+      {
+        "text": "Generate 12-second clips instead of 4-second clips",
+        "correct": false,
+        "why": "Longer clips make the model follow instructions less reliably, and do not link separate shots."
+      },
+      {
+        "text": "Leave the subject description open for creative interpretation",
+        "correct": false,
+        "why": "Open details invite variation, the opposite of continuity."
+      }
+    ]
+  }
+]

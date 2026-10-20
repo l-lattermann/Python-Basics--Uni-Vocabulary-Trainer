@@ -1,0 +1,44 @@
+[
+  {
+    "id": "2.2.3-01",
+    "type": "basic",
+    "section": "2.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/3-custom-tool-options",
+    "tags": ["agents", "tools", "function-calling"],
+    "question": "Name the **four** options for adding custom tools to an agent in **Microsoft Foundry Agent Service**.",
+    "answer": "- **Custom function** (function calling) — describe your own functions; the agent returns which to call, with arguments\n- **Azure Functions** — event-driven serverless code with triggers and bindings\n- **OpenAPI specification tools** — connect an external HTTP API via an OpenAPI 3.0 spec\n- **Azure Logic Apps** — low-code/no-code workflows connecting apps, data and services",
+    "explanation": "They differ in where the logic lives. With function calling, the logic is your own code, in a choice of programming languages; the agent picks a function from its definition and hands back the call. Azure Functions run the logic as an event-driven service. An OpenAPI tool points the agent at an existing web API. Logic Apps let you build a workflow with little or no code. The options can be combined in one agent."
+  },
+  {
+    "id": "2.2.3-02",
+    "type": "basic",
+    "section": "2.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/3-custom-tool-options",
+    "tags": ["agents", "tools", "azure-functions"],
+    "question": "An agent in **Microsoft Foundry Agent Service** uses an **Azure Functions** tool. What do the function's **triggers** and **bindings** each do?",
+    "answer": "- **Trigger** — determines **when** the function executes\n- **Binding** — connects the function to **input or output data sources** without extra connection code",
+    "explanation": "Azure Functions is the option for event-driven work with minimal overhead. Triggers and bindings are what make it simple for an agent to reach external systems: the trigger starts the function when an event arrives, and the bindings handle reading the input and writing the result. The next unit shows this with a storage queue as both input and output binding, so the agent sends a request to one queue and reads the answer from another."
+  },
+  {
+    "id": "2.2.3-03",
+    "type": "mc",
+    "section": "2.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/3-custom-tool-options",
+    "tags": ["agents", "tools", "logic-apps"],
+    "question": "A team without developers wants their **Microsoft Foundry Agent Service** agent to run a business workflow that connects several apps, data sources and services. They want to build it **low-code/no-code**. Which custom tool option fits?",
+    "answer": "**Azure Logic Apps**.",
+    "explanation": "Logic Apps is the only custom tool option the course describes as low-code/no-code: you assemble the workflow and its connections to apps, data and services instead of writing code. Function calling and Azure Functions both need code you write and maintain. An OpenAPI specification tool needs an existing HTTP API described in an OpenAPI 3.0 spec.",
+    "options": [
+      {"text": "Azure Logic Apps", "correct": true, "why": "It adds low-code/no-code workflows that connect apps, data and services."},
+      {"text": "Azure Functions", "correct": false, "why": "It runs event-driven code with triggers and bindings, so someone has to write the function."},
+      {"text": "Function calling with a custom function", "correct": false, "why": "The function is your own code in the agent's app, which a team without developers cannot write."},
+      {"text": "OpenAPI specification tool", "correct": false, "why": "It connects an existing HTTP API described by an OpenAPI 3.0 spec; it does not build a workflow."}
+    ]
+  }
+]

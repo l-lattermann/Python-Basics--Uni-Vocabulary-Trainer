@@ -1,0 +1,119 @@
+[
+  {
+    "id": "4.7.5-01",
+    "type": "basic",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "custom-models"],
+    "question": "Name the **three** kinds of custom model you can train in Azure Document Intelligence (two extraction models and one non-extraction model).",
+    "answer": "- **Custom template model** — extracts labeled fields from forms with a fixed visual layout\n- **Custom neural model** — deep learning, fine-tuned on your labels; handles varying layouts\n- **Custom classifier** — identifies the document type before an extraction model runs",
+    "explanation": "All three use supervised learning: you label sample documents and the service learns to find those fields in new ones. You train custom models when no prebuilt model covers your document type. Template and neural models both extract data; they differ in how much layout variation they tolerate. The classifier extracts nothing. It decides which form type a document is, so you can route it to the right extraction model when you handle several form types."
+  },
+  {
+    "id": "4.7.5-02",
+    "type": "basic",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "custom-models"],
+    "question": "In Azure Document Intelligence, what does a **custom template model** extract, and what are its strengths?",
+    "answer": "- Extracts labeled **key-value pairs, selection marks, tables, regions and signatures**\n- Needs a **consistent visual layout** (static forms)\n- Trains in **minutes**, costs less\n- Supports **100+ languages**",
+    "explanation": "A template model relies on every document instance looking the same: questionnaires, applications, standard government forms. That is why it trains so fast and runs cheaply. Its accuracy is high for fixed-layout forms but drops as soon as the layout varies. Microsoft's advice: start with a template model when your forms share one layout, and switch to a neural model only if accuracy is insufficient or the format varies."
+  },
+  {
+    "id": "4.7.5-03",
+    "type": "basic",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "custom-models"],
+    "question": "Which **three** features does a **custom neural model** in Azure Document Intelligence support, and what does it cost you compared with a template model?",
+    "answer": "- **Overlapping fields**\n- **Signature detection**\n- **Table, row and cell level confidence**\n- Cost: **longer training**, higher training cost, fewer languages",
+    "explanation": "A neural model uses deep learning and combines layout and language features. So it can extract fields from structured, semi-structured and unstructured documents, and it reaches higher accuracy overall, especially when the layout varies between instances. The price is resources: training takes longer (depending on dataset size) and costs more than the minutes-long template training. Language support is narrower than the template model's 100+ languages."
+  },
+  {
+    "id": "4.7.5-04",
+    "type": "mc",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "custom-models"],
+    "question": "You must extract the same labeled fields from supplier contracts whose layout differs from supplier to supplier. A custom template model gave poor accuracy. Which Azure Document Intelligence model should you train instead?",
+    "answer": "A **custom neural model**.",
+    "explanation": "Template models need a static layout; their accuracy decreases when the layout varies. Neural models combine layout and language features, so they handle semi-structured and unstructured documents with format variation. This is exactly the switch Microsoft recommends: start with a template model, move to neural when accuracy is insufficient or documents vary.",
+    "options": [
+      {"text": "A custom neural model", "correct": true, "why": "Deep learning on layout and language features copes with layouts that vary between instances."},
+      {"text": "A custom template model trained on more samples", "correct": false, "why": "Template models depend on a consistent visual layout; more samples do not remove that limit."},
+      {"text": "A custom classifier", "correct": false, "why": "A classifier only identifies the document type; it extracts no fields."},
+      {"text": "The prebuilt layout model", "correct": false, "why": "Layout returns text, tables and structure, but not your own labeled fields."}
+    ]
+  },
+  {
+    "id": "4.7.5-05",
+    "type": "basic",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "training-data"],
+    "question": "To train a custom extraction model with the Azure Document Intelligence REST API, which **three** JSON files go into the blob container next to the sample forms?",
+    "answer": "- **ocr.json** — one per sample form, the layout from the Analyze document function\n- **fields.json** — a single file describing the fields to extract\n- **labels.json** — one per sample form, mapping fields to their location",
+    "explanation": "The ocr.json captures what the service sees on each page; labels.json says where each wanted field sits on that page; fields.json defines the field set once for the whole model. Use at least five to six sample forms; a larger, more varied set gives a more accurate model. The Document Intelligence Studio generates all three files for you when you label visually, so you only write them by hand on the API route."
+  },
+  {
+    "id": "4.7.5-06",
+    "type": "order",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "training-data"],
+    "question": "Put the steps for training a custom extraction model through the Azure Document Intelligence REST API in order.",
+    "answer": "Upload forms and JSON files → **SAS URL** → **Build model** → **Get model** → **Analyze document** with the model ID.",
+    "explanation": "The service reads the training data from your own storage, so it needs a shared access signature (SAS) URL for the container. Build model trains; Get model retrieves the trained model's ID. That ID is what you later pass to Analyze document — the same call you use for prebuilt models — and the response holds an analyzeResult object with the extracted content and an array of pages.",
+    "items": [
+      "Store sample forms with ocr.json, fields.json and labels.json in a blob container",
+      "Generate a SAS URL for the container",
+      "Call the Build model API",
+      "Call Get model to retrieve the trained model ID",
+      "Call Analyze document with that model ID"
+    ]
+  },
+  {
+    "id": "4.7.5-07",
+    "type": "mc",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "python", "sdk"],
+    "question": "Complete the Python code so it extracts fields from a document with a custom Azure Document Intelligence model.\n\n```python\nclient = DocumentIntelligenceClient(\n    endpoint=endpoint, credential=AzureKeyCredential(key)\n)\npoller = client.___(\n    model_id, AnalyzeDocumentRequest(url_source=form_url)\n)\nresult = poller.result()\n```",
+    "answer": "`begin_analyze_document`",
+    "explanation": "Using a custom model works like using a prebuilt one: you call Analyze document and pass your own model ID instead of a prebuilt one. The method starts a long-running operation, so it returns a poller; `.result()` waits for it and returns the analyze result with the extracted content and its pages.",
+    "options": [
+      {"text": "`begin_analyze_document`", "correct": true, "why": "Starts the long-running analyze operation and returns a poller."},
+      {"text": "`begin_build_document_model`", "correct": false, "why": "That trains a new model; it does not analyze a document."},
+      {"text": "`get_model`", "correct": false, "why": "Get model retrieves a trained model's details, not extraction results."},
+      {"text": "`analyze_text`", "correct": false, "why": "No such Document Intelligence method; text analysis belongs to Azure AI Language."}
+    ]
+  },
+  {
+    "id": "4.7.5-08",
+    "type": "basic",
+    "section": "4.7.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/5-train-custom-models",
+    "tags": ["document-intelligence", "custom-models"],
+    "question": "You have a separate custom extraction model for each of several form types and want to submit every document to **one model ID**. What do you build in Azure Document Intelligence?",
+    "answer": "A **composed model**: several custom models combined into one, which classifies each document and returns the results of the best-fitting component model.",
+    "explanation": "The caller no longer has to know the form type. Document Intelligence first classifies the submitted document, picks the most appropriate component model, and returns that model's extraction results. A custom classifier does the same routing job, but you call it yourself and then call the extraction model it points to.",
+    "addition": "Since API v4.0 (2024-11-30), model compose uses an explicitly trained custom classifier instead of an implicit one, adds confidence-based routing, and allows up to 500 custom models in one composed model.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/train/composed-models"
+  }
+]

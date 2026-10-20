@@ -1,0 +1,101 @@
+[
+  {
+    "id": "2.1.3-01",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "foundry-portal",
+      "agents"
+    ],
+    "question": "Name the **five** scenarios in which building agents in the **Foundry portal** (rather than in VS Code) excels for Microsoft Foundry Agent Service.",
+    "answer": "- **Quick prototyping** — test agent ideas without setting up a development environment\n- **Visual configuration** — forms and dropdowns instead of code\n- **Centralized management** — all agents across projects in one place\n- **Team collaboration** — share configurations with stakeholders who prefer visual interfaces\n- **Resource oversight** — dashboards for token usage, latency and evaluation outcomes",
+    "explanation": "The Foundry portal is a web-based, no-code interface: you open your Foundry project, select the Agents section and start building, with nothing to install. That is why it suits early exploration and reviews with non-technical stakeholders. It is not a lighter product — portal and VS Code extension both offer complete agent development and differ mainly in interface style. Many teams start in the portal and move to VS Code for detailed development and production deployments."
+  },
+  {
+    "id": "2.1.3-02",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "vs-code",
+      "foundry-toolkit",
+      "agents"
+    ],
+    "question": "Name the **five** scenarios for which the **Foundry Toolkit for Visual Studio Code** is the ideal way to develop Microsoft Foundry agents.",
+    "answer": "- **Developer-centric workflows** — build agents next to your application code in one environment\n- **Version control integration** — track agent configurations in Git with the codebase\n- **Rapid iteration** — change and test immediately without switching tools\n- **Code-first development** — edit YAML configurations directly for precise control\n- **Local development** — work on agent designs offline before deploying to Azure",
+    "explanation": "The extension installs from the Visual Studio Code Marketplace and connects to your existing Foundry projects. Its real difference from the portal is that agent definitions become files: they sit in Git beside the app and can be edited precisely as YAML. So pick VS Code when you need tight integration with application code or version-controlled configuration, and the portal when you want visual configuration, central management or a quick prototype without local setup."
+  },
+  {
+    "id": "2.1.3-03",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "vs-code",
+      "foundry-toolkit"
+    ],
+    "question": "Name the **three** main sections of the **Foundry Toolkit for Visual Studio Code**, and the **five** kinds of Foundry project assets you manage in the first of them.",
+    "answer": "- **Resources** — browse and manage project assets:\n  - **Deployed models** — model deployments\n  - **Declarative agents** — prompt-based and workflow agents\n  - **Hosted agents** — containerized, code-deployed agents\n  - **Connections** — to external services\n  - **Vector stores** — document collections for File Search\n- **Tools** — development and testing capabilities\n- **Help and Feedback** — documentation and support",
+    "explanation": "Resources mirrors what lives in your Foundry project, so you see it without leaving the editor. Mind the split between the two agent kinds: declarative agents are defined by configuration (a prompt-based agent, or a workflow agent orchestrating several agents in YAML), while hosted agents are your own code packaged as a container. Vector stores hold the documents the File Search tool searches. Tools, by contrast, holds the actions: catalog, playgrounds, debugging and deployment.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/2.1.3-vs-code-toolkit-sections.png",
+        "alt": "Foundry Toolkit for VS Code side panel with the Resources section (Models, Declarative Agents, Hosted Agents), the Tools section (Model Catalog, Model Playground, Remote and Local Agent Playground, Local Visualizer, Deploy Hosted Agents) and the Help and Feedback section, next to the Agent Builder with a playground"
+      }
+    ]
+  },
+  {
+    "id": "2.1.3-04",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "vs-code",
+      "foundry-toolkit",
+      "playground"
+    ],
+    "question": "Name the **five** entries of the Tools section of the **Foundry Toolkit for Visual Studio Code**, and the **three** further features the extension offers for configuring agents and integrating them into apps.",
+    "answer": "- **Model Catalog** — browse and deploy models\n- **Model Playground** — experiment with models directly\n- **Agent Playgrounds** — test agents remotely or locally\n- **Local Visualizer** — debug and visualize agent behavior locally\n- **Deploy Hosted Agents** — deploy containerized agents to production\n- **Agent Designer** — visual agent property editor\n- **Code generation** — app integration code\n- **YAML configuration** — direct editing for precise control",
+    "explanation": "The Tools entries follow a model or agent from start to production: find and deploy a model in the catalog, try it in the Model Playground, test the agent in a remote or local Agent Playground, debug its behavior with the Local Visualizer, then deploy a containerized hosted agent. Agent Designer and YAML are two synchronized views of the same agent settings — forms for convenience, YAML for exact control and Git. Code generation produces the code that integrates the agent into your application."
+  },
+  {
+    "id": "2.1.3-05",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "agents",
+      "deployment"
+    ],
+    "question": "List the **eight** steps of the typical agent development workflow in Microsoft Foundry Agent Service, in order.",
+    "answer": "1. **Connect** to the Foundry project\n2. **Create** the agent with a descriptive name and purpose\n3. **Configure** instructions that define its behavior\n4. **Add tools** to extend what it can do\n5. **Test** in integrated playgrounds\n6. **Iterate** on the design from test results\n7. **Deploy** to production\n8. **Integrate** into your applications",
+    "explanation": "The pattern is the same whichever interface you choose: the Foundry portal and the VS Code extension both support every step and differ mainly in interface style. In the course the agent is created in the Foundry portal, while its instructions can be configured in the portal or in VS Code. Test and Iterate form a loop — you refine instructions and tools until the playground results are right, and only then deploy and integrate."
+  },
+  {
+    "id": "2.1.3-06",
+    "type": "basic",
+    "section": "2.1.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/3-explore-development-approaches",
+    "tags": [
+      "agents",
+      "ai-search",
+      "security"
+    ],
+    "question": "To develop agents with Microsoft Foundry Agent Service, which **two** Azure resources are required, and which **four** optional Azure services might you integrate as the agent's capabilities grow?",
+    "answer": "- Required: **Microsoft Foundry project** — organizes agents, models and assets\n- Required: **Model deployments** — models such as GPT-4.1 that power the agents\n- Optional: **Azure AI Search** — advanced retrieval for Foundry IQ or File Search\n- Optional: **Azure Storage** — files agents can access\n- Optional: **Azure Key Vault** — secrets and credentials\n- Optional: **Azure Functions** — custom tool implementations and business logic",
+    "explanation": "Creating a Foundry project provisions the needed infrastructure automatically, and adding capabilities such as File Search or custom tools makes the service integrate the required supporting services behind the scenes. Only further extensions, for example Foundry IQ, may need additional Azure services that you deploy yourself. Portal and VS Code use exactly the same resources, so choosing an interface never changes what you have to provision."
+  }
+]

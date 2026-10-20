@@ -1,0 +1,53 @@
+[
+  {
+    "id": "2.8.10-01",
+    "type": "order",
+    "section": "2.8.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/08-agent-framework-multi-agents.html",
+    "tags": ["orchestration", "agent-framework", "sdk"],
+    "question": "You build a sequential multi-agent pipeline in Python with the Microsoft Agent Framework against a Microsoft Foundry project. Put the coding steps in order, from the imports to printing each agent's reply.",
+    "answer": "Imports → `FoundryChatClient` → `as_agent` per agent → **`SequentialBuilder(participants=[...], output_from=\"all\").build()`** → `await workflow.run(...)` and `get_outputs()` → print each message's `author_name` and `text`.",
+    "explanation": "This exercise uses a newer API shape than the module's sequential-orchestration unit: `as_agent` instead of `create_agent`, the participants passed to the `SequentialBuilder` constructor instead of a `participants()` method, and `run` plus `get_outputs()` instead of iterating `run_stream` events. `AzureCliCredential` authenticates with your Azure account, so you run `az login` before `python agents.py`. The client reads the project endpoint and the model deployment name from `.env`.",
+    "items": [
+      "Import `Message`, `FoundryChatClient`, `SequentialBuilder` and `AzureCliCredential`",
+      "Create a `FoundryChatClient` with `AzureCliCredential()`, the project endpoint and the model deployment name",
+      "Create each agent with `chat_client.as_agent(name=..., instructions=...)`",
+      "Build the workflow with `SequentialBuilder(participants=[...], output_from=\"all\").build()`",
+      "Run it with `await workflow.run(...)` and collect `result.get_outputs()`",
+      "Loop over each output's `messages` and print `msg.author_name` and `msg.text`"
+    ]
+  },
+  {
+    "id": "2.8.10-02",
+    "type": "basic",
+    "section": "2.8.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/08-agent-framework-multi-agents.html",
+    "tags": ["orchestration", "agent-framework", "sdk"],
+    "question": "In a Microsoft Agent Framework `SequentialBuilder` workflow in Python, what decides the order in which the agents run, and which setting and calls give you every agent's output with the agent's name?",
+    "answer": "- **Order of the `participants` list** — agents run in the order they are added\n- **`output_from=\"all\"`** — collects the outputs of all agents\n- **`result.get_outputs()`** — returns them after `await workflow.run(...)`\n- **`msg.author_name`** — names the agent that wrote each message",
+    "explanation": "In a sequential orchestration the order is fixed when you build the workflow; the agents never choose who runs next. Collecting all outputs lets you see what each stage contributed. In the feedback exercise the program prints three numbered messages: `01 [summarizer]` with the summary, `02 [classifier]` with the category, `03 [action]` with the recommended follow-up. If a message has no author name, the code falls back to its role.",
+    "addition": "Current docs: by default `SequentialBuilder` surfaces only the **last participant's** output. To surface earlier agents too, pass `intermediate_output_from=[...]` or `\"all_other\"`; those agents then emit `intermediate` events instead of `output` events.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/sequential"
+  },
+  {
+    "id": "2.8.10-03",
+    "type": "order",
+    "section": "2.8.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/08-agent-framework-multi-agents.html",
+    "tags": ["orchestration", "multi-agent", "agent-framework"],
+    "question": "A Microsoft Agent Framework sequential orchestration turns customer feedback into a next step with **three** agents. Put the agents in pipeline order.",
+    "answer": "**Summarizer** (short, neutral sentence) → **Classifier** (Positive, Negative or Feature request) → **Recommended Action** (follow-up step).",
+    "explanation": "Each agent's output becomes the next agent's input, so the classifier works on the condensed summary and the action agent builds on the category. The instructions given to `as_agent` define each agent's behavior. Feedback asking for a dark mode becomes \"User requests a dark mode option…\", then \"Feature request\", then \"Log as enhancement request to add dark mode\". The pipeline breaks one problem into steps and routes it through the right agents.",
+    "items": [
+      "**Summarizer** — condenses the raw feedback into one short, neutral sentence",
+      "**Classifier** — categorizes the feedback as Positive, Negative or Feature request",
+      "**Recommended Action** — recommends an appropriate follow-up step"
+    ]
+  }
+]

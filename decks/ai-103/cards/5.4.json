@@ -1,0 +1,249 @@
+[
+ {
+  "id": "5.4-01",
+  "type": "basic",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-speech-overview",
+  "tags": [
+   "custom-speech",
+   "speech"
+  ],
+  "question": "The base speech-to-text model in Azure Speech in Foundry Tools keeps misrecognizing your industry's terms. What does a **custom speech** model add, and how do you use it?",
+  "answer": "- **Custom speech** augments the base model (Universal Language Model)\n- **Text data** improves domain-specific vocabulary\n- **Audio + reference transcriptions** improve recognition for your audio conditions\n- Deploy it to a **custom endpoint** — only batch transcription works without one",
+  "explanation": "The base model is trained on Microsoft-owned data and works for most scenarios. To check whether it is enough, compare its transcript with a human transcript of the same audio and compute the **word error rate (WER)**; a high WER calls for a custom model. A model deployed to an endpoint stays fixed, so accuracy does not shift when a new base model ships. Custom models serve real-time speech to text, speech translation and batch transcription."
+ },
+ {
+  "id": "5.4-02",
+  "type": "mc",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-custom-speech-test-and-train",
+  "tags": [
+   "custom-speech",
+   "speech"
+  ],
+  "question": "A retail call center's recordings have strong regional accents and background noise, and the Azure Speech base model transcribes them poorly. Which training data should you give a **custom speech** model?",
+  "answer": "**Audio + human-labeled transcripts** — the data type for speaking styles, accents and background noise.",
+  "explanation": "Microsoft recommends starting with plain or structured text, because text training takes minutes and audio training can take days. Audio pays off when the audio is hard to understand even for humans, as here. Plan word-by-word transcripts for 1–100 hours of audio; even 30 minutes can help. Train in a region with dedicated hardware for audio training. Audio + transcripts is also the only data type that quantifies accuracy in a test; audio alone allows only visual inspection.",
+  "options": [
+   {
+    "text": "Audio + human-labeled transcripts",
+    "correct": true,
+    "why": "Word-by-word transcripts of the target audio improve the acoustic side: accents, speaking styles and background noise."
+   },
+   {
+    "text": "Plain text of related sentences",
+    "correct": false,
+    "why": "Plain text improves domain vocabulary and grammar, not acoustic conditions."
+   },
+   {
+    "text": "Pronunciation data",
+    "correct": false,
+    "why": "It defines the spoken form of terms with nonstandard pronunciation, such as acronyms or product names."
+   },
+   {
+    "text": "Structured text",
+    "correct": false,
+    "why": "Markdown lists and template sentences help with utterances that follow a pattern, not with noisy or accented audio."
+   }
+  ]
+ },
+ {
+  "id": "5.4-03",
+  "type": "order",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-speech-overview",
+  "tags": [
+   "custom-speech",
+   "speech"
+  ],
+  "question": "Put the steps of building a **custom speech** model in Azure Speech in Foundry Tools in order.",
+  "answer": "**Project → test data → train → test (WER) → deploy to a custom endpoint.**",
+  "explanation": "Testing before and after training is optional but recommended: it lets you compare the custom model's accuracy with the base model. The word error rate tells you whether more training is needed. Deployment is required for real-time use; batch transcription can use the custom model without a hosted endpoint, which saves hosting cost. You pay for model usage and endpoint hosting, and for training on base models created from October 1, 2023 on.",
+  "items": [
+   "Create a project and choose a base model",
+   "Upload test data",
+   "Train the model with transcripts, related text and audio",
+   "Test recognition quality and the word error rate (WER)",
+   "Deploy the model to a custom endpoint"
+  ]
+ },
+ {
+  "id": "5.4-04",
+  "type": "mc",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/improve-accuracy-phrase-list",
+  "tags": [
+   "custom-speech",
+   "speech"
+  ],
+  "question": "A real-time transcription app built on the Azure Speech SDK misrecognizes a handful of customer and product names. You need a fix today, **without training a model**. What do you use?",
+  "answer": "A **phrase list** (`PhraseListGrammar`), supplied at runtime just before recognition starts.",
+  "explanation": "A phrase list raises the importance of names, places, homonyms and acronyms, so the recognizer prefers them. It works with base and custom endpoints, real-time and fast transcription, and the Voice Live API — not with batch transcription. Its weight runs from 0.0 (off) through 1.0 (default) to 2.0. Above about 2,000 phrases, quality and latency suffer; that is the point to train a custom speech model instead.",
+  "options": [
+   {
+    "text": "A phrase list",
+    "correct": true,
+    "why": "Added at runtime, needs no training and no large data set."
+   },
+   {
+    "text": "A custom speech model trained on plain text",
+    "correct": false,
+    "why": "It needs training and a deployed endpoint; use it for lists beyond about 2,000 phrases."
+   },
+   {
+    "text": "A pronunciation data file",
+    "correct": false,
+    "why": "It is training data for a custom speech model, so it needs training too."
+   },
+   {
+    "text": "The batch transcription API",
+    "correct": false,
+    "why": "It isn't real-time transcription, and it doesn't support phrase lists."
+   }
+  ]
+ },
+ {
+  "id": "5.4-05",
+  "type": "basic",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/how-to/call-api",
+  "tags": [
+   "sentiment",
+   "language"
+  ],
+  "question": "What does **sentiment analysis** in Azure Language return, and what does **opinion mining** add?",
+  "answer": "- Labels **positive**, **negative**, **neutral** per sentence and per document\n- **mixed** only at document level\n- **Confidence scores** 0–1 per label, summing to 1\n- **Opinion mining**: **targets** (aspects) with their **assessments**, requested with `opinionMining=true`",
+  "explanation": "The document label follows from the sentences: positive plus neutral gives positive, negative plus neutral gives negative, both positive and negative give mixed, all neutral gives neutral. Opinion mining is aspect-based sentiment analysis. In \"The room was great, but the staff was unfriendly\" it finds *room*/*great* and *staff*/*unfriendly*, where plain sentiment might report only negative. Short texts give better results, the opposite of key phrase extraction."
+ },
+ {
+  "id": "5.4-06",
+  "type": "basic",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/overview",
+  "tags": [
+   "sentiment",
+   "language"
+  ],
+  "question": "You start a **new** project that must classify the sentiment of customer reviews. Should you build it on Azure Language sentiment analysis?",
+  "answer": "**No.** Sentiment analysis and opinion mining **retire from Azure Language on March 31, 2029**; direct new projects to **Microsoft Foundry models**.",
+  "explanation": "Microsoft asks you to migrate existing sentiment workloads to avoid production disruption and to build new ones on Foundry models, which offer enhanced natural language understanding and integrate easily into applications. The Azure Language feature is still offered through the Foundry portal, the REST API and client libraries, and a Docker container for on-premises use."
+ },
+ {
+  "id": "5.4-07",
+  "type": "basic",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/how-to/redact-text-pii",
+  "tags": [
+   "pii",
+   "language",
+   "redaction"
+  ],
+  "question": "Name the **four** redaction policies (`redactionPolicies`) of the Azure Language PII detection API.",
+  "answer": "- **syntheticReplacement** — swap the entity for a substitute value (preview)\n- **characterMask** — mask with a character, keeping length and offsets (default; `redactionCharacter`)\n- **noMask** — return no `redactedText` at all\n- **entityMask** — replace with the entity type, e.g. `[PERSON_1]`",
+  "explanation": "Since API version `2025-11-15-preview`, one request can combine several policies: one is the `defaultRedactionPolicy`, the others override it for named entity types. Synthetic replacement turns \"John Doe received a call from 424-878-9193\" into \"Sam Johnson received a call from 401-255-6901\"; the substitutes are picked at random from a predefined set of values. Entity masking puts the entity type in place of the value, such as `[PHONENUMBER_1]`."
+ },
+ {
+  "id": "5.4-08",
+  "type": "mc",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/how-to/redact-text-pii",
+  "tags": [
+   "pii",
+   "language",
+   "redaction"
+  ],
+  "question": "An app sends support tickets to Azure Language PII detection. Only **person names** may be detected and redacted; phone numbers and email addresses must neither be masked nor returned as entities. Which request parameter do you set?",
+  "answer": "**`piiCategories`**, set to `[\"Person\"]` — detection and redaction then cover only the listed categories.",
+  "explanation": "By default the API detects every category defined for the input language. `piiCategories` narrows that set to the categories you list, and it can also switch on categories that aren't enabled by default for the language. If the list doesn't include `default`, only the listed categories come back.",
+  "options": [
+   {
+    "text": "`piiCategories`",
+    "correct": true,
+    "why": "It restricts detection and redaction to the listed entity categories."
+   },
+   {
+    "text": "`redactionPolicies` with `noMask`",
+    "correct": false,
+    "why": "It drops the redacted text entirely; it doesn't choose which categories are detected."
+   },
+   {
+    "text": "`confidenceScoreThreshold`",
+    "correct": false,
+    "why": "It filters entities by minimum confidence score, not by category."
+   },
+   {
+    "text": "`valueExclusionPolicy`",
+    "correct": false,
+    "why": "It keeps specific terms, such as \"police officer\", from being redacted, not whole categories."
+   }
+  ]
+ },
+ {
+  "id": "5.4-09",
+  "type": "basic",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/translator/custom-translator/how-to/train-custom-model",
+  "tags": [
+   "translation",
+   "customization"
+  ],
+  "question": "Azure Translator mistranslates your industry's terminology. How do you build and use a **Custom Translator** model?",
+  "answer": "- Train on **parallel sentences** (source + translation): at least **10,000** for full training\n- Too few sentences, or terms that must stay as-is → **dictionary-only training**\n- Compare its **BLEU score** with the baseline\n- Call the Translator API with the model's **Category ID**",
+  "explanation": "Full training uses three separate document sets: training, tuning and testing. If you supply only training data, Custom Translator takes random subsets for tuning and testing. Dictionary-only training finishes faster and translates with the baseline model plus your dictionaries, but gives no BLEU score or test report. Dictionary files aren't sentence-aligned, so source and target entries must match one to one. A higher BLEU score means better translations."
+ },
+ {
+  "id": "5.4-10",
+  "type": "mc",
+  "section": "5.4",
+  "exam_area": "text",
+  "origin": "outline-gap",
+  "source_url": "https://learn.microsoft.com/en-us/azure/architecture/data-guide/ai-services/speech-recognition-generation",
+  "tags": [
+   "audio",
+   "model-choice"
+  ],
+  "question": "One model call must take a recorded customer voicemail and return a summary and the caller's intent. Which Azure option fits best?",
+  "answer": "The **Chat Completions API with an audio model** such as `gpt-audio` or `gpt-4o-audio-preview`.",
+  "explanation": "Microsoft's rule of thumb: use Azure OpenAI audio models when speech input feeds downstream reasoning, summarization or language understanding in a single call, or when you want flexible, prompt-based control. Use Azure Speech for high-volume transcription with predictable accuracy and cost, speaker diarization, custom speech models or custom vocabulary, and on-premises containers.",
+  "options": [
+   {
+    "text": "Chat Completions API with `gpt-audio` or `gpt-4o-audio-preview`",
+    "correct": true,
+    "why": "It combines audio input with reasoning and summarization in one model call."
+   },
+   {
+    "text": "Audio API `/audio/transcriptions` with `gpt-4o-transcribe`",
+    "correct": false,
+    "why": "It only transcribes the file; the summary and intent would need a second call."
+   },
+   {
+    "text": "Realtime API with `gpt-realtime`",
+    "correct": false,
+    "why": "It serves low-latency, speech-in and speech-out live conversations and streaming audio, not a recorded file."
+   },
+   {
+    "text": "Azure Speech batch transcription",
+    "correct": false,
+    "why": "It delivers high-volume transcripts at predictable cost but doesn't reason over the content."
+   }
+  ]
+ }
+]

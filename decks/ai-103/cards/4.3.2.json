@@ -1,0 +1,64 @@
+[
+  {
+    "id": "4.3.2-01",
+    "type": "basic",
+    "section": "4.3.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/2-deploy-video-model",
+    "tags": ["video-generation", "sora"],
+    "question": "You need to generate video scenes from text instructions in Microsoft Foundry. Which model do you deploy, and what inputs can it start from?",
+    "answer": "**Sora 2**, OpenAI's video generation model in the Foundry model catalog. It starts from:\n- **text** instructions\n- **input images**\n- **existing videos**",
+    "explanation": "Text prompts are not enough on their own for video: you first deploy a video generation model, and in Microsoft Foundry that is Sora 2. It creates realistic and imaginative scenes. Because it accepts images and existing videos as well as text, one deployment covers starting from scratch, animating a still image and reworking a clip you already have."
+  },
+  {
+    "id": "4.3.2-02",
+    "type": "basic",
+    "section": "4.3.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/2-deploy-video-model",
+    "tags": ["video-generation", "sora"],
+    "question": "Name the **six** capabilities of the Sora 2 video generation model in Microsoft Foundry.",
+    "answer": "- **Text to video** — video from a natural language prompt\n- **Image to video** — turns an existing image into video\n- **Video remix** — targeted adjustments to an existing video, no regeneration from scratch\n- **Audio generation** — audio in the output video\n- **Multiple resolutions** — portrait 720×1280 or landscape 1280×720\n- **Variable duration** — 4, 8 or 12 seconds",
+    "explanation": "The first three are the ways into a video: a prompt, a reference image or a video you already have. Remix is the one to pick when only one aspect should change, because the rest of the clip stays as it was. The last three describe the output: it can carry sound, comes in exactly two formats (portrait or landscape, both 720p) and has a fixed choice of three lengths, not any length you like."
+  },
+  {
+    "id": "4.3.2-03",
+    "type": "order",
+    "section": "4.3.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/2-deploy-video-model",
+    "tags": ["deployment", "sora", "foundry-portal"],
+    "question": "Put the steps to deploy the Sora 2 model in the Microsoft Foundry portal in order.",
+    "items": [
+      "Sign in to the Foundry portal (ai.azure.com)",
+      "Create or select a project",
+      "Select **Build** in the navigation pane",
+      "Select **Models** to open the model catalog",
+      "Search or filter for **Sora-2** and select it",
+      "Select **Deploy** and choose the deployment settings"
+    ],
+    "answer": "Sign in → project → **Build** → **Models** (catalog) → find **Sora-2** → **Deploy**.",
+    "explanation": "Before you start you need an Azure subscription, access to the Foundry portal and a Foundry project in which you have permission to deploy models. The model always comes from the model catalog, reached through Build and then Models; you find Sora-2 by search or filters and pick the deployment settings at the last step."
+  },
+  {
+    "id": "4.3.2-04",
+    "type": "mc",
+    "section": "4.3.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/2-deploy-video-model",
+    "tags": ["video-generation", "sora"],
+    "question": "A marketing team has a finished product photo and wants a short clip in which that product comes to life. Which Sora 2 capability in Microsoft Foundry fits?",
+    "answer": "**Image to video**.",
+    "explanation": "The starting material decides the capability. An existing image is the input here, so image to video transforms it into video content. Text to video would invent the product from words alone, and video remix needs a video that already exists.",
+    "options": [
+      {"text": "Image to video", "correct": true, "why": "It transforms an existing image into video content, which is exactly the product photo case."},
+      {"text": "Text to video", "correct": false, "why": "It starts from a natural language prompt only, so the product would not match the existing photo."},
+      {"text": "Video remix", "correct": false, "why": "It makes targeted adjustments to an existing video, and the team has only a photo."},
+      {"text": "Audio generation", "correct": false, "why": "It adds audio to output videos; it does not decide what the video starts from."}
+    ]
+  }
+]

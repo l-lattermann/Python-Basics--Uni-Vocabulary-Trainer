@@ -1,0 +1,70 @@
+[
+  {
+    "id": "3.2.6-01",
+    "type": "mc",
+    "section": "3.2.6",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/05-knowledge-check",
+    "tags": ["mcp", "azure-language", "agents"],
+    "question": "What is the primary role of the Azure Language MCP server?",
+    "answer": "To **expose Azure Language text analysis capabilities as MCP tools** for agents.",
+    "explanation": "Any MCP-compatible agent can call the server's tools: Language Detection, Named Entity Recognition, PII Redaction and Text Analytics for Health. Instead of writing an integration per capability, you give the agent one tool connection. The agent then picks the right Language tool for each request on its own.",
+    "options": [
+      {"text": "To train and fine-tune custom language models for use by AI agents.", "correct": false, "why": "Units 3.2.1 and 3.2.2 describe the server as a way to call existing Azure Language capabilities; it does not train or fine-tune models."},
+      {"text": "To expose Azure Language text analysis capabilities as MCP tools for agents.", "correct": true, "why": "Unit 3.2.2: the server exposes Azure Language NLP capabilities as tools that any MCP-compatible agent can call."},
+      {"text": "To deploy and manage large language models in an Azure subscription.", "correct": false, "why": "Unit 3.2.3: model deployment (for example gpt-4.1) happens in the Foundry project, separately from the Language MCP server."}
+    ]
+  },
+  {
+    "id": "3.2.6-02",
+    "type": "mc",
+    "section": "3.2.6",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/05-knowledge-check",
+    "tags": ["mcp", "tool-selection", "agents"],
+    "question": "How does an agent determine which Azure Language MCP tool to call when processing a user's prompt?",
+    "answer": "The agent **matches the prompt to the tool descriptions** it received from the MCP server.",
+    "explanation": "On connecting, the agent receives a catalog of tools with descriptions (dynamic tool discovery). The agent's model analyzes the prompt, picks the best-matching tool or several tools, and calls them through the server. You write no routing logic. Tools can change on the server without changing the agent.",
+    "options": [
+      {"text": "The developer writes routing logic to direct each prompt to a specific tool.", "correct": false, "why": "Unit 3.2.2 says explicitly that you don't need to write routing logic; the agent selects tools autonomously."},
+      {"text": "The agent matches the prompt to tool descriptions received from the MCP server.", "correct": true, "why": "Unit 3.2.2: the agent checks the available MCP tools and their descriptions to find the best match for the prompt."},
+      {"text": "The MCP server analyzes the prompt and automatically routes it to a tool.", "correct": false, "why": "Unit 3.2.2: the agent's underlying model makes the choice; the server only runs the tool it is called with and returns the result."}
+    ]
+  },
+  {
+    "id": "3.2.6-03",
+    "type": "mc",
+    "section": "3.2.6",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/05-knowledge-check",
+    "tags": ["responses-api", "agents", "sdk"],
+    "question": "When building a Python client application, how do you reference a Foundry agent when calling the OpenAI Responses API?",
+    "answer": "By specifying the **agent name in the `agent_reference` field in `extra_body`**.",
+    "explanation": "The client creates an `AIProjectClient` with `DefaultAzureCredential`, gets an OpenAI client with `get_openai_client()`, and calls `responses.create()`:\n\n```python\nextra_body={\"agent_reference\": {\"name\": \"Text-Analysis-Agent\", \"type\": \"agent_reference\"}}\n```\n\nThe agent's reply is in `response.output_text`.",
+    "options": [
+      {"text": "By passing the agent's API key as a request header to the endpoint.", "correct": false, "why": "Unit 3.2.3 authenticates the client with DefaultAzureCredential, and an agent has no API key of its own to identify it."},
+      {"text": "By specifying the agent name in the agent_reference field in extra_body.", "correct": true, "why": "Unit 3.2.3: the key part is referencing the agent by name in the extra_body parameter of responses.create()."},
+      {"text": "By passing the agent's endpoint URL as the model parameter value.", "correct": false, "why": "Unit 3.2.3 uses the project endpoint only to create the AIProjectClient; the agent is selected through agent_reference, not the model parameter."}
+    ]
+  },
+  {
+    "id": "3.2.6-04",
+    "type": "mc",
+    "section": "3.2.6",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/05-knowledge-check",
+    "tags": ["mcp", "authentication", "azure-language"],
+    "question": "What authentication method is used when connecting the Azure Language MCP server to a Foundry agent?",
+    "answer": "**Key-based authentication** using the `Ocp-Apim-Subscription-Key` credential.",
+    "explanation": "You connect it on the Foundry portal's Tools page: Connect a tool, then Azure Language in Foundry Tools. You enter the Foundry resource name, choose Key-based authentication and paste the project key as the credential. The key is on the project home page in the Foundry portal. Then Use in an agent attaches the connection.",
+    "options": [
+      {"text": "OAuth 2.0 authentication with a client certificate and tenant ID.", "correct": false, "why": "Unit 3.2.3 configures the connection with Key-based authentication; no certificate or tenant ID is entered."},
+      {"text": "Key-based authentication using the Ocp-Apim-Subscription-Key credential.", "correct": true, "why": "Unit 3.2.3: Authentication is Key-based, and the credential Ocp-Apim-Subscription-Key holds the Foundry project's key."},
+      {"text": "Anonymous access that requires no authentication or credentials.", "correct": false, "why": "Unit 3.2.3 requires the project key as a credential when creating the connection."}
+    ]
+  }
+]

@@ -1,0 +1,252 @@
+[
+  {
+    "id": "1.4.6-01",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools",
+      "responses-api"
+    ],
+    "question": "A model deployed in Microsoft Foundry has the **function** tool (function calling) available through the OpenAI Responses API. Who decides that a function is needed, and who actually runs it?",
+    "answer": "- The **model** decides when to call a named function and returns a **structured function call**\n- **Your application code** runs the function\n- Your app passes the **function output** back to the model, which continues",
+    "explanation": "The model never runs your business logic itself; it only asks for it. That keeps execution in your hands while the model's reasoning reaches real systems: APIs, databases, business workflows and utility functions. Because the user can type anything, the model judges each prompt: \"Hello\" gets a normal reply, while \"What time is it?\" makes it select `get_time` and return a function call instead of an answer."
+  },
+  {
+    "id": "1.4.6-02",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools"
+    ],
+    "question": "Name the **five** key features of the function tool (function calling) in the OpenAI Responses API, as Microsoft Foundry presents them.",
+    "answer": "- **Structured tool calls** — the model emits explicit function-call requests\n- **Developer-controlled execution** — your app decides how and where functions run\n- **Reliable integration pattern** — call APIs, internal services or helpers safely\n- **Multi-turn orchestration** — return tool output, the model keeps reasoning\n- **Grounded responses** — answers can include live, system-generated data",
+    "explanation": "The features follow the flow of one call. The request is structured, so your code can match it to a function. Execution stays with you, which makes the integration safe. The output goes back in a further turn, and the final answer is grounded in the live data your systems returned. Used well, this turns the model from a text generator into an orchestrator of real systems."
+  },
+  {
+    "id": "1.4.6-03",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools"
+    ],
+    "question": "Name the **three** common use cases of the function tool (function calling) with a model in Microsoft Foundry, each with an example.",
+    "answer": "- **System Integration** — call an internal API for account or order details\n- **Task Automation** — trigger workflows like ticket creation or notifications\n- **Data Lookup** — query business rules or reference tables before answering",
+    "explanation": "All three need something only your application has: access to internal systems. System Integration reads live records, Task Automation changes something in the world, and Data Lookup checks rules before the model commits to an answer. The model alone could only guess at any of these; the function lets it ask your code."
+  },
+  {
+    "id": "1.4.6-04",
+    "type": "mc",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools",
+      "tool-choice"
+    ],
+    "question": "A support chat app built on a model in Microsoft Foundry must look up a customer's order status in your **internal order API** and open a ticket in your ticketing system. Which Responses API tool do you give the model?",
+    "answer": "The **function** tool: expose functions that call the order API and create the ticket.",
+    "explanation": "Only the function tool reaches systems that live behind your application. The model requests the call, your code runs it against the internal API, and the result comes back as data the model answers from. The other tools work on public web content, uploaded files or a sandboxed Python runtime.",
+    "options": [
+      {
+        "text": "function",
+        "correct": true,
+        "why": "It lets the model call developer-defined functions that query APIs or trigger workflows such as ticket creation."
+      },
+      {
+        "text": "file_search",
+        "correct": false,
+        "why": "It searches documents uploaded to a vector store; it cannot query live order data or create tickets."
+      },
+      {
+        "text": "web_search",
+        "correct": false,
+        "why": "It finds public information on the Internet, not records in your internal systems."
+      },
+      {
+        "text": "code_interpreter",
+        "correct": false,
+        "why": "It runs model-written Python in a sandbox for calculations and file processing, not calls into your business systems."
+      }
+    ]
+  },
+  {
+    "id": "1.4.6-05",
+    "type": "order",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools",
+      "responses-api"
+    ],
+    "question": "Put the steps of using the function tool with the OpenAI Responses API in Microsoft Foundry in order.",
+    "answer": "Define tools → model evaluates the prompt → model emits a function call → app runs the function → app returns `function_call_output` → model completes the answer.",
+    "explanation": "Your app owns steps 1, 4 and 5; the model owns steps 2, 3 and 6. The model only judges, requests and answers; your code defines, executes and reports back. If the prompt needs no function, the flow stops after the second step with a normal answer.",
+    "items": [
+      "You define one or more functions in the tools array",
+      "The model evaluates whether the prompt needs a function call",
+      "The model emits a function call with the function name and call metadata",
+      "Your app runs the matching function in your code",
+      "Your app sends a function_call_output item with the result",
+      "The model incorporates the result into its final answer"
+    ]
+  },
+  {
+    "id": "1.4.6-06",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "responses-api",
+      "python"
+    ],
+    "question": "How do you define a function the model can call in a `responses.create()` request of the OpenAI Responses API?",
+    "answer": "Add an entry to the **`tools`** list with **`\"type\": \"function\"`**, the function's **`name`** and a **`description`** of what it does.",
+    "explanation": "The definition tells the model which named functions exist and what they do; from the prompt it decides whether to call one. The `get_time` example has no parameters. You can list several functions in the same array, with or without parameters. The name the model returns in its function call is the one your code matches to run the right function.",
+    "addition": "Parameters go in a `parameters` object written as JSON Schema (`type`, `properties`, `required`). The model returns the values in the call's `arguments` as a JSON string, which your code parses with `json.loads(item.arguments)`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses"
+  },
+  {
+    "id": "1.4.6-07",
+    "type": "mc",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "python",
+      "responses-api"
+    ],
+    "question": "Complete the check that detects whether the model in the OpenAI Responses API asked for the `get_time` function.\n\n```python\nmessages += response.output\nfor item in response.output:\n    if item.type == \"___\" and item.name == \"get_time\":\n        current_time = get_time()\n```",
+    "answer": "`\"function_call\"`",
+    "explanation": "The response's `output` is a list of items. A requested call arrives as an item of type `function_call`, carrying the function's `name` and a `call_id`. Checking both the type and the name lets the app run the right function. The output items are appended to `messages` first, so the follow-up request still contains the call.",
+    "options": [
+      {
+        "text": "`\"function_call\"`",
+        "correct": true,
+        "why": "This is the item type the model emits when it requests a function."
+      },
+      {
+        "text": "`\"function_call_output\"`",
+        "correct": false,
+        "why": "That is the item type your app sends back with the function's result."
+      },
+      {
+        "text": "`\"function\"`",
+        "correct": false,
+        "why": "That is the tool type in the `tools` definition, not the type of an output item."
+      },
+      {
+        "text": "`\"message\"`",
+        "correct": false,
+        "why": "That is an ordinary text reply, which is what the model returns when no function is needed."
+      }
+    ]
+  },
+  {
+    "id": "1.4.6-08",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "responses-api",
+      "python"
+    ],
+    "question": "Your app has run the function the model requested through the OpenAI Responses API. What exactly do you send back, and how does the model get to see it?",
+    "answer": "- Append an item with **`\"type\": \"function_call_output\"`**, the request's **`call_id`** and the result as **`output`** to the messages\n- Call **`responses.create()`** again with those messages and the same tools",
+    "explanation": "The `call_id` ties the result to the function call the model made, which is why the app copies it from `item.call_id`. The messages already hold the model's earlier output, so the second request contains the prompt, the call and its result. Only this follow-up response holds the grounded answer; in the example its instructions say \"Answer only with the tool output.\"",
+    "addition": "Instead of resending the whole message list, the follow-up request can pass `previous_response_id=response.id` with only the `function_call_output` items as `input`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses"
+  },
+  {
+    "id": "1.4.6-09",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "tools",
+      "guardrails"
+    ],
+    "question": "Name the **five** best practices for using the function tool (function calling) with a model in Microsoft Foundry.",
+    "answer": "- **Keep tools focused** — small, single-purpose functions\n- **Validate function inputs** — never trust tool arguments blindly\n- **Handle errors safely** — return clear error outputs the model can reason about\n- **Log tool usage** — track calls, latency and failure rates\n- **Limit sensitive operations** — require explicit authorization for high-impact actions",
+    "explanation": "Focused tools are easier to control and test. Validation matters because the model can pass incorrect or unexpected arguments. A clear error output lets the model explain or recover instead of failing silently. Logs serve debugging and governance. Authorization stops the model from triggering a high-impact action on its own judgement alone."
+  },
+  {
+    "id": "1.4.6-10",
+    "type": "mc",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "guardrails"
+    ],
+    "question": "A model in Microsoft Foundry can call an `issue_refund` function in your app. You must make sure a refund is never paid just because the model requested it. Which function-calling best practice applies?",
+    "answer": "**Limit sensitive operations**: require explicit authorization before the high-impact action runs.",
+    "explanation": "The model requests calls, but your application decides whether they run. For a high-impact action such as a refund, that decision should depend on explicit authorization, not on the model's request alone. Validating inputs checks that arguments are sane, but a valid refund request is still a refund.",
+    "options": [
+      {
+        "text": "Limit sensitive operations",
+        "correct": true,
+        "why": "It requires explicit authorization for high-impact actions such as paying money."
+      },
+      {
+        "text": "Validate function inputs",
+        "correct": false,
+        "why": "It catches incorrect or unexpected arguments, but a correctly formed refund request would still pass."
+      },
+      {
+        "text": "Log tool usage",
+        "correct": false,
+        "why": "It records calls, latency and failures after the fact; it does not stop an action."
+      },
+      {
+        "text": "Keep tools focused",
+        "correct": false,
+        "why": "Small single-purpose functions are easier to test, but the refund would still run on request."
+      }
+    ]
+  },
+  {
+    "id": "1.4.6-11",
+    "type": "basic",
+    "section": "1.4.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/06-function",
+    "tags": [
+      "function-calling",
+      "latency"
+    ],
+    "question": "Name the **four** limitations to know about when you use the function tool (function calling) with a model in Microsoft Foundry.",
+    "answer": "- **Your app must run the calls** — the model only requests them\n- **Incorrect or unexpected arguments** can occur and must be validated\n- **Tool latency** can increase end-to-end response time\n- **Outputs still need review** for critical decisions",
+    "explanation": "Each limitation has its matching practice. Because nothing runs unless your code runs it, you own execution and its errors. Bad arguments are why inputs get validated. Every call adds a round trip plus the function's own time, which is why latency is logged. Function calling makes answers more reliable, but final outputs still need review where a decision is critical."
+  }
+]

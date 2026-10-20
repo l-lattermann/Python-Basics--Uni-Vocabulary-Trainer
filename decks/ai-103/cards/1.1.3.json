@@ -1,0 +1,109 @@
+[
+  {
+    "id": "1.1.3-01",
+    "type": "mc",
+    "section": "1.1.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["foundry", "sdk", "ci-cd"],
+    "question": "Your team must create and manage Microsoft Foundry project assets from **automated CI/CD actions in a DevOps pipeline**. What do you use?",
+    "answer": "The **Microsoft Foundry SDK**, which builds and manages assets programmatically. Its visual counterpart is the **Microsoft Foundry portal**, the web-based interface for working with projects by hand.",
+    "explanation": "Most projects start in the portal: there you find, compare, deploy and test models, create and test agents, create MCP connections to tools and Foundry IQ knowledge sources, explore Foundry Tools, manage resource configuration and user access, and look up endpoints and keys. As soon as these operations must run from scripts or pipelines, the SDK automates them.",
+    "options": [
+      {"text": "The Microsoft Foundry SDK", "correct": true, "why": "It creates and manages project assets from scripts and automated CI/CD actions."},
+      {"text": "The Microsoft Foundry portal", "correct": false, "why": "It is the web-based visual interface for working on projects by hand, not for pipeline automation."},
+      {"text": "The Foundry Toolkit extension for Visual Studio Code", "correct": false, "why": "It simplifies a developer's work inside the editor; it is not run by a DevOps pipeline."},
+      {"text": "Foundry IQ", "correct": false, "why": "It is a central MCP-based knowledge connection for agents, not a way to manage assets."}
+    ]
+  },
+  {
+    "id": "1.1.3-02",
+    "type": "basic",
+    "section": "1.1.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["foundry", "infrastructure"],
+    "question": "How do a Microsoft Foundry **project** and a Microsoft Foundry **resource** relate, and what does each provide?",
+    "answer": "- **Project** — holds the solution's resource connections, data, code and other elements\n- **Resource** — the Azure resource that provides compute, data storage, AI tools and other services\n- Each project belongs to **one** resource; a resource has one or more projects, one of them the **default project**",
+    "explanation": "The split keeps project-specific assets apart from the shared cloud services. That gives the right level of centralization with a minimum of administrative resource management, which suits the most common task: building generative AI chat apps and agents. You can build without Foundry by provisioning individual AI resources, but Foundry is recommended for all but the simplest solutions. Older *classic* Foundry projects may use a **hub-based** architecture instead.",
+    "addition": "Current docs list the classic resource model as a hub plus separate Azure OpenAI and Azure AI Services resources, replaced by a single Foundry resource with projects. Hub-based projects stay accessible in the Foundry (classic) portal.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry"
+  },
+  {
+    "id": "1.1.3-03",
+    "type": "basic",
+    "section": "1.1.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["foundry", "agents", "models"],
+    "question": "Name the **four** kinds of assets developers manage in a Microsoft Foundry project.",
+    "answer": "- **Models** — LLM deployments based on the **Foundry Models** catalog\n- **Agents** — named configurations of an LLM, instructions and tools\n- **Tools** — built-in functions, MCP connections and Foundry Tools that agents use\n- **Knowledge** — knowledge stores whose data agents use to contextualize prompts",
+    "explanation": "The four build on each other: a model deployment is the base, an agent wraps a model with instructions and tools, and agents reach knowledge stores through tools. Foundry Models is a catalog of models from Microsoft, OpenAI and other providers. All four assets live in the project, while compute, storage and the Foundry Tools come from the parent Foundry resource.",
+    "explanation_images": [
+      {"src": "media/ai-103/1.1.3-foundry-project.png", "alt": "A Microsoft Foundry project inside a Microsoft Foundry resource, with four asset groups: Models, Agents, Tools and Knowledge"}
+    ]
+  },
+  {
+    "id": "1.1.3-04",
+    "type": "basic",
+    "section": "1.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["endpoints", "openai-sdk", "models"],
+    "question": "Through which **two endpoints** can a client app reach the LLMs deployed in a Microsoft Foundry project, and which APIs does each expect?",
+    "answer": "- **Project endpoint** — Foundry-specific APIs and SDKs\n- **Azure OpenAI endpoint** — OpenAI APIs and SDKs",
+    "explanation": "Both endpoints serve the same model deployments; the choice follows the SDK the app is written with. A team with existing OpenAI code connects to the Azure OpenAI endpoint and keeps its syntax. The project endpoint is also the way to agents, which are built and consumed through the Foundry Agent Service. In the Foundry portal you find the endpoints and keys that client apps need.",
+    "addition": "Current docs describe the new model as one unified project client (`azure-ai-projects` 2.x) plus `OpenAI()` against **one project endpoint**, replacing several packages such as `AzureOpenAI()` against five or more endpoints.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry"
+  },
+  {
+    "id": "1.1.3-05",
+    "type": "basic",
+    "section": "1.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["agents", "agent-service"],
+    "question": "What does an **agent** in Microsoft Foundry encapsulate, and which service do you develop and consume it with?",
+    "answer": "- A named AI configuration of an **LLM**, **instructions** and **tools**\n- Developed and consumed with the **Microsoft Foundry Agent Service**, through the **project endpoint**",
+    "explanation": "Together the three parts define an autonomous AI entity that can automate tasks and collaborate with users and with other agents. Note the contrast to plain models: a model deployment is reachable through the project endpoint or the Azure OpenAI endpoint, but the Agent Service, and with it every agent, sits behind the project endpoint.",
+    "addition": "Current docs call an agent defined declaratively (instructions, model, tools) and hosted by Foundry a **prompt agent**; your own containerized code that Foundry runs is a **hosted agent**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry"
+  },
+  {
+    "id": "1.1.3-06",
+    "type": "basic",
+    "section": "1.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["tools", "mcp", "agents"],
+    "question": "An agent in a Microsoft Foundry project needs tools. Name the **three** sources its tools can come from.",
+    "answer": "- **Built-in tools** — e.g. web search, code interpreter\n- **MCP connections** — custom and third-party tools via Model Context Protocol\n- **Foundry Tools** — prebuilt AI services such as text analysis, speech, translation and content understanding",
+    "explanation": "Built-in tools cover common functionality out of the box. MCP connections bring in tools that you or third parties provide. Foundry Tools differ from both: they are a suite of AI services for common tasks, hosted in the Foundry resource associated with your projects rather than in a project itself. Agents also use tools to connect to knowledge stores."
+  },
+  {
+    "id": "1.1.3-07",
+    "type": "mc",
+    "section": "1.1.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry",
+    "tags": ["knowledge", "mcp", "foundry-iq"],
+    "question": "Agents in your Microsoft Foundry project must ground prompts in data from several knowledge sources, and you want to integrate them through **one central connection**. What do you use?",
+    "answer": "**Foundry IQ**, which creates a single, central MCP-based knowledge connection in the project.",
+    "explanation": "Agents use tools to connect to knowledge stores and use their data to contextualize prompts. With many stores, each would need its own connection; Foundry IQ simplifies integration by giving the project one MCP-based knowledge connection. In the Foundry portal you create Foundry IQ knowledge sources next to MCP connections to tools.",
+    "addition": "Foundry IQ builds a multi-source **knowledge base** of knowledge sources and queries it with agentic retrieval; **Azure AI Search** provides the underlying indexing and retrieval infrastructure.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-foundry-iq",
+    "options": [
+      {"text": "Foundry IQ", "correct": true, "why": "It creates one central MCP-based knowledge connection over multiple sources."},
+      {"text": "Foundry Tools", "correct": false, "why": "They are prebuilt AI services such as speech and translation, not a knowledge connection."},
+      {"text": "Foundry Models", "correct": false, "why": "It is the catalog the project's LLM deployments are based on."},
+      {"text": "Microsoft Foundry Agent Service", "correct": false, "why": "It is the service for developing and consuming agents, not the way to integrate knowledge sources."}
+    ]
+  }
+]

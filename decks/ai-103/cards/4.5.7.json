@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.5.7-01",
+    "type": "mc",
+    "section": "4.5.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/06-knowledge-check",
+    "tags": ["content-understanding", "multimodal"],
+    "question": "What kinds of AI solution is Azure Content Understanding designed to help you build?",
+    "answer": "**Analyzers** that extract information from documents, images, videos, and audio files.",
+    "explanation": "Content Understanding is a generative AI service in Microsoft Foundry for multimodal content analysis. One service with one consistent development process covers all four content types: field values from invoices, defects or objects in images, sentiment and summaries from recorded calls, key points or activity in video. Every solution is built around an analyzer that extracts the information a schema defines.",
+    "options": [
+      {"text": "Chatbots that automatically translate between multiple spoken and written languages.", "correct": false, "why": "Translation is not among the Content Understanding scenarios in units 4.5.2 and 4.5.3; the service extracts insights from content rather than translating it."},
+      {"text": "Analyzers that extract information from documents, images, videos, and audio files.", "correct": true, "why": "Unit 4.5.3: Content Understanding solutions are based on an analyzer; unit 4.5.2 lists documents and forms, images, audio and video as the content it analyzes."},
+      {"text": "Image generators that create visualizations based on descriptions.", "correct": false, "why": "Unit 4.5.2 describes analyzing images, for example inferring information from charts, not generating new images from text."}
+    ]
+  },
+  {
+    "id": "4.5.7-02",
+    "type": "mc",
+    "section": "4.5.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/06-knowledge-check",
+    "tags": ["content-understanding", "portal"],
+    "question": "Which graphical tool should you use to create an Azure Content Understanding project?",
+    "answer": "**Content Understanding Studio**.",
+    "explanation": "Content Understanding Studio is the visual interface to create a project, define a schema, and build and test an analyzer. Creating a project there links it to a Microsoft Foundry resource and provisions storage and a key vault for credentials and keys. The Foundry portal offers only certain prebuilt models, so custom analyzers are created and tested in the Studio; the API or an SDK is the code alternative.",
+    "options": [
+      {"text": "Microsoft Visual Studio.", "correct": false, "why": "Visual Studio is a code IDE; unit 4.5.3 names the API or a language-specific SDK as the code route and Content Understanding Studio as the graphical one."},
+      {"text": "Azure Machine Learning studio.", "correct": false, "why": "Azure Machine Learning studio is for machine learning model work; units 4.5.2 and 4.5.3 never use it for Content Understanding."},
+      {"text": "Content Understanding Studio.", "correct": true, "why": "Unit 4.5.3: Content Understanding Studio provides a visual interface to create a project, define a schema, and build and test an analyzer."}
+    ]
+  },
+  {
+    "id": "4.5.7-03",
+    "type": "mc",
+    "section": "4.5.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/06-knowledge-check",
+    "tags": ["content-understanding", "schema"],
+    "question": "What should you define for the information you want to extract from content?",
+    "answer": "**A schema**.",
+    "explanation": "In Azure Content Understanding the schema lists the fields the analyzer should identify. You base it on an uploaded sample file and an analyzer template; the template and field types available depend on the file's content type. Because the service is generative, a sample is often enough: it maps values to the schema fields automatically, and explicit labels can improve results. You then build the analyzer from the finished schema.",
+    "options": [
+      {"text": "A schema.", "correct": true, "why": "Unit 4.5.3: an analyzer extracts specific information based on a schema that you define, and defining the schema is the first step after creating a project."},
+      {"text": "An index.", "correct": false, "why": "An index belongs to search solutions such as Azure AI Search; unit 4.5.3 defines the fields to extract in a schema, not an index."},
+      {"text": "A cluster.", "correct": false, "why": "A cluster groups similar data or provides compute; the Content Understanding process in unit 4.5.3 has no cluster step."}
+    ]
+  }
+]

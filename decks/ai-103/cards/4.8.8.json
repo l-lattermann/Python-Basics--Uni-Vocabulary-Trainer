@@ -1,0 +1,48 @@
+[
+  {
+    "id": "4.8.8-01",
+    "type": "order",
+    "section": "4.8.8",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/04-knowledge-mining.html",
+    "tags": ["indexer", "skillset", "azure-portal"],
+    "question": "Put the steps in order to build an AI-enriched **Azure AI Search** index over PDF documents with the **Import data** wizard in the Azure portal.",
+    "answer": "Upload to Blob container → **Import data** (connect) → **AI enrichments** → **Preview mappings** → **Advanced settings** → **Review and create**, then watch the indexer.",
+    "explanation": "The Search resource and the storage account sit in the same region and resource group. The enrichment page picks the built-in skills; their outputs become index fields such as **persons**, **locations** and **keyPhrases**. The mappings page sets each field's attributes, so a field you want to filter on must be filterable there. The free enrichment resource indexes at most 20 documents; production attaches its own AI services resource.",
+    "items": [
+      "Create a Blob container in the storage account and upload the PDF documents",
+      "On the Search resource's Overview page, select Import data and connect to Azure Blob Storage and the container",
+      "Apply AI enrichments: extract key phrases, entities (persons, locations) and text from images, using the free Foundry Tools resource",
+      "Preview mappings: set retrievable, filterable, sortable, facetable and searchable per target field",
+      "Advanced settings: enable semantic ranker and set Schedule to Once",
+      "Review and create with an object name prefix, then wait under Search management > Indexers until Status shows Success"
+    ]
+  },
+  {
+    "id": "4.8.8-02",
+    "type": "basic",
+    "section": "4.8.8",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/04-knowledge-mining.html",
+    "tags": ["search-query", "azure-portal"],
+    "question": "You want to test queries against an **Azure AI Search** index in the Azure portal and limit which fields and documents come back. Where do you do it, and which JSON request parameters do you set?",
+    "answer": "- **Search explorer** on the resource's Overview toolbar; **View → JSON view** shows the request\n- `search` — the query text (`*` = all documents)\n- `count: true` — adds **@odata.count** to the results\n- `select` — fields to return; `filter` — OData condition, e.g. `metadata_storage_size lt 380000`",
+    "explanation": "A `*` query returns every document as JSON: its content, its metadata and the fields the AI skills added. A query like `New York` matches any **searchable** field. `select: \"title,locations\"` trims each result to the file name and the skill-generated locations. A filter only works on a **filterable** field, which is why the wizard marked `metadata_storage_size` filterable."
+  },
+  {
+    "id": "4.8.8-03",
+    "type": "basic",
+    "section": "4.8.8",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/04-knowledge-mining.html",
+    "tags": ["search-query", "python", "api-keys"],
+    "question": "A Python app must query your **Azure AI Search** index. Which values does it need, where in the Azure portal do you find them, and which client class uses them?",
+    "answer": "- **Endpoint** — the **Url** on the Overview page (`https://<name>.search.windows.net`)\n- **Query key** — **Settings → Keys**\n- **Index name**, e.g. `margies-index`\n- Package `azure-search-documents`: a **`SearchClient`** built from all three",
+    "explanation": "The lab keeps the three values in a `.env` file. The app reads them, creates the `SearchClient`, and searches in a loop, returning title, locations, persons and keyPhrases ordered by title. Azure AI Search creates one default query key per service. In the portal it can appear with a blank name; that is expected.",
+    "addition": "A **query key** gives read-only access to an index's documents (one by default, up to 50). The two **admin keys** (primary, secondary) give full read-write access. Always use a query key for queries from a client app.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/search-security-api-keys"
+  }
+]

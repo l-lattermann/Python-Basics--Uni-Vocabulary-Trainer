@@ -1,0 +1,57 @@
+[
+  {
+    "id": "3.6.6-01",
+    "type": "order",
+    "section": "3.6.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/06-voice-live-agent.html",
+    "tags": [
+      "voice-live",
+      "agents",
+      "speech"
+    ],
+    "question": "Put the steps in order to give a Microsoft Foundry agent a **spoken conversation** with Azure Speech Voice Live and test it in the agent playground.",
+    "answer": "Create agent with model and instructions → enable **Voice mode** → pick the voice under **Voice Live**, save → **Start session** and speak → end with **X** to get the transcript.",
+    "explanation": "Voice mode wraps the agent you already tested in text: the same model and instructions now answer by voice. During a session the status cycles through **Listening…**, **Processing…** and **Speaking…**, where text-to-speech reads the model's answer aloud. A follow-up prompt is just spoken, and you can interrupt the agent. **Stop generation** stops a long answer but ends the conversation, so you start a new one to continue.",
+    "items": [
+      "Create an agent in the Foundry project, select a deployed **gpt-5** model, add instructions and save",
+      "In the left pane under the model selection list, enable **Voice mode**",
+      "In the **Configuration** pane under **Voice Live**, review the speech input/output settings, preview and pick a voice, then save the agent",
+      "Select **Start session**, allow microphone access and speak while the status shows **Listening…**",
+      "End the session with the **X** icon; a transcript of the conversation is displayed"
+    ]
+  },
+  {
+    "id": "3.6.6-02",
+    "type": "basic",
+    "section": "3.6.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/06-voice-live-agent.html",
+    "tags": [
+      "voice-live",
+      "agents",
+      "foundry-portal"
+    ],
+    "question": "In the Microsoft Foundry **agent playground** with voice mode on, where do you change the agent's Voice Live voice, and how do you read the spoken prompt and answer as text during a session?",
+    "answer": "- Voice: the **Configuration** pane, section **Voice Live** (opened with the **cog icon** above the chat if it does not open by itself)\n- Text: the **cc** button at the bottom of the chat screen",
+    "explanation": "Enabling Voice mode integrates Azure Speech Voice Live into the agent, and the Configuration pane holds its default speech input and output settings. You can preview different voices there before you save the agent. Captions (**cc**) show the transcribed prompt and the response while you talk. The full transcript only appears after you end the session with the **X** icon."
+  },
+  {
+    "id": "3.6.6-03",
+    "type": "basic",
+    "section": "3.6.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/06-voice-live-agent.html",
+    "tags": [
+      "voice-live",
+      "agents",
+      "sdk"
+    ],
+    "question": "A Python client uses the Azure Speech **Voice Live SDK** (`azure-ai-voicelive`) to talk to a Microsoft Foundry agent. Which endpoint, credential and agent settings does it pass to `connect()`?",
+    "answer": "- **endpoint**: the Foundry resource base URL `https://{resource}.services.ai.azure.com`, without `/api/projects/{project_name}`\n- **credential**: `AzureCliCredential` after `az login`\n- **agent_config**: agent name (case-sensitive) and project name\n- `api_version=\"2026-01-01-preview\"`",
+    "explanation": "The project endpoint shown on the project home page carries a project suffix; Voice Live needs only the resource's base URL, because the project is named separately in `agent_config`. No API key is stored: the client signs in with the Azure CLI identity. Inside `connect()` the client then attaches the audio processor, configures the session, starts playback and processes events. A headset helps, because through speakers the agent can hear its own answers as new input."
+  }
+]

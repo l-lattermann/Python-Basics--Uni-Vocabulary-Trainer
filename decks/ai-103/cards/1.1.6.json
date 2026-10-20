@@ -1,0 +1,180 @@
+[
+  {
+    "id": "1.1.6-01",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai"
+    ],
+    "question": "Name the **six** principles for responsible AI that Microsoft has adopted.",
+    "answer": "- **Fairness** — treat all people fairly, without bias\n- **Reliability and safety** — perform reliably and safely\n- **Privacy and security** — be secure and respect privacy\n- **Inclusiveness** — empower everyone and engage people\n- **Transparency** — be understandable\n- **Accountability** — people are accountable for AI systems",
+    "explanation": "AI needs these more than ordinary software: its decisions come from probabilistic models that depend on their training data, and its human-like nature makes users trust it a great deal. The principles differ in focus. Fairness is about unbiased predictions for groups; inclusiveness about benefits for all of society and diverse input into design. Privacy protects the data itself; transparency tells users how the system and their data are used. Accountability keeps the responsibility with people, not the system."
+  },
+  {
+    "id": "1.1.6-02",
+    "type": "mc",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "fairness"
+    ],
+    "question": "A bank's loan approval model must not give applicants an advantage or disadvantage because of their gender or ethnicity. Which Microsoft **responsible AI principle** does this requirement address?",
+    "answer": "**Fairness**.",
+    "explanation": "The loan approval model is the standard example for fairness: its predictions must not incorporate bias based on gender, ethnicity or other factors that favour or penalise specific groups of applicants. Inclusiveness names the same factors, but asks something else: that AI brings benefits to all parts of society and that diverse people shape its design. The bias of individual predictions is a fairness question.",
+    "options": [
+      {
+        "text": "Fairness",
+        "correct": true,
+        "why": "Fairness requires that predictions do not favour or penalise groups of people, such as loan applicants of a certain gender or ethnicity."
+      },
+      {
+        "text": "Inclusiveness",
+        "correct": false,
+        "why": "Inclusiveness is about AI benefiting and engaging all parts of society, not about bias in a model's predictions."
+      },
+      {
+        "text": "Transparency",
+        "correct": false,
+        "why": "Transparency makes users aware of how the system works and its limits; it does not itself remove bias."
+      },
+      {
+        "text": "Accountability",
+        "correct": false,
+        "why": "Accountability assigns responsibility for the system to its developers within a governance framework; it does not define what an unbiased prediction is."
+      }
+    ]
+  },
+  {
+    "id": "1.1.6-03",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "fairness"
+    ],
+    "question": "Tools exist to evaluate, quantify and mitigate unfairness in machine learning models. According to Microsoft's responsible AI guidance, what must a team do **beyond** such tooling to ensure fairness?",
+    "answer": "Consider fairness **from the beginning** of development:\n- **Review the training data** so it represents all potentially affected subjects\n- **Evaluate predictive performance for subsections** of the user population throughout the lifecycle",
+    "explanation": "Fairness of machine-learned systems is still an active research area, and tooling alone isn't sufficient. A model learns from its data, so training data must represent everyone the system may affect. Measuring predictive performance per subsection of the users, not only overall, shows when one group is served worse. Fairness is considered from the start, and that per-group evaluation continues throughout the development lifecycle, not once at the end."
+  },
+  {
+    "id": "1.1.6-04",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "confidence-score"
+    ],
+    "question": "You build an AI model that diagnoses patient symptoms and recommends prescriptions. Which **two** practices does Microsoft's **reliability and safety** principle call for?",
+    "answer": "- **Rigorous testing and deployment management** so the system works as expected before release\n- Appropriate **thresholds** when evaluating the **confidence scores** of predictions",
+    "explanation": "In systems like medical diagnosis or autonomous vehicles, unreliability can put human life at risk. AI applications are software, so they need the same rigorous testing and deployment processes as any other software. On top of that, machine learning models are probabilistic: each prediction comes with a confidence score, and engineers have to set sensible thresholds for how confident a prediction must be."
+  },
+  {
+    "id": "1.1.6-05",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "privacy"
+    ],
+    "question": "Under Microsoft's **privacy and security** principle for AI, at which **two** stages can data raise privacy or security concerns, and what is required?",
+    "answer": "- **Training**: large volumes of data that may contain personal details\n- **Production**: new data the system uses to make predictions or take action\n- Required: **safeguards** that protect data and customer content",
+    "explanation": "The principle says AI systems should be secure and respect privacy. The concern does not end once a model is trained. A system in production keeps receiving new data, and that data can be just as sensitive as the training data. Protection therefore has to cover both the data the model learned from and the data it processes later."
+  },
+  {
+    "id": "1.1.6-06",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "inclusiveness"
+    ],
+    "question": "Which practice does Microsoft recommend to optimise an AI application for **inclusiveness**?",
+    "answer": "Include input from **as diverse a group of people as possible** in the **design, development and testing** of the application.",
+    "explanation": "Inclusiveness means AI systems should empower everyone and engage people. AI should bring benefits to all parts of society, regardless of physical ability, gender, sexual orientation, ethnicity or other factors. Diverse input is the course's one concrete practice for this, and it applies at every stage: in the design, in the development and in the testing of the application, not only in a final check."
+  },
+  {
+    "id": "1.1.6-07",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "transparency"
+    ],
+    "question": "Under Microsoft's **transparency** principle, what should users of an AI system based on a machine learning model be made aware of?",
+    "answer": "- The system's **purpose**, how it works and its **limitations**\n- **Factors affecting accuracy**, such as the number of training cases and the most influential features\n- The **confidence score** of predictions\n- With personal data: how it is **used and retained**, and **who has access**",
+    "explanation": "Transparency means AI systems should be understandable. Because AI seems human-like, users tend to trust its decisions a great deal; knowing the system's limits and how sure each prediction is lets them judge it. The personal-data point uses a facial recognition system as its example: it takes images of people to recognise them, so users must learn how their images are used and retained and who can see them."
+  },
+  {
+    "id": "1.1.6-08",
+    "type": "mc",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "transparency"
+    ],
+    "question": "A facial recognition system takes images of people to recognise them. You must **tell users** how their images are used, how long they are retained and who has access to them. Under which Microsoft responsible AI principle does this disclosure fall?",
+    "answer": "**Transparency**.",
+    "explanation": "Making it clear to users how their personal data is used and retained, and who has access to it, is part of transparency: users should understand the system they deal with. Privacy and security is the neighbouring principle. It requires safeguards that actually protect the data. Telling users about the data handling is transparency; protecting the data is privacy and security.",
+    "options": [
+      {
+        "text": "Transparency",
+        "correct": true,
+        "why": "Transparency requires making clear to users how their personal data is used and retained and who has access to it."
+      },
+      {
+        "text": "Privacy and security",
+        "correct": false,
+        "why": "Privacy and security calls for safeguards that protect the data; informing users about its use is transparency."
+      },
+      {
+        "text": "Accountability",
+        "correct": false,
+        "why": "Accountability puts responsibility for the system on its developers within a governance framework; it is not about informing users."
+      },
+      {
+        "text": "Fairness",
+        "correct": false,
+        "why": "Fairness is about predictions not favouring or penalising groups of people."
+      }
+    ]
+  },
+  {
+    "id": "1.1.6-09",
+    "type": "basic",
+    "section": "1.1.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/6-responsible-ai",
+    "tags": [
+      "responsible-ai",
+      "governance"
+    ],
+    "question": "Many AI systems seem to operate autonomously. Under Microsoft's **accountability** principle, who is responsible for the system meeting responsibility requirements, and within what?",
+    "answer": "- The **developers** who trained and validated the models and defined the logic that bases decisions on their predictions\n- Working within a **framework of governance and organizational principles** with clearly defined responsible and legal standards",
+    "explanation": "Accountability means people are accountable for AI systems. An apparently autonomous system does not take over that responsibility: the decisions follow from models people trained and validated, and from decision logic people defined. The governance framework makes the standards explicit, so designers and developers know which responsible and legal requirements the solution has to meet."
+  }
+]

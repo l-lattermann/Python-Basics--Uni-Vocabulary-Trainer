@@ -1,0 +1,92 @@
+[
+  {
+    "id": "2.5.10-01",
+    "type": "mc",
+    "section": "2.5.10",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/8-knowledge-check",
+    "tags": ["agent-publishing", "teams", "bot-service"],
+    "question": "What Azure resource does the Foundry portal automatically create when you publish an agent to Microsoft Teams?",
+    "answer": "An **Azure Bot Service** resource.",
+    "explanation": "The Bot Service routes messages between Microsoft 365 and the Foundry agent. The publishing wizard creates it in your subscription, registers a Microsoft Entra ID application and generates the Microsoft 365 publishing package. That is why the **Microsoft.BotService** resource provider must be registered in the subscription before you publish.",
+    "options": [
+      {"text": "Azure Functions", "correct": false, "why": "Units 2.5.2 and 2.5.3 list no Functions app among the resources the publishing wizard creates."},
+      {"text": "Azure Bot Service", "correct": true, "why": "Unit 2.5.2: publishing to Microsoft 365 creates an Azure Bot Service resource that routes messages between Microsoft 365 and your agent; unit 2.5.3 shows the Create an Azure Bot Service step."},
+      {"text": "Azure Cosmos DB", "correct": false, "why": "Unit 2.5.3 names Cosmos DB only as a resource a tool might access, which then needs RBAC roles for the agent identity."},
+      {"text": "Azure Logic Apps", "correct": false, "why": "Units 2.5.2 and 2.5.3 never mention Logic Apps; message routing is the Bot Service's job."}
+    ]
+  },
+  {
+    "id": "2.5.10-02",
+    "type": "mc",
+    "section": "2.5.10",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/8-knowledge-check",
+    "tags": ["agent-publishing", "teams"],
+    "question": "What is the main difference between shared scope and organization scope when publishing an agent?",
+    "answer": "**Organization scope requires admin approval** before the agent is available to all users.",
+    "explanation": "Shared scope is available immediately without approval and appears under **Your agents** in Teams; it suits personal testing and small pilots. Organization scope makes the agent available to the whole tenant under **Built by your org**, but only after an admin selects **Approve request and activate** in the Microsoft 365 admin center (Agents > All > Requested). It suits production.",
+    "options": [
+      {"text": "Shared scope requires more Azure resources", "correct": false, "why": "Units 2.5.2 and 2.5.3 describe the same Bot Service, Entra app and package for both scopes; they differ only in distribution and approval."},
+      {"text": "Organization scope requires admin approval before the agent is available to all users", "correct": true, "why": "Unit 2.5.2's scope table: shared is available immediately without admin approval, organization is available to everyone in the tenant and requires admin approval."},
+      {"text": "Shared scope only works in the Foundry playground", "correct": false, "why": "Unit 2.5.2: a shared-scope agent appears under Your agents in Teams, not in the playground."},
+      {"text": "Organization scope provides better agent performance", "correct": false, "why": "Units 2.5.2 and 2.5.6 tie performance to instructions, tools and network, never to the publish scope."}
+    ]
+  },
+  {
+    "id": "2.5.10-03",
+    "type": "mc",
+    "section": "2.5.10",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/8-knowledge-check",
+    "tags": ["agent-publishing", "agent-identity", "rbac"],
+    "question": "What happens to tool permissions when you publish an agent from Foundry to Teams?",
+    "answer": "The published agent gets a **new identity** and needs its **permissions reassigned**.",
+    "explanation": "Publishing creates a distinct Microsoft Entra agent identity, separate from the development project. Permissions granted to the project identity don't transfer. Tools that worked in the playground then fail in Teams until you assign RBAC roles to the published agent identity on each resource it uses, such as Azure AI Search or a storage account.",
+    "options": [
+      {"text": "Permissions are automatically transferred to the published agent", "correct": false, "why": "Unit 2.5.2: development-time permissions on your project identity don't transfer automatically."},
+      {"text": "Tools are disabled after publishing", "correct": false, "why": "Unit 2.5.3: tools keep working once the new identity has the right RBAC roles; you test them in Teams after publishing."},
+      {"text": "The published agent gets a new identity and needs permissions reassigned", "correct": true, "why": "Units 2.5.2 and 2.5.3: publishing creates a distinct agent identity, and you assign RBAC roles to it on the resources its tools access."},
+      {"text": "Permissions only work in organization scope", "correct": false, "why": "Unit 2.5.3: the identity and its RBAC roles are the same for both scopes; scope only controls distribution."}
+    ]
+  },
+  {
+    "id": "2.5.10-04",
+    "type": "mc",
+    "section": "2.5.10",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/8-knowledge-check",
+    "tags": ["work-iq", "mcp", "microsoft-365"],
+    "question": "What is Microsoft Work IQ?",
+    "answer": "A **CLI and MCP server** that connects AI agents to Microsoft 365 data.",
+    "explanation": "Work IQ lets agents query emails, meetings, documents, Teams messages and people in natural language. It runs in CLI mode (`workiq ask -q \"…\"`) for scripts and quick queries, or in MCP server mode so an assistant such as GitHub Copilot calls its tools itself. It reads data through Microsoft Graph with the user's own identity, so it sees only what the user may see.",
+    "options": [
+      {"text": "A machine learning model for workplace analytics", "correct": false, "why": "Unit 2.5.5: Work IQ retrieves Microsoft 365 data on demand; it is a connector, not a model."},
+      {"text": "A CLI and MCP server that connects AI agents to Microsoft 365 data", "correct": true, "why": "Unit 2.5.5: Work IQ is a command-line interface and server built on the Model Context Protocol that connects AI assistants to Microsoft 365 Copilot data."},
+      {"text": "A replacement for Microsoft Teams", "correct": false, "why": "Unit 2.5.5: Teams messages are one of the data sources Work IQ reads, so it complements Teams."},
+      {"text": "A Visual Studio Code extension for building agents", "correct": false, "why": "Unit 2.5.4: that describes the Microsoft 365 Agents Toolkit; unit 2.5.5 adds Work IQ to VS Code only as an MCP server entry."}
+    ]
+  },
+  {
+    "id": "2.5.10-05",
+    "type": "mc",
+    "section": "2.5.10",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/8-knowledge-check",
+    "tags": ["agent-publishing", "agents-toolkit", "teams"],
+    "question": "When should you consider using the Microsoft 365 Agents Toolkit instead of direct publishing from Foundry?",
+    "answer": "When you need **custom SSO**, **middleware logic**, or **multi-environment deployment**.",
+    "explanation": "The toolkit builds a proxy app between Teams or Copilot and the Foundry agent: Teams/Copilot → proxy app → Foundry agent. The proxy controls every step of the message flow and adds IDE debugging and CI/CD pipelines. The price is code and hours to days of setup, against minutes for direct publishing. Direct publishing still handles most scenarios.",
+    "options": [
+      {"text": "For all production deployments", "correct": false, "why": "Unit 2.5.4: direct publishing handles the majority of scenarios; organization scope in 2.5.2 is the production path without the toolkit."},
+      {"text": "When you need custom SSO, middleware logic, or multi-environment deployment", "correct": true, "why": "Units 2.5.2 and 2.5.4: consider the Agents Toolkit for custom single sign-on, advanced middleware logic or multi-environment deployment pipelines."},
+      {"text": "When publishing to shared scope", "correct": false, "why": "Unit 2.5.3: shared scope is an option of the direct Foundry publishing wizard itself."},
+      {"text": "When your agent doesn't use any tools", "correct": false, "why": "Unit 2.5.4 ties the choice to SSO, middleware and deployment needs, not to whether the agent uses tools."}
+    ]
+  }
+]

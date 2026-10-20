@@ -1,0 +1,53 @@
+[
+  {
+    "id": "2.9.8-01",
+    "type": "mc",
+    "section": "2.9.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/7-knowledge-check",
+    "tags": ["a2a", "multi-agent"],
+    "question": "What is the primary role of an A2A server?",
+    "answer": "It **routes requests** between clients and connected agents.",
+    "explanation": "The A2A server is the bridge between the agent's logic and the outside world. It exposes the Agent Card for discovery, receives incoming A2A requests over HTTP and its request handler forwards them to the Agent Executor's `execute` or `cancel` methods. It also manages the task lifecycle through a Task Store. The business logic itself sits in the agent and its executor, not in the server.",
+    "options": [
+      {"text": "It executes business logic for the agent directly.", "correct": false, "why": "Unit 2.9.3: the Agent Executor bridges the protocol and the agent's business logic; unit 2.9.4 has the server only forward requests to the executor."},
+      {"text": "It routes requests between clients and connected agents.", "correct": true, "why": "Unit 2.9.4: the server receives incoming A2A requests and its request handler routes them to the Agent Executor, acting as the bridge between the agent's logic and the external world."},
+      {"text": "It stores static agent responses for reuse.", "correct": false, "why": "Unit 2.9.4: the server's Task Store tracks tasks, streaming data and resubscriptions; nothing in the module stores static responses for reuse."}
+    ]
+  },
+  {
+    "id": "2.9.8-02",
+    "type": "mc",
+    "section": "2.9.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/7-knowledge-check",
+    "tags": ["a2a", "agent-executor"],
+    "question": "What does the Agent Executor do in an A2A agent?",
+    "answer": "It **processes incoming requests** and generates responses or events.",
+    "explanation": "The `AgentExecutor` interface has two operations. **Execute** reads the request from the `RequestContext`, calls the agent's logic and puts the result as messages, task updates or artifacts on the `EventQueue`. **Cancel** stops an ongoing task, and a simple agent may just report that cancellation isn't supported. Network connections and HTTP belong to the server application (Starlette plus Uvicorn), not to the executor.",
+    "options": [
+      {"text": "Manages network connections between clients and servers.", "correct": false, "why": "Unit 2.9.4: the server application, built with Starlette and run by an ASGI server such as Uvicorn, handles HTTP and network listening."},
+      {"text": "Processes incoming requests and generates responses or events.", "correct": true, "why": "Unit 2.9.3: the Agent Executor processes incoming requests, generates responses and sends results or events back through the event queue."},
+      {"text": "Provides a GUI for monitoring agent activity.", "correct": false, "why": "No unit of the module describes a GUI; the executor is a code interface with execute and cancel operations (unit 2.9.3)."}
+    ]
+  },
+  {
+    "id": "2.9.8-03",
+    "type": "mc",
+    "section": "2.9.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/7-knowledge-check",
+    "tags": ["a2a", "agent-card"],
+    "question": "What is an agent card used for in A2A?",
+    "answer": "It provides **metadata about the agent**, such as its capabilities and available functions.",
+    "explanation": "The Agent Card is the agent's digital business card. It lists identity information, the endpoint URL, supported capabilities such as streaming, default input/output modes, the skills and whether authentication is required. A client or routing agent fetches it, typically from `/.well-known/agent-card.json`, to discover what the agent can do before sending requests.",
+    "options": [
+      {"text": "It stores the agent's API key for authentication.", "correct": false, "why": "Unit 2.9.2: the card only indicates whether the agent requires credentials (authentication support); it does not hold the key."},
+      {"text": "It provides metadata about the agent, such as its capabilities and available functions.", "correct": true, "why": "Unit 2.9.2: the Agent Card is a structured document that clients and routing agents retrieve to discover the agent's capabilities, skills and how to interact with it."},
+      {"text": "It visualizes the agent's workflow in a GUI dashboard.", "correct": false, "why": "Unit 2.9.2 describes the card as a structured document for discovery, not a visual dashboard."}
+    ]
+  }
+]

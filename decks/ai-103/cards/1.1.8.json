@@ -1,0 +1,69 @@
+[
+  {
+    "id": "1.1.8-01",
+    "type": "order",
+    "section": "1.1.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/01-Explore-ai-studio.html",
+    "tags": ["foundry-portal", "deployment", "playground"],
+    "question": "Put the steps in order to get from signing in to a first chat with a deployed model in the **Microsoft Foundry portal**.",
+    "answer": "**New Foundry** on → create project → model card in **Discover > Models** → **Deploy** → **Instructions** in the playground → chat.",
+    "explanation": "A **project** organizes the models, resources and data of an AI solution, so it comes before any model. The **model card** describes a model's capabilities and limitations, so you can judge whether it suits your requirements before deploying it. Only a **deployment** lets you work with the model in your project; when it is ready, the model playground opens on its own. The **Instructions** box holds the system instructions, such as the assistant's role, that shape every answer in the chat.",
+    "items": [
+      "Sign in at https://ai.azure.com and enable the New Foundry option in the top toolbar",
+      "Create a project; under Advanced options set the Foundry resource, subscription, resource group and region",
+      "On the Discover page, open the Models tab, search the model and open its model card",
+      "Select Deploy with the default settings",
+      "In the model playground, enter the system instructions in the Instructions box",
+      "Send a query in the chat window and read the response"
+    ]
+  },
+  {
+    "id": "1.1.8-02",
+    "type": "basic",
+    "section": "1.1.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/01-Explore-ai-studio.html",
+    "tags": ["endpoints", "foundry-portal"],
+    "question": "A client app must connect to your Microsoft Foundry project. Where in the **Foundry portal** do you find the project's **key and endpoints**, where the **parent Foundry resource's** endpoint, and what is each one for?",
+    "answer": "- **Home** (project home page) → the **key** (key-based authentication), the **project endpoint** (Responses API, Foundry APIs such as the Agent service) and the **Azure OpenAI endpoint** (OpenAI APIs: Chat Completions, Responses)\n- **Manage** → **Parent resource** → the **Foundry resource endpoint** (resource-level features, e.g. Foundry Tools shared by all projects)",
+    "explanation": "**Manage** opens the management center, which splits a *resource* level from a *project* level. The resource is the Foundry resource in Azure: it holds the connections to Foundry services and models and controls user access centrally. One resource can support several projects; the first one created is its **default project**. Both project endpoints offer the Responses API: take the project endpoint for Foundry-specific APIs, the OpenAI endpoint for Chat Completions. In most production scenarios, consider Microsoft Entra ID instead of the key.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.1.8-project-home.png",
+        "alt": "Foundry project home page with the fields API key, Project endpoint and Azure OpenAI endpoint, each with a copy button"
+      },
+      {
+        "src": "media/ai-103/1.1.8-foundry-manage.png",
+        "alt": "Foundry portal Manage page: Resource details and Project details in the left pane, the project marked Default project, with Project endpoint and a Parent resource link"
+      }
+    ]
+  },
+  {
+    "id": "1.1.8-03",
+    "type": "order",
+    "section": "1.1.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/01-Explore-ai-studio.html",
+    "tags": ["vs-code", "playground"],
+    "question": "You want to test a model deployed in your Microsoft Foundry project **from inside Visual Studio Code**. Put the steps in order.",
+    "answer": "Install **Foundry Toolkit for VS Code** → open its page → set the **default project** → view the deployment under **Models** → **Developer Tools > Build > Model playground**.",
+    "explanation": "Developers spend much of their time in VS Code, and the Foundry Toolkit lets them work with Foundry project resources without leaving it. The pane only shows your project after you connect to Azure and pick it as the default project under **Microsoft Foundry Resources**. Expanding the project and then **Models** shows each deployment's details. The model playground then opens an interactive test chat in VS Code, like the playground in the Foundry portal.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.1.8-vscode-toolkit.png",
+        "alt": "Foundry Toolkit pane in Visual Studio Code with the resources section (including the Foundry project) and Developer Tools with Discover, Build and Monitor"
+      }
+    ],
+    "items": [
+      "On the Extensions page, search for Foundry Toolkit and install Foundry Toolkit for VS Code",
+      "Open the Foundry Toolkit page in the left navigation bar",
+      "Under Microsoft Foundry Resources, sign in to Azure and set your Foundry project as the default project",
+      "Expand the project, then Models, and select the deployment to view its details",
+      "Under Developer Tools, expand Build, select Model playground and pick the model"
+    ]
+  }
+]

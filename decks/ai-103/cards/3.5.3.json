@@ -1,0 +1,94 @@
+[
+  {
+    "id": "3.5.3-01",
+    "type": "order",
+    "section": "3.5.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["speech", "mcp", "storage"],
+    "question": "Put the steps of preparing **Azure Blob Storage** for the **Azure Speech MCP server** on a Microsoft Foundry agent in order.",
+    "answer": "Storage account → **Storage Blob Data Contributor** role → container → **SAS token** → connect the tool with the SAS URL.",
+    "explanation": "The Speech MCP server reads input audio from and writes generated audio to a blob container, so storage must exist before you connect the tool. The role lets your user account generate SAS URLs and manage blobs. The SAS token for the container needs Read, Add, Create, Write and List permissions with the shortest practical expiry. Copy the SAS URL and store it securely: it is the value you enter when you connect the tool.",
+    "items": [
+      "Create an Azure Storage account (or use an existing one)",
+      "Assign your user the Storage Blob Data Contributor role on the storage account",
+      "Under Data storage > Containers, create a blob container (for example, files)",
+      "Generate a SAS token for the container with Read, Add, Create, Write and List permissions",
+      "Add the Azure Speech MCP Server tool to the agent, passing the container's SAS URL"
+    ]
+  },
+  {
+    "id": "3.5.3-02",
+    "type": "basic",
+    "section": "3.5.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["speech", "mcp", "foundry-portal"],
+    "question": "Name the **three** settings you enter when you add the **Azure Speech MCP Server** from the tool catalog to an agent in the Microsoft Foundry portal.",
+    "answer": "- **Foundry resource name** — the name of your Foundry resource, e.g. `myproject-resource`\n- **Bearer** (`Ocp-Apim-Subscription-Key`) — the key for your Foundry project\n- **X-Blob-Container-Url** — the SAS URL of your blob container",
+    "explanation": "You reach the dialog from the agent: **Tools** > **Add** > **Add a new tool**, then the **Catalog** tab > **Azure Speech MCP Server**, then **Create**. The connection is key-based: the key authenticates calls to Azure Speech, and the SAS URL lets the server read and write audio files in your container. You find the project key on the project home page in the Foundry portal. Afterwards the agent has the speech-to-text and text-to-speech tools.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/3.5.3-speech-tool-config.png",
+        "alt": "Foundry portal dialog 'Connect the Azure Speech MCP Server tool' with the fields Name, Remote MCP Server endpoint, the foundry-resource-name parameter, key-based authentication, and the Bearer and X-Blob-Container-Url authorization values"
+      }
+    ]
+  },
+  {
+    "id": "3.5.3-03",
+    "type": "basic",
+    "section": "3.5.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["speech", "text-to-speech", "mcp"],
+    "question": "Name the **four** options you can request in a prompt to a Microsoft Foundry agent that uses the **Azure Speech MCP server** tools.",
+    "answer": "- **Voice selection** — a neural voice, e.g. `en-GB-SoniaNeural`\n- **Language** — for recognition or synthesis, e.g. `es-ES`\n- **Phrase hints** — domain terms that improve transcription accuracy\n- **Profanity filtering** — `masked`, `removed` or `raw` during transcription",
+    "explanation": "You set these options in the natural-language prompt, not in the tool connection. For example: Synthesize \"Better a witty fool, than a foolish wit!\" as speech using the voice \"en-GB-SoniaNeural\". Voice selection only matters for text-to-speech. Phrase hints and profanity filtering only matter for speech-to-text. Language applies to both. Phrase hints help with terms a general model may mishear, such as \"Azure, OpenAI, Cognitive Services\"."
+  },
+  {
+    "id": "3.5.3-04",
+    "type": "basic",
+    "section": "3.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["mcp", "playground", "speech"],
+    "question": "You test a Microsoft Foundry agent with the **Azure Speech MCP Server** tool in the agent playground. What happens the first time the agent calls the tool, and how do you stop it from happening again?",
+    "answer": "You are prompted to **approve** the tool usage. Select **Always approve all Azure Speech MCP Server tools** to skip future approval prompts.",
+    "explanation": "The agent playground is the interactive place to test the agent before building a client. After approval, a text-to-speech prompt such as Generate \"To be or not to be, that is the question.\" as speech returns a link to the audio file saved in your blob container. For speech-to-text, the prompt points to the audio file through a publicly accessible URL or a SAS URL to a file in your container, and the agent returns the transcribed text."
+  },
+  {
+    "id": "3.5.3-05",
+    "type": "basic",
+    "section": "3.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["sdk", "responses-api", "agents"],
+    "question": "A Python client must send a user prompt to an existing Microsoft Foundry agent named `Speech-Agent`. Which calls does it make with the Foundry SDK?",
+    "answer": "- **`AIProjectClient`** with the project endpoint and `DefaultAzureCredential`\n- `get_openai_client()` to get an OpenAI client\n- `responses.create()` with the agent named in `extra_body` as an **`agent_reference`**\n- Read the reply from `output_text`",
+    "explanation": "The client needs the `azure-ai-projects` and `azure-identity` packages. The Foundry SDK talks to agents through the OpenAI Responses API, so the call is an ordinary `responses.create()`. What turns it into an agent call is the reference by name in `extra_body`: `{\"agent_reference\": {\"name\": \"Speech-Agent\", \"type\": \"agent_reference\"}}`. The agent then picks and calls the right Speech MCP tool itself. In development, `DefaultAzureCredential` uses your Azure CLI sign-in."
+  },
+  {
+    "id": "3.5.3-06",
+    "type": "mc",
+    "section": "3.5.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/03-connect-use-speech-mcp",
+    "tags": ["mcp", "sdk", "python"],
+    "question": "You define the **Azure Speech MCP server** connection in code instead of in the Foundry portal, and every tool call must be approved first. Complete the code.\n\n```python\nfrom azure.ai.projects.models import MCPTool\n\nmcp_tool = MCPTool(\n    server_label=\"azure-speech\",\n    server_url=\"https://{foundry-resource-name}.cognitiveservices.azure.com/speech/mcp\",\n    ___=\"always\",\n)\n```",
+    "answer": "`require_approval`",
+    "explanation": "`MCPTool` from the `azure-ai-projects` SDK describes the connection: `server_label` names it, and `server_url` is the speech MCP endpoint of your Foundry resource. You pass `mcp_tool` when you create the agent through the SDK. Choose this over the portal when tool connections should live in your application code instead of being configured by hand. `require_approval=\"always\"` is the code-side counterpart of the approval prompt you see in the agent playground.",
+    "addition": "With `require_approval=\"always\"`, the response contains `mcp_approval_request` items. The client answers with `mcp_approval_response` items (`approve` true or false) in a new `responses.create()` call with `previous_response_id`, and only then does the tool run.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/model-context-protocol",
+    "options": [
+      {"text": "`require_approval`", "correct": true, "why": "It sets when a tool call needs approval; `\"always\"` makes every call wait for it."},
+      {"text": "`allowed_tools`", "correct": false, "why": "It is an allow list of which server tools the agent may call, not an approval setting."},
+      {"text": "`project_connection_id`", "correct": false, "why": "It names a Foundry project connection that holds the server's credentials; it does not control approval."}
+    ]
+  }
+]

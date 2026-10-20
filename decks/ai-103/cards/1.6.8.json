@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1.6.8-01",
+    "type": "order",
+    "section": "1.6.8",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/06-Explore-content-filters.html",
+    "tags": [
+      "guardrails",
+      "content-filters",
+      "foundry-portal"
+    ],
+    "question": "Put the steps of creating a **custom guardrail** in the Microsoft Foundry portal and applying it to a model deployment in order.",
+    "answer": "Guardrails → Create → add risk controls → Next → select the model → Review and Submit.",
+    "explanation": "The wizard runs controls first, targets second, review last. On the **Create guardrail controls** page you add one control per risk. If the current filter already covers that risk, Foundry asks you to confirm replacing it with **OK**. Only after all controls are set do you choose, under **Select agents and models**, the deployment the guardrail protects.",
+    "items": [
+      "In the left navigation pane, select **Guardrails**, then **Create**",
+      "Under **Add controls**, pick a **Risk**, set its blocking threshold and select **Add control** (repeat per risk)",
+      "Select **Next**",
+      "Under **Select agents and models**, select **Models** and choose the deployment",
+      "On the **Review** section, select **Submit**"
+    ]
+  },
+  {
+    "id": "1.6.8-02",
+    "type": "basic",
+    "section": "1.6.8",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/06-Explore-content-filters.html",
+    "tags": [
+      "guardrails",
+      "content-filters",
+      "foundry-portal"
+    ],
+    "question": "A model deployment in Microsoft Foundry still uses its **default guardrail**. What does that guardrail do, and which setting in a custom guardrail makes content filtering **stricter**?",
+    "answer": "- **Default guardrail** — applied on deployment; balanced filters that disallow most harmful content but allow reasonably safe language\n- Stricter: raise the **blocking threshold** of each **Risk** to **Highest blocking**\n- Categories: **Hate**, **Violence**, **Sexual**, **Self-harm**\n- Filters apply to **prompts** and **completions**",
+    "explanation": "The blocking threshold decides which kinds of language the filter intercepts. The default is a compromise in both directions. It may let a response about planning a bank robbery through, leaving it to the model to self-censor from its training. Yet it can block a harmless prompt like \"What should I do if I cut myself?\" as a possible self-harm reference. *Highest blocking* mainly adds protection against prompts that reference extreme violence, sexual content, hate speech or self-harm."
+  },
+  {
+    "id": "1.6.8-03",
+    "type": "basic",
+    "section": "1.6.8",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/06-Explore-content-filters.html",
+    "tags": [
+      "guardrails",
+      "foundry-portal"
+    ],
+    "question": "Where in the Microsoft Foundry portal do you **confirm which guardrail** is applied to a model deployment?",
+    "answer": "**Deployments** in the left pane → select the model → its **Details** page, which shows the applied guardrail.",
+    "explanation": "Saving a guardrail and attaching it are one flow: the guardrail is assigned to the deployment in the wizard's **Select agents and models** step. The deployment's Details page is where you check that the assignment took effect. Selecting the model under Deployments also opens it in the playground, so you can test prompts against the new filters right away."
+  }
+]

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "3.6.4-01",
+    "type": "basic",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "agents"],
+    "question": "Name the **four** advantages of connecting Azure Voice Live to a **Microsoft Foundry agent** instead of directly to a model.",
+    "answer": "- **Encapsulated instructions and configuration** — they live in the agent, not in the session code\n- **Complex logic and behaviors** — conversational flows change without changing client code\n- **Streamlined integration** — connect with the agent ID; settings are handled internally\n- **Maintainability and scalability** — agent logic is separated from the voice implementation",
+    "explanation": "With a direct model connection, the client sends the instructions itself in `session.update`, so every behaviour change means changing and redeploying the client. With an agent, the client only names the agent and the agent carries its own instructions and Voice Live settings. That separation pays off when you run several conversational experiences or business-logic variations behind the same voice client."
+  },
+  {
+    "id": "3.6.4-02",
+    "type": "basic",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "foundry-portal"],
+    "question": "In the Microsoft Foundry **agent playground**, how do you add Azure Voice Live to an agent, and which **five** settings does the Configuration pane then offer?",
+    "answer": "Enable **voice mode**, then set:\n- **Language** — spoken and understood by the agent\n- **Advanced settings** — VAD (interruptions, end of speech) and audio enhancement (background noise)\n- **Voice** — which voice, plus tone and speaking rate\n- **Interim response** — speech generated while waiting for the model\n- **Avatar** — a visual avatar representing the agent",
+    "explanation": "Voice mode is the portal route: you build the agent as usual and test the spoken conversation directly in the playground, with no client code. The settings split into what the agent hears (language, voice activity detection, audio enhancement against noise and poor audio quality) and how it presents itself (voice, interim responses, avatar).",
+    "explanation_images": [
+      {"src": "media/ai-103/3.6.4-voice-mode.png", "alt": "Microsoft Foundry agent playground with voice mode enabled and the Voice Live Configuration pane"}
+    ]
+  },
+  {
+    "id": "3.6.4-03",
+    "type": "mc",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "foundry-portal"],
+    "question": "Users of a Microsoft Foundry voice agent complain about awkward silence while the model is still working on its answer. Which Voice Live setting in the agent playground's Configuration pane addresses this?",
+    "answer": "**Interim response**.",
+    "explanation": "An interim response lets the agent automatically generate speech while it waits for the model's response, so the caller hears that something is happening. The other settings tune hearing (VAD, audio enhancement) or presentation (voice, avatar) but do nothing about the wait.",
+    "options": [
+      {"text": "Interim response", "correct": true, "why": "It makes the agent speak automatically while it waits for the model's response."},
+      {"text": "Voice activity detection (VAD)", "correct": false, "why": "VAD detects interruptions and the end of the user's speech; it does not fill the agent's waiting time."},
+      {"text": "Audio enhancement", "correct": false, "why": "It mitigates background noise and poor audio quality on the input."},
+      {"text": "Voice (tone and speaking rate)", "correct": false, "why": "It changes how the agent sounds once it speaks, not whether it speaks while waiting."},
+      {"text": "Avatar", "correct": false, "why": "It adds a visual representation of the agent, not speech."}
+    ]
+  },
+  {
+    "id": "3.6.4-04",
+    "type": "basic",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "agents", "sdk"],
+    "question": "You create a Microsoft Foundry agent in Python with `AIProjectClient` and want it to carry its Azure Voice Live session settings. Where do the settings go, and what limit must you work around?",
+    "answer": "- Into the agent's **metadata**, passed to `agents.create_version(...)`\n- Key **`microsoft.voice-live.configuration`**, value = the session config as JSON\n- Each metadata value is limited to **512 characters**\n- Longer JSON is **chunked** into `…configuration.1`, `.2`, …",
+    "explanation": "The agent definition itself (`PromptAgentDefinition`) holds only model and instructions. The Voice Live part is a `session` object — voice, input transcription, turn detection such as `azure_semantic_vad`, noise reduction and echo cancellation — serialized with `json.dumps`. A realistic config easily exceeds 512 characters, so a helper splits it over numbered keys. This is the code equivalent of enabling voice mode in the playground.",
+    "addition": "When Voice Live reads the agent, it reassembles the config by concatenating the base key and then each numbered key in order until one is missing.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-agents-quickstart"
+  },
+  {
+    "id": "3.6.4-05",
+    "type": "order",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "agents"],
+    "question": "Put the **five** tasks of a client application that uses a Microsoft Foundry voice agent through Azure Voice Live in order.",
+    "items": [
+      "Connect to the agent",
+      "Configure audio hardware input and output",
+      "Establish a Voice Live session",
+      "Monitor audio systems for activity",
+      "Process events such as user speech input and agent responses"
+    ],
+    "answer": "**Connect → configure audio I/O → establish session → monitor audio → process events**.",
+    "explanation": "The sample code follows this order: `connect(...)` with the agent configuration, then an audio processor for microphone and speakers, then `session.update` to configure the session. Only after the `session.updated` event confirms the session does the client start capturing the microphone. From then on it loops over server events: transcripts, audio chunks to play, speech started or stopped, and errors."
+  },
+  {
+    "id": "3.6.4-06",
+    "type": "basic",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "agents", "entra-id"],
+    "question": "Name the **three** parts of the recommended pattern for an Azure Voice Live client application that talks to a Microsoft Foundry agent.",
+    "answer": "- **Microsoft Entra ID authentication** — to connect to the agent in the Foundry project\n- **VoiceAssistant** class — typed agent configuration, starts and configures the session, processes voice events\n- **AudioProcessor** class — input and output through the audio devices",
+    "explanation": "The split keeps conversation logic apart from audio hardware. In the sample, VoiceAssistant reacts to server events: on `SESSION_UPDATED` it starts microphone capture, on `INPUT_AUDIO_BUFFER_SPEECH_STARTED` it clears the playback queue so the agent stops talking over the user, and on `RESPONSE_AUDIO_DELTA` it queues the audio chunk. AudioProcessor uses PyAudio with 24 kHz, 16-bit PCM mono audio and sends microphone data base64-encoded to the input audio buffer."
+  },
+  {
+    "id": "3.6.4-07",
+    "type": "mc",
+    "section": "3.6.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/3b-voice-live-agent",
+    "tags": ["voice-live", "agents", "sdk"],
+    "question": "A Python client must open an Azure Voice Live session against a **Microsoft Foundry agent**, not a model. Which argument completes the call?\n\n```python\nagent_config = {\"agent_name\": agent_name, \"project_name\": project_name}\nasync with connect(\n    endpoint=endpoint,\n    credential=AzureCliCredential(),\n    api_version=\"2026-01-01-preview\",\n    ___\n) as connection:\n    ...\n```",
+    "answer": "**`agent_config=agent_config`** — the agent's name and its Foundry project.",
+    "explanation": "For a direct model connection, `connect` takes `model=\"gpt-4o\"` instead. With an agent, the client only names the agent and the project; instructions and voice settings come from the agent. The credential is async (`azure.identity.aio`), because the Voice Live SDK is async-only.",
+    "options": [
+      {"text": "`agent_config=agent_config`", "correct": true, "why": "It tells Voice Live which agent in which Foundry project to use."},
+      {"text": "`model=agent_name`", "correct": false, "why": "`model` selects a model deployment for a direct model connection, not an agent."},
+      {"text": "`metadata=agent_config`", "correct": false, "why": "`metadata` belongs to `agents.create_version` when you create the agent, not to `connect`."},
+      {"text": "`session=agent_config`", "correct": false, "why": "`session` is the argument of `connection.session.update(...)`, which configures audio settings after connecting."}
+    ],
+    "addition": "The agent connection also accepts an optional `agent_version` to pin a version for controlled rollouts; without it, the latest version is used.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-agents-quickstart"
+  }
+]

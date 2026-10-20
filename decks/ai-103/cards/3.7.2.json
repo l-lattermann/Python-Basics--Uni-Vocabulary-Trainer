@@ -1,0 +1,32 @@
+[
+  {
+    "id": "3.7.2-01",
+    "type": "basic",
+    "section": "3.7.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/2-translation-foundry",
+    "tags": ["translation", "foundry-tools", "service-choice"],
+    "question": "Name the **two** Foundry Tools that Microsoft Foundry provides for building translation solutions, and what each covers.",
+    "answer": "- **Azure Translator in Foundry Tools** — text translation across a wide range of languages, with custom translation models\n- **Azure Speech in Foundry Tools** — speech tools, including speech-to-text and speech-to-speech translation into several languages at once",
+    "explanation": "Many LLMs can translate phrases or even whole documents. A comprehensive multi-language translation solution, however, generally needs specialized models, and that is what these two tools supply. The split follows the input: written text goes to Translator, spoken audio goes to Speech. Both are reached through a Microsoft Foundry resource endpoint and offer extensive APIs plus language-specific SDKs."
+  },
+  {
+    "id": "3.7.2-02",
+    "type": "mc",
+    "section": "3.7.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/2-translation-foundry",
+    "tags": ["translation", "speech", "service-choice"],
+    "question": "A conference app must take a presenter's spoken English and deliver it as speech in French, Spanish and Japanese **at the same time**. Which tool in Microsoft Foundry fits?",
+    "answer": "**Azure Speech in Foundry Tools**, which offers speech-to-speech translation into multiple languages simultaneously.",
+    "explanation": "The input is audio, not text, so the speech tool is the match: it covers speech-to-text and speech-to-speech translation in several target languages at once. Azure Translator is the text service; its strengths are a wide language range and custom models for domain-specific terms. A general LLM can translate too, but comprehensive multi-language translation generally calls for the specialized models in Foundry Tools.",
+    "options": [
+      {"text": "Azure Speech in Foundry Tools", "correct": true, "why": "It translates spoken input to speech in multiple languages simultaneously."},
+      {"text": "Azure Translator in Foundry Tools", "correct": false, "why": "It translates text, not spoken audio."},
+      {"text": "A general-purpose LLM deployed in Microsoft Foundry", "correct": false, "why": "LLMs can translate text, but comprehensive multi-language translation generally needs the specialized models of Foundry Tools, and an LLM does not handle the audio in and out."},
+      {"text": "Azure Language in Foundry Tools", "correct": false, "why": "It analyzes text (for example entities or sentiment); translation is handled by Translator and Speech."}
+    ]
+  }
+]

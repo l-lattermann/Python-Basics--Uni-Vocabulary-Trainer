@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2.8.6-01",
+    "type": "basic",
+    "section": "2.8.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/6-use-group-chat-orchestration",
+    "tags": [
+      "agent-framework",
+      "orchestration",
+      "multi-agent"
+    ],
+    "question": "What is **group chat orchestration** in the Microsoft Agent Framework, and what does its chat manager decide?",
+    "answer": "- A **shared conversation** among several agents, optionally with a human\n- A central **chat manager** decides which agent responds next\n- …and when to request **human input**\n- All output lands in **one thread**, so the conversation is transparent and auditable",
+    "explanation": "Choose it when discussion or iterative collaboration leads to the decision: creative brainstorming, debate towards consensus, cross-disciplinary problems, quality control by several expert perspectives, and content workflows that separate creation from review. It covers both free-flowing ideation and formal workflows with fixed roles and approval steps, and suits human-in-the-loop setups where a person guides or intervenes. The agents mainly contribute to the conversation; they typically don't change running systems directly.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/2.8.6-group-chat.png",
+        "alt": "Group chat manager in the centre exchanging requests and responses with a human and three agents (marketing, engineering, finance), taking the input and returning the result."
+      }
+    ]
+  },
+  {
+    "id": "2.8.6-02",
+    "type": "mc",
+    "section": "2.8.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/6-use-group-chat-orchestration",
+    "tags": [
+      "agent-framework",
+      "orchestration",
+      "multi-agent"
+    ],
+    "question": "You are choosing a Microsoft Agent Framework orchestration pattern. Which **two** situations argue **against** group chat orchestration?",
+    "answer": "**Real-time speed requirements** that make discussion overhead impractical, and a chat manager that **can't tell when the task is complete**.",
+    "explanation": "Group chat pays for its flexibility with discussion rounds, and it needs a clear end point to stop. The course names three more reasons to avoid it: simple delegation or a linear pipeline is enough; the workflow must be hierarchical or deterministic without discussion; and the flow gets too complex with many agents. Keep a group chat to three agents or fewer so it stays controllable.",
+    "options": [
+      {
+        "text": "Real-time speed requirements make the discussion overhead impractical",
+        "correct": true,
+        "why": "Every round of discussion adds latency, so tight speed limits rule the pattern out."
+      },
+      {
+        "text": "The chat manager can't clearly determine when the task is complete",
+        "correct": true,
+        "why": "Without a clear termination point the conversation has no reliable way to end."
+      },
+      {
+        "text": "Agents must take turns creating and reviewing a draft",
+        "correct": false,
+        "why": "Iterative maker-checker loops are a main reason to use group chat."
+      },
+      {
+        "text": "A human must be able to guide or intervene while the agents work",
+        "correct": false,
+        "why": "Real-time human oversight or participation is a listed strength of group chat."
+      },
+      {
+        "text": "The whole conversation must be auditable afterwards",
+        "correct": false,
+        "why": "Group chat collects all output in a single thread, which makes it transparent and auditable."
+      }
+    ]
+  },
+  {
+    "id": "2.8.6-03",
+    "type": "basic",
+    "section": "2.8.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/6-use-group-chat-orchestration",
+    "tags": [
+      "agent-framework",
+      "orchestration",
+      "multi-agent"
+    ],
+    "question": "In a multi-agent group chat, one agent drafts content and another critiques it, round after round, until the result is good enough. What is this special case called, and how does it run?",
+    "answer": "A **maker-checker loop**:\n- The **maker** proposes content or a solution\n- The **checker** reviews, critiques and sends feedback back\n- The cycle repeats until the result is satisfactory, in turns run by the **chat manager**",
+    "explanation": "The loop needs iteration: the same draft goes back and forth several times. That is exactly what sequential orchestration can't do, because its pipeline runs in a fixed order and is to be avoided when a workflow needs iteration or backtracking. In a group chat the chat manager enforces the turn order, so maker and checker alternate in one shared thread."
+  },
+  {
+    "id": "2.8.6-04",
+    "type": "basic",
+    "section": "2.8.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/6-use-group-chat-orchestration",
+    "tags": [
+      "agent-framework",
+      "orchestration",
+      "multi-agent"
+    ],
+    "question": "Name the **four** methods a Microsoft Agent Framework group chat manager calls in each round, in their call order.",
+    "answer": "- **`should_request_user_input`** — is human input needed before the next agent?\n- **`should_terminate`** — should the conversation end, e.g. max rounds reached?\n- **`filter_results`** — if ending, summarize or process the final conversation\n- **`select_next_agent`** — if continuing, choose the next speaker",
+    "explanation": "User input and termination are checked first, so the conversation never moves forward past a needed human answer or a reached limit. Only then does it branch: end with `filter_results`, or continue with `select_next_agent`. To change any of these steps, write a custom manager that extends the base `GroupChatManager` class and override the matching method.",
+    "addition": "The current Agent Framework Python docs set speaker selection through `GroupChatBuilder` parameters instead — `selection_func`, `orchestrator_agent` or a custom `orchestrator` — plus a `termination_condition`.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/group-chat"
+  },
+  {
+    "id": "2.8.6-05",
+    "type": "mc",
+    "section": "2.8.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/6-use-group-chat-orchestration",
+    "tags": [
+      "agent-framework",
+      "orchestration",
+      "multi-agent"
+    ],
+    "question": "In the Microsoft Agent Framework SDK, which class builds a workflow in which agents talk in one conversation coordinated by a chat manager?",
+    "answer": "**`GroupChatBuilder`** — add the agents with `participants()`, then call `build()`.",
+    "explanation": "The surrounding steps match the other patterns: create a chat client such as `AzureOpenAIChatClient`, create named agents with `create_agent`, call the workflow's `run` method with the task, and read the results with `get_outputs()`. Each returned message carries the author name and content, so you can see which agent said what.",
+    "addition": "The course's steps say this workflow runs all agents concurrently, copied from concurrent orchestration. In group chat the orchestrator selects one speaker per turn and broadcasts each response to all other agents.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/group-chat",
+    "options": [
+      {
+        "text": "GroupChatBuilder",
+        "correct": true,
+        "why": "It creates the group chat workflow from the participating agents."
+      },
+      {
+        "text": "ConcurrentBuilder",
+        "correct": false,
+        "why": "It sends the same task to all agents in parallel and collects independent results, with no shared conversation."
+      },
+      {
+        "text": "SequentialBuilder",
+        "correct": false,
+        "why": "It runs agents in a fixed pipeline where each output feeds the next agent."
+      },
+      {
+        "text": "MagenticBuilder",
+        "correct": false,
+        "why": "It sets up a Magentic manager that plans and delegates via a task ledger for open-ended problems."
+      },
+      {
+        "text": "WorkflowBuilder",
+        "correct": false,
+        "why": "The course uses it to wire executors and switch-case edges for handoff routing, not a managed chat."
+      }
+    ]
+  }
+]

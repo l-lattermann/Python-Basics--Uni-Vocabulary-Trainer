@@ -1,0 +1,55 @@
+[
+  {
+    "id": "3.4.6-01",
+    "type": "basic",
+    "section": "3.4.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/6-speech-synthesis-markup",
+    "tags": [
+      "speech",
+      "ssml"
+    ],
+    "question": "Plain text gives you little control over how Azure Speech in Foundry Tools speaks it. Name the **six** things **Speech Synthesis Markup Language (SSML)** lets you control in synthesized speech.",
+    "answer": "- **Speaking style** — e.g. \"excited\" or \"cheerful\" with a neural voice\n- **Pauses** — insert breaks or silence\n- **Phonemes** — phonetic pronunciation, e.g. \"SQL\" as \"sequel\"\n- **Prosody** — pitch, timbre and speaking rate\n- **Say-as rules** — read a string as a date, time, telephone number …\n- **Recorded audio** — insert recorded speech or background noise",
+    "explanation": "SSML is an XML-based syntax that describes how the output should sound, not just what is said. Keep the pairs apart: a **phoneme** changes how one word is pronounced, **prosody** changes the voice's overall pitch, timbre and rate, and **say-as** tells the service what kind of value a string is, so a date is read as a date. A speaking style only works with a neural voice. Inserted audio fits a standard recorded message or simulated background noise."
+  },
+  {
+    "id": "3.4.6-02",
+    "type": "mc",
+    "section": "3.4.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/6-speech-synthesis-markup",
+    "tags": [
+      "speech",
+      "ssml",
+      "speech-sdk"
+    ],
+    "question": "You have built an SSML document for Azure Speech in Foundry Tools and want it spoken with the Python Speech SDK. Which call completes the gap?\n\n```python\nssml = '<speak version=\"1.0\" ...><voice name=\"en-US-AriaNeural\">...</voice></speak>'\nspeech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config,\n                                                 audio_config=audio_config)\nresult = speech_synthesizer.___(ssml).get()\n```",
+    "answer": "**`speak_ssml_async`** — the SpeechSynthesizer method that takes SSML instead of plain text.",
+    "explanation": "The SpeechSynthesizer stays the same; only the method changes. In the SSML, the root `<speak>` element holds one `<voice>` element per neural voice, so a single document can script a dialog between two voices. Inside a voice, `<mstts:express-as style=\"cheerful\">` sets a speaking style, `<phoneme alphabet=\"sapi\" ph=\"…\">` fixes a pronunciation, and `<break strength=\"weak\"/>` inserts a pause.",
+    "options": [
+      {
+        "text": "`speak_ssml_async`",
+        "correct": true,
+        "why": "It submits an SSML description to the Speech service and returns the synthesis result."
+      },
+      {
+        "text": "`speak_text_async`",
+        "correct": false,
+        "why": "It submits plain text; an SSML description goes through its own method."
+      },
+      {
+        "text": "`recognize_once_async`",
+        "correct": false,
+        "why": "It belongs to the SpeechRecognizer and transcribes speech to text, the opposite direction."
+      },
+      {
+        "text": "`set_speech_synthesis_output_format`",
+        "correct": false,
+        "why": "It is a SpeechConfig method that picks the audio file type, sample rate and bit depth; it synthesizes nothing."
+      }
+    ]
+  }
+]

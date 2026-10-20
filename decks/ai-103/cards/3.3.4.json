@@ -1,0 +1,48 @@
+[
+  {
+    "id": "3.3.4-01",
+    "type": "basic",
+    "section": "3.3.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/3b-develop-speech-app",
+    "tags": ["text-to-speech", "model-choice"],
+    "question": "Name the **two** gpt-4o family models in Microsoft Foundry that support text-to-speech (speech synthesis).",
+    "answer": "- **gpt-4o-tts**\n- **gpt-4o-mini-tts**",
+    "explanation": "Speech synthesis is the reverse of speech-to-text: you submit text and the model returns an audio stream of the spoken text. The `-tts` suffix marks the synthesis models; the `-transcribe` models (gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize) go the other way, audio in and transcript out. Which of these models you can deploy depends on the region, so check the regional availability table first.",
+    "addition": "The current Foundry model list shows no `gpt-4o-tts`. Its text-to-speech models are `tts` (optimized for speed), `tts-hd` (optimized for quality) and `gpt-4o-mini-tts`, all in preview at the time of writing.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?pivots=azure-openai"
+  },
+  {
+    "id": "3.3.4-02",
+    "type": "mc",
+    "section": "3.3.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/3b-develop-speech-app",
+    "tags": ["text-to-speech", "openai-sdk"],
+    "question": "You use the `AzureOpenAI` client of the OpenAI SDK to turn text into a WAV file with a gpt-4o-mini-tts deployment in Microsoft Foundry. Which fragment completes the call?\n\n```python\nwith client.audio.___.with_streaming_response.create(\n        model=YOUR_MODEL_DEPLOYMENT,\n        voice=\"alloy\",\n        input=\"This speech was AI-generated!\",\n) as response:\n    response.stream_to_file(Path(\"output_speech.wav\"))\n```",
+    "answer": "**`speech`** — `client.audio.speech.with_streaming_response.create(...)`.",
+    "explanation": "Both speech directions use the same `AzureOpenAI` client, connected to the Foundry resource endpoint with a key and API version. Transcription calls `client.audio.transcriptions.create` with an audio `file` and gets text back. Synthesis calls `client.audio.speech`, and because the result is audio, you use the streaming-response variant and write the stream to disk with `response.stream_to_file(path)`.",
+    "options": [
+      {"text": "`speech`", "correct": true, "why": "`audio.speech` is the text-to-speech endpoint; it returns an audio stream that `stream_to_file` saves."},
+      {"text": "`transcriptions`", "correct": false, "why": "`audio.transcriptions` is speech-to-text: it takes an audio `file` and returns a transcript, not audio."},
+      {"text": "`translations`", "correct": false, "why": "`audio.translations` takes audio and returns translated text; it does not synthesize speech from an `input` string."},
+      {"text": "`completions`", "correct": false, "why": "There is no `audio.completions`; chat completions live under `client.chat.completions` and return text."}
+    ]
+  },
+  {
+    "id": "3.3.4-03",
+    "type": "basic",
+    "section": "3.3.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/3b-develop-speech-app",
+    "tags": ["text-to-speech", "openai-sdk"],
+    "question": "In an OpenAI SDK text-to-speech call (`client.audio.speech.with_streaming_response.create`) to a Foundry deployment, what do the arguments `model`, `voice`, `input` and `instructions` set? Which one makes the speech sound upbeat and excited?",
+    "answer": "- **model** — the name of your TTS model deployment\n- **voice** — the voice that speaks, e.g. `\"alloy\"`\n- **input** — the text to speak\n- **instructions** — the speaking style or tone, e.g. \"Speak in an upbeat, excited tone.\"",
+    "explanation": "The four arguments split *what* is said from *how* it sounds. `input` carries the words. `voice` picks which voice says them. `instructions` is a natural-language prompt about delivery, so a scenario asking for a cheerful, calm or excited tone points to `instructions`, not to a different voice or changed text. `model` names your deployment, not the base model name.",
+    "addition": "Docs describe `gpt-4o-mini-tts` specifically as a model where you can guide the voice to speak in a specific style or tone; the plain `tts` and `tts-hd` models are not described that way.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?pivots=azure-openai"
+  }
+]

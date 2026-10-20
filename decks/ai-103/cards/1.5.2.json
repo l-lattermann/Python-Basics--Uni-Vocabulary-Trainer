@@ -1,0 +1,293 @@
+[
+  {
+    "id": "1.5.2-01",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "optimization"
+    ],
+    "question": "What is **prompt engineering**, and why is it the usual first step when you optimize the output of a generative AI model?",
+    "answer": "**Prompt engineering** — designing and refining prompts to improve the quality, accuracy and relevance of a language model's responses. It needs **no extra infrastructure or training data**.",
+    "explanation": "You only change the text you send, so you can start experimenting immediately and iterate on the results at low cost. That makes it the most accessible of the three optimization strategies (prompt engineering, RAG, fine-tuning). The other two are layered on top only when well-built prompts still fall short — for example when the model lacks the information it needs."
+  },
+  {
+    "id": "1.5.2-02",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "system-message"
+    ],
+    "question": "Name the **four** components a prompt for a **chat completion** model typically includes.",
+    "answer": "- **System message** — instructions that define the model's behavior, role and constraints\n- **User message** — the user's question or input\n- **Assistant message** — previous model responses, used in multi-turn conversations\n- **Examples** — sample input/output pairs that show the expected response format",
+    "explanation": "How you structure and combine these parts decides how well the model responds. The system message usually comes first and is the highest-level set of instructions. User and assistant messages carry the conversation itself; the assistant messages give the model its own earlier answers in a multi-turn chat. Examples are what the few-shot learning pattern is built on.",
+    "addition": "With the Chat Completion API, the prompt is sent as a `messages` array whose entries carry the roles `system`, `user` and `assistant`. Few-shot examples are added as example user/assistant pairs after the initial system message.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/prompt-engineering"
+  },
+  {
+    "id": "1.5.2-03",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "system-message",
+      "prompt-engineering"
+    ],
+    "question": "In a chat application built on a language model, what **four** things do you use the **system message** for?",
+    "answer": "- Define the assistant's **role and boundaries**\n- Set the **tone and communication style**\n- Specify **output formats**, such as JSON or bullet points\n- Add **safety and quality constraints** for the scenario",
+    "explanation": "The system message usually appears first in the conversation and acts as the highest-level set of instructions. It can be as short as \"You are a helpful AI assistant.\" or a full rule set: Margie's Travel uses one that makes the model a friendly travel advisor, limits it to travel topics, asks for a warm tone and formats hotel recommendations as a bulleted list with name, location and price range."
+  },
+  {
+    "id": "1.5.2-04",
+    "type": "order",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "system-message",
+      "prompt-engineering"
+    ],
+    "question": "Put the **four** items of the checklist for designing a **system message** for a chat model in order.",
+    "answer": "**Role** → **boundaries** → **output format** → **\"when unsure\" policy**.",
+    "explanation": "The Margie's Travel system message follows it line by line: \"You are a friendly travel advisor\" sets the role; \"Answer only questions related to travel, hotels, and trip planning\" sets the boundary; the bulleted hotel list with name, location and price range fixes the format; and \"If you don't have enough information to answer, ask a clarifying question\" is the when-unsure policy for ambiguous, out-of-scope or unanswerable requests.",
+    "items": [
+      "Start with the assistant's role and the expected outcome of a typical request",
+      "Define boundaries: topics, actions and content types to avoid",
+      "Specify the output format plainly and keep it consistent",
+      "Add a \"when unsure\" policy for ambiguous or out-of-scope requests and missing information"
+    ]
+  },
+  {
+    "id": "1.5.2-05",
+    "type": "mc",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "system-message",
+      "content-filters"
+    ],
+    "question": "A chat model's system message says \"Answer only questions related to travel\", yet in testing it sometimes answers unrelated questions. What is the recommended response?",
+    "answer": "Treat the system message as influence, not a guarantee: **test and iterate on it, and layer it with other mitigations** such as content filtering and evaluation.",
+    "explanation": "A system message steers the model but doesn't guarantee compliance. That is why it is refined through testing and combined with other safeguards rather than relied on alone. Fine-tuning is an advanced step that comes only after you have measured a baseline and prompt engineering has proven insufficient.",
+    "options": [
+      {
+        "text": "Test and iterate on the system message, and layer it with content filtering and evaluation",
+        "correct": true,
+        "why": "A system message influences the model but doesn't guarantee compliance, so it is tested, refined and combined with other mitigations."
+      },
+      {
+        "text": "Fine-tune the model right away on travel-only conversations",
+        "correct": false,
+        "why": "Fine-tuning is an advanced capability; you start from a baseline and use it only when prompt engineering can't achieve the needed consistency."
+      },
+      {
+        "text": "Raise the temperature so the model explores other ways to follow the rule",
+        "correct": false,
+        "why": "A higher temperature makes output more random and varied, which doesn't make the model follow constraints more reliably."
+      },
+      {
+        "text": "Move the rule from the system message into an assistant message",
+        "correct": false,
+        "why": "Assistant messages hold the model's previous responses in a multi-turn chat; the system message is the place for the highest-level instructions."
+      }
+    ]
+  },
+  {
+    "id": "1.5.2-06",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "few-shot",
+      "chain-of-thought"
+    ],
+    "question": "Name the **five** common prompt patterns that improve the output of a chat model in Microsoft Foundry.",
+    "answer": "- **Persona** — have the model take on a specific role or perspective\n- **Format template** — give a template or structure for the output\n- **Chain of thought** — ask the model to reason step by step\n- **Few-shot learning** — include examples of the desired input and output\n- **Clear syntax and delimiters** — separate instructions, source text and examples",
+    "explanation": "Each pattern solves a different problem. Persona changes the voice and angle of the answer. A format template makes responses consistent and easy for your application to parse. Chain of thought makes the reasoning visible and reduces inaccurate results. Few-shot examples let the model pick up a pattern, such as a classification scheme. Delimiters stop the model from mistaking content for instructions."
+  },
+  {
+    "id": "1.5.2-07",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "system-message"
+    ],
+    "question": "You want a chat model to write product descriptions in the voice of a seasoned marketing professional addressing technical customers. Which prompt pattern do you use?",
+    "answer": "The **persona pattern** — e.g. a system message: \"You're a seasoned marketing professional writing for technical customers.\"",
+    "explanation": "In the course's example, the same user prompt — \"Write a one-sentence description of a CRM product\" — is sent with and without a persona. Without one, the model returns a neutral definition: a software tool that manages a company's customer interactions. With the persona, it writes a sales line about seamless customer relationship management, streamlined operations, sales growth and robust analytics. Only the perspective changed."
+  },
+  {
+    "id": "1.5.2-08",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "chain-of-thought",
+      "prompt-engineering",
+      "reasoning-models"
+    ],
+    "question": "What is **chain-of-thought** prompting, what does it achieve, and which kind of model is it meant for?",
+    "answer": "- **Chain of thought** — ask the model to explain its reasoning step by step\n- Reduces inaccurate results and makes the model's logic easier to verify\n- For **non-reasoning models**; reasoning models such as the o-series handle step-by-step logic internally",
+    "explanation": "Instead of \"Which hotel is best for a family of four?\", the prompt adds: \"Take a step-by-step approach: consider room size, amenities for children, location, and price.\" The model then works through each factor before it concludes, so you can check where its answer comes from. Reasoning models such as the o-series already work step by step internally, which is why the technique is meant for non-reasoning models."
+  },
+  {
+    "id": "1.5.2-09",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "chain-of-thought"
+    ],
+    "question": "A chat model makes errors on a complex, multi-part task. Which prompting technique splits the work into explicit sub-steps **before** the model responds?",
+    "answer": "**Breaking the task down** — e.g. first prompt the model to extract the key facts from a passage, then in a follow-up prompt ask it to answer the question based on those facts.",
+    "explanation": "It is related to chain of thought but differs in who sets the steps. Chain of thought asks the model to reason through everything at once inside one response. Decomposition fixes the sub-steps in advance, so each prompt handles one smaller job. On complex, multi-part tasks this reduces errors."
+  },
+  {
+    "id": "1.5.2-10",
+    "type": "mc",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "few-shot",
+      "prompt-engineering"
+    ],
+    "question": "A prompt asks a chat model to classify customer messages. Before the message to classify, it lists three example messages, each with its category. What is this technique called?",
+    "answer": "**Few-shot learning**. With a single example it would be **one-shot**; with no examples, **zero-shot** learning.",
+    "explanation": "The model infers the classification pattern from the examples — \"I need to change my flight to Rome\" → Booking change, a weather question → Travel information — and completes the last entry the same way. The examples sit in the prompt itself, so the pattern is shown, not trained.",
+    "addition": "This isn't learning in the sense that the model is permanently changed: the examples only condition the model for the current inference.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/prompt-engineering",
+    "options": [
+      {
+        "text": "Few-shot learning",
+        "correct": true,
+        "why": "Several input/output examples in the prompt show the model the pattern to follow."
+      },
+      {
+        "text": "One-shot learning",
+        "correct": false,
+        "why": "One-shot means exactly one example; this prompt has three."
+      },
+      {
+        "text": "Zero-shot learning",
+        "correct": false,
+        "why": "Zero-shot means the prompt contains no examples at all."
+      },
+      {
+        "text": "Fine-tuning",
+        "correct": false,
+        "why": "Fine-tuning further trains the model on a task-specific dataset and changes its weights; here the examples are only part of the prompt."
+      }
+    ]
+  },
+  {
+    "id": "1.5.2-11",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering"
+    ],
+    "question": "A long prompt mixes instructions, source text and examples. The model sometimes treats source text as instructions and follows a key instruction at the top inconsistently. Which **two** prompt fixes help?",
+    "answer": "- **Delimiters** — separate the sections with `---`, Markdown headings or XML tags\n- Counter **recency bias** — repeat the key instruction at the end of the prompt",
+    "explanation": "Clear boundaries help the model tell instructions apart from the content it should work on, which reduces misinterpretation. Recency bias means text near the end of a prompt can influence the output more than text at the beginning. In a long prompt the instruction at the top is far from the end, so repeating it there gives it weight again.",
+    "addition": "If you're not sure which syntax to use, consider Markdown or XML: models were trained on a large quantity of web content in these formats, which might give better results.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/prompt-engineering"
+  },
+  {
+    "id": "1.5.2-12",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "parameters",
+      "temperature"
+    ],
+    "question": "Name the **two** model parameters that control the randomness of a language model's output, and how each works.",
+    "answer": "- **Temperature** — higher (e.g. 0.7) gives more creative, varied responses; lower (e.g. 0.2) more focused, deterministic ones\n- **Top_p** — limits the model to a subset of the most probable next tokens; `top_p` 0.9 = the top 90%",
+    "explanation": "Both act on randomness, but differently: temperature makes the whole output more or less adventurous, while top_p cuts off the less probable token choices. Because they overlap, the general recommendation is to adjust either temperature or top_p, not both at the same time. Use lower temperatures for factual tasks and higher ones for creative tasks.",
+    "addition": "For Azure OpenAI models, temperature can be set between 0 and 2.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/prompt-engineering"
+  },
+  {
+    "id": "1.5.2-13",
+    "type": "mc",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "parameters",
+      "temperature"
+    ],
+    "question": "A travel agency's chat app answers factual questions about hotel amenities and also generates creative itinerary suggestions. Which temperature settings fit?",
+    "answer": "**Low temperature (0.2) for amenity facts, higher (0.7) for itineraries.**",
+    "explanation": "Factual answers should be focused and deterministic, so they get a low temperature. Itinerary ideas benefit from variety, so they get a higher one. Each task changes only temperature and leaves top_p alone, following the advice to adjust one of the two, not both.",
+    "options": [
+      {
+        "text": "0.2 for hotel amenities, 0.7 for itinerary suggestions",
+        "correct": true,
+        "why": "Low values for factual tasks, higher values for creative ones."
+      },
+      {
+        "text": "0.7 for hotel amenities, 0.2 for itinerary suggestions",
+        "correct": false,
+        "why": "This is reversed: 0.7 adds randomness to facts and 0.2 makes the creative output repetitive."
+      },
+      {
+        "text": "0.2 for both, so all answers stay consistent",
+        "correct": false,
+        "why": "A low temperature makes itinerary ideas focused and deterministic, losing the variety a creative task needs."
+      },
+      {
+        "text": "0.7 for both, and lower top_p for the amenity questions",
+        "correct": false,
+        "why": "0.7 is too random for factual answers, and the recommendation is to adjust temperature or top_p, not both."
+      }
+    ]
+  },
+  {
+    "id": "1.5.2-14",
+    "type": "basic",
+    "section": "1.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/2-prompt-engineering",
+    "tags": [
+      "prompt-engineering",
+      "optimization"
+    ],
+    "question": "Name the **four** situations in which prompt engineering on its own is an effective way to optimize a generative AI model.",
+    "answer": "- **Guide tone, format and behavior**\n- **Give specific instructions** for a task\n- **Iterate quickly** without infrastructure changes\n- **Keep costs low** — no additional training or data storage",
+    "explanation": "Prompt engineering is the starting point for any optimization effort, but it has two limits. It can't help when the model lacks the information it needs, such as the company's hotel catalog. And it isn't enough when the model consistently fails to keep a specific behavior despite detailed instructions. In both cases you add another strategy on top of the prompts."
+  }
+]

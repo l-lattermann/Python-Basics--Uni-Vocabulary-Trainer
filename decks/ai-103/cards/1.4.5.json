@@ -1,0 +1,179 @@
+[
+  {
+    "id": "1.4.5-01",
+    "type": "mc",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "foundry-iq",
+      "grounding"
+    ],
+    "question": "An enterprise-scale agent must answer from large quantities of data held in **multiple data stores**. Which grounding approach does Microsoft recommend you consider instead of the Responses API file_search tool?",
+    "answer": "The **Foundry IQ** knowledge store solution, used with a Microsoft Foundry agent.",
+    "explanation": "file_search is a great way to ground a model in a specific set of documents or data files that you upload to a vector store. For enterprise-scale agents that need large quantities of data in multiple data stores, the course points to Foundry IQ with a Microsoft Foundry agent instead. Piling everything into one store is no way out: very large or mixed-domain stores return less focused context.",
+    "options": [
+      {
+        "text": "Foundry IQ knowledge store with a Microsoft Foundry agent",
+        "correct": true,
+        "why": "It is the recommended solution for enterprise-scale agents that access large quantities of data in multiple data stores."
+      },
+      {
+        "text": "One large file_search vector store holding all the data",
+        "correct": false,
+        "why": "Very large or mixed-domain stores return less focused context, so this scales badly."
+      },
+      {
+        "text": "The web_search tool",
+        "correct": false,
+        "why": "It retrieves public information from the Internet, not your organization's data stores."
+      },
+      {
+        "text": "The code_interpreter tool",
+        "correct": false,
+        "why": "It runs Python in a sandbox with no external network access; it does not search knowledge stores."
+      }
+    ]
+  },
+  {
+    "id": "1.4.5-02",
+    "type": "basic",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "grounding",
+      "vector-search"
+    ],
+    "question": "Name the **five** key features of the file_search tool in the OpenAI Responses API.",
+    "answer": "- **Document-grounded answers** — responses are based on your uploaded files\n- **Semantic retrieval** — finds passages by meaning, not only exact keywords\n- **Vector store integration** — searches one or more indexed document collections\n- **Citations and transparency** — matched results can be included for debugging and traceability\n- **Better enterprise relevance** — organization-specific knowledge in model outputs",
+    "explanation": "file_search lets a model answer from private or domain-specific files such as policies, manuals, contracts and internal knowledge bases, instead of only its general training data. The features build on each other: files sit in vector stores, semantic retrieval pulls the passages that match the question's meaning, and the answer is grounded in them. The matched results make it possible to check where an answer came from."
+  },
+  {
+    "id": "1.4.5-03",
+    "type": "basic",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "use-cases"
+    ],
+    "question": "Name the **four** common use cases of the file_search tool in the OpenAI Responses API, each with an example.",
+    "answer": "- **Policy Q&A** — answer employee questions from HR policy PDFs\n- **Support Assistants** — retrieve product steps from internal troubleshooting guides\n- **Legal Review** — locate specific clauses across contract documents\n- **Knowledge Discovery** — summarize answers from technical documentation sets",
+    "explanation": "All four have the same shape: the answer must come from trusted internal documents that the model never saw in training. That is what separates file_search from web_search, whose use cases (current events, market research) need fresh public information. When the source is your own PDFs, guides or contracts, file_search is the tool."
+  },
+  {
+    "id": "1.4.5-04",
+    "type": "order",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "rag",
+      "vector-search"
+    ],
+    "question": "Put the steps of answering a prompt with the file_search tool in the OpenAI Responses API in order.",
+    "items": [
+      "You upload documents to a vector store",
+      "You send a request with file_search and the vector store IDs in the tools array",
+      "The model searches the indexed chunks for relevant content",
+      "Matching passages are injected into the model's context",
+      "The model generates the response from the retrieved document context"
+    ],
+    "answer": "Prepare files → send request → retrieve → inject results → generate.",
+    "explanation": "Only the first two steps are yours; the model does the retrieval itself. The vector store must exist before the request, because the request only points to it by ID. The search runs over indexed chunks, so an updated source file may need re-indexing before its new content can be found."
+  },
+  {
+    "id": "1.4.5-05",
+    "type": "mc",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "python",
+      "file-search",
+      "vector-search"
+    ],
+    "question": "Complete the call so the model searches the uploaded policy file with the file_search tool.\n\n```python\nvs = client.vector_stores.create(name=\"policy-docs\")\nclient.vector_stores.files.upload_and_poll(\n    vector_store_id=vs.id, file=open(\"expenses_policy.pdf\", \"rb\"))\nresponse = client.responses.create(\n    model=model_deployment,\n    input=\"What's the maximum amount I can claim for a taxi ride?\",\n    tools=[{\"type\": \"file_search\", \"___\": [vs.id]}],\n)\n```",
+    "answer": "`vector_store_ids`",
+    "explanation": "The file goes into a vector store first: `client.vector_stores.create()` makes the store, and `client.vector_stores.files.upload_and_poll()` uploads the file into it by `vector_store_id`. The file_search tool definition then names the stores to search as a list in `vector_store_ids`, so one request can search one or more stores.",
+    "options": [
+      {
+        "text": "`vector_store_ids`",
+        "correct": true,
+        "why": "The file_search tool definition takes the list of vector store IDs to search under this key."
+      },
+      {
+        "text": "`vector_store_id`",
+        "correct": false,
+        "why": "That singular name is the argument of `files.upload_and_poll()`, not the key in the tool definition, which takes a list."
+      },
+      {
+        "text": "`include`",
+        "correct": false,
+        "why": "It is a parameter of `responses.create()` that requests extra output such as `file_search_call.results`, not a tool setting."
+      },
+      {
+        "text": "`container`",
+        "correct": false,
+        "why": "It is the code_interpreter tool's setting for its execution environment."
+      }
+    ]
+  },
+  {
+    "id": "1.4.5-06",
+    "type": "basic",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "python",
+      "file-search",
+      "debugging"
+    ],
+    "question": "While developing an app that uses the file_search tool through the OpenAI Responses API, you want to see which document passages were matched for each answer. What do you add to `responses.create()`?",
+    "answer": "`include=[\"file_search_call.results\"]` — returns the **file_search results** with the response.",
+    "explanation": "The matched results make the retrieval visible, which is what the feature \"citations and transparency\" means: you can debug a poor answer and trace it back to its passages. The best practices name this directly: include retrieval results during development to troubleshoot. Answer quality depends on chunk relevance, so the matched results show whether a weak answer came from poor retrieval."
+  },
+  {
+    "id": "1.4.5-07",
+    "type": "basic",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "best-practices"
+    ],
+    "question": "Name the **five** best practices for using the file_search tool in the OpenAI Responses API.",
+    "answer": "- **Use high-quality source files** — clean, current documents improve retrieval accuracy\n- **Write focused prompts** — specific questions reduce ambiguous matches\n- **Scope vector stores carefully** — separate domains such as HR, legal and finance\n- **Include retrieval results in development** — use response includes for troubleshooting\n- **Review answers for critical workflows** — keep human validation in high-stakes scenarios",
+    "explanation": "Each practice answers a limitation. Answer quality depends on document quality, so the files must be clean and current. Mixed-domain stores return less focused context, so you scope stores by domain. Retrieval improves grounding but does not replace human review, so high-stakes answers still get a human check."
+  },
+  {
+    "id": "1.4.5-08",
+    "type": "basic",
+    "section": "1.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/05-file-search",
+    "tags": [
+      "file-search",
+      "limitations",
+      "grounding"
+    ],
+    "question": "Name the **four** limitations of the file_search tool in the OpenAI Responses API.",
+    "answer": "- Answer quality depends on **document quality, coverage and chunk relevance**\n- **Very large or mixed-domain stores** can return less focused context\n- **Updated source files** may need **re-indexing** before new content is searchable\n- Retrieval improves grounding but **doesn't replace human review** for sensitive decisions",
+    "explanation": "A typical scenario: an HR policy changed yesterday, but the assistant still quotes the old rule. The new file has not been re-indexed yet, so the search cannot find it. The model can only be as good as the chunks it retrieves; missing or stale documents lead to wrong answers that still sound grounded."
+  }
+]

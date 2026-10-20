@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2.6.10-01",
+    "type": "order",
+    "section": "2.6.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/06-build-workflow-ms-foundry.html",
+    "tags": ["workflows", "agents"],
+    "question": "You build a support-ticket triage workflow in the **Microsoft Foundry** workflow builder: one agent classifies each ticket, low-confidence tickets get a request for details, billing tickets are escalated, the rest get a drafted reply. Put the nodes in order.",
+    "answer": "**Set variable** → **For each** → triage **agent** → **If/Else** on confidence → **If/Else** on category → resolution **agent**.",
+    "explanation": "The array of tickets must exist before the loop can walk over it. Inside the loop, the triage agent produces the JSON that both conditions read. The confidence check comes first: an unsure category should not decide the route. Its Else branch delivers a message asking for more details. Only confident non-billing tickets reach the resolution agent; billing tickets get an escalation message instead.",
+    "items": [
+      "Set variable: `Local.SupportTickets` holds the array of tickets",
+      "For each: loop over `Local.SupportTickets` with the loop variable `CurrentTicket`",
+      "Invoke agent: Triage-Agent returns category and confidence as JSON",
+      "If/Else: confidence > 0.6, else deliver a message asking for details",
+      "If/Else: category = \"Billing\" delivers an escalation message",
+      "Else branch: Invoke agent: Resolution-Agent drafts the reply"
+    ]
+  },
+  {
+    "id": "2.6.10-02",
+    "type": "basic",
+    "section": "2.6.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/06-build-workflow-ms-foundry.html",
+    "tags": ["workflows", "structured-output"],
+    "question": "In a **Microsoft Foundry** workflow, an Invoke agent node classifies a ticket, and the next **If/Else** node must branch on the agent's confidence score. Which agent and node settings make that possible?",
+    "answer": "- **Parameters** (agent Details) → Text format **JSON Schema** with a `confidence` field\n- **Node settings** → **Input message**: `Local.CurrentTicket`\n- **Save the output json_object as**: `TriageOutputJson`\n- If/Else condition: `Local.TriageOutputJson.confidence > 0.6`",
+    "explanation": "A condition cannot read a field out of free text. The JSON Schema response format, saved with `strict: true`, forces the agent to return `customer_issue`, `category` and `confidence` every time. Node settings then store that object in a local variable, so later nodes address its fields with dot notation. The plain text reply is saved separately under **Save agent output message as**; the exercise feeds that text variable into the Resolution-Agent."
+  },
+  {
+    "id": "2.6.10-03",
+    "type": "basic",
+    "section": "2.6.10",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/06-build-workflow-ms-foundry.html",
+    "tags": ["workflows", "foundry-portal"],
+    "question": "Where in the **Microsoft Foundry** portal do you create a workflow, test it, and find the project endpoint to call it from Python?",
+    "answer": "- Create: **Build** → **Agents** → **Workflows** tab → **Create** → **Blank workflow**\n- Keep changes: **Save** in the visualizer\n- Test: **Preview** → chat window\n- Code: **Code** → **.env variables** → `AZURE_EXISTING_AIPROJECT_ENDPOINT`",
+    "explanation": "A blank workflow is the easy start even for a sequential flow, because you add exactly the nodes you need. Workflows are not saved automatically, so save before you preview. Preview runs the workflow in a chat: any message such as \"Start processing support tickets.\" triggers it. Your code connects with `AIProjectClient` to that endpoint and invokes the workflow by the name you saved it under."
+  }
+]

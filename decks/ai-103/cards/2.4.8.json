@@ -1,0 +1,70 @@
+[
+  {
+    "id": "2.4.8-01",
+    "type": "mc",
+    "section": "2.4.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/6-knowledge-check",
+    "tags": ["rag", "grounding", "agents"],
+    "question": "What is the primary advantage of Retrieval Augmented Generation (RAG) over simple AI agents?",
+    "answer": "RAG lets agents **ground responses in current organizational information** and provide **source transparency**.",
+    "explanation": "Simple agents are stuck with their training data: knowledge cutoff dates, no private data, fabricated answers. RAG retrieves relevant content from knowledge bases, augments the user's question with it, and then generates the response from both training data and retrieved information. That keeps agents current without retraining, shows which documents informed each answer, and anchors responses in actual organizational content.",
+    "options": [
+      {"text": "RAG eliminates the need for large language models by relying entirely on document retrieval.", "correct": false, "why": "Unit 2.4.2: in the Generate step the agent still creates the response with the model, using both training data and the retrieved information."},
+      {"text": "RAG enables agents to ground responses in current organizational information and provide source transparency.", "correct": true, "why": "Unit 2.4.2 names real-time updates, source transparency and factual grounding in organizational content as RAG's three critical advantages."},
+      {"text": "RAG automatically retrains the language model whenever organizational documents change.", "correct": false, "why": "Unit 2.4.2: RAG keeps agents current with policies and procedures without requiring retraining; the model itself is not changed."}
+    ]
+  },
+  {
+    "id": "2.4.8-02",
+    "type": "mc",
+    "section": "2.4.8",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/6-knowledge-check",
+    "tags": ["foundry-iq", "sharepoint", "data-sources"],
+    "question": "Which data source option provides real-time access to SharePoint content with Microsoft 365 governance?",
+    "answer": "**SharePoint Remote** — it queries SharePoint sites and libraries in real time.",
+    "explanation": "Foundry IQ offers two SharePoint options. Remote retrieves content directly from SharePoint without preindexing: always current, no index to maintain, existing SharePoint permissions respected automatically, but response time depends on SharePoint and advanced search is limited. Indexed preprocesses the content into Azure AI Search: faster and with full search capabilities, but freshness depends on the indexing schedule and permissions are configured during indexing.",
+    "options": [
+      {"text": "SharePoint Indexed, which pre-processes SharePoint content into Azure AI Search.", "correct": false, "why": "Unit 2.4.4: Indexed queries a preprocessed index, so its data freshness depends on the indexing schedule; it is not real-time."},
+      {"text": "SharePoint Remote, which queries SharePoint sites and libraries in real-time.", "correct": true, "why": "Unit 2.4.4: SharePoint Remote provides search with Microsoft 365 governance and retrieves content directly from SharePoint in real time, without preindexing."},
+      {"text": "Azure Blob Storage, which connects to SharePoint files stored as blobs.", "correct": false, "why": "Unit 2.4.4: Blob Storage retrieves documents from your own blob containers; it is not a way to reach SharePoint content."}
+    ]
+  },
+  {
+    "id": "2.4.8-03",
+    "type": "mc",
+    "section": "2.4.8",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/6-knowledge-check",
+    "tags": ["foundry-iq", "scoring-profiles", "relevance"],
+    "question": "What is the purpose of scoring profiles in Foundry IQ knowledge bases?",
+    "answer": "**Scoring profiles** boost specific fields or attributes so more important results surface first.",
+    "explanation": "Scoring profiles are one of three techniques that improve retrieval: scoring profiles boost fields or attributes, semantic ranking uses AI models to understand meaning beyond keywords, and custom analyzers handle specialized content like HTML or product codes. Custom scoring prioritizes results by your business logic and is one reason to connect an existing Azure AI Search index. Chunking and embedding happen automatically when Foundry IQ processes a data source.",
+    "options": [
+      {"text": "To encrypt sensitive fields and protect confidential information during retrieval.", "correct": false, "why": "Units 2.4.4 and 2.4.9 tie scoring only to ranking results; protection of content comes from permissions and governance of the data source, not from scoring."},
+      {"text": "To boost specific fields or attributes so more important results surface first.", "correct": true, "why": "Unit 2.4.9: scoring profiles boost specific fields or attributes to surface more relevant results; unit 2.4.4 calls custom scoring prioritizing results by business logic."},
+      {"text": "To configure how documents are chunked and embedded for semantic search.", "correct": false, "why": "Unit 2.4.3: chunking and embedding happen in the Processing step that Foundry IQ runs automatically when you add a data source."}
+    ]
+  },
+  {
+    "id": "2.4.8-04",
+    "type": "mc",
+    "section": "2.4.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/6-knowledge-check",
+    "tags": ["agents", "instructions", "citations"],
+    "question": "Why is it critical to specify retrieval behavior in agent instructions?",
+    "answer": "Without proper instructions, agents might **answer from training data** instead of the knowledge base, give **unverifiable responses**, or **fail to cite sources**.",
+    "explanation": "Agent instructions are the contract about how the agent uses the knowledge base. A vague instruction like \"Answer HR questions using the knowledge base\" leaves open whether it searches or cites at all. Effective instructions specify when to retrieve (always the knowledge base, never training data), how to cite (an exact source format) and what to do when information isn't available. Only an agent that searches, cites and grounds is acceptable for enterprise use.",
+    "options": [
+      {"text": "Without proper instructions, agents might answer from training data instead of the knowledge base, provide unverifiable responses, or fail to cite sources.", "correct": true, "why": "Unit 2.4.5 lists exactly these failure behaviors — answering from training data, searching without citing — and says agent instructions determine retrieval behavior."},
+      {"text": "Instructions determine the semantic ranking algorithm that Foundry IQ applies to search results.", "correct": false, "why": "Unit 2.4.3: Foundry IQ selects retrieval strategies and ranks results itself; instructions control when and how the agent uses the knowledge base, not the ranking."},
+      {"text": "Instructions enable the agent to automatically update knowledge base content when it detects outdated information.", "correct": false, "why": "Unit 2.4.3: content stays current through automatic reindexing when source documents change; agents read knowledge bases, they do not update them."}
+    ]
+  }
+]

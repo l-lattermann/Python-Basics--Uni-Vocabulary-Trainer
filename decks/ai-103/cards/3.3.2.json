@@ -1,0 +1,35 @@
+[
+  {
+    "id": "3.3.2-01",
+    "type": "basic",
+    "section": "3.3.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/2-deploy-multimodal-model",
+    "tags": ["speech", "model-selection"],
+    "question": "Name the **two** common use cases to consider when choosing a speech-capable generative AI model in Microsoft Foundry.",
+    "answer": "- **Speech-to-text (transcription)** — the model turns spoken audio into a text transcript\n- **Text-to-speech (synthesis)** — the model turns text into spoken audio",
+    "explanation": "The two are mirror images: transcription takes audio in and returns text, synthesis takes text in and returns an audio stream. Microsoft Foundry offers models for both, including specialized speech-capable models from OpenAI's **gpt-4o** family. Decide first which direction your app needs, because a transcription model cannot speak and a synthesis model cannot listen."
+  },
+  {
+    "id": "3.3.2-02",
+    "type": "mc",
+    "section": "3.3.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/2-deploy-multimodal-model",
+    "tags": ["speech", "model-catalog"],
+    "question": "You need a generative AI model that can transcribe speech, and you want to compare models from several providers. Where in Microsoft Foundry do you find one?",
+    "answer": "In the **Foundry Models** model catalog in the Foundry portal, using its **search and filters** (for example the inference task *Speech to text*).",
+    "explanation": "Microsoft Foundry Models is a catalog of generative AI models from multiple providers. Models differ in capabilities and are optimized for different use cases, so you narrow the list with the portal's search box and filters. The screenshot shows a search for \"speech\" filtered to an inference task: transcribe models are labelled *Speech to text*, tts models *Text to speech*.",
+    "explanation_images": [
+      {"src": "media/ai-103/3.3.2-model-catalog.png", "alt": "Foundry portal model catalog searched for 'speech', showing gpt-4o-transcribe models labelled Speech to text and tts models labelled Text to speech, with filters such as Capabilities and Inference tasks on the left."}
+    ],
+    "options": [
+      {"text": "The Foundry Models catalog in the Foundry portal, using search and filters", "correct": true, "why": "The catalog lists models from multiple providers and lets you filter by capability and inference task."},
+      {"text": "An Azure AI Search index", "correct": false, "why": "Azure AI Search indexes your own content for retrieval; it does not list deployable models."},
+      {"text": "Azure Monitor metrics of the Foundry resource", "correct": false, "why": "Monitor shows telemetry of resources and deployments you already have, not a catalog of models to choose from."},
+      {"text": "Microsoft Foundry Agent Service", "correct": false, "why": "Agent Service runs agents on a model you already deployed; it is not where you browse and pick models."}
+    ]
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "4.5.4-01",
+    "type": "basic",
+    "section": "4.5.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding",
+      "authentication"
+    ],
+    "question": "A client app must call the **Azure Content Understanding** REST API. What does each call need, and which two ways can the app authenticate?",
+    "answer": "- Sent over HTTP to the **Content Understanding endpoint** of the Microsoft Foundry resource\n- Auth option 1: one of the resource's **authorization keys** in the request header\n- Auth option 2: **Microsoft Entra ID**, connecting to the project through the Microsoft Foundry API",
+    "explanation": "The Content Understanding API is the programmatic way to create, manage and consume analyzers. Every call goes to the endpoint of the Foundry resource that hosts your analyzers. You find the endpoint and the keys in the Azure portal or in the Microsoft Foundry portal. Instead of passing a key, the app can also connect to the project programmatically with your Entra ID through the Microsoft Foundry API.",
+    "addition": "In the REST API the key goes in the `Ocp-Apim-Subscription-Key` header. An Entra ID access token is requested for the scope `https://cognitiveservices.azure.com/.default`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result?view=rest-contentunderstanding-2025-11-01"
+  },
+  {
+    "id": "4.5.4-02",
+    "type": "order",
+    "section": "4.5.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding",
+      "async-operations"
+    ],
+    "question": "Put the steps in order for a client app that analyzes a file with an existing **Azure Content Understanding** analyzer through the REST API.",
+    "answer": "POST to `analyze` → receive the **operation ID** → GET `analyzerResults` → poll until done → read the JSON results.",
+    "explanation": "Analysis runs as an **asynchronous task**, so the first request never carries the results. It only starts the work and hands back an ID. The app then passes that ID back to the endpoint to ask for the status, possibly many times. Only when the operation has succeeded does the response hold the results as JSON. If the operation fails, polling ends there as well.",
+    "items": [
+      "POST the content to the analyzer's `analyze` operation",
+      "Receive an operation ID with the status `NotStarted`",
+      "Send a GET request to `analyzerResults/{operationId}` to check the status",
+      "Repeat the GET until the operation has succeeded or failed",
+      "Read the analysis results from the JSON payload"
+    ],
+    "addition": "The Python SDK (`azure-ai-contentunderstanding`) wraps this loop: `client.begin_analyze(analyzer_id=..., inputs=[AnalysisInput(url=...)])` returns a poller, and `poller.result()` waits for the operation and returns the `AnalysisResult`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/quickstart/use-rest-api"
+  },
+  {
+    "id": "4.5.4-03",
+    "type": "basic",
+    "section": "4.5.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding",
+      "async-operations"
+    ],
+    "question": "You POST a document to an **Azure Content Understanding** analyzer's `analyze` operation and the request is accepted. What does the response contain?",
+    "answer": "- **`Operation-Id`** header — the ID of the asynchronous task\n- **`Operation-Location`** header — the `analyzerResults` URL for that ID\n- JSON body with the `id` and `\"status\": \"NotStarted\"`\n- No analysis results yet",
+    "explanation": "The analyze request only starts the work. The results do not exist yet, which is why the status reads `NotStarted`. The app keeps the operation ID and uses it to ask for the status later. `Operation-Location` already holds the full URL of that status request, including the API version, so the app can call it as it is.",
+    "addition": "The status takes one of five values: `NotStarted`, `Running`, `Succeeded`, `Failed` or `Canceled`. When it is `Failed`, the response carries an `error` object.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result?view=rest-contentunderstanding-2025-11-01"
+  },
+  {
+    "id": "4.5.4-04",
+    "type": "mc",
+    "section": "4.5.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding",
+      "async-operations"
+    ],
+    "question": "An **Azure Content Understanding** `analyze` request returned the operation ID `1234abcd-…`. Which request checks the operation's status and, once it has finished, returns the analysis results?",
+    "answer": "**`GET {endpoint}/contentunderstanding/analyzerResults/{operationId}`**",
+    "explanation": "Results live under `analyzerResults`, keyed by the operation ID, not under the analyzer itself. The analyzer route `analyzers/{analyzer}` is where you submit content. The results route is where you collect what came out. You repeat the same GET until the status shows the operation has succeeded or failed.",
+    "options": [
+      {
+        "text": "`GET {endpoint}/contentunderstanding/analyzerResults/1234abcd-…?api-version=2025-11-01`",
+        "correct": true,
+        "why": "The `analyzerResults` endpoint with the operation ID returns the status and, when complete, the JSON results."
+      },
+      {
+        "text": "`POST {endpoint}/contentunderstanding/analyzers/{analyzer}:analyze?api-version=2025-11-01`",
+        "correct": false,
+        "why": "This submits content again and starts a new operation with a new ID."
+      },
+      {
+        "text": "`POST {endpoint}/contentunderstanding/analyzers/{analyzer}:analyzeBinary?api-version=2025-11-01`",
+        "correct": false,
+        "why": "This submits binary file data for a new analysis; it does not return earlier results."
+      },
+      {
+        "text": "`GET {endpoint}/contentunderstanding/analyzers/{analyzer}?api-version=2025-11-01`",
+        "correct": false,
+        "why": "This returns the analyzer's own definition, not the result of an operation."
+      }
+    ]
+  },
+  {
+    "id": "4.5.4-05",
+    "type": "mc",
+    "section": "4.5.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "Your app reads scanned invoices from local disk; they are not reachable by any URL. Which **Azure Content Understanding** API operation submits the file data directly to your analyzer?",
+    "answer": "**`analyzeBinary`** — it takes the binary file data in the request.",
+    "explanation": "The plain `analyze` operation expects a JSON body with an `inputs` list, where each entry names a `url` that points to the file's location. That only works when the file is hosted somewhere the service can reach. `analyzeBinary` sends the bytes themselves. Either way, the request starts an asynchronous operation that you poll for the results.",
+    "options": [
+      {
+        "text": "`analyzeBinary`",
+        "correct": true,
+        "why": "It accepts binary file data directly, so no hosted URL is needed."
+      },
+      {
+        "text": "`analyze` with the file in the `inputs` list",
+        "correct": false,
+        "why": "`analyze` takes a `url` for the content file location in `inputs`, which these files do not have."
+      },
+      {
+        "text": "`analyzerResults`",
+        "correct": false,
+        "why": "This endpoint returns the status and results of an operation that was already submitted; it does not accept content."
+      }
+    ]
+  },
+  {
+    "id": "4.5.4-06",
+    "type": "basic",
+    "section": "4.5.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/04-use-api",
+    "tags": [
+      "content-understanding",
+      "confidence-scores"
+    ],
+    "question": "An **Azure Content Understanding** analyzer must return, for each extracted field, how sure it is and where in the content the value was found. Which analyzer option do you enable?",
+    "answer": "**`estimateFieldSourceAndConfidence`** — the results then include a **confidence score** and **source grounding** for each extracted field.",
+    "explanation": "What an analysis returns depends on the content and on the analyzer's schema. The extracted field values are the core of it. Confidence scores and source grounding are extra information that only appears when the analyzer is configured with this option. Source grounding ties each value back to the place in the content it was taken from.",
+    "addition": "In the result JSON each field then has `confidence` (a number from 0 to 1), `source` (an encoded position in the content) and `spans` (its location in the Markdown output).",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result?view=rest-contentunderstanding-2025-11-01"
+  }
+]

@@ -1,0 +1,75 @@
+[
+  {
+    "id": "2.9.3-01",
+    "type": "mc",
+    "section": "2.9.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/3-implement-agent-executor",
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
+    "question": "You build an agent that speaks the Agent-to-Agent (A2A) protocol. Which component is the bridge between the protocol and your agent's own business logic, executing requested tasks and sending the results back?",
+    "answer": "The **Agent Executor** (`AgentExecutor` interface).",
+    "explanation": "Every incoming request to the agent lands in the Agent Executor. It has three jobs: execute tasks requested by users or other agents, stream responses or send single messages back to the client, and handle task cancellation if supported. The server's request handler only routes requests to it; the executor is where the agent's logic actually runs.",
+    "options": [
+      {
+        "text": "Agent Executor",
+        "correct": true,
+        "why": "It handles every incoming request, calls the agent's logic and returns results as events."
+      },
+      {
+        "text": "Request handler",
+        "correct": false,
+        "why": "It routes incoming requests to the executor's methods and manages the task lifecycle, but runs no business logic itself."
+      },
+      {
+        "text": "Task Store",
+        "correct": false,
+        "why": "It tracks tasks, streaming data and resubscriptions for the request handler; it does not process requests."
+      },
+      {
+        "text": "Agent Card",
+        "correct": false,
+        "why": "It describes the agent's skills and endpoint for discovery; it does not execute anything."
+      }
+    ]
+  },
+  {
+    "id": "2.9.3-02",
+    "type": "basic",
+    "section": "2.9.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/3-implement-agent-executor",
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
+    "question": "Name the **two** primary operations an A2A Agent Executor defines and the **two** objects it uses to read requests and return results.",
+    "answer": "- **Execute** — processes the request and generates the response\n- **Cancel** — handles a request to cancel an ongoing task\n- **RequestContext** — details of the incoming request (user input, task context)\n- **EventQueue** — channel for results and events back to the client",
+    "explanation": "Execute does the real work: it reads the user input and task context from the RequestContext and puts its results on the EventQueue as messages, task updates or artifacts. Cancel only matters for long-running tasks; a simple agent may not support it and just reports that cancellation isn't supported. The executor never answers the caller directly — everything goes out through the event queue."
+  },
+  {
+    "id": "2.9.3-03",
+    "type": "order",
+    "section": "2.9.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/3-implement-agent-executor",
+    "tags": [
+      "a2a",
+      "multi-agent"
+    ],
+    "question": "Put the steps in order in which a simple \"Hello World\" A2A agent handles a request through its Agent Executor.",
+    "answer": "Executor receives request → calls the agent's logic → wraps the result as an **event** on the event queue → routing sends it back.",
+    "explanation": "The agent's core logic sits in a small helper class, for example one that returns a greeting string. The executor stays thin: it only connects that logic to the protocol. Because the result is wrapped as an event instead of returned directly, the same path carries plain messages, task updates and artifacts, and the routing mechanism delivers each one to the requester.",
+    "items": [
+      "The executor receives an incoming request",
+      "The executor calls the agent's helper class that implements the core logic",
+      "The executor wraps the result as an event and places it on the event queue",
+      "The routing mechanism sends the event back to the requester"
+    ]
+  }
+]

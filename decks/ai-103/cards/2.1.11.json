@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2.1.11-01",
+    "type": "mc",
+    "section": "2.1.11",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/10-knowledge-check",
+    "tags": [
+      "agents",
+      "foundry"
+    ],
+    "question": "What is the primary benefit of using Microsoft Foundry Agent Service compared to building agents with standard APIs?",
+    "answer": "It **handles tool calling, state management, and infrastructure automatically**.",
+    "explanation": "Agent-like experiences used to take significant coding effort with standard APIs. Foundry Agent Service is fully managed: you build, deploy and scale agents without managing compute and storage. It runs the whole tool-calling lifecycle and keeps conversation state through the Responses API, so you build an agent in the Foundry portal or in your own app with fewer than 50 lines of code.",
+    "options": [
+      {
+        "text": "It provides access to more powerful AI models",
+        "correct": false,
+        "why": "Unit 2.1.2 lists model selection as choosing from various models for performance and cost; the benefit is the managed plumbing, not stronger models."
+      },
+      {
+        "text": "It requires no Azure subscription",
+        "correct": false,
+        "why": "The service runs in a Foundry project in Azure; unit 2.1.5 even has you expand your Azure subscription in the VS Code resource tree."
+      },
+      {
+        "text": "It handles tool calling, state management, and infrastructure automatically",
+        "correct": true,
+        "why": "Unit 2.1.2: the service is fully managed, handles the entire tool-calling lifecycle and manages conversation state through the Responses API."
+      },
+      {
+        "text": "It only works with the Azure portal",
+        "correct": false,
+        "why": "Unit 2.1.2: agents are built in the Foundry portal or in your own code, and units 2.1.5–2.1.6 manage them in VS Code."
+      }
+    ]
+  },
+  {
+    "id": "2.1.11-02",
+    "type": "mc",
+    "section": "2.1.11",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/10-knowledge-check",
+    "tags": [
+      "agents",
+      "responses-api"
+    ],
+    "question": "How does Microsoft Foundry Agent Service handle conversation state?",
+    "answer": "Through the **Responses API**, which automatically manages conversation context.",
+    "explanation": "The \"securely managed data\" feature of Foundry Agent Service keeps conversation state through the Responses API, so developers don't manage history by hand. Watch the published-agent case: the course also says a published agent's endpoint supports only the stateless Responses API, so a client app calling that endpoint stores the history itself for multi-turn chats.",
+    "options": [
+      {
+        "text": "By requiring developers to manually manage conversation history",
+        "correct": false,
+        "why": "Unit 2.1.2 says the Responses API removes the need for manual state management."
+      },
+      {
+        "text": "Through external database connections",
+        "correct": false,
+        "why": "Unit 2.1.2 names the Responses API for state; bring-your-own Blob storage is a storage option, not how context is tracked."
+      },
+      {
+        "text": "Through the Responses API which automatically manages conversation context",
+        "correct": true,
+        "why": "Unit 2.1.2: conversation states are securely managed through the Responses API."
+      },
+      {
+        "text": "Using local file storage on the client device",
+        "correct": false,
+        "why": "The service keeps state server-side via the Responses API (unit 2.1.2); only clients of a published, stateless endpoint keep history themselves (unit 2.1.8)."
+      }
+    ]
+  },
+  {
+    "id": "2.1.11-03",
+    "type": "mc",
+    "section": "2.1.11",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/10-knowledge-check",
+    "tags": [
+      "agents",
+      "security"
+    ],
+    "question": "Which of the following is NOT a recommended security practice for AI agents?",
+    "answer": "**Allowing agents unrestricted access to all enterprise data**.",
+    "explanation": "Agents read sensitive data and act on their own, so the course asks for security by design. Its mitigations are RBAC with least privilege, prompt filtering and validation, human-in-the-loop approval for sensitive operations, comprehensive logging, auditing third-party dependencies and watching for data drift or poisoning. Unrestricted access is the opposite of least privilege and invites data leakage and privilege escalation.",
+    "options": [
+      {
+        "text": "Using role-based access controls",
+        "correct": false,
+        "why": "Unit 2.1.2 lists enforcing RBAC and least-privilege permissions as a mitigation, so it is recommended."
+      },
+      {
+        "text": "Implementing prompt filtering and validation",
+        "correct": false,
+        "why": "Unit 2.1.2 recommends prompt filtering and validation layers against injection attacks."
+      },
+      {
+        "text": "Maintaining comprehensive logging and traceability",
+        "correct": false,
+        "why": "Unit 2.1.2 recommends comprehensive logging and traceability for all agent actions."
+      },
+      {
+        "text": "Allowing agents unrestricted access to all enterprise data",
+        "correct": true,
+        "why": "This contradicts least privilege in unit 2.1.2 and leads to its data-leakage and privilege-escalation risks."
+      }
+    ]
+  },
+  {
+    "id": "2.1.11-04",
+    "type": "mc",
+    "section": "2.1.11",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/10-knowledge-check",
+    "tags": [
+      "agents",
+      "tool-calling"
+    ],
+    "question": "What happens when an agent determines it needs a tool to respond to a user request?",
+    "answer": "The agent **automatically invokes the tool**, processes the results and incorporates them into its response.",
+    "explanation": "In Foundry Agent Service the tool-calling lifecycle runs without your code: the user sends a message, the agent decides which tools it needs, invokes them with parameters, the tools return results, and the agent writes them into a natural-language reply. That is why you add capabilities without writing orchestration code.",
+    "options": [
+      {
+        "text": "The agent asks the user for permission to use the tool",
+        "correct": false,
+        "why": "Unit 2.1.7's lifecycle has no permission step; human-in-the-loop approval (unit 2.1.2) is a safeguard you add for sensitive operations, not the default."
+      },
+      {
+        "text": "The agent stops processing and waits for developer input",
+        "correct": false,
+        "why": "Unit 2.1.7: the lifecycle happens automatically, without developer orchestration code."
+      },
+      {
+        "text": "The agent automatically invokes the tool, processes results, and incorporates them into its response",
+        "correct": true,
+        "why": "Unit 2.1.7: the agent automatically calls the appropriate tool, processes the results and incorporates them into its response."
+      },
+      {
+        "text": "The agent sends the request to a separate processing queue",
+        "correct": false,
+        "why": "Unit 2.1.7's lifecycle has the agent invoke the tools itself and return the response; no queue step appears."
+      }
+    ]
+  }
+]

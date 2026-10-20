@@ -1,0 +1,53 @@
+[
+  {
+    "id": "3.7.6-01",
+    "type": "order",
+    "section": "3.7.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/07-translation.html",
+    "tags": ["translator", "foundry-portal"],
+    "question": "Put the steps in order to try **Azure Translator** text translation in the Microsoft Foundry portal and find the endpoint your code will use.",
+    "answer": "Create project → **Models** page, **AI services** tab → **Azure Translator - Text translation** → enter source text, pick a language, **Translate** → **Code** tab for the **ENDPOINT**.",
+    "explanation": "Azure Translator is not a model you deploy: it is one of the Azure services in Foundry Tools, listed on its own tab next to the models. The playground lets you test translations before writing code. Its **Code** tab shows sample REST code whose ENDPOINT, `https://{foundry-resource-name}.cognitiveservices.azure.com/`, is what the client apps need later, so remember the Foundry resource name when you create the project.",
+    "items": [
+      "With the **New Foundry** option enabled, create a project (under **Advanced options**: Foundry resource, subscription, resource group, region)",
+      "Select **Explore playgrounds** (or **Build** > **Models**) and open the **AI services** tab",
+      "Select **Azure Translator - Text translation**",
+      "Enter text in **Source text**, choose a language in **Translation** and select **Translate**",
+      "Open the **Code** tab and note the **ENDPOINT** variable"
+    ]
+  },
+  {
+    "id": "3.7.6-02",
+    "type": "basic",
+    "section": "3.7.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/07-translation.html",
+    "tags": ["translator", "speech", "keyless"],
+    "question": "A Python app must call both **Azure Translator** and **Azure Speech** in a Microsoft Foundry resource **without an API key**. Which endpoint and credential does it pass to `TextTranslationClient` and `SpeechTranslationConfig`?",
+    "answer": "- One endpoint for both: **`https://{foundry-resource-name}.cognitiveservices.azure.com/`**\n- Credential: **`DefaultAzureCredential()`**, signed in with `az login`\n- Translator: `TextTranslationClient(credential=..., endpoint=...)`\n- Speech: `SpeechTranslationConfig(token_credential=..., endpoint=...)`",
+    "explanation": "The `cognitiveservices.azure.com` address is an older Azure AI Services format, but it still reaches the Translator and Speech tools inside a Foundry resource, so one `.env` value serves both apps. Instead of a key, the code takes a token from the Azure CLI sign-in. Speech uses `token_credential`, not `subscription`, both in `SpeechTranslationConfig` and in the `SpeechConfig` that synthesises the translations. With several tenants, `az login --tenant` picks the right one."
+  },
+  {
+    "id": "3.7.6-03",
+    "type": "order",
+    "section": "3.7.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/07-translation.html",
+    "tags": ["translator", "speech", "sdk"],
+    "question": "Put the steps in order to get the Python **Azure Translator** and **Azure Speech** translation apps from the Microsoft Foundry exercise running in Visual Studio Code.",
+    "answer": "Venv → **endpoint** in `.env` → `pip install -r requirements.txt` → add the SDK code → **`az login`** → `python translate-text.py` / `translate-speech.py`.",
+    "explanation": "Both apps read the same Foundry endpoint from `.env`, and one `requirements.txt` installs the Translator SDK, the Speech SDK and the other packages. The code authenticates with the Azure CLI identity, so `az login` must come before running it. The text app lists supported languages, asks for a target code and detects the source language. The speech app listens once on the microphone, translates to French, Spanish and Hindi, and speaks each result.",
+    "items": [
+      "Clone the `mslearn-ai-language` repo, install the **Python** extension and create a **Venv** environment",
+      "Set the Foundry resource **endpoint** in the `.env` file of the `translators` folder",
+      "In a terminal showing **(.venv)**, run `pip install -r requirements.txt`",
+      "Add the import, client and translation code to `translate-text.py` / `translate-speech.py`",
+      "Sign in with `az login`",
+      "Run `python translate-text.py` or `python translate-speech.py`"
+    ]
+  }
+]

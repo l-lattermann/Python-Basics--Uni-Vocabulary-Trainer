@@ -1,0 +1,29 @@
+[
+  {
+    "id": "3.4.3-01",
+    "type": "basic",
+    "section": "3.4.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/3-speech-to-text",
+    "tags": ["speech", "speech-sdk"],
+    "question": "Name the **four** Speech SDK building blocks you use, in order, to transcribe speech with the **Speech to text** API of Azure Speech in Foundry Tools.",
+    "answer": "- **SpeechConfig** — connection to the Foundry resource: endpoint (or region) and key\n- **AudioConfig** — optional input source; default system microphone, or an audio file\n- **SpeechRecognizer** — proxy client for the Speech to text API, built from both configs\n- **RecognizeOnceAsync()** — transcribes one spoken utterance and returns a **SpeechRecognitionResult**",
+    "explanation": "The pattern is the same in every SDK language, only the method spelling changes: in Python the call is `recognize_once_async().get()`. AudioConfig is the one optional piece — leave it out and the recognizer listens to the default microphone; pass `AudioConfig(filename=\"audio.wav\")` to transcribe a recording instead. The SpeechRecognizer is what actually talks to the service; you never call the REST API yourself. Text to speech mirrors this pattern with a SpeechSynthesizer.",
+    "explanation_images": [
+      {"src": "media/ai-103/3.4.3-speech-to-text.png", "alt": "A SpeechRecognizer is created from a SpeechConfig and an AudioConfig; its RecognizeOnceAsync method calls the Speech to text API."}
+    ]
+  },
+  {
+    "id": "3.4.3-02",
+    "type": "basic",
+    "section": "3.4.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/3-speech-to-text",
+    "tags": ["speech", "speech-sdk"],
+    "question": "After `RecognizeOnceAsync()` in the Azure Speech SDK, which **three** values can the `Reason` property of the **SpeechRecognitionResult** have, and what does each mean?",
+    "answer": "- **RecognizedSpeech** — success; the **Text** property holds the transcription\n- **NoMatch** — the audio was parsed, but no speech was recognized\n- **Canceled** — an error occurred; check **CancellationReason** in the **Properties** collection",
+    "explanation": "Always check `Reason` before reading `Text`: only RecognizedSpeech guarantees a transcription. NoMatch is not an error — the service worked but heard nothing it could transcribe, such as silence or noise. Canceled means the call itself failed, and the cause sits in the Properties collection. Besides Reason, Text and Properties, the result also carries Duration, OffsetInTicks and ResultId."
+  }
+]

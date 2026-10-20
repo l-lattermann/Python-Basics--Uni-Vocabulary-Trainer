@@ -1,0 +1,158 @@
+[
+  {
+    "id": "3.2.3-01",
+    "type": "order",
+    "section": "3.2.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "mcp",
+      "agents",
+      "foundry-portal"
+    ],
+    "question": "You build a text analysis agent in the **Microsoft Foundry portal** that uses the **Azure Language MCP server**. Put the steps in order.",
+    "answer": "Project → **deploy a model** → create agent with instructions → **connect Azure Language in Foundry Tools** on the Tools page → **Use in an agent** → update instructions to use the tool.",
+    "explanation": "The agent needs a deployed model such as gpt-4.1 for reasoning before any tool is useful, so the model comes first. The tool connection is created separately on the Tools page and only then attached to the agent with **Use in an agent**. Afterwards you extend the instructions, for example \"Use the Azure Language tool to perform text analysis tasks.\", so the agent knows to reach for the connected tool. Then you test it in the agent playground.",
+    "items": [
+      "Create a Foundry project (or use an existing one)",
+      "Deploy a model, such as gpt-4.1, for the agent's reasoning",
+      "Create an agent and give it instructions describing its purpose",
+      "On the Tools page, select Connect a tool and configure Azure Language in Foundry Tools from the catalog",
+      "Select Use in an agent and choose your agent",
+      "Update the agent's instructions to tell it to use the Azure Language tool"
+    ]
+  },
+  {
+    "id": "3.2.3-02",
+    "type": "basic",
+    "section": "3.2.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "mcp",
+      "authentication",
+      "foundry-portal"
+    ],
+    "question": "On the **Tools** page of the Microsoft Foundry portal you connect **Azure Language in Foundry Tools** (the Azure Language MCP server). Name the **three** connection settings you configure.",
+    "answer": "- **Foundry resource name** — the name of your Foundry resource, e.g. `myproject-resource`\n- **Authentication** — key-based\n- **Credential** (`Ocp-Apim-Subscription-Key`) — the key of your Foundry project",
+    "explanation": "You reach the setting dialog via **Connect a tool**, where Azure Language in Foundry Tools sits in the **Catalog** tab as a remote MCP server. The resource name fills in the server's endpoint, so the agent calls the Language capabilities of your own resource. The key goes in the `Ocp-Apim-Subscription-Key` credential, and you find it on the project home page. Once the connection exists, the agent gets every text analysis tool the server exposes.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/3.2.3-language-tool-catalog.png",
+        "alt": "Select a tool dialog in the Foundry portal, Catalog tab, with Azure Language in Foundry Tools (Remote MCP, Preview) highlighted after searching for Azure Language"
+      }
+    ],
+    "addition": "Treat the key as a secret: store it in a secure secret store, rotate it regularly, and never embed it in source code, scripts or documentation.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/concepts/foundry-tools-agents"
+  },
+  {
+    "id": "3.2.3-03",
+    "type": "basic",
+    "section": "3.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "mcp",
+      "approval",
+      "agents"
+    ],
+    "question": "You test a Microsoft Foundry agent in the **agent playground**. The first time it wants to call an **Azure Language MCP tool**, it stops and asks you. What do you have to do, and what are your two options?",
+    "answer": "**Approve** the tool usage:\n- approve it for a **single use**, or\n- select **Always approve all Azure Language in Foundry Tools tools** to skip future prompts",
+    "explanation": "Approval puts you in control of what the agent runs through the MCP server. A single approval lets you check each call while you test. The always-approve option removes the prompt for every tool of this server, so the agent can detect language, recognize entities or redact PII without stopping. Once approved, the agent calls the tool(s) it identified for the prompt and returns a combined response."
+  },
+  {
+    "id": "3.2.3-04",
+    "type": "basic",
+    "section": "3.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "mcp",
+      "tracing",
+      "agents"
+    ],
+    "question": "You want to check which **Azure Language MCP tools** a Microsoft Foundry agent called for a prompt, with what input and what result. Where do you look in the **portal**, and where in a **Python client**?",
+    "answer": "- Portal: the **Logs** pane of the agent playground\n- Python client: the full response JSON from **`response.model_dump_json()`**",
+    "explanation": "The agent picks tools on its own, so you verify its choice afterwards instead of reading routing code. The playground's Logs pane lists each MCP tool call, the input sent and the result returned. In code, `output_text` only holds the final answer; the full response JSON also shows the tool calls by name, such as `extract_named_entities_from_text` or `detect_language_from_text`, with their arguments and results. A prompt with several tasks shows several tool calls in one turn."
+  },
+  {
+    "id": "3.2.3-05",
+    "type": "mc",
+    "section": "3.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "agents",
+      "responses-api",
+      "sdk"
+    ],
+    "question": "Complete the code so the prompt goes to the Microsoft Foundry agent **Text-Analysis-Agent**, which uses the Azure Language MCP server.\n\n```python\nresponse = openai_client.responses.create(\n    input=[{\"role\": \"user\", \"content\": user_prompt}],\n    ___={\n        \"agent_reference\": {\"name\": \"Text-Analysis-Agent\",\n                            \"type\": \"agent_reference\"}\n    },\n)\nprint(response.output_text)\n```",
+    "answer": "**`extra_body`** — the agent is referenced by name in its `agent_reference` field.",
+    "explanation": "The client gets `openai_client` from an `AIProjectClient` (packages `azure-ai-projects` and `azure-identity`), built from the project endpoint and `DefaultAzureCredential`, by calling `get_openai_client()`. The key part is the agent reference: you name the agent in `extra_body` instead of a model. The agent then picks and calls the MCP tools and returns its answer in `output_text`.",
+    "options": [
+      {
+        "text": "`extra_body`",
+        "correct": true,
+        "why": "The Foundry SDK passes the `agent_reference` with the agent's name through `extra_body` of `responses.create()`."
+      },
+      {
+        "text": "`model`",
+        "correct": false,
+        "why": "`model` names a model deployment, not an agent; the agent is referenced by name in `extra_body`."
+      },
+      {
+        "text": "`tools`",
+        "correct": false,
+        "why": "The MCP tool is already part of the agent; `tools` would attach tools to the request, not select the agent."
+      },
+      {
+        "text": "`instructions`",
+        "correct": false,
+        "why": "`instructions` holds system-level guidance text; the agent's own instructions are stored with the agent."
+      }
+    ]
+  },
+  {
+    "id": "3.2.3-06",
+    "type": "mc",
+    "section": "3.2.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/03-connect-use-language-mcp",
+    "tags": [
+      "mcp",
+      "sdk",
+      "tool-access"
+    ],
+    "question": "You define the **Azure Language MCP server** connection in code with `MCPTool` from `azure-ai-projects` when you create a Microsoft Foundry agent. The agent may only call the **PII redaction** tool, not the other Language tools. Which `MCPTool` property do you set?",
+    "answer": "**`allowed_tools`** — it restricts which specific Language tools the agent can call.",
+    "explanation": "Without a restriction the agent gets every tool the server exposes. `MCPTool` takes the `server_label`, the `server_url` (the Language MCP endpoint with your Foundry resource name) and `require_approval`; `allowed_tools` narrows the catalog. Defining the connection in code instead of the portal keeps tool connections in your application code.",
+    "options": [
+      {
+        "text": "`allowed_tools`",
+        "correct": true,
+        "why": "It limits the agent to the listed Language tools."
+      },
+      {
+        "text": "`require_approval`",
+        "correct": false,
+        "why": "It decides whether a tool call needs approval, for example `\"always\"`, not which tools exist for the agent."
+      },
+      {
+        "text": "`server_label`",
+        "correct": false,
+        "why": "It only names the connection, such as `\"azure-language\"`."
+      },
+      {
+        "text": "`server_url`",
+        "correct": false,
+        "why": "It points to the Language MCP endpoint; all tools of that endpoint stay available."
+      }
+    ]
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "4.7.2-01",
+    "type": "basic",
+    "section": "4.7.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "ocr"
+    ],
+    "question": "What does **Azure Document Intelligence** in Microsoft Foundry extract from documents, and in what form does it return the result?",
+    "answer": "- Uses **OCR and deep learning models**\n- Extracts **text, key-value pairs, selection marks and tables**\n- Records each detected object as a **bounding box** with page coordinates\n- Returns everything as **structured JSON** that keeps the document's relationships",
+    "explanation": "The bounding boxes are what capture the document's structure: their coordinates say where each object sits relative to the rest of the page, so the JSON preserves how fields, labels and tables relate. You could build such an extraction model yourself, but that takes deep learning expertise, a lot of compute and long training. Document Intelligence ships models already trained on thousands of form examples, so you get high accuracy with minimal effort.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/4.7.2-bounding-boxes.png",
+        "alt": "Document Intelligence Studio analyzing a résumé: blue bounding boxes around each detected text block, and the extracted paragraphs listed in the Content pane"
+      }
+    ]
+  },
+  {
+    "id": "4.7.2-02",
+    "type": "basic",
+    "section": "4.7.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "service-choice"
+    ],
+    "question": "Name the **three** categories of models that Azure Document Intelligence is composed of.",
+    "answer": "- **Document analysis models** — text, structure, tables, selection marks: **read** (text + language detection) and **layout** (adds tables and structure)\n- **Prebuilt models** — common document types (invoices, receipts, tax forms, ID documents), no training\n- **Custom models** — your own labeled data: **custom template**, **custom neural**, **composed models**, **custom classifiers**",
+    "explanation": "The categories differ in how much they know about the document. Document analysis models know nothing about the document type; they just pull out text and structure. Prebuilt models know a common document type and its fields without any training. Custom models learn forms specific to your business from labeled samples. Among them, custom template models are fast and cost-effective for fixed layouts, while custom neural models give higher accuracy when layouts vary."
+  },
+  {
+    "id": "4.7.2-03",
+    "type": "basic",
+    "section": "4.7.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "sdk"
+    ],
+    "question": "Name the **four** ways you can access Azure Document Intelligence.",
+    "answer": "- **REST API** — direct HTTP requests\n- **Client library SDKs** — Python, C#, Java and JavaScript\n- **Document Intelligence Studio** — online tool to explore, test and build visually\n- **Microsoft Foundry portal** — integrate with other Foundry tools",
+    "explanation": "The REST API sits underneath everything, so any language that can send HTTP requests can use the service, even without an SDK. The SDKs wrap those calls for the four listed languages; the module's exercise uses the Python SDK. The Studio is the no-code route for trying models on your own documents and building custom ones, while the Foundry portal is where Document Intelligence meets the other Foundry tools."
+  },
+  {
+    "id": "4.7.2-04",
+    "type": "mc",
+    "section": "4.7.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "resources"
+    ],
+    "question": "Your app will use Azure Document Intelligence **and** several other Foundry tools, and you want to call all of them through **one endpoint and one key**. Which resource do you create?",
+    "answer": "A **Foundry resource** — multi-service, one endpoint and key. An **Azure Document Intelligence resource** is single-service: only for Document Intelligence.",
+    "explanation": "Document Intelligence needs an Azure resource, and there are two kinds. A Foundry resource is a multi-service subscription that gives access to multiple AI services under one endpoint and key. An Azure Document Intelligence resource is single-service and used only with Document Intelligence. Pick the dedicated resource when Document Intelligence is all you need; pick the Foundry resource as soon as other Foundry tools join in.",
+    "options": [
+      {
+        "text": "A Foundry resource",
+        "correct": true,
+        "why": "It is the multi-service resource that exposes several AI services under a single endpoint and key."
+      },
+      {
+        "text": "An Azure Document Intelligence resource",
+        "correct": false,
+        "why": "It is single-service: its endpoint and key work only for Document Intelligence, not for the other Foundry tools."
+      },
+      {
+        "text": "One Azure Document Intelligence resource per document type you analyze",
+        "correct": false,
+        "why": "Resources are not split by document type; one resource serves read, layout, prebuilt and custom models alike."
+      },
+      {
+        "text": "A Document Intelligence Studio project",
+        "correct": false,
+        "why": "A Studio project is a workspace that itself needs an existing resource's endpoint and key; it is not a resource."
+      }
+    ]
+  },
+  {
+    "id": "4.7.2-05",
+    "type": "basic",
+    "section": "4.7.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "limits"
+    ],
+    "question": "Which **input requirements** must a document meet before Azure Document Intelligence can analyze it?",
+    "answer": "- **Format**: JPEG, PNG, BMP, PDF (text or scanned) or TIFF; the read model also takes Office files\n- **File size**: under **500 MB** (standard tier), under **4 MB** (free tier)\n- **Images**: 50 × 50 to 10,000 × 10,000 pixels\n- **PDFs**: under 17 × 17 inches (A3) and not password-protected",
+    "explanation": "These limits decide whether a request fails before any model runs. The tier matters most in practice: a scan that works on the standard tier can be rejected on the free tier purely because of its size. Scanned PDFs are fine, because OCR reads the image; a password-protected PDF is not, because the service cannot open it at all.",
+    "addition": "In API v4.0 the layout model also accepts Office files (DOCX, PPTX, XLS); prebuilt and custom models do not. The free tier (F0) analyzes only the first two pages of a request; the standard tier up to 2,000.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/service-limits"
+  },
+  {
+    "id": "4.7.2-06",
+    "type": "mc",
+    "section": "4.7.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/2-what-is-document-intelligence",
+    "tags": [
+      "document-intelligence",
+      "limits"
+    ],
+    "question": "Which **two** of these documents will Azure Document Intelligence **reject** as input?",
+    "answer": "The **password-protected PDF** and the **8 MB JPEG on the free tier**.",
+    "explanation": "Input requirements are checked per document: the format must be supported, the file must be under the tier's size limit (4 MB free, 500 MB standard), images must lie between 50 × 50 and 10,000 × 10,000 pixels, and PDFs must be under 17 × 17 inches and not password-protected.",
+    "options": [
+      {
+        "text": "A password-protected PDF on the standard tier",
+        "correct": true,
+        "why": "PDFs must not be password-protected, whatever the tier."
+      },
+      {
+        "text": "An 8 MB JPEG scan sent to a free-tier resource",
+        "correct": true,
+        "why": "The free tier only accepts files under 4 MB."
+      },
+      {
+        "text": "A 300 MB scanned A4 PDF sent to a standard-tier resource",
+        "correct": false,
+        "why": "Scanned PDFs are supported, and the standard tier accepts files under 500 MB."
+      },
+      {
+        "text": "A 2,000 × 3,000 pixel PNG photo of a receipt",
+        "correct": false,
+        "why": "PNG is supported and the size lies within 50 × 50 to 10,000 × 10,000 pixels."
+      },
+      {
+        "text": "A Microsoft Word file analyzed with the read model",
+        "correct": false,
+        "why": "The read model also accepts Microsoft Office file formats."
+      }
+    ]
+  }
+]

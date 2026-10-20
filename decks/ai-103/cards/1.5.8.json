@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1.5.8-01",
+    "type": "mc",
+    "section": "1.5.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/7-knowledge-check",
+    "tags": [
+      "prompt-engineering",
+      "system-message"
+    ],
+    "question": "What is the primary purpose of a system message in a prompt?",
+    "answer": "To define the model's **role, behavior and output constraints**.",
+    "explanation": "The system message usually comes first in the conversation and is the highest-level set of instructions. It sets the assistant's role and boundaries, its tone, the output format such as JSON, and safety constraints. It influences the model but does not guarantee compliance, so you test it and layer it with content filtering and evaluation.",
+    "options": [
+      {
+        "text": "To define the model's role, behavior, and output constraints.",
+        "correct": true,
+        "why": "Unit 1.5.2: a system message defines the assistant's role and boundaries, tone, output format and safety constraints."
+      },
+      {
+        "text": "To provide training data that permanently changes the model.",
+        "correct": false,
+        "why": "That is fine-tuning (unit 1.5.4), which adjusts the model's weights; a system message changes nothing in the model."
+      },
+      {
+        "text": "To retrieve data from an external data source.",
+        "correct": false,
+        "why": "Retrieval is the job of RAG (unit 1.5.3), for example with Azure AI Search; the retrieved text can be injected into the system message, but the message itself retrieves nothing."
+      }
+    ]
+  },
+  {
+    "id": "1.5.8-02",
+    "type": "mc",
+    "section": "1.5.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/7-knowledge-check",
+    "tags": [
+      "rag",
+      "grounding"
+    ],
+    "question": "When should you use Retrieval Augmented Generation (RAG) instead of relying on prompt engineering alone?",
+    "answer": "When the model needs **domain-specific or current data** it wasn't trained on.",
+    "explanation": "Prompt engineering cannot give the model information it was never trained on. RAG retrieves relevant data at query time and adds it to the prompt. It fits private data like a product catalog, data that changes often like prices, and facts after the model's training cutoff — all without retraining.",
+    "options": [
+      {
+        "text": "When you want the model to respond in a consistent style and format.",
+        "correct": false,
+        "why": "Consistent style and format is the goal of fine-tuning (units 1.5.4 and 1.5.5, \"optimize the model\")."
+      },
+      {
+        "text": "When the model needs access to domain-specific or current data that it wasn't trained on.",
+        "correct": true,
+        "why": "Unit 1.5.3 lists domain-specific knowledge, frequently changing information and the training cutoff as the cases where RAG is most effective."
+      },
+      {
+        "text": "When you want to reduce the length of prompts sent to the model.",
+        "correct": false,
+        "why": "Shorter prompts are a fine-tuning benefit (unit 1.5.4); RAG adds retrieved text and so makes prompts longer."
+      }
+    ]
+  },
+  {
+    "id": "1.5.8-03",
+    "type": "mc",
+    "section": "1.5.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/7-knowledge-check",
+    "tags": [
+      "model-parameters",
+      "temperature"
+    ],
+    "question": "What does the temperature parameter control in a language model?",
+    "answer": "The **randomness and creativity** of the model's responses.",
+    "explanation": "A higher value such as 0.7 gives more creative, varied output; a lower value such as 0.2 gives focused, deterministic output. Use low values for factual answers and high values for creative text. Top_p also controls randomness, by limiting the model to the most probable tokens — adjust one of the two, not both.",
+    "options": [
+      {
+        "text": "The maximum number of tokens the model can generate.",
+        "correct": false,
+        "why": "Temperature does not limit output length; unit 1.5.2 defines it only as the randomness of the output."
+      },
+      {
+        "text": "The randomness and creativity of the model's responses.",
+        "correct": true,
+        "why": "Unit 1.5.2: temperature controls the randomness of the output — higher is more creative, lower more deterministic."
+      },
+      {
+        "text": "The speed at which the model processes requests.",
+        "correct": false,
+        "why": "Temperature changes which tokens are chosen, not how fast; unit 1.5.2 names no speed effect."
+      }
+    ]
+  },
+  {
+    "id": "1.5.8-04",
+    "type": "mc",
+    "section": "1.5.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/7-knowledge-check",
+    "tags": [
+      "fine-tuning"
+    ],
+    "question": "What does fine-tuning optimize in a language model?",
+    "answer": "The **consistency** of the model's behavior, style and output format.",
+    "explanation": "Fine-tuning further trains a pretrained model on a small task-specific dataset, which changes its weights. The desired patterns then live in the model itself, so it follows them reliably even with a short system message. The module calls this \"optimize the model\", in contrast to RAG, which \"optimizes for context\" and handles factual accuracy.",
+    "options": [
+      {
+        "text": "The factual accuracy of responses by connecting to external data.",
+        "correct": false,
+        "why": "Connecting to external data for factual accuracy is grounding with RAG (unit 1.5.3), not fine-tuning."
+      },
+      {
+        "text": "The consistency of the model's behavior, style, and output format.",
+        "correct": true,
+        "why": "Units 1.5.4 and 1.5.5: fine-tuning maximizes behavioral consistency — format, style and tone."
+      },
+      {
+        "text": "The number of tokens the model can process in a single request.",
+        "correct": false,
+        "why": "Fine-tuning can shorten the prompt you need (unit 1.5.4), but it does not raise how many tokens the model can process."
+      }
+    ]
+  },
+  {
+    "id": "1.5.8-05",
+    "type": "mc",
+    "section": "1.5.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/7-knowledge-check",
+    "tags": [
+      "rag",
+      "fine-tuning",
+      "prompt-engineering"
+    ],
+    "question": "You're building a chat application that needs to answer questions using your company's product catalog while maintaining a specific brand voice. Which combination of strategies is most appropriate?",
+    "answer": "**RAG** for the catalog, **fine-tuning** for the brand voice, **prompt engineering** for conversation-specific instructions.",
+    "explanation": "Each strategy handles one concern. RAG supplies accurate, current catalog data at query time. Fine-tuning makes the brand voice reliable because it is built into the model's weights. Prompt engineering adds per-conversation instructions and guardrails. Catalog data put into training data would go stale and need retraining on every change.",
+    "options": [
+      {
+        "text": "Prompt engineering only, with detailed system messages.",
+        "correct": false,
+        "why": "Unit 1.5.5: prompt engineering can't give the model information it wasn't trained on, such as the catalog, and may not hold a style consistently."
+      },
+      {
+        "text": "RAG for the product catalog data, fine-tuning for the brand voice, and prompt engineering for conversation-specific instructions.",
+        "correct": true,
+        "why": "Unit 1.5.5, \"All three strategies together\": fine-tuning for style, RAG for up-to-date domain knowledge, prompt engineering for conversation-specific instructions."
+      },
+      {
+        "text": "Fine-tuning only, with the product catalog included in the training data.",
+        "correct": false,
+        "why": "Unit 1.5.3 names a product catalog as a typical case for RAG, which fetches current data without retraining; unit 1.5.4: a fine-tuned model may need retraining whenever the data changes."
+      }
+    ]
+  }
+]

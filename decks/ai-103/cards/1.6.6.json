@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1.6.6-01",
+    "type": "basic",
+    "section": "1.6.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/6-operate-responsibly",
+    "tags": ["responsible-ai", "compliance"],
+    "question": "Name the **four** common compliance reviews to complete before releasing a generative AI solution, in Microsoft's responsible generative AI guidance.",
+    "answer": "- **Legal**\n- **Privacy**\n- **Security**\n- **Accessibility**",
+    "explanation": "These prerelease reviews belong to the Manage stage, after the harms have been mapped, measured and mitigated. First you identify the compliance requirements of your organization and your industry. Then the appropriate teams get the opportunity to review both the system and its documentation. The four are the common cases; your own requirements decide which reviews apply."
+  },
+  {
+    "id": "1.6.6-02",
+    "type": "basic",
+    "section": "1.6.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/6-operate-responsibly",
+    "tags": ["responsible-ai", "deployment", "monitoring"],
+    "question": "Name the **seven** guidelines Microsoft gives for releasing and operating a responsible generative AI solution.",
+    "answer": "- **Phased delivery plan** — restricted user group first\n- **Incident response plan** — with estimated response times\n- **Rollback plan** — steps to revert to a previous state\n- **Block harmful responses** — immediately, once discovered\n- **Block misuse** — specific users, applications or client IP addresses\n- **User feedback** — report content as inaccurate, incomplete, harmful or offensive\n- **Telemetry** — satisfaction, functional gaps, usability; privacy-compliant",
+    "explanation": "The first three are plans you write before release; the other four are capabilities built into the running system. A phased delivery lets you gather feedback and find problems before a wider audience sees the solution. Blocking responses targets bad output, while blocking users, applications or IP addresses targets misuse of the system. Feedback and telemetry show what to fix, and the telemetry you collect must comply with privacy laws and your organization's own privacy policies and commitments."
+  },
+  {
+    "id": "1.6.6-03",
+    "type": "mc",
+    "section": "1.6.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/6-operate-responsibly",
+    "tags": ["responsible-ai", "deployment"],
+    "question": "An incident occurs in your released generative AI solution, and the team needs documented steps to **return the solution to the state it was in before**. Following Microsoft's responsible generative AI guidance for releasing a solution, which part of the release preparation should hold these steps?",
+    "answer": "The **rollback plan** — it defines the steps to revert the solution to a previous state if an incident occurs.",
+    "explanation": "Rollback and incident response are easy to confuse because both deal with incidents. The incident response plan covers how you react to unanticipated incidents and includes estimates of the time taken to respond. The rollback plan is narrower: the concrete steps to revert to a previous state. A phased delivery plan acts earlier, by limiting who gets the solution first.",
+    "options": [
+      {"text": "Rollback plan", "correct": true, "why": "The course defines it as the steps to revert the solution to a previous state if an incident occurs."},
+      {"text": "Incident response plan", "correct": false, "why": "It covers the response to unanticipated incidents, including estimates of the time taken to respond, not the revert steps."},
+      {"text": "Phased delivery plan", "correct": false, "why": "It releases the solution to a restricted group of users first to gather feedback; it does not revert anything."},
+      {"text": "Telemetry tracking", "correct": false, "why": "Telemetry measures user satisfaction and finds functional gaps or usability challenges; it does not restore a previous state."}
+    ]
+  }
+]

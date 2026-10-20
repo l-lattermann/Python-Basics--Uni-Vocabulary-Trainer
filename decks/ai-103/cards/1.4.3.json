@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1.4.3-01",
+    "type": "basic",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter",
+      "responses-api"
+    ],
+    "question": "What does the **code_interpreter** tool give a model when you add it to a request in the OpenAI Responses API?",
+    "answer": "A **sandboxed Python runtime** in which the model writes and runs Python code during the conversation, then uses the real results in its answer.",
+    "explanation": "Without the tool, a model can only discuss code or algorithms. With it, the model tests its own logic, processes data and returns results that were actually computed — the course calls this the step from a thinker to a doer. Asked for the square root of 16, the model generates `math.sqrt(16)`, runs it and answers \"4\"; the generated code is visible when you inspect the response object."
+  },
+  {
+    "id": "1.4.3-02",
+    "type": "basic",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter"
+    ],
+    "question": "Name the **five** key features of the **code_interpreter** tool for generative AI models in the OpenAI Responses API.",
+    "answer": "- **Dynamic Python Execution** — writes and runs Python in a sandbox\n- **File Handling** — upload, process and download files (CSV, JSON, images)\n- **Data Analysis** — calculations, statistics, transformations on the fly\n- **Real-time Feedback** — sees execution results, iterates or fixes errors\n- **Complex Problem Solving** — math, simulations, logic puzzles via code",
+    "explanation": "Execution is the base feature; the others build on it. File handling brings data into the sandbox, data analysis works on it, and real-time feedback is what lets the model correct itself: it sees the output or the error of its own code and tries again. Complex problem solving means the model reaches a result by running code instead of guessing it from text."
+  },
+  {
+    "id": "1.4.3-03",
+    "type": "basic",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter"
+    ],
+    "question": "Name the **four** common use cases of the **code_interpreter** tool in the OpenAI Responses API, each with an example.",
+    "answer": "- **Data Analysis** — parse a CSV file and generate summary statistics\n- **Math & Physics** — solve differential equations or simulate physics\n- **File Conversion** — convert between formats, e.g. JSON ↔ CSV\n- **Prototyping** — test algorithms and ideas before formal implementation",
+    "explanation": "All four share one pattern: the answer has to be computed or transformed, not just described. Without the tool, a model can only discuss how to compute summary statistics or convert JSON to CSV. With it, the model runs real Python on the data and returns actual results, and for prototyping it tests an algorithm by executing it instead of only reasoning about it."
+  },
+  {
+    "id": "1.4.3-04",
+    "type": "mc",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter",
+      "tool-choice"
+    ],
+    "question": "A user uploads a CSV of monthly sales and asks your app, which calls a model through the OpenAI Responses API, for the mean, median and standard deviation of each column. Which tool should you add to the request?",
+    "answer": "**code_interpreter** — the model writes and runs Python (for example with pandas) on the file.",
+    "explanation": "This is the unit's first use case: parse a CSV file and generate summary statistics. The model gets the file in its sandbox, runs real calculations with pre-installed libraries such as pandas and numpy, and returns computed numbers. Searching or retrieving text would find passages, not calculate anything.",
+    "options": [
+      {
+        "text": "code_interpreter",
+        "correct": true,
+        "why": "It runs Python on the uploaded file, so the statistics are actually calculated."
+      },
+      {
+        "text": "file_search",
+        "correct": false,
+        "why": "It retrieves relevant passages from documents in a vector store to ground answers; it does not compute over the data."
+      },
+      {
+        "text": "web_search",
+        "correct": false,
+        "why": "It finds current information on the internet, which does not help analyse the user's own file."
+      },
+      {
+        "text": "function",
+        "correct": false,
+        "why": "It calls a function you write in your app; you would have to build the statistics logic yourself."
+      }
+    ]
+  },
+  {
+    "id": "1.4.3-05",
+    "type": "mc",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter",
+      "responses-api"
+    ],
+    "question": "Complete the call so the model can run Python code to answer a math question:\n\n```python\nresponse = client.responses.create(\n    model=model_deployment,\n    instructions=\"Use the python tool to run code for math problems.\",\n    input=\"What is the square root of 16?\",\n    tools=[{\"type\": ___,\n            \"container\": {\"type\": \"auto\"}}]\n)\n```",
+    "answer": "**\"code_interpreter\"** — the tool type, together with a `container` setting.",
+    "explanation": "Tools are listed in the `tools` array of `responses.create()`, each identified by its `type`. The code_interpreter entry also carries a `container` setting, here `{\"type\": \"auto\"}`. The instructions say \"python tool\" on purpose: many models use that name internally for code_interpreter, but it is not the `type` value you send.",
+    "addition": "The container is a fully sandboxed virtual machine. With `\"type\": \"auto\"` the service creates a new container or reuses an active one; the `code_interpreter_call` output returns its `container_id`. A container expires after 20 minutes unused.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses",
+    "options": [
+      {
+        "text": "\"code_interpreter\"",
+        "correct": true,
+        "why": "It is the tool type that gives the model a sandboxed Python runtime."
+      },
+      {
+        "text": "\"python\"",
+        "correct": false,
+        "why": "Models call the tool the python tool internally, which is why you use that word in instructions, but the tool type is code_interpreter."
+      },
+      {
+        "text": "\"function\"",
+        "correct": false,
+        "why": "It declares a function your app runs; the model would not execute any Python itself."
+      },
+      {
+        "text": "\"file_search\"",
+        "correct": false,
+        "why": "It searches a vector store of uploaded files and needs vector_store_ids, not a container."
+      }
+    ]
+  },
+  {
+    "id": "1.4.3-06",
+    "type": "order",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter"
+    ],
+    "question": "Put the steps of a request that uses the **code_interpreter** tool in the OpenAI Responses API in order.",
+    "answer": "Send request with the tool → model decides code is needed → model writes code → code runs in the sandbox → model uses the output in its response.",
+    "items": [
+      "**You send a request** — code_interpreter is in the tools array",
+      "**Model analyzes the task** — decides whether code execution is needed",
+      "**Model generates code** — writes Python for the task",
+      "**Code runs** — in a sandbox with libraries like pandas, numpy, math",
+      "**Results returned** — model gets the output and puts it into its response"
+    ],
+    "explanation": "Your app only does the first step. Everything after it happens on the model side: the model alone decides whether the task needs code at all, and the code runs in the sandbox, not in your application. Because the output goes back to the model, not straight to the user, the model can phrase it as an answer or fix its code after an error."
+  },
+  {
+    "id": "1.4.3-07",
+    "type": "basic",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter",
+      "prompts"
+    ],
+    "question": "Name the **six** best practices for using the **code_interpreter** tool in the OpenAI Responses API.",
+    "answer": "- **Be specific** — describe data format and expected output; call it the *python tool*\n- **Provide context** — include domain knowledge in prompts\n- **Validate results** — review generated code before production use\n- **Monitor costs** — code execution adds tokens\n- **Leverage libraries** — pandas, numpy, matplotlib are pre-installed\n- **Error handling** — the model sees errors and tries to fix them",
+    "explanation": "The *python tool* tip matters for instructions: many models use that name internally for code_interpreter, so a system prompt like \"Use the python tool to run code for math problems\" steers them to the tool. Validating results is still your job, because the code is AI-generated. Costs grow with complexity, since complex operations use more resources.",
+    "addition": "Code Interpreter is billed on top of token fees: each session is charged per minute with a five-minute minimum, and two parallel calls in different threads create two sessions.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses"
+  },
+  {
+    "id": "1.4.3-08",
+    "type": "basic",
+    "section": "1.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/03-code-interpreter",
+    "tags": [
+      "tools",
+      "code-interpreter",
+      "limits"
+    ],
+    "question": "Name the **four** limitations of the **code_interpreter** tool in the OpenAI Responses API.",
+    "answer": "- **Sandboxed environment** with **no external network access**\n- **Some libraries may not be available** — tell the model when a standard library fails\n- **Timeout limits** for long-running operations\n- **Memory constraints** — massive datasets may need streaming or chunking",
+    "explanation": "The missing network access is the one scenarios test: code run by code_interpreter cannot download data or call a website, so fetching current information is a job for web_search, and calling your systems a job for the function tool. Timeouts and memory constraints cap what one execution can do, which is why massive datasets must be streamed or chunked. If a standard library fails, tell the model so it can adapt."
+  }
+]

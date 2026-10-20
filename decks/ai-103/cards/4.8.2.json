@@ -1,0 +1,58 @@
+[
+  {
+    "id": "4.8.2-01",
+    "type": "basic",
+    "section": "4.8.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/2-azure-ai-search",
+    "tags": ["azure-ai-search", "indexing"],
+    "question": "Name the **three** things Azure AI Search lets you do with your data in a search or knowledge mining solution.",
+    "answer": "- **Index** documents and data from a range of sources\n- **Enrich** the index data with AI skills\n- **Store** extracted insights in a **knowledge store** for analysis and integration",
+    "explanation": "Azure AI Search is a cloud service for indexing and querying many kinds of data sources at high scale. It extracts data from structured, semi-structured and unstructured documents. The three steps build on each other: indexing pulls the data in, AI skills add insights the raw data does not state, and the knowledge store keeps those insights outside the index so other systems and analytics can use them."
+  },
+  {
+    "id": "4.8.2-02",
+    "type": "basic",
+    "section": "4.8.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/2-azure-ai-search",
+    "tags": ["azure-ai-search", "ai-enrichment"],
+    "question": "Besides the source content itself, what kinds of insights can an **Azure AI Search index** contain?",
+    "answer": "- **Text read from images** with OCR\n- **Entities and key phrases** detected through text analytics\n- Other **derived information** from AI skills integrated into the indexing process",
+    "explanation": "An Azure AI Search index holds more than a copy of your files. The AI skills are part of the indexing process, so their output lands in the index alongside the source content. Text that only existed inside an image becomes searchable after OCR. Entities and key phrases found by text analytics become fields of their own. A query can then match insights the original document never stored as plain data."
+  },
+  {
+    "id": "4.8.2-03",
+    "type": "basic",
+    "section": "4.8.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/2-azure-ai-search",
+    "tags": ["azure-ai-search", "rag", "knowledge-mining"],
+    "question": "Name the **three** kinds of application Azure AI Search is used for.",
+    "answer": "- **Enterprise search** — helps employees or customers find information in websites or applications\n- **Retrieval augmented generation (RAG)** — vector-based indexes supply grounding data for prompts in generative AI apps\n- **Knowledge mining** — indexing infers insights and extracts granular data assets from documents for data analytics",
+    "explanation": "All three use the same index, but for a different consumer. In enterprise search a person types a query and reads the results. In RAG a generative AI app queries the vector index and puts the hits into the prompt. In knowledge mining the index is a means to an end: the insights extracted during indexing feed data analytics.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.8.2-ai-search-applications.png", "alt": "Azure AI Search serving three applications: a website search, a chat app, and documents turned into structured data"}
+    ]
+  },
+  {
+    "id": "4.8.2-04",
+    "type": "mc",
+    "section": "4.8.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/2-azure-ai-search",
+    "tags": ["azure-ai-search", "knowledge-mining"],
+    "question": "A company has thousands of scanned contracts. It wants Azure AI Search to pull granular data such as parties and key terms out of them, so its analysts can report on that data. Which Azure AI Search application is this?",
+    "answer": "**Knowledge mining**.",
+    "explanation": "Knowledge mining uses the indexing process itself to infer insights and extract granular data assets from documents. The goal is data analytics, not a search box and not a chatbot. Enterprise search and RAG also build an index, but their consumer is a person searching or a generative AI model being grounded.",
+    "options": [
+      {"text": "Knowledge mining", "correct": true, "why": "Indexing is used to extract granular data assets from documents to support data analytics."},
+      {"text": "Enterprise search", "correct": false, "why": "Enterprise search helps employees or customers find information in websites or applications, not feed analytics."},
+      {"text": "Retrieval augmented generation (RAG)", "correct": false, "why": "RAG uses vector-based indexes to supply grounding data for prompts in generative AI apps."}
+    ]
+  }
+]

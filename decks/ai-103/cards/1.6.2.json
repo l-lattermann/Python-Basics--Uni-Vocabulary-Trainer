@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1.6.2-01",
+    "type": "basic",
+    "section": "1.6.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/2-plan-responsible-ai",
+    "tags": ["responsible-ai", "harms"],
+    "question": "Name the **four** stages, in order, of Microsoft's process for planning a responsible generative AI solution.",
+    "answer": "1. **Map** — identify potential harms relevant to the planned solution\n2. **Measure** — measure how often these harms appear in the generated outputs\n3. **Mitigate** — reduce the harms at multiple layers and tell users transparently about the risks\n4. **Manage** — run the solution by a deployment and operational readiness plan",
+    "explanation": "Each stage builds on the one before: you can only measure harms you have mapped, and only judge a mitigation against a measurement. Manage then covers the release and the running system. Microsoft designed this guidance to be practical and actionable, and the four stages correspond closely to the functions of the **NIST AI Risk Management Framework**."
+  },
+  {
+    "id": "1.6.2-02",
+    "type": "mc",
+    "section": "1.6.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/2-plan-responsible-ai",
+    "tags": ["responsible-ai", "harms"],
+    "question": "In Microsoft's four-stage process for responsible generative AI, which stage includes **communicating potential risks transparently to users**?",
+    "answer": "**Mitigate** — besides reducing harms at multiple layers, it covers transparent communication of the remaining risks.",
+    "explanation": "Mitigation cannot remove every harm, so what remains is disclosed to users rather than hidden. Telling users about the risks is therefore part of minimizing the harms' impact, not a release step. Map only identifies harms, Measure quantifies them in outputs, and Manage defines the deployment and operational readiness plan.",
+    "options": [
+      {"text": "Map", "correct": false, "why": "Map identifies the potential harms that are relevant to the planned solution; it communicates nothing to users."},
+      {"text": "Measure", "correct": false, "why": "Measure quantifies how often the mapped harms appear in the solution's outputs."},
+      {"text": "Mitigate", "correct": true, "why": "The course defines Mitigate as reducing harms at multiple layers and ensuring transparent communication about potential risks to users."},
+      {"text": "Manage", "correct": false, "why": "Manage is about defining and following a deployment and operational readiness plan."}
+    ]
+  }
+]

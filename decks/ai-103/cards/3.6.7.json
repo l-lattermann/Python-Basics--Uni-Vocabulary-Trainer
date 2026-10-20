@@ -1,0 +1,118 @@
+[
+  {
+    "id": "3.6.7-01",
+    "type": "mc",
+    "section": "3.6.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/5-knowledge-check",
+    "tags": ["voice-live", "authentication"],
+    "question": "What are the two authentication methods supported by the Voice Live API?",
+    "answer": "**Microsoft Entra (keyless)** and **API key**.",
+    "explanation": "Entra is the recommended keyless option: assign the Cognitive Services User role, get a token with the `https://ai.azure.com/.default` scope and send it as `Bearer <token>` in the `Authorization` header. An API key goes either in an `api-key` connection header (not available in a browser) or in an `api-key` query string parameter.",
+    "options": [
+      {
+        "text": "OAuth 2.0 and JWT (JSON Web Tokens)",
+        "correct": false,
+        "why": "The Voice Live API names exactly two methods, Microsoft Entra and API key; OAuth 2.0 and JWT are not listed as its methods (unit 3.6.2, Explore the Azure Voice Live API)."
+      },
+      {
+        "text": "Basic authentication and API keys",
+        "correct": false,
+        "why": "API keys are supported, but basic authentication (user name and password) is not one of the two methods (unit 3.6.2, Explore the Azure Voice Live API)."
+      },
+      {
+        "text": "Microsoft Entra (keyless) and API key",
+        "correct": true,
+        "why": "The unit states that the Voice Live API supports two authentication methods: Microsoft Entra (keyless) and API key (unit 3.6.2, Explore the Azure Voice Live API)."
+      }
+    ]
+  },
+  {
+    "id": "3.6.7-02",
+    "type": "mc",
+    "section": "3.6.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/5-knowledge-check",
+    "tags": ["voice-live", "avatar"],
+    "question": "Which protocol is used for avatar streaming integration in Voice Live API?",
+    "answer": "**WebRTC**.",
+    "explanation": "The conversation itself runs over a WebSocket connection, but the avatar's video and animation stream uses WebRTC. The client sends its SDP offer in the `session.avatar.connect` event and can configure video resolution, bitrate, codec, blendshapes and visemes.",
+    "options": [
+      {
+        "text": "HTTP/2",
+        "correct": false,
+        "why": "HTTP/2 is not used for the avatar; Voice Live uses WebSocket for events and WebRTC for avatar video (unit 3.6.2, Explore the Azure Voice Live API)."
+      },
+      {
+        "text": "WebRTC",
+        "correct": true,
+        "why": "The unit states that the Voice Live API supports WebRTC-based avatar streaming for video and animation (unit 3.6.2, Explore the Azure Voice Live API)."
+      },
+      {
+        "text": "gRPC",
+        "correct": false,
+        "why": "gRPC appears nowhere in Voice Live; avatar streaming is WebRTC-based (unit 3.6.2, Explore the Azure Voice Live API)."
+      }
+    ]
+  },
+  {
+    "id": "3.6.7-03",
+    "type": "mc",
+    "section": "3.6.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/5-knowledge-check",
+    "tags": ["voice-live", "agents", "foundry-portal"],
+    "question": "How do you configure and test Voice Live agent integration in the Foundry Portal?",
+    "answer": "**Enable Voice mode in the agent playground.**",
+    "explanation": "While you build an agent in the Microsoft Foundry portal, voice mode adds Voice Live to it and lets you test it right in the playground. The Configuration pane then sets the language, VAD and audio enhancement, the voice, interim responses and an avatar.",
+    "options": [
+      {
+        "text": "You can't - Voice Live is only accessible through the REST API or Python SDK.",
+        "correct": false,
+        "why": "The portal supports it: you enable voice mode for an agent and test it in the playground (unit 3.6.4, Create a Voice Live agent)."
+      },
+      {
+        "text": "In the Azure Speech in Foundry Tools Voice Live playground",
+        "correct": false,
+        "why": "The question is about agent integration, and the module configures that on the agent itself, in the agent playground (unit 3.6.4, Create a Voice Live agent)."
+      },
+      {
+        "text": "Enable Voice mode in the agent playground",
+        "correct": true,
+        "why": "The unit says you can enable voice mode to integrate Voice Live into your agent and test it in the playground (unit 3.6.4, Create a Voice Live agent)."
+      }
+    ]
+  },
+  {
+    "id": "3.6.7-04",
+    "type": "mc",
+    "section": "3.6.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/5-knowledge-check",
+    "tags": ["voice-live", "events"],
+    "question": "How can you stop audio playback when a user interrupts the voice agent?",
+    "answer": "Handle the **`ServerEventType.INPUT_AUDIO_BUFFER_SPEECH_STARTED`** event.",
+    "explanation": "This server event fires when the user starts speaking. The client must then cancel playback at once, for example by clearing its playback queue. Otherwise it keeps playing the last agent response until the API has processed the interruption, and the agent talks over the user.",
+    "options": [
+      {
+        "text": "You can't - the user must wait for the agent to finish.",
+        "correct": false,
+        "why": "Interruptions are supported: the client cancels playback when the user starts speaking (unit 3.6.3, Explore the AI Voice Live client library for Python)."
+      },
+      {
+        "text": "Handle the ServerEventType.INPUT_AUDIO_BUFFER_SPEECH_STARTED event",
+        "correct": true,
+        "why": "The sample code stops playback in this branch, and the agent sample calls `clear_playback_queue()` there (units 3.6.3 and 3.6.4)."
+      },
+      {
+        "text": "Reset the Voice Live session and clear the conversation history",
+        "correct": false,
+        "why": "Nothing in the module resets the session for an interruption; that would lose the conversation, while only playback needs to stop (unit 3.6.3, Explore the AI Voice Live client library for Python)."
+      }
+    ]
+  }
+]

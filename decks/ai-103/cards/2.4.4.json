@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2.4.4-01",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "knowledge-sources"],
+    "question": "Name the **six** data source types that a Microsoft Foundry IQ knowledge base supports, with the access type and typical use of each.",
+    "answer": "- **Azure AI Search Index** — indexed; enterprise search with custom pipelines\n- **Azure Blob Storage** — direct; document files in Azure Storage\n- **Web** — real-time; current public information via Bing\n- **SharePoint (Remote)** — real-time; live SharePoint content with Microsoft 365 governance\n- **SharePoint (Indexed)** — indexed; advanced SharePoint search with custom pipelines\n- **OneLake** — direct; unstructured data in Microsoft Fabric",
+    "explanation": "The access type tells you where freshness and search power come from. Real-time sources query at question time, so the agent always gets current information. Indexed sources are processed into Azure AI Search in advance, which buys advanced search at the cost of an index. Direct sources read files from Blob containers or a Fabric lakehouse. Internal sources such as SharePoint or OneLake keep security and governance on proprietary knowledge. One knowledge base can combine several of them.",
+    "addition": "Current Azure AI Search docs call these **knowledge sources** and class each as indexed or remote. Blob and OneLake count as indexed there: Azure AI Search generates an indexer pipeline for them. Newer kinds include Azure SQL, File, MCP server and Work IQ (preview).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/agentic-knowledge-source-overview"
+  },
+  {
+    "id": "2.4.4-02",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "azure-ai-search"],
+    "question": "Name the **four** key benefits an agent gets when a Microsoft Foundry IQ knowledge base uses an existing **Azure AI Search index** as its data source.",
+    "answer": "- **Semantic ranking** — contextually relevant results, not just keyword matches\n- **Custom scoring** — prioritizes results by your business logic\n- **Faceted navigation** — filters results by categories or attributes\n- **Multi-language support** — handles content in different languages",
+    "explanation": "Choose this source when you already invested in Azure AI Search and want to reuse existing indexes. Such an index can hold data from several origins that you already processed and indexed. The agent queries it to retrieve information for user questions. Semantic ranking, filters and custom scoring profiles are the sophisticated search features that make this source worth choosing over a simpler one."
+  },
+  {
+    "id": "2.4.4-03",
+    "type": "mc",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "sharepoint"],
+    "question": "An agent needs SharePoint content through a Microsoft Foundry IQ knowledge base. You must apply custom analyzers for specialized terminology and combine the SharePoint data with other sources in one Azure AI Search index. Which data source do you choose?",
+    "answer": "**SharePoint (Indexed)**.",
+    "explanation": "SharePoint Indexed processes SharePoint content into Azure AI Search in advance. That preprocessing gives faster responses and the full Azure AI Search capabilities, such as custom analyzers and enrichment pipelines. The price is maintenance: the index needs updates, and data freshness depends on the indexing schedule.",
+    "options": [
+      {"text": "SharePoint (Indexed)", "correct": true, "why": "It indexes SharePoint content into Azure AI Search, which enables custom analyzers and combining SharePoint with other sources."},
+      {"text": "SharePoint (Remote)", "correct": false, "why": "It queries SharePoint in real time without preindexing, so advanced search is limited."},
+      {"text": "Azure Blob Storage", "correct": false, "why": "It retrieves document files from blob containers, not content from SharePoint sites."},
+      {"text": "Web", "correct": false, "why": "It grounds the agent with public internet results via Bing, not internal SharePoint content."}
+    ]
+  },
+  {
+    "id": "2.4.4-04",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "sharepoint"],
+    "question": "How do **SharePoint Remote** and **SharePoint Indexed** differ as Microsoft Foundry IQ data sources on these **six** features: access method, response time, maintenance, advanced search, data freshness, permission handling?",
+    "answer": "- **Access method** — Remote: real-time queries; Indexed: preprocessed index\n- **Response time** — Remote: depends on SharePoint; Indexed: faster\n- **Maintenance** — Remote: no index; Indexed: needs index updates\n- **Advanced search** — Remote: limited; Indexed: full Azure AI Search\n- **Data freshness** — Remote: always current; Indexed: depends on indexing schedule\n- **Permission handling** — Remote: respects SharePoint permissions; Indexed: configured during indexing",
+    "explanation": "All six rows follow from one choice: query live or index in advance. Remote asks SharePoint at question time. So content is always current and existing permissions apply, but speed depends on SharePoint and search is basic. Indexed does the work beforehand. So it answers faster and gets Azure AI Search's features, but you maintain the index, and content can lag behind until the next indexing run."
+  },
+  {
+    "id": "2.4.4-05",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "sharepoint"],
+    "question": "You need the simplest path from SharePoint into a Microsoft Foundry IQ knowledge base and don't need advanced search. Which data source fits, and what are its **four** key benefits?",
+    "answer": "**SharePoint (Remote)**:\n- No index maintenance\n- Always accesses current SharePoint content\n- Automatically respects existing SharePoint permissions\n- Simpler setup and configuration",
+    "explanation": "SharePoint Remote retrieves content directly from SharePoint with Microsoft 365 governance, without preindexing. The agent searches SharePoint sites and libraries in real time when a user asks. Because nothing is copied into an index, there is nothing to keep in sync and no separate permission setup. Its limit is search: when you need custom pipelines, switch to SharePoint Indexed."
+  },
+  {
+    "id": "2.4.4-06",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "sharepoint", "azure-ai-search"],
+    "question": "SharePoint content is indexed into Azure AI Search for a Microsoft Foundry IQ knowledge base (SharePoint Indexed). Name the **four** things this indexing lets you do.",
+    "answer": "- Apply **custom analyzers** for specialized terminology\n- Build **enrichment pipelines** with AI services\n- **Combine** SharePoint data with other sources\n- Create **specialized search experiences**",
+    "explanation": "Remote access queries SharePoint in real time and offers only limited search. Indexing processes the content in advance instead, and that preprocessing is what opens up these four options. Typical scenario: a knowledge base that must search SharePoint documents together with data from other systems in one Azure AI Search index, with domain-specific terminology handled by an analyzer."
+  },
+  {
+    "id": "2.4.4-07",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "blob-storage"],
+    "question": "When do you connect **Azure Blob Storage** to a Microsoft Foundry IQ knowledge base, and how does it differ from an Azure AI Search Index source?",
+    "answer": "- Your documents already sit in **Azure Blob Storage** containers\n- Typical files: PDF, Word (.docx), .txt, Markdown (.md), HTML\n- **No index to build and maintain** — a more direct path from files to the knowledge base",
+    "explanation": "You select specific containers or blobs, and Foundry IQ processes their content for the agent. An Azure AI Search Index source instead needs an index that you build and maintain. Organize blobs into containers by topic or access level. That makes it easier to control what the agent can see, keeps data governance in place and the knowledge base current.",
+    "addition": "Azure AI Search classes a blob knowledge source as indexed: it automatically generates an indexer pipeline (data source, skillset, indexer and index) from the container. You don't build that index yourself, but one exists.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/agentic-knowledge-source-overview"
+  },
+  {
+    "id": "2.4.4-08",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "grounding", "bing"],
+    "question": "When should a Microsoft Foundry IQ knowledge base use the **Web** data source, and what is its main drawback?",
+    "answer": "- **Web** grounds the agent with real-time internet content via **Bing**\n- Use it for recent events, current pricing or availability, frequently changing information and topics outside internal knowledge\n- Drawback: **less control** over which sources the agent references",
+    "explanation": "Internal data is static between updates; a web search fills that gap at question time. But Bing chooses the results, not you. When accuracy and source verification are critical, prefer indexed, controlled data sources. A common pattern combines both: web access acts as a supplementary source when internal knowledge has no answer."
+  },
+  {
+    "id": "2.4.4-09",
+    "type": "basic",
+    "section": "2.4.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "onelake", "fabric"],
+    "question": "Name the **four** common use cases for connecting a Microsoft Foundry IQ knowledge base to **Microsoft OneLake**.",
+    "answer": "- **Business intelligence reports** — reference analytical findings in agent responses\n- **Data documentation** — context about datasets and metrics\n- **Analytical findings** — insights from data science work\n- **Research outputs** — research made accessible through conversational AI",
+    "explanation": "OneLake gives access to unstructured data, meaning files and documents, stored in a Microsoft Fabric data lakehouse. It matters when the organization already uses Fabric for data analytics and storage. The agent can then answer business questions with data-driven responses grounded in the organization's own analytical work."
+  },
+  {
+    "id": "2.4.4-10",
+    "type": "mc",
+    "section": "2.4.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/4-data-requirements",
+    "tags": ["foundry-iq", "grounding", "knowledge-sources"],
+    "question": "An employee agent's Microsoft Foundry IQ knowledge base uses internal SharePoint content as its primary source. Users also ask about current events that the internal content does not cover. What do you configure?",
+    "answer": "**Combine sources**: keep SharePoint as primary and enable **Web** grounding in the same knowledge base.",
+    "explanation": "A single knowledge base can combine multiple data sources. The internal source keeps security and governance on proprietary knowledge. The real-time web source supplies current information when internal knowledge provides no answer.",
+    "options": [
+      {"text": "Enable Web grounding as an additional source in the same knowledge base", "correct": true, "why": "Foundry IQ lets one knowledge base combine sources, with the web as a supplement for current information."},
+      {"text": "Replace the SharePoint source with the Web source", "correct": false, "why": "The agent would lose the proprietary SharePoint knowledge and rely only on Bing results it controls less."},
+      {"text": "Switch from SharePoint Remote to SharePoint Indexed", "correct": false, "why": "Indexing changes speed and search features, but the content is still only internal SharePoint data."},
+      {"text": "Add an Azure Blob Storage source", "correct": false, "why": "Blob Storage serves document files you store yourself; it brings in no current public information."}
+    ]
+  }
+]

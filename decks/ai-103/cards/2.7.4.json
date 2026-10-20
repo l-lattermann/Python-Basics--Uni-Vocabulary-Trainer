@@ -1,0 +1,70 @@
+[
+  {
+    "id": "2.7.4-01",
+    "type": "basic",
+    "section": "2.7.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
+    "tags": ["agent-framework", "tools"],
+    "question": "Which **two** broad categories of tools does the Microsoft Agent Framework support, and who runs each?",
+    "answer": "- **Service-provided tools** — hosted by the provider; you enable them in the agent configuration and the provider executes them\n- **Custom function tools** — your own Python functions, passed to the agent at creation; the framework generates their schema and runs them\n- An inner **agent** can itself be converted into a function tool for an outer agent",
+    "explanation": "Without tools an agent can only produce text from what it already knows; tools let it call APIs, run code or search files. You can register several tools in one list, and the model picks the right one from the conversation and the tool descriptions — no routing logic needed. Wrapping a specialised agent as a tool lets a coordinating agent delegate to it, a modular design that leads into multi-agent orchestration."
+  },
+  {
+    "id": "2.7.4-02",
+    "type": "basic",
+    "section": "2.7.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
+    "tags": ["agent-framework", "tools", "foundry-agent-service"],
+    "question": "Name the **six** commonly used service-provided tools a Microsoft Agent Framework agent gets with the Foundry provider.",
+    "answer": "- **Code Interpreter** — sandboxed Python for calculations and data analysis\n- **File Search** — retrieves information from uploaded documents\n- **Web Search** — up-to-date internet information\n- **Hosted MCP Tools** — MCP servers invoked by the provider runtime\n- **Azure AI Search** — queries an index through a Foundry connection\n- **Foundry Toolboxes** — named, versioned bundles of hosted tool configurations in a Foundry project",
+    "explanation": "None of these needs your own implementation: you list them in the agent configuration and the provider executes them. Pick by the data source — computation goes to Code Interpreter, your uploaded files to File Search, live public information to Web Search, an existing search index to Azure AI Search. Some, such as Azure AI Search, Bing Grounding and SharePoint, are preview or experimental and may have limited support on providers other than Foundry."
+  },
+  {
+    "id": "2.7.4-03",
+    "type": "basic",
+    "section": "2.7.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
+    "tags": ["agent-framework", "function-calling", "tool-schema"],
+    "question": "In the Microsoft Agent Framework, what are the **two** ways to describe a Python function so the model can call it reliably as a tool?",
+    "answer": "- **Type annotations** — `Annotated` with a description on each parameter; the **docstring** becomes the tool description\n- **`@tool` decorator** — name and description given as decorator arguments; optionally an explicit **Pydantic** schema for the input",
+    "explanation": "The framework inspects the function signature and generates a schema telling the model what the function does, which parameters it expects and what it returns. Annotations are the lightweight route; the decorator gives full control over what the model sees. Either way, when the model decides to call the tool, the framework executes the function and hands the result back to the model before the final response is generated."
+  },
+  {
+    "id": "2.7.4-04",
+    "type": "mc",
+    "section": "2.7.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
+    "tags": ["agent-framework", "approval", "human-in-the-loop"],
+    "question": "A Microsoft Agent Framework agent has a function tool that issues customer refunds. A person must confirm each refund before the function runs. What do you configure?",
+    "answer": "**Tool approval** — set `approval_mode` on that function's `@tool` decorator.",
+    "explanation": "With approval mode enabled, the agent pauses before calling the function and asks for confirmation. It fits actions that are irreversible, expensive or touch sensitive data. Because it is set per tool, harmless tools such as lookups keep running without interruption while only the risky one waits for a human.",
+    "addition": "To require approval, set `approval_mode=\"always_require\"` (`\"never_require\"` skips it). The run then returns `user_input_requests`; answer each with `to_function_approval_response(True or False)` and run again in the same session.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/agents/tools/tool-approval",
+    "options": [
+      {"text": "Set `approval_mode` on the function's `@tool` decorator", "correct": true, "why": "Tool approval makes the agent pause before that specific function and request human confirmation."},
+      {"text": "Add \"always ask the user before refunding\" to the agent's instructions", "correct": false, "why": "Instructions only steer the model; nothing stops it from calling the function, so confirmation is not enforced."},
+      {"text": "Bundle the refund function into a Foundry Toolbox", "correct": false, "why": "A Foundry Toolbox is a named, versioned bundle of hosted tool configurations, not an approval mechanism."},
+      {"text": "Register a context provider on the agent", "correct": false, "why": "Context providers are memory components that surface relevant information to the agent, not approval gates."}
+    ]
+  },
+  {
+    "id": "2.7.4-05",
+    "type": "basic",
+    "section": "2.7.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/4-add-plugins-to-agent",
+    "tags": ["agent-framework", "tool-schema", "function-calling"],
+    "question": "Name the **five** best practices for writing custom function tools for an AI agent in the Microsoft Agent Framework.",
+    "answer": "- **Write clear descriptions** — what the function does and when to use it\n- **Annotate every parameter** — so the model can build valid calls\n- **Return meaningful data** — structured, interpretable output\n- **Keep tools focused** — one thing per tool\n- **Handle errors gracefully** — return an informative error message instead of raising",
+    "explanation": "The model only sees the descriptions, so its choice of tool depends entirely on them, and unclear parameter names lead to invalid calls. The return value goes straight into the model's answer, so it must be readable. A function with several responsibilities is hard to invoke correctly. An exception gives the model nothing to work with; an error message lets it respond helpfully when input is unexpected or an external service fails."
+  }
+]

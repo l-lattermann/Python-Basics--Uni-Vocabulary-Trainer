@@ -1,0 +1,184 @@
+[
+  {
+    "id": "4.4.2-01",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "What does **Azure Content Understanding** in Microsoft Foundry do, and what kind of result does it return?",
+    "answer": "A **Foundry Tool** that uses **generative AI** to turn unstructured documents, images, video and audio into **structured output** for automation and analytics workflows.",
+    "explanation": "The point is straight-through processing of unstructured data: content goes in, usable data comes out, with no manual step in between. You don't write prompts for an LLM. You describe the data you want once as a schema, and the service extracts, classifies or generates those values. The result arrives in a predictable shape that automation, analytics or search can consume directly."
+  },
+  {
+    "id": "4.4.2-02",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "Name the **five** key benefits of using Azure Content Understanding in Microsoft Foundry.",
+    "answer": "- **Simplified workflows** — one unified process to extract and classify every content type\n- **Easy field extraction** — a schema instead of complex prompt engineering\n- **Enhanced accuracy** — multiple AI models analyze and cross-validate simultaneously\n- **Confidence scores and grounding** — accurate values at a lower cost of human review\n- **Content classification** — sort document types and route them to the right analyzer",
+    "explanation": "Together they explain how the service speeds up time to value. A schema replaces prompt work, and several models checking each other make the values more reliable. Confidence scores and grounding let you trust most values automatically and look only at the doubtful ones. Classification matters when mixed content arrives: it sorts the document types first, so each one reaches the analyzer built for it."
+  },
+  {
+    "id": "4.4.2-03",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "Name the **seven** components of the Azure Content Understanding framework, in processing order.",
+    "answer": "- **Inputs** — documents, images, video, audio\n- **Analyzer** — defines processing: extraction settings and field schema\n- **Content extraction** — normalized text and metadata via OCR, speech transcription, layout detection\n- **Field extraction** — key-value pairs from your schema\n- **Confidence scores** — reliability from 0 to 1 per field value\n- **Grounding** — the region each value was extracted from\n- **Structured output** — Markdown or JSON",
+    "explanation": "Read the list as a pipeline. The analyzer is the recipe the later stages follow. Content extraction first makes any modality readable as text; field extraction then pulls out only what your schema asks for. Confidence scores and grounding travel with every field value: one says how reliable it is, the other where to check it. That pairing is what keeps human review cheap.",
+    "addition": "The current docs list three more components: **Segmentation** (splits documents or videos into logical sections, `enableSegment`), **Contextualization** (prepares model context, computes grounding and confidence) and **Foundry models** (your own LLM and embedding deployments).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview"
+  },
+  {
+    "id": "4.4.2-04",
+    "type": "mc",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding",
+      "ocr"
+    ],
+    "question": "An Azure Content Understanding analyzer receives scanned contracts and call recordings. Which stage turns them into normalized text and metadata, using OCR, speech transcription and layout detection, before any schema fields are filled?",
+    "answer": "**Content extraction**.",
+    "explanation": "Content extraction runs on everything that comes in, whatever your schema says: it makes a scan or a recording readable as text and records layout metadata. Field extraction builds on that and returns only the key-value pairs your schema defines. Keep the two apart: the first normalizes the content, the second picks the business data out of it.",
+    "options": [
+      {
+        "text": "Content extraction",
+        "correct": true,
+        "why": "It transforms unstructured input into normalized text and metadata with OCR, speech transcription and layout detection."
+      },
+      {
+        "text": "Field extraction",
+        "correct": false,
+        "why": "It generates key-value pairs from your schema; it works on content that is already extracted."
+      },
+      {
+        "text": "Grounding",
+        "correct": false,
+        "why": "It identifies the region each field value came from; it doesn't produce the text."
+      },
+      {
+        "text": "Structured output",
+        "correct": false,
+        "why": "It is the final Markdown or JSON result, not the stage that reads the raw input."
+      }
+    ]
+  },
+  {
+    "id": "4.4.2-05",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding",
+      "rag"
+    ],
+    "question": "An Azure Content Understanding solution feeds one pipeline into a search index for RAG and another into an automation workflow. Which structured output format suits each?",
+    "answer": "- **Markdown** — for search and RAG scenarios\n- **JSON** — for automation workflows",
+    "explanation": "Markdown carries the content itself as text, which is what a search index ingests; for search and RAG the service adds figure descriptions and layout analysis. Automation needs predictable key-value pairs it can hand to the next step, and those come as JSON fields built from your schema. An image analysis result holds both side by side: a `markdown` element for the content and a `fields` element for the values."
+  },
+  {
+    "id": "4.4.2-06",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "Azure Content Understanding offers two types of analyzers. Which one do you use for standard invoice processing, and which for data specific to your business?",
+    "answer": "- **Prebuilt analyzers** — ready to use for common scenarios such as invoices, receipts and call center analytics\n- **Custom analyzers** — you create them with your own field schema for specific business needs",
+    "explanation": "The analyzer is the core component: it decides how content is processed and which fields come out. A prebuilt analyzer already carries those decisions for a common job, so you call it and get results. When you need fields no prebuilt analyzer covers, such as the condition of your own products in photos, you build a custom analyzer and define the schema yourself."
+  },
+  {
+    "id": "4.4.2-07",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "When you create an analyzer in Azure Content Understanding, which **four** things do you configure?",
+    "answer": "- **Base analyzer type** — document, image, audio or video\n- **AI models** used for processing\n- **Field schema** — what data to extract\n- **Options** — such as confidence scoring and content segmentation",
+    "explanation": "The base type says which modality the analyzer is built for. The field schema is where your business requirements go: instead of engineering prompts, you describe the fields to extract, classify or generate. Options switch on extras. Confidence scoring is the one automation depends on, because it lets you send uncertain values to human review and process the rest automatically.",
+    "addition": "You bring your own Foundry deployments of supported generative models, plus text-embedding models for training examples. Content Understanding uses them for field extraction, figure analysis and other AI features.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview"
+  },
+  {
+    "id": "4.4.2-08",
+    "type": "basic",
+    "section": "4.4.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding",
+      "rag",
+      "agents"
+    ],
+    "question": "Name the **four** business use cases that Azure Content Understanding supports.",
+    "answer": "- **Intelligent document processing** — documents into structured data: invoices, contracts, claims\n- **Search and RAG** — multimodal content into search indexes, with figure descriptions and layout analysis\n- **Agentic applications** — messy files into predictable, standardized inputs for AI agents\n- **Analytics and reporting** — extracted fields as the basis for insights and decisions",
+    "explanation": "The four differ in who consumes the result. In document processing and analytics, a business process or a report consumes structured fields. In search and RAG, an index consumes the content itself, so Markdown with figure descriptions matters more than fields. Agents need predictable input above all: a standardized result from a messy file lets them act reliably."
+  },
+  {
+    "id": "4.4.2-09",
+    "type": "mc",
+    "section": "4.4.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/2-what-is-content-understanding",
+    "tags": [
+      "content-understanding",
+      "responsible-ai",
+      "content-safety"
+    ],
+    "question": "Azure Content Understanding has built-in Responsible AI protections. Which Azure service does it integrate to detect and prevent harmful content such as violence and hate speech?",
+    "answer": "**Azure AI Content Safety** — it filters violence, hate speech and exploitation. Processing **biometric data** from faces also needs notice to and consent from the data subjects.",
+    "explanation": "The filtering is built in, but compliance doesn't end there. Content Understanding's face description can identify facial attributes in images and video, and that makes the result biometric data. Before you process it, your solution has to give the people concerned appropriate notice and get their consent.",
+    "addition": "The current docs describe it differently: Content Understanding inherits the **guardrails in Microsoft Foundry** applied to your model deployments. Detections appear as warnings or errors in the response, and analysis can succeed with warnings while some field values are withheld.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview",
+    "options": [
+      {
+        "text": "Azure AI Content Safety",
+        "correct": true,
+        "why": "Content Understanding integrates it to detect and prevent harmful content."
+      },
+      {
+        "text": "Azure AI Face",
+        "correct": false,
+        "why": "Face detects and analyzes faces; it doesn't filter harmful content."
+      },
+      {
+        "text": "Azure Language PII detection",
+        "correct": false,
+        "why": "It finds personal data in text; it doesn't block violence or hate speech."
+      },
+      {
+        "text": "Microsoft Purview",
+        "correct": false,
+        "why": "Purview governs and classifies data across an organization; it isn't the content filter inside Content Understanding."
+      }
+    ]
+  }
+]

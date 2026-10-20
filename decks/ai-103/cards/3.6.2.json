@@ -1,0 +1,108 @@
+[
+  {
+    "id": "3.6.2-01",
+    "type": "basic",
+    "section": "3.6.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/2-voice-live-api",
+    "tags": [
+      "voice-live",
+      "speech"
+    ],
+    "question": "Name the **four** key features of the Voice Live API in Azure Speech in Foundry Tools.",
+    "answer": "- **Real-time audio processing** — formats such as PCM16 and G.711\n- **Advanced voice options** — OpenAI voices and Azure custom voices\n- **Avatar integration** — video and animation over WebRTC, started with the `session.avatar.connect` event\n- **Built-in noise reduction and echo cancellation** — `azure_deep_noise_suppression`, `server_echo_cancellation`",
+    "explanation": "Voice Live talks over a **WebSocket** connection with JSON events: client events go from client to server, server events back. For the avatar, the client sends its WebRTC SDP offer in `session.avatar.connect` and can set video resolution, bitrate, codec and animation outputs such as blendshapes and visemes. Noise reduction and echo cancellation are switched on in `session.update`; filtering the input audio makes voice activity detection and the model more accurate. Microsoft recommends a Microsoft Foundry resource for full feature availability.",
+    "addition": "The service answers `session.avatar.connect` with a `session.avatar.connecting` event that carries the server SDP; the client then connects the avatar with it.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-how-to"
+  },
+  {
+    "id": "3.6.2-02",
+    "type": "basic",
+    "section": "3.6.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/2-voice-live-api",
+    "tags": [
+      "voice-live",
+      "keyless-auth",
+      "managed-identity"
+    ],
+    "question": "Which **two** authentication methods does the Azure Voice Live API support, and how is the credential passed with each?",
+    "answer": "- **Microsoft Entra ID (keyless, recommended)** — **Cognitive Services User** role; token for scope `https://ai.azure.com/.default`, sent as `Authorization: Bearer <token>`\n- **API key** — an `api-key` header on the prehandshake connection (not in a browser), or an `api-key` query string parameter on the URI",
+    "explanation": "For Entra ID you assign the role to your user account or to a managed identity, then get the token with the Azure CLI or an Azure SDK. The legacy scope `https://cognitiveservices.azure.com/.default` also works. A browser cannot set the `api-key` header on the prehandshake connection, so a browser client that uses a key must put it in the query string. That is safe in transit, because query string parameters are encrypted over https/wss.",
+    "addition": "Current docs require **two** roles for keyless access: **Cognitive Services User** and **Foundry User** (Foundry User was formerly named Azure AI User).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-how-to"
+  },
+  {
+    "id": "3.6.2-03",
+    "type": "basic",
+    "section": "3.6.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/2-voice-live-api",
+    "tags": [
+      "voice-live",
+      "endpoints",
+      "agents"
+    ],
+    "question": "Your app connects to the Azure Voice Live API over WebSocket. How do the endpoints differ for a **project (agent) connection** and a **direct model connection**?",
+    "answer": "- **Project connection** — `wss://<resource>.services.ai.azure.com/voice-live/realtime?api-version=…`, with the **`agent_id`** and **`project_id`** query parameters\n- **Model connection** — `wss://<resource>.cognitiveservices.azure.com/voice-live/realtime?api-version=…`, with the **`model`** query parameter",
+    "explanation": "You connect through the Foundry project when you implement an agent, and directly to a model otherwise. The `/voice-live/realtime` path is the same for every model. What changes is the query: a model connection must name the model, while a connection through the Agent service names the agent and the project instead. The course uses `api-version=2025-10-01`.",
+    "addition": "Current docs no longer tie the host name to the connection type: `services.ai.azure.com` is the standard host and `cognitiveservices.azure.com` is for older resources. Both take `model` or `agent_id`/`project_id`. The current API version is `2026-04-10`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-how-to"
+  },
+  {
+    "id": "3.6.2-04",
+    "type": "basic",
+    "section": "3.6.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/2-voice-live-api",
+    "tags": [
+      "voice-live",
+      "events"
+    ],
+    "question": "Name the **three** key client events and the **three** key server events of the Azure Voice Live API.",
+    "answer": "- **`session.update`** (client) — change the session configuration\n- **`input_audio_buffer.append`** (client) — add audio bytes to the input buffer; the buffer can also be **committed** (processed) or **cleared**\n- **`response.create`** (client) — generate a response through model inference\n- **`session.updated`** (server) — confirm a configuration change\n- **`response.done`** (server) — response generation is complete\n- **`conversation.item.created`** (server) — a new conversation item was added",
+    "explanation": "Client events travel from client to server, server events from server to client, all as JSON over the WebSocket. Several come in pairs: the server confirms each `session.update` with `session.updated`, and answers `response.create` with `response.done` once it has finished. Committing the buffer hands the audio over for transcription or response generation; clearing it throws the buffered audio away."
+  },
+  {
+    "id": "3.6.2-05",
+    "type": "mc",
+    "section": "3.6.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/2-voice-live-api",
+    "tags": [
+      "voice-live",
+      "turn-detection",
+      "events"
+    ],
+    "question": "A voice agent built on the Azure Voice Live API has just opened its WebSocket session. You want to set the voice, modalities, audio formats and turn detection, using the turn detection type Microsoft recommends for natural conversational flow. What do you send?",
+    "answer": "A **`session.update`** event whose `turn_detection.type` is **`azure_semantic_vad`**.",
+    "explanation": "`session.update` is usually the first event on a new session. It controls a wide set of input and output behavior: voice (for example an OpenAI voice such as `alloy`), modalities (`text`, `audio`), instructions, input and output audio formats such as `pcm16`, turn detection, temperature, noise reduction and echo cancellation. You can send it again at any time to change settings while the session runs. Azure semantic VAD gives intelligent turn detection and a smoother conversational flow.",
+    "options": [
+      {
+        "text": "A `session.update` event with `turn_detection.type` set to `azure_semantic_vad`",
+        "correct": true,
+        "why": "`session.update` carries the session configuration, and Azure semantic VAD is the recommended turn detection."
+      },
+      {
+        "text": "A `response.create` event with `turn_detection.type` set to `azure_semantic_vad`",
+        "correct": false,
+        "why": "`response.create` asks the model to generate a response; it does not configure the session."
+      },
+      {
+        "text": "A `session.update` event with `input_audio_noise_reduction.type` set to `azure_deep_noise_suppression`",
+        "correct": false,
+        "why": "Right event, but this setting filters background noise; it does not choose how turns are detected."
+      },
+      {
+        "text": "A `session.avatar.connect` event with the client's SDP offer",
+        "correct": false,
+        "why": "This event starts WebRTC avatar streaming; it does not set voice, formats or turn detection."
+      }
+    ]
+  }
+]

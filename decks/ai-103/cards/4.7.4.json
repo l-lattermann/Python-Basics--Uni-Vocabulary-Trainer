@@ -1,0 +1,144 @@
+[
+  {
+    "id": "4.7.4-01",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "ocr"],
+    "question": "In Azure Document Intelligence, you need the printed and handwritten words and lines from scanned documents that have no fixed or predictable structure. Which document analysis model fits, and what does it return?",
+    "answer": "The **read model**:\n- Extracts **printed and handwritten** text from documents and images\n- Detects the **language** of each text line\n- Classifies each line as **handwritten or printed**",
+    "explanation": "The read model returns words and lines, not tables or named fields, so it suits documents whose structure you don't need. It is also the foundation for text extraction in every other Document Intelligence model: layout and all prebuilt models build on it. For a multi-page PDF or TIFF, the `pages` parameter in the request limits analysis to a page range.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.7.4-read-model-studio.png", "alt": "Document Intelligence Studio running the read model on a technical drawing: every detected word and number is outlined, with no tables or fields."}
+    ],
+    "addition": "In API and SDK calls the read model's model ID is `prebuilt-read`; the layout model's is `prebuilt-layout`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/model-overview"
+  },
+  {
+    "id": "4.7.4-02",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "ocr"],
+    "question": "What does the **layout model** in Azure Document Intelligence add on top of the read model's text extraction?",
+    "answer": "- **Selection marks** — checkboxes and radio buttons, with bounding box, confidence and whether selected\n- **Tables** — each cell with content, bounding box and row/column indexes\n- **Document structure** information\n- Optional **`keyValuePairs`** feature for key-value pairs",
+    "explanation": "Digitized documents are often angled, and tables can have merged cells or incomplete rows; the layout model handles both. Because every cell keeps its row and column index, you can rebuild the table in code instead of parsing loose text. Choose layout over read when the document's structure matters. It is not trained for one form type, so it does not return a fixed set of named fields the way the invoice model does.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.7.4-layout-model-studio.png", "alt": "Document Intelligence Studio running the layout model: a table is outlined and listed cell by cell under the Tables tab, and checkboxes are detected as selection marks."}
+    ]
+  },
+  {
+    "id": "4.7.4-03",
+    "type": "mc",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "key-value-pairs"],
+    "question": "An older solution used the Azure Document Intelligence **general document** model to extract key-value pairs from forms of any layout. What do you use on current API versions instead?",
+    "answer": "The **layout model** with its optional `keyValuePairs` feature.",
+    "explanation": "The general document model was deprecated in the `2023-10-31-preview` release. Its key-value pair and entity extraction moved into the layout model and other features. A key-value pair is a span of text that identifies a label and its response — for example **Weight** and **31 kg**.",
+    "options": [
+      {"text": "The layout model with the `keyValuePairs` feature", "correct": true, "why": "The general document model's key-value pair extraction was incorporated into the layout model as an optional feature."},
+      {"text": "The read model", "correct": false, "why": "It extracts words and lines with language and handwriting detection, but no key-value pairs."},
+      {"text": "The prebuilt invoice model", "correct": false, "why": "It is trained for invoices only and returns invoice fields, not key-value pairs from forms of any layout."},
+      {"text": "A custom template model", "correct": false, "why": "It needs labeled training samples and a consistent layout, while the layout model already extracts key-value pairs without training."}
+    ]
+  },
+  {
+    "id": "4.7.4-04",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models"],
+    "question": "Name the **seven** Azure Document Intelligence prebuilt models for financial and legal documents, and what each extracts.",
+    "answer": "- **Invoice** — customer, vendor, PO number, invoice and due dates, billing/shipping addresses, line items, totals\n- **Receipt** — merchant, transaction date and time, line items, totals\n- **Bank statement** — account info, beginning/ending balances, transactions\n- **Check** — payee, amount, date\n- **Pay stub** — wages, hours, deductions, net pay\n- **Credit card** — payment card information\n- **Contract** — agreement and party details",
+    "explanation": "Microsoft trains these models on large numbers of sample documents, so they need no training from you. Invoice and receipt are the pair to keep apart: the invoice model returns customer and vendor details, a purchase order number and a due date; the receipt model returns merchant details and the transaction's date and time. The receipt model also handles single-page hotel receipts."
+  },
+  {
+    "id": "4.7.4-05",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models"],
+    "question": "Name the **five** Azure Document Intelligence prebuilt models for US tax documents, and what each extracts.",
+    "answer": "- **Unified US tax** — one model for any supported US tax form type\n- **W-2** — taxable compensation details\n- **1098** and variations — mortgage interest and related details\n- **1099** and variations — income from various sources\n- **1040** and variations — individual income tax return details",
+    "explanation": "The four form-specific models each read one form family; \"and variations\" means the model covers that form's variants too. The unified model is the one to pick when a mix of tax forms arrives and you don't know in advance which form each document is.",
+    "addition": "Current docs also list **W-4** and **1095** tax models. In code the unified model's ID is `prebuilt-tax.us`, the form models' `prebuilt-tax.us.w2`, `prebuilt-tax.us.1099` and so on.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/model-overview"
+  },
+  {
+    "id": "4.7.4-06",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models"],
+    "question": "Name the **five** Azure Document Intelligence prebuilt models for US mortgage documents, and what each extracts.",
+    "answer": "- **1003 (URLA)** — loan application details\n- **1004 (URAR)** — property appraisal information\n- **1005** — validation-of-employment information\n- **1008** — loan transmittal details\n- **Closing disclosure** — final closing loan terms",
+    "explanation": "All five read US mortgage paperwork, but each is trained for one document: the loan application (1003, URLA), the property appraisal (1004, URAR), the employment validation (1005), the loan transmittal (1008) and the final terms at closing. In a scenario, the form number or document name tells you the model."
+  },
+  {
+    "id": "4.7.4-07",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models", "privacy"],
+    "question": "Name the **three** Azure Document Intelligence prebuilt models for personal identification documents, and what each reads.",
+    "answer": "- **ID document** — US driver's licenses, EU IDs and driver's licenses, international passports\n- **Health insurance card** — common fields from US health insurance cards\n- **Marriage certificate** — certified marriage information",
+    "explanation": "The ID document model returns names, dates of birth, document numbers, and endorsements or restrictions. That is personal information covered by data protection laws in most jurisdictions. Before you store it, make sure you have the individual's permission and comply with all applicable legal requirements."
+  },
+  {
+    "id": "4.7.4-08",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models", "key-value-pairs"],
+    "question": "Name the **five** types of data that Azure Document Intelligence prebuilt models extract from documents.",
+    "answer": "- **Text extraction** — lines and words, handwritten and printed\n- **Key-value pairs** — a label and its response, e.g. Weight / 31 kg\n- **Selection marks** — checkboxes and radio buttons, selected or not\n- **Tables** — cells, row and column counts, headings, merged cells\n- **Fields** — a fixed set per form type, e.g. `CustomerName`, `InvoiceTotal`",
+    "explanation": "Text extraction is common to all prebuilt models. Key-value pairs and fields are easy to confuse: a key-value pair is a label and response found in the document itself, while fields are a fixed set defined by a model trained for one form type. The invoice model always looks for `CustomerName` and `InvoiceTotal`."
+  },
+  {
+    "id": "4.7.4-09",
+    "type": "basic",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "custom-models", "service-choice"],
+    "question": "You must extract data from a new document type with Azure Document Intelligence. When do you build a custom model instead of using a prebuilt one?",
+    "answer": "**Check for a prebuilt model first.** Build a **custom model** only for an **industry-specific or unique form type** that no prebuilt model covers.",
+    "explanation": "Prebuilt models are trained by Microsoft on large numbers of sample documents and give accurate, reliable results for standard document types with no training. A custom model can be more accurate on an unusual form, but it costs time and sample data to train. Investing in one when a prebuilt model already exists wastes both."
+  },
+  {
+    "id": "4.7.4-10",
+    "type": "mc",
+    "section": "4.7.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/4-use-prebuilt-models",
+    "tags": ["document-intelligence", "prebuilt-models", "service-choice"],
+    "question": "An accounting firm receives a mixed stream of US tax forms — W-2s, 1098s, 1099s and 1040s — and does not know in advance which form each upload is. Which Azure Document Intelligence option extracts their data with the least effort?",
+    "answer": "The **unified US tax** prebuilt model.",
+    "explanation": "The unified US tax model is a single model that extracts from any supported US tax form type, so no routing step is needed. Because a prebuilt model covers the scenario, there is no reason to spend time and sample data on custom models.",
+    "options": [
+      {"text": "The unified US tax prebuilt model", "correct": true, "why": "It is one prebuilt model that extracts from any supported US tax form type."},
+      {"text": "The W-2 prebuilt model", "correct": false, "why": "It extracts taxable compensation from W-2 forms only, so the 1098s, 1099s and 1040s would be missed."},
+      {"text": "A custom classifier that routes each form to custom extraction models", "correct": false, "why": "This works for your own form types but needs training data; a prebuilt model already covers these forms."},
+      {"text": "The layout model", "correct": false, "why": "It returns text, tables and selection marks, but not the tax-specific fields of each form."}
+    ]
+  }
+]

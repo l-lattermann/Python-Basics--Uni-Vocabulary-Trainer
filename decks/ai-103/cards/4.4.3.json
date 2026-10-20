@@ -1,0 +1,219 @@
+[
+ {
+  "id": "4.4.3-01",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "prebuilt-analyzers"
+  ],
+  "question": "Name the **four** prebuilt image analyzers that Azure Content Understanding in Microsoft Foundry offers for common image scenarios.",
+  "answer": "- **prebuilt-image** — general-purpose image analysis: content extraction and figure description\n- **prebuilt-receipt** — vendor names, items, totals and dates from receipts\n- **prebuilt-invoice** — invoice details: line items, amounts, vendor information\n- **prebuilt-idDocument** — identity documents such as driver's licenses and passports",
+  "explanation": "A prebuilt analyzer is ready to use: you pass its ID to the analyze call and get results without defining a schema. Three of them target one document type with known fields. `prebuilt-image` is the generic one, and it is also the base you extend when you build a custom image analyzer with your own field schema."
+ },
+ {
+  "id": "4.4.3-02",
+  "type": "mc",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "prebuilt-analyzers"
+  ],
+  "question": "A car-rental app must read the holder's name and licence number from photos of customers' **driver's licenses** with Azure Content Understanding, without defining its own schema. Which analyzer ID do you pass?",
+  "answer": "**prebuilt-idDocument**.",
+  "explanation": "Content Understanding ships a prebuilt analyzer per common document type. Identity documents such as driver's licenses and passports have their own, so no custom field schema is needed. The generic `prebuilt-image` would describe the photo but has no ID-document fields.",
+  "options": [
+   {
+    "text": "prebuilt-idDocument",
+    "correct": true,
+    "why": "It extracts information from identity documents such as driver's licenses and passports."
+   },
+   {
+    "text": "prebuilt-image",
+    "correct": false,
+    "why": "It does general-purpose extraction and figure description, not ID-document fields."
+   },
+   {
+    "text": "prebuilt-receipt",
+    "correct": false,
+    "why": "It extracts vendor names, items, totals and dates from receipts."
+   },
+   {
+    "text": "prebuilt-invoice",
+    "correct": false,
+    "why": "It extracts line items, amounts and vendor information from invoices."
+   }
+  ]
+ },
+ {
+  "id": "4.4.3-03",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "field-schema"
+  ],
+  "question": "Name the **three** extraction methods a field in an Azure Content Understanding field schema can use, with an image example for each.",
+  "answer": "- **extract** — pull the value as it appears in the image (text on a label or sign)\n- **classify** — pick one of predefined options (\"damaged\" or \"undamaged\")\n- **generate** — create a value from the image analysis (a description of the scene)",
+  "explanation": "The method tells the service where a field's value comes from. With extract, the value must be visible in the image. With classify, the value is restricted to categories you list. With generate, the model writes something that is not printed anywhere, such as a description. Each field in the schema sets its own method, so one analyzer can mix all three."
+ },
+ {
+  "id": "4.4.3-04",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "field-schema"
+  ],
+  "question": "In an Azure Content Understanding field schema, a `Condition` field must return only `new`, `used` or `damaged` for each product image. How do you define it?",
+  "answer": "Set `\"method\": \"**classify**\"` and list the allowed values in an **`enum`** array: `[\"new\", \"used\", \"damaged\"]`.",
+  "explanation": "Classify categorises content into predefined options, and `enum` is where those options live. The field still has a `type` (`string`) and a `description` that tells the model what to judge. In the result, the field comes back with `valueString` set to one of the enum values and a confidence score, so the output is predictable enough to drive a workflow."
+ },
+ {
+  "id": "4.4.3-05",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "custom-analyzer",
+   "field-schema"
+  ],
+  "question": "You define a custom Azure Content Understanding analyzer for product photos in JSON. Which **two** top-level properties make it an image analyzer and say what to extract?",
+  "answer": "- **`baseAnalyzerId`** — the analyzer to build on, here `prebuilt-image`\n- **`fieldSchema`** — a `fields` object; each field has a `type`, a `method` and a `description`",
+  "explanation": "The base analyzer sets the content type the analyzer handles — image here, as opposed to document, audio or video. The field schema then lists only the data you want. Each field's `description` matters: it tells the model what to look for, such as \"Name of the product visible in the image\". A top-level `description` names the analyzer itself."
+ },
+ {
+  "id": "4.4.3-06",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "file-formats"
+  ],
+  "question": "Name the **six** input formats Azure Content Understanding supports for image analysis.",
+  "answer": "- **JPEG** — standard photographic images\n- **PNG** — images with transparency support\n- **BMP** — bitmap images\n- **TIFF** — high-quality scanned documents\n- **HEIF** — high-efficiency image format\n- **PDF** — single or multi-page documents with embedded images",
+  "explanation": "Five are plain image formats; PDF is the odd one out. It counts as image input because a PDF can carry embedded images across several pages. TIFF is the typical format for scans, PNG the one to pick when transparency matters. Whatever the format, the analysis and the result shape are the same."
+ },
+ {
+  "id": "4.4.3-07",
+  "type": "mc",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "python-sdk"
+  ],
+  "question": "Complete the Python code that sends an image to an Azure Content Understanding analyzer:\n\n```python\nwith open(\"my_image.png\", \"rb\") as f:\n    file_bytes = f.read()\n\npoller = client.___(\n    analyzer_id=\"prebuilt-image\",\n    inputs=[AnalysisInput(data=file_bytes)],\n)\nresult: AnalysisResult = poller.result()\n```",
+  "answer": "**`begin_analyze`**.",
+  "explanation": "Analysis is a long-running operation, so the method starts it and returns a poller instead of the result. `poller.result()` waits until the analysis is done and returns the `AnalysisResult`. The image goes in as raw bytes wrapped in `AnalysisInput`, and `analyzer_id` names the prebuilt or custom analyzer to use.",
+  "options": [
+   {
+    "text": "begin_analyze",
+    "correct": true,
+    "why": "It submits the inputs to the analyzer and returns a poller whose result() is the AnalysisResult."
+   },
+   {
+    "text": "begin_create_analyzer",
+    "correct": false,
+    "why": "It creates a new custom analyzer from a definition; it does not analyze content."
+   },
+   {
+    "text": "get_analyzer",
+    "correct": false,
+    "why": "It returns an existing analyzer's properties, not an analysis of an image."
+   },
+   {
+    "text": "list_analyzers",
+    "correct": false,
+    "why": "It lists the analyzers in the resource and takes no inputs."
+   }
+  ],
+  "addition": "The SDK's `begin_create_analyzer`, `get_analyzer` and `list_analyzers` manage analyzers; only `begin_analyze` (and `begin_analyze_binary` for a raw byte body) runs an analysis.",
+  "addition_source": "https://learn.microsoft.com/en-us/python/api/azure-ai-contentunderstanding/azure.ai.contentunderstanding.contentunderstandingclient"
+ },
+ {
+  "id": "4.4.3-08",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "python-sdk",
+   "authentication"
+  ],
+  "question": "To call Azure Content Understanding from Python, which package do you install, which client do you create, and which **two** kinds of credential can it take?",
+  "answer": "- Package **`azure-ai-contentunderstanding`**\n- **`ContentUnderstandingClient`** with the Foundry endpoint, a credential and an `api_version`\n- Credential: **`AzureKeyCredential`** (key) or **`DefaultAzureCredential`** (Microsoft Entra ID)",
+  "explanation": "The client is the entry point for every call: you give it the Foundry resource endpoint and authenticate either with the resource key or with an Entra ID identity. The course example pins `api_version=\"2025-11-01\"`. The two imports in the example, `azure.core.credentials` and `azure.identity`, are the two authentication options; you need only one of them."
+ },
+ {
+  "id": "4.4.3-09",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "grounding",
+   "rag"
+  ],
+  "question": "Name the **three** parts of an Azure Content Understanding image analysis result and what each is for.",
+  "answer": "- **markdown** — text representation of the image content, for search and RAG\n- **fields** — values matching your schema, each with a confidence score\n- **source** — grounding: where in the image each value was found",
+  "explanation": "The three serve different consumers. Markdown feeds a search index or a RAG pipeline. Fields feed automation, for example `ProductName` with `valueString` \"Contoso Widget Pro\" and `confidence` 0.95. Source lets a reviewer check a value against the image region it came from. In the course example only the extracted `ProductName` carries a source; the classified and generated fields do not.",
+  "addition": "The `source` string encodes a page number and a bounding polygon: `D(page,x1,y1,…,x4,y4)`, corners clockwise from upper-left. Pages are one-indexed; images use pixels, PDFs inches.",
+  "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/document/elements"
+ },
+ {
+  "id": "4.4.3-10",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "confidence",
+   "human-review"
+  ],
+  "question": "Name the **three** confidence ranges Azure Content Understanding guidance uses for extracted fields, and what to do with a value in each.",
+  "answer": "- **High (0.9+)** — trust it for automated processing\n- **Medium (0.7–0.9)** — consider human review for critical applications\n- **Low (< 0.7)** — manual verification recommended",
+  "explanation": "Every extracted field carries a score from 0 to 1. The ranges turn that score into a routing rule: high-confidence results flow straight through, low-confidence ones go to a human reviewer. That way people only check what the model is unsure about. A 0.95 product name is processed automatically; a 0.8 total on an invoice deserves a second look if errors are costly."
+ },
+ {
+  "id": "4.4.3-11",
+  "type": "basic",
+  "section": "4.4.3",
+  "exam_area": "vision",
+  "origin": "generated",
+  "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/3-analyze-images-with-content-understanding",
+  "tags": [
+   "content-understanding",
+   "image-quality"
+  ],
+  "question": "Name the **four** tips for getting more accurate results when analyzing images with Azure Content Understanding.",
+  "answer": "- **Image quality** — higher resolution gives more accurate extractions\n- **Lighting and contrast** — text and visual elements clearly visible\n- **Single focus** — one clear subject beats a cluttered scene\n- **Consistent orientation** — upright images are processed more reliably than rotated ones",
+  "explanation": "All four are about the input, not the analyzer: a good schema cannot recover text the model cannot see. In practice they tell you what to fix when confidence scores come back low, for example rescanning at higher resolution, or cropping a shelf photo to the one product you want described."
+ }
+]

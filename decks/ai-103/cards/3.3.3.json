@@ -1,0 +1,36 @@
+[
+  {
+    "id": "3.3.3-01",
+    "type": "basic",
+    "section": "3.3.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/3-develop-audio-chat-app",
+    "tags": ["speech-to-text", "model-choice"],
+    "question": "Name the **three** gpt-4o-family models in Microsoft Foundry that support **speech-to-text** (transcription).",
+    "answer": "- **gpt-4o-transcribe**\n- **gpt-4o-mini-transcribe**\n- **gpt-4o-transcribe-diarize**",
+    "explanation": "Speech transcription means you submit audio content to a model and it responds with a text transcript of the speech in it. Typical uses are documenting calls and meetings or generating captions for videos. The transcription models all end in `-transcribe`; their text-to-speech counterparts end in `-tts` (`gpt-4o-tts`, `gpt-4o-mini-tts`). Model availability varies by region, so check the regional availability table in the Foundry documentation before you pick where to deploy.",
+    "addition": "**Diarization** means identifying who spoke when in an audio stream. `gpt-4o-transcribe-diarize` therefore produces speaker-attributed transcripts, useful for meetings and customer calls.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new"
+  },
+  {
+    "id": "3.3.3-02",
+    "type": "mc",
+    "section": "3.3.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/3-develop-audio-chat-app",
+    "tags": ["speech-to-text", "openai-sdk"],
+    "question": "You transcribe an MP3 file with a speech-to-text model deployed in Microsoft Foundry, using the `AzureOpenAI` client of the OpenAI Python SDK. Which call completes the code?\n\n```python\naudio_file = open(Path(\"speech.mp3\"), \"rb\")\ntranscription = client.___(\n    model=YOUR_MODEL_DEPLOYMENT,\n    file=audio_file,\n    response_format=\"text\"\n)\nprint(transcription)\n```",
+    "answer": "`client.`**`audio.transcriptions.create`**`(...)`",
+    "explanation": "The `AzureOpenAI` client connects to the endpoint of your Microsoft Foundry resource with a key and an `api_version`. You open the audio file in binary mode (`\"rb\"`) and upload its contents as `file`. `model` takes your deployment name, and `response_format=\"text\"` returns the transcript as plain text, ready to print. Text-to-speech uses the same client but a different call, `audio.speech`.",
+    "addition": "Speech-to-text models on the `/audio` API accept an audio file of at most **25 MB** per request. For streaming (live) transcription, use Realtime API models such as `gpt-realtime-whisper` instead.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?pivots=azure-openai",
+    "options": [
+      {"text": "`audio.transcriptions.create`", "correct": true, "why": "It uploads the audio file to the transcription deployment and returns the text transcript."},
+      {"text": "`audio.speech.create`", "correct": false, "why": "That is text-to-speech: it takes `input` text and a `voice` and returns audio, not a transcript."},
+      {"text": "`audio.translations.create`", "correct": false, "why": "It translates speech into English text rather than transcribing it in the spoken language."},
+      {"text": "`chat.completions.create`", "correct": false, "why": "It sends chat `messages` to a chat model and takes no `file` parameter for uploading audio."}
+    ]
+  }
+]

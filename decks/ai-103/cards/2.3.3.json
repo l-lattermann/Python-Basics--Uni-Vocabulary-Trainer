@@ -1,0 +1,75 @@
+[
+  {
+    "id": "2.3.3-01",
+    "type": "basic",
+    "section": "2.3.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/3-mcp-client-server-setup",
+    "tags": ["mcp", "tools"],
+    "question": "In a Model Context Protocol (MCP) setup for an Azure AI agent, what does the **MCP server** do, and how do you create one in Python?",
+    "answer": "- Acts as a **registry** that hosts the agent's tool catalog\n- Created with **`FastMCP(\"server-name\")`**\n- FastMCP builds tool definitions from Python **type hints and docstrings**\n- Serves the definitions over **HTTP** when the client requests them",
+    "explanation": "Because the tool definitions live on the server and not in the agent, you can add new tools or update existing ones at any time without modifying or redeploying the agent. FastMCP removes the work of writing tool definitions by hand: a function's type hints and docstring already describe its inputs and purpose, so maintaining a tool means maintaining the function. The MCP client then fetches these definitions and makes them usable by the agent."
+  },
+  {
+    "id": "2.3.3-02",
+    "type": "basic",
+    "section": "2.3.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/3-mcp-client-server-setup",
+    "tags": ["mcp", "tools", "agents"],
+    "question": "After its client session connects to the MCP server, which **three** tasks does a standard MCP client perform for an Azure AI agent?",
+    "answer": "- **Discover tools** — fetch the catalog with `session.list_tools()`\n- **Generate function stubs** — Python functions that wrap each tool\n- **Register** — add those functions to the agent",
+    "explanation": "The MCP client is the bridge between the MCP server and the Azure AI Agent Service. After these three tasks the agent can call any tool in the MCP catalog as if it were a native function, without hardcoded logic for individual tools. A tool added on the server therefore reaches the agent through the client's dynamic discovery, not through a change to the agent's code."
+  },
+  {
+    "id": "2.3.3-03",
+    "type": "order",
+    "section": "2.3.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/3-mcp-client-server-setup",
+    "tags": ["mcp", "tools", "agents"],
+    "question": "Put the steps of integrating tools from your own MCP server into an Azure AI agent through a custom MCP client in order.",
+    "answer": "**`@mcp.tool`** on the server → client connects → **`session.list_tools()`** → async wrappers calling **`session.call_tool`** → **`FunctionTool`** → agent's **toolset**.",
+    "explanation": "The order follows the data: definitions must exist on the server before the client can fetch them, and each tool must be wrapped before the wrappers can be bundled. Once registered, the tools are available at runtime for any user request, and the agent invokes them through natural language. Server and client together give a clean separation between tool management and agent logic, so the system adapts quickly as new tools become available.",
+    "items": [
+      "The MCP server hosts tool definitions decorated with `@mcp.tool`",
+      "The MCP client initializes a connection to the server",
+      "The client fetches the tool definitions with `session.list_tools()`",
+      "Each tool is wrapped in an async function that invokes `session.call_tool`",
+      "The tool functions are bundled into a `FunctionTool`",
+      "The `FunctionTool` is registered to the agent's toolset"
+    ]
+  },
+  {
+    "id": "2.3.3-04",
+    "type": "mc",
+    "section": "2.3.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/3-mcp-client-server-setup",
+    "tags": ["mcp", "tools", "python-sdk"],
+    "question": "This MCP client code wraps each tool from an MCP server so that an Azure AI agent can invoke it. Which method completes the gap?\n\n```python\ndef make_tool_func(tool_name):\n    async def tool_func(**kwargs):\n        result = await session.___(tool_name, kwargs)\n        return result\n\n    tool_func.__name__ = tool_name\n    return tool_func\n```",
+    "answer": "**`call_tool`** — `session.call_tool(tool_name, tool_args)` invokes the tool on the MCP server.",
+    "explanation": "Each tool gets its own async function so that the agent can invoke it like a native function. The wrapper does no work itself: it forwards the tool's name and the agent's arguments to the MCP server and returns the result. Discovery with `list_tools` happens once before the wrappers are built; it tells the client which tool names exist.",
+    "options": [
+      {"text": "`call_tool`", "correct": true, "why": "It invokes the named tool on the MCP server with the arguments the agent supplies."},
+      {"text": "`list_tools`", "correct": false, "why": "It fetches the server's tool catalog during discovery; it does not run a tool."},
+      {"text": "`initialize`", "correct": false, "why": "It prepares the client session after connecting, before any tool is discovered or called."}
+    ]
+  },
+  {
+    "id": "2.3.3-05",
+    "type": "basic",
+    "section": "2.3.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/3-mcp-client-server-setup",
+    "tags": ["mcp", "tools", "agents"],
+    "question": "Your MCP client has wrapped every tool from an MCP server in an async function. Which object makes these functions usable by an Azure AI agent, and where does it go?",
+    "answer": "The functions are bundled into a **`FunctionTool`**, which is registered to the **agent's toolset**.",
+    "explanation": "The async wrappers alone are just Python code in the client; the agent only knows about tools that are part of its toolset. Once the `FunctionTool` is registered there, the tools are available at runtime for any user request. When the agent asks for a tool, the client runs the matching wrapper, which calls the tool on the MCP server with `session.call_tool`."
+  }
+]

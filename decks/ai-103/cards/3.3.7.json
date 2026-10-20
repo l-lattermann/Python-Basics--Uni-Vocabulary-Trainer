@@ -1,0 +1,36 @@
+[
+  {
+    "id": "3.3.7-01",
+    "type": "mc",
+    "section": "3.3.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/5-knowledge-check",
+    "tags": ["speech-to-text", "model-selection"],
+    "question": "Which model can you use to generate text from speech?",
+    "answer": "**gpt-4o-mini-transcribe**.",
+    "explanation": "Generating text from speech is speech transcription (speech-to-text): you submit audio and the model returns a text transcript. In Microsoft Foundry the speech-to-text models of the gpt-4o family carry the `-transcribe` suffix: gpt-4o-transcribe, gpt-4o-mini-transcribe and gpt-4o-transcribe-diarize. You call them with `client.audio.transcriptions.create()` on the `AzureOpenAI` client of the OpenAI SDK.",
+    "options": [
+      {"text": "gpt-4o-mini", "correct": false, "why": "Unit 3.3.3 does not list it among the speech-to-text models, and unit 3.3.4 does not list it among the text-to-speech models; it is not one of the module's speech-capable models."},
+      {"text": "gpt-4o-mini-tts", "correct": false, "why": "Unit 3.3.4: it is a text-to-speech model, so it does the reverse and turns text into an audio stream."},
+      {"text": "gpt-4o-mini-transcribe", "correct": true, "why": "Unit 3.3.3 lists it as a speech-to-text model that returns a text transcript of the submitted audio."}
+    ]
+  },
+  {
+    "id": "3.3.7-02",
+    "type": "mc",
+    "section": "3.3.7",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/5-knowledge-check",
+    "tags": ["text-to-speech", "model-selection"],
+    "question": "Which model can you use to synthesize speech from text?",
+    "answer": "**gpt-4o-mini-tts**.",
+    "explanation": "Speech synthesis (text-to-speech) is the reverse of speech-to-text: you submit text and the model returns an audio stream of the vocalized text. In Microsoft Foundry the text-to-speech models of the gpt-4o family carry the `-tts` suffix: gpt-4o-tts and gpt-4o-mini-tts. You call them with `client.audio.speech.with_streaming_response.create()`, passing a `voice`, the `input` text and optional `instructions` for the tone.",
+    "options": [
+      {"text": "gpt-4o-mini", "correct": false, "why": "Unit 3.3.4 does not list it among the text-to-speech models, and unit 3.3.3 does not list it among the speech-to-text models; it is not one of the module's speech-capable models."},
+      {"text": "gpt-4o-mini-tts", "correct": true, "why": "Unit 3.3.4 lists it as a text-to-speech model that returns an audio stream of the submitted text."},
+      {"text": "gpt-4o-mini-transcribe", "correct": false, "why": "Unit 3.3.3: it is a speech-to-text model, so it does the reverse and turns audio into a text transcript."}
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "3.5.2-01",
+    "type": "basic",
+    "section": "3.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
+    "tags": ["mcp", "agent-tools"],
+    "question": "Name the **three** components of the client-server architecture of the **Model Context Protocol (MCP)** that AI agents use to reach external tools.",
+    "answer": "- **Host** — the application that runs the agent, such as Microsoft Foundry or a custom app\n- **Client** — a component inside the host that manages connections to MCP servers and handles communication\n- **Server** — a program that exposes tools, resources and prompts the agent can discover and call",
+    "explanation": "MCP is an open protocol for how agents interact with external tools, data sources and services. The split puts the agent and its connection handling on one side and the tools on the other. With the Azure Speech MCP server, Foundry is the host running the agent, and the speech server is the MCP server that offers the speech-to-text and text-to-speech tools."
+  },
+  {
+    "id": "3.5.2-02",
+    "type": "mc",
+    "section": "3.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
+    "tags": ["mcp", "agent-tools"],
+    "question": "A team adds a new tool to the MCP server that their Microsoft Foundry agent is connected to. What must they change in the agent so it can use the new tool?",
+    "answer": "**Nothing.** Through **dynamic tool discovery** the agent queries the MCP server at runtime and receives the current tool catalog with descriptions.",
+    "explanation": "The agent has no hardcoded knowledge of each tool. When it connects, it gets a catalog of the available tools and what each one does, and picks the right tool for the user's request. Tools can be added, updated or removed on the server without modifying the agent. That keeps MCP-based solutions easy to maintain and scale.",
+    "options": [
+      {"text": "Nothing — the agent discovers the server's current tools at runtime", "correct": true, "why": "Dynamic tool discovery: the agent always gets the latest tool definitions from the server."},
+      {"text": "Add the new tool's definition to the agent's code and redeploy the agent", "correct": false, "why": "MCP agents do not need hardcoded tool definitions; the server supplies them."},
+      {"text": "Write routing logic that sends matching prompts to the new tool", "correct": false, "why": "The agent selects tools itself from their descriptions; no routing logic is needed."},
+      {"text": "Recreate the connection between the agent and the MCP server", "correct": false, "why": "The existing connection already returns the updated catalog when the agent queries the server."}
+    ]
+  },
+  {
+    "id": "3.5.2-03",
+    "type": "basic",
+    "section": "3.5.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
+    "tags": ["speech", "mcp"],
+    "question": "Name the **two** capabilities the **Azure Speech MCP server** exposes as tools to an agent, and what each does.",
+    "answer": "- **Speech-to-text (Recognize)** — converts audio files (WAV, MP3, OGG, FLAC, MP4, M4A, AAC …) to text\n- **Text-to-speech (Synthesize)** — converts text into natural-sounding audio files with neural voices such as `en-US-JennyNeural`",
+    "explanation": "Recognize offers options for language, phrase hints that improve accuracy, profanity filtering, and detailed or simple output. Synthesize supports many languages and voices and writes WAV, MP3 or other formats. The agent reads both tool descriptions and chooses itself: \"Transcribe this audio file\" calls speech-to-text, \"Generate speech from this text\" calls text-to-speech."
+  },
+  {
+    "id": "3.5.2-04",
+    "type": "order",
+    "section": "3.5.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
+    "tags": ["mcp", "agent-tools", "speech"],
+    "question": "Put the steps in order by which a Microsoft Foundry agent handles a speech request through the **Azure Speech MCP server**.",
+    "answer": "Prompt → analyze task → match tool description → call tool via MCP → Azure Speech processes → agent answers.",
+    "explanation": "The agent selects the tool on its own, so you write no routing logic that decides between speech-to-text and text-to-speech. The input passed to the tool is an audio file URL or the text to speak. The result coming back is either the transcribed text or a link to the generated audio file.",
+    "items": [
+      "The user sends a prompt to the agent",
+      "The agent analyzes the prompt and determines which speech task is needed",
+      "The agent checks the available MCP tools and their descriptions for the best match",
+      "The agent calls the selected tool through the MCP server with the audio URL or text",
+      "The MCP server processes the request with Azure Speech and returns the result",
+      "The agent presents the result to the user in a natural language response"
+    ]
+  },
+  {
+    "id": "3.5.2-05",
+    "type": "basic",
+    "section": "3.5.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/02-understand-speech-mcp",
+    "tags": ["speech", "mcp", "storage"],
+    "question": "Name the **four** prerequisites for using the **Azure Speech MCP server** with a Microsoft Foundry agent.",
+    "answer": "- **Azure subscription**\n- **Foundry resource and project** in a supported region — Contributor or Owner on the resource group\n- **Azure Storage account** with a blob container — **Storage Blob Data Contributor** role\n- **SAS URL** for the container — read, write, add, create and list permissions",
+    "explanation": "Speech works with audio files, so storage is needed. Text-to-speech saves the audio to the blob container and the agent returns a link. Speech-to-text reads from a public URL or a blob via SAS URL. The server uses key-based authentication: the connection takes the resource key and the SAS URL. Treat both as secrets — store them in a secret store, never in code, prompts or transcripts, keep SAS expiry short and scoped to one container, and rotate keys."
+  }
+]

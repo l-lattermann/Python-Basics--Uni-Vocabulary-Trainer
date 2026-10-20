@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.1.6-01",
+    "type": "mc",
+    "section": "4.1.6",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/5-knowledge-check",
+    "tags": ["multimodal", "model-choice"],
+    "question": "Which kind of model can you use to respond to visual input?",
+    "answer": "**Multimodal models**.",
+    "explanation": "A multimodal model accepts image input (and sometimes audio) as well as text, so it can answer questions about a picture. Multimodal models in Microsoft Foundry come from several providers, for example Microsoft Phi-4-multimodal-instruct and OpenAI gpt-4.1 and gpt-4.1-mini. After deploying one, you can test it in the chat playground by uploading an image and adding text to the message.",
+    "options": [
+      {"text": "Only OpenAI GPT models", "correct": false, "why": "Unit 4.1.2 also lists Microsoft Phi-4-multimodal-instruct as a vision-capable model, so GPT models are not the only option."},
+      {"text": "Embedding models", "correct": false, "why": "Embedding models turn input into vectors for similarity search; unit 4.1.2 requires a multimodal generative model to respond to images."},
+      {"text": "Multimodal models", "correct": true, "why": "Unit 4.1.2: to handle prompts that include images, you deploy a multimodal model, which supports image-based input as well as text."}
+    ]
+  },
+  {
+    "id": "4.1.6-02",
+    "type": "mc",
+    "section": "4.1.6",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/5-knowledge-check",
+    "tags": ["multimodal", "prompts"],
+    "question": "How can you submit a prompt that asks a model to analyze an image?",
+    "answer": "In one prompt with a **multi-part user message** that holds both a text item and an image item.",
+    "explanation": "A vision chat uses the same techniques as a text chat: connect to the model's endpoint, send messages, process the response. The only difference is the user message. Its content is a list with a text item (the question) and an image item. In the Responses API the items have the types `input_text` and `input_image`; in the ChatCompletions API they are `text` and `image_url`. The system or developer message still holds the instructions.",
+    "options": [
+      {"text": "Submit one prompt with an image-based message followed by another prompt with a text-based message.", "correct": false, "why": "Unit 4.1.3: the text and the image go into the same user message of one prompt, not into two separate prompts."},
+      {"text": "Submit a prompt that contains a multi-part user message, containing both text content and image content.", "correct": true, "why": "Unit 4.1.3: prompts for a vision-based chat include multi-part user messages with a text content item and an image content item."},
+      {"text": "Submit the image as the system message and the instruction or question as the user message.", "correct": false, "why": "Unit 4.1.3's code keeps the system (or developer) message for text instructions and puts the image in the user message."}
+    ]
+  },
+  {
+    "id": "4.1.6-03",
+    "type": "mc",
+    "section": "4.1.6",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/5-knowledge-check",
+    "tags": ["multimodal", "base64"],
+    "question": "How can you include an image in a message?",
+    "answer": "**As a URL or as binary data** (Base64-encoded in a data URL).",
+    "explanation": "For an image on the web, you pass its URL. For a local file, you read its bytes, encode them in Base64 and pass a data URL of the form `data:image/jpeg;base64,{image_data}`, replacing `jpeg` with `png` or another format as needed. Both the Responses API (`input_image`) and the ChatCompletions API (`image_url`) take the image this way.",
+    "options": [
+      {"text": "As a URL or as binary data", "correct": true, "why": "Unit 4.1.3: specify a URL for a web-based image, or load a local image, encode its data in Base64 and submit it as a data URL."},
+      {"text": "Only as a URL", "correct": false, "why": "Unit 4.1.3 also shows sending a local image's binary data, Base64-encoded in a data URL."},
+      {"text": "Only as binary data", "correct": false, "why": "Unit 4.1.3 also allows a plain URL to a web-based image file."}
+    ]
+  }
+]

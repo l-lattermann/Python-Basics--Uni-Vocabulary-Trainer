@@ -1,0 +1,103 @@
+[
+  {
+    "id": "4.7.3-01",
+    "type": "basic",
+    "section": "4.7.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/3-use-document-intelligence-studio",
+    "tags": [
+      "document-intelligence",
+      "studio"
+    ],
+    "question": "Name the **three** project types that **Azure Document Intelligence Studio** supports.",
+    "answer": "- **Document analysis models** — test the read and layout models on your own documents\n- **Prebuilt models** — analyze documents with any prebuilt model, such as invoices, receipts, ID documents or tax forms\n- **Custom models** — build, label, train and test custom extraction models and custom classifiers",
+    "explanation": "Document Intelligence Studio is an online tool at `documentintelligence.ai.azure.com` for exploring and integrating the service's features through a visual interface instead of code. The three project types mirror the service's three model categories. Document analysis shows the raw text, tables and structure. Prebuilt models return the fixed fields of a known document type. Custom models are the only project type where you train something yourself.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/4.7.3-studio-home.png",
+        "alt": "Document Intelligence Studio home page with the Document analysis section and its OCR/Read, Layout and General documents tiles"
+      }
+    ]
+  },
+  {
+    "id": "4.7.3-02",
+    "type": "order",
+    "section": "4.7.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/3-use-document-intelligence-studio",
+    "tags": [
+      "document-intelligence",
+      "studio",
+      "prebuilt-models"
+    ],
+    "question": "Put the steps of extracting data from an invoice with a **prebuilt model** in **Azure Document Intelligence Studio** in order.",
+    "answer": "Create resource → pick prebuilt model → enter endpoint and key → upload document → review fields and confidence.",
+    "explanation": "The Studio runs no analysis of its own: it calls your Document Intelligence or Foundry Tools resource, so the resource must exist first and the Studio needs its endpoint and key. You can upload the document or give its URL. The result lists each extracted field with a confidence score, which tells you how sure the model is about that value.",
+    "items": [
+      "Create an Azure Document Intelligence or Foundry Tools resource in the Azure portal",
+      "Open the Studio and select a prebuilt model, such as Invoice",
+      "Provide the resource endpoint and key",
+      "Upload the document or provide its URL",
+      "Review the extracted fields and their confidence scores"
+    ]
+  },
+  {
+    "id": "4.7.3-03",
+    "type": "order",
+    "section": "4.7.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/3-use-document-intelligence-studio",
+    "tags": [
+      "document-intelligence",
+      "studio",
+      "custom-models"
+    ],
+    "question": "Put the steps of building a **custom extraction model** in **Azure Document Intelligence Studio** in order.",
+    "answer": "Resource → sample forms in Blob Storage → **CORS** → custom model project → label → train and test.",
+    "explanation": "The sample forms live in your own Blob Storage container, not in the Studio. That is why CORS must be configured: without it the browser-based Studio cannot reach the container. The project then links the container and the resource. Testing uses a document that was not part of training, so the accuracy you see reflects new documents.",
+    "items": [
+      "Create an Azure Document Intelligence or Foundry resource",
+      "Upload at least 5–6 sample forms to an Azure Blob Storage container",
+      "Configure cross-origin resource sharing (CORS) on the storage so the Studio can access the container",
+      "Create a custom model project that links the storage container and the resource",
+      "Label the fields in the sample documents in the Studio's visual interface",
+      "Train the model, review its accuracy metrics and test it on a new, unseen document"
+    ]
+  },
+  {
+    "id": "4.7.3-04",
+    "type": "basic",
+    "section": "4.7.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/3-use-document-intelligence-studio",
+    "tags": [
+      "document-intelligence",
+      "studio",
+      "custom-models"
+    ],
+    "question": "Training a custom **Azure Document Intelligence** model with the REST API needs `ocr.json`, `labels.json` and `fields.json` files next to the sample forms. What changes when you train in **Document Intelligence Studio** instead?",
+    "answer": "The Studio **generates `ocr.json`, `labels.json` and `fields.json` automatically** while you label the forms visually — you write no JSON by hand.",
+    "explanation": "With the REST API or SDK you prepare the files yourself: one `ocr.json` per form from the Analyze document function, one `labels.json` per form mapping fields to their location, and a single `fields.json` describing the fields to extract. In the Studio you draw labels on the sample documents and it produces all three. The Studio covers the whole process of labeling, training and testing."
+  },
+  {
+    "id": "4.7.3-05",
+    "type": "basic",
+    "section": "4.7.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/3-use-document-intelligence-studio",
+    "tags": [
+      "document-intelligence",
+      "add-on-capabilities"
+    ],
+    "question": "Name the **seven** optional add-on capabilities you can enable in **Azure Document Intelligence**.",
+    "answer": "- **High resolution extraction** — more accurate text from high-resolution documents\n- **Formula extraction** — mathematical formulas\n- **Font property extraction** — font style, weight and color\n- **Barcode extraction** — detect and read barcodes\n- **Searchable PDF** — turn scanned documents into searchable PDFs\n- **Query fields** — extract specific fields with natural language queries\n- **Key-value pairs** — key-value relationships via the layout model",
+    "explanation": "Add-ons are switched on per extraction scenario rather than always running. Query fields fits when a model lacks a field you need, because you ask for it by name instead of training. Searchable PDF changes the output itself, not the extracted data. Key-value pairs is the only one the course ties to a specific model, the layout model. Some add-ons are premium features that cost extra.",
+    "addition": "Free: barcode extraction, language detection, key-value pairs, searchable PDF. Billed add-ons: font, formula, high resolution and query fields. You enable them with the `features` parameter of the analyze request, e.g. `features=queryFields`; searchable PDF works only with `prebuilt-read`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-add-on-capabilities"
+  }
+]

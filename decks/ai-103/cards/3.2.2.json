@@ -1,0 +1,74 @@
+[
+  {
+    "id": "3.2.2-01",
+    "type": "basic",
+    "section": "3.2.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/02-understand-language-mcp",
+    "tags": ["mcp", "agents"],
+    "question": "Name the **three** components of the **Model Context Protocol (MCP)** client-server architecture that AI agents use to reach external tools.",
+    "answer": "- **Host** — the application that runs the agent (Microsoft Foundry or a custom app)\n- **Client** — a component inside the host that manages connections to MCP servers and handles communication\n- **Server** — a program that exposes **tools, resources and prompts** the agent can discover and call",
+    "explanation": "MCP is an open protocol that defines how agents interact with external tools, data sources and services. The split keeps tool code out of the agent's application: the host only runs the agent, its client does the talking, and the server owns the tools. With the Azure Language MCP server, the server side exposes Azure Language NLP capabilities, and the host can be Microsoft Foundry or your own app."
+  },
+  {
+    "id": "3.2.2-02",
+    "type": "basic",
+    "section": "3.2.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/02-understand-language-mcp",
+    "tags": ["mcp", "agents", "tool-calling"],
+    "question": "Your team wants to add, update or remove tools of an AI agent **without modifying the agent itself**. Which MCP mechanism makes this possible, and how does it work?",
+    "answer": "**Dynamic tool discovery**: at runtime the agent queries the MCP server and receives a **catalog of available tools with descriptions**, then picks the right tool for the user's request. It needs no hardcoded knowledge of each tool.",
+    "explanation": "The tool definitions live on the server, so a change there reaches the agent the next time it asks for the catalog. The agent always works with the latest definitions, which makes MCP solutions easier to maintain and scale. Flexibility is the key advantage MCP brings to agents. It also removes routing code: the agent's model chooses tools from their descriptions, and can call several in one turn when a prompt asks for several tasks."
+  },
+  {
+    "id": "3.2.2-03",
+    "type": "basic",
+    "section": "3.2.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/02-understand-language-mcp",
+    "tags": ["mcp", "azure-language", "pii"],
+    "question": "Name the **four** text analysis capabilities that the **Azure Language MCP server** exposes as tools to MCP-compatible agents, as the AI-103 training lists them.",
+    "answer": "- **Language Detection** — identifies the language a text is written in\n- **Named Entity Recognition** — identifies and categorizes people, places, organizations, dates, quantities\n- **PII Redaction** — detects and redacts personal data such as names, addresses, phone numbers\n- **Text Analytics for Health** — extracts and labels medical entities (diagnoses, medications, symptoms) from clinical text",
+    "explanation": "Pick by the task in the prompt. \"Which language is this review in?\" goes to language detection; \"Which people are mentioned?\" to entity recognition; removing personal details before storing reviews to PII redaction; clinical notes to Text Analytics for Health. The agent receives all four tools and its model decides which ones to call, often several in one turn. The training calls sentiment analysis, summarization and key phrase extraction deprecated capabilities that Azure Language keeps for existing applications.",
+    "addition": "Current docs list more Azure Language MCP server capabilities: besides these four, also Conversational Language Understanding, Custom Question Answering, Sentiment Analysis, Summarization and Key Phrase Extraction. The server is in preview.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/concepts/foundry-tools-agents"
+  },
+  {
+    "id": "3.2.2-04",
+    "type": "order",
+    "section": "3.2.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/02-understand-language-mcp",
+    "tags": ["mcp", "tool-calling", "azure-language"],
+    "question": "An agent in Microsoft Foundry is connected to the Azure Language MCP server. Put the steps in order, from the user's prompt to the agent's reply.",
+    "answer": "Prompt → agent determines the tasks → matches them to **MCP tool descriptions** → calls the tool through the **MCP server** → server runs the Azure Language capability → agent **combines the results** into a natural language reply.",
+    "explanation": "You write no routing logic: the agent selects tools on its own, based on the descriptions it received from the MCP server. A prompt such as \"Determine the language of this article and tell me what people are mentioned\" makes the agent call both the language detection tool and the named entity recognition tool in the same turn. The server does the actual text analysis; the agent only picks tools, passes the input text and writes the answer.",
+    "items": [
+      "The user sends a prompt to the agent",
+      "The agent analyzes the prompt and determines which task or tasks are needed",
+      "The agent checks the available MCP tools and their descriptions for the best match",
+      "The agent calls the selected tool through the MCP server, passing the input text",
+      "The MCP server processes the request with the matching Azure Language capability and returns the results",
+      "The agent combines the results into a natural language response"
+    ]
+  },
+  {
+    "id": "3.2.2-05",
+    "type": "basic",
+    "section": "3.2.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/02-understand-language-mcp",
+    "tags": ["mcp", "azure-language", "endpoints"],
+    "question": "You connect an agent to the **remote** Azure Language MCP server. Which endpoint do you configure, and what is the alternative to the remote server?",
+    "answer": "- Remote endpoint: `https://{foundry-resource-name}.cognitiveservices.azure.com/language/mcp?api-version=2025-11-15-preview`\n- `{foundry-resource-name}` = your **Foundry resource** (or Azure Language resource)\n- Alternative: a **local MCP server** you host in your own environment",
+    "explanation": "The remote server lives on your own resource's `cognitiveservices.azure.com` host under the path `/language/mcp`, and the preview API version is part of the URL. This endpoint is what you enter when you connect the MCP server to your agent. If you would rather run the server yourself, the Azure Language MCP Server quickstart in the Azure Language samples repository on GitHub describes the local setup.",
+    "addition": "Some Foundry configurations restrict which MCP servers you can use: network-secured Foundry projects can require publicly accessible MCP servers. A 404 from the MCP server usually means a wrong resource name or API version in the URL.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/concepts/foundry-tools-agents"
+  }
+]

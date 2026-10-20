@@ -1,0 +1,43 @@
+[
+  {
+    "id": "2.4.2-01",
+    "type": "basic",
+    "section": "2.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/2-understand-rag",
+    "tags": ["rag", "agents"],
+    "question": "Name the **five** limitations that simple AI agents without retrieval face in enterprise environments, with the impact of each.",
+    "answer": "- **Knowledge cutoff dates** — no access to recent information\n- **Private data access** — generic responses only\n- **Lack of context** — irrelevant advice\n- **Fabricated responses** — compliance and security risks\n- **Scalability issues** — duplicated engineering effort",
+    "explanation": "A model only knows its training data. So it cannot help with a newly released feature or an updated policy, and it misses company procedures, support knowledge and product specs. Without context it ignores specific security requirements or approval workflows. It may answer confidently but wrongly. The fifth limitation is organisational, not a model gap: every team rebuilds the same RAG infrastructure. That last one is what a shared knowledge platform like Foundry IQ addresses."
+  },
+  {
+    "id": "2.4.2-02",
+    "type": "order",
+    "section": "2.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/2-understand-rag",
+    "tags": ["rag", "agents"],
+    "question": "Put the three steps of **Retrieval Augmented Generation (RAG)** for an AI agent in order.",
+    "answer": "**Retrieve** → **Augment** → **Generate**.",
+    "explanation": "RAG moves an agent from static training data to dynamic knowledge retrieval at query time. The search runs first, so the agent has relevant content before it writes anything. Augmenting means adding that content to the user's question as factual context. Only then does the agent generate, using both its training data and the retrieved information.",
+    "items": [
+      "Retrieve: search knowledge bases for content relevant to the query",
+      "Augment: combine the retrieved content with the user's question as factual context",
+      "Generate: create the response from training data plus the retrieved information"
+    ]
+  },
+  {
+    "id": "2.4.2-03",
+    "type": "basic",
+    "section": "2.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/2-understand-rag",
+    "tags": ["rag", "grounding"],
+    "question": "Name the **three** advantages that Retrieval Augmented Generation (RAG) gives enterprise AI agents.",
+    "answer": "- **Real-time updates** — agents stay current with policies and procedures without retraining\n- **Source transparency** — users see which documents informed each response\n- **Factual grounding** — responses are anchored in actual organizational content",
+    "explanation": "Each advantage answers one limitation of simple agents. Real-time updates fix the knowledge cutoff: new content is retrieved, so the model need not be retrained. Source transparency builds trust and lets users verify an answer. Factual grounding counters fabricated responses and supports compliance. The catch: building RAG yourself takes significant technical expertise, which is why Foundry IQ offers it as a ready-made knowledge platform."
+  }
+]

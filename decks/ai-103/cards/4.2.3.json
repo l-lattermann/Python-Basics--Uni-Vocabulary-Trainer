@@ -1,0 +1,35 @@
+[
+  {
+    "id": "4.2.3-01",
+    "type": "basic",
+    "section": "4.2.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/3-dall-e-in-openai-studio",
+    "tags": ["image-generation", "playground"],
+    "question": "You want to try an image-generation model such as FLUX or gpt-image-1 in Microsoft Foundry **without writing code**: submit prompts and look at the generated images. What do you use?",
+    "answer": "The **model playground** in the Microsoft Foundry portal, inside a Foundry project.",
+    "explanation": "You first create a Microsoft Foundry project, then open the deployed image model's playground. There you type a prompt such as *A robot eating spaghetti* and the generated image appears right in the portal. The playground is for experimenting; once a prompt works, the same request goes into a client app through an SDK.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.2.3-images-playground.png", "alt": "Playground tab of the FLUX.1-Kontext-pro model in the Microsoft Foundry portal, showing the prompt 'A robot eating spaghetti', a 1024x1024 size selector, an image-upload button and the generated image."}
+    ]
+  },
+  {
+    "id": "4.2.3-02",
+    "type": "mc",
+    "section": "4.2.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/3-dall-e-in-openai-studio",
+    "tags": ["image-generation", "playground"],
+    "question": "Besides the prompt, which **two** settings can you set for an image-generation model in the Microsoft Foundry playground (where the model supports them)?",
+    "answer": "- **Resolution (size)** of the generated image, e.g. `1024x1024`\n- A **reference image** for the model to base its output on",
+    "explanation": "Both depend on the model: not every image model accepts every size or a reference image. The size controls the dimensions of the output. A reference image lets you steer the result from an existing picture instead of from text alone.",
+    "options": [
+      {"text": "The resolution (size) of the generated images", "correct": true, "why": "The playground offers a size selector, for example 1024x1024, subject to model support."},
+      {"text": "A reference image for the model to base its output on", "correct": true, "why": "Where the model supports it, you can upload an image that the output is based on."},
+      {"text": "The vector index used to retrieve matching images", "correct": false, "why": "Image-generation models create original images; they don't search or retrieve them from an index."},
+      {"text": "The confidence threshold for detected objects", "correct": false, "why": "Confidence thresholds belong to image analysis such as object detection, not to image generation."}
+    ]
+  }
+]

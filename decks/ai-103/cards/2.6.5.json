@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2.6.5-01",
+    "type": "basic",
+    "section": "2.6.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/5-add-agents-to-workflow",
+    "tags": ["workflows", "agents"],
+    "question": "You want an AI agent to classify incoming requests as one step of a Microsoft Foundry workflow. How do you add it, and what can you configure for it there?",
+    "answer": "- Insert an **Invoke agent** node\n- It references an **existing agent** from the project or **creates a new one** in the designer\n- Its editor configures **tools, knowledge bases, memory and guardrails**",
+    "explanation": "Agents are the reasoning components of a workflow: they bring AI-driven decisions, classification and response generation into a larger orchestration. Each agent gets its own purpose, model, prompt and tools, so one workflow can combine several specialized capabilities. At run time the workflow passes context — the user input or variables set earlier — to the agent and receives a response that later steps can use."
+  },
+  {
+    "id": "2.6.5-02",
+    "type": "basic",
+    "section": "2.6.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/5-add-agents-to-workflow",
+    "tags": ["workflows", "structured-output"],
+    "question": "In a Microsoft Foundry workflow, an agent's reply decides which branch an If/Else node takes. How do you make that reply predictable, and where do you set it up?",
+    "answer": "Configure **structured output**: define a response format such as a **JSON schema** in the parameters of the **Details** tab of the **Invoke agent** editor.",
+    "explanation": "Besides natural language responses, an agent can return structured output. A response format such as a JSON schema ensures the output always follows a predictable shape. That matters most when the agent's response drives control flow — routing logic, or assigning values to variables in later nodes. The screenshot shows the choice in the Text format list: Text, JSON Object or JSON Schema.",
+    "explanation_images": [
+      {"src": "media/ai-103/2.6.5-agent-response-schema.png", "alt": "Details tab of the Invoke agent editor: the Parameters panel next to the model shows Temperature, Top P and a Text format list with Text, JSON Object and JSON Schema."}
+    ]
+  },
+  {
+    "id": "2.6.5-03",
+    "type": "mc",
+    "section": "2.6.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/5-add-agents-to-workflow",
+    "tags": ["workflows", "variables"],
+    "question": "In a Microsoft Foundry workflow, a later If/Else node and a second agent both need the output of an **Invoke agent** node. Where do you configure that the output is kept for them?",
+    "answer": "In the **Action settings** of the Invoke agent node, by storing the output in a **variable**.",
+    "explanation": "Once the output sits in a variable, it can be referenced anywhere later in the workflow. That is how an agent influences decisions, triggers conditional branches or feeds input to another agent. The Details tab of the same editor defines what shape the output has; Action settings defines where it is saved.",
+    "explanation_images": [
+      {"src": "media/ai-103/2.6.5-agent-action-settings.png", "alt": "Action settings tab of the Invoke agent node: Input message System.LastMessage, the agent output message saved as Local.TextOutput and the JSON output saved as Local.JsonOutput."}
+    ],
+    "options": [
+      {"text": "The Action settings of the Invoke agent node", "correct": true, "why": "This is where the agent's output is stored in a variable for later nodes."},
+      {"text": "The parameters on the Details tab of the Invoke agent editor", "correct": false, "why": "They define the response format, such as a JSON schema, not where the output is stored."},
+      {"text": "A Reset Variable node placed after the agent", "correct": false, "why": "Reset Variable clears or reinitializes a variable; it does not capture the agent's output."},
+      {"text": "The End node of the workflow", "correct": false, "why": "The End node only marks the conclusion and can return a final result; nothing after it can use the value."}
+    ]
+  },
+  {
+    "id": "2.6.5-04",
+    "type": "basic",
+    "section": "2.6.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/5-add-agents-to-workflow",
+    "tags": ["workflows", "multi-agent"],
+    "question": "Several Microsoft Foundry workflows must all classify incoming requests the same way, then resolve them differently. How do you design the agents?",
+    "answer": "**Reuse** one **categorization agent** in every workflow, and give the follow-up work to separate **resolution agents** — modular design through **separation of concerns**.",
+    "explanation": "Agents are not tied to one workflow: an Invoke agent node can reference an existing agent from the project. The shared categorization agent classifies requests in many workflows, while different resolution agents handle the follow-up actions. That separation of concerns makes workflows easier to maintain and to evolve over time."
+  }
+]

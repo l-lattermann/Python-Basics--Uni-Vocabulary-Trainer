@@ -1,0 +1,200 @@
+[
+  {
+    "id": "5.5-01",
+    "type": "basic",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/semantic-search-overview",
+    "tags": [
+      "ai-search",
+      "semantic-ranker",
+      "relevance"
+    ],
+    "question": "In Azure AI Search, what does the **semantic ranker** do to a query's results, and what does a query need to use it?",
+    "answer": "- **Reranks the top 50** results of a BM25 (text) or RRF (vector/hybrid) query with Bing-derived language models (**L2 ranking**)\n- Scores each in `@search.rerankerScore`, from **4** (highly relevant) to **0**\n- Returns verbatim **captions** and optional **answers**\n- Needs a **semantic configuration** in the index and `queryType=semantic`",
+    "explanation": "It never searches the whole corpus again: a document missing from the initial top 50 can't be promoted. The semantic configuration lists the **title**, **keywords** and **content** fields the ranker reads. Add them in priority order: each document's input is trimmed to about 2,000 tokens, and anything past the limit is ignored. Captions and answers are extracted verbatim, not generated, so no answer appears if the text holds none. It works best on descriptive prose such as documentation or a knowledge base."
+  },
+  {
+    "id": "5.5-02",
+    "type": "mc",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+    "tags": [
+      "ai-search",
+      "hybrid-search",
+      "rag"
+    ],
+    "question": "An Azure AI Search index grounds a RAG app. Users search both by **exact product codes** and by **vague descriptions** in their own words. Which query approach gives the best single result set?",
+    "answer": "A **hybrid query**: `search` and `vectorQueries` in one request, merged by **Reciprocal Rank Fusion (RRF)**.",
+    "explanation": "Keyword search is precise on exact matches such as product codes, names and dates; vector search finds conceptually similar text even without shared words. A hybrid query runs both in parallel and RRF ranks the merged results as one list. Filters, facets, scoring profiles and semantic ranking still work on the text fields. Benchmark testing shows hybrid retrieval with the semantic ranker gives significantly better relevance; set `k` to 50 to give the ranker its full input.",
+    "options": [
+      {
+        "text": "A hybrid query with both `search` and `vectorQueries`",
+        "correct": true,
+        "why": "It combines keyword precision with vector similarity in one request and merges the results with RRF."
+      },
+      {
+        "text": "A pure vector query over the embedding field",
+        "correct": false,
+        "why": "It finds similar meaning but can miss exact matches such as product codes."
+      },
+      {
+        "text": "A full Lucene keyword query (`queryType=full`)",
+        "correct": false,
+        "why": "It is precise on exact terms but misses descriptions phrased with different words."
+      },
+      {
+        "text": "A keyword query with the semantic ranker and no vector query",
+        "correct": false,
+        "why": "The ranker only reorders the top 50 keyword matches; documents without matching terms never enter the set."
+      }
+    ]
+  },
+  {
+    "id": "5.5-03",
+    "type": "basic",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-create-index",
+    "tags": [
+      "ai-search",
+      "vector-search",
+      "embeddings"
+    ],
+    "question": "In an Azure AI Search index definition, what does a **vector field** need, and how is its search algorithm attached to it?",
+    "answer": "- A vector data type, usually **`Collection(Edm.Single)`**, with `searchable: true`\n- **`dimensions`** equal to the embedding model's output (e.g. 1536 for text-embedding-ada-002)\n- **`vectorSearchProfile`** naming a profile in the index's `vectorSearch` section\n- The **profile** combines an **algorithm** (`hnsw` or `exhaustiveKnn`) with optional **compression**",
+    "explanation": "If a document's vector has a different dimension count, the indexer rejects it. The algorithm also sets the similarity metric: use `cosine` for Azure OpenAI embedding models. Vector fields can't be filterable, sortable or facetable, so keep a plain-text twin (for example `content` beside `contentVector`) for filters and for the text a chat model reads. Compression (scalar or binary quantization) shrinks the vectors and can rescore results with the originals."
+  },
+  {
+    "id": "5.5-04",
+    "type": "mc",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/vector-search-ranking",
+    "tags": [
+      "ai-search",
+      "vector-search"
+    ],
+    "question": "You configure vector search in Azure AI Search for a **large, growing index** and need **low-latency** queries. Which algorithm do you choose?",
+    "answer": "**HNSW** (Hierarchical Navigable Small World): approximate nearest neighbor search, fast and scalable, slightly less exact, and it holds all vectors in memory, so it uses **vector index size** quota.",
+    "explanation": "HNSW builds a hierarchical graph during indexing and walks it at query time; `m`, `efConstruction` and `efSearch` trade recall against speed. **Exhaustive KNN** scans every vector and returns the exact nearest neighbors, so it suits small to medium data or cases where precision matters more than speed, and it builds the ground truth for measuring HNSW recall. A field indexed with HNSW can still run an exact query with `\"exhaustive\": true`; a field indexed with `exhaustiveKnn` can't run HNSW queries.",
+    "options": [
+      {
+        "text": "HNSW",
+        "correct": true,
+        "why": "It searches a subset of nodes in a graph, which keeps queries fast on large data at a small cost in accuracy."
+      },
+      {
+        "text": "Exhaustive KNN",
+        "correct": false,
+        "why": "It compares the query with every vector: exact, but computationally intensive on large data."
+      },
+      {
+        "text": "Reciprocal Rank Fusion (RRF)",
+        "correct": false,
+        "why": "RRF merges ranked lists from several queries; it is not an algorithm for organizing vectors."
+      },
+      {
+        "text": "BM25",
+        "correct": false,
+        "why": "BM25 scores full-text keyword matches; it doesn't search vectors."
+      }
+    ]
+  },
+  {
+    "id": "5.5-05",
+    "type": "order",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/vector-search-integrated-vectorization",
+    "tags": [
+      "ai-search",
+      "integrated-vectorization",
+      "rag"
+    ],
+    "question": "You set up **integrated vectorization** in Azure AI Search so that documents in Blob Storage are chunked and embedded during indexing. Put the creation steps in order.",
+    "answer": "Data source → skillset (**Text Split** + **embedding skill**) → index with a **vectorizer** → **indexer**.",
+    "explanation": "The indexer comes last because it ties the other three together and drives the run: retrieval, document cracking, chunking, embedding, indexing. The vectorizer converts a text query into a vector at query time and must match the embedding model used for indexing: the AzureOpenAIEmbedding skill pairs with the Azure OpenAI vectorizer, a custom skill with the Custom Web API vectorizer. Run the indexer on a schedule so it picks up changed documents and calls throttled by the embedding endpoint.",
+    "items": [
+      "Create a data source connection to the Blob Storage container",
+      "Create a skillset with the Text Split skill and an embedding skill such as AzureOpenAIEmbedding",
+      "Create an index whose vector fields have a vectorizer for query time",
+      "Create an indexer that runs retrieval, the skillset and indexing"
+    ]
+  },
+  {
+    "id": "5.5-06",
+    "type": "basic",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/cognitive-search-custom-skill-web-api",
+    "tags": [
+      "ai-search",
+      "custom-skill",
+      "enrichment"
+    ],
+    "question": "You host custom enrichment code in an Azure Function and call it from an Azure AI Search skillset. Which skill do you use, and what contract must the function follow?",
+    "answer": "- **Custom Web API skill** (`#Microsoft.Skills.Custom.WebApiSkill`), https URI only\n- Request: a **`values`** array of records, each with a unique **`recordId`** and a `data` object holding the inputs\n- Response: JSON with the same records by `recordId`, each with `data`, `errors` and `warnings`\n- **Timeout** 30 s by default, 230 s max; `batchSize` 1000 by default",
+    "explanation": "Response records whose `recordId` wasn't in the request are discarded, records with a missing or duplicated `recordId` aren't enriched, and a response that isn't `application/json` counts as an error. Errors and warnings land in the indexer execution history. The indexer retries twice on 429, 502 and 503. If the function fails under load, lower `degreeOfParallelism` (default 5, max 10) or `batchSize`. The skill has no predefined outputs, so map them to index fields with an output field mapping. With `authResourceId` the search service signs in with its managed identity."
+  },
+  {
+    "id": "5.5-07",
+    "type": "mc",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/cognitive-search-skill-ocr",
+    "tags": [
+      "ai-search",
+      "ocr",
+      "enrichment"
+    ],
+    "question": "An Azure AI Search blob indexer reads PDFs that contain scanned pages. The skillset runs an OCR skill on `/document/normalized_images/*`, but no image text reaches the index. What is missing?",
+    "answer": "The indexer configuration **`imageAction`: `generateNormalizedImages`** (with `dataToExtract`: `contentAndMetadata`).",
+    "explanation": "The OCR skill only reads the `normalized_images` collection, and the blob indexer creates it only when `imageAction` isn't `none`. Document cracking separates text from embedded images; the OCR skill (Azure Vision Read API) reads printed and handwritten text per image, and a **Merge skill** inserts that text at the right offsets into the document content, for example as `merged_text`. Beyond 20 documents per indexer per day, the OCR skill needs a billable Foundry resource.",
+    "options": [
+      {
+        "text": "Set `imageAction` to `generateNormalizedImages` in the indexer configuration",
+        "correct": true,
+        "why": "This makes the indexer extract embedded images into `normalized_images`, the only input the OCR skill accepts."
+      },
+      {
+        "text": "Set `detectOrientation` to `true` on the OCR skill",
+        "correct": false,
+        "why": "It only detects image orientation, for the legacy OCR API; it creates no images to read."
+      },
+      {
+        "text": "Set `defaultLanguageCode` to `unk` on the OCR skill",
+        "correct": false,
+        "why": "It auto-detects the text's languages, but there are still no images to read."
+      },
+      {
+        "text": "Add a Merge skill after the OCR skill",
+        "correct": false,
+        "why": "It merges OCR text into the content, but the OCR skill has produced no text yet."
+      }
+    ]
+  },
+  {
+    "id": "5.5-08",
+    "type": "basic",
+    "section": "5.5",
+    "exam_area": "extraction",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/search/monitor-azure-cognitive-search",
+    "tags": [
+      "ai-search",
+      "monitoring"
+    ],
+    "question": "Your Azure AI Search service backs a production RAG agent. Which two metric alerts does Microsoft name as the most common for search health, and what must you set up before you can query the service's resource logs?",
+    "answer": "- **Search Latency**: average query response time above a threshold\n- **Throttled search queries percentage**: share of dropped queries above a threshold\n- **Resource logs** need a **diagnostic setting** that routes them to Log Analytics; platform metrics are collected automatically",
+    "explanation": "Platform metrics cover query performance, indexing volume and skillset invocation, and support near real-time alerts. Storage usage and compute usage alerts add capacity warnings. Once logs reach Log Analytics, query them with KQL (`AzureDiagnostics`, `AzureMetrics`). The activity log is a separate store: it records control-plane events such as service creation or **Get Admin Key** calls, without details of the call itself."
+  }
+]

@@ -1,0 +1,129 @@
+[
+  {
+    "id": "2.4.5-01",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "grounding", "citations"],
+    "question": "A Microsoft Foundry agent with a Foundry IQ knowledge base is asked \"What's our vacation policy?\". Name the **three** behaviors it can show without proper retrieval configuration, and which one is acceptable.",
+    "answer": "- **Answers from training data** — generic, not your actual policy\n- **Searches but doesn't cite** — correct but unverifiable\n- **Searches, cites and grounds** — the only acceptable one",
+    "explanation": "A knowledge base with excellent indexing and semantic ranking still fails if the agent does not know when or how to use it. The first behavior gives wrong information (\"Most companies offer 2-3 weeks\"). The second is right (\"15 days of PTO\") but lacks accountability, because nobody can check where it came from. Enterprise agents must consistently retrieve, cite and stay grounded, e.g. \"15 days of paid time off【doc_id:1†Employee Handbook 2024】\"."
+  },
+  {
+    "id": "2.4.5-02",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "prompt-engineering", "citations"],
+    "question": "Name the **three** behaviors that effective retrieval instructions for a Microsoft Foundry agent with a Foundry IQ knowledge base must specify.",
+    "answer": "- **When to retrieve** — always search the knowledge base, never rely on training data\n- **How to cite** — the exact format for source attribution\n- **What to do when unsure** — a defined fallback when the answer isn't found",
+    "explanation": "Agent instructions are the contract that decides retrieval behavior. \"Answer HR questions using the knowledge base.\" is too vague: the agent might search or not, cite or not. The course's version says \"You must ALWAYS search the knowledge base\", \"NEVER answer from your own knowledge\", requires citations as `【doc_id:search_id†source_name】`, and falls back to \"I don't have that information… Please contact HR directly\"."
+  },
+  {
+    "id": "2.4.5-03",
+    "type": "mc",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "grounding", "prompt-engineering"],
+    "question": "A Microsoft Foundry agent has a Foundry IQ knowledge base attached as a tool, and its instructions say \"Answer HR questions using the knowledge base.\" Users sometimes get generic answers like \"Most companies offer 2-3 weeks of vacation\". What fixes this?",
+    "answer": "**Rewrite the agent instructions** with explicit rules: always search the knowledge base, never answer from training data, cite every answer, and fall back when nothing is found.",
+    "explanation": "The vague instruction leaves the decision to search up to the model, so it sometimes answers from training data. Perfect indexing and semantic ranking do not help if the agent doesn't know when to use the knowledge base. Only the instructions, the contract between you and the agent, control when it retrieves.",
+    "options": [
+      {"text": "Rewrite the instructions to require searching the knowledge base before every answer and never using training data", "correct": true, "why": "Instructions decide whether and when the agent retrieves; explicit rules make retrieval consistent."},
+      {"text": "Enable semantic ranking on the knowledge base", "correct": false, "why": "Semantic ranking improves the order of results once a search runs; it does not make the agent search."},
+      {"text": "Add a scoring profile that boosts the policy fields", "correct": false, "why": "A scoring profile surfaces important results first, but only when the agent actually queries the knowledge base."},
+      {"text": "Add a second data source to the knowledge base", "correct": false, "why": "More content does not help when the agent skips retrieval and answers from training data."}
+    ]
+  },
+  {
+    "id": "2.4.5-04",
+    "type": "mc",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["python", "sdk", "agents"],
+    "question": "Complete the code so the test query is answered by the Microsoft Foundry agent `agent`.\n\n```python\nopenai_client = project_client.get_openai_client()\nconversation = openai_client.conversations.create()\nresponse = openai_client.responses.create(\n    conversation=conversation.id,\n    input=\"How many vacation days do I get?\",\n    extra_body={\"agent\": {\"name\": agent.name, \"type\": ___}},\n)\nprint(response.output_text)\n```",
+    "answer": "**`\"agent_reference\"`** — the request references the existing agent by name.",
+    "explanation": "You test retrieval behavior through a conversation: get an OpenAI client from the project client, create a conversation, then send queries with `responses.create`. The `extra_body` routes the request to the named agent, so its instructions and knowledge tool apply. `response.output_text` lets you check whether the answer searched, cited and stayed grounded.",
+    "options": [
+      {"text": "\"agent_reference\"", "correct": true, "why": "This is the type the unit uses to send a response request to an existing agent by name."},
+      {"text": "\"mcp\"", "correct": false, "why": "MCP is how the knowledge base is connected to the agent as a tool, not how a request names the agent."},
+      {"text": "\"prompt_agent\"", "correct": false, "why": "The agent was defined with `PromptAgentDefinition`, but the request references it with `agent_reference`."},
+      {"text": "\"conversation\"", "correct": false, "why": "The conversation is passed separately in the `conversation` argument."}
+    ]
+  },
+  {
+    "id": "2.4.5-05",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "testing", "evaluation"],
+    "question": "Name the **four** query types to test a Microsoft Foundry agent's retrieval from a Foundry IQ knowledge base with, and the behavior each should produce.",
+    "answer": "- **Straightforward factual** — direct retrieval with citations\n- **Questions requiring synthesis** — several documents retrieved, one answer with multiple citations\n- **Questions outside the knowledge base** — graceful fallback (\"I don't have that information…\")\n- **Ambiguous questions** — clarifying questions or a focused search on the most relevant topic",
+    "explanation": "Instructions alone don't prove anything; you verify them with systematic tests. Factual: \"What is our vacation policy?\". Synthesis: \"What are the differences between our leave types?\". Outside: \"What's the weather like today?\" must not be answered from training data. Ambiguous: \"What about benefits?\" or \"Tell me more about that\". Each type checks a different rule of the instructions."
+  },
+  {
+    "id": "2.4.5-06",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["evaluation", "grounding", "citations"],
+    "question": "Name the **four** characteristics of a good response when you evaluate a Microsoft Foundry agent's retrieval from a Foundry IQ knowledge base.",
+    "answer": "- **Grounding** — information comes from the knowledge base, not training data\n- **Citation** — every factual claim has a source reference\n- **Relevance** — the retrieved content actually answers the question\n- **Completeness** — all necessary information, not just fragments",
+    "explanation": "Grounding and citation check where the answer comes from and whether you can verify it. Relevance and completeness check whether the retrieval fit the question and covered it fully. A response that fails any of them is a signal to adjust the instructions: add more specific rules, clarify edge cases, and iterate until the behavior is consistent."
+  },
+  {
+    "id": "2.4.5-07",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "prompt-engineering"],
+    "question": "Name the **three** agent types that need different retrieval instructions with a Foundry IQ knowledge base in Microsoft Foundry, and what sets each apart.",
+    "answer": "- **Customer-facing support agents** — high accuracy, never guess; hand off to a specialist\n- **Internal research assistants** — synthesize across documents, cite all sources, state confidence\n- **Specialized domain experts** — answer only their domain, cite document and section, refer interpretation to experts",
+    "explanation": "Support agents search for every product question and stick to official documentation, not general knowledge. Research assistants search all relevant knowledge bases and suggest related topics. A compliance assistant keeps answers strictly factual, notes each policy's effective date, and refers legal advice to the compliance team. The pattern is the same: define scope, specify retrieval requirements, set citation standards, handle edge cases explicitly."
+  },
+  {
+    "id": "2.4.5-08",
+    "type": "basic",
+    "section": "2.4.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["monitoring", "agents", "grounding"],
+    "question": "Name the **four** usage patterns to track once a Microsoft Foundry agent with a Foundry IQ knowledge base is in production.",
+    "answer": "- **Citation frequency** — do agents consistently cite sources?\n- **Fallback frequency** — how often do agents say \"I don't know\"?\n- **Query types** — which question categories appear most?\n- **Retrieval accuracy** — do retrieved documents actually contain the answers?",
+    "explanation": "Real users ask differently than your test queries. They hit edge cases you didn't anticipate and reveal gaps in the knowledge base content. Retrieval quality improves through iteration on real-world usage. Use the data to refine instructions, improve knowledge base content and adjust search configuration."
+  },
+  {
+    "id": "2.4.5-09",
+    "type": "order",
+    "section": "2.4.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/5-configure-retrieval",
+    "tags": ["agents", "testing", "monitoring"],
+    "question": "Put the steps for making a Microsoft Foundry agent's retrieval from a Foundry IQ knowledge base reliable in order.",
+    "answer": "**Instructions** → **test queries** → **iterate** → **deploy** → **monitor and refine**.",
+    "explanation": "Retrieval quality comes from the combination of clear instructions, systematic testing and ongoing monitoring. You only deploy once the test queries produce consistent, high-quality results. Production then shows what tests missed, and that feeds back into instructions, knowledge base content and search configuration.",
+    "items": [
+      "Write instructions that say when to retrieve, how to cite and what to do when unsure",
+      "Send test queries of each type in a conversation with the agent",
+      "Adjust the instructions until responses are grounded, cited, relevant and complete",
+      "Deploy the agent to production",
+      "Monitor citation, fallback, query types and retrieval accuracy, then refine"
+    ]
+  }
+]

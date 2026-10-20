@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2.1.4-01",
+    "type": "order",
+    "section": "2.1.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
+    "tags": ["agents", "foundry-portal"],
+    "question": "Put the steps of building and shipping a first agent in the **Microsoft Foundry portal** (no code) in order.",
+    "answer": "Project → **Build > Agents > Create** → name, description, model → instructions → **Playground** test → deploy and call via SDK or REST.",
+    "explanation": "The model must already be deployed in the project, or you deploy one from the same dropdown. After creation the portal opens the configuration view, where the Instructions field defines the agent's role and behaviour. The Playground tab keeps the conversation history for the session, so you can check multi-turn behaviour before deploying. Deployment generates the connection information your application needs.",
+    "items": [
+      "Sign in at ai.azure.com and select (or create) a project",
+      "Select Build > Agents, then Create",
+      "Enter the agent's name, description and a deployed model",
+      "Write the agent's instructions in the Instructions field",
+      "Test multi-turn conversations in the Playground tab",
+      "Deploy the agent and access it through the Foundry SDK or REST APIs"
+    ]
+  },
+  {
+    "id": "2.1.4-02",
+    "type": "basic",
+    "section": "2.1.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
+    "tags": ["agents", "tools"],
+    "question": "Name the **three** categories into which the Microsoft Foundry **tool catalog** sorts the tools you can add to an agent.",
+    "answer": "- **Configured** — built-in tools ready to use, e.g. Code Interpreter, File Search\n- **Catalog** — extra tools added from a registry, e.g. Bing Web Search, Azure AI Search, SharePoint, MCP servers\n- **Custom** — your own tools via OpenAPI specifications or custom implementations",
+    "explanation": "The categories grow in effort: Configured tools work immediately, Catalog tools are prebuilt but have to be added, Custom tools you describe yourself. The module advises starting with built-in tools before building custom ones, because they are tested and maintained by the platform. You reach the catalog from the agent's **Tools** section or via **Build > Tools**; an MCP server you want to reuse is found under Catalog."
+  },
+  {
+    "id": "2.1.4-03",
+    "type": "basic",
+    "section": "2.1.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/4-build-agent-azure-portal",
+    "tags": ["agents", "parameters"],
+    "question": "Besides the instructions, which **two** model parameters can you set for an agent in the Microsoft Foundry portal, and what does each control?",
+    "answer": "- **Temperature** — response randomness (creativity)\n- **Top P** — response diversity, by limiting the vocabulary choices during generation",
+    "explanation": "Lower Temperature (0.1–0.3) gives consistent, focused answers; higher values (0.7–1.0) give more creative, varied ones. Business agents with structured tasks usually do well between 0.3 and 0.7. Top P mostly stays at its default of 1.0; lower it only when you want more constrained, predictable output. The same settings appear again when you configure the agent in VS Code."
+  }
+]

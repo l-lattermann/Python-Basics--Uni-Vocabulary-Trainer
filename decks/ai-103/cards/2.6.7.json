@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2.6.7-01",
+    "type": "mc",
+    "section": "2.6.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/7-maintain-workflows",
+    "tags": ["workflows", "source-control"],
+    "question": "Your team wants to keep a Microsoft Foundry workflow under source control and make advanced configuration edits as text, while analysts keep working on it visually. Which representation do you edit, and what happens to the other view?",
+    "answer": "Edit the **YAML** representation; changes in either view are reflected in the other, so the **visual canvas** stays in sync.",
+    "explanation": "A Foundry workflow has two views of the same definition. The visual canvas is for understanding the concept, tracing execution paths and collaborating. YAML is the textual form, suited to advanced configuration, version tracking and source control. Because edits flow both ways, you can switch between them without the workflow drifting apart.",
+    "options": [
+      {"text": "Edit the YAML; the visual canvas reflects the change", "correct": true, "why": "YAML is the textual form for advanced configuration and source control, and both views stay in sync."},
+      {"text": "Edit the YAML; the visual canvas must then be rebuilt by hand", "correct": false, "why": "Changes in either view are reflected in the other automatically."},
+      {"text": "Edit only the visual canvas; YAML is a read-only export", "correct": false, "why": "YAML can be edited directly, for example for advanced configuration."},
+      {"text": "Add notes to the nodes on the canvas", "correct": false, "why": "Notes document design decisions for maintainers; they are not a text form you can put under source control."}
+    ]
+  },
+  {
+    "id": "2.6.7-02",
+    "type": "basic",
+    "section": "2.6.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/7-maintain-workflows",
+    "tags": ["workflows", "versioning"],
+    "question": "A change to a Microsoft Foundry workflow introduced errors. Which built-in feature lets you go back, and when does it record a version?",
+    "answer": "- **Versioning**: every **save** creates a new, **immutable** version\n- Review prior versions, compare changes, or **roll back** to an earlier one",
+    "explanation": "Versioning is the safety net for workflow changes. Because each saved version cannot change afterwards, an earlier working state is always there to compare against or restore. It also helps collaboration: the history shows who changed what and why. The workflow designer does not save automatically, so only what you save becomes a version — save regularly."
+  },
+  {
+    "id": "2.6.7-03",
+    "type": "basic",
+    "section": "2.6.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/7-maintain-workflows",
+    "tags": ["workflows", "maintenance"],
+    "question": "Name the **four** best practices for refining and maintaining Microsoft Foundry workflows.",
+    "answer": "- **Review for unused or redundant nodes** regularly\n- **Handle structured agent outputs consistently**\n- **Document decisions and logic with notes**\n- **Use version history** to track changes and validate updates",
+    "explanation": "Maintenance is more than fixing errors; it improves clarity, reliability and efficiency. Notes are attached in the workflow visualizer to nodes or sections. They explain design decisions or clarify how a variable is used, so future maintainers understand the workflow's purpose and logic and make fewer errors. Combined with YAML editing and version control, this keeps workflows ready for enterprise use.",
+    "explanation_images": [
+      {"src": "media/ai-103/2.6.7-workflow-note.png", "alt": "A note beside the Triage-Agent node in the Foundry workflow visualizer, explaining that the agent categorizes tickets and stores the result in Local.TicketCategory."}
+    ]
+  }
+]

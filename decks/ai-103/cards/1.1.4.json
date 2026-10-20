@@ -1,0 +1,87 @@
+[
+  {
+    "id": "1.1.4-01",
+    "type": "basic",
+    "section": "1.1.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/3-azure-ai-services",
+    "tags": [
+      "foundry-tools",
+      "service-choice"
+    ],
+    "question": "What are **Foundry Tools** in Microsoft Foundry, what do they gain you over a solution built on generative AI agents alone, and under which **two** older names do they still appear in some APIs and SDKs?",
+    "answer": "- **Foundry Tools** — a set of out-of-the-box **prebuilt APIs and models** for common AI tasks\n- Gain: a **more cost-effective and predictable** solution\n- Older names: **Azure AI Services**, before that **Azure Cognitive Services**",
+    "explanation": "Generative models and agents are the focus of most AI projects, but many tasks are common enough that ready-made functionality covers them: analysing text, converting speech, translating, extracting fields from forms. Integrating that functionality is cheaper and behaves more predictably than leaving the task to an agent. The old names survive in some APIs and SDKs, so expect them in code and documentation."
+  },
+  {
+    "id": "1.1.4-02",
+    "type": "basic",
+    "section": "1.1.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/3-azure-ai-services",
+    "tags": [
+      "foundry-tools",
+      "service-choice"
+    ],
+    "question": "Name the **five** Foundry Tools in Microsoft Foundry and what each one does.",
+    "answer": "- **Azure Language** — text analysis (entities, sentiment, summarization), conversational language models, question answering\n- **Azure Speech** — text to speech, speech to text, real-time live speech\n- **Azure Translator** — text translation between many languages\n- **Azure Document Intelligence** — prebuilt or custom models extract fields from invoices, receipts, forms\n- **Azure Content Understanding** — multimodal data extraction from documents, images, video, audio",
+    "explanation": "Sort them by input. Language and Translator work on text; Speech converts between audio and text, including live speech for conversational apps and agents. Document Intelligence and Content Understanding both extract data from forms, so they are the pair to tell apart: Document Intelligence covers complex documents such as invoices and receipts, while Content Understanding is multimodal and also reads images, videos and audio streams."
+  },
+  {
+    "id": "1.1.4-03",
+    "type": "mc",
+    "section": "1.1.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/3-azure-ai-services",
+    "tags": [
+      "foundry-tools",
+      "content-understanding",
+      "service-choice"
+    ],
+    "question": "An insurer wants to build models that extract data from claim forms **and** from damage photos, video recordings and recorded phone calls, all with one Foundry Tool in Microsoft Foundry. Which tool fits?",
+    "answer": "**Azure Content Understanding** — multimodal content analysis across documents, images, video and audio.",
+    "explanation": "The deciding requirement is the mix of input types. Document Intelligence also extracts fields from forms, invoices and receipts, so it would cover the claim forms, but not the photos, videos or calls. Content Understanding is the one Foundry Tool built for multimodal content: it lets you build models that extract data from forms and documents, images, videos and audio streams.",
+    "options": [
+      {
+        "text": "Azure Content Understanding",
+        "correct": true,
+        "why": "It provides multimodal analysis to extract data from forms and documents, images, videos and audio streams."
+      },
+      {
+        "text": "Azure Document Intelligence",
+        "correct": false,
+        "why": "It extracts fields from complex documents such as invoices, receipts and forms, but not from photos, video or audio."
+      },
+      {
+        "text": "Azure Language",
+        "correct": false,
+        "why": "It analyses natural language text, for example entities, sentiment and summaries, not images, video or audio."
+      },
+      {
+        "text": "Azure Speech",
+        "correct": false,
+        "why": "It converts speech to text and text to speech, but does not extract data from forms, photos or video."
+      }
+    ]
+  },
+  {
+    "id": "1.1.4-04",
+    "type": "basic",
+    "section": "1.1.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/3-azure-ai-services",
+    "tags": [
+      "foundry-tools",
+      "authentication"
+    ],
+    "question": "A client application must call Azure Translator, a Foundry Tool hosted in your Microsoft Foundry resource. Which endpoint does it connect to, and which **two** ways can it authenticate?",
+    "answer": "- Endpoint: the **tool-specific endpoint** in the Microsoft Foundry resource\n- Authenticate with the project **authentication key** or with **token-based authentication**\n- Then call the tool-specific **APIs and SDKs**",
+    "explanation": "Foundry Tools live in the Foundry resource, so each tool is reached through its own endpoint on that resource. Some tools also have a user interface in the Foundry portal for configuring and testing them before you write code. You can still provision some tools as individual Azure resources outside a Foundry resource, but new projects should use the tools in a Foundry resource.",
+    "addition": "Token-based authentication with Microsoft Entra ID only works on the resource's **custom subdomain** endpoint, not on regional endpoints, and the caller needs an RBAC role such as **Cognitive Services User**. A key travels in the `Ocp-Apim-Subscription-Key` header; a token as `Authorization: Bearer`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/authentication"
+  }
+]

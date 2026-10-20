@@ -1,0 +1,192 @@
+[
+  {
+    "id": "4.6.4-01",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "analyze"
+    ],
+    "question": "You want **Azure Content Understanding** to analyze a file. In which **two** forms can you submit the file, and what else must the analysis request name?",
+    "answer": "- A **URL** of a file in an Internet-accessible location\n- **Binary file data** uploaded directly, for example .pdf, .png, .mp3 or .mp4\n- Plus the **analyzer** to use",
+    "explanation": "The analyzer carries the schema, so it decides which fields come back. The same business card analyzer that was created from a JSON schema is named in the request by its ID, for example `business_card_analyser`. A URL is the simple case when the file is already hosted. When the file only exists locally, you send its bytes instead; in the REST API that is a separate operation, `analyzeBinary`, rather than `analyze`.",
+    "addition": "The Python SDK has the same split: `begin_analyze(analyzer_id, inputs=[AnalysisInput(url=...)])` for URLs, and `begin_analyze_binary(analyzer_id, binary_input)` for raw bytes, with content type `application/octet-stream` by default.",
+    "addition_source": "https://learn.microsoft.com/en-us/python/api/azure-ai-contentunderstanding/azure.ai.contentunderstanding.contentunderstandingclient"
+  },
+  {
+    "id": "4.6.4-02",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "async-operations"
+    ],
+    "question": "An app submits a file to the **Azure Content Understanding** analyze endpoint. Why does it not get the extracted fields back in that response, and how does it get them?",
+    "answer": "Analysis is an **asynchronous operation**: the request returns an **operation ID**, which the app uses to check the status and to retrieve the results once the operation is complete.",
+    "explanation": "Over REST, the POST response holds the ID in its `id` property. The app then sends GET requests to `analyzerResults/{id}` until the status is no longer `Running`, and reads the result when it is `Succeeded`. The Python SDK hides this loop behind a poller. Creating an analyzer is asynchronous too, but there the callback URL arrives in the `Operation-Location` response header instead.",
+    "addition": "The status can be `NotStarted`, `Running`, `Succeeded`, `Failed` or `Canceled`. A loop that only waits while the status is `Running` stops early on `NotStarted`, and a failed operation reports details in an `error` object.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result"
+  },
+  {
+    "id": "4.6.4-03",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "python-sdk"
+    ],
+    "question": "You analyze content with the **Azure Content Understanding** Python SDK (`azure-ai-contentunderstanding`). What does `ContentUnderstandingClient` do for you, and how do you get the result?",
+    "answer": "- Handles **authentication**, **request formatting** and **polling**\n- `begin_analyze` returns a **poller** object\n- `poller.result()` waits until the operation completes\n- It returns an **AnalysisResult**; its `contents` list holds content objects with fields, markdown and metadata",
+    "explanation": "Without the SDK you write the HTTP calls, the API key header, a polling loop and the JSON parsing yourself. With it, you create the client from the endpoint and an `AzureKeyCredential`, start the analysis, and call `.result()`: no own polling loop. The `AnalysisResult` gives typed access, so you read a field as `field_data.type` and `field_data.value` instead of digging through nested dictionaries."
+  },
+  {
+    "id": "4.6.4-04",
+    "type": "mc",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "python-sdk"
+    ],
+    "question": "Complete the code so it analyzes the business card image at the URL with the custom analyzer in **Azure Content Understanding**.\n\n```python\nclient = ContentUnderstandingClient(endpoint=endpoint, credential=credential)\npoller = client.___(\n    analyzer_id=\"business_card_analyser\",\n    inputs=[AnalysisInput(url=\"https://host.com/business-card.png\")]\n)\nresult = poller.result()\ncontent = result.contents[0]\n```",
+    "answer": "`begin_analyze`",
+    "explanation": "The `begin_` prefix marks a long-running operation that returns a poller instead of the result. `begin_analyze` takes the analyzer ID and a list of `AnalysisInput` objects, here one with a URL. `begin_create_analyzer` uses the same pattern to create the analyzer from its JSON definition in the first place. After `.result()`, the code loops over `content.fields.items()` and prints `field_data.value` for every field whose `type` is `\"string\"`.",
+    "options": [
+      {
+        "text": "`begin_analyze`",
+        "correct": true,
+        "why": "It submits the inputs to the named analyzer and returns a poller for the analysis."
+      },
+      {
+        "text": "`begin_create_analyzer`",
+        "correct": false,
+        "why": "It creates an analyzer from a schema definition; it does not analyze a file."
+      },
+      {
+        "text": "`begin_analyze_binary`",
+        "correct": false,
+        "why": "It is for raw file bytes, while this code passes a URL inside `AnalysisInput` objects."
+      }
+    ]
+  },
+  {
+    "id": "4.6.4-05",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "rest-api"
+    ],
+    "question": "You call the **Azure Content Understanding** REST API from Python to analyze a file hosted at a URL. How do you build the request?",
+    "answer": "- **POST** to `{endpoint}/contentunderstanding/analyzers/{analyzer}:analyze?api-version=2025-11-01`\n- API key in the **`Ocp-Apim-Subscription-Key`** header\n- JSON body: `inputs` list with the file's `url`\n- For binary file data, use the **`analyzeBinary`** operation instead",
+    "explanation": "The endpoint is the one of your Microsoft Foundry resource, and the analyzer name sits in the path, followed by `:analyze`. Creating an analyzer uses a PUT to the same path without the suffix, so the verb and `:analyze` are what turn it into an analysis call. The response body carries the operation `id`, which you then poll on the `analyzerResults` path."
+  },
+  {
+    "id": "4.6.4-06",
+    "type": "order",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "rest-api",
+      "async-operations"
+    ],
+    "question": "Put the steps in order to analyze a business card with the **Azure Content Understanding** REST API and print its fields.",
+    "answer": "POST to `:analyze` → read the operation `id` → GET `analyzerResults/{id}` → repeat while `Running` → on `Succeeded`, parse the fields.",
+    "explanation": "Every request carries the API key in the `Ocp-Apim-Subscription-Key` header. The status GET is repeated while the status is `Running`. Only a `Succeeded` response holds the result. In the JSON, the fields sit under `result` → `contents` → `fields`. For each field you check `type` and read the type-specific value, such as `valueString`, which prints `ContactName: John Smith`.",
+    "items": [
+      "POST the file URL in the `inputs` list to `analyzers/{analyzer}:analyze`",
+      "Read the operation `id` from the JSON response",
+      "GET `analyzerResults/{id}` to check the status",
+      "Repeat the GET while the status is `Running`",
+      "When the status is `Succeeded`, read the fields from `result.contents`"
+    ]
+  },
+  {
+    "id": "4.6.4-07",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "analysis-results"
+    ],
+    "question": "Name the **three** things that determine what an **Azure Content Understanding** analysis result contains.",
+    "answer": "- **Kind of content** the analyzer is designed for — document, video, image or audio\n- **Schema** of the analyzer — the fields it extracts or generates\n- **Contents of the file** that was analyzed",
+    "explanation": "The same API call can return very different payloads. A document-based analyzer adds an OCR layout of pages, lines and words; the schema decides which named fields appear, such as `ContactName` and `EmailAddress` for a business card; and the file decides the values and how many pages, words and paragraphs there are. So a client has to parse the result for the analyzer it called, not for one fixed format."
+  },
+  {
+    "id": "4.6.4-08",
+    "type": "basic",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "ocr",
+      "analysis-results"
+    ],
+    "question": "A **document**-based **Azure Content Understanding** analyzer extracts the name and email from a scanned business card. What does its result contain?",
+    "answer": "- The **extracted fields**, such as `ContactName` and `EmailAddress`\n- The **OCR layout**: locations of lines, words and paragraphs on each page\n- A **markdown** version of the text",
+    "explanation": "Each field in the JSON carries its `type`, its value, a `confidence` score, a `source` string with its coordinates on the page, and `spans`. A span is an `offset` and `length` into the markdown: `ContactName` has offset 0 and length 10, which is exactly \"John Smith\". The OCR part lists every word and line with its own confidence and location, and the page entry gives `pageNumber`, `width` and `height` in the stated `unit`, here pixels."
+  },
+  {
+    "id": "4.6.4-09",
+    "type": "mc",
+    "section": "4.6.4",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/04-analyze",
+    "tags": [
+      "content-understanding",
+      "rest-api",
+      "analysis-results"
+    ],
+    "question": "You parse the JSON returned by the **Azure Content Understanding** REST API. Which property of a field holds the extracted text of a **string** field such as `ContactName`?",
+    "answer": "**`valueString`**",
+    "explanation": "REST returns fields with a type-specific value property, so you first check `type` and then read the matching property; for a string field that is `valueString`. That is why the parsing code loops over `result` → `contents` → `fields` and checks `field_data['type'] == \"string\"`. The Python SDK spares you the name: its typed field objects expose the value as `field_data.value`.",
+    "options": [
+      {
+        "text": "`valueString`",
+        "correct": true,
+        "why": "The REST JSON stores a string field's value under the type-specific property `valueString`."
+      },
+      {
+        "text": "`value`",
+        "correct": false,
+        "why": "That is the attribute on the SDK's typed field objects, not the property in the REST JSON."
+      },
+      {
+        "text": "`content`",
+        "correct": false,
+        "why": "It holds the text of a word, line or paragraph in the OCR layout, not of a field."
+      },
+      {
+        "text": "`markdown`",
+        "correct": false,
+        "why": "It holds the markdown of the whole content object, not one field's value."
+      }
+    ],
+    "addition": "Other field types use their own property: `valueDate`, `valueTime`, `valueNumber`, `valueInteger`, `valueBoolean`, `valueArray`, `valueObject` and `valueJson`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/get-result"
+  }
+]

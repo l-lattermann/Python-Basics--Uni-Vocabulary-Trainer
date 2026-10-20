@@ -1,0 +1,123 @@
+[
+  {
+    "id": "2.1.2-01",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents"
+    ],
+    "question": "What is an **AI agent**, and how does it differ from a traditional application or a simple chat model?",
+    "answer": "- A **software service that uses generative AI** to understand and perform tasks on behalf of users or other programs\n- Works **independently**: understands context, makes decisions and **takes actions** toward a goal\n- Combines **AI models with tools**",
+    "explanation": "A traditional application follows predetermined rules, so it only does what was coded for each case. A simple chat model only generates text. An agent goes further: it analyzes data, decides on its own and acts, for example by calling a tool. Pairing the model with specialized tools is what turns text generation into automation that adapts to different scenarios."
+  },
+  {
+    "id": "2.1.2-02",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents"
+    ],
+    "question": "Name the **four** ways AI agents add value to an organization, as Microsoft Learn describes them.",
+    "answer": "- **Automation of routine tasks** — repetitive work moves off people\n- **Enhanced decision-making** — insights, trend analysis, predictions and recommendations from large data\n- **Scalability** — capacity grows without proportional extra staff\n- **24/7 availability** — runs continuously without breaks",
+    "explanation": "Automation frees workers for strategic and creative work and raises productivity. Decision support relies on real-time information and lets the agent decide autonomously rather than just produce text. Scalability means an organization grows its capabilities without operational costs rising at the same rate. Round-the-clock availability is a property of all software, so tasks finish promptly and services stay reachable."
+  },
+  {
+    "id": "2.1.2-03",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents"
+    ],
+    "question": "Name the **five** categories of AI agent use cases Microsoft lists, each with what such an agent does.",
+    "answer": "- **Personal productivity agents** — scheduling, email, to-do lists (Microsoft 365 Copilot)\n- **Research agents** — monitor trends, gather data, write reports\n- **Sales agents** — generate and qualify leads, follow up, book calls\n- **Customer service agents** — answer routine inquiries, resolve common issues\n- **Developer agents** — code review, bug fixing, repository management (GitHub Copilot)",
+    "explanation": "The categories differ by who the agent works for. Productivity agents help one user with daily tasks, such as drafting documents in Office. Research agents serve finance, healthcare or marketing teams that must stay current. Sales agents take over administration so sellers can close deals. Customer service agents sit in website or messaging chatbots; Cineplex uses one to process refund requests faster. Developer agents keep codebases updated and enforce coding standards."
+  },
+  {
+    "id": "2.1.2-04",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents",
+      "security",
+      "prompt-injection"
+    ],
+    "question": "Name the **four** AI agent security risks that come from attacks on the agent's **data, inputs and access** (out of eight that Microsoft lists).",
+    "answer": "- **Data leakage and privacy exposure** — confidential data exposed unintentionally\n- **Prompt injection and manipulation attacks** — crafted inputs override intended behavior\n- **Unauthorized access and privilege escalation** — weak access controls reach forbidden systems\n- **Data poisoning** — corrupted training or context data skews decisions",
+    "explanation": "Typical impacts: an agent summarizing internal files puts private data into a customer-facing answer. Hidden instructions in a message make the agent leak system credentials. An agent connected to a CRM exports or deletes records with admin-level rights. A poisoned dataset makes a support agent recommend harmful content. These risks grow because agents access sensitive data and act on their own, so security belongs in the design from the start."
+  },
+  {
+    "id": "2.1.2-05",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents",
+      "security"
+    ],
+    "question": "Name the **four** AI agent security risks that come from **dependencies, autonomy, missing logs and model outputs** (out of eight that Microsoft lists).",
+    "answer": "- **Supply chain vulnerabilities** — external APIs, plugins and endpoints widen the attack surface\n- **Over-reliance on autonomous actions** — unconstrained agent executes unintended actions\n- **Inadequate auditability and logging** — actions cannot be traced\n- **Model inversion and output leakage** — outputs reveal training or prompt data",
+    "explanation": "Typical impacts: a compromised third-party plugin injects malicious code into the agent's workflow. An agent mistakenly sends payments or publishes unverified content. Security teams miss data misuse because activity logs are missing. Repeated queries extract private information from a fine-tuning dataset. Supply chain risk grows with every external API, plugin or model endpoint the agent relies on; over-reliance grows with how autonomous the agent is."
+  },
+  {
+    "id": "2.1.2-06",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents",
+      "security",
+      "rbac"
+    ],
+    "question": "Name the **six** security-by-design mitigation strategies Microsoft recommends for AI agents.",
+    "answer": "- **RBAC and least privilege** permissions\n- **Prompt filtering and validation** layers\n- **Human-in-the-loop approvals** for sandboxed or gated sensitive operations\n- **Comprehensive logging and traceability** of all agent actions\n- Regular audits of **third-party dependencies**\n- Continuous retraining and validation against **data drift** and **poisoning**",
+    "explanation": "Each strategy answers one risk. Least privilege stops an agent from acting with admin rights it does not need. Filtering blocks prompt injection. Human approval guards against over-reliance on autonomous actions such as payments. Logging gives auditability. Dependency audits address supply chain risks. Retraining and validation catch data drift and poisoning attempts. Embedding them early in development is what lets agents run safely in real environments."
+  },
+  {
+    "id": "2.1.2-07",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents",
+      "foundry",
+      "multi-agent"
+    ],
+    "question": "Microsoft Foundry supports two primary agent types, one of which comes in two forms. Name all of them and what defines each.",
+    "answer": "- **Declarative agents** — defined through configuration, not code; two forms:\n  - **Prompt-based agents** — one agent with model, instructions, tools and prompts; the most common type\n  - **Workflow agents** — multi-agent orchestrations defined in **YAML**\n- **Hosted agents** — containerized agents created and deployed in code, hosted by Foundry",
+    "explanation": "Choose by how much control you need. A prompt-based agent is the most accessible start: you configure it, you do not program it. When several agents must collaborate on a complex task, a workflow agent describes that orchestration in YAML, still without code. A hosted agent gives full control over agent logic and execution because you write it yourself, while the platform still manages the infrastructure."
+  },
+  {
+    "id": "2.1.2-08",
+    "type": "basic",
+    "section": "2.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/2-understand-ai-agents-foundry",
+    "tags": [
+      "agents",
+      "foundry",
+      "tool-calling"
+    ],
+    "question": "Microsoft Foundry Agent Service is a fully managed service for building agents. Name its **seven** key features.",
+    "answer": "- **Automatic tool calling** — runs the model, invokes tools, returns results\n- **Securely managed data** — conversation state kept via the **Responses API**\n- **Extensive tool catalog** — built-in and community tools\n- **Model selection** — match performance and cost\n- **Enterprise-grade security** — keyless auth, content safety filters\n- **Customizable storage solutions** — platform-managed or your own Azure Blob storage\n- **Observability and tracing** — monitor, debug, optimize",
+    "explanation": "Fully managed means you build, deploy and scale agents without managing compute or storage. Agent-like experiences used to need heavy coding on standard APIs; now the portal or fewer than 50 lines of code suffice. Compared with calling the Inference API directly, you write no tool-calling integration code and no manual state handling. The tool catalog adds code execution, file search, web search and Azure or external API integrations. Bring-your-own Blob storage gives full visibility and control."
+  }
+]

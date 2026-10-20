@@ -1,0 +1,103 @@
+[
+  {
+    "id": "2.7.2-01",
+    "type": "mc",
+    "section": "2.7.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/2-understand-semantic-kernel-agents",
+    "tags": [
+      "agent-framework",
+      "agents"
+    ],
+    "question": "The **Microsoft Agent Framework** is the next generation of which **two** earlier Microsoft frameworks?",
+    "answer": "**Semantic Kernel** and **AutoGen** — it combines AutoGen's agent abstractions with Semantic Kernel's enterprise features and adds **graph-based workflows**.",
+    "explanation": "The same engineering teams built it. From AutoGen it takes the intuitive agent abstractions; from Semantic Kernel the enterprise-grade features: session-based state management, type safety, execution filters and telemetry. New are graph-based workflows that give explicit control over multi-agent execution paths. Every agent derives from one unified `Agent` base class, so the interface stays the same whichever model provider sits underneath.",
+    "options": [
+      {
+        "text": "Semantic Kernel",
+        "correct": true,
+        "why": "It contributes the enterprise features: session state, type safety, execution filters and telemetry."
+      },
+      {
+        "text": "AutoGen",
+        "correct": true,
+        "why": "It contributes the intuitive agent abstractions."
+      },
+      {
+        "text": "Foundry Agent Service",
+        "correct": false,
+        "why": "It is not a predecessor but the provider the framework connects to — the recommended one for production."
+      },
+      {
+        "text": "Model Context Protocol (MCP)",
+        "correct": false,
+        "why": "MCP is a protocol the framework supports through its MCP clients, not a framework it replaces."
+      }
+    ]
+  },
+  {
+    "id": "2.7.2-02",
+    "type": "basic",
+    "section": "2.7.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/2-understand-semantic-kernel-agents",
+    "tags": [
+      "agent-framework",
+      "agents",
+      "memory"
+    ],
+    "question": "Name the **seven** composable building blocks (key features) of the **Microsoft Agent Framework**.",
+    "answer": "- **Model clients** — unified interface to multiple AI providers\n- **Agent session** — native state for multi-turn context\n- **Context providers** — plug-and-play memory surfacing relevant information\n- **Function tools** — custom functions, auto-registered with generated schema\n- **MCP clients** — Model Context Protocol, tool discovery at runtime\n- **Middleware** — hooks to intercept, log or modify agent actions\n- **Workflow orchestration** — graph-based sequential, concurrent, group chat, handoff",
+    "explanation": "Instead of wiring separate libraries for memory, tool integration and model access by hand, the framework bundles them as blocks you use alone or combine as the solution grows. The pairs to keep apart: the agent session holds the conversation itself, context providers add relevant memory to it. Function tools are functions you register up front, MCP clients discover tools at runtime. Middleware hooks run before and after an agent's actions, workflow orchestration controls the path across several agents."
+  },
+  {
+    "id": "2.7.2-03",
+    "type": "basic",
+    "section": "2.7.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/2-understand-semantic-kernel-agents",
+    "tags": [
+      "agent-framework",
+      "function-calling",
+      "streaming"
+    ],
+    "question": "Name the **five** capabilities every agent in the **Microsoft Agent Framework** supports out of the box, whatever provider powers it.",
+    "answer": "- **Function calling** — automatically invoke registered tools for external APIs and services\n- **Multi-turn conversations** — chat history kept locally or by the service\n- **Structured outputs** — type-safe, schema-validated responses\n- **Streaming responses** — results arrive incrementally as generated\n- **Service-provided tools** — built-in code execution, file search, web search where the provider supports them",
+    "explanation": "All agents share the same `Agent` base class, so these capabilities do not depend on provider-specific APIs and you write application logic once. Two of them still depend on the provider: where the chat history lives (local or service-side) and which built-in tools exist. Function calling uses tools you register yourself; service-provided tools are hosted and run by the provider."
+  },
+  {
+    "id": "2.7.2-04",
+    "type": "basic",
+    "section": "2.7.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/2-understand-semantic-kernel-agents",
+    "tags": [
+      "agent-framework",
+      "memory",
+      "model-choice"
+    ],
+    "question": "Which **Microsoft Agent Framework** providers offer **service chat history**, and which do not?",
+    "answer": "- **Yes:** **Foundry Agent Service**, **Azure OpenAI Responses**, **OpenAI Responses**\n- **No:** **Azure OpenAI Chat Completion**, **OpenAI Chat Completion**, **Anthropic Claude**, **Amazon Bedrock**, **GitHub Copilot**, **Ollama** (OpenAI-compatible)",
+    "explanation": "The pattern to remember: the Foundry Agent Service and the two Responses APIs keep history on the service side; every Chat Completion-style provider and the third-party ones do not, so the agent must keep the conversation itself. Because all providers sit behind the same interface, you can switch between them as models or requirements change — only the client configuration changes, not the agent logic."
+  },
+  {
+    "id": "2.7.2-05",
+    "type": "basic",
+    "section": "2.7.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/2-understand-semantic-kernel-agents",
+    "tags": [
+      "agent-framework",
+      "memory",
+      "foundry"
+    ],
+    "question": "You build a production agent with the **Microsoft Agent Framework** and must keep conversation context across turns without managing that state yourself. Which provider is recommended, and why?",
+    "answer": "The **Foundry Agent Service** — its **service-side chat history** persists the agent session across turns automatically.",
+    "explanation": "You connect to the Foundry project by authenticating with your Azure credentials, then create agents that use the Agent Service's capabilities. Beyond persistent chat history these are dynamic tool discovery through Model Context Protocol (MCP) tool support and integration with Azure services. That combination is why the course calls Foundry the recommended provider for production scenarios where keeping context is critical."
+  }
+]

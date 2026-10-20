@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2.9.5-01",
+    "type": "order",
+    "section": "2.9.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/5-connect-to-a2a-agent",
+    "tags": ["a2a", "agents", "multi-agent"],
+    "question": "Put in order the steps a client takes to connect to and use a remote agent over the **Agent-to-Agent (A2A) protocol**.",
+    "answer": "Know the **base URL** → fetch the **Agent Card** from the well-known endpoint → initialize the client with the card → send a request → handle the response.",
+    "items": [
+      "Know the base URL of the A2A agent server",
+      "Retrieve the Agent Card from the server's well-known endpoint",
+      "Initialize the client with the Agent Card to establish the connection",
+      "Send a request with a role, the message content and a unique ID",
+      "Handle the response: a direct message or a task-based result"
+    ],
+    "explanation": "The client is the bridge between your application and the agent server. Its three jobs are to discover the Agent Card, send requests, and interpret the responses. The card comes first because it holds the agent's metadata and endpoints; the server typically exposes it at `/.well-known/agent-card.json`. Only once the client is initialized with the card is it ready to send messages."
+  },
+  {
+    "id": "2.9.5-02",
+    "type": "basic",
+    "section": "2.9.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/5-connect-to-a2a-agent",
+    "tags": ["a2a", "streaming"],
+    "question": "Name the **two** types of requests an A2A client can send to a remote agent, and what each one does.",
+    "answer": "- **Non-streaming request** — sends a message and waits for one complete response\n- **Streaming request** — receives the response incrementally while the agent is still working",
+    "explanation": "Non-streaming suits simple interactions where a single answer is expected. Streaming suits long-running tasks or keeping the user updated in real time; it is asynchronous and may deliver partial results before the final output. Both kinds carry a `role` (for example `user`) and the message content, and each request should be uniquely identifiable, usually by a generated ID."
+  },
+  {
+    "id": "2.9.5-03",
+    "type": "basic",
+    "section": "2.9.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/5-connect-to-a2a-agent",
+    "tags": ["a2a", "agents"],
+    "question": "Name the **two** kinds of response an A2A client must be prepared to handle from a remote agent.",
+    "answer": "- **Direct message** — an immediate output, such as text or structured content\n- **Task-based response** — a **task object** for ongoing work, needing follow-up calls to check status or get results",
+    "explanation": "Simple agents usually answer with a message straight away. More complex agents return task objects instead, which let the client track a task or cancel it, and they may manage several tasks at once. A client should be prepared to receive and interpret either one. Cancellation reaches the agent's executor, whose `cancel` operation a simple agent may not support."
+  },
+  {
+    "id": "2.9.5-04",
+    "type": "mc",
+    "section": "2.9.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/5-connect-to-a2a-agent",
+    "tags": ["a2a", "streaming"],
+    "question": "Your app sends a long-running job to a remote agent over the A2A protocol. Users must see **partial results as the agent produces them**. How should the client send the request?",
+    "answer": "As a **streaming request**.",
+    "explanation": "A streaming request returns output incrementally while the agent processes it, so the user is updated in real time. A non-streaming request only returns once the response is complete. That is fine for simple, single-answer interactions, but leaves the user waiting on a long task.",
+    "options": [
+      {"text": "As a streaming request", "correct": true, "why": "Streaming delivers responses incrementally and asynchronously, including partial results before the final output."},
+      {"text": "As a non-streaming request", "correct": false, "why": "A non-streaming request waits for one complete response, so nothing reaches the user until the job finishes."},
+      {"text": "As a non-streaming request, then polling the returned task object for its status", "correct": false, "why": "Follow-up calls on a task object check its status or retrieve the result; they do not stream the agent's partial output."}
+    ]
+  }
+]

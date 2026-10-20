@@ -1,0 +1,99 @@
+[
+  {
+    "id": "1.6.9-01",
+    "type": "mc",
+    "section": "1.6.9",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/8-knowledge-check",
+    "tags": [
+      "responsible-ai",
+      "impact-assessment"
+    ],
+    "question": "Why should you consider creating an AI Impact Assessment when designing a generative AI solution?",
+    "answer": "**To document the purpose, expected use, and potential harms** for the solution.",
+    "explanation": "The impact assessment belongs to Map, the first stage of the responsible AI process. When you identify potential harms, the Microsoft Responsible AI Impact Assessment Guide and its template give you a structured way to document them. You then prioritize those harms by likelihood and impact, weighing intended use against possible misuse, test them, and share the verified harms with stakeholders. The assessment is about harms, not about cost or legal protection.",
+    "options": [
+      {
+        "text": "To make a legal case that indemnifies you from responsibility for harms caused by the solution",
+        "correct": false,
+        "why": "Unit 1.6.3 uses the assessment to identify and document harms so they can be mitigated; nothing in the module treats it as legal protection from responsibility."
+      },
+      {
+        "text": "To document the purpose, expected use, and potential harms for the solution",
+        "correct": true,
+        "why": "Unit 1.6.3 recommends the Responsible AI Impact Assessment Guide and template to document potential harms, prioritized against the solution's intended use."
+      },
+      {
+        "text": "To evaluate the cost of cloud services required to implement your solution",
+        "correct": false,
+        "why": "Cost planning is not part of the responsible AI process in units 1.6.2 to 1.6.6; the assessment is about harms, not cloud spend."
+      }
+    ]
+  },
+  {
+    "id": "1.6.9-02",
+    "type": "mc",
+    "section": "1.6.9",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/8-knowledge-check",
+    "tags": [
+      "guardrails",
+      "content-filters",
+      "responsible-ai"
+    ],
+    "question": "What capability of Microsoft Foundry helps mitigate harmful content generation at the Safety System level?",
+    "answer": "**Guardrails**.",
+    "explanation": "The safety system layer holds platform-level configurations. Foundry guardrails suppress prompts and responses using content filters that rate four harm categories (hate and fairness, sexual, violence, self-harm) at four severity levels, plus controls such as prompt shields and task-adherence detection. Fine-tuning works one layer below, at the model layer, by scoping the model's responses to your scenario.",
+    "options": [
+      {
+        "text": "DALL-E model support",
+        "correct": false,
+        "why": "Choosing which model to use is a model-layer decision (unit 1.6.5), and an image model is not a harm-mitigation capability at all."
+      },
+      {
+        "text": "Fine-tuning",
+        "correct": false,
+        "why": "Unit 1.6.5 lists fine-tuning as a mitigation at the model layer, not the safety system layer."
+      },
+      {
+        "text": "Guardrails",
+        "correct": true,
+        "why": "Unit 1.6.5: Foundry guardrails with content filters and prompt shields are the platform-level mitigations of the safety system layer."
+      }
+    ]
+  },
+  {
+    "id": "1.6.9-03",
+    "type": "mc",
+    "section": "1.6.9",
+    "exam_area": "plan",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/8-knowledge-check",
+    "tags": [
+      "responsible-ai",
+      "release-planning"
+    ],
+    "question": "Why should you consider a phased delivery plan for your generative AI solution?",
+    "answer": "**To gather feedback and identify issues** before releasing the solution more broadly.",
+    "explanation": "A phased delivery plan is part of the Manage stage. You first release to a restricted group of users, learn from their feedback and fix problems before a wider audience sees them. It sits beside the incident response plan, the rollback plan, the ability to block harmful responses or misusing users, user feedback channels and privacy-compliant telemetry. It complements the earlier stages; it does not replace them.",
+    "options": [
+      {
+        "text": "To enable you to gather feedback and identify issues before releasing the solution more broadly",
+        "correct": true,
+        "why": "Unit 1.6.6: a phased delivery plan releases first to a restricted group of users so you can gather feedback and identify problems before a wider release."
+      },
+      {
+        "text": "To eliminate the need to map, measure, mitigate, and manage potential harms",
+        "correct": false,
+        "why": "Unit 1.6.2 makes all four stages the process; the phased delivery plan is itself part of the Manage stage, so it cannot remove the need for them."
+      },
+      {
+        "text": "To enable you to charge more for the solution",
+        "correct": false,
+        "why": "Unit 1.6.6 gives the phased plan a risk purpose, gathering feedback and finding problems early; pricing plays no role."
+      }
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "2.9.2-01",
+    "type": "basic",
+    "section": "2.9.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/2-define-a2a-agent",
+    "tags": ["a2a", "multi-agent"],
+    "question": "Name the **three** advantages the **Agent-to-Agent (A2A) protocol** offers for communication between AI agents.",
+    "answer": "- **Enhanced Collaboration** — agents from different vendors and platforms share context and work together\n- **Flexible Model Selection** — each agent picks its own LLM, optimized or fine-tuned per agent\n- **Integrated Authentication** — authentication is built into the protocol",
+    "explanation": "A2A is a standardized way for agents to share context, invoke each other's capabilities and exchange information securely. Collaboration is the reason to use it: systems that are traditionally disconnected can be automated together. Model selection is the contrast to some MCP scenarios, which rely on a single LLM connection. Built-in authentication gives a robust security framework for secure agent-to-agent communication."
+  },
+  {
+    "id": "2.9.2-02",
+    "type": "basic",
+    "section": "2.9.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/2-define-a2a-agent",
+    "tags": ["a2a", "agent-skill"],
+    "question": "Name the **six** key elements of an **Agent Skill** in the Agent-to-Agent (A2A) protocol.",
+    "answer": "- **ID** — unique identifier of the skill\n- **Name** — human-readable name\n- **Description** — detailed explanation of what it does\n- **Tags** — keywords for categorization and discovery\n- **Examples** — sample prompts or use cases\n- **Input/Output Modes** — supported data formats or media types, such as text or JSON",
+    "explanation": "An Agent Skill describes one specific capability the agent can perform. It is a building block that tells clients and other agents which tasks the agent handles. A simple \"Hello World\" skill could return a greeting as text; a blog-writing skill could accept a topic and return a suggested title or outline. Tags and examples exist so that others can find the skill and see how to call it."
+  },
+  {
+    "id": "2.9.2-03",
+    "type": "basic",
+    "section": "2.9.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/2-define-a2a-agent",
+    "tags": ["a2a", "agent-card", "discovery"],
+    "question": "Name the **six** key elements of an **Agent Card** in the Agent-to-Agent (A2A) protocol.",
+    "answer": "- **Identity Information** — name, description, version\n- **Endpoint URL** — where the A2A service is reached\n- **Capabilities** — supported A2A features, such as streaming or push notifications\n- **Default Input/Output Modes** — primary media types\n- **Skills** — the agent's invocable skills\n- **Authentication Support** — whether credentials are required",
+    "explanation": "The Agent Card is the agent's digital business card: a structured document that a routing agent or client retrieves to discover what the agent can do and how to interact with it. A skill describes one capability; the card describes the whole agent and lists all its skills. If the card misstates skills or endpoints, clients cannot discover the agent or call it correctly."
+  },
+  {
+    "id": "2.9.2-04",
+    "type": "mc",
+    "section": "2.9.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/2-define-a2a-agent",
+    "tags": ["a2a", "agent-card", "streaming"],
+    "question": "A client must find out whether a remote A2A agent supports **streaming** responses and **push notifications** before it calls the agent. Which element of the agent's **Agent Card** declares this?",
+    "answer": "**Capabilities**.",
+    "explanation": "The Agent Card separates what the agent does from how the protocol is used. Skills and modes describe the work and the data formats. Capabilities lists which A2A protocol features the agent supports, such as streaming or push notifications. A client that knows this can choose between a streaming request and a request that waits for one complete response.",
+    "options": [
+      {"text": "Capabilities", "correct": true, "why": "This element lists the supported A2A features, such as streaming or push notifications."},
+      {"text": "Skills", "correct": false, "why": "Skills lists the tasks the agent can perform for other agents, not the protocol features it supports."},
+      {"text": "Default Input/Output Modes", "correct": false, "why": "These are the primary media types the agent handles, such as text or JSON, not protocol features."},
+      {"text": "Authentication Support", "correct": false, "why": "This only indicates whether the agent requires credentials for access."}
+    ]
+  },
+  {
+    "id": "2.9.2-05",
+    "type": "order",
+    "section": "2.9.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/2-define-a2a-agent",
+    "tags": ["a2a", "multi-agent", "orchestration"],
+    "question": "A technical writer workflow uses a title agent and an outline agent, both A2A agents with published Agent Cards. Put the steps of the **routing agent** in order.",
+    "answer": "Retrieve the **Agent Cards** → title agent → outline agent → return the outline.",
+    "explanation": "Discovery comes first: only from each agent's card does the routing agent know which skill exists where. It then routes the request to the matching skill. The responses come back in the formats the agents support, so the output of one agent can feed the next. This chaining is what turns two single-purpose agents into one cohesive result.",
+    "items": [
+      "Retrieve each agent's Agent Card to discover its skills",
+      "Send the user's request to the title agent's skill",
+      "Pass the generated title to the outline agent",
+      "Return the final outline to the user"
+    ]
+  }
+]

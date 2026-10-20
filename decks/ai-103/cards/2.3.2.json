@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2.3.2-01",
+    "type": "basic",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "tools",
+      "agents"
+    ],
+    "question": "What is **dynamic tool discovery** for an AI agent that uses the Model Context Protocol (MCP), and what does it mean for maintaining the agent's tools?",
+    "answer": "The agent **queries a centralized MCP server** at runtime instead of having hardcoded knowledge of each tool.\n- Tools are added, updated or removed **centrally, without changing agent code**\n- The agent always uses the **latest version** of a tool\n- Tool-management complexity moves into a **dedicated service**",
+    "explanation": "The MCP server acts as a live catalog: it exposes tools, with descriptions of what they do, that the agent can understand and call. Without it, every new or changed tool means editing and redeploying the agent. Discovery is especially useful when tools evolve rapidly or when many teams manage different APIs and services."
+  },
+  {
+    "id": "2.3.2-02",
+    "type": "basic",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "agents"
+    ],
+    "question": "Name the **three** advantages the **Model Context Protocol (MCP)** gives AI agents over integrating each API directly.",
+    "answer": "- **Dynamic Tool Discovery** — the agent automatically receives the list of available tools and their descriptions from a server\n- **Interoperability Across LLMs** — works with different LLMs, so you can switch or evaluate core models without reworking integrations\n- **Standardized Security** — one consistent authentication method across multiple MCP servers",
+    "explanation": "Traditional APIs often need manual coding for each integration and another update whenever the API changes. MCP replaces that with an **\"integrate once\"** approach, which improves adaptability and reduces maintenance. Standardized security means you no longer manage separate keys or authentication protocols for each API, which makes agent deployments easier to scale."
+  },
+  {
+    "id": "2.3.2-03",
+    "type": "mc",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "model-choice"
+    ],
+    "question": "Your agent's tools are integrated through **MCP servers**. You want to try a different core LLM for better performance **without reworking the tool integrations**. Which MCP advantage makes this possible?",
+    "answer": "**Interoperability Across LLMs**.",
+    "explanation": "MCP sits between the model and the tools, and it works with different large language models. The tool integration therefore does not depend on one specific model, so you can switch models or evaluate several of them against the same set of tools.",
+    "options": [
+      {
+        "text": "Interoperability Across LLMs",
+        "correct": true,
+        "why": "MCP works with different LLMs, so core models can be switched or evaluated without reworking integrations."
+      },
+      {
+        "text": "Dynamic Tool Discovery",
+        "correct": false,
+        "why": "It lets the agent receive the tool list from a server at runtime; it says nothing about swapping the model."
+      },
+      {
+        "text": "Standardized Security",
+        "correct": false,
+        "why": "It gives one consistent authentication method across MCP servers, not model independence."
+      },
+      {
+        "text": "Modularity",
+        "correct": false,
+        "why": "It keeps agents simple by delegating tool details; it is a benefit of discovery, not of model choice."
+      }
+    ]
+  },
+  {
+    "id": "2.3.2-04",
+    "type": "basic",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "tools",
+      "agents"
+    ],
+    "question": "Name the **three** components of the dynamic tool discovery pipeline for an **Azure AI Agent** with MCP, and the job of each.",
+    "answer": "- **MCP server** — hosts the available tools\n- **MCP client** — connects to the server, discovers the tools dynamically and generates function wrappers for them\n- **Azure AI Agent** — uses the available tools to respond to user requests",
+    "explanation": "The client sits in the middle: it fetches the tools from the server and adds the generated wrappers to the agent's tool definitions. The agent therefore needs no hardcoded knowledge of any single tool. This split is what lets tools change on the server while the agent keeps running unchanged."
+  },
+  {
+    "id": "2.3.2-05",
+    "type": "basic",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "tools",
+      "python"
+    ],
+    "question": "On a Python **MCP server**, how do you expose a function as a tool that MCP clients can discover, and what is a tool in MCP?",
+    "answer": "- Decorate the function with **`@mcp.tool`**\n- A **tool** is an MCP primitive type that lets a server expose executable functionality to clients",
+    "explanation": "Every function decorated with `@mcp.tool` becomes part of the server's catalog. A client that connects to the server fetches these tools dynamically and generates function wrappers that are added to the agent's tool definitions. Adding a decorated function on the server therefore adds a tool without touching the agent, which is what makes tools usable for actions beyond language generation."
+  },
+  {
+    "id": "2.3.2-06",
+    "type": "basic",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "tools"
+    ],
+    "question": "Name the **four** benefits of using **dynamic tool discovery with MCP** for AI agents.",
+    "answer": "- **Scalability** — add or update tools without redeploying agents\n- **Modularity** — agents stay simple and focus on delegation, not tool details\n- **Maintainability** — centralized tool management reduces duplication and errors\n- **Flexibility** — supports diverse tool types and complex workflows by aggregating capabilities",
+    "explanation": "All four follow from moving the tools out of the agent into a central MCP server. Scalability is about growth and redeployment, Modularity about keeping the agent's own logic small, Maintainability about having one place to fix things, and Flexibility about combining many kinds of tools. Together they let agents adapt to changing capabilities in real time."
+  },
+  {
+    "id": "2.3.2-07",
+    "type": "mc",
+    "section": "2.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/2-understand-mcp-tool-discovery",
+    "tags": [
+      "mcp",
+      "agents"
+    ],
+    "question": "Several teams build agents that call the same internal tools. The architect wants each agent to stay simple and **focus on delegating work** rather than managing tool details, so the tools live on an MCP server. Which benefit of dynamic tool discovery does this describe?",
+    "answer": "**Modularity**.",
+    "explanation": "Modularity is the benefit about the agent's own shape: it delegates to tools and leaves their details to the MCP server. The neighbouring benefits are about other things — growth without redeploying (Scalability), one place for fixes (Maintainability) and many tool types (Flexibility).",
+    "options": [
+      {
+        "text": "Modularity",
+        "correct": true,
+        "why": "Agents remain simple and focus on delegation rather than managing tool details."
+      },
+      {
+        "text": "Scalability",
+        "correct": false,
+        "why": "It is about adding or updating tools without redeploying agents."
+      },
+      {
+        "text": "Maintainability",
+        "correct": false,
+        "why": "It is about centralized tool management reducing duplication and errors."
+      },
+      {
+        "text": "Flexibility",
+        "correct": false,
+        "why": "It is about supporting diverse tool types and complex workflows by aggregating capabilities."
+      }
+    ]
+  }
+]

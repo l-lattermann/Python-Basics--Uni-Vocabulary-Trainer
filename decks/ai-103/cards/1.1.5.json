@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1.1.5-01",
+    "type": "basic",
+    "section": "1.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/5-tools-and-sdks",
+    "tags": [
+      "sdk",
+      "foundry-sdk",
+      "openai-api"
+    ],
+    "question": "Name the **three** kinds of APIs and SDKs you plan to use when building AI solutions on Azure with Microsoft Foundry, and what each one is for.",
+    "answer": "- **Microsoft Foundry SDK** — connect to Foundry **projects** and Foundry-specific assets such as **agents** and **Foundry IQ** knowledge stores\n- **OpenAI API** — use **OpenAI SDKs** to build chat apps on Foundry models that support OpenAI syntax\n- **Foundry Tools SDKs** — service-specific libraries to consume Foundry Tools; the tools also have **REST APIs**",
+    "explanation": "The split follows what you talk to. Project assets that only exist in Foundry, like agents and Foundry IQ knowledge, need the Foundry SDK. A plain chat app on a model that speaks OpenAI syntax can use the familiar OpenAI SDKs. Prebuilt services such as Language or Speech come with their own per-service libraries, or you call their REST endpoints directly. You can write all of this in C#, Python, Node, TypeScript, Java and other languages.",
+    "addition": "In Python, the Foundry SDK is the `azure-ai-projects` package. You create an `AIProjectClient` with the project endpoint `https://<resource-name>.services.ai.azure.com/api/projects/<project-name>`, and `project.get_openai_client()` returns an OpenAI client.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/sdk-overview"
+  },
+  {
+    "id": "1.1.5-02",
+    "type": "mc",
+    "section": "1.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/5-tools-and-sdks",
+    "tags": [
+      "sdk",
+      "foundry-sdk"
+    ],
+    "question": "A Python app must connect to a Microsoft Foundry project, use the project's **agents** and query a **Foundry IQ** knowledge store. Which SDK fits?",
+    "answer": "The **Microsoft Foundry SDK**.",
+    "explanation": "Agents and Foundry IQ knowledge stores are Foundry-specific assets of a project, and the Foundry SDK is the library made to reach them. The OpenAI SDKs only cover chat on models that support OpenAI syntax. Foundry Tools SDKs target single prebuilt services. The Foundry Toolkit is an editor extension, not a library your app calls.",
+    "options": [
+      {
+        "text": "Microsoft Foundry SDK",
+        "correct": true,
+        "why": "It connects code to Foundry projects and Foundry-specific assets such as agents and Foundry IQ knowledge stores."
+      },
+      {
+        "text": "OpenAI SDK through the OpenAI API",
+        "correct": false,
+        "why": "It builds chat applications on Foundry models that support OpenAI syntax, not access to Foundry-specific project assets."
+      },
+      {
+        "text": "Foundry Tools SDKs",
+        "correct": false,
+        "why": "They are service-specific libraries for prebuilt Foundry Tools such as Language or Speech, not for agents or Foundry IQ."
+      },
+      {
+        "text": "Foundry Toolkit for Visual Studio Code",
+        "correct": false,
+        "why": "It is a VS Code extension that helps the developer manage and test resources; the app itself does not call it."
+      }
+    ]
+  },
+  {
+    "id": "1.1.5-03",
+    "type": "basic",
+    "section": "1.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/5-tools-and-sdks",
+    "tags": [
+      "vs-code",
+      "foundry-toolkit"
+    ],
+    "question": "Name the **five** tasks the **Foundry Toolkit extension for Visual Studio Code** simplifies when you build Microsoft Foundry generative AI apps.",
+    "answer": "- **Browse and manage project resources** — deployed models, agents, connections, vector stores\n- **Deploy models** from the model catalog\n- **Test models and agents** in integrated playgrounds\n- **Configure declarative and hosted agents** with a visual designer and YAML files\n- **Generate integration code** to connect agents to your apps",
+    "explanation": "Many of these tasks can also be done in the Microsoft Foundry portal, but developers still need to write, test and deploy code. The toolkit brings the project into Visual Studio Code: you deploy a model from the catalog, try it or an agent in a playground, define the agent visually or in YAML, and then generate the code that connects it to your app, all in one editor.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.1.5-foundry-toolkit-vscode.png",
+        "alt": "Foundry Toolkit in VS Code: a Resources tree with Models, Prompt Agents, Workflows, Hosted Agents, Tools and Knowledge, and a Tools list with Model Catalog, Model Playground, Remote and Local Agent Playgrounds and Deploy Hosted Agents."
+      }
+    ]
+  },
+  {
+    "id": "1.1.5-04",
+    "type": "basic",
+    "section": "1.1.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/5-tools-and-sdks",
+    "tags": [
+      "vs-code",
+      "github"
+    ],
+    "question": "Name the **four** development tools recommended for building AI apps on Azure, two editors and two GitHub offerings, and what each one is for.",
+    "answer": "- **Visual Studio** — an **IDE**, suits .NET developers building Windows apps\n- **Visual Studio Code** — a **code editor**, suits web developers using many open-source languages and libraries\n- **GitHub** — source control and DevOps management\n- **GitHub Copilot** — AI assistant for developer productivity",
+    "explanation": "Both editors are suitable for AI apps on Azure. Pick the one that supports the languages, SDKs and APIs you need and that you are most comfortable with. Visual Studio and VS Code both integrate natively with GitHub, which makes it a central part of team development, and both give access to GitHub Copilot inside the editor."
+  },
+  {
+    "id": "1.1.5-05",
+    "type": "basic",
+    "section": "1.1.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/5-tools-and-sdks",
+    "tags": [
+      "sdk",
+      "openai-api"
+    ],
+    "question": "Your team already builds chat apps with the **OpenAI SDKs**. A new chat app must run on a Microsoft Foundry model that supports OpenAI syntax, and the team wants to keep its SDKs. Which API do you plan to use?",
+    "answer": "The **OpenAI API**, called through the OpenAI SDKs.",
+    "explanation": "The OpenAI API lets OpenAI SDKs talk to Foundry models that support OpenAI syntax, so a plain chat app needs no Foundry-specific library. The Microsoft Foundry SDK only becomes necessary when the code must reach Foundry-specific project assets, such as agents or Foundry IQ knowledge stores. Foundry Tools SDKs serve the prebuilt AI services, not chat models.",
+    "addition": "Current docs recommend the OpenAI SDK for maximum OpenAI compatibility, lowest latency and embeddings, against `https://<resource-name>.openai.azure.com/openai/v1`. They recommend the Foundry SDK for agents, evaluations and other Foundry-specific features.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/sdk-overview"
+  }
+]

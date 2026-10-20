@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1.3.8-01",
+    "type": "mc",
+    "section": "1.3.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/07-knowledge-check",
+    "tags": ["endpoints", "openai-sdk"],
+    "question": "Which endpoint offers the broadest support for OpenAI APIs with Foundry Models?",
+    "answer": "**The Azure OpenAI endpoint**.",
+    "explanation": "Every Foundry project has two endpoints. The Azure OpenAI endpoint (`https://{resource-name}.openai.azure.com/openai/v1`) is used with the OpenAI SDK, which gives full OpenAI API compatibility: Chat Completions, Responses and Images, and portability between OpenAI and Azure OpenAI. The project endpoint is used with the Foundry SDK's `AIProjectClient` for Foundry-specific features such as agents, evaluations, tracing and connections.",
+    "options": [
+      {"text": "The Foundry project endpoint", "correct": false, "why": "It serves the Foundry SDK's AIProjectClient for Foundry-native features such as agents, evaluations, tracing and connections, not maximum OpenAI API compatibility (unit 1.3.3, Choose an endpoint and SDK)."},
+      {"text": "The Azure OpenAI endpoint", "correct": true, "why": "Used with the OpenAI SDK, it gives full OpenAI API compatibility, including the Chat Completions, Responses and Images APIs (unit 1.3.3, Choose an endpoint and SDK)."},
+      {"text": "The Foundry Tools endpoint", "correct": false, "why": "It is not one of a project's two endpoints; a Foundry project provides only a project endpoint and an Azure OpenAI endpoint (unit 1.3.3, Choose an endpoint and SDK)."}
+    ]
+  },
+  {
+    "id": "1.3.8-02",
+    "type": "mc",
+    "section": "1.3.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/07-knowledge-check",
+    "tags": ["foundry-sdk", "python"],
+    "question": "Which package must you install to use the Microsoft Foundry SDK in Python?",
+    "answer": "Package **`azure-ai-projects`**.",
+    "explanation": "The Foundry SDK for Python is the Azure AI Projects library, installed with `pip install azure-ai-projects`. It pulls in `openai` and `azure-identity` as dependencies. You import `AIProjectClient` from `azure.ai.projects` and call its `get_openai_client()` method to get a chat client. That chat functionality is derived from the OpenAI SDK, which is why `openai` comes along.",
+    "options": [
+      {"text": "Package `azure-foundry`", "correct": false, "why": "The course names no such package; the Foundry SDK's Python library is Azure AI Projects (unit 1.3.3, Choose an endpoint and SDK)."},
+      {"text": "Package `azure-ai-projects`", "correct": true, "why": "The course installs the Foundry SDK with `pip install azure-ai-projects`, which also brings `openai` and `azure-identity` (unit 1.3.3, Choose an endpoint and SDK)."},
+      {"text": "Package `microsoft-foundry-sdk`", "correct": false, "why": "The course names no such package; the Foundry SDK ships as `azure-ai-projects` on PyPI (unit 1.3.3, Choose an endpoint and SDK)."}
+    ]
+  },
+  {
+    "id": "1.3.8-03",
+    "type": "mc",
+    "section": "1.3.8",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/07-knowledge-check",
+    "tags": ["responses-api", "openai-sdk"],
+    "question": "Which method do you use to generate responses with the Responses API?",
+    "answer": "**`client.responses.create()`**.",
+    "explanation": "On an OpenAI-compatible client, from the Foundry SDK or the OpenAI SDK, `responses.create()` takes a model deployment name and an `input`. The Responses API is stateful: pass a previous response's `id` as `previous_response_id` to continue a conversation. `chat.completions.create()` belongs to the older ChatCompletions API, where you track the message history yourself.",
+    "options": [
+      {"text": "client.chat.completions.create()", "correct": false, "why": "This method submits a list of messages to the ChatCompletions API, not the Responses API (unit 1.3.5, Generate responses with the ChatCompletions API)."},
+      {"text": "client.get\\_response\\_id()", "correct": false, "why": "No such method appears; a response's ID is read from its `id` property and passed as `previous_response_id` (unit 1.3.4, Generate responses with the Responses API)."},
+      {"text": "client.responses.create()", "correct": true, "why": "The course generates every Responses API answer with `responses.create()` on an OpenAI-compatible client (unit 1.3.4, Generate responses with the Responses API)."}
+    ]
+  }
+]

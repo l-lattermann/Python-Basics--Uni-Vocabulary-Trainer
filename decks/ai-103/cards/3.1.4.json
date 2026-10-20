@@ -1,0 +1,55 @@
+[
+  {
+    "id": "3.1.4-01",
+    "type": "basic",
+    "section": "3.1.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/6-extract-entities",
+    "tags": [
+      "ner",
+      "azure-language"
+    ],
+    "question": "**Named entity recognition** in Azure Language in Foundry Tools groups the entities it finds into categories. Name the **seven** example categories the course lists.",
+    "answer": "- **Person** — people, e.g. \"Bill Gates\"\n- **Location** — places, e.g. \"Albuquerque\"\n- **DateTime** — dates and times, e.g. \"April 4, 1975\"\n- **Organization** — companies and institutions, e.g. \"Microsoft\"\n- **Address** — postal addresses\n- **Email** — email addresses\n- **URL** — web addresses",
+    "explanation": "Named entity recognition (NER) finds the things a text mentions and labels each one with a category; categories can also have subcategories. The seven are examples, not the full set: the service returns further ones such as **PersonType** for a role like \"CEO\". You use NER when you want to know *who, where and when* a text talks about, for example to index news articles by people, places and dates."
+  },
+  {
+    "id": "3.1.4-02",
+    "type": "mc",
+    "section": "3.1.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/6-extract-entities",
+    "tags": [
+      "ner",
+      "python",
+      "sdk"
+    ],
+    "question": "Complete the code so it lists the people, places, organizations and dates mentioned in each document, using the Azure Language Python SDK (`TextAnalyticsClient`).\n\n```python\ndocuments = [\"Satya Nadella became CEO of Microsoft on February 4, 2014.\"]\n\nresponse = client.___(documents=documents)\nfor doc in response:\n    for entity in doc.entities:\n        print(f\"{entity.text} ({entity.category})\")\n```",
+    "answer": "`recognize_entities`",
+    "explanation": "`recognize_entities` runs named entity recognition. Its input is a list of documents, like every other Azure Language call, and the response holds one result per document. Each entity carries its `text` and its `category`, so this example prints \"Satya Nadella (Person)\", \"CEO (PersonType)\", \"Microsoft (Organization)\" and \"February 4, 2014. (DateTime)\".",
+    "options": [
+      {
+        "text": "`recognize_entities`",
+        "correct": true,
+        "why": "It runs named entity recognition and returns each entity with its text and category."
+      },
+      {
+        "text": "`recognize_pii_entities`",
+        "correct": false,
+        "why": "It finds sensitive personal details for extraction or redaction — the PII task, not general named entity recognition."
+      },
+      {
+        "text": "`detect_language`",
+        "correct": false,
+        "why": "It returns the primary language of each document, and its results have no `entities` attribute."
+      },
+      {
+        "text": "`extract_key_phrases`",
+        "correct": false,
+        "why": "Key phrase extraction is a separate, deprecated Azure Language capability; it returns phrases, not categorized entities."
+      }
+    ]
+  }
+]

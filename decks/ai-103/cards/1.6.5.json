@@ -1,0 +1,153 @@
+[
+  {
+    "id": "1.6.5-01",
+    "type": "basic",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "responsible-ai",
+      "harms"
+    ],
+    "question": "Name the **four** layers, from the inside out, at which Microsoft's responsible generative AI guidance applies mitigations for potential harms.",
+    "answer": "1. **Model** — the generative AI model(s) at the heart of the solution\n2. **Safety system** — platform-level configurations such as Foundry guardrails\n3. **System message and grounding** — how the prompts sent to the model are built\n4. **User experience** — the application UI plus the documentation for users and stakeholders",
+    "explanation": "Mitigation is layered: techniques can be applied at each of the four layers, from the model at the heart of the solution out to the application and documentation its users see. Mitigation follows measurement: once you have a baseline of harmful output, you apply mitigations, retest the modified system and compare its harm levels against that baseline.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.6.5-mitigation-layers.png",
+        "alt": "Four nested boxes: 1 model innermost, wrapped by 2 safety system, 3 system message and grounding, and 4 user experience outermost."
+      }
+    ]
+  },
+  {
+    "id": "1.6.5-02",
+    "type": "basic",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "responsible-ai",
+      "model-selection",
+      "fine-tuning"
+    ],
+    "question": "Your generative AI solution only has to classify short, specific text inputs, and you want to lower the risk of harmful output at the **model layer**. Which **two** mitigations apply there?",
+    "answer": "- **Select an appropriate model** — a simpler model that does the job instead of a powerful, versatile one like GPT-4\n- **Fine-tune** a foundation model on your own training data",
+    "explanation": "A large general-purpose model can generate far more than a narrow task needs, and everything it can generate is a possible harm. A simpler model that still provides the required function carries a lower risk of harmful content. Fine-tuning works in the same direction: training on your own data makes responses more likely to be relevant and scoped to your scenario."
+  },
+  {
+    "id": "1.6.5-03",
+    "type": "basic",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "content-filters",
+      "guardrails"
+    ],
+    "question": "In the safety system of Microsoft Foundry, what do **guardrails** base the suppression of prompts and responses on, and which **four** harm categories and **four** severity levels does that classification use?",
+    "answer": "- **Guardrails** apply criteria to the classification made by **content filters**\n- Harm **categories**: **hate and fairness**, **sexual**, **violence**, **self-harm**\n- **Severity levels**: **safe**, **low**, **medium**, **high**",
+    "explanation": "Guardrails and content filters belong to the safety system layer: platform-level configurations and capabilities, not part of the model or the prompt. Content filters classify prompts and responses into the four harm categories, each at one of the four severity levels. The guardrail then applies its criteria to that classification and suppresses the content that crosses them."
+  },
+  {
+    "id": "1.6.5-04",
+    "type": "mc",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "guardrails",
+      "prompt-shields",
+      "agents"
+    ],
+    "question": "An agentic solution in Microsoft Foundry must (a) detect a user who systematically tries to subvert the system prompt and (b) keep the agent's actions aligned with the user's intent. Which **two** mitigations do you use?",
+    "answer": "**Prompt shields** for (a) and **task-adherence detection** for (b).",
+    "explanation": "Both sit in the safety system layer next to the content filters, but they look for different things. Prompt shields use abuse detection algorithms to find out whether the solution is being systematically abused. Task-adherence detection is aimed at agentic AI: it checks that the actions the agent takes stay aligned with what the user intended. Content filters only rate content by harm category and severity.",
+    "options": [
+      {
+        "text": "Prompt shields",
+        "correct": true,
+        "why": "They use abuse detection algorithms to spot systematic abuse such as attempts to subvert the system prompt."
+      },
+      {
+        "text": "Task-adherence detection",
+        "correct": true,
+        "why": "This guardrail helps ensure that agentic AI actions remain aligned with user intent."
+      },
+      {
+        "text": "Content filters with a severity threshold",
+        "correct": false,
+        "why": "They classify content into harm categories and severity levels; they detect neither abuse patterns nor misaligned agent actions."
+      },
+      {
+        "text": "Fine-tuning the model",
+        "correct": false,
+        "why": "Fine-tuning is a model-layer mitigation that scopes responses; it is not a guardrail and detects nothing at runtime."
+      },
+      {
+        "text": "Retrieval augmented generation",
+        "correct": false,
+        "why": "RAG belongs to the system message and grounding layer and adds trusted context to prompts; it does not detect abuse."
+      }
+    ],
+    "addition": "Prompt Shields detect two attack types: **user prompt attacks** that try to bypass system instructions (formerly jailbreak risk detection) and **document attacks**, hidden instructions in documents, emails or web pages. In Foundry, user prompt attack detection is on by default; document attack detection must be enabled.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection"
+  },
+  {
+    "id": "1.6.5-05",
+    "type": "basic",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "responsible-ai",
+      "grounding",
+      "rag"
+    ],
+    "question": "Which **three** harm mitigations does Microsoft's responsible generative AI guidance place in the **system message and grounding** layer?",
+    "answer": "- **System inputs** that define behavioral parameters for the model\n- **Prompt engineering** that adds grounding data to input prompts\n- **Retrieval augmented generation (RAG)** — retrieve context from trusted data sources and include it in prompts",
+    "explanation": "This layer is about the prompt that actually reaches the model, not the model itself or the platform around it. The system message sets the rules the model should behave by. Grounding data and RAG give the model relevant, trusted material to answer from, which maximizes the likelihood of a relevant, nonharmful output."
+  },
+  {
+    "id": "1.6.5-06",
+    "type": "mc",
+    "section": "1.6.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/5-mitigate-harms",
+    "tags": [
+      "responsible-ai",
+      "harms",
+      "transparency"
+    ],
+    "question": "A cooking assistant built on a generative AI model limits its input form to recipe topics, validates inputs and outputs, and ships documentation that names the system's limitations and the harms its mitigations may not catch. In which mitigation layer are these measures?",
+    "answer": "The **user experience** layer — **constrained UI inputs**, **input and output validation**, and **transparent documentation** of capabilities, limitations, models and remaining harms.",
+    "explanation": "The user experience layer covers both the application users interact with and the documentation or other collateral that describes it to users and stakeholders. Constraining inputs to specific subjects or types and validating inputs and outputs reduce the risk of harmful responses. Transparent documentation covers the system's capabilities and limitations, the models it is based on, and harms the mitigations may not always address.",
+    "options": [
+      {
+        "text": "User experience",
+        "correct": true,
+        "why": "It includes the application UI, input and output validation, and the documentation given to users and stakeholders."
+      },
+      {
+        "text": "Safety system",
+        "correct": false,
+        "why": "This layer holds platform-level capabilities such as Foundry guardrails, content filters and prompt shields, not the app's own form or documentation."
+      },
+      {
+        "text": "System message and grounding",
+        "correct": false,
+        "why": "This layer shapes the prompts sent to the model: system inputs, grounding data and RAG."
+      },
+      {
+        "text": "Model",
+        "correct": false,
+        "why": "This layer covers choosing an appropriate model and fine-tuning it."
+      }
+    ]
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "id": "2.5.4-01",
+    "type": "basic",
+    "section": "2.5.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/4-agents-toolkit-advanced",
+    "tags": [
+      "m365",
+      "agents-toolkit",
+      "publishing"
+    ],
+    "question": "Direct publishing from the **Microsoft Foundry** portal covers most Teams and Microsoft 365 Copilot scenarios. Name the **five** needs that make the **Microsoft 365 Agents Toolkit** the better way to integrate a Foundry agent.",
+    "answer": "- **Custom SSO** — single sign-on beyond the default Entra ID setup\n- **Middleware logic** — custom processing, logging or transformation between Teams and the agent\n- **Multi-environment deployment** — separate development, staging and production configurations\n- **Advanced debugging** — detailed tracing beyond what the Foundry portal offers\n- **CI/CD integration** — pipelines in GitHub Actions or Azure DevOps",
+    "explanation": "The Agents Toolkit is a suite of development tools, available as extensions for Visual Studio Code and Visual Studio. All five needs are about control over the integration layer, which direct publishing keeps out of your hands. That control has a price: you build and deploy a proxy application yourself. So the course reserves the toolkit for cases where you have identified one of these specific requirements; without one, publish directly from Foundry.",
+    "addition": "Microsoft 365 Agents Toolkit is the evolution of **Teams Toolkit**. Besides the VS Code extension and the Visual Studio workload, it also comes as a **CLI** for terminals and CI/CD processes.",
+    "addition_source": "https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/overview-agents-toolkit"
+  },
+  {
+    "id": "2.5.4-02",
+    "type": "basic",
+    "section": "2.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/4-agents-toolkit-advanced",
+    "tags": [
+      "m365",
+      "agents-toolkit",
+      "middleware"
+    ],
+    "question": "With the **Microsoft 365 Agents Toolkit** approach, how does a message from Teams or Microsoft 365 Copilot reach an agent in **Microsoft Foundry**?",
+    "answer": "Through a **proxy application** built with the Agents Toolkit:\n- Teams/Copilot → **Azure Bot Service** → proxy app\n- the proxy runs your **custom middleware**, then forwards the request to the **Foundry agent's endpoint**\n- the response returns along the same path",
+    "explanation": "Instead of publishing the Foundry agent itself to Microsoft 365, you put a proxy between Microsoft 365 and the agent. The proxy authenticates to the agent with the agent's credentials. Because every message passes through your code, you control each step of the flow; that is where custom SSO, logging or transformations live. The cost is extra deployment complexity: direct publishing creates the Bot Service, the Entra ID app and the package for you, while the proxy you write, deploy and register yourself."
+  },
+  {
+    "id": "2.5.4-03",
+    "type": "order",
+    "section": "2.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/4-agents-toolkit-advanced",
+    "tags": [
+      "m365",
+      "agents-toolkit",
+      "deployment"
+    ],
+    "question": "Put in order the steps to connect an existing **Microsoft Foundry** agent to Teams with the **Microsoft 365 Agents Toolkit** in Visual Studio Code.",
+    "items": [
+      "Install the Microsoft 365 Agents Toolkit extension from the VS Code marketplace",
+      "Select **Create a New Agent/App** and choose the **Custom Engine Agent** project type",
+      "Configure the project to call the Foundry agent's endpoint, set up authentication and add middleware",
+      "Run in debug mode and send test messages in the **Microsoft 365 Agents Playground**",
+      "Provision Azure resources, deploy the proxy app and register it in Teams"
+    ],
+    "answer": "Install the extension → new **Custom Engine Agent** project → wire it to the Foundry agent's endpoint → test in the **Agents Playground** → provision, deploy, register in Teams.",
+    "explanation": "The Custom Engine Agent template only scaffolds a standalone agent; its wizard even asks for an AI model source. It becomes a proxy once you point it at the Foundry agent's endpoint and authenticate with the agent's credentials. You verify that connection locally first. Only after testing does the toolkit provision Azure resources, deploy the proxy and register it in Teams."
+  },
+  {
+    "id": "2.5.4-04",
+    "type": "mc",
+    "section": "2.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/4-agents-toolkit-advanced",
+    "tags": [
+      "m365",
+      "agents-toolkit",
+      "testing"
+    ],
+    "question": "You built a proxy app for a **Microsoft Foundry** agent with the **Microsoft 365 Agents Toolkit**. Before provisioning any Azure resources, you want to send it test messages in a local environment that simulates Teams. What do you use?",
+    "answer": "The **Microsoft 365 Agents Playground**, opened in the browser by running the project in debug mode.",
+    "explanation": "The Agents Playground ships with the Agents Toolkit and simulates Teams on your machine. It tests the whole proxy path, your middleware and the call to the Foundry agent, while nothing is deployed yet. The Foundry playground tests only the agent itself and does not simulate the published experience. Uploading a package to Teams needs an app that already exists as a package.",
+    "options": [
+      {
+        "text": "Microsoft 365 Agents Playground",
+        "correct": true,
+        "why": "It is the Agents Toolkit's local testing environment that simulates Teams; debug mode opens it in the browser."
+      },
+      {
+        "text": "The agent playground in the Foundry portal",
+        "correct": false,
+        "why": "It tests the Foundry agent directly and does not simulate the published Teams experience or run your proxy's middleware."
+      },
+      {
+        "text": "Teams **Apps > Manage your apps > Upload a custom app**",
+        "correct": false,
+        "why": "That installs a finished publishing package in a real Teams client; it is how you test the package from direct Foundry publishing."
+      },
+      {
+        "text": "The Foundry web application preview",
+        "correct": false,
+        "why": "It is a Foundry publishing channel, a browser interface for demos of a published agent, not a local Teams simulation."
+      }
+    ],
+    "addition": "Agents Playground needs no Microsoft 365 developer tenant, no tunneling service such as Ngrok and no app or bot registration. It can also simulate scenarios with mock data and custom activity triggers.",
+    "addition_source": "https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/overview-agents-toolkit"
+  },
+  {
+    "id": "2.5.4-05",
+    "type": "basic",
+    "section": "2.5.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/4-agents-toolkit-advanced",
+    "tags": [
+      "m365",
+      "agents-toolkit",
+      "publishing"
+    ],
+    "question": "Compare **direct publishing from the Microsoft Foundry portal** with an **Agents Toolkit proxy** for bringing an agent into Teams, on five aspects.",
+    "answer": "- **Setup time** — minutes vs. hours to days\n- **Code required** — none vs. a proxy application\n- **Customization** — limited vs. extensive\n- **Debugging** — Foundry portal vs. full IDE debugging\n- **Best for** — standard deployments vs. complex enterprise needs",
+    "explanation": "Direct publishing handles the majority of integration scenarios, so it is the default. Production alone is no reason for the toolkit: direct publishing with organization scope is the course's path for production deployments. Switch to the proxy only when a specific requirement, such as custom SSO or middleware, justifies hours of setup and a proxy application in your deployment."
+  }
+]

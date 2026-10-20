@@ -1,0 +1,83 @@
+[
+  {
+    "id": "4.5.2-01",
+    "type": "basic",
+    "section": "4.5.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/02-content-understanding",
+    "tags": ["content-understanding", "multimodal"],
+    "question": "What is **Azure Content Understanding**, and what kind of applications do you build with it?",
+    "answer": "A **generative AI service** that extracts insights and data from **multiple kinds of content** — documents, images, audio and video. You build apps that analyze complex data and produce outputs that **automate and optimize processes**.",
+    "explanation": "Content locked in documents, images, recordings and videos is laborious to extract. Organizations often had to combine several technologies, one per format. Content Understanding replaces that with a single multimodal service and one consistent development process. Its building block is the analyzer: a component that extracts specific information from a content type based on a schema you define.",
+    "addition": "Current docs name the service **Azure Content Understanding in Foundry Tools**. Its result comes either as **Markdown** (for search and RAG) or as **structured JSON** matching your schema (for automation and analytics).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview"
+  },
+  {
+    "id": "4.5.2-02",
+    "type": "mc",
+    "section": "4.5.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/02-content-understanding",
+    "tags": ["content-understanding", "provisioning"],
+    "question": "You want to start building an Azure Content Understanding solution. Which resource must you provision in your Azure subscription first?",
+    "answer": "A **Microsoft Foundry resource**.",
+    "explanation": "Content Understanding is available through Microsoft Foundry, so it runs on a Foundry resource. Creating that resource is also the first step of building any Content Understanding solution. A Content Understanding Studio project is then associated with the Foundry resource, and a built analyzer is called through that resource's endpoint.",
+    "options": [
+      {"text": "A Microsoft Foundry resource", "correct": true, "why": "Content Understanding is offered through Microsoft Foundry and is reached through the Foundry resource's endpoint."},
+      {"text": "An Azure AI Search service", "correct": false, "why": "AI Search indexes and queries content; it is not the resource that hosts Content Understanding."},
+      {"text": "An Azure Machine Learning workspace", "correct": false, "why": "Azure Machine Learning is for training and managing your own ML models, not for hosting Content Understanding."},
+      {"text": "An Azure Key Vault", "correct": false, "why": "A key vault is created for you along with storage when you create a Content Understanding Studio project; it is not the service resource."}
+    ]
+  },
+  {
+    "id": "4.5.2-03",
+    "type": "basic",
+    "section": "4.5.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/02-content-understanding",
+    "tags": ["content-understanding", "developer-tools"],
+    "question": "Name the **three** ways you can develop and manage an Azure Content Understanding solution.",
+    "answer": "- **Microsoft Foundry portal**\n- **Content Understanding Studio**\n- **Content Understanding API**",
+    "explanation": "The two portals are visual, the API is programmatic. Only certain prebuilt models can be used directly in the Foundry portal. For creating and testing custom analyzers you use Content Understanding Studio: it creates a project, defines the schema, tests it and builds the analyzer. The API (or a language-specific SDK) lets client applications create, manage and consume analyzers in code.",
+    "addition": "The docs position the Foundry portal for agentic workflows with the Content Understanding tool, and Studio for improving custom analyzers with data labeling, classification-based analyzers and moving over from Document Intelligence.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview"
+  },
+  {
+    "id": "4.5.2-04",
+    "type": "basic",
+    "section": "4.5.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/02-content-understanding",
+    "tags": ["content-understanding", "multimodal"],
+    "question": "Name the **four** kinds of content Azure Content Understanding can analyze, with a typical task for each.",
+    "answer": "- **Documents and forms** — retrieve field values, e.g. invoice data for payment processing\n- **Images** — read charts, spot product defects, detect objects or people\n- **Audio** — summarize calls, customer sentiment, data from phone messages\n- **Video** — key points of meetings, summarize presentations, activity in security footage",
+    "explanation": "One service with one development process covers all four formats, so a multimodal solution does not need a separate technology per format. The tasks differ by what the format carries. Documents hold specific field values to extract. Images carry visual information you have to infer. Audio holds spoken conversations to summarize or rate. Video, a large share of the data captured today, combines both and supports scenarios like summaries and activity detection.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.5.2-invoice-analysis.png", "alt": "Content Understanding Studio running a prebuilt document analyzer on an invoice: highlighted regions on the page and extracted fields such as InvoiceNumber, InvoiceDate and DueDate with confidence percentages"}
+    ]
+  },
+  {
+    "id": "4.5.2-05",
+    "type": "mc",
+    "section": "4.5.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/02-content-understanding",
+    "tags": ["content-understanding", "model-choice", "cost"],
+    "question": "A custom analyzer in Azure Content Understanding must meet specific quality, latency and cost requirements. You want it to use a generative AI model deployment you choose in Microsoft Foundry. Which capability do you use?",
+    "answer": "**Bring Your Own Model** — connect your own Foundry generative AI model deployments to custom analyzers.",
+    "explanation": "Bring Your Own Model lets you connect your own generative AI model deployments from Microsoft Foundry and use them in custom analyzers. Choosing the deployment yourself is what gives you the flexibility to optimize for quality, latency or cost.",
+    "addition": "The current docs make this the standard setup: you bring your own deployments of supported generative and text-embedding models, and Content Understanding uses them for field extraction, figure analysis and other AI features.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/overview",
+    "options": [
+      {"text": "Bring Your Own Model", "correct": true, "why": "It connects your own Foundry generative model deployments to custom analyzers to optimize quality, latency or cost."},
+      {"text": "An analyzer template", "correct": false, "why": "Templates help you build an analyzer's schema quickly; they don't choose the model deployment."},
+      {"text": "Explicitly labeling fields in sample content", "correct": false, "why": "Labeling improves how well the analyzer finds field values, not which model it runs on."},
+      {"text": "The `estimateFieldSourceAndConfidence` option", "correct": false, "why": "It adds confidence scores and source grounding to extracted fields; it does not change the model."}
+    ]
+  }
+]

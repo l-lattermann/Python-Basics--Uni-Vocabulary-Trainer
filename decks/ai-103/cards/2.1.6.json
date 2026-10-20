@@ -1,0 +1,104 @@
+[
+  {
+    "id": "2.1.6-01",
+    "type": "basic",
+    "section": "2.1.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/6-configure-manage-agents",
+    "tags": [
+      "agents",
+      "foundry-toolkit",
+      "vs-code"
+    ],
+    "question": "In the Agent Designer of the Foundry Toolkit for VS Code, name the **five** essential properties of a declarative prompt-based agent.",
+    "answer": "- **Agent name** — descriptive name shown in lists and logs\n- **Model selection** — the model deployment that powers the responses\n- **Description** — what the agent does, for team members\n- **System instructions** — behavior, personality and response style\n- **Agent ID** — generated unique identifier used to call the agent through APIs",
+    "explanation": "You set the first four yourself; the extension generates the agent ID automatically when the agent is created. The model dropdown shows only models already deployed in your project, so a missing model means you have to deploy it first. The description lets teammates grasp the agent's purpose without reading its instructions or code. The system instructions are where you shape how the agent understands its role and talks to users."
+  },
+  {
+    "id": "2.1.6-02",
+    "type": "basic",
+    "section": "2.1.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/6-configure-manage-agents",
+    "tags": [
+      "agents",
+      "temperature",
+      "model-parameters"
+    ],
+    "question": "Besides the model deployment, which **two** model parameters can you tune for a Foundry agent in the VS Code Agent Designer, and what does each control?",
+    "answer": "- **Temperature** — creativity and randomness: 0.1–0.3 consistent and focused, 0.7–1.0 creative and varied\n- **Top P** — diversity, by limiting vocabulary choices during generation; default 1.0, lower it for more constrained output",
+    "explanation": "For a business agent that handles structured tasks, a temperature between 0.3 and 0.7 typically works well. Top P can stay at its default of 1.0 in most scenarios; you lower it only when you want more predictable outputs. Both settings appear in the Designer and in the agent's YAML file, and the two views stay synchronized, so a change in one shows up in the other."
+  },
+  {
+    "id": "2.1.6-03",
+    "type": "mc",
+    "section": "2.1.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/6-configure-manage-agents",
+    "tags": [
+      "agents",
+      "yaml",
+      "foundry-toolkit"
+    ],
+    "question": "You edit a declarative agent's YAML file in the Foundry Toolkit for VS Code and want to set `temperature: 0.5`. In which section of the file does it go?",
+    "answer": "Under **`model.options`**, next to `model.id` (together with `top_p`). The file's other sections are `metadata`, `instructions` and `tools`.",
+    "explanation": "The agent YAML divides into four parts: metadata (top-level `version`, `name`, `description` and `id`, plus a `metadata` block with authors and tags), the model configuration, the instructions and the tools. This layout applies to declarative prompt-based agents only: hosted agents are configured through code, and workflow agents use a different YAML schema for multi-agent orchestration. The extension validates the YAML syntax in real time, highlighting errors and suggesting fixes as you type.",
+    "options": [
+      {
+        "text": "Under `model.options`, next to `model.id`",
+        "correct": true,
+        "why": "The model section names the deployment in `id` and holds its tuning parameters, `temperature` and `top_p`, in `options`."
+      },
+      {
+        "text": "Under `metadata`",
+        "correct": false,
+        "why": "`metadata` lists authors and tags that help people find and identify agents; it does not change model behavior."
+      },
+      {
+        "text": "Inside the `instructions` block",
+        "correct": false,
+        "why": "`instructions` is a multi-line text block holding the system instructions, not a section for model parameters."
+      },
+      {
+        "text": "In the `tools` array",
+        "correct": false,
+        "why": "`tools` lists the enabled tools with their own settings, such as connection IDs or vector store references."
+      }
+    ]
+  },
+  {
+    "id": "2.1.6-04",
+    "type": "basic",
+    "section": "2.1.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/6-configure-manage-agents",
+    "tags": [
+      "agents",
+      "yaml",
+      "version-control"
+    ],
+    "question": "Name the **five** advantages of editing a Foundry agent's YAML file directly, rather than only using the visual Agent Designer in VS Code.",
+    "answer": "- **Version control** — track changes in Git alongside the application code\n- **Bulk updates** — make many changes at once\n- **Templates** — reusable agent templates for consistent configurations\n- **Code review** — agent configs go through the normal review process\n- **Automation** — scripts generate or modify configurations",
+    "explanation": "The Designer is the intuitive way in; the YAML file is for precise changes and for when the visual interface is not the best fit. Because the whole declarative configuration sits in one readable text file, it fits the tools developers already use: Git history, code reviews and scripts. Designer and YAML stay synchronized, so you can switch between them freely."
+  },
+  {
+    "id": "2.1.6-05",
+    "type": "basic",
+    "section": "2.1.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/6-configure-manage-agents",
+    "tags": [
+      "agents",
+      "best-practices",
+      "version-control"
+    ],
+    "question": "Name the **six** best practices for configuring declarative agents with the Foundry Toolkit for VS Code.",
+    "answer": "- **Version control your YAML files** — commit them to Git with the app code\n- **Use descriptive names and tags** — agents stay easy to find\n- **Document complex instructions** — YAML comments explain the why\n- **Test after every change** — in the integrated playground\n- **Start simple, then iterate** — add complexity based on test results\n- **Keep instructions focused** — one clear purpose per agent",
+    "explanation": "Git gives you rollback, code review and change tracking. Names and tags matter once your collection of agents grows. Testing after every change pays off because small configuration changes can have unexpected effects. You start simple because overly complex initial instructions are harder to debug. And you keep each agent focused because agents that try to do too many things perform inconsistently."
+  }
+]

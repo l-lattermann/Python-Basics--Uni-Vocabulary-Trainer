@@ -1,0 +1,73 @@
+[
+  {
+    "id": "4.2.4-01",
+    "type": "mc",
+    "section": "4.2.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/4-dall-e-rest-api",
+    "tags": [
+      "image-generation",
+      "openai-sdk"
+    ],
+    "question": "A Python app uses the OpenAI SDK to have an image-generation model deployed in Microsoft Foundry create a new picture from a text prompt. Which call fills the gap?\n\n```python\nimg_results = client.___(\n    model=\"FLUX.1-Kontext-pro\",\n    prompt=\"A robot eating a cheeseburger.\",\n    n=1,\n    size=\"1024x1024\",\n)\n```",
+    "options": [
+      {
+        "text": "`images.generate`",
+        "correct": true,
+        "why": "The *Images* API's generate call sends a prompt to an image-generation model and returns the new image."
+      },
+      {
+        "text": "`chat.completions.create`",
+        "correct": false,
+        "why": "This is the chat API for language models; it returns a text message, not a generated image."
+      },
+      {
+        "text": "`images.edit`",
+        "correct": false,
+        "why": "This call modifies an existing input image; it does not create a picture from a prompt alone."
+      },
+      {
+        "text": "`embeddings.create`",
+        "correct": false,
+        "why": "This returns vectors that represent text for search and similarity, not images."
+      }
+    ],
+    "answer": "**`client.images.generate(...)`** — the OpenAI **Images** API.",
+    "explanation": "Client apps reach Foundry image models through a language SDK, such as the OpenAI Python SDK or the Azure OpenAI .NET SDK. The *Images* API is not tied to one model family: the course's example sends the prompt to a Black Forest Labs FLUX model, and the module's exercise calls a gpt-image deployment with the same `images.generate` method."
+  },
+  {
+    "id": "4.2.4-02",
+    "type": "basic",
+    "section": "4.2.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/4-dall-e-rest-api",
+    "tags": [
+      "image-generation",
+      "openai-sdk"
+    ],
+    "question": "A Python app has called `client.images.generate(...)` against an image model in Microsoft Foundry. How does it turn the result into a PNG file on disk?",
+    "answer": "- Read the image from **`img_results.data[0].b64_json`**\n- Decode it with **`base64.b64decode`**\n- Write the bytes to a file opened in binary mode (`\"wb\"`), e.g. `image.png`",
+    "explanation": "The model does not hand back a finished file. It returns the image as base64-encoded data in the `b64_json` field of the first entry of the response's `data` list. Only after decoding does the app hold the binary image it can save as `.png`. The module's exercise does the same with a gpt-image model: read `b64_json`, decode, save.",
+    "addition": "GPT-image-1 series models always return base64-encoded images. They have no URL option, and the `response_format` parameter is not supported for them.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e"
+  },
+  {
+    "id": "4.2.4-03",
+    "type": "basic",
+    "section": "4.2.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/4-dall-e-rest-api",
+    "tags": [
+      "image-generation",
+      "openai-sdk"
+    ],
+    "question": "In an OpenAI SDK `images.generate` call to an image model in Microsoft Foundry, what does each of the parameters `model`, `prompt`, `n` and `size` control?",
+    "answer": "- **`model`** — which deployed image model handles the request\n- **`prompt`** — the natural-language description of the image\n- **`n`** — how many images to generate\n- **`size`** — the resolution, e.g. `\"1024x1024\"`",
+    "explanation": "These are the same choices you make in the Foundry model playground: pick the model, type a description and set the resolution. The code just makes them explicit. The prompt is the creative input; the model produces an original image from it rather than retrieving one from a catalog. Which sizes are valid depends on the model.",
+    "addition": "`n` accepts 1–10 images per call, default 1. GPT-image-1 series models accept only `1024x1024`, `1024x1536` or `1536x1024`; square images generate fastest. Set `model` to your deployment name.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e"
+  }
+]

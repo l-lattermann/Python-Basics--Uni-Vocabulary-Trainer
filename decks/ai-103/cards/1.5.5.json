@@ -1,0 +1,215 @@
+[
+  {
+    "id": "1.5.5-01",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "rag",
+      "fine-tuning"
+    ],
+    "question": "Name the **two** directions in which you can optimize a generative AI model's performance, and which strategy addresses each.",
+    "answer": "- **Optimize for context** — the model lacks domain knowledge; maximize accuracy → **RAG**\n- **Optimize the model** — improve format, style or tone; maximize consistency → **fine-tuning**\n- **Prompt engineering** is the foundation under both",
+    "explanation": "The two axes ask different questions: *what the model needs to know* (context) and *how the model needs to act* (behavior). RAG answers the first by retrieving relevant data from external sources. Fine-tuning answers the second by training on examples of the desired output. Prompt engineering instructs the model how to behave and what to focus on; you layer RAG or fine-tuning on top only when prompts alone aren't sufficient. Using both directions at once gives combined strategies.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.5.5-optimization-spectrum.png",
+        "alt": "Two-axis chart: context optimization (what the model needs to know) on the vertical axis, model optimization (how the model needs to act) on the horizontal axis. Prompt engineering bottom left, RAG top left, fine-tuning bottom right, combined strategies top right."
+      }
+    ]
+  },
+  {
+    "id": "1.5.5-02",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "cost"
+    ],
+    "question": "Compare prompt engineering, RAG and fine-tuning by **implementation effort and cost**. What does each one cost you?",
+    "answer": "- **Prompt engineering** — low time, low complexity; per-token cost only\n- **RAG** — medium; search infrastructure + storage + per-token\n- **Fine-tuning** — high; training compute + model hosting + per-token",
+    "explanation": "Every strategy pays per token; the difference is what comes on top. Prompt engineering needs no infrastructure changes, so you can start immediately. RAG adds a search service and an index that must be kept up to date. Fine-tuning has the highest upfront investment: preparing training data, paying for training compute and hosting the custom model. Effort and cost rise together along the same order."
+  },
+  {
+    "id": "1.5.5-03",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "rag",
+      "fine-tuning"
+    ],
+    "question": "What is each model optimization strategy **best for**: prompt engineering, RAG and fine-tuning?",
+    "answer": "- **Prompt engineering** — guiding tone, format and behavior; quick iteration; instructions and examples\n- **RAG** — factual accuracy, domain-specific knowledge, dynamic or frequently changing data\n- **Fine-tuning** — behavioral consistency, style enforcement, shorter prompts, model distillation",
+    "explanation": "Prompt engineering and fine-tuning both shape behavior, but prompts are quick to iterate while fine-tuning enforces the behavior reliably. Only RAG brings in knowledge the model was not trained on, which is why it owns the \"facts\" column. Only fine-tuning is listed for shorter prompts, because the patterns live in the weights, and for distillation: transferring a large model's capabilities to a smaller, cheaper one."
+  },
+  {
+    "id": "1.5.5-04",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "prompt-engineering",
+      "optimization"
+    ],
+    "question": "Prompt engineering is the quickest and cheapest way to optimize a model. What are its **three** limitations?",
+    "answer": "- **Longer prompts** consume more tokens per request\n- The model might **not follow complex instructions consistently**\n- It **can't give the model information** it wasn't trained on",
+    "explanation": "Each limitation points to the strategy you layer on next. Missing knowledge is the gap RAG fills by supplying data at query time. Inconsistent instruction-following and token-heavy prompts are what fine-tuning fixes: it embeds the patterns in the model's weights, so the prompt can shrink and behavior becomes reliable. As long as none of the three bites, prompt engineering alone is enough."
+  },
+  {
+    "id": "1.5.5-05",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "rag",
+      "optimization"
+    ],
+    "question": "What does a RAG solution require you to set up and maintain, and what limits the **quality** of its responses?",
+    "answer": "- Requires a **search service**, an **index** you create and maintain, and **embedding** processing\n- Response quality depends on the **search index quality** and how well the data is **chunked and indexed**",
+    "explanation": "RAG gives the model up-to-date, relevant data at query time, which significantly improves factual accuracy. That benefit only holds if retrieval returns the right passages. A poorly built index or badly chunked documents hand the model the wrong context, and the answer is grounded in the wrong facts. This is why RAG sits in the middle of the cost table: infrastructure and storage on top of per-token cost."
+  },
+  {
+    "id": "1.5.5-06",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "fine-tuning",
+      "optimization",
+      "cost"
+    ],
+    "question": "Compared with prompt engineering and RAG, what are the advantages and drawbacks of **fine-tuning** a model?",
+    "answer": "- **Pro:** most consistent behavior — patterns embedded in the **model's weights**\n- **Pro:** lower per-request cost through **shorter prompts**\n- **Con:** highest **upfront investment** — training data, training compute, hosting\n- **Con:** may need **retraining** when the base model or requirements change",
+    "explanation": "A model might not follow complex prompt instructions consistently; trained patterns are part of the model itself. That is also why prompts can shrink: the examples no longer need to travel with every request. The price is paid up front and again later, because the custom model is tied to one base model version and one set of requirements."
+  },
+  {
+    "id": "1.5.5-07",
+    "type": "basic",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "rag",
+      "fine-tuning"
+    ],
+    "question": "Name the **four** common ways to combine model optimization strategies and what each combination achieves.",
+    "answer": "- **Prompt engineering + RAG** — the most common; prompts define behavior, RAG supplies facts\n- **Prompt engineering + fine-tuning** — fine-tuned baseline style; system message adds per-conversation context\n- **RAG + fine-tuning** — factual grounding plus reliable style\n- **All three** — fine-tuning: style and format; RAG: current knowledge; prompts: conversation-specific instructions and guardrails",
+    "explanation": "Each layer handles one concern. In a travel agency chat app: the system message sets the advisor role and format, while RAG fetches real hotel names and prices from the catalog — *how to act* plus *what to know*. A model fine-tuned on the brand voice keeps that voice even when the system message only adds a seasonal promotion. With RAG + fine-tuning, the tuned model gives the structured format and RAG brings current pricing and availability."
+  },
+  {
+    "id": "1.5.5-08",
+    "type": "mc",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "fine-tuning",
+      "prompt-engineering"
+    ],
+    "question": "A travel agency's model is fine-tuned to always answer in the brand voice. For this week's chats, the model should also give priority to a seasonal promotion. The promotion needs no external data. What is the **simplest** way to add it?",
+    "answer": "Add the instruction to the **system message** (prompt engineering + fine-tuning).",
+    "explanation": "In this combination the fine-tuned model carries the baseline behavior, and the system message provides per-conversation or per-session context. A short-lived instruction belongs in the prompt: prompt engineering is the quickest and cheapest strategy, and changing it needs no training run.",
+    "options": [
+      {
+        "text": "Add the instruction to the system message",
+        "correct": true,
+        "why": "The system message supplies session-specific instructions on top of the fine-tuned baseline behavior."
+      },
+      {
+        "text": "Fine-tune the model again with examples that mention the promotion",
+        "correct": false,
+        "why": "Retraining has the highest cost and effort; it suits lasting behavior, not a temporary instruction."
+      },
+      {
+        "text": "Add RAG over the hotel catalog with Azure AI Search",
+        "correct": false,
+        "why": "RAG supplies factual data the model lacks; the promotion is an instruction, not missing knowledge."
+      },
+      {
+        "text": "Raise the temperature parameter",
+        "correct": false,
+        "why": "Temperature changes randomness and creativity, not what the model prioritizes."
+      }
+    ]
+  },
+  {
+    "id": "1.5.5-09",
+    "type": "order",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "rag",
+      "fine-tuning"
+    ],
+    "question": "Put the steps of the decision framework for optimizing a generative AI model in order.",
+    "answer": "Prompt engineering → add **RAG** if accuracy matters → add **fine-tuning** if consistency matters → combine as needed.",
+    "explanation": "The rule is to start simple and add complexity only when needed. Prompt engineering is tried first because it is cheap and immediate; you evaluate the results before deciding anything else. RAG comes next when the model needs specific, current or private data. Fine-tuning comes only when style, tone or format still slip despite detailed prompts. Not every application needs all three, and this incremental order avoids unnecessary cost and complexity.",
+    "items": [
+      "Start with prompt engineering: test system messages, few-shot examples and parameter tuning, then evaluate",
+      "Add RAG with Azure AI Search if the model needs specific, current or private data to answer correctly",
+      "Add fine-tuning with representative examples if style, tone or format stay unreliable despite detailed prompts",
+      "Combine strategies as the application's specific requirements demand"
+    ]
+  },
+  {
+    "id": "1.5.5-10",
+    "type": "mc",
+    "section": "1.5.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/5-compare-combine-strategies",
+    "tags": [
+      "optimization",
+      "fine-tuning",
+      "rag"
+    ],
+    "question": "Your chat app in Microsoft Foundry answers correctly, using RAG over your private documents. But even with a detailed system message and few-shot examples, the model often breaks the required response format. What should you add next?",
+    "answer": "**Fine-tuning** with representative examples of the required format.",
+    "explanation": "Accuracy is already solved by RAG, so the remaining problem is consistency. When the model does not reliably keep style, tone or format despite detailed prompts, the decision framework says to fine-tune. Fine-tuning embeds the format in the model's weights, so it no longer depends on the model following instructions.",
+    "options": [
+      {
+        "text": "Fine-tune the model with representative examples",
+        "correct": true,
+        "why": "Fine-tuning targets behavioral consistency when prompts alone are not followed reliably."
+      },
+      {
+        "text": "Add more documents to the Azure AI Search index",
+        "correct": false,
+        "why": "More grounding data improves factual accuracy, which is not the problem here."
+      },
+      {
+        "text": "Add more few-shot examples to the system message",
+        "correct": false,
+        "why": "Detailed prompts with examples already failed; longer prompts also cost more tokens per request."
+      },
+      {
+        "text": "Switch from hybrid search to vector search",
+        "correct": false,
+        "why": "The search technique affects which content is retrieved, not the response format."
+      }
+    ]
+  }
+]

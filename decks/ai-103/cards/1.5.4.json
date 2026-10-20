@@ -1,0 +1,267 @@
+[
+  {
+    "id": "1.5.4-01",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "model-optimization"
+    ],
+    "question": "What is **fine-tuning** of a language model in Microsoft Foundry, when is it time to consider it, and what is its key benefit over training a model from scratch?",
+    "answer": "- **Fine-tuning** — further training a pretrained model on a smaller, task-specific dataset, which adjusts its internal **weights**\n- Consider it when the model still ignores or inconsistently follows your style, tone or format — despite detailed system messages and few-shot examples\n- **Key benefit**: efficiency — less time, fewer computing resources, far less data than training from scratch",
+    "explanation": "Think of it as specializing a generalist: a foundation model like GPT-4o keeps its broad language capabilities but learns to respond the way your training data demonstrates. Prompt engineering guides behavior and RAG grounds responses in facts; fine-tuning is the step for consistency when those two are not enough. You build on what the model already knows instead of starting over."
+  },
+  {
+    "id": "1.5.4-02",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "lora"
+    ],
+    "question": "Which technique does fine-tuning in Microsoft Foundry use so that it does not retrain all of a model's parameters, and how does it work?",
+    "answer": "**LoRA (Low-Rank Adaptation)** — it approximates the weight changes with a lower-rank representation and updates only a smaller subset of important parameters.",
+    "explanation": "Retraining every parameter of a large model would be slow and expensive. Because LoRA touches only a small subset, training becomes faster and more cost-effective, while model quality is maintained. This is one reason why fine-tuning is so much cheaper than training a model from scratch."
+  },
+  {
+    "id": "1.5.4-03",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "model-optimization"
+    ],
+    "question": "Name the **five** common use cases for fine-tuning a generative AI model in Microsoft Foundry.",
+    "answer": "- **Consistent style and tone** — follow a brand voice reliably\n- **Specific output formats** — e.g. JSON that follows a schema, when few-shot is not enough\n- **Reducing prompt length** — embed patterns instead of long system messages\n- **Distillation** — move a large model's capability into a smaller one\n- **Enhancing tool usage** — more accurate tool selection and parameters",
+    "explanation": "All five share one trigger: prompt engineering alone does not give the consistency you need. Style and format are about how every answer looks. Shorter prompts save tokens and latency on each request. Distillation trains a smaller model on outputs collected from a high-performing one, for similar quality at lower cost and latency. Tool usage improves when you fine-tune with tool-calling examples."
+  },
+  {
+    "id": "1.5.4-04",
+    "type": "mc",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "distillation",
+      "cost"
+    ],
+    "question": "A large, expensive model in Microsoft Foundry gives excellent answers, but its cost and latency are too high. You collect its outputs and use them to train a smaller model that should reach similar quality. What is this approach called?",
+    "answer": "**Distillation** — fine-tuning a smaller model on outputs of a high-performing model.",
+    "explanation": "Distillation is one of the use cases of fine-tuning. The large model acts as the source of good responses; the smaller model learns to reproduce them. The result is similar quality at lower cost and latency — a reason to fine-tune that has nothing to do with brand voice or output format.",
+    "options": [
+      {
+        "text": "Distillation",
+        "correct": true,
+        "why": "It transfers a large model's capabilities to a smaller, more efficient one by fine-tuning on the large model's outputs."
+      },
+      {
+        "text": "Retrieval-augmented generation (RAG)",
+        "correct": false,
+        "why": "RAG grounds responses in retrieved data at query time; it does not train a new model."
+      },
+      {
+        "text": "Few-shot prompting",
+        "correct": false,
+        "why": "It puts examples into each prompt and changes no weights, so the smaller model learns nothing permanent."
+      },
+      {
+        "text": "Direct Preference Optimization (DPO)",
+        "correct": false,
+        "why": "DPO aligns a model using preferred and non-preferred response pairs, not by copying a larger model's outputs."
+      }
+    ]
+  },
+  {
+    "id": "1.5.4-05",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "evaluation"
+    ],
+    "question": "What must you do **before** you fine-tune a model in Microsoft Foundry, and why?",
+    "answer": "Evaluate the **baseline performance** of a standard model against your requirements — without a baseline you cannot tell whether fine-tuning improved or degraded the model.",
+    "explanation": "Fine-tuning is an advanced capability with upfront training costs and hourly hosting costs. The baseline is the reference point the custom model is later compared against. It also shows whether a standard model with detailed system messages and few-shot examples already meets the requirements — fine-tuning is meant for the cases where prompt engineering alone does not reach the consistency you need."
+  },
+  {
+    "id": "1.5.4-06",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "sft",
+      "dpo"
+    ],
+    "question": "Name the **three** fine-tuning techniques that Microsoft Foundry offers, with the training data or signal each one uses.",
+    "answer": "- **Supervised fine-tuning (SFT)** — labeled prompt-and-response pairs\n- **Reinforcement fine-tuning (RFT)** — iterative feedback from a grader that rewards better responses\n- **Direct Preference Optimization (DPO)** — pairs of preferred and non-preferred responses",
+    "explanation": "SFT works best when a task has clear, well-defined ways to approach it: the model copies the patterns in your pairs. RFT fits complex or dynamic tasks with many possible solutions and improves reasoning quality. DPO aligns the model with human preferences and is computationally lighter than traditional reinforcement learning, while equally effective at alignment. You can combine them, for example SFT first, then DPO to refine the responses."
+  },
+  {
+    "id": "1.5.4-07",
+    "type": "mc",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "dpo"
+    ],
+    "question": "Reviewers have marked, for many prompts, which of two model responses they prefer. You want to align a model in Microsoft Foundry with these preferences without the compute cost of traditional reinforcement learning. Which fine-tuning technique fits?",
+    "answer": "**Direct Preference Optimization (DPO)**.",
+    "explanation": "DPO is built for exactly this data: preferred and non-preferred response pairs that express human preferences. It is computationally lighter than traditional reinforcement learning approaches while being equally effective at alignment. It can also follow an SFT run, to refine a model that was customized first.",
+    "options": [
+      {
+        "text": "Direct Preference Optimization (DPO)",
+        "correct": true,
+        "why": "It aligns the model using preferred and non-preferred response pairs and is lighter than traditional reinforcement learning."
+      },
+      {
+        "text": "Supervised fine-tuning (SFT)",
+        "correct": false,
+        "why": "SFT learns from single prompt-and-response pairs; it has no notion of a preferred versus a rejected response."
+      },
+      {
+        "text": "Reinforcement fine-tuning (RFT)",
+        "correct": false,
+        "why": "RFT needs a grader that scores responses in iterative feedback loops, not a fixed set of preference pairs."
+      },
+      {
+        "text": "Distillation",
+        "correct": false,
+        "why": "Distillation trains a smaller model on a larger model's outputs; it does not use human preference judgments."
+      }
+    ]
+  },
+  {
+    "id": "1.5.4-08",
+    "type": "mc",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "rft",
+      "reasoning"
+    ],
+    "question": "A complex planning task in your Microsoft Foundry app has many valid solutions, so you cannot write one correct response per prompt. You can score response quality automatically and want to improve the model's reasoning. Which fine-tuning technique fits?",
+    "answer": "**Reinforcement fine-tuning (RFT)**, with a grader that rewards better responses.",
+    "explanation": "RFT optimizes the model through iterative feedback: a grader scores responses and better ones are rewarded incrementally. That suits complex or dynamic tasks where many solutions are possible. SFT would need one labeled response per prompt, which only works when there is a clear, well-defined way to approach the task.",
+    "addition": "Each base model supports only certain methods. In current Foundry docs, `gpt-4.1` and `gpt-4o` support SFT and DPO, while `o4-mini` supports RFT only. Test RFT graders against wrong and adversarial answers: a rising reward means little if the model exploits the grader.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/fine-tuning/overview",
+    "options": [
+      {
+        "text": "Reinforcement fine-tuning (RFT)",
+        "correct": true,
+        "why": "A grader rewards better responses incrementally, which suits tasks with many possible solutions and improves reasoning quality."
+      },
+      {
+        "text": "Supervised fine-tuning (SFT)",
+        "correct": false,
+        "why": "SFT needs labeled prompt-and-response pairs and works best when a task has a clear, well-defined approach."
+      },
+      {
+        "text": "Direct Preference Optimization (DPO)",
+        "correct": false,
+        "why": "DPO needs preferred and non-preferred response pairs, not an automatic grader."
+      },
+      {
+        "text": "LoRA (Low-Rank Adaptation)",
+        "correct": false,
+        "why": "LoRA is how Foundry updates a subset of weights during fine-tuning, not a choice of training signal."
+      }
+    ]
+  },
+  {
+    "id": "1.5.4-09",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "training-data",
+      "jsonl"
+    ],
+    "question": "In which format do you prepare training data to fine-tune a chat completion model in Microsoft Foundry, and what makes the data good?",
+    "answer": "**JSONL** — one conversation per line, a `messages` list with **system**, **user** and **assistant** messages.\n- the same system message in every example\n- high-quality, representative examples covering expected scenarios\n- at least hundreds of examples\n- assistant responses exactly in the target style, format and tone",
+    "explanation": "The assistant messages are what the model learns to imitate, so any sloppiness in them becomes the model's behavior. Representative examples matter because the model only learns the range of scenarios it sees; more examples are generally better. A consistent system message ties the learned behavior to the context the model will see later.",
+    "addition": "Prepare separate `training.jsonl` and `validation.jsonl` files and keep validation and final test examples out of the training set. If training loss falls while validation loss rises, inspect the failing validation examples — a sign of overfitting.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/fine-tuning?view=foundry"
+  },
+  {
+    "id": "1.5.4-10",
+    "type": "mc",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "training-data",
+      "system-message"
+    ],
+    "question": "You prepare JSONL training data to fine-tune a chat model in Microsoft Foundry and will deploy the result for inference. How should you handle the **system message**?",
+    "answer": "Include the **same system message** in every training example, and use that same system message when you deploy the fine-tuned model for inference.",
+    "explanation": "Leaving the system message blank in training data tends to produce lower-accuracy models. The model learns its behavior in the context of that system message, so inference should present the same one. Fine-tuning shortens the prompts you need, but it does not make the system message disposable.",
+    "options": [
+      {
+        "text": "Use one consistent system message in all examples and the same one at inference.",
+        "correct": true,
+        "why": "Consistent system messages in training and the same message at deployment are what the course recommends."
+      },
+      {
+        "text": "Leave the system message blank so the model learns only from user and assistant turns.",
+        "correct": false,
+        "why": "A blank system message tends to produce lower-accuracy models."
+      },
+      {
+        "text": "Vary the system message across examples to make the model robust.",
+        "correct": false,
+        "why": "The course asks for a consistent system message across examples."
+      },
+      {
+        "text": "Train with a system message but omit it at inference, since the behavior is now in the weights.",
+        "correct": false,
+        "why": "You should use the same system message when you deploy the fine-tuned model for inference."
+      }
+    ]
+  },
+  {
+    "id": "1.5.4-11",
+    "type": "basic",
+    "section": "1.5.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/4-fine-tune-model",
+    "tags": [
+      "fine-tuning",
+      "cost",
+      "drift"
+    ],
+    "question": "Name the **five** challenges of fine-tuning a model in Microsoft Foundry that you should weigh before committing to it.",
+    "answer": "- **Training costs** — upfront training plus ongoing hourly hosting\n- **Data quality requirements** — poor data causes overfitting, underfitting or bias\n- **Maintenance** — retrain when data changes or new base models ship\n- **Experimentation** — find hyperparameters (epochs, batch size, learning rate) by iteration\n- **Model drift** — too narrow a specialization weakens general language tasks",
+    "explanation": "Two of these are money and time: you pay once for training and then every hour the custom model is hosted, and finding good hyperparameters takes repeated runs. Data quality decides whether the model learns the right pattern at all. Maintenance and drift appear later: the model ages with your data and base models, and a model specialized too narrowly gets worse outside its domain.",
+    "addition": "In Foundry the settings are **Batch size** (examples per training pass), **Learning rate multiplier** (a smaller one can reduce overfitting) and **Number of epochs** (complete passes through the data; more can increase overfitting). Start with the model's defaults.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/fine-tuning?view=foundry"
+  }
+]

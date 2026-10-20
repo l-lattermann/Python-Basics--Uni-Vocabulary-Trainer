@@ -1,0 +1,36 @@
+[
+  {
+    "id": "3.4.5-01",
+    "type": "mc",
+    "section": "3.4.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/5-audio-format-voices",
+    "tags": ["speech", "text-to-speech", "sdk"],
+    "question": "With the Azure Speech SDK for Python, your app must receive synthesized speech as 24 kHz, 16-bit mono PCM in a RIFF file. Which call completes the code?\n\n```python\nspeech_config = speech_sdk.SpeechConfig(subscription=KEY, endpoint=ENDPOINT)\nspeech_config.___(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm)\n```",
+    "answer": "**`set_speech_synthesis_output_format`** on the **SpeechConfig**, with a **SpeechSynthesisOutputFormat** value chosen by:\n- **Audio file type**\n- **Sample rate**\n- **Bit depth**",
+    "explanation": "Azure Speech in Foundry Tools can return the synthesized audio stream in many formats. The format belongs to the SpeechConfig, the same object that holds the endpoint and key, so it applies to every SpeechSynthesizer built from it. The enum name spells out the choice: `Riff24Khz16BitMonoPcm` is a RIFF file at 24 kHz with 16-bit depth. Where the audio goes (speaker, file) is the AudioConfig's job, not the format's.",
+    "addition": "Raw formats such as `Raw24Khz16BitMonoPcm` carry no audio header. Use them only when the consumer can decode a raw bitstream or you build the header yourself from bit depth, sample rate and channels.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-speech-synthesis?pivots=programming-language-python",
+    "options": [
+      {"text": "`set_speech_synthesis_output_format`", "correct": true, "why": "This SpeechConfig method takes a SpeechSynthesisOutputFormat enum value and sets the audio format of synthesized speech."},
+      {"text": "`speech_synthesis_voice_name =`", "correct": false, "why": "This property selects the voice by name; it takes a string such as `en-US-Brian:DragonHDLatestNeural`, not an output format."},
+      {"text": "`speak_text_async`", "correct": false, "why": "This is a SpeechSynthesizer method that sends text to be synthesized; it does not exist on SpeechConfig and sets no format."},
+      {"text": "`speak_ssml_async`", "correct": false, "why": "This SpeechSynthesizer method submits SSML markup for synthesis; it does not configure the output format."}
+    ]
+  },
+  {
+    "id": "3.4.5-02",
+    "type": "basic",
+    "section": "3.4.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/5-audio-format-voices",
+    "tags": ["speech", "text-to-speech", "sdk"],
+    "question": "An app built with the Azure Speech SDK for Python must speak with the voice `en-US-Brian:DragonHDLatestNeural`. How do you select it, and what does the name tell you?",
+    "answer": "Set the **`speech_synthesis_voice_name`** property of the **SpeechConfig** to the voice name. The name encodes:\n- the **locale** (`en-US`)\n- a **person's name** (`Brian`)\n- **other details** (`DragonHDLatestNeural`)",
+    "explanation": "Azure Speech offers many voices so you can personalise a speech-enabled app. The voice, like the audio format, is a setting on the SpeechConfig object, not on the AudioConfig or the SpeechSynthesizer:\n\n```python\nspeech_config.speech_synthesis_voice_name = 'en-US-Brian:DragonHDLatestNeural'\n```\n\nIt is a plain string property, while the output format is set through a method that takes an enum value. The full list of voices per locale is in the Azure Speech language-support documentation.",
+    "addition": "Without a voice name or synthesis language, the default `en-US` voice speaks. A voice set in SSML overrides both `speech_synthesis_voice_name` and the synthesis language.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-speech-synthesis?pivots=programming-language-python"
+  }
+]

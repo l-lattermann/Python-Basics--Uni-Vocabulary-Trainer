@@ -1,0 +1,305 @@
+[
+  {
+    "id": "5.2-01",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+    "tags": [
+      "reflection",
+      "orchestration",
+      "agents"
+    ],
+    "question": "You build a **reflection loop** (maker-checker): one agent drafts, a second agent critiques and sends it back until the result is good. Which **two** design rules keep this loop reliable?",
+    "answer": "- **Clear acceptance criteria** for the checker, so it makes consistent pass/fail decisions\n- An **iteration cap** with defined **fallback behavior** when the cap is reached",
+    "explanation": "Without criteria the checker judges differently each round; without a cap the loop can refine forever. A typical fallback is escalation to a human reviewer, or returning the best result so far with a quality warning. The same pattern is also called evaluator-optimizer, generator-verifier or critic loop. It is a turn-based special case of group chat orchestration, so the chat manager drives the strict maker, checker, maker sequence."
+  },
+  {
+    "id": "5.2-02",
+    "type": "mc",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning",
+    "tags": [
+      "reasoning-models",
+      "chain-of-thought",
+      "prompt-engineering"
+    ],
+    "question": "Your app moves from a non-reasoning GPT model to an Azure OpenAI **reasoning model**. The prompt already states the goal, the constraints and the output format, but answers to hard planning questions are still too shallow. What do you change?",
+    "answer": "Raise the **`reasoning_effort`** parameter, for example from `medium` to `high`.",
+    "explanation": "Reasoning models think internally with **reasoning tokens** before they answer, and unlike non-reasoning models they don't need every intermediate step prescribed. Start with a clear goal, firm constraints and an output contract; for agentic work also define what counts as done and how the model should verify its own work. `reasoning_effort` is the tuning knob after that: higher effort means more reasoning tokens, billed as output tokens and counted against `max_output_tokens`. Use `none` for latency-critical classification, `high` for hard debugging or deep planning.",
+    "options": [
+      {
+        "text": "Raise `reasoning_effort`",
+        "correct": true,
+        "why": "It directly controls how much the reasoning model thinks before it answers."
+      },
+      {
+        "text": "Add \"think step by step and show your reasoning\" to the prompt",
+        "correct": false,
+        "why": "Reasoning models don't need prescribed intermediate steps, and extracting raw reasoning by any route other than the reasoning summary isn't supported."
+      },
+      {
+        "text": "Raise `temperature` to 0.9",
+        "correct": false,
+        "why": "Reasoning models other than GPT-6 Astra don't support `temperature`, and it isn't the setting that controls reasoning depth."
+      },
+      {
+        "text": "Lower `max_output_tokens`",
+        "correct": false,
+        "why": "The cap covers reasoning tokens too, so lowering it cuts reasoning short and can return an incomplete response."
+      }
+    ]
+  },
+  {
+    "id": "5.2-03",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning",
+    "tags": [
+      "reasoning-models",
+      "chain-of-thought",
+      "responses-api"
+    ],
+    "question": "Auditors want to see **how** an Azure OpenAI reasoning model reached its answer. What is the supported way to get that?",
+    "answer": "The **reasoning summary** parameter of the **Responses API**: `reasoning={\"summary\": \"auto\"}` (or `concise`, `detailed`).",
+    "explanation": "The model's raw chain of thought stays hidden: reasoning tokens never appear in the message content. The summary returns a readable digest of that reasoning as a separate output item, but it isn't guaranteed for every step or request. Any other attempt to extract raw reasoning is unsupported, may violate the Acceptable Use Policy, and can lead to throttling or suspension. The gpt-5 series doesn't support `concise`. The summary isn't available when multi-agent orchestration is enabled."
+  },
+  {
+    "id": "5.2-04",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/agent-framework/journey/workflows",
+    "tags": [
+      "workflows",
+      "hybrid",
+      "agents"
+    ],
+    "question": "A loan process in Microsoft Agent Framework has three kinds of step: an LLM reads free-text applications, a fixed score threshold decides, and an officer signs off large loans. Which building block does each step get, and what controls the order?",
+    "answer": "A **workflow** graph controls the order; per step:\n- **Agent executor** — the model handles the reasoning-heavy step\n- **Deterministic executor** — plain business logic decides the outcome\n- **Human-in-the-loop gate** — a person makes the call",
+    "explanation": "Agent Framework calls this the intelligence spectrum. A single agent with tools lets the model pick every step: flexible, but least predictable, and a liability when the process has rules. A workflow of only deterministic executors is a traditional pipeline with no AI. Most real applications sit in the middle, and the key question per step is who should decide what happens next. Tool approval is reactive and per tool; a human-in-the-loop gate sits at a defined point."
+  },
+  {
+    "id": "5.2-05",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+    "tags": [
+      "orchestration",
+      "agents",
+      "architecture"
+    ],
+    "question": "Name the **three** levels of complexity for an AI agent architecture, and the rule for choosing between them.",
+    "answer": "- **Direct model call** — one prompt, no agent logic, no tools\n- **Single agent with tools** — one agent loops over model calls and tools\n- **Multiagent orchestration** — specialized agents coordinate\n\nRule: use the **lowest level** that reliably meets the requirements.",
+    "explanation": "Each level adds coordination overhead, latency and cost. A direct call handles one-pass tasks like classification, summarization and translation: if prompt engineering solves it, you don't need an agent. A single agent with tools is often the right enterprise default and is easier to debug; set iteration limits against endless tool-call loops. Multiple agents are justified only when one agent can't cope because of prompt complexity, tool overload or separate security boundaries."
+  },
+  {
+    "id": "5.2-06",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+    "tags": [
+      "pipelines",
+      "orchestration",
+      "reliability"
+    ],
+    "question": "In a **multistep agent pipeline**, a malformed, low-confidence answer from step 2 keeps corrupting every later step. What should the orchestrator do?",
+    "answer": "**Validate each agent's output before passing it on**, and on failure **retry**, **ask for clarification** or **halt** the workflow.",
+    "explanation": "In a sequential pipeline, failures in early stages propagate to all later ones. Further reliability measures: timeouts and retries, graceful degradation when one agent faults, and surfacing errors instead of hiding them so the orchestrator can react. Use the SDK's checkpoints to resume an interrupted run. Between steps, pass only the context the next agent needs, compacted by summarizing or pruning, so the context window doesn't overflow."
+  },
+  {
+    "id": "5.2-07",
+    "type": "order",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/agent-framework/agents/tools/tool-approval",
+    "tags": [
+      "approval",
+      "human-in-the-loop",
+      "agent-framework"
+    ],
+    "question": "A Microsoft Agent Framework agent (Python) may only call `issue_refund` after a human approves. Put the steps of the approval flow in order.",
+    "answer": "Mark tool `always_require` → run → read `user_input_requests` → show call to user → send `to_function_approval_response(...)` → run again in the same session.",
+    "explanation": "Approval is set per tool, so low-risk tools still run autonomously and only sensitive ones pause. A run that needs approval returns no final answer. Instead it lists the pending function call with name and arguments. The caller collects the decision, `True` to approve or `False` to reject, and resumes. By default an approval counts only if it matches a pending request in the same `AgentSession`, so a fabricated or replayed approval is ignored. Repeat until no requests remain.",
+    "items": [
+      "Decorate the tool with `@tool(approval_mode=\"always_require\")`",
+      "Call `agent.run(...)` with an `AgentSession`",
+      "Check `result.user_input_requests` for pending function calls",
+      "Show the function name and arguments to the user for a decision",
+      "Wrap `request.to_function_approval_response(True/False)` in a user `Message`",
+      "Call `agent.run(...)` again with that message and the same session"
+    ]
+  },
+  {
+    "id": "5.2-08",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/observability/concepts/trace-agent-concept",
+    "tags": [
+      "tracing",
+      "monitoring",
+      "application-insights"
+    ],
+    "question": "A Microsoft Foundry agent sometimes returns wrong answers after a chain of nested tool calls. How do you find **which step** introduced the error, and what do you need to set this up?",
+    "answer": "**Agent tracing**: inspect the run's trace, one **span** per step\n- Project connected to **Application Insights** (stores the traces)\n- **Log Analytics Reader** role to view traces in Foundry",
+    "explanation": "A trace shows the inputs and outputs of every operation in the order it ran. That covers user input, agent output, tool calls with arguments and results, token use, and duration and latency. Spans nest, so a tool call shows as an `execute_tool` child span under `invoke_agent`. Foundry uses OpenTelemetry semantic conventions, so Agent Framework, LangChain and the OpenAI Agents SDK produce comparable traces. Redact secrets and personal data before they reach telemetry."
+  },
+  {
+    "id": "5.2-09",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard",
+    "tags": [
+      "monitoring",
+      "agents",
+      "evaluation"
+    ],
+    "question": "Name the **five** kinds of data the **Agent Monitoring Dashboard** in Microsoft Foundry shows for an agent's production traffic.",
+    "answer": "- **Token usage** — tokens in the time range\n- **Latency** — response time of agent runs\n- **Run success rate** — share of runs that complete successfully\n- **Evaluation metrics** — evaluator scores on sampled outputs\n- **Red teaming results** — outcomes of scheduled red team scans",
+    "explanation": "Open it via Build, select the agent, then the **Monitor** tab. It reads from the Application Insights resource connected to the project. Warning signs: latency above 10 seconds suggests throttling, complex tool calls or network issues. A success rate below 95% warrants a look at the failed runs. High token usage points to verbose prompts or responses. In Monitor settings you can add recurring evaluations, red team scans and alerts on these metrics."
+  },
+  {
+    "id": "5.2-10",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard",
+    "tags": [
+      "evaluation",
+      "monitoring",
+      "agents"
+    ],
+    "question": "In Microsoft Foundry, what is the difference between **continuous** and **scheduled** evaluation of an agent, and which role does continuous evaluation need?",
+    "answer": "- **Continuous evaluation** — samples **live traffic** as responses complete\n- **Scheduled evaluation** — runs on a **fixed schedule**, e.g. daily over agent traces\n- The project's **managed identity** needs the **Foundry User** role",
+    "explanation": "Continuous evaluation is an evaluation rule triggered on each completed response for one agent. Its `max_hourly_runs` limit defaults to 100. Runs beyond that are skipped until the next hour. In the recurring-evaluation wizard you pick a data source for the type, such as **Live traffic** (agent traces) or a golden **Dataset**. Results show in the evaluation charts on the agent's Monitor tab. Foundry User was formerly called Azure AI User."
+  },
+  {
+    "id": "5.2-11",
+    "type": "mc",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/agent-evaluators",
+    "tags": [
+      "evaluation",
+      "agents",
+      "tools"
+    ],
+    "question": "Error analysis shows a Microsoft Foundry agent calls the **wrong function or passes wrong parameters**. Which **one** built-in agent evaluator (not a composite) covers both problems?",
+    "answer": "**Tool Call Accuracy**, a **process** evaluator.",
+    "explanation": "Agent evaluators work like unit tests and return Pass/Fail. **System** evaluators judge the end-to-end outcome: Task Completion, Task Adherence, Intent Resolution, Task Navigation Efficiency and Customer Satisfaction. **Process** evaluators judge each tool step: Tool Call Accuracy, Tool Selection, Tool Input Accuracy, Tool Output Utilization and Tool Call Success. Tool Selection and Tool Input Accuracy each check only one half. Tool Call Accuracy scores 1–5 and a threshold turns that into Pass/Fail. The composite Tool Use Quality batches all five process checks into one LLM judge call.",
+    "options": [
+      {
+        "text": "Tool Call Accuracy",
+        "correct": true,
+        "why": "It checks whether the agent made the right tool calls with correct parameters."
+      },
+      {
+        "text": "Intent Resolution",
+        "correct": false,
+        "why": "It checks whether the agent correctly identified what the user wants, not how it called tools."
+      },
+      {
+        "text": "Task Adherence",
+        "correct": false,
+        "why": "It checks whether the agent followed the rules and constraints in its instructions."
+      },
+      {
+        "text": "Tool Call Success",
+        "correct": false,
+        "why": "It only checks whether calls ran without technical errors; a wrong but successful call still passes."
+      }
+    ]
+  },
+  {
+    "id": "5.2-12",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/latency",
+    "tags": [
+      "latency",
+      "monitoring",
+      "tokens"
+    ],
+    "question": "End-to-end latency of an Azure OpenAI deployment rose from 3 to 6 seconds. Which formula describes per-call latency, and what do you check **first** before calling it a regression?",
+    "answer": "**TTLT = TTFT + (TBT × tokens generated)**. Check the **generated token count** first.",
+    "explanation": "TTFT is time to first token, TBT is time between tokens, and TTLT is time to last token. Output tokens drive total time, because generation is sequential, one token per step. If latency and Generated Completion Tokens rise together, that is expected behaviour. If latency rises without more tokens, look for capacity pressure: PTU utilization on provisioned deployments, or 429s and concurrency on standard ones. Always pair a latency metric with a token metric."
+  },
+  {
+    "id": "5.2-13",
+    "type": "mc",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/latency",
+    "tags": [
+      "latency",
+      "optimization",
+      "deployment"
+    ],
+    "question": "Which **two** changes reduce the **actual** per-call latency of Azure OpenAI chat completions? *(Choose two.)*",
+    "answer": "**Lower `max_tokens`** (with stop sequences) and **separate workloads onto their own deployments**.",
+    "explanation": "Fewer generated tokens means a faster response. The requested `max_tokens` also reserves compute, so a high value adds latency even for similar output. Mixed workloads hurt because calls are batched during inference and short calls wait behind long ones, and they also lower the cache hit rate. Other levers: a faster model such as GPT-4o mini, `n` = 1, and, for low-risk cases, modified content filtering.",
+    "options": [
+      {
+        "text": "Set `max_tokens` as low as possible and add stop sequences",
+        "correct": true,
+        "why": "Generation is the slowest step, so fewer and smaller reserved output tokens shorten each call."
+      },
+      {
+        "text": "Give each workload its own deployment instead of sharing one endpoint",
+        "correct": true,
+        "why": "Short calls no longer wait behind long completions batched with them, and cache hits improve."
+      },
+      {
+        "text": "Enable streaming with `stream: true`",
+        "correct": false,
+        "why": "Streaming only cuts time to first response, the perceived latency; total time stays the same."
+      },
+      {
+        "text": "Set `n` to 3 and pick the best response",
+        "correct": false,
+        "why": "Several outputs per request increase latency; leave `n` unset or 1."
+      },
+      {
+        "text": "Raise the deployment's TPM quota",
+        "correct": false,
+        "why": "Quota only governs admission of calls; it doesn't make one call generate faster."
+      }
+    ]
+  },
+  {
+    "id": "5.2-14",
+    "type": "basic",
+    "section": "5.2",
+    "exam_area": "genai",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/prompt-caching",
+    "tags": [
+      "latency",
+      "prompt-caching",
+      "cost"
+    ],
+    "question": "Every request to your Azure OpenAI deployment starts with the same 3,000-token system prompt. Which feature cuts latency and input cost here, and how must the prompt be built for it to hit?",
+    "answer": "**Prompt caching** — on by default\n- Prompt of at least **1,024 tokens**, with the **first 1,024 identical**\n- **Static content first**, dynamic content at the end\n- Hits show as **`cached_tokens`** in the usage",
+    "explanation": "The service reuses its processed computation of a repeated prefix instead of reprocessing it, and the output is unchanged. A single changed character in the first 1,024 tokens is a miss, so a timestamp at the top breaks every hit. Messages, images, tool definitions and structured output schemas can be cached. Cached input is discounted on Standard and up to 100% on Provisioned. In-memory caches usually clear after 5–10 minutes idle, always within an hour; extended retention keeps them up to 24 hours."
+  }
+]

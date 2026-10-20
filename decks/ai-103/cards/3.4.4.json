@@ -1,0 +1,35 @@
+[
+  {
+    "id": "3.4.4-01",
+    "type": "basic",
+    "section": "3.4.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/4-text-to-speech",
+    "tags": ["text-to-speech", "speech-sdk"],
+    "question": "In the Azure Speech SDK, which object decides where a `SpeechSynthesizer` sends the synthesized audio, and what are its three output options?",
+    "answer": "- **AudioConfig** (Python: `AudioOutputConfig`), passed with the SpeechConfig to the **SpeechSynthesizer**, the Text to speech proxy client\n- **Default system speaker** — used when you set nothing\n- **Audio file** — the speech is written to a file\n- **Null / `None`** — you process the returned audio stream yourself",
+    "explanation": "Text to speech follows the same pattern as recognition. A **SpeechConfig** holds the endpoint (or region) and key. The synthesizer's **SpeakTextAsync()** method (`speak_text_async(text).get()` in Python) turns text into spoken audio. The difference: for recognition the AudioConfig names the *input* (microphone or file), for synthesis the *output*.",
+    "explanation_images": [
+      {"src": "media/ai-103/3.4.4-text-to-speech.png", "alt": "SpeechConfig (location and key) and AudioConfig (speaker, file or null for a stream) create a SpeechSynthesizer; SpeakTextAsync returns AudioData, Properties, Reason and ResultId."}
+    ]
+  },
+  {
+    "id": "3.4.4-02",
+    "type": "mc",
+    "section": "3.4.4",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/4-text-to-speech",
+    "tags": ["text-to-speech", "speech-sdk"],
+    "question": "Complete the check that speech synthesis with the Azure Speech SDK succeeded.\n\n```python\nresult = speech_synthesizer.speak_text_async(text).get()\nif result.reason == speechsdk.ResultReason.___:\n    print(\"Speech synthesized\")\nelif result.reason == speechsdk.ResultReason.Canceled:\n    print(result.cancellation_details.reason)\n```",
+    "answer": "`SynthesizingAudioCompleted`. The **SpeechSynthesisResult** has four properties:\n- **AudioData** — the synthesized audio stream\n- **Properties** — further details of the result\n- **Reason** — the outcome of the call\n- **ResultId** — the result's ID",
+    "explanation": "On success, **AudioData** holds the audio stream. Depending on the AudioConfig it has already gone to the speaker or into a file. **Canceled** means something went wrong: `cancellation_details.reason` says why, and when that is `CancellationReason.Error`, `error_details` holds the message. RecognizedSpeech and NoMatch belong to the other direction, speech to text with a SpeechRecognizer.",
+    "options": [
+      {"text": "`SynthesizingAudioCompleted`", "correct": true, "why": "This Reason value marks a successful synthesis; AudioData then contains the audio stream."},
+      {"text": "`RecognizedSpeech`", "correct": false, "why": "This is the success value of a SpeechRecognizer transcription, not of speech synthesis."},
+      {"text": "`NoMatch`", "correct": false, "why": "This recognition value means audio was parsed but no speech was recognized; synthesis never returns it."},
+      {"text": "`Canceled`", "correct": false, "why": "Canceled signals an error, which the code already handles in the `elif` branch."}
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "4.1.3-01",
+    "type": "basic",
+    "section": "4.1.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "multimodal",
+      "chat"
+    ],
+    "question": "Your Python client must ask a multimodal model deployed in Microsoft Foundry a question about a photo. How do you structure the user message in the prompt?",
+    "answer": "As a **multi-part user message**: one user message whose content holds a **text** content item (the question) and an **image** content item (the photo).",
+    "explanation": "Otherwise a vision-based chat works like a text chat: you connect to the endpoint where the model is deployed, submit prompts made of messages and process the responses. Only the user message changes. Its `content` is no longer a single string but a list of content items, so the question and the image travel together in the same message. The instruction for the assistant stays in its own developer or system message.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/4.1.3-multi-part-prompt.png",
+        "alt": "One user message holding a line of text and an image is sent to the model, which replies with text."
+      }
+    ],
+    "addition": "Limits for vision-enabled Azure OpenAI chat models: at most **10 images per chat call**, and each input image may be up to **20 MB**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/gpt-with-vision"
+  },
+  {
+    "id": "4.1.3-02",
+    "type": "basic",
+    "section": "4.1.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "multimodal",
+      "base64"
+    ],
+    "question": "A vision chat app sends images to a multimodal model in Microsoft Foundry. Some images are hosted on a website, others are files on the user's disk. How do you put each kind into the image content item?",
+    "answer": "- **Web image** — pass its **URL** directly\n- **Local file** — encode its bytes in **Base64** and pass a **data URL**: `data:image/jpeg;base64,{image_data}`",
+    "explanation": "The image content item always expects a URL, so a local file is turned into one. A data URL does not point to a server; it carries the Base64-encoded image bytes inside the URL itself. Replace `jpeg` with `png` or whatever format the file has. In Python you read the file in binary mode and call `base64.b64encode(image_file.read()).decode(\"utf-8\")` to get the string after `base64,`. Both the Responses and the ChatCompletions API accept either kind.",
+    "addition": "Web image URLs must be **publicly accessible**. URLs behind private endpoints, VNet or firewall restrictions fail even on a peered storage account, because the service fetches images from Microsoft-managed infrastructure outside your VNet. Base64-encoded data needs no fetch.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/gpt-with-vision"
+  },
+  {
+    "id": "4.1.3-03",
+    "type": "mc",
+    "section": "4.1.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "responses-api",
+      "multimodal",
+      "sdk"
+    ],
+    "question": "Complete the code that sends a photo to gpt-4.1 with the **Responses API**.\n\n```python\nresponse = client.responses.create(\n    model=\"gpt-4.1\",\n    input=[{\"role\": \"user\", \"content\": [\n        {\"type\": \"input_text\", \"text\": \"What desserts could I make with this?\"},\n        {\"type\": ___, \"image_url\": data_url}\n    ]}]\n)\nprint(response.output_text)\n```",
+    "answer": "**`\"input_image\"`**",
+    "explanation": "In the Responses API every content item type carries the `input_` prefix: `input_text` for the question, `input_image` for the picture. The image item takes `image_url` as a plain string, either a web URL or a Base64 data URL. The model's reply is read from `response.output_text`.",
+    "options": [
+      {
+        "text": "`\"input_image\"`",
+        "correct": true,
+        "why": "This is the Responses API's content item type for an image, used next to `input_text`."
+      },
+      {
+        "text": "`\"image_url\"`",
+        "correct": false,
+        "why": "That is the ChatCompletions API's image type, which also expects `image_url` as an object with a `url` key."
+      },
+      {
+        "text": "`\"input_text\"`",
+        "correct": false,
+        "why": "It marks the text item; the model would get the data URL as text, not as an image."
+      }
+    ]
+  },
+  {
+    "id": "4.1.3-04",
+    "type": "mc",
+    "section": "4.1.3",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "chat-completions",
+      "multimodal",
+      "sdk"
+    ],
+    "question": "Complete the image content item for a vision prompt sent with the **ChatCompletions API**.\n\n```python\nresponse = client.chat.completions.create(\n    model=\"Phi-4-multimodal-instruct\",\n    messages=[{\"role\": \"user\", \"content\": [\n        {\"type\": \"text\", \"text\": \"What can I make with this fruit?\"},\n        ___\n    ]}]\n)\n```",
+    "answer": "**`{\"type\": \"image_url\", \"image_url\": {\"url\": data_url}}`**",
+    "explanation": "ChatCompletions names its content item types without a prefix: `text` and `image_url`. The image item wraps the URL in an object with a `url` key, unlike the Responses API, where `image_url` is a plain string. The URL can again be a web URL or a Base64 data URL. The reply is read from `response.choices[0].message.content`.",
+    "options": [
+      {
+        "text": "`{\"type\": \"image_url\", \"image_url\": {\"url\": data_url}}`",
+        "correct": true,
+        "why": "This is the ChatCompletions image item: type `image_url` with the URL nested in an object."
+      },
+      {
+        "text": "`{\"type\": \"input_image\", \"image_url\": data_url}`",
+        "correct": false,
+        "why": "That is the Responses API's image item, not the ChatCompletions format."
+      },
+      {
+        "text": "`{\"type\": \"text\", \"text\": data_url}`",
+        "correct": false,
+        "why": "It sends the data URL as plain text, so the model never receives an image."
+      }
+    ],
+    "addition": "The `image_url` object takes an optional `detail`: `auto` (default, chosen by image size), `low` (a 512x512 version, faster and fewer tokens) or `high` (adds detailed 512x512 segments at double token cost each).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/gpt-with-vision"
+  },
+  {
+    "id": "4.1.3-05",
+    "type": "basic",
+    "section": "4.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "chat-completions",
+      "responses-api",
+      "multimodal"
+    ],
+    "question": "Your app uses the Azure OpenAI endpoint to send image prompts to **Phi-4-multimodal-instruct**, a model that does not support the Responses API. Which API and Python method do you use?",
+    "answer": "The **ChatCompletions API**: `client.chat.completions.create(model=..., messages=[...])`.",
+    "explanation": "The Responses API, called with `client.responses.create`, is the one used with gpt-4.1. When a model on the Azure OpenAI endpoint doesn't support it, ChatCompletions is the fallback. The vision technique stays the same: a multi-part user message with a text item and an image item, given as a web URL or a Base64 data URL. Only the parameter names, the content item types and the way you read the reply differ."
+  },
+  {
+    "id": "4.1.3-06",
+    "type": "basic",
+    "section": "4.1.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/3-develop-visual-chat-app",
+    "tags": [
+      "responses-api",
+      "chat-completions",
+      "sdk"
+    ],
+    "question": "Name the **four** places where a vision prompt in Python differs between the **Responses API** and the **ChatCompletions API**.",
+    "answer": "- **Call** — `client.responses.create(input=[...])` vs. `client.chat.completions.create(messages=[...])`\n- **Instruction role** — `developer` vs. `system`\n- **Content item types** — `input_text` / `input_image` vs. `text` / `image_url`\n- **Reply** — `response.output_text` vs. `response.choices[0].message.content`",
+    "explanation": "Everything else is shared. The image file is read and Base64-encoded the same way, the data URL has the same format, and the user message is multi-part in both. One more detail sits inside the image item: Responses takes `image_url` as a plain string, ChatCompletions as an object with a `url` key. The course pairs them with models: the Responses example sends gpt-4.1 a `developer` message, the ChatCompletions example sends Phi-4-multimodal-instruct a `system` message."
+  }
+]

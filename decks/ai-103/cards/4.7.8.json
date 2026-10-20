@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.7.8-01",
+    "type": "mc",
+    "section": "4.7.8",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/7-knowledge-check",
+    "tags": ["document-intelligence", "layout", "model-choice"],
+    "question": "You need to extract text and table structure from a set of documents that have varying formats. You don't need to identify specific labeled fields. Which Document Intelligence model should you use?",
+    "answer": "The **layout model**.",
+    "explanation": "The layout model extends the read model's text extraction with tables, selection marks and document structure. Each table cell comes back with its content, bounding box and row/column indexes, even for angled scans or merged cells. The read model stops at words and lines. The invoice model is trained for one document type and returns a fixed set of fields, which is not needed here.",
+    "options": [
+      {"text": "The read model.", "correct": false, "why": "Unit 4.7.4: the read model extracts printed and handwritten text and detects languages, but it does not extract tables or structure."},
+      {"text": "The layout model.", "correct": true, "why": "Unit 4.7.4: the layout model adds detection of tables, selection marks and document structure to the read model's text extraction, with no fields to label."},
+      {"text": "The invoice model.", "correct": false, "why": "Unit 4.7.4: the invoice model is a prebuilt model for one document type that extracts invoice fields such as vendor, dates and totals, not general structure from varying formats."}
+    ]
+  },
+  {
+    "id": "4.7.8-02",
+    "type": "mc",
+    "section": "4.7.8",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/7-knowledge-check",
+    "tags": ["document-intelligence", "custom-models", "training"],
+    "question": "You're building a custom model in Azure Document Intelligence. What training artifacts are required when training with the REST API?",
+    "answer": "**Sample forms** plus **`ocr.json`**, **`labels.json`** and **`fields.json`** files in a blob container.",
+    "explanation": "Each sample form gets an `ocr.json` (from the Analyze document function) and a `labels.json` that maps fields to their location in the form. One `fields.json` describes the fields to extract. You then create a SAS URL for the container, call **Build model**, and read the model ID with **Get model**. Five to six sample forms are enough to start; more and more varied samples give better accuracy.",
+    "options": [
+      {"text": "Only the sample form documents in a blob container.", "correct": false, "why": "Unit 4.7.5: training is supervised, so the forms need the layout and label JSON files beside them; forms alone carry no labels."},
+      {"text": "Sample forms along with ocr.json, labels.json, and fields.json files in a blob container.", "correct": true, "why": "Unit 4.7.5: store the sample forms in a blob container with an ocr.json and labels.json per form and a single fields.json."},
+      {"text": "A minimum of 100 labeled forms and a trained classifier.", "correct": false, "why": "Unit 4.7.5 recommends at least five to six sample forms, and a classifier is only for routing between several form types, not a training requirement."}
+    ]
+  },
+  {
+    "id": "4.7.8-03",
+    "type": "mc",
+    "section": "4.7.8",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/7-knowledge-check",
+    "tags": ["document-intelligence", "composed-models", "classification"],
+    "question": "A company processes both invoices and receipts. They want a single endpoint that routes each document to the correct extraction model. What should they use?",
+    "answer": "A **composed model** or a **custom classifier** paired with extraction models.",
+    "explanation": "A composed model combines several custom models: Document Intelligence classifies each submitted document, picks the fitting component model and returns its results. A custom classifier does the same routing step explicitly, identifying the document type before an extraction model runs. A single neural model would be one extraction model, and the read model returns only text.",
+    "options": [
+      {"text": "A custom neural model.", "correct": false, "why": "Unit 4.7.5: a custom neural model extracts fields from documents with varying layouts, but it is one extraction model and does not route between models."},
+      {"text": "A prebuilt read model.", "correct": false, "why": "Unit 4.7.4: the read model extracts text and detects languages; it neither classifies documents nor routes them."},
+      {"text": "A composed model or a custom classifier paired with extraction models.", "correct": true, "why": "Unit 4.7.5: a composed model classifies each document and uses the best component model, and a custom classifier routes documents to the right extraction model."}
+    ]
+  }
+]

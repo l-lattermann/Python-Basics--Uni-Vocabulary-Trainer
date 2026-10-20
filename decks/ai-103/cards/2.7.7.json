@@ -1,0 +1,93 @@
+[
+  {
+    "id": "2.7.7-01",
+    "type": "mc",
+    "section": "2.7.7",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/6-knowledge-check",
+    "tags": ["agent-framework", "agents"],
+    "question": "What are the key steps to create a Microsoft Foundry Agent using the Microsoft Agent Framework?",
+    "answer": "Create an **`AzureAIAgentClient`**, define a **ChatAgent** with instructions and tools, and create an **`AgentThread`** for conversations.",
+    "explanation": "The sequence is client, then agent, then conversation. The chat client is the bridge to the Foundry Agent Service: it takes the credential, the project endpoint and the model deployment name. The agent gets its instructions (the system prompt) and optional tools from code. The thread or session holds the conversation state, and you send user messages to it to run the agent.",
+    "addition": "Current Python names: `AzureAIAgentClient` was replaced by `FoundryChatClient`, and `ChatAgent` was renamed to `Agent` (constructor parameter `client=` instead of `chat_client=`). The course exercise already uses the new names.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/support/upgrade/python-2026-significant-changes",
+    "options": [
+      {
+        "text": "Deploy a custom AI model before creating an agent definition in the Azure portal.",
+        "correct": false,
+        "why": "Unit 2.7.3 needs only a Foundry project with a deployed model; the agent is then defined in code with instructions and tools, not in the Azure portal, and no custom model is required."
+      },
+      {
+        "text": "Initialize the agent by defining a model in the `AgentThread` constructor.",
+        "correct": false,
+        "why": "Unit 2.7.3 passes the model deployment name to the chat client; the thread or session only holds the conversation state."
+      },
+      {
+        "text": "Create an `AzureAIAgentClient`, define a ChatAgent with instructions and tools, and create an `AgentThread` for conversations.",
+        "correct": true,
+        "why": "Unit 2.7.3 lists exactly these steps: initialize the Foundry chat client, create the agent with instructions and optional tools, then open a session to run the conversation."
+      }
+    ]
+  },
+  {
+    "id": "2.7.7-02",
+    "type": "mc",
+    "section": "2.7.7",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/6-knowledge-check",
+    "tags": ["agent-framework", "agent-memory"],
+    "question": "Which component in the Microsoft Agent Framework manages conversation state and stores messages?",
+    "answer": "**`AgentThread`** — the thread (now called session) is the container for the conversation state.",
+    "explanation": "One `run` call handles one exchange; the thread is what lets the agent remember earlier turns. With the Foundry provider, the history lives on the service side, so a conversation survives an app restart or scale-out. Providers without service-side history keep it in memory inside the session object, which is lost when the process restarts.",
+    "addition": "In current Python releases `AgentThread` is renamed to `AgentSession`: `agent.get_new_thread()` became `agent.create_session()`, and `run(..., thread=thread)` became `run(..., session=session)`.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/support/upgrade/python-2026-significant-changes",
+    "options": [
+      {
+        "text": "AgentThread",
+        "correct": true,
+        "why": "Unit 2.7.3: the session (thread) is the container for the conversation state, backed by service-side storage for the Foundry provider."
+      },
+      {
+        "text": "ChatAgent",
+        "correct": false,
+        "why": "Unit 2.7.3: the agent defines behavior through instructions and tools; it does not store the conversation."
+      },
+      {
+        "text": "AzureAIAgentClient",
+        "correct": false,
+        "why": "Unit 2.7.3: the chat client handles authentication, request routing and session management, but the messages belong to the thread or session."
+      }
+    ]
+  },
+  {
+    "id": "2.7.7-03",
+    "type": "mc",
+    "section": "2.7.7",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/6-knowledge-check",
+    "tags": ["agent-framework", "function-calling"],
+    "question": "How do you add custom functionality to a Microsoft Foundry Agent in the Microsoft Agent Framework?",
+    "answer": "Write **Python functions** with type annotations and descriptions and pass them to the agent's **`tools`** parameter.",
+    "explanation": "The framework inspects the function's signature and generates the tool schema itself. The model relies on that schema to decide when to call the tool. Describe each parameter with `Annotated[..., Field(description=...)]` and use the docstring as the tool description, or set name and description with the `@tool` decorator. Several tools go in as a list; the model picks the right one without routing code.",
+    "options": [
+      {
+        "text": "Configure custom functions in the Azure portal and link them to the agent through connection strings.",
+        "correct": false,
+        "why": "Unit 2.7.4: custom function tools are registered in code when the agent is created; units 2.7.3 and 2.7.4 use no portal configuration or connection strings for them."
+      },
+      {
+        "text": "Create Python functions with proper type annotations and descriptions, then pass them to the ChatAgent's tools parameter.",
+        "correct": true,
+        "why": "Unit 2.7.4: you pass the function directly to the agent at creation, and the framework builds the schema from its annotations and descriptions."
+      },
+      {
+        "text": "Modify the AI model's architecture to integrate the custom functionality directly.",
+        "correct": false,
+        "why": "Unit 2.7.4: tools extend the agent from outside the model; the model only decides when to call them and the framework executes them."
+      }
+    ]
+  }
+]

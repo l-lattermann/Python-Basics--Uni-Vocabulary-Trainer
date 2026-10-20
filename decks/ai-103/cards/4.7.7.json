@@ -1,0 +1,57 @@
+[
+  {
+    "id": "4.7.7-01",
+    "type": "basic",
+    "section": "4.7.7",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/03-document-intelligence.html",
+    "tags": [
+      "document-intelligence",
+      "ocr",
+      "language-detection"
+    ],
+    "question": "You analyze a multilingual PDF with the **Read** model in Document Intelligence Studio and need the language of each piece of text. Which setting do you enable, and where do you see the result?",
+    "answer": "- Enable **Language** under *Optional detection* in **Analyze options**, then *Run Analysis*\n- Read the **`locale`** of each span at the end of the JSON in the **Result** tab",
+    "explanation": "The Read model extracts printed and handwritten text and can detect the language of the text. The **Content** tab only shows the extracted text, so you compare it with the original for accuracy. The language appears only in the JSON of the **Result** tab: a German document returns mostly `de` spans, but a span with an English phrase is tagged `en`. Language detection works per span, not per document."
+  },
+  {
+    "id": "4.7.7-02",
+    "type": "basic",
+    "section": "4.7.7",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/03-document-intelligence.html",
+    "tags": [
+      "document-intelligence",
+      "python-sdk",
+      "authentication"
+    ],
+    "question": "A Python app analyzes invoices with the `azure-ai-documentintelligence` SDK and the **prebuilt-invoice** model. Where do you get the values for the client, and which call starts the analysis?",
+    "answer": "- Azure portal → your Document Intelligence resource → *Resource Management* → **Keys and Endpoint**\n- `DocumentIntelligenceClient(endpoint, AzureKeyCredential(key))`\n- **`begin_analyze_document(model_id, AnalyzeDocumentRequest(url_source=...))`**, then `poller.result()`",
+    "explanation": "The endpoint and one of the two keys go into the app's `.env` file. `begin_analyze_document` does not return the result directly: it returns a **poller**, and `poller.result()` delivers the analysis. Each item in `result.documents` has `fields` such as `VendorName`, `CustomerName` and `InvoiceTotal`. Every field carries its value (`valueString`, `valueCurrency`) and a **confidence** score. A custom model is called the same way, only with its own model ID."
+  },
+  {
+    "id": "4.7.7-03",
+    "type": "order",
+    "section": "4.7.7",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/03-document-intelligence.html",
+    "tags": [
+      "document-intelligence",
+      "custom-models"
+    ],
+    "question": "Put the steps of training and using a **custom extraction model** with Document Intelligence Studio in order.",
+    "answer": "Upload forms → create project → train (Template) → wait for *succeeded* → call by model ID.",
+    "explanation": "The training forms must already sit in a Blob Storage container, because the Studio project connects to that container as its training data source. In the **Train** dialog you name the **Model ID** and pick the **Build Mode**; the exercise uses **Template** for its fixed-layout forms. The app then sends a test form to `begin_analyze_document` with that model ID and prints fields you defined, such as `Merchant`.",
+    "items": [
+      "Upload the sample forms to a Blob Storage container",
+      "In the Studio, select the Custom extraction model tile and create a project",
+      "Link the Document Intelligence resource and the storage container to the project",
+      "Select Train and set a Model ID and the Build Mode Template",
+      "Under Models, wait until the model status is succeeded",
+      "Analyze a new form from the SDK using the model ID"
+    ]
+  }
+]

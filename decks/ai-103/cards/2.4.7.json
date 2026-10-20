@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2.4.7-01",
+    "type": "order",
+    "section": "2.4.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/04-integrate-agent-with-foundry-iq.html",
+    "tags": ["foundry-iq", "agents", "knowledge-base"],
+    "question": "In the Microsoft Foundry portal (New Foundry), put the steps in order to ground a new agent in your PDFs stored in Azure Blob Storage through **Foundry IQ**.",
+    "answer": "Create agent → **Knowledge → Add → Connect to Foundry IQ** → AI Search resource → **Create a knowledge base** from Blob Storage → add it in the playground.",
+    "items": [
+      "On Build > Agents, select Create agent and save its instructions",
+      "In the agent's Knowledge section, select Add > Connect to Foundry IQ",
+      "Connect to an Azure AI Search resource (create a new one in the same region and resource group)",
+      "On the Knowledge page, select Create a knowledge base with Azure Blob Storage as the knowledge source",
+      "Set the knowledge source (storage account, container, embedding model, chat completions model) and save the knowledge base",
+      "In the agent playground, add Foundry IQ with the connection and knowledge base, then test"
+    ],
+    "explanation": "Foundry IQ needs an Azure AI Search resource behind it; the knowledge base is built on top of that. The documents must already sit in a blob container before you create the knowledge source. Wait until the knowledge source status is **active** before testing. In the lab the search service allows **Both** API access control modes, and the connection under **Connected resources** uses **Key authentication** with a key copied from the search service's **Keys** page."
+  },
+  {
+    "id": "2.4.7-02",
+    "type": "basic",
+    "section": "2.4.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/04-integrate-agent-with-foundry-iq.html",
+    "tags": ["foundry-iq", "tool-approval", "foundry-toolkit"],
+    "question": "An agent created in the Microsoft Foundry portal searches its Foundry IQ knowledge base without asking. You want your app to approve every lookup. Where and with which setting do you change that?",
+    "answer": "In the **Foundry Toolkit for VS Code** → Agents → Prompt Agents → **Agent Builder**: on the `kb-knowledgebase…` tool select **… → Configure → Never auto-approve tools**, then **Deploy**.",
+    "explanation": "By default the Foundry IQ tool runs **without** approval, and the portal has no setting to change this. The `kb-knowledgebase…` tool was added automatically when you connected Foundry IQ. Set approval on that tool only: the agent also lists a default **Web search** tool and maybe an **Azure AI Search** tool, but setting approval there has no effect on knowledge base searches."
+  },
+  {
+    "id": "2.4.7-03",
+    "type": "basic",
+    "section": "2.4.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/04-integrate-agent-with-foundry-iq.html",
+    "tags": ["tool-approval", "agents", "foundry-sdk"],
+    "question": "Your Python client calls a Foundry agent whose Foundry IQ tool requires approval. Which item does the response contain when approval is needed, and how does the client answer it?",
+    "answer": "- Response `output` holds **`mcp_approval_request`** items\n- Client adds **`mcp_approval_response`** items (`approval_request_id`, `approve`) with `conversations.items.create()`\n- Then calls `responses.create()` again — **loop** until no requests remain",
+    "explanation": "The client creates a conversation, adds the user message, then calls `responses.create()` with an `agent_reference` to the agent by name. The agent does not always ask, and may ask for several tool calls in one turn. A loop that runs until the list of approval requests is empty covers zero, one or many. Each request shows `name`, `server_label` and `arguments`, so the user sees what the agent wants to search before approving or denying."
+  }
+]

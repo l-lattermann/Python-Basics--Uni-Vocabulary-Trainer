@@ -1,0 +1,90 @@
+[
+  {
+    "id": "3.7.3-01",
+    "type": "basic",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "service-choice"],
+    "question": "Name the **three** things you can do with **Azure Translator in Foundry Tools** across its 90+ supported languages.",
+    "answer": "- **Text translation and transliteration** — with the default translation model or a large language model (LLM)\n- **Document translation** — synchronous or asynchronous, keeping the document structure\n- **Custom translation models** — for domain-specific terms",
+    "explanation": "Text translation works on strings; document translation handles whole files without losing their layout; custom models fix the wording of a specialist domain. In the Microsoft Foundry portal there are playgrounds for text translation and document translation. There you can compare results of the default model with those of LLMs and view sample code for your own client applications.",
+    "explanation_images": [
+      {"src": "media/ai-103/3.7.3-translator-playground.png", "alt": "Foundry portal text translation playground: a model selector set to Azure-MT, Translator and Code tabs, source text with Auto Detect, and the French translation"}
+    ]
+  },
+  {
+    "id": "3.7.3-02",
+    "type": "basic",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "endpoints"],
+    "question": "Name the **three** kinds of REST endpoint a client can connect to when it calls **Azure Translator**.",
+    "answer": "- **Global endpoint** — `api.cognitive.microsofttranslator.com`\n- **Regional endpoints** — e.g. `api-nam`, `api-apc`, `api-eur.cognitive.microsofttranslator.com`\n- **Foundry resource endpoint** — `{foundry-resource-name}.cognitiveservices.azure.com/`",
+    "explanation": "Every Translator call is a REST request that needs an authenticated connection. You call the REST API directly or use an SDK for Python, .NET, Java or JavaScript. The Python `TextTranslationClient` connects either to a specific endpoint or simply to the region your resource is provisioned in. Both ways authenticate here with the Foundry API key."
+  },
+  {
+    "id": "3.7.3-03",
+    "type": "mc",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "python-sdk"],
+    "question": "You know only the Azure region your Foundry resource is provisioned in, not its endpoint URL. What completes the gap to create an Azure Translator client?\n\n```python\nfrom azure.core.credentials import AzureKeyCredential\nfrom azure.ai.translation.text import *\n\nkey_credential = AzureKeyCredential(\"FOUNDRY_KEY\")\nclient = TextTranslationClient(credential=key_credential,\n                               ___=\"FOUNDRY_REGION\")\n```",
+    "answer": "**`region`** — `TextTranslationClient(credential=..., region=\"FOUNDRY_REGION\")`.",
+    "explanation": "The `TextTranslationClient` constructor takes the credential plus one way to find the service: `endpoint=` with the Foundry resource endpoint, or `region=` with the region the resource is provisioned in. The credential here is an `AzureKeyCredential` built from the Foundry API key.",
+    "options": [
+      {"text": "`region`", "correct": true, "why": "The constructor accepts the resource's region instead of an endpoint URL."},
+      {"text": "`endpoint`", "correct": false, "why": "`endpoint=` expects the Foundry resource endpoint URL, not a region name."},
+      {"text": "`to_language`", "correct": false, "why": "`to_language` is a parameter of `translate` that lists the target languages, not a connection setting."},
+      {"text": "`scope`", "correct": false, "why": "`scope` belongs to `get_supported_languages` and filters the language list, for example `\"translation\"`."}
+    ]
+  },
+  {
+    "id": "3.7.3-04",
+    "type": "basic",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "python-sdk"],
+    "question": "Your app must show users a list of the languages **Azure Translator** can translate into. Which `TextTranslationClient` call do you use, and what does it return per language?",
+    "answer": "**`get_supported_languages(scope=\"translation\")`** — returns each language's **name** and **ISO code**, e.g. `Afrikaans (af)`.",
+    "explanation": "The result's `translation` dictionary is keyed by ISO code, and each entry carries the language name. You need these codes later: `translate` takes ISO codes as source and target languages. A typical use is filling a language picker in your app. The course gives the count as \"over 90 languages\"; its sample run of this call prints 137 entries."
+  },
+  {
+    "id": "3.7.3-05",
+    "type": "mc",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "python-sdk"],
+    "question": "You call **Azure Translator**'s `translate` method with texts in unknown languages and want French and English results. Which **two** statements are true?",
+    "answer": "Omit **`from_language`** to get **automatic source language detection**; pass the targets as a list in **`to_language`**, e.g. `[\"fr\", \"en\"]`.",
+    "explanation": "The input is a list of `InputTextItem` objects, each holding one string. Each result carries `detected_language` and a list of `translations`, one per valid target code, each with its `to` code and `text`. One call can therefore translate several inputs into several languages: \"Hola\" and \"こんにちは\" both come back as \"Bonjour\" and \"Hello\".",
+    "options": [
+      {"text": "Omit `from_language`, and Azure Translator detects each input's source language automatically.", "correct": true, "why": "`from_language` is optional; without it the service detects the source, here Spanish and Japanese."},
+      {"text": "Pass `to_language=[\"fr\", \"en\"]`; you get one translation per valid target code.", "correct": true, "why": "`to_language` takes a list of ISO codes and returns a translation for each."},
+      {"text": "Call `translate` once per target language, because `to_language` accepts a single code.", "correct": false, "why": "`to_language` is a list, so one call covers several targets."},
+      {"text": "Pass the source texts as a single string in `body`.", "correct": false, "why": "`body` is a list of `InputTextItem` objects, each containing one text."},
+      {"text": "Set `from_script=\"Latn\"` so the output is written in Latin script.", "correct": false, "why": "`from_script` and `to_script` belong to `transliterate`, which changes the script, not the language."}
+    ]
+  },
+  {
+    "id": "3.7.3-06",
+    "type": "basic",
+    "section": "3.7.3",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/3-azure-translator",
+    "tags": ["translator", "python-sdk"],
+    "question": "You want Japanese text in Hiragana, \"こんにちは\", rendered in Latin letters instead of translated into another language. Which **Azure Translator** method and parameters do you use?",
+    "answer": "**`transliterate`** with `language=\"ja\"`, `from_script=\"Jpan\"` and `to_script=\"Latn\"` — the result is `Kon'nichiwa`.",
+    "explanation": "Translation changes the language: \"こんにちは\" becomes \"Hello\". Transliteration keeps the language and changes only the script, so the Japanese word is spelled out in the Latin script English uses. Like `translate`, the method takes a list of `InputTextItem` objects as `body`. Each result returns the target script and the transliterated text."
+  }
+]

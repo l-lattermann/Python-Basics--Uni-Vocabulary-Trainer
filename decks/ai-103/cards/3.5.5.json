@@ -1,0 +1,60 @@
+[
+  {
+    "id": "3.5.5-01",
+    "type": "order",
+    "section": "3.5.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/05-azure-speech-mcp.html",
+    "tags": [
+      "speech",
+      "mcp",
+      "agents"
+    ],
+    "question": "Put the steps in order to give a Microsoft Foundry agent speech-to-text and text-to-speech through the **Azure Speech MCP Server** and call it from a Python app.",
+    "answer": "Storage container + **SAS URL** → Foundry project → agent → connect **Azure Speech MCP Server** from the Tools catalog → test in the playground → client app.",
+    "explanation": "The storage comes first because the connection needs the container's **SAS URL**: the MCP server saves the audio files it generates there. The tool connection also needs the Foundry resource name and the project's API key, so the project exists before it. The agent is created with a **gpt-5** model and instructions, then the tool is attached with **Use in an agent**. In the playground you approve the tool once with **Always approve all Azure Speech MCP Server tools**.",
+    "items": [
+      "In the Azure portal, create a storage account, add a container named files and generate a SAS URL for it",
+      "In the Foundry portal, create a project and note the resource name and the project API key",
+      "Create the agent speech-agent with a gpt-5 model and speech instructions, then save it",
+      "On the Tools page, connect Azure Speech MCP Server from the Catalog and select Use in an agent",
+      "In the agent playground, ask for synthesis and transcription and approve the tool",
+      "Run a Python client that calls the agent by name through the Responses API"
+    ]
+  },
+  {
+    "id": "3.5.5-02",
+    "type": "basic",
+    "section": "3.5.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/05-azure-speech-mcp.html",
+    "tags": [
+      "speech",
+      "storage",
+      "sas"
+    ],
+    "question": "Where in the Azure portal do you create the SAS URL that the Azure Speech MCP Server uses for a blob container, and which permissions does it get?",
+    "answer": "- Storage account → **Data storage** → **Containers**\n- Container's context menu (**...**) → **Generate SAS**\n- Permissions: **Read, Add, Create, Write, List**\n- Signing method **Account key** (Key1), **HTTPS only**",
+    "explanation": "The SAS is scoped to the one container, here named **files**, where the agent saves the audio it generates. The lab leaves the stored access policy at None and the allowed IP addresses blank. The token runs from now until 11:59pm tomorrow, which keeps the expiry short. Copy both the SAS token and the SAS URL right away: the URL goes into the tool connection as **X-Blob-Container-Url**.",
+    "addition": "Microsoft recommends a **user delegation SAS** when possible. It is secured with Microsoft Entra credentials instead of the storage account key, so no account key has to be stored with your code.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview"
+  },
+  {
+    "id": "3.5.5-03",
+    "type": "basic",
+    "section": "3.5.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/05-azure-speech-mcp.html",
+    "tags": [
+      "speech",
+      "mcp",
+      "foundry-portal"
+    ],
+    "question": "You connect the **Azure Speech MCP Server** from the Tools catalog in the Microsoft Foundry portal with key-based authentication. Which endpoint and which two header values do you enter?",
+    "answer": "- **Remote MCP Server endpoint**: `https://{foundry-resource-name}.cognitiveservices.azure.com/speech/mcp?api-version=2025-11-15-preview`\n- **Ocp-Apim-Subscription-Key**: the project's API key\n- **X-Blob-Container-Url**: the container's SAS URL",
+    "explanation": "The endpoint sits on your own Foundry resource, so you fill in the **foundry-resource-name** parameter. The API key is shown on the project home page. The SAS URL lets the server write generated audio into the container. If a policy disables key-based authentication in your subscription, use **Entra ID** authentication instead. After the connection is created, open its details page and select **Use in an agent** to attach it."
+  }
+]

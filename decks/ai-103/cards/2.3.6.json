@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2.3.6-01",
+    "type": "order",
+    "section": "2.3.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/03-mcp-integration.html",
+    "tags": [
+      "mcp",
+      "agents",
+      "sdk"
+    ],
+    "question": "Put the steps in order to have a Microsoft Foundry agent answer a prompt with tools from a **remote MCP server** (Python SDK, approval required).",
+    "answer": "Define `MCPTool` → create agent version with it → create conversation and send prompt → approve each **`mcp_approval_request`** until none remain → read output, delete agent version.",
+    "explanation": "With a remote MCP server, Foundry calls the tools for you: there is no client session and no function wrapping in your code. Because `require_approval=\"always\"` pauses before every tool call, the response contains `mcp_approval_request` items instead of an answer. The agent may make several tool calls, so the code loops: it sends an `McpApprovalResponse` with `approve=True` and the request id, chained by `previous_response_id`, until a response has no more requests. Then `output_text` holds the final answer.",
+    "items": [
+      "Define an `MCPTool` with `server_label`, `server_url` and `require_approval=\"always\"`",
+      "Create an agent version with `agents.create_version` and a `PromptAgentDefinition` whose `tools` list holds the MCP tool",
+      "Create a conversation and send the prompt with `responses.create`, passing an `agent_reference` to the agent",
+      "Answer every `mcp_approval_request` with an `McpApprovalResponse` and `previous_response_id`, repeating until no request is left",
+      "Print `response.output_text`, then remove the agent with `agents.delete_version`"
+    ]
+  },
+  {
+    "id": "2.3.6-02",
+    "type": "order",
+    "section": "2.3.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/03-mcp-integration.html",
+    "tags": [
+      "mcp",
+      "function-calling",
+      "custom-tools"
+    ],
+    "question": "Put the steps in order to give a Microsoft Foundry agent the tools of your **own local MCP server** through an MCP client in Python.",
+    "answer": "`FastMCP` server with `@mcp.tool()` → client starts it over **stdio** → `ClientSession` + `initialize()` → `list_tools()` → wrap as async functions and `FunctionTool`s → run each `function_call` and return `FunctionCallOutput`.",
+    "explanation": "Here the agent only sees ordinary function tools; your client does the MCP work. `@mcp.tool()` makes a Python function discoverable. In the lab the client launches the server itself over standard input/output, a lightweight channel for local development; in production the server runs separately. That is also why `mcp.run(show_banner=False)` is used: a banner on stdout would corrupt the stdio protocol. The agent answers with `function_call` items, which the client runs via `session.call_tool` and sends back with `previous_response_id`.",
+    "items": [
+      "On the server, create `FastMCP(name=\"Inventory\")`, decorate the functions with `@mcp.tool()` and call `mcp.run(show_banner=False)`",
+      "In the client, start the server over standard input/output with `stdio_client(server_params)`",
+      "Open a `ClientSession` on those streams and call `session.initialize()`",
+      "Discover the tools with `session.list_tools()`",
+      "Wrap each tool in an async function that calls `session.call_tool`, and define a matching `FunctionTool` in the agent's `tools`",
+      "Run each `function_call` in the response and send the result back as `FunctionCallOutput`"
+    ]
+  },
+  {
+    "id": "2.3.6-03",
+    "type": "basic",
+    "section": "2.3.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/03-mcp-integration.html",
+    "tags": [
+      "foundry-toolkit",
+      "vs-code",
+      "deployment"
+    ],
+    "question": "You work in VS Code with the **Foundry Toolkit** extension and need the URL your agent code uses to connect to the Foundry project. Where do you get it, and where does it go?",
+    "answer": "Right-click the project deployment in the Foundry Toolkit view and select **Copy Project Endpoint**; paste it into the `.env` file as the project endpoint, next to `MODEL_DEPLOYMENT_NAME`.",
+    "explanation": "The extension lets you work with Foundry resources without leaving the editor. You select **Create Project** under **Microsoft Foundry Resources**, pick subscription and resource group, and the project becomes the default. **Deploy a new model** (or **+** next to **Models**) opens the Model Catalog; there you deploy, for example, gpt-5 as Global Standard with **Deploy to Microsoft Foundry**. The code then connects with `AIProjectClient(endpoint=..., credential=DefaultAzureCredential())`, after `az login`.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/2.3.6-copy-project-endpoint.png",
+        "alt": "VS Code side bar of the AI Toolkit (now Foundry Toolkit): right-clicking the default project under My Resources shows Copy Project Endpoint"
+      }
+    ]
+  }
+]

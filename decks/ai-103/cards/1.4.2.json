@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1.4.2-01",
+    "type": "basic",
+    "section": "1.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/02-what-are-tools",
+    "tags": [
+      "tools",
+      "responses-api"
+    ],
+    "question": "Name the **four** commonly used tools a model deployed in Microsoft Foundry can use through the OpenAI Responses API.",
+    "answer": "- **code_interpreter** — a Python environment where the model generates and runs code\n- **web_search** — finds general information on the Internet, more current than the training data\n- **file_search** — searches files you upload to a dedicated vector search index\n- **function** — calls custom functions in your application code",
+    "explanation": "Each tool fills a different gap. code_interpreter runs real Python for calculations and data analysis and returns actual results. web_search reaches beyond the training data to current information on the Internet. file_search grounds answers in your own specific knowledge. function connects the model to your app's business logic. These are only some of the available tools. Don't confuse them with Foundry Tools: those are Azure AI APIs your apps call, not tools a model uses inside a prompt."
+  },
+  {
+    "id": "1.4.2-02",
+    "type": "basic",
+    "section": "1.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/02-what-are-tools",
+    "tags": [
+      "tools",
+      "responses-api",
+      "deployment"
+    ],
+    "question": "You build a client app in Microsoft Foundry whose model must use tools to find information and perform tasks. What do you deploy, and how does the app give the model its tools?",
+    "answer": "- Deploy a model with **tool calling** capabilities, found by searching Foundry Models\n- Submit prompts with the **OpenAI Responses API** and list the tools the model may use in each request",
+    "explanation": "Not every model can use tools, so the model choice comes first. The tools are not configured on the deployment. The client app specifies them in the prompts it submits, so the tool configuration lives in the application logic. That makes the app a custom assistant. A named agent, by contrast, persists the model, instructions and tools together."
+  },
+  {
+    "id": "1.4.2-03",
+    "type": "basic",
+    "section": "1.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/02-what-are-tools",
+    "tags": [
+      "tools",
+      "responses-api"
+    ],
+    "question": "A request to the OpenAI Responses API lists several tools. By default, who decides whether a tool is used and which one, and how can you steer that choice?",
+    "answer": "- By default the **model** chooses, based on the prompt\n- Steer it with **tool selection rules** and the **Instructions** (system prompt) parameter",
+    "explanation": "Listing a tool only makes it available; it does not force the model to call it. A prompt that needs no tool gets a normal answer. Because the model decides from the prompt, the Instructions parameter is where you say when a tool should be used, for example \"Use web search when current information is required.\""
+  },
+  {
+    "id": "1.4.2-04",
+    "type": "mc",
+    "section": "1.4.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/02-what-are-tools",
+    "tags": [
+      "python",
+      "responses-api",
+      "tools"
+    ],
+    "question": "Complete the call so the model deployed in Microsoft Foundry can use the web_search tool.\n\n```python\nresponse = client.responses.create(\n    model=model_deployment,\n    instructions=\"You are a helpful AI assistant.\",\n    input=\"Find me some information about vintage computers.\",\n    ___=[{\"type\": \"web_search\"}],\n)\nprint(response.output_text)\n```",
+    "answer": "`tools`",
+    "explanation": "`responses.create()` takes the available tools as a JSON list in `tools`. Each entry is one tool definition: a `type` such as `web_search` or `code_interpreter`, plus any tool-specific settings. You can pass one tool or several in the same list.",
+    "options": [
+      {
+        "text": "`tools`",
+        "correct": true,
+        "why": "It holds the list of tool definitions the model may call."
+      },
+      {
+        "text": "`include`",
+        "correct": false,
+        "why": "It asks for extra output in the response, such as `file_search_call.results`; it does not make tools available."
+      },
+      {
+        "text": "`instructions`",
+        "correct": false,
+        "why": "It is the system prompt; it can guide when a tool is used but cannot define one."
+      },
+      {
+        "text": "`input`",
+        "correct": false,
+        "why": "It carries the user prompt or message list, not the tool definitions."
+      }
+    ]
+  }
+]

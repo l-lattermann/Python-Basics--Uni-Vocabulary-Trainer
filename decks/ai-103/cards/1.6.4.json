@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1.6.4-01",
+    "type": "basic",
+    "section": "1.6.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/4-measure-harms",
+    "tags": ["responsible-ai", "harms", "evaluation"],
+    "question": "In the **Measure** stage of Microsoft's responsible generative AI process, what is the goal of testing the solution for harms, and what happens to the results?",
+    "answer": "- Create an initial **baseline** that quantifies the harms the solution produces in given usage scenarios\n- Track improvements **against that baseline** as you change the solution to mitigate the harms\n- **Document** the results and **share** them with stakeholders",
+    "explanation": "Measuring starts from the prioritized list of harms produced in the Map stage. A baseline turns \"the system sometimes says harmful things\" into a number for each scenario. Without it you cannot tell whether a mitigation helped. Each later change, such as a new system message or a content filter, is retested and compared against the baseline."
+  },
+  {
+    "id": "1.6.4-02",
+    "type": "order",
+    "section": "1.6.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/4-measure-harms",
+    "tags": ["responsible-ai", "harms", "evaluation"],
+    "question": "Put the **three** steps of the generalized approach to measuring a generative AI solution for potential harms in order.",
+    "answer": "1. **Prepare** diverse input prompts likely to cause each documented harm\n2. **Submit** them and retrieve the generated output\n3. **Apply pre-defined criteria** to categorize the output by harm level",
+    "explanation": "The prompts deliberately target each harm on your list. For a harm like \"helps users make poisons\", you write prompts such as asking for an undetectable poison from household chemicals. The categories can be as simple as \"harmful\" and \"not harmful\" or a range of harm levels. Either way, the criteria must be strict, so that every output can be categorized the same way.",
+    "explanation_images": [
+      {"src": "media/ai-103/1.6.4-measure-harms.png", "alt": "Three steps: prepare prompts, generate output, measure harmful results."}
+    ],
+    "items": [
+      "Prepare a diverse selection of input prompts likely to result in each documented potential harm",
+      "Submit the prompts to the system and retrieve the generated output",
+      "Apply pre-defined, strict criteria to categorize the output by its level of potential harm"
+    ]
+  },
+  {
+    "id": "1.6.4-03",
+    "type": "mc",
+    "section": "1.6.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/4-measure-harms",
+    "tags": ["responsible-ai", "harms", "evaluation"],
+    "question": "You classify a generative AI solution's outputs as \"harmful\" or \"not harmful\", but two testers often categorize the same output differently. What must you fix in your harm measurement?",
+    "answer": "Define **strict, pre-defined criteria** for categorizing the output.",
+    "explanation": "The categories themselves may stay simple. Two labels or a range of harm levels both work. What makes the measurement usable is that the criteria are strict enough to apply the same way every time. Inconsistent results are exactly what the initial manual test on a small set of inputs is meant to reveal before you automate.",
+    "options": [
+      {"text": "Define strict, pre-defined criteria for categorizing the output", "correct": true, "why": "The course requires strict criteria that can be applied to the output, whatever categories you choose."},
+      {"text": "Replace the two categories with a range of harm levels", "correct": false, "why": "A range of harm levels is allowed but needs strict criteria too; more categories alone do not make testers agree."},
+      {"text": "Prepare more diverse input prompts", "correct": false, "why": "More prompts widen the coverage of harms; they do not make the categorization of each output consistent."},
+      {"text": "Run red team testing on the solution", "correct": false, "why": "Red teaming belongs to the Map stage and probes for harms; it does not define how outputs are categorized."}
+    ]
+  },
+  {
+    "id": "1.6.4-04",
+    "type": "basic",
+    "section": "1.6.4",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/4-measure-harms",
+    "tags": ["responsible-ai", "evaluation", "harms"],
+    "question": "When measuring harms in a generative AI solution, how should you combine **manual and automated testing**?",
+    "answer": "- Start with **manual testing** of a small set of inputs\n- Then **automate** testing with a larger volume of test cases, e.g. a **classification model** that evaluates the output\n- Keep **periodic manual testing** afterwards",
+    "explanation": "The manual start checks that results are consistent and the evaluation criteria are well enough defined. Automating a vague criterion would only scale the inconsistency. Once it works, automation handles the volume. Manual testing never goes away: it validates new scenarios and confirms that the automated testing solution still performs as expected.",
+    "addition": "Microsoft Foundry ships such automated judges as **risk and safety evaluators** (violence, sexual, self-harm, hate and unfairness, and more). They run on Microsoft's hosted safety models; the content evaluators score severity 0–7 against a pass/fail threshold, and the evaluation reports an aggregate **defect rate**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators"
+  }
+]

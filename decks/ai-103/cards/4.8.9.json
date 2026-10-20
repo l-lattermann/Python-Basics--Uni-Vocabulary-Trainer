@@ -1,0 +1,58 @@
+[
+  {
+    "id": "4.8.9-01",
+    "type": "order",
+    "section": "4.8.9",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/05-rag-pipeline.html",
+    "tags": [
+      "rag",
+      "content-understanding",
+      "ingestion"
+    ],
+    "question": "An automated RAG ingestion pipeline uses Azure Content Understanding, Azure OpenAI and Azure AI Search. Put one run of the pipeline in order, from the search index to the indexed chunks.",
+    "answer": "Ensure the **index** → detect **new/changed files** → **extract** with Content Understanding → **chunk** → **embed** with Azure OpenAI → **index** the chunks in Azure AI Search.",
+    "explanation": "Content Understanding turns each multimodal document into markdown plus extracted fields such as a summary and key topics; the analyzer was created beforehand with `begin_create_analyzer`. Chunks stay self-contained because they are cut at paragraph boundaries. Each chunk becomes a 3072-dimension vector for semantic search. On the query side, the RAG agent runs a hybrid search — keyword plus vector — over these chunks and passes them with the question to the chat model.",
+    "items": [
+      "`ensure_index()` creates or updates the Azure AI Search index (text fields, vector field, HNSW)",
+      "Compare file hashes with the manifest to find **new or modified** files",
+      "Extract content with the Content Understanding analyzer via `begin_analyze_binary`",
+      "Split the markdown into chunks at paragraph boundaries (max. 2000 characters)",
+      "Embed each chunk with the Azure OpenAI **embedding model**",
+      "Upload the chunks to Azure AI Search with deterministic document IDs"
+    ]
+  },
+  {
+    "id": "4.8.9-02",
+    "type": "basic",
+    "section": "4.8.9",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/05-rag-pipeline.html",
+    "tags": [
+      "content-understanding",
+      "foundry-portal",
+      "model-deployment"
+    ],
+    "question": "Azure Content Understanding analyzers need OpenAI models deployed in your Foundry resource and a connection to that resource. Where do you set up both in one step, and which setting deploys the models?",
+    "answer": "- In **Content Understanding Studio**: settings gear > **+ Add resource**\n- Select the **Foundry resource** (the project's parent resource)\n- Keep **Enable auto-deployment** checked, then **Next** > **Save**",
+    "explanation": "Content Understanding does its analysis with OpenAI models that must be deployed before any analyzer runs. The Studio is the easiest way: with auto-deployment on, it deploys the required models and saves the connection in one go. You pick the parent resource, not the project. Because Content Understanding and Azure OpenAI sit in the same Foundry resource, one endpoint and one key serve both services in the pipeline's code."
+  },
+  {
+    "id": "4.8.9-03",
+    "type": "basic",
+    "section": "4.8.9",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/05-rag-pipeline.html",
+    "tags": [
+      "rag",
+      "ingestion",
+      "azure-ai-search"
+    ],
+    "question": "A Python RAG ingestion pipeline feeding Azure AI Search must ingest new documents continuously, skip unchanged ones, and not duplicate chunks when a file changes. Which mechanisms and flags handle this?",
+    "answer": "- **`--watch`** — polls the `data/` folder every **30 seconds**\n- **Manifest** `processed_files.json` with each file's **SHA-256 hash** — only new or modified files run\n- **Deterministic document IDs** (file name + chunk index) — an update replaces old chunks\n- **`--reset`** — reprocess all files",
+    "explanation": "In production, documents keep arriving and must be searchable in near real time. Watch mode adds a new file without any manual step: drop it into `data/`, and within 30 seconds it is extracted, embedded and indexed, so the RAG agent can answer from it. A second plain run reports \"No new files to ingest\" because every hash matches the manifest. Fixed IDs make re-indexing an upsert instead of a second copy."
+  }
+]

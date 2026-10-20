@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1.6.3-01",
+    "type": "order",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms"
+    ],
+    "question": "Put the **four** steps of the **Map** stage of Microsoft's responsible generative AI process in order.",
+    "answer": "**Identify** harms → **prioritize** them → **test and verify** them → **document and share** them.",
+    "explanation": "Map is the first of the four stages (Map, Measure, Mitigate, Manage). Each step narrows the list: you identify every plausible harm, rank them so effort goes to the worst first, test which ones really occur and under which conditions, then document the evidence for stakeholders. The list is not finished after step 4: you maintain it and add new harms as they are found, including ones that testing uncovers.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.6.3-map-harms-steps.png",
+        "alt": "The four steps of mapping potential harms: identify, prioritize, test, share."
+      }
+    ],
+    "items": [
+      "Identify potential harms",
+      "Prioritize the identified harms",
+      "Test and verify the prioritized harms",
+      "Document and share the verified harms"
+    ]
+  },
+  {
+    "id": "1.6.3-02",
+    "type": "basic",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms"
+    ],
+    "question": "Name the **three** common types of potential harm in a generative AI solution that Microsoft's responsible AI guidance lists when you identify harms.",
+    "answer": "Generating content that:\n- is **offensive, pejorative or discriminatory**\n- contains **factual inaccuracies**\n- **encourages or supports illegal or unethical** behavior or practices",
+    "explanation": "These are starting points, not a complete list. The first type hurts people directly through what the output says. The second misleads users who trust the answer, like a recipe copilot that gives wrong cooking times. The third makes the solution a tool for wrongdoing, like a copilot that hands out a poison recipe when asked. Which harms are actually relevant depends on your specific solution."
+  },
+  {
+    "id": "1.6.3-03",
+    "type": "basic",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms"
+    ],
+    "question": "When you identify potential harms for a generative AI solution, which factors determine **which harms are relevant**?",
+    "answer": "- The specific **services and models** that generate the output\n- Any **fine-tuning or grounding data** used to customize the outputs",
+    "explanation": "Two solutions with the same purpose can carry different harms. A different model brings different known limitations and behavior. Fine-tuning data or grounding data customizes what the model outputs, so it changes which harms can appear. That is why identifying harms starts with the documentation of the exact services and models you use, not with a generic list of harms."
+  },
+  {
+    "id": "1.6.3-04",
+    "type": "basic",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms",
+      "documentation"
+    ],
+    "question": "Name the **four** kinds of documentation Microsoft's responsible AI guidance points to when you identify the potential harms of a generative AI solution.",
+    "answer": "- **Transparency note** — Microsoft's notes on a service and its models, e.g. Azure OpenAI\n- **System card** — the model developer's documentation, e.g. OpenAI's for GPT-4\n- **Responsible AI Impact Assessment Guide** and **template** — to document potential harms\n- **Information and guidelines** for the resources you use",
+    "explanation": "The first two describe what you build on: the transparency note covers the known limitations and behavior of a Microsoft service and the models it includes, and a system card does the same for one model from its developer. The Impact Assessment Guide and its template are different: they are where you record the harms of your own solution. The resource guidelines complete the picture for each service you use."
+  },
+  {
+    "id": "1.6.3-05",
+    "type": "mc",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms",
+      "documentation"
+    ],
+    "question": "You build a solution on Azure OpenAI Service. To identify potential harms, you need **Microsoft's** documentation of the known limitations and behavior of the service and the models it includes. Which document do you consult?",
+    "answer": "The **Azure OpenAI transparency note**.",
+    "explanation": "Microsoft publishes a transparency note for the service that covers specific considerations for the service and its models. A system card comes from the model developer and covers one model, not the Azure service. The Impact Assessment template is not a source of known limitations: it is where you write down the harms of your own solution.",
+    "options": [
+      {
+        "text": "The Azure OpenAI transparency note",
+        "correct": true,
+        "why": "Microsoft publishes it to explain the specific considerations of the service and the models it includes."
+      },
+      {
+        "text": "The OpenAI system card for the GPT-4 model",
+        "correct": false,
+        "why": "It is the model developer's documentation of one model, not Microsoft's documentation of the service."
+      },
+      {
+        "text": "The Responsible AI Impact Assessment template",
+        "correct": false,
+        "why": "It is where you document the potential harms of your own solution, not a description of the service's limitations."
+      },
+      {
+        "text": "The NIST AI Risk Management Framework",
+        "correct": false,
+        "why": "It is a general risk management framework whose functions the four stages mirror; it does not describe a specific service."
+      }
+    ]
+  },
+  {
+    "id": "1.6.3-06",
+    "type": "basic",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "harms"
+    ],
+    "question": "How do you **prioritize** the potential harms you identified for a generative AI solution, and who makes the final call?",
+    "answer": "- Assess each harm's **likelihood** of occurring and its **impact** if it does\n- Put the most likely and most impactful harms first\n- Consider the **intended use** and the **potential for misuse**\n- The **development team** decides in discussion, consulting **policy or legal experts** if needed",
+    "explanation": "Likelihood and impact can pull in different directions. In a smart kitchen copilot, a lethal poison recipe has a higher impact than an inaccurate cooking time, but wrong cooking times are likely far more frequent in the core usage scenario than requests for poison. So the ranking is a judgment, not a calculation, and can be subjective. It comes before red teaming, which then tests the prioritized harms. The result lets you focus on the most harmful risks first."
+  },
+  {
+    "id": "1.6.3-08",
+    "type": "basic",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "red-teaming"
+    ],
+    "question": "What is **red team testing** of a generative AI solution, and what does it deliver in the Map stage?",
+    "answer": "- A team of testers **deliberately probes** the solution for weaknesses and tries to produce **harmful results**\n- It **verifies** whether prioritized harms occur, and under which conditions\n- It can reveal **previously unidentified harms**",
+    "explanation": "Red teaming comes from security, where it finds vulnerabilities that compromise a system's integrity. Applied to harmful content, it builds on and complements existing cybersecurity practice. For a kitchen copilot, testers ask for poison recipes or for quick recipes with ingredients that must be cooked thoroughly. The red team's successes are documented and reviewed to judge how likely harmful output really is in normal use.",
+    "addition": "Microsoft Foundry automates this with the **AI Red Teaming Agent**: it uses Microsoft's open-source PyRIT framework to simulate adversarial probing, scores each attack-response pair with the risk and safety evaluators, and reports the **Attack Success Rate (ASR)**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/concepts/ai-red-teaming-agent"
+  },
+  {
+    "id": "1.6.3-09",
+    "type": "mc",
+    "section": "1.6.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/3-identify-harms",
+    "tags": [
+      "responsible-ai",
+      "red-teaming"
+    ],
+    "question": "You have a prioritized list of potential harms for a generative AI copilot. Before you build a measurement baseline, you want testers to deliberately try to make the copilot produce each harm and find out under which conditions it happens. Which approach is this?",
+    "answer": "**Red team testing**, the test-and-verify step of the Map stage.",
+    "explanation": "The goal here is to confirm that a harm exists and when it appears, by people actively trying to break the solution. Measuring comes afterwards: it runs prepared prompts, often at volume, against strict criteria to quantify harms. Content filters respond to harms rather than find them, and a phased delivery plan gathers feedback from a restricted group of real users instead of deliberate probing.",
+    "options": [
+      {
+        "text": "Red team testing",
+        "correct": true,
+        "why": "Testers deliberately probe for weaknesses and try to produce harmful results, which verifies the harms and their conditions."
+      },
+      {
+        "text": "Automated measurement with a classification model",
+        "correct": false,
+        "why": "This belongs to the Measure stage and scores output at volume against a baseline; it comes after the harms are verified."
+      },
+      {
+        "text": "Configuring content filters",
+        "correct": false,
+        "why": "Filters mitigate harms at the safety system layer; they do not find out which harms the solution produces."
+      },
+      {
+        "text": "A phased delivery plan",
+        "correct": false,
+        "why": "It is a Manage-stage release practice that gathers feedback from a restricted group of users; nobody deliberately tries to produce each harm."
+      }
+    ]
+  }
+]

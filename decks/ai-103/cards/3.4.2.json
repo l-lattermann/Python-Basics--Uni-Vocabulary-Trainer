@@ -1,0 +1,44 @@
+[
+  {
+    "id": "3.4.2-01",
+    "type": "basic",
+    "section": "3.4.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/2-create-speech-service",
+    "tags": ["azure-speech", "endpoints"],
+    "question": "You want to transcribe recorded meetings and read emails aloud in an app built in a Microsoft Foundry project, using **Azure Speech in Foundry Tools**. What must you provision, and what do your requests use to connect and authenticate?",
+    "answer": "- Provision a **Microsoft Foundry resource** in your Azure subscription\n- Call its **endpoint**, authenticated with the resource **key**\n- Through the REST interface (JSON requests) or a language-specific **SDK**",
+    "explanation": "Azure Speech in Foundry Tools is not a separate resource here: it is a set of speech capabilities that the Foundry resource provides, for speech to text and text to speech. The portal home page shows the *project* endpoint and key. The project and resource keys are the same, and the resource endpoint is the project endpoint without `/api/projects/{project_name}`; the resource itself is under **Operate** → **Admin**."
+  },
+  {
+    "id": "3.4.2-02",
+    "type": "mc",
+    "section": "3.4.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/2-create-speech-service",
+    "tags": ["azure-speech", "python-sdk"],
+    "question": "A Python app uses the Azure Speech SDK for Foundry Tools. Which object do you create **first**, to hold the connection details for the Speech service in your Foundry resource?\n\n```python\nimport azure.cognitiveservices.speech as speech_sdk\n\nspeech_config = speech_sdk.___(subscription=\"YOUR_FOUNDRY_KEY\",\n                                endpoint=\"YOUR_FOUNDRY_ENDPOINT\")\n```",
+    "answer": "**`SpeechConfig`** — it encapsulates the endpoint (or region) and key of the Foundry resource.",
+    "explanation": "Every Speech SDK call starts from a `SpeechConfig`: it is the initial object that gives access to the Azure Speech endpoint. The key goes into the `subscription` parameter. Recognizer and synthesizer objects are created later from the `SpeechConfig`. The package is installed with `pip install azure-cognitiveservices-speech`; SDKs for C#, JavaScript and other languages follow the same pattern.",
+    "options": [
+      {"text": "`SpeechConfig`", "correct": true, "why": "It is the initial object and encapsulates the connection details (endpoint or region, and key) of the Foundry resource."},
+      {"text": "`AudioConfig`", "correct": false, "why": "It defines the audio input source, such as the default microphone or a file, not the connection to the service."},
+      {"text": "`SpeechRecognizer`", "correct": false, "why": "It is the proxy client for the Speech to text API and is built from a `SpeechConfig`, so it comes later."},
+      {"text": "`SpeechSynthesizer`", "correct": false, "why": "It is the proxy client for the Text to speech API and is built from a `SpeechConfig`, so it comes later."}
+    ]
+  },
+  {
+    "id": "3.4.2-03",
+    "type": "basic",
+    "section": "3.4.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/2-create-speech-service",
+    "tags": ["azure-speech", "python-sdk"],
+    "question": "An older app pins the Azure Speech Python SDK (`azure-cognitiveservices-speech`) to a release **before 1.48.2**. What must it pass to `SpeechConfig` besides the key, instead of the Foundry resource endpoint?",
+    "answer": "The **region** where the resource is deployed. From 1.48.2 on, `SpeechConfig` accepts either the **endpoint** or the region.",
+    "explanation": "Earlier releases located the service only by its Azure region, so code written against them passes the key plus a region name. Current releases also accept the Foundry resource endpoint, which is what the course examples use. Either way the key is the same; only the way the service is located differs. When you see a `region` argument in sample code, it is not wrong, just the older style."
+  }
+]

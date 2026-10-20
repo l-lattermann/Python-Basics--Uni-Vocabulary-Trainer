@@ -1,0 +1,56 @@
+[
+  {
+    "id": "3.2.5-01",
+    "type": "order",
+    "section": "3.2.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/02-language-agent.html",
+    "tags": [
+      "mcp",
+      "agents",
+      "foundry-portal"
+    ],
+    "question": "Put the steps in order to give an agent in the Microsoft Foundry portal text analysis through the **Azure Language in Foundry Tools** MCP server and test it.",
+    "answer": "Create agent → **Tools** page: connect Azure Language from the catalog → **Use in an agent** → tell the agent to use the tool → chat, approve, check **Logs**.",
+    "explanation": "The agent comes first because the tool connection is attached to an existing agent. The connection itself lives on the project's **Tools** page, not inside the agent. **Use in an agent** opens the agent in the playground with the tool attached; if it is missing, add it manually from the agent's tool list. The second instruction sentence tells the agent to use the Azure Language tool for text analysis. The **Logs** show whether the tool really ran.",
+    "items": [
+      "Create an agent (Create agents or Build > Agents), select a gpt-5 deployment, give it instructions and save",
+      "On the Tools page, Tools tab, connect Azure Language in Foundry Tools from the Catalog with its endpoint and key",
+      "On the connection's details page, select Use in an agent and pick the agent",
+      "Extend the agent's instructions to use the Azure Language tool and save",
+      "Send a prompt in the Chat pane, approve the tool call and verify the tool call in the Logs"
+    ]
+  },
+  {
+    "id": "3.2.5-02",
+    "type": "basic",
+    "section": "3.2.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/02-language-agent.html",
+    "tags": [
+      "mcp",
+      "authentication"
+    ],
+    "question": "You connect the **Azure Language in Foundry Tools** tool in the Microsoft Foundry portal. Which endpoint and which authentication settings do you enter?",
+    "answer": "- **Remote MCP Server endpoint**: `https://{foundry-resource-name}.cognitiveservices.azure.com/language/mcp?api-version=2025-11-15-preview`\n- **Parameters**: `foundry-resource-name` = your Foundry resource name\n- **Authentication**: **Key-based**, header `Ocp-Apim-Subscription-Key` = the project's API key",
+    "explanation": "The MCP server runs on your own Foundry resource, so the URL needs the resource name, not the project name. That is why the exercise tells you to note the resource name when you create the project. The API key is shown on the project's home page next to the project endpoint. If a policy in the subscription disables key-based authentication, connect with **Microsoft Entra ID** instead."
+  },
+  {
+    "id": "3.2.5-03",
+    "type": "basic",
+    "section": "3.2.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/02-language-agent.html",
+    "tags": [
+      "mcp",
+      "tool-approval",
+      "agents"
+    ],
+    "question": "In the Microsoft Foundry agent playground, an agent asks for approval each time it calls the Azure Language MCP tool. Where do you set it to approve these tool calls automatically for this agent?",
+    "answer": "- Agent playground → **Tools** list under the **Instructions** → menu of the Azure Language tool → **Configure**\n- Set **Approval setting for tools in this MCP server for this agent** to **Always auto-approve all tools**\n- **Save** the agent",
+    "explanation": "The chat's approval prompt also offers **Always approve all Azure Language in Foundry Tools tools**, but Configure stores the setting with the agent. The exercise sets it before building the client app that calls the agent by name through `responses.create`. To see which tools ran, check the playground **Logs**, or print `response.model_dump_json()` in the client: a review prompt there used `extract_named_entities_from_text` and `detect_sentiment_from_text`."
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "4.5.6-01",
+    "type": "basic",
+    "section": "4.5.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/01-content-understanding.html",
+    "tags": ["content-understanding", "ocr", "foundry-portal"],
+    "question": "In the Microsoft Foundry (new) portal, where do you try the prebuilt Azure Content Understanding analyzers, and what do **OCR/Read** and **Layout** each extract?",
+    "answer": "- **Build > Services > Playgrounds**, then *Content Understanding - Document Layout Analyzer* (or *OCR/Read*)\n- **OCR/Read** — text elements: words, paragraphs, formulas, barcodes\n- **Layout** — also tables, figures, document structure, hyperlinks, annotations",
+    "explanation": "Both prebuilt analyzers need no custom configuration and no generative AI model. You upload a file in the playground, run it and view the result as formatted output or raw JSON. They suit general-purpose content extraction. They do not pull out specific fields such as an invoice amount or a vendor name. For that you build a custom analyzer in Content Understanding Studio."
+  },
+  {
+    "id": "4.5.6-02",
+    "type": "basic",
+    "section": "4.5.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/01-content-understanding.html",
+    "tags": ["content-understanding", "storage"],
+    "question": "You want to build custom Azure Content Understanding analyzers in **Content Understanding Studio**. What must you connect before you create the first project?",
+    "answer": "- Your **Foundry resource**: Settings > **+ Add resource**, with autodeployment of the required models (**GPT-4.1**, **GPT-4.1-mini**, **text-embedding-3-large**)\n- An **Azure Blob Storage account** in the same resource group, connected with a blob container in the project's Advanced settings",
+    "explanation": "Content Understanding Studio is a separate web tool, at contentunderstanding.ai.azure.com, for building and testing analyzers with custom schemas. Custom analyzers depend on generative and embedding models. The checkbox *Enable autodeployment for required models if no defaults are available* deploys them for you. The storage account holds the data used to build the analyzers. If the new project cannot reach storage, wait: permissions on a new resource take a few minutes to propagate."
+  },
+  {
+    "id": "4.5.6-03",
+    "type": "order",
+    "section": "4.5.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/01-content-understanding.html",
+    "tags": ["content-understanding", "schema"],
+    "question": "Put the steps in order to create and use a custom analyzer in Azure Content Understanding Studio.",
+    "answer": "Create project → upload sample + pick template → define fields → **Run analysis** → **Build analyzer** → test it on a new file.",
+    "explanation": "The **template** sets the starting point. *Invoice* brings common invoice fields; *Image*, *Audio* and *Video analysis* bring none, so you define every field. Video analysis extracts data per segment. **Suggest** proposes fields from the sample but replaces the current schema. A *List of objects* field holds subfields, like table rows. Testing on the sample checks the schema; the built analyzer then serves similar content, returning field values and JSON.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.5.6-invoice-schema.png", "alt": "Content Understanding Studio schema tab with Run analysis, Build analyzer, Add new field and Suggest buttons and invoice fields with value types and methods"}
+    ],
+    "items": [
+      "Create a project with \"Extract content and fields with a custom schema\"",
+      "Upload a sample file and choose a template (Invoice, Image, Audio or Video analysis)",
+      "Define the schema with + Add new field or Suggest, then Save",
+      "On the Test tab, select Run analysis on the sample",
+      "Select Build analyzer and give it a name and description",
+      "Open the analyzer, upload a new file on its Test tab and review Fields and Results"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "2.2.6-01",
+    "type": "order",
+    "section": "2.2.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/02-agent-custom-tools.html",
+    "tags": [
+      "agents",
+      "function-calling",
+      "sdk"
+    ],
+    "question": "A Python app uses the Microsoft Foundry SDK to build a **Foundry agent with custom function tools**. Put the steps of one chat turn, from defining the tools to cleaning up, in order.",
+    "answer": "Define `FunctionTool`s → `agents.create_version` → add the user message to a conversation → `responses.create` → run each `function_call` locally → send the outputs back on the same conversation → `delete_version`.",
+    "explanation": "The agent never runs your code. It only answers with `function_call` items that name a function and its JSON arguments. Your app runs the matching Python function and returns the result, and only then does the agent write its final answer. In the lab, one prompt (\"next event from South America and the cost of 5 hours of premium telescope time\") made the agent call **two** functions in the same turn.",
+    "items": [
+      "Define each function as a `FunctionTool` with a JSON-schema `parameters` block",
+      "Create the agent with `project_client.agents.create_version(...)` and a `PromptAgentDefinition(tools=[...])`",
+      "Create a conversation and add the user message with `openai_client.conversations.items.create(...)`",
+      "Call `openai_client.responses.create(conversation=..., extra_body={\"agent_reference\": ...})`",
+      "For every `function_call` item in `response.output`, run the local function and append a `FunctionCallOutput` with its `call_id`",
+      "Send the outputs back with `responses.create` on the same conversation, print `output_text`, and finally `agents.delete_version(...)`"
+    ]
+  },
+  {
+    "id": "2.2.6-02",
+    "type": "basic",
+    "section": "2.2.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/02-agent-custom-tools.html",
+    "tags": [
+      "agents",
+      "function-calling",
+      "conversations"
+    ],
+    "question": "Your Microsoft Foundry agent's app sends function results back with `previous_response_id`. The **next** user message fails with *\"No tool output found for function call\"*. How should the app return the results instead?",
+    "answer": "- One **`FunctionCallOutput`** per call: `type=\"function_call_output\"`, the call's **`call_id`**, the result as `output`\n- Pass the list as `input` to `responses.create` with **`conversation=conversation.id`** and the same `agent_reference`",
+    "explanation": "Attaching the outputs to the **same conversation** resolves the open function calls in the conversation state. The agent's answer is then saved to the chat history, so the next turn starts clean. The `call_id` ties each result to the request it answers. The output list is created fresh inside the chat loop, so each turn sends only its own results."
+  },
+  {
+    "id": "2.2.6-03",
+    "type": "basic",
+    "section": "2.2.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/02-agent-custom-tools.html",
+    "tags": [
+      "agents",
+      "function-calling",
+      "tool-schemas"
+    ],
+    "question": "You register a Python function `calculate_observation_cost(telescope_tier, hours, priority)` as a **`FunctionTool`** for a Microsoft Foundry agent. Which settings describe its arguments to the agent?",
+    "answer": "- **`name`** and **`description`** of the function\n- **`parameters`**: a **JSON schema** — `\"type\": \"object\"`, one `properties` entry per argument with `type` and `description`\n- **`required`** list, `\"additionalProperties\": False`, and `strict=True`",
+    "explanation": "The JSON schema tells the agent each argument's name, type and meaning; the descriptions carry example values such as 'standard', 'advanced', 'premium'. The property names must match the Python parameters: the app runs `calculate_observation_cost(**json.loads(item.arguments))`. The tools are then passed to the agent in `PromptAgentDefinition(tools=[event_tool, cost_tool, report_tool])`."
+  }
+]

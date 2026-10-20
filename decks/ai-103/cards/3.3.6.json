@@ -1,0 +1,58 @@
+[
+  {
+    "id": "3.3.6-01",
+    "type": "order",
+    "section": "3.3.6",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/03-gen-ai-speech.html",
+    "tags": [
+      "speech",
+      "deployment",
+      "foundry-portal"
+    ],
+    "question": "Put the steps in order to build and run Python speech apps (text-to-speech and speech-to-text) on generative AI models in Microsoft Foundry.",
+    "answer": "Project in a fitting region → deploy a **text-to-speech** model → deploy a **speech-to-text** model → Endpoint and deployment name into `.env` → **`az login`** → run the app.",
+    "explanation": "Model availability depends on the resource region, the model version and the deployment type, so the region is fixed when you create the project; the lab uses East US 2. **Global Standard** does not mean a model can be deployed in every region, and quota and capacity matter too. `gpt-4o-mini-tts` and `gpt-4o-mini-transcribe` are recommended, not required: any available TTS or STT model works. The apps authenticate with your Azure sign-in, so `az login` comes before running them.",
+    "items": [
+      "Create a Foundry project, choosing the region under Advanced options (East US 2)",
+      "In the model catalog, deploy a text-to-speech model such as gpt-4o-mini-tts with default settings",
+      "Under Build → Deployments, select Deploy a base model and deploy a speech-to-text model such as gpt-4o-mini-transcribe",
+      "Copy each deployment's Endpoint and deployment name into the app's .env file",
+      "Sign in to Azure in the terminal with az login",
+      "Run the app, e.g. python generate-speech.py"
+    ]
+  },
+  {
+    "id": "3.3.6-02",
+    "type": "basic",
+    "section": "3.3.6",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/03-gen-ai-speech.html",
+    "tags": [
+      "endpoints",
+      "speech",
+      "foundry-portal"
+    ],
+    "question": "A Python app calls a speech model deployed in Microsoft Foundry through the OpenAI SDK's `AzureOpenAI` client. Which **endpoint** and which **model value** does it need, and where in the Foundry portal do you find them?",
+    "answer": "- `azure_endpoint`: the **Azure OpenAI resource endpoint**, `https://<resource-name>.openai.azure.com/`\n- Not the **project URL** (`…/api/projects/<project-name>`), not a URL ending in `/openai/v1/`\n- `model=`: the **deployment name**, which may differ from the model name\n- Both on **Build → Deployments** → select the deployment",
+    "explanation": "The **Deployments** page lists every model you deployed; selecting one shows its **Endpoint** and deployment name. The lab copies both into a `.env` file that the code reads. The speech-generation and the transcription app use the same kind of resource endpoint and differ only in the deployment name. That name is what you pass as `model` to `client.audio.speech.with_streaming_response.create` (text-to-speech) or `client.audio.transcriptions.create` (speech-to-text)."
+  },
+  {
+    "id": "3.3.6-03",
+    "type": "basic",
+    "section": "3.3.6",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/03-gen-ai-speech.html",
+    "tags": [
+      "keyless",
+      "speech",
+      "sdk"
+    ],
+    "question": "Your Python app must call a speech model in Microsoft Foundry with the `AzureOpenAI` client **without an API key**. Which setting replaces `api_key`, and which command signs you in before running the app locally?",
+    "answer": "**`azure_ad_token_provider`** with a bearer token provider, then **`az login`**:\n\n```python\ntoken_provider = get_bearer_token_provider(\n    DefaultAzureCredential(), \"https://ai.azure.com/.default\")\nclient = AzureOpenAI(azure_endpoint=endpoint,\n    azure_ad_token_provider=token_provider,\n    api_version=\"2025-03-01-preview\")\n```",
+    "explanation": "The course units on transcription and synthesis pass `api_key`; the lab replaces it with a bearer token provider. `DefaultAzureCredential` and `get_bearer_token_provider` come from **azure.identity**, `AzureOpenAI` from **openai**. Before running, sign in with `az login` and confirm the subscription that holds your Foundry resource. With subscriptions in several tenants, add `--tenant`."
+  }
+]

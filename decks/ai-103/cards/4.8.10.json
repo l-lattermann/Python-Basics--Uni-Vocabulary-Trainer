@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.8.10-01",
+    "type": "mc",
+    "section": "4.8.10",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/8-knowledge-check",
+    "tags": ["azure-ai-search", "indexing"],
+    "question": "Which component of an Azure AI Search solution is scheduled to extract and enrich data to populate an index?",
+    "answer": "The **indexer**.",
+    "explanation": "The indexer reads from a data source such as a blob container or a database, cracks the documents and runs them through the enrichment pipeline with its skillset. The fields of the resulting JSON documents are then mapped to index fields. Projections and queries come later: projections persist enriched data in a knowledge store, and queries read the finished index.",
+    "options": [
+      {"text": "Indexer", "correct": true, "why": "The indexer automates extraction and enrichment and creates and updates the index (unit 4.8.3)."},
+      {"text": "Projection", "correct": false, "why": "A projection persists enriched data in a knowledge store as JSON objects, tables or image files; it does not populate the index (unit 4.8.6)."},
+      {"text": "Query", "correct": false, "why": "A query retrieves, filters and sorts documents from an index that already exists (unit 4.8.5)."}
+    ]
+  },
+  {
+    "id": "4.8.10-02",
+    "type": "mc",
+    "section": "4.8.10",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/8-knowledge-check",
+    "tags": ["azure-ai-search", "skillsets"],
+    "question": "Which service supports built-in AI skills in Azure AI Search?",
+    "answer": "**Foundry Tools** (for example Azure Vision and Azure Language).",
+    "explanation": "Built-in skills such as language detection, entity and key phrase extraction, translation, PII detection, OCR and image captions come from Foundry Tools. The indexer needs access to a Foundry Tools resource: either the restricted one included in Azure AI Search, limited to 20 documents, or your own resource in the same region as the search resource. Azure Functions is the typical host for custom skills instead.",
+    "options": [
+      {"text": "Azure Functions", "correct": false, "why": "Azure Functions is a common way to implement a custom skill, not the source of built-in skills (unit 4.8.4)."},
+      {"text": "Foundry Tools", "correct": true, "why": "Built-in skills include functionality from Foundry Tools such as Azure Vision and Azure Language (unit 4.8.4)."},
+      {"text": "Azure Cosmos DB", "correct": false, "why": "Cosmos DB is a database that can serve as a data source for an indexer; it provides no AI skills (unit 4.8.3)."}
+    ]
+  },
+  {
+    "id": "4.8.10-03",
+    "type": "mc",
+    "section": "4.8.10",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/8-knowledge-check",
+    "tags": ["azure-ai-search", "knowledge-store"],
+    "question": "Which kind of projection results in a relational data schema for extracted fields?",
+    "answer": "A **table** projection.",
+    "explanation": "A knowledge store in Azure AI Search holds projections of the enriched data, generated each time the indexer runs the pipeline. Each kind serves a different use: table projections normalize records into a relational schema for analysis and reporting, object projections export JSON for ETL processes, and file projections save extracted images.",
+    "options": [
+      {"text": "File", "correct": false, "why": "File projections save extracted images as files (unit 4.8.6)."},
+      {"text": "Object", "correct": false, "why": "Object projections export the enriched records as JSON objects, for example for ETL integration (unit 4.8.6)."},
+      {"text": "Table", "correct": true, "why": "Table projections normalize the index records into a relational schema of tables for analysis and reporting (unit 4.8.6)."}
+    ]
+  }
+]

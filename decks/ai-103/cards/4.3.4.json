@@ -1,0 +1,78 @@
+[
+  {
+    "id": "4.3.4-01",
+    "type": "order",
+    "section": "4.3.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/4-generate-video-in-python",
+    "tags": ["video-generation", "sora", "openai-sdk"],
+    "question": "You generate a video with a Sora 2 deployment in Microsoft Foundry through the OpenAI Python SDK. Put the calls in order.",
+    "answer": "**Create the job** → **poll** its status → **download** the result and save it.",
+    "explanation": "Video generation is asynchronous: `videos.create` returns at once with a job `id`, not with the video. You then call `videos.retrieve` in a loop (the course waits 20 seconds between calls) until the status is `completed`, `failed` or `cancelled`. Only a `completed` job is downloaded with `download_content(..., variant=\"video\")`, and `write_to_file` stores it as an MP4.",
+    "items": [
+      "client.videos.create(model=\"sora-2\", prompt=..., size=\"1280x720\", seconds=\"4\")",
+      "client.videos.retrieve(video.id) in a loop until the status is terminal",
+      "client.videos.download_content(video.id, variant=\"video\")",
+      "content.write_to_file(\"output.mp4\")"
+    ],
+    "addition": "The course never shows how `client` is built: it is `OpenAI(base_url=\"https://<resource>.openai.azure.com/openai/v1/\", api_key=...)`, with an API key or a token provider for Microsoft Entra ID. `model` takes your Sora 2 deployment name.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/video-generation"
+  },
+  {
+    "id": "4.3.4-02",
+    "type": "mc",
+    "section": "4.3.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/4-generate-video-in-python",
+    "tags": ["video-generation", "sora", "openai-sdk"],
+    "question": "This loop waits for a Sora 2 video job in Microsoft Foundry, using the OpenAI Python SDK. Which call fills the gap?\n\n```python\nvideo = client.videos.create(model=\"sora-2\", prompt=prompt)\nwhile video.status not in [\"completed\", \"failed\", \"cancelled\"]:\n    time.sleep(20)\n    video = client.videos.___(video.id)\n```",
+    "answer": "**`retrieve`** — it fetches the job's current state by its ID.",
+    "explanation": "`create` only submits the job and returns its first state, usually `queued`. The `video` object does not update itself, so each pass of the loop reassigns it with a fresh `retrieve`. The loop stops on any of the three end states; afterwards check `video.status` before downloading, because a `failed` job has nothing to download.",
+    "options": [
+      {"text": "`retrieve`", "correct": true, "why": "It returns the job with its current status, which the loop condition then checks."},
+      {"text": "`download_content`", "correct": false, "why": "It fetches the finished file and belongs after the loop, once the status is `completed`."},
+      {"text": "`create`", "correct": false, "why": "It would submit a new generation job on every pass instead of checking the existing one."},
+      {"text": "`remix`", "correct": false, "why": "It starts a new job that modifies an existing video; it does not report a job's status."}
+    ]
+  },
+  {
+    "id": "4.3.4-03",
+    "type": "basic",
+    "section": "4.3.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/4-generate-video-in-python",
+    "tags": ["video-generation", "sora", "job-status"],
+    "question": "Name the **five** status values a Sora 2 video generation job in Microsoft Foundry can return.",
+    "answer": "- **`queued`** — waiting to be processed\n- **`in_progress`** — the video is being generated\n- **`completed`** — ready for download\n- **`failed`** — generation failed\n- **`cancelled`** — the job was canceled",
+    "explanation": "The first two are transient: a polling loop keeps waiting while the job is in them. The last three are end states, so the loop stops there. Only `completed` leads to a download. For a `failed` job, read `video.error` to see what went wrong; one cause is the content moderation, which refuses harmful prompts."
+  },
+  {
+    "id": "4.3.4-04",
+    "type": "basic",
+    "section": "4.3.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/4-generate-video-in-python",
+    "tags": ["video-generation", "sora", "limits"],
+    "question": "Name the **four** key considerations for an app that generates videos with Sora 2 in Microsoft Foundry.",
+    "answer": "- **Rate limits** — at most **two** video creation jobs at the same time\n- **Job expiration** — completed videos can be downloaded for **24 hours**\n- **Resolution requirements** — a reference image must match the video resolution exactly\n- **Content filtering** — prompts are moderated; harmful content is not generated",
+    "explanation": "Each one shapes the app's design. Two concurrent jobs cap how many videos the app can have in generation at once. The 24-hour window means the app must download and store a finished video itself rather than rely on the service to keep it. A reference image of the wrong size, or a harmful prompt, makes the job fail instead of producing a video."
+  },
+  {
+    "id": "4.3.4-05",
+    "type": "basic",
+    "section": "4.3.4",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/4-generate-video-in-python",
+    "tags": ["video-generation", "sora", "openai-sdk"],
+    "question": "With the OpenAI Python SDK and Sora 2 in Microsoft Foundry, how do you (a) start a video from an image and (b) change an existing video while keeping its structure?",
+    "answer": "- (a) **`input_reference`** on `client.videos.create`, e.g. `open(\"landscape.png\", \"rb\")` — the starting frame; same resolution as the video; **no human faces**\n- (b) **`client.videos.remix(video_id=..., prompt=...)`** — the original's ID plus a prompt describing the change",
+    "explanation": "A reference image anchors the first frame, and the prompt describes what happens next, such as a slow camera pan. Images with human faces are currently rejected, so use landscapes, objects or animated characters. Remix suits a targeted change, such as a warmer colour palette: it keeps the original video's structure instead of generating a new one from scratch.",
+    "addition": "The Sora 2 API also rejects copyrighted characters and copyrighted music, and it cannot generate real people, including public figures.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/video-generation"
+  }
+]

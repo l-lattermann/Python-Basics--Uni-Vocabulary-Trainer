@@ -1,0 +1,99 @@
+[
+  {
+    "id": "1.4.9-01",
+    "type": "mc",
+    "section": "1.4.9",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/08-knowledge-check",
+    "tags": [
+      "tools",
+      "file-search",
+      "grounding"
+    ],
+    "question": "Which tool should you use when a model needs to answer questions from your own uploaded policy documents?",
+    "answer": "**file_search**.",
+    "explanation": "file_search searches documents you upload to a vector store and grounds the answer in the matching passages. Answering employee questions from HR policy PDFs is a typical use case. web_search is for current, public information on the Internet. code_interpreter runs Python in a sandbox and has no network access. Neither of them reads your private, indexed documents.",
+    "options": [
+      {
+        "text": "web_search",
+        "correct": false,
+        "why": "Unit 1.4.4: web_search retrieves current, external information from the web, not content from your own uploaded files."
+      },
+      {
+        "text": "file_search",
+        "correct": true,
+        "why": "Unit 1.4.5: file_search answers from private or domain-specific files uploaded to a vector store, with policy Q&A over HR policy PDFs as a named use case."
+      },
+      {
+        "text": "code_interpreter",
+        "correct": false,
+        "why": "Unit 1.4.3: code_interpreter generates and runs Python code to compute or process data; it does not search indexed documents."
+      }
+    ]
+  },
+  {
+    "id": "1.4.9-02",
+    "type": "mc",
+    "section": "1.4.9",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/08-knowledge-check",
+    "tags": [
+      "tools",
+      "function-calling"
+    ],
+    "question": "In a function-calling workflow, what should your application do after the model returns a function_call item?",
+    "answer": "**Run the function in your code** and send a **function_call_output** back to the model.",
+    "explanation": "The model never runs your business logic. It only emits a structured call with the function name and a `call_id`. Your app runs the matching function, appends a `function_call_output` item with that `call_id` and the result, and calls `responses.create()` again. The model then folds the result into its final answer. This keeps execution under the developer's control.",
+    "options": [
+      {
+        "text": "Wait for the model to run the function automatically",
+        "correct": false,
+        "why": "Unit 1.4.6: the model requests function calls, but your application must run them; nothing happens if the app only waits."
+      },
+      {
+        "text": "Run the function in your code and send a function_call_output back to the model",
+        "correct": true,
+        "why": "Unit 1.4.6, steps 4 and 5: your app runs the matching function and returns a function_call_output item with the result."
+      },
+      {
+        "text": "Convert the function call into a web_search request",
+        "correct": false,
+        "why": "Unit 1.4.4: web_search is a separate built-in tool the model calls itself; it has nothing to do with answering a function_call item."
+      }
+    ]
+  },
+  {
+    "id": "1.4.9-03",
+    "type": "mc",
+    "section": "1.4.9",
+    "exam_area": "genai",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/08-knowledge-check",
+    "tags": [
+      "tools",
+      "code-interpreter"
+    ],
+    "question": "Which statement about the code_interpreter tool is correct?",
+    "answer": "It can **run Python code in a sandboxed runtime** to help solve tasks.",
+    "explanation": "code_interpreter gives the model a Python runtime. The model writes code, runs it, sees the result and fixes errors itself. Common libraries such as pandas, numpy and math are available. The sandbox has no external network access, and timeout and memory limits apply. That makes it the tool for calculations, data analysis and file conversion, not for browsing.",
+    "options": [
+      {
+        "text": "It can run Python code in a sandboxed runtime to help solve tasks",
+        "correct": true,
+        "why": "Unit 1.4.3: the model writes and runs Python code in a sandboxed environment and uses the output in its response."
+      },
+      {
+        "text": "It can browse external websites directly during code execution",
+        "correct": false,
+        "why": "Unit 1.4.3: executions run in a sandboxed environment with no external network access; web content needs web_search."
+      },
+      {
+        "text": "It only supports file uploads and can't perform calculations",
+        "correct": false,
+        "why": "Unit 1.4.3: calculations, statistical analysis and math problems are core use cases, beyond file handling."
+      }
+    ]
+  }
+]

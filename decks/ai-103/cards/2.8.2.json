@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2.8.2-01",
+    "type": "basic",
+    "section": "2.8.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/2-understand-agent-framework",
+    "tags": [
+      "agent-framework",
+      "agents",
+      "orchestration"
+    ],
+    "question": "Name the **two** core concepts and the **three** core features of the Microsoft Agent Framework SDK.",
+    "answer": "- **Agents** — AI entities that reason and act using LLMs, tools and conversation history\n- **Agent orchestration** — agents collaborating via patterns behind one unified interface\n- **Chat clients** — one interface to many AI providers\n- **Tools and function integration** — custom functions and built-in tools agents call\n- **Conversation management** — history kept across interactions",
+    "explanation": "The Microsoft Agent Framework is an open-source SDK for building agents that process input, decide and act autonomously by combining LLMs with ordinary program logic. The two concepts say what you build: single agents, and teams of them. Because orchestration patterns share one interface for construction and invocation, you can switch patterns without rewriting agent logic. The three features are what powers each agent: which model it talks to, what it can do, and what it remembers."
+  },
+  {
+    "id": "2.8.2-02",
+    "type": "mc",
+    "section": "2.8.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/2-understand-agent-framework",
+    "tags": [
+      "agent-framework",
+      "agents"
+    ],
+    "question": "You build agents with the Microsoft Agent Framework against Azure OpenAI. Later you must move them to Anthropic models **without changing the agent code**. Which abstraction makes this possible?",
+    "options": [
+      {
+        "text": "`BaseChatClient`",
+        "correct": true,
+        "why": "Chat clients connect to different AI providers (Azure OpenAI, OpenAI, Anthropic and more) under one common interface built on `BaseChatClient`."
+      },
+      {
+        "text": "`AgentSession`",
+        "correct": false,
+        "why": "`AgentSession` keeps conversation history across interactions; it does not choose or abstract the AI provider."
+      },
+      {
+        "text": "The built-in File Search tool",
+        "correct": false,
+        "why": "File Search is a built-in tool that extends what an agent can do; it has nothing to do with which model provider serves the agent."
+      },
+      {
+        "text": "A workflow executor",
+        "correct": false,
+        "why": "Executors are the workers inside a workflow (agents or custom logic) that pass messages along edges; they do not abstract the model provider."
+      }
+    ],
+    "answer": "**`BaseChatClient`** — the chat client abstraction that puts all providers behind one interface.",
+    "explanation": "Chat clients give connections to AI services from different providers a common interface. That provider-agnostic design lets you switch providers without changing your code, so the same agents can grow from a simple chatbot into an enterprise solution. The framework can also bring in agents from other sources, including Microsoft Foundry Agent Service, and supports both multi-agent collaboration and human-in-the-loop work."
+  },
+  {
+    "id": "2.8.2-03",
+    "type": "basic",
+    "section": "2.8.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/2-understand-agent-framework",
+    "tags": [
+      "agent-framework",
+      "memory",
+      "tools"
+    ],
+    "question": "In the Microsoft Agent Framework, how does an agent keep context across several interactions, and which built-in tools can it use besides custom functions?",
+    "answer": "- **`AgentSession`** — holds the conversation history between interactions\n- Messages carry the roles **USER**, **ASSISTANT**, **SYSTEM** and **TOOL**\n- Built-in tools: **Code Interpreter**, **File Search**, **Web Search**",
+    "explanation": "With the session, an agent tracks earlier interactions and adapts its responses to them. The structured message system tags each message with one of the four roles, which gives the agent persistent conversation context. Tools extend what the agent can do, and it invokes them automatically: to call external APIs, execute code, search files or access web information. The framework supports both custom function tools and these built-in tools."
+  }
+]

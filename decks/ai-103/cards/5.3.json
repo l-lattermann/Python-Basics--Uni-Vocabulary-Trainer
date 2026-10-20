@@ -1,0 +1,284 @@
+[
+  {
+    "id": "5.3-01",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e",
+    "tags": [
+      "image-generation",
+      "image-editing"
+    ],
+    "question": "You must change part of an existing product photo with a gpt-image model in Microsoft Foundry (Azure OpenAI). Which API do you call, and how does the request differ from an image generation request?",
+    "answer": "The **Image Edit API** (`/images/edits`):\n- send the **input image** along with the text prompt\n- the body is **multipart/form-data**, not JSON\n- up to **16 input images**, each a PNG or JPG under 50 MB",
+    "explanation": "Besides the image files, the form data carries the same fields as a generation call: `prompt`, `model`, `size`, `n`, `quality`. An optional `mask` restricts which area the model edits. The model table lists editing for the whole gpt-image series: gpt-image-1, -1-mini and -1.5 support inpainting and variations with mask plus prompt, and gpt-image-2 improves editing performance."
+  },
+  {
+    "id": "5.3-02",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e",
+    "tags": [
+      "image-editing",
+      "inpainting"
+    ],
+    "question": "In an Azure OpenAI image edit (inpainting) request, how must the **mask** be prepared so that only one region of the picture changes?",
+    "answer": "- **Fully transparent pixels** (alpha 0) mark the area the model edits\n- it is a **PNG** file\n- it has the **same dimensions** as the input image",
+    "explanation": "The mask goes in the `mask` field, which has the same type as the `image` field. The transparent region is where the prompt takes effect, so you can, for example, add a beach ball to one spot and leave the rest of the picture outside the edit area. Mask plus prompt is what the model table calls inpainting."
+  },
+  {
+    "id": "5.3-03",
+    "type": "mc",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e",
+    "tags": [
+      "image-editing",
+      "image-generation"
+    ],
+    "question": "You edit a portrait with a gpt-image model in Azure OpenAI. Only the background may change; the person's facial features must stay as they are. Which edit parameter controls how closely the output matches the input image?",
+    "answer": "**`input_fidelity`**, set to high.",
+    "explanation": "`input_fidelity` sets how much effort the model puts into matching the style and features of the input images, especially faces. With high fidelity you make subtle edits without changing unrelated areas, and faces are preserved more accurately than in standard mode. gpt-image-1-mini doesn't support the parameter, so this scenario needs another gpt-image deployment.",
+    "options": [
+      {
+        "text": "`input_fidelity`",
+        "correct": true,
+        "why": "It controls how closely the edit matches the style and features, especially faces, of the input image."
+      },
+      {
+        "text": "`quality`",
+        "correct": false,
+        "why": "It chooses low, medium or high rendering quality and speed, not faithfulness to the input image."
+      },
+      {
+        "text": "`output_compression`",
+        "correct": false,
+        "why": "It sets the compression level (0–100) of the returned file only."
+      },
+      {
+        "text": "`background`",
+        "correct": false,
+        "why": "Set to `transparent` with PNG output it gives a transparent background; it doesn't preserve features."
+      }
+    ]
+  },
+  {
+    "id": "5.3-04",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/whats-new",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "What did **pro mode** add to Azure Content Understanding analyzers compared with the default standard mode?",
+    "answer": "- **Reasoning** over the content\n- **Multiple input documents** in one analysis\n- an **external knowledge base** (reference data) for linking, enrichment and validation\n- input limited to **documents**",
+    "explanation": "Pro mode arrived with the `2025-05-01-preview` API; standard stayed the default mode for every analyzer. It targeted tasks that used to need custom code or human effort: aggregating one schema across content from several input files, validating results across documents, and using outside knowledge to produce the output schema."
+  },
+  {
+    "id": "5.3-05",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/concepts/agentic-mode",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "Azure Content Understanding pro mode is retired together with the `2025-05-01-preview` API. What replaces it, and how do you turn it on?",
+    "answer": "**Agentic mode** (API `2026-06-01-preview`): set **`config.workflow` to `\"agentic\"`** when you create a document analyzer.",
+    "explanation": "After creation the value resolves to a versioned one, `agentic.2026-06-01-preview`. It isn't a drop-in replacement. The first preview takes one input file per request, though that file may hold several related documents, such as a contract and its appendix. It works for document analyzers only, without `extract`-method fields and without labeled samples. A pro mode workflow that relied on several input files or reference data must check that agentic mode covers it before migrating."
+  },
+  {
+    "id": "5.3-06",
+    "type": "mc",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/concepts/agentic-mode",
+    "tags": [
+      "content-understanding"
+    ],
+    "question": "An Azure Content Understanding analyzer must reconcile the figures in a financial report and check that its totals are consistent. The totals it must check aren't stated directly in the document, and standard extraction gives wrong results. What should you try?",
+    "answer": "Switch the analyzer to **agentic mode**.",
+    "explanation": "Agentic mode applies the service's highest reasoning effort: multistep reasoning across the document, calculations, validation, analysis of complex tables and figures, and fields that follow your schema. It costs more. It uses the advanced contextualization rate, consumes more tokens, runs longer, and needs about 400,000 TPM on the model deployment to avoid 429 errors. For straightforward field extraction, stay with a standard analyzer.",
+    "options": [
+      {
+        "text": "Agentic mode (`config.workflow: \"agentic\"`)",
+        "correct": true,
+        "why": "It reasons across the document, calculates and validates values that aren't stated directly."
+      },
+      {
+        "text": "A standard document analyzer with more fields that use the `extract` method",
+        "correct": false,
+        "why": "Extracted values must be stated in the document; derived totals aren't."
+      },
+      {
+        "text": "Keep `config.workflow` at `\"default\"`",
+        "correct": false,
+        "why": "It lets the service pick the standard or advanced workflow from the analyzer configuration; it doesn't turn on agentic mode."
+      }
+    ]
+  },
+  {
+    "id": "5.3-07",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/use-case-alt-text",
+    "tags": [
+      "alt-text",
+      "captions"
+    ],
+    "question": "A website must generate **alt text** for thousands of product images so that screen readers can describe them. Which Azure Vision Image Analysis feature produces it?",
+    "answer": "**Image captioning**: a one-sentence, human-readable description of the image's content that you use as the `alt` attribute.",
+    "explanation": "Alt text lets screen readers such as Narrator, JAWS and NVDA describe images to blind and low-vision users. It also helps with legal accessibility requirements and image SEO. PowerPoint, Word and Edge use the same Image Analysis captioning for their alt text. Image Analysis 4.0 is deprecated and retires on September 25, 2028, so plan new solutions around one of the alternatives in the migration guide."
+  },
+  {
+    "id": "5.3-08",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/use-case-alt-text",
+    "tags": [
+      "alt-text",
+      "captions"
+    ],
+    "question": "You auto-generate alt text with Azure Vision Image Analysis captions. Which two practices reduce wrong or embarrassing captions?",
+    "answer": "- Accept only captions above a **confidence threshold**: advised 0.4 for API 3.2, 0.0 for API 4.0\n- Use **API 4.0 with gender-neutral captions**",
+    "explanation": "The right threshold depends on the kind of images and the scenario, so tune it. Captions can, in rare cases, mislabel people: a male-identifying person as \"woman\", or an adult woman as \"girl\". Gender-neutral captions remove that class of error. Report offensive captions through the Feedback button in the Azure portal. Mind the languages: 4.0 captions are English only, while 3.2 also offers Chinese, Portuguese, Japanese and Spanish."
+  },
+  {
+    "id": "5.3-09",
+    "type": "mc",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-describe-images-40",
+    "tags": [
+      "captions",
+      "image-analysis"
+    ],
+    "question": "An app must describe **several separate regions** of an image, each with its own sentence and its position. Which feature do you request in the `features` parameter of Azure Vision Image Analysis 4.0?",
+    "answer": "**`denseCaptions`** (Dense Captions).",
+    "explanation": "Dense Captions describes up to 10 regions in one sentence each, in addition to the whole image, and returns a bounding box per region in `denseCaptionsResult`. Caption gives one sentence for the whole image in `captionResult`. Both use Florence-based models and are English only. They need a Vision resource in a region that supports 4.0 captions; outside those regions, use Image Analysis 3.2 captioning.",
+    "options": [
+      {
+        "text": "`denseCaptions`",
+        "correct": true,
+        "why": "It returns one sentence and a bounding box for each of up to 10 regions."
+      },
+      {
+        "text": "`caption`",
+        "correct": false,
+        "why": "It returns a single sentence that describes the whole image, with no regions."
+      },
+      {
+        "text": "`caption` with `gender-neutral-caption=true`",
+        "correct": false,
+        "why": "This only replaces gender terms with \"person\"; it's still one sentence for the whole image."
+      }
+    ]
+  },
+  {
+    "id": "5.3-10",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/concepts/content-credentials",
+    "tags": [
+      "provenance",
+      "image-generation",
+      "responsible-ai"
+    ],
+    "question": "Which provenance information do Azure OpenAI image models (DALL-E, gpt-image-1 series) in Microsoft Foundry attach to every generated image?",
+    "answer": "**Content Credentials**: a **C2PA** manifest, attached automatically and signed by a certificate that traces back to Azure OpenAI, with:\n- `description`: \"AI Generated Image\"\n- `softwareAgent`: e.g. \"Azure OpenAI ImageGen\"\n- `when`: timestamp",
+    "explanation": "C2PA is an open specification from the Coalition for Content Provenance and Authenticity. The credential is tamper-evident and needs no setup. To check an image, use Content Credentials Verify (contentcredentials.org/verify). It shows credentials issued by Microsoft Corporation, with the date and time. The Content Authenticity Initiative's open-source tools also validate C2PA credentials and can be built into your own app."
+  },
+  {
+    "id": "5.3-11",
+    "type": "mc",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/custom-categories",
+    "tags": [
+      "content-safety",
+      "brand-rules"
+    ],
+    "question": "A marketing platform must flag generated and uploaded **images** that break the company's own brand policy, such as a banned mascot. It must start today with only a few example images. Which Azure AI Content Safety feature fits?",
+    "answer": "The **Custom categories (rapid)** API: create an incident and upload image samples.",
+    "explanation": "An LLM on the backend learns the pattern from the samples, so there is no training step. An incident holds up to 1,000 text or image samples, with images up to 4 MB. You include the incident in a normal image or text analysis request. The service then says whether the content matches, and runs the usual moderation in the same call. Image matching uses a lightweight object-tracking model and embedding search.",
+    "options": [
+      {
+        "text": "Custom categories (rapid) API",
+        "correct": true,
+        "why": "It matches text and images against a few samples with no training step."
+      },
+      {
+        "text": "Custom categories (standard) API",
+        "correct": false,
+        "why": "It's text only, needs at least 50 positive samples, can take hours to train, and was retired on September 1, 2026."
+      },
+      {
+        "text": "A blocklist",
+        "correct": false,
+        "why": "Blocklists only match exact text, with no image matching."
+      }
+    ]
+  },
+  {
+    "id": "5.3-12",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection",
+    "tags": [
+      "prompt-shields",
+      "prompt-injection",
+      "guardrails"
+    ],
+    "question": "A Microsoft Foundry app extracts the text from user-uploaded images, such as screenshots or scanned letters, and passes it to the model. Which guardrail detects instructions hidden in that text, and is it on by default?",
+    "answer": "**Prompt Shields for document attacks** (indirect attacks), with the extracted text submitted as `documents`. It's **off by default**; enable it in the guardrail.",
+    "explanation": "Prompt Shields analyze supplied text. A document attack is an instruction hidden in third-party content that tries to hijack the session, for example to exfiltrate data, run code or commit fraud. User prompt attack detection is on by default, document attack detection is not. For agents it can also scan tool responses (preview). Spotlighting (preview, Chat Completions only) base64-encodes documents so that the model trusts them less."
+  },
+  {
+    "id": "5.3-13",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/harm-categories",
+    "tags": [
+      "content-safety",
+      "content-filters"
+    ],
+    "question": "The Azure AI Content Safety **Analyze image** API scans images for which harm categories, and on what severity scale?",
+    "answer": "- Categories: **hate, sexual, violence, self-harm**\n- Severity: only the **trimmed scale 0, 2, 4, 6**",
+    "explanation": "The image model returns only the four even levels. The text model and the multimodal image-with-text model detect along the full 0–7 scale. On request, they map each pair (0–1 to 0, 2–3 to 2, and so on) onto the trimmed scale. Foundry guardrails apply the same four categories to text and images, shown as Safe, Low, Medium and High. Safe content is annotated but never filtered."
+  },
+  {
+    "id": "5.3-14",
+    "type": "basic",
+    "section": "5.3",
+    "exam_area": "vision",
+    "origin": "outline-gap",
+    "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dall-e",
+    "tags": [
+      "content-filters",
+      "image-generation"
+    ],
+    "question": "A gpt-image generation call in Azure OpenAI fails because of safety filtering. How can your app tell whether the **prompt** or the **generated image** was blocked?",
+    "answer": "Both return `error.code` **`contentFilter`**; the **message** tells them apart:\n- Prompt blocked: \"Your task failed as a result of our safety system.\"\n- Image blocked: \"**Generated image was filtered** as a result of our safety system.\"",
+    "explanation": "Image models are moderated on input and output, alongside abuse monitoring. If the service recognizes a prompt as harmful, it doesn't generate an image. If the prompt passes but the result is harmful, the image itself is withheld. The page's error table also lists `content_policy_violation` for either case, so match on the message, not the code. Photorealistic images of minors are blocked by default; customers can request access, and Enterprise-tier customers are approved automatically."
+  }
+]

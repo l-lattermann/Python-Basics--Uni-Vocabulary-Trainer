@@ -1,0 +1,114 @@
+[
+  {
+    "id": "2.6.4-01",
+    "type": "basic",
+    "section": "2.6.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/4-create-workflows-microsoft-foundry",
+    "tags": [
+      "workflows",
+      "orchestration"
+    ],
+    "question": "Name the **five** main node types of the Microsoft Foundry workflow builder.",
+    "answer": "- **Invoke** — calls an existing or new AI agent\n- **Flow** — controls the execution path (branch, jump, loop)\n- **Data transformation** — sets, resets and parses variables\n- **Basic chat** — sends messages to the user or asks for input\n- **End** — concludes the workflow, optionally returning a result or status",
+    "explanation": "Only Invoke nodes do AI work: classification, reasoning, recommendations, returning free text or structured output such as JSON. The other four carry the orchestration. Flow nodes let the workflow adapt to different inputs, Data transformation nodes make sure information reaches later steps correctly, and Basic chat nodes are usually paired with variables that capture the user's reply. Variables give all nodes shared state, so effective automation needs every node type, not just agents.",
+    "addition": "The Foundry docs group the same nodes slightly differently: **Agent** (invoke an agent), **Logic** (if/else, go to, for each), **Data transformation**, and **Basic chat** with its two actions **Send message** and **Ask a question**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/workflow"
+  },
+  {
+    "id": "2.6.4-02",
+    "type": "basic",
+    "section": "2.6.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/4-create-workflows-microsoft-foundry",
+    "tags": [
+      "workflows",
+      "control-flow"
+    ],
+    "question": "Name the **three** Flow nodes that control the execution path of a Microsoft Foundry workflow.",
+    "answer": "- **If/Else** — branches execution based on conditions\n- **Go To** — jumps to another node in the workflow\n- **For Each** — loops over a list, running the same actions for each item",
+    "explanation": "Flow nodes make a workflow react to different inputs instead of always running the same straight line. If/Else picks one of several paths, for example by checking an agent's structured output or confidence score. Go To moves execution to another node instead of the next one in line. For Each repeats the same steps per item, so a list of support tickets needs no duplicated nodes."
+  },
+  {
+    "id": "2.6.4-03",
+    "type": "basic",
+    "section": "2.6.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/4-create-workflows-microsoft-foundry",
+    "tags": [
+      "workflows",
+      "variables"
+    ],
+    "question": "Name the **three** Data transformation nodes of a Microsoft Foundry workflow.",
+    "answer": "- **Set Variable** — assigns a value to a variable for later use\n- **Reset Variable** — clears or reinitializes a variable\n- **Parse value** — extracts data from structured outputs or converts values to another format",
+    "explanation": "Data transformation nodes manipulate data and manage variables so that information reaches the following steps in the right shape. Variables are the workflow's shared state: an agent's result or a user's reply stored in one step can drive a decision or trigger an action later. Parse value is the one to reach for when an agent returns structured output, such as JSON, and a later node needs only one field of it.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/2.6.4-workflow-add-node.png",
+        "alt": "Foundry workflow designer: the plus icon below Start opens 'Add a workflow action', listing Invoke agent under Invoke, and Set variable, Reset variable and Parse value under Data transformation; Visualizer, YAML and Code tabs at the top"
+      }
+    ]
+  },
+  {
+    "id": "2.6.4-04",
+    "type": "mc",
+    "section": "2.6.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/4-create-workflows-microsoft-foundry",
+    "tags": [
+      "workflows",
+      "human-in-the-loop"
+    ],
+    "question": "Partway through a Microsoft Foundry workflow, the customer must be asked for their order number, and the reply must be kept for a later agent step. Which node type asks the question?",
+    "answer": "A **Basic chat** node, paired with a variable that captures the reply.",
+    "explanation": "Basic chat nodes are the workflow's direct line to the user: they send messages or ask questions to collect input. The answer lands in a variable, and from there it can steer an If/Else branch or be passed to an agent later in the workflow. Agents reason over input, but asking the user and waiting for the reply is a chat node's job.",
+    "options": [
+      {
+        "text": "Basic chat",
+        "correct": true,
+        "why": "Basic chat nodes send messages to the user or ask questions to collect input, usually saving the reply in a variable."
+      },
+      {
+        "text": "Invoke",
+        "correct": false,
+        "why": "Invoke calls an AI agent for reasoning or classification; it does not pause to collect input from the user."
+      },
+      {
+        "text": "Set Variable",
+        "correct": false,
+        "why": "Set Variable assigns a value the workflow already has; it cannot ask the user for one."
+      },
+      {
+        "text": "If/Else",
+        "correct": false,
+        "why": "If/Else branches on a condition over existing data; it does not collect new input."
+      },
+      {
+        "text": "End",
+        "correct": false,
+        "why": "End concludes the workflow and can return a final result; it does not ask anything."
+      }
+    ]
+  },
+  {
+    "id": "2.6.4-05",
+    "type": "basic",
+    "section": "2.6.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/4-create-workflows-microsoft-foundry",
+    "tags": [
+      "workflows",
+      "testing"
+    ],
+    "question": "You build a workflow in the Microsoft Foundry visual designer. How do you start it, keep your changes, and test it?",
+    "answer": "- **Start** from a blank canvas or a **predefined pattern**, such as sequential\n- **Save manually** and often — workflows are **not saved automatically**\n- **Test** in the **chat window**, because workflows run in a conversational context",
+    "explanation": "The designer lays nodes out in execution order; you move nodes, insert steps and inspect their settings directly on the canvas. Unsaved edits are lost, so saving regularly is what preserves each version of the design. Running the workflow in the chat window shows how inputs move through the nodes, so you can check each step before adding complexity. In larger workflows the canvas makes branches and decision points easy to trace.",
+    "addition": "Microsoft Foundry retires workflows on **December 1, 2026**. New workflows should use **Microsoft Agent Framework**; existing ones migrate by exporting their YAML definition. Azure Logic Apps is the alternative for a visual low-code designer.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/workflow"
+  }
+]

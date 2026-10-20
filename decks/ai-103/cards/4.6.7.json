@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.6.7-01",
+    "type": "mc",
+    "section": "4.6.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/06-knowledge-check",
+    "tags": ["content-understanding", "authentication"],
+    "question": "What configuration values are needed to use the Azure Content Understanding API?",
+    "answer": "The **endpoint and key** of the Microsoft Foundry resource.",
+    "explanation": "A client connects to the Foundry resource's endpoint and sends one of its API keys, in the SDK as `AzureKeyCredential`, over REST in the `Ocp-Apim-Subscription-Key` header. You find both in the Azure portal or on the Foundry portal project home page. Subscription, tenant and resource group only locate the resource in Azure; the API call never needs them.",
+    "options": [
+      {"text": "The name of the resource group where the Azure service is deployed.", "correct": false, "why": "Unit 4.6.2 lists only the endpoint and an API key as connection values; the resource group organizes Azure resources and is not part of any API call."},
+      {"text": "The Azure subscription ID and tenant ID.", "correct": false, "why": "Unit 4.6.2 does not use them: the client authenticates with the resource's endpoint and key, not with subscription or tenant IDs."},
+      {"text": "The endpoint and key for the Foundry resource.", "correct": true, "why": "Unit 4.6.2: to connect from a client application you need the Microsoft Foundry resource endpoint and one of its API keys."}
+    ]
+  },
+  {
+    "id": "4.6.7-02",
+    "type": "mc",
+    "section": "4.6.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/06-knowledge-check",
+    "tags": ["content-understanding", "analyzer"],
+    "question": "What must be specified when calling the *analyze* method to extract fields from content?",
+    "answer": "The **name of the analyzer**.",
+    "explanation": "The analysis request names the analyzer whose schema defines the fields: in the SDK as `begin_analyze(analyzer_id=...)`, over REST in the URL `.../analyzers/{analyzer_name}:analyze`. The Operation-Location only matters while the analyzer is being created, to poll that creation. Analysis returns its own operation ID for polling the results.",
+    "options": [
+      {"text": "The name of the Foundry resource.", "correct": false, "why": "Units 4.6.2 and 4.6.4: the resource is reached through its endpoint, which the client already holds; the analyze call itself names the analyzer."},
+      {"text": "The name of the analyzer.", "correct": true, "why": "Unit 4.6.4: the analysis request includes the analyzer to be used, passed as `analyzer_id` in the SDK or in the REST URL."},
+      {"text": "The Operation-Location returned when the analyzer was created.", "correct": false, "why": "Unit 4.6.3: Operation-Location is a callback URL for checking the status of the analyzer creation, not an input to analysis."}
+    ]
+  },
+  {
+    "id": "4.6.7-03",
+    "type": "mc",
+    "section": "4.6.7",
+    "exam_area": "extraction",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/06-knowledge-check",
+    "tags": ["content-understanding", "field-extraction"],
+    "question": "How are the extracted fields returned?",
+    "answer": "As **type-specific values**.",
+    "explanation": "Each field in `contents[].fields` carries its `type` and a value property named after that type, for a string field `valueString`. Your code checks the type and reads the matching property. Beside the fields, a document analyzer also returns the Markdown and the OCR layout: pages, words, lines and paragraphs. Each field also has a confidence score and its source location.",
+    "options": [
+      {"text": "As type-specific values.", "correct": true, "why": "Unit 4.6.4: each field has a `type` and a value such as `valueString`; the sample code extracts the type-specific values."},
+      {"text": "As a list of strings.", "correct": false, "why": "Unit 4.6.4: fields come back as a dictionary of named field objects with type, value, confidence and spans, not plain strings."},
+      {"text": "As a single blob.", "correct": false, "why": "Unit 4.6.4: the result is structured JSON with each field returned separately under `fields`."}
+    ]
+  }
+]

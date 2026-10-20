@@ -1,0 +1,59 @@
+[
+  {
+    "id": "1.4.8-01",
+    "type": "basic",
+    "section": "1.4.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04a-use-own-data.html",
+    "tags": [
+      "foundry-portal",
+      "web-search",
+      "playground"
+    ],
+    "question": "In the Microsoft Foundry portal, you want to try a deployed model with the web_search tool before writing any code. Where do you add the tool?",
+    "answer": "- Open the **model playground** — it opens after deployment, otherwise **Build** > **Deployments** > your model\n- In its left pane, below **Instructions**, in the **Tools** section select **Add** > **web_search**",
+    "explanation": "Ask the same question before and after adding the tool to see why grounding matters. Without tools, \"tourist activities in New York next month\" gets a generic answer from the training data, because the model has no current information. With web_search added, the model searches the web and answers with current activities. The playground shows what a tool adds before any code exists."
+  },
+  {
+    "id": "1.4.8-02",
+    "type": "order",
+    "section": "1.4.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04a-use-own-data.html",
+    "tags": [
+      "file-search",
+      "web-search",
+      "responses-api"
+    ],
+    "question": "A Python travel assistant uses the OpenAI SDK against a gpt-5.2 deployment in Microsoft Foundry. It must answer from the company's PDF brochures (file_search) and from the web (web_search). Put the build steps in order, from the configuration file to the first grounded answer.",
+    "answer": "`.env` with the **Azure OpenAI Endpoint** → **OpenAI client** with a token provider → **vector store** with the PDFs → **`responses.create`** with both tools → **`az login`** and run.",
+    "explanation": "Each step builds on the one before it. The client is created from the endpoint in `.env`; it is the Azure OpenAI endpoint, not the project endpoint, because the app uses the OpenAI SDK. file_search only searches what sits in a vector store, so the store must exist and hold the brochures before its ID goes into the tool. web_search takes no further settings. In the run, a current-events question is answered with web_search, a question about the company's hotels with file_search.",
+    "items": [
+      "Copy the **Azure OpenAI Endpoint** from the project **Home** page into `.env`; put the deployment name in `MODEL_DEPLOYMENT`",
+      "Create the `OpenAI` client: `base_url` = the endpoint, `api_key` = a bearer token provider from `DefaultAzureCredential`",
+      "`vector_stores.create(...)`, then upload the brochure PDFs to the store",
+      "`responses.create(...)` with `tools=[file_search + vector_store_ids, web_search]` and `previous_response_id`",
+      "Terminal: `az login`, then `python tools-app.py`"
+    ]
+  },
+  {
+    "id": "1.4.8-03",
+    "type": "basic",
+    "section": "1.4.8",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04a-use-own-data.html",
+    "tags": [
+      "file-search",
+      "vector-store",
+      "openai-sdk"
+    ],
+    "question": "With the OpenAI SDK against Microsoft Foundry, you must upload a whole folder of PDFs to a vector store for the file_search tool in one call and wait until they are indexed. Which method do you call, and how do you check the result?",
+    "answer": "- **`client.vector_stores.file_batches.upload_and_poll(vector_store_id=..., files=[...])`**\n- Check **`file_batch.file_counts.completed`** for the number of files indexed",
+    "explanation": "`files` takes a list of file streams opened in binary mode (`open(f, \"rb\")` for each PDF from `glob`); close them after the upload. The store comes first from `vector_stores.create(name=...)`, and its `id` is what file_search receives in `vector_store_ids`. For a single file, `vector_stores.files.upload_and_poll` takes one `file` instead.",
+    "addition": "Adding files to a vector store runs asynchronously. `upload_and_poll` uploads the files, adds them to the store and polls the batch until processing completes, so all content is searchable before the first request. `file_counts` shows the result of the ingestion.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/file-search"
+  }
+]

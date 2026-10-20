@@ -1,0 +1,53 @@
+[
+  {
+    "id": "3.4.9-01",
+    "type": "mc",
+    "section": "3.4.9",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/8-knowledge-check",
+    "tags": ["speech", "authentication", "sdk"],
+    "question": "What information do you need from your Microsoft Foundry resource to consume it using the Azure Speech SDK?",
+    "answer": "**The endpoint and key** of the Foundry resource.",
+    "explanation": "The first object you create with the Azure Speech SDK is a **SpeechConfig**, which holds the connection details: `SpeechConfig(subscription=KEY, endpoint=ENDPOINT)`. The resource endpoint is the project endpoint without `/api/projects/{project_name}`; project and resource share the same key. SDK releases before 1.48.2 took the resource's region instead of the endpoint, and current releases accept either.",
+    "options": [
+      {"text": "The endpoint and key", "correct": true, "why": "Unit 3.4.2: you call Azure Speech through the resource's endpoint and authenticate with its key, both passed to the SpeechConfig object."},
+      {"text": "The primary and secondary keys", "correct": false, "why": "Unit 3.4.2: one key authenticates the requests, but the SDK also needs the endpoint (or region) to know where to send them."},
+      {"text": "The Azure subscription ID and resource group name", "correct": false, "why": "Unit 3.4.2: these identify where the resource lives in Azure management, but the SpeechConfig object takes the key and the endpoint, not these."}
+    ]
+  },
+  {
+    "id": "3.4.9-02",
+    "type": "mc",
+    "section": "3.4.9",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/8-knowledge-check",
+    "tags": ["speech", "speech-to-text", "sdk"],
+    "question": "Which object should you use to specify that the speech input to be transcribed to text is in an audio file?",
+    "answer": "**AudioConfig**, created with `filename=` pointing at the audio file.",
+    "explanation": "Speech to text needs three objects. **SpeechConfig** holds the connection (endpoint or region and key). **AudioConfig** defines the input source and defaults to the system microphone. **SpeechRecognizer** is built from both and calls the API, for example with `recognize_once_async()`. To transcribe a file instead of the microphone, you write `speech_sdk.audio.AudioConfig(filename=\"audio.wav\")`.",
+    "options": [
+      {"text": "SpeechConfig", "correct": false, "why": "Unit 3.4.3: SpeechConfig only encapsulates the connection to the Foundry resource (endpoint or region and key), not the audio source."},
+      {"text": "AudioConfig", "correct": true, "why": "Unit 3.4.3: AudioConfig defines the input source; it defaults to the system microphone, but you can specify an audio file."},
+      {"text": "SpeechRecognizer", "correct": false, "why": "Unit 3.4.3: SpeechRecognizer is the proxy client that calls the Speech to text API; it receives the audio source from the AudioConfig."}
+    ]
+  },
+  {
+    "id": "3.4.9-03",
+    "type": "mc",
+    "section": "3.4.9",
+    "exam_area": "text",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/8-knowledge-check",
+    "tags": ["speech", "text-to-speech", "voices"],
+    "question": "How can you change the voice used in speech synthesis?",
+    "answer": "Set **`speech_synthesis_voice_name`** on the SpeechConfig object to the desired voice name.",
+    "explanation": "The SpeechConfig object customizes synthesized audio in two separate ways. The **voice** is a property: `speech_config.speech_synthesis_voice_name = 'en-US-Brian:DragonHDLatestNeural'`; voice names show locale, a person's name and other details. The **audio format** (file type, sample rate, bit depth) is set with `set_speech_synthesis_output_format(...)`. Where the audio goes, speaker or file, is the AudioConfig's job.",
+    "options": [
+      {"text": "Specify a SpeechSynthesisOutputFormat enumeration in the SpeechConfig object.", "correct": false, "why": "Unit 3.4.5: the output format sets the audio file type, sample rate and bit depth, not the voice."},
+      {"text": "Set the speech_synthesis_voice_name property of the SpeechConfig object to the desired voice name.", "correct": true, "why": "Unit 3.4.5: the voice is chosen by assigning a voice name such as en-US-Brian:DragonHDLatestNeural to speech_synthesis_voice_name."},
+      {"text": "Specify a filename in the AudioConfig object.", "correct": false, "why": "Unit 3.4.4: a filename in the AudioConfig only sends the synthesized audio to a file instead of the speaker."}
+    ]
+  }
+]

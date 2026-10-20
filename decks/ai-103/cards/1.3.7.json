@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1.3.7-01",
+    "type": "order",
+    "section": "1.3.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/03-foundry-sdk.html",
+    "tags": [
+      "foundry-portal",
+      "openai-sdk",
+      "deployment"
+    ],
+    "question": "You build a Python chat app with the OpenAI SDK against a model in a new Microsoft Foundry project. Put the steps in order, from the empty portal to the first answer in the terminal.",
+    "answer": "**Project** → deploy **gpt-5.2** from **Discover > Models** → copy the **Azure OpenAI Endpoint** from the project **Home** page → install `requirements.txt` in a venv → fill `.env` → `az login` and `python chat-app.py`.",
+    "explanation": "The project organizes models, resources and data; the deployment is what the app calls. The app talks to the **Azure OpenAI endpoint**, not the project endpoint, because it uses the OpenAI SDK. `.env` holds that endpoint and the exact deployment name, which the code passes as `model`. `requirements.txt` brings the OpenAI SDK and Azure Identity. Signing in comes last before the run, because the app authenticates as your Entra ID identity.",
+    "items": [
+      "Create a **Foundry project** (enable **New Foundry**, set **Advanced options**)",
+      "**Discover** > **Models**: search `gpt-5.2`, deploy with default settings",
+      "Project **Home** page: copy the **Azure OpenAI Endpoint** (not the project endpoint)",
+      "VS Code: clone the repo, create a **Venv**, run `pip install -r requirements.txt`",
+      "`.env`: set the endpoint and `MODEL_DEPLOYMENT` to the exact deployment name",
+      "Terminal: `az login`, then `python chat-app.py`"
+    ]
+  },
+  {
+    "id": "1.3.7-02",
+    "type": "basic",
+    "section": "1.3.7",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/03-foundry-sdk.html",
+    "tags": [
+      "keyless-auth",
+      "openai-sdk"
+    ],
+    "question": "A local Python app uses the OpenAI SDK with Microsoft Entra ID (no API key) to call a Microsoft Foundry deployment through the Azure OpenAI endpoint. What do you pass as `api_key`, which token scope does it request, and which command must run before the app?",
+    "answer": "- `api_key` = a **bearer token provider**: `get_bearer_token_provider(DefaultAzureCredential(), ...)`\n- Scope: `https://ai.azure.com/.default`\n- Command: **`az login`** (add `--tenant` with subscriptions in several tenants)",
+    "explanation": "`DefaultAzureCredential` picks up the identity you signed in with through the Azure CLI, so the app needs no secret. The token provider fetches Entra ID tokens for that scope and hands them to the `OpenAI` client in place of a key. The endpoint goes in `base_url`. A project API key would also work, but Entra ID authentication is preferred whenever possible. The async version imports the same two names from `azure.identity.aio` and closes the credential in `finally`."
+  },
+  {
+    "id": "1.3.7-03",
+    "type": "order",
+    "section": "1.3.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/03-foundry-sdk.html",
+    "tags": [
+      "responses-api",
+      "streaming",
+      "openai-sdk"
+    ],
+    "question": "You evolve an OpenAI SDK chat app for a Microsoft Foundry deployment step by step, each version fixing a problem the previous one showed. Put the versions in order, from the first working call to the asynchronous client.",
+    "answer": "**ChatCompletions** (`messages`) → **Responses** (`instructions` + `input`) → **`previous_response_id`** for context → **`stream=True`** → **`AsyncOpenAI`** with `await`.",
+    "explanation": "Each step fixes what the previous one lacks. The plain Responses call forgets context: \"How does it compare to modern LLMs?\" fails because the model does not know what \"it\" is. Passing the last response ID restores the thread. Long answers then make the app seem frozen, so streaming prints each chunk as it arrives and takes the ID from the completed event. The async client in `chat-async.py` makes the app more responsive during long-running model or agent operations.",
+    "items": [
+      "`chat.completions.create(model=..., messages=[system, user])`, print `choices[0].message.content`",
+      "`responses.create(model=..., instructions=..., input=...)`, print `output_text`",
+      "Add `previous_response_id=last_response_id`, then store `last_response_id = response.id`",
+      "Add `stream=True`: print `event.delta` on `response.output_text.delta`, take the ID on `response.completed`",
+      "`chat-async.py`: `AsyncOpenAI` client, `await async_client.responses.create(...)`"
+    ]
+  }
+]

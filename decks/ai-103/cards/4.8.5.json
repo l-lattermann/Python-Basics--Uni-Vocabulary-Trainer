@@ -1,0 +1,278 @@
+[
+  {
+    "id": "4.8.5-01",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "index"
+    ],
+    "question": "What does an **Azure AI Search index** consist of, and what can client applications do with it?",
+    "answer": "- A collection of **JSON documents** whose **fields** hold the values extracted during indexing\n- Clients **query** it to **retrieve, filter and sort** information",
+    "explanation": "The index is the searchable result of the indexing process: the indexer and its enrichment pipeline produce one JSON document per indexed entity and map its fields into the index. Each index field is then configured with attributes that decide what a query may do with it — search it, filter on it, sort by it, build facets from it or return it."
+  },
+  {
+    "id": "4.8.5-02",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "index"
+    ],
+    "question": "Name the **six** attributes you can configure on a field of an **Azure AI Search index**.",
+    "answer": "- **key** — defines the unique key of index records\n- **searchable** — can be queried with full-text search\n- **filterable** — usable in filter expressions\n- **sortable** — usable to order results\n- **facetable** — used to determine values for facets\n- **retrievable** — can be included in search results",
+    "explanation": "Each attribute unlocks one query operation on that field: matching words (searchable), restricting results to documents that meet constraints (filterable), ordering (sortable), listing known values as UI filter options (facetable) and returning the value (retrievable). Retrievable is the only one that is on by default — every field is retrievable unless you explicitly remove the attribute."
+  },
+  {
+    "id": "4.8.5-03",
+    "type": "mc",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "index",
+      "facets"
+    ],
+    "question": "A search page built on **Azure AI Search** must show a list of all **author** values found in the results, so users can click one to narrow the results. Which attribute must the `author` field have so the index can **return that list of values**?",
+    "answer": "**facetable**",
+    "explanation": "Facets are user interface elements that filter results by a list of known field values. Only facetable fields can be requested with the `facet` parameter, which returns the discrete values present in the result set. Applying the value the user then picks is a separate filter query.",
+    "options": [
+      {
+        "text": "facetable",
+        "correct": true,
+        "why": "Facetable fields can be used to determine the values for facets."
+      },
+      {
+        "text": "filterable",
+        "correct": false,
+        "why": "Filterable lets the field appear in a filter expression, but it does not produce the list of possible values."
+      },
+      {
+        "text": "sortable",
+        "correct": false,
+        "why": "Sortable only allows ordering results by the field."
+      },
+      {
+        "text": "searchable",
+        "correct": false,
+        "why": "Searchable makes the field part of full-text search, not a source of filter options."
+      }
+    ]
+  },
+  {
+    "id": "4.8.5-04",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "index"
+    ],
+    "question": "An **Azure AI Search** index holds an internal field that must never appear in search results. You did not change any field attribute. Is it returned, and what do you change?",
+    "answer": "Yes — **by default all fields are retrievable**. Remove the **retrievable** attribute from that field.",
+    "explanation": "Retrievable is the one field attribute that is on unless explicitly removed. The other attributes (searchable, filterable, sortable, facetable) each enable a query operation on the field. A query can also narrow the returned fields with the `select` parameter, but that only shapes one request; removing retrievable keeps the field out of every result."
+  },
+  {
+    "id": "4.8.5-05",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search",
+      "lucene"
+    ],
+    "question": "**Azure AI Search** full-text queries use the Lucene query syntax. Name its **two** variants and what each is for.",
+    "answer": "- **Simple** — intuitive syntax for basic searches that match the literal terms a user submits\n- **Full** — extended syntax for complex filtering, **regular expressions** and other sophisticated queries",
+    "explanation": "Full-text search parses text-based document contents to find query terms, instead of simple field value matching; most search solutions use it. You choose the variant per request with the `queryType` parameter (`simple` or `full`). A user typing a few words into a search box fits Simple; a query that needs regex or an OData `$filter` alongside the expression calls for Full."
+  },
+  {
+    "id": "4.8.5-06",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search"
+    ],
+    "question": "Name **five** common parameters a client sends with an **Azure AI Search** query, and what each controls.",
+    "answer": "- **search** — the search expression with the terms to find\n- **queryType** — the Lucene syntax to evaluate (simple or full)\n- **searchFields** — the index fields to search\n- **select** — the fields to include in the results\n- **searchMode** — whether results must match any or all of several terms",
+    "explanation": "The search expression alone does not fully define a query: the other parameters decide how it is evaluated and what comes back. searchFields limits where terms are looked for, while select limits what is returned — easy to confuse. searchMode matters as soon as the expression holds more than one term."
+  },
+  {
+    "id": "4.8.5-07",
+    "type": "mc",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search"
+    ],
+    "question": "Users of a travel index in **Azure AI Search** search for *comfortable hotel*. They should only get documents that contain **both** words. Which parameter setting achieves this?",
+    "answer": "**searchMode = All**",
+    "explanation": "searchMode sets the criteria for including results when the expression has several terms. With *Any*, a document containing \"comfortable\", \"hotel\" or both is returned; *All* restricts results to documents that contain both terms.",
+    "options": [
+      {
+        "text": "searchMode = All",
+        "correct": true,
+        "why": "All requires every term of the expression to be present."
+      },
+      {
+        "text": "searchMode = Any",
+        "correct": false,
+        "why": "Any returns documents containing either term or both."
+      },
+      {
+        "text": "queryType = full",
+        "correct": false,
+        "why": "queryType picks the Lucene syntax variant; it does not decide how multiple terms combine."
+      },
+      {
+        "text": "searchFields = description",
+        "correct": false,
+        "why": "searchFields only limits which fields are searched."
+      }
+    ]
+  },
+  {
+    "id": "4.8.5-08",
+    "type": "order",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search"
+    ],
+    "question": "Put the **four** stages of query processing in **Azure AI Search** full-text search in order.",
+    "answer": "**Query parsing** → **lexical analysis** → **document retrieval** → **scoring**.",
+    "explanation": "Parsing turns the expression into a tree of subqueries. Lexical analysis then normalises those terms with linguistic rules, so they can match the terms stored in the index. Only then are matching documents identified, and finally each result gets a relevance score from a term frequency/inverse document frequency (TF/IDF) calculation.",
+    "addition": "Current docs: services created after July 2020 score full-text results with the **BM25** algorithm (`BM25Similarity`), a TF-IDF-like function; classic TF-IDF scoring (`ClassicSimilarity`) remains only on older services.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/index-similarity-and-scoring",
+    "items": [
+      "Query parsing — build a tree of subqueries from the search expression",
+      "Lexical analysis — refine query terms with linguistic rules",
+      "Document retrieval — match terms against the index to find documents",
+      "Scoring — assign each result a relevance score"
+    ]
+  },
+  {
+    "id": "4.8.5-09",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search",
+      "lucene"
+    ],
+    "question": "During query parsing, **Azure AI Search** splits a search expression into subqueries. Name the **three** subquery types, with an example of each.",
+    "answer": "- **Term query** — a single word, e.g. *hotel*\n- **Phrase query** — a multi-term phrase in quotation marks, e.g. *\"free parking\"*\n- **Prefix query** — terms with a given prefix, e.g. *air\\** matches *airway*, *airport*",
+    "explanation": "Query parsing is the first of the four processing stages: it evaluates the expression and reconstructs it as a tree of these subqueries. The quotation marks are what turn several words into one phrase query instead of separate term queries; the trailing asterisk is what makes a prefix query."
+  },
+  {
+    "id": "4.8.5-10",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "full-text-search"
+    ],
+    "question": "What happens to query terms during **lexical analysis** in **Azure AI Search**?",
+    "answer": "- Text is converted to **lower case**\n- Nonessential **stopwords** (\"the\", \"a\", \"is\") are removed\n- Words are reduced to their **root form** (\"comfortable\" → \"comfort\")\n- **Composite words** are split into their constituent terms",
+    "explanation": "Lexical analysis is the second stage of query processing, between parsing and document retrieval. It refines the terms with linguistic rules so that a user's wording still matches the terms stored in the index: a search for \"Comfortable\" can find documents that say \"comfort\", and filler words do not have to match at all."
+  },
+  {
+    "id": "4.8.5-11",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "sorting"
+    ],
+    "question": "How does **Azure AI Search** order results by default, and how do you list the **most recently modified** documents first instead?",
+    "answer": "- Default: by **relevance score**, highest first\n- Override with the OData **`$orderby`** parameter on **sortable** fields, e.g. `$orderby=last_modified desc`",
+    "explanation": "The relevance score comes from the scoring stage of query processing. `$orderby` replaces that order with one or more sortable fields, each with a sort order of `asc` or `desc`. Only fields marked sortable in the index can be used.",
+    "addition": "To keep relevance first and break ties between equal scores, order by score and then by a sortable field: `$orderby=search.score() desc,Rating desc`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/search/index-similarity-and-scoring"
+  },
+  {
+    "id": "4.8.5-12",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "filters",
+      "odata"
+    ],
+    "question": "In **Azure AI Search**, you want documents containing *London* whose **author** field is *Reviewer*. What are the **two** ways to apply this filter?",
+    "answer": "- In a **simple search expression**: `search=London+author='Reviewer'` with `queryType=Simple`\n- As an OData **`$filter`** with a **full** expression: `search=London`, `$filter=author eq 'Reviewer'`, `queryType=Full`",
+    "explanation": "Both ways work only on fields marked **filterable** in the index. The `$filter` variant keeps the search terms and the constraint apart: `search` holds what to find, `$filter` holds which documents may be returned, written as an OData expression such as `eq`."
+  },
+  {
+    "id": "4.8.5-13",
+    "type": "basic",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "filters",
+      "odata"
+    ],
+    "question": "An **Azure AI Search** query with `$filter=author eq 'reviewer'` returns nothing, although many documents have the author *Reviewer*. What is the cause?",
+    "answer": "OData **`$filter` expressions are case-sensitive**: `'reviewer'` does not match `'Reviewer'`.",
+    "explanation": "The value in a `$filter` expression must match the stored field value exactly, including case. This differs from the full-text side of the query, where lexical analysis converts search terms to lower case before they are matched. Typical fix: pass the exact value, for example one the user picked from the facet values a previous query returned."
+  },
+  {
+    "id": "4.8.5-14",
+    "type": "order",
+    "section": "4.8.5",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/5-search-index",
+    "tags": [
+      "azure-ai-search",
+      "facets",
+      "filters"
+    ],
+    "question": "Put the steps of letting users narrow **Azure AI Search** results by **facets** on the `author` field in order.",
+    "answer": "Facet query (`facet=author`) → show the **facet values** → user picks one → filter query with **`$filter`**.",
+    "explanation": "Facets work best on a field with a small number of discrete values that the UI can show as links or options. The first query only collects the possible values; the user's choice turns into an ordinary OData filter in a second query.",
+    "items": [
+      "Send an initial query with `search=*` and `facet=author`",
+      "Display the returned author facet values as options in the UI",
+      "The user selects one of the values",
+      "Send a new query with `search=*` and `$filter=author eq '<selected value>'`"
+    ]
+  }
+]

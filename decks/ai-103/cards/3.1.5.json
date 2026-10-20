@@ -1,0 +1,48 @@
+[
+  {
+    "id": "3.1.5-01",
+    "type": "basic",
+    "section": "3.1.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/7-extract-personal-information",
+    "tags": ["pii", "redaction", "azure-language"],
+    "question": "You must strip names, email addresses and phone numbers out of customer feedback before sharing it, and also log which kinds of personal data were found. Which Azure Language in Foundry Tools feature does this, and what does it return per document?",
+    "answer": "**PII detection and redaction**, which returns:\n- **Entities** — each with its text, category (e.g. `Person`, `Email`) and confidence score\n- **Redacted text** — the document with every PII entity masked by asterisks or a specified character",
+    "explanation": "One analysis serves both goals: the entities feed your analysis or audit, the redacted text is what you share. Typical inputs are customer feedback, medical records and legal documents. Detected types include names, addresses, phone numbers, email addresses, social security numbers and credit card numbers, plus passwords, PIN codes and zip codes. Plain named entity recognition only categorizes entities; it gives you no masked version of the text.",
+    "addition": "Newer API versions (from `2025-11-15-preview`) add `redactionPolicies`: `CharacterMask` (default), `EntityMask` (`[PERSON_1]`), `NoMask` (no redacted text) and `SyntheticReplacement` (random substitute values).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/how-to/redact-text-pii"
+  },
+  {
+    "id": "3.1.5-02",
+    "type": "mc",
+    "section": "3.1.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/7-extract-personal-information",
+    "tags": ["pii", "python-sdk", "azure-language"],
+    "question": "Complete the code so that it prints each document with its personal data masked. `client` is a `TextAnalyticsClient` for Azure Language in Foundry Tools.\n\n```python\ndocuments = [\"John Smith works at Contoso Ltd. His email is john.smith@contoso.com.\"]\n\nresponse = client.___(documents=documents, language=\"en\")\nfor doc in response:\n    print(f\"Document {doc.id} (redacted):\")\n    print(f\" {doc.redacted_text}\")\n```",
+    "answer": "**`recognize_pii_entities`** — its results carry both `entities` and `redacted_text`.",
+    "explanation": "The same call serves extraction and redaction: loop over `doc.entities` for `text`, `category` and `confidence_score`, or print `doc.redacted_text` for the masked version, e.g. `********** works at ************.` The neighbouring methods follow the same `documents=` input pattern, which is why they look interchangeable — but only PII recognition produces redacted text.",
+    "options": [
+      {"text": "`recognize_pii_entities`", "correct": true, "why": "Detects PII and returns each document's entities plus its `redacted_text`."},
+      {"text": "`recognize_entities`", "correct": false, "why": "Named entity recognition returns categorized entities such as Person or Location, but no `redacted_text`."},
+      {"text": "`detect_language`", "correct": false, "why": "Returns a `primary_language` with name, ISO 639-1 code and confidence score, nothing about personal data."},
+      {"text": "`extract_key_phrases`", "correct": false, "why": "Returns the main talking points of the text and does not mask anything; key phrase extraction is also one of the deprecated Azure Language capabilities."}
+    ]
+  },
+  {
+    "id": "3.1.5-03",
+    "type": "basic",
+    "section": "3.1.5",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/7-extract-personal-information",
+    "tags": ["pii", "confidence-score"],
+    "question": "Azure Language PII detection returns too many low-certainty matches, such as dates scored 0.80. How do you limit the results to entities the model is more certain about?",
+    "answer": "Specify the optional **confidence threshold**: only entities whose confidence score is **equal to or above** it are returned.",
+    "explanation": "Every detected PII entity carries a confidence score between 0 and 1. In a typical response an email address scores 1.00, a person's name 0.99, while a phone number or a date scores only 0.80. Setting the threshold above such values drops those entities from the results, so you keep only the confident detections.",
+    "addition": "In the REST API (`2025-11-15-preview`) this is `confidenceScoreThreshold`, with a `default` value and per-entity `overrides`, e.g. 0.9 overall but 0.8 for `USSocialSecurityNumber`. Without it, every detected entity is redacted regardless of its score.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/how-to/redact-text-pii"
+  }
+]

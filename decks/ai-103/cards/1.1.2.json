@@ -1,0 +1,151 @@
+[
+  {
+    "id": "1.1.2-01",
+    "type": "basic",
+    "section": "1.1.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "ai-capabilities",
+      "service-choice"
+    ],
+    "question": "Name the **five** common AI capabilities that developers can integrate into an application when planning an Azure AI solution.",
+    "answer": "- **Generative AI and agents** — LLMs that generate original responses to prompts; agents add instructions and tools\n- **Natural language processing** — making sense of language in text\n- **Computer speech** — recognizing and synthesizing speech\n- **Computer vision** — interpreting images, video and live camera streams\n- **Information extraction** — pulling key information out of documents, forms, images and recordings",
+    "explanation": "Today's AI solutions are built on machine learning models that capture semantic relationships found in huge amounts of data. That lets an app appear to interpret input, reason over it and generate responses or predictions. Choosing the capabilities comes first in planning: it tells you which AI services you must provision, configure and use. Information extraction is the combined one, drawing on generative AI, language, vision and speech together."
+  },
+  {
+    "id": "1.1.2-02",
+    "type": "basic",
+    "section": "1.1.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "agents",
+      "generative-ai"
+    ],
+    "question": "Generative AI is increasingly the foundation for **agentic AI**. Which **three** things does an AI agent combine, and what does each add?",
+    "answer": "- **LLM** — generates original responses to natural language prompts\n- **Instructions** — focused, define the agent's task responsibilities\n- **Tools** — let the agent find relevant knowledge and automate its tasks",
+    "explanation": "Plain generative AI answers prompts: it powers interactive chat applications and AI-assisted content creation. An agent builds on that rather than replacing it. The instructions narrow the LLM to the job the agent is responsible for. The tools give it a way to look up relevant knowledge and to carry out the tasks, so it automates work instead of only producing text."
+  },
+  {
+    "id": "1.1.2-03",
+    "type": "mc",
+    "section": "1.1.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "computer-vision",
+      "ai-capabilities"
+    ],
+    "question": "A grocery store wants an automated checkout that identifies which products are in a customer's basket, so nobody has to scan a barcode or type in product and quantity. Which AI capability does it need?",
+    "answer": "**Computer vision**.",
+    "explanation": "Computer vision lets AI apps and agents accept, interpret and process visual input from images, videos and live camera streams. At the checkout the camera view of the basket is the input, and recognizing the products in it is the task. There is no text to analyze, no voice to recognize and no document to read.",
+    "options": [
+      {
+        "text": "Computer vision",
+        "correct": true,
+        "why": "It interprets visual input such as a camera stream and identifies the products in it."
+      },
+      {
+        "text": "Information extraction",
+        "correct": false,
+        "why": "It pulls key fields out of documents, forms and recordings, such as the total from a receipt, not products from a live scene."
+      },
+      {
+        "text": "Natural language processing",
+        "correct": false,
+        "why": "NLP makes sense of text such as documents, emails and social media messages; there is no text here."
+      },
+      {
+        "text": "Computer speech",
+        "correct": false,
+        "why": "It recognizes and synthesizes spoken language; the checkout works from images, not voice."
+      }
+    ]
+  },
+  {
+    "id": "1.1.2-04",
+    "type": "basic",
+    "section": "1.1.2",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "information-extraction",
+      "ai-capabilities"
+    ],
+    "question": "An expense claims app must pull the purchase date, line items and total cost out of scanned receipts. Which AI capability is this, and which **three** kinds of AI does it combine?",
+    "answer": "**Information extraction**, combining:\n- **Generative AI** models for language reasoning\n- **Natural language** techniques for document understanding\n- **Computer vision and speech** for media analysis",
+    "explanation": "Information extraction is not one technique but a mix of the others. A scanned receipt is an image, so vision reads it; language techniques understand it as a document; a generative model reasons over the content. The same combination extracts key information from forms, images, recordings and other content, which is why speech belongs to it too."
+  },
+  {
+    "id": "1.1.2-05",
+    "type": "basic",
+    "section": "1.1.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "nlp",
+      "text-analysis"
+    ],
+    "question": "Generative AI LLMs can now perform many common natural language processing (NLP) tasks. In which area can specialized NLP still pay off, and with which **two** kinds of techniques?",
+    "answer": "Specialized **text analysis**, using:\n- **Term-frequency** algorithms (statistical NLP)\n- **Task-specific models** for text classification, sentiment analysis and summarization",
+    "explanation": "Modern LLMs grew out of NLP, a long-established area of AI that uses statistical and semantic models to make sense of language in documents, emails, social media messages and other text. Most everyday language tasks can now go to an LLM. Specialized text analysis is the exception: counting how often terms occur, or a model built for one task, can still serve it better."
+  },
+  {
+    "id": "1.1.2-06",
+    "type": "mc",
+    "section": "1.1.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "speech",
+      "ai-capabilities"
+    ],
+    "question": "Which **two** of these solutions depend on the computer speech capability?",
+    "answer": "**Transcribing and analyzing** recorded calls, and a **\"read aloud\"** feature that synthesizes speech from text.",
+    "explanation": "Computer speech works in both directions: recognizing speech and synthesizing it. Besides voice conversations with apps and agents, it is a core part of transcribing and analyzing live or recorded speech, and of turning text into speech for simultaneous translation or read-aloud interfaces. Recent advances let it cope with background noise, interruptions, and many languages and accents.",
+    "options": [
+      {
+        "text": "Transcribing and analyzing recorded customer support calls",
+        "correct": true,
+        "why": "Transcription and analysis of live or recorded speech is a core use of speech recognition."
+      },
+      {
+        "text": "A \"read aloud\" feature that speaks a web article to the user",
+        "correct": true,
+        "why": "Synthesizing speech from text is the other half of computer speech."
+      },
+      {
+        "text": "Scoring the sentiment of written product reviews",
+        "correct": false,
+        "why": "This is text analysis, a natural language processing task; no audio is involved."
+      },
+      {
+        "text": "Identifying products in a shopping basket from a camera feed",
+        "correct": false,
+        "why": "Interpreting camera streams is computer vision."
+      }
+    ]
+  },
+  {
+    "id": "1.1.2-07",
+    "type": "basic",
+    "section": "1.1.2",
+    "exam_area": "vision",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/2-what-is-ai",
+    "tags": [
+      "multimodal",
+      "generative-ai"
+    ],
+    "question": "What makes a generative AI model **multimodal** with respect to visual content?",
+    "answer": "It can both **process visual input** and **generate visual output** in the form of images and videos.",
+    "explanation": "Computer vision is the ability of AI apps and agents to accept, interpret and process visual input from images, videos and live camera streams, for example recognizing the products in a shopping basket. Generative AI models are increasingly multimodal, which adds the other direction: besides processing visual input, they generate new visual content as images and videos."
+  }
+]

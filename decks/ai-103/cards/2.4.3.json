@@ -1,0 +1,108 @@
+[
+  {
+    "id": "2.4.3-01",
+    "type": "basic",
+    "section": "2.4.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "rag", "agents"],
+    "question": "What is **Foundry IQ** in Microsoft Foundry, and which service is it built on?",
+    "answer": "A **managed knowledge platform for AI agents**, built on **Azure AI Search**. It offers RAG retrieval as a **shared service**: you create knowledge bases once and connect any number of agents to them.",
+    "explanation": "Building RAG yourself means configuring vector databases, embedding pipelines, retrieval tuning and search infrastructure. Three agents would need three separate RAG systems, each indexing the same sources again. Foundry IQ takes that infrastructure off your hands. Your effort moves from how agents access information to what information they access, so you spend your time designing the agent experience."
+  },
+  {
+    "id": "2.4.3-02",
+    "type": "basic",
+    "section": "2.4.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "knowledge-base"],
+    "question": "How does a **knowledge base** in Foundry IQ organize information, and what does an agent see of it?",
+    "answer": "- By **business domain** (\"Product Documentation\", \"HR Policies\"), **not by storage location**\n- One knowledge base combines related content from several data sources\n- To the agent it appears as **one unified knowledge source**",
+    "explanation": "This mirrors how people think about information. An agent searches \"Product Documentation\" instead of \"SharePoint Site A\" or \"Blob Container B\". A Product Documentation knowledge base might hold technical specs from SharePoint, API docs from Azure Blob Storage, usage analytics from OneLake and support tickets from an existing search index. You connect data sources to knowledge bases instead of managing a separate retrieval system per source."
+  },
+  {
+    "id": "2.4.3-03",
+    "type": "order",
+    "section": "2.4.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "indexing"],
+    "question": "You add a data source to a Foundry IQ knowledge base. Put the **four** steps Foundry IQ then runs in order.",
+    "answer": "- **Discovery** — scans the storage location for documents\n- **Processing** — chunks and embeds documents for semantic search\n- **Indexing** — makes the content searchable through the knowledge base\n- **Monitoring** — document changes trigger automatic reindexing",
+    "explanation": "You only point Foundry IQ at a SharePoint site, a Blob container or a OneLake instance. It handles indexing, embedding generation and search optimization automatically. You configure this once per data source. Because monitoring reindexes on change, every agent connected to that knowledge base benefits from updates at once, without any work on the agent side.",
+    "items": [
+      "Discovery: scan the storage location for documents",
+      "Processing: chunk and embed the documents for semantic search",
+      "Indexing: make the content searchable through the knowledge base",
+      "Monitoring: reindex automatically when documents change"
+    ]
+  },
+  {
+    "id": "2.4.3-04",
+    "type": "basic",
+    "section": "2.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "retrieval", "citations"],
+    "question": "Name the **four** things Foundry IQ's built-in retrieval intelligence does when an agent queries a knowledge base.",
+    "answer": "- **Analyzes the question** — works out what information the agent needs\n- **Selects retrieval strategies** — picks the search method to fit the query\n- **Ranks results** — relevance scoring puts the most fitting content first\n- **Provides citations** — the agent can reference the source documents",
+    "explanation": "All of this runs without custom code: you define what a knowledge base contains, Foundry IQ decides how to retrieve from it. \"What's our return policy for damaged items?\" needs different retrieval than \"List all return policies\". Ranking pays off twice: better answers and fewer tokens in the agent's response. Citations build trust because users can verify the information."
+  },
+  {
+    "id": "2.4.3-05",
+    "type": "mc",
+    "section": "2.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "retrieval", "semantic-search"],
+    "question": "An agent sends a **complex** question to a Foundry IQ knowledge base. According to the Foundry IQ course material, which retrieval does the platform select?",
+    "answer": "**Semantic search combined with query expansion.**",
+    "explanation": "Foundry IQ picks the strategy from the query itself. Simple factual questions get keyword search. Complex questions get semantic search plus query expansion. You write no retrieval logic for either case: the selection is part of the built-in retrieval intelligence.",
+    "options": [
+      {"text": "Keyword search only", "correct": false, "why": "Foundry IQ uses plain keyword search for simple factual questions, not for complex ones."},
+      {"text": "Semantic search combined with query expansion", "correct": true, "why": "This is the strategy Foundry IQ selects for complex questions."},
+      {"text": "Web grounding through Bing", "correct": false, "why": "Bing web grounding is a data source type you add to a knowledge base for public, current information, not a retrieval strategy chosen per query."},
+      {"text": "Retrieval logic you write in the agent's code", "correct": false, "why": "Foundry IQ's retrieval intelligence runs without custom code; you only define what the knowledge base contains."}
+    ],
+    "addition": "Current docs describe more: a knowledge base can use LLM-based query planning (preview) to split a query into subqueries, run them with keyword, vector or hybrid search, apply semantic reranking and optionally synthesize an answer with source references (preview).",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect"
+  },
+  {
+    "id": "2.4.3-06",
+    "type": "mc",
+    "section": "2.4.3",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "mcp", "agents"],
+    "question": "You give a Microsoft Foundry agent access to a Foundry IQ knowledge base with the `azure-ai-projects` SDK. Which class completes the gap?\n\n```python\nknowledge_tool = ___(\n    server_label=\"product-docs\",\n    server_url=f\"{search_endpoint}/knowledgebases/product-documentation/mcp\"\n)\nagent = project_client.agents.create_version(\n    agent_name=\"product-support-agent\",\n    definition=PromptAgentDefinition(model=\"gpt-4o-mini\",\n        instructions=\"Answer using the knowledge base. Cite sources.\", tools=[knowledge_tool]))\n```",
+    "answer": "**`MCPTool`** — Foundry IQ connects agents to knowledge bases over the **Model Context Protocol (MCP)**, at the knowledge base's `/mcp` endpoint on the search service.",
+    "explanation": "The knowledge base becomes one more tool in the agent's `tools` list. The agent retrieves from it just like it uses any other tool. You write no retrieval logic and manage no search infrastructure. MCP is a standardized way for AI agents to access external tools and data sources securely. The instruction to always cite sources makes use of the citations Foundry IQ returns.",
+    "options": [
+      {"text": "`MCPTool`", "correct": true, "why": "Foundry IQ exposes each knowledge base as an MCP endpoint, so the agent connects to it with an MCP tool."},
+      {"text": "`AzureAISearchTool`", "correct": false, "why": "This tool queries Azure AI Search indexes directly; the code points at a knowledge base's MCP endpoint, which needs an MCP tool."},
+      {"text": "`FileSearchTool`", "correct": false, "why": "File search works over files uploaded to the agent, not over a shared Foundry IQ knowledge base."},
+      {"text": "`SharepointPreviewTool`", "correct": false, "why": "This grounds an agent on SharePoint directly; in Foundry IQ, SharePoint is a data source behind the knowledge base, reached through MCP."}
+    ],
+    "addition": "Current docs also pass `project_connection_id` (a `RemoteTool` project connection that authenticates with the project's managed identity), `allowed_tools=[\"knowledge_base_retrieve\"]` and `require_approval=\"never\"`, plus an `api-version` on the MCP URL.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect"
+  },
+  {
+    "id": "2.4.3-07",
+    "type": "basic",
+    "section": "2.4.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/3-foundry-iq",
+    "tags": ["foundry-iq", "knowledge-base", "agents"],
+    "question": "Your organization needs a customer support agent, an HR employee assistant and a developer agent explaining APIs. How do you set up their knowledge with Foundry IQ?",
+    "answer": "- Create **shared knowledge bases**, not one RAG system per agent\n- **Product Documentation** serves the support and developer agents\n- **HR Policies** serves only the employee assistant\n- Improving a knowledge base benefits **every connected agent** at once",
+    "explanation": "With traditional RAG you would build and maintain three retrieval systems. With Foundry IQ, several agents connect to the same knowledge base, and each agent gets exactly the knowledge it needs. Adding a data source or refining content in Product Documentation improves both the support and the developer agent immediately. That is how organizations keep many agents consistent and scalable."
+  }
+]

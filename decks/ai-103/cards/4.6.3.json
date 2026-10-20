@@ -1,0 +1,81 @@
+[
+  {
+    "id": "4.6.3-01",
+    "type": "basic",
+    "section": "4.6.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/03-create-analyzer",
+    "tags": ["content-understanding", "field-schema"],
+    "question": "You create a custom Azure Content Understanding analyzer by sending a JSON analyzer definition to the API. Name the **five** top-level properties of a minimal definition.",
+    "answer": "- **description** — what the analyzer is, e.g. \"Simple business card\"\n- **baseAnalyzerId** — the prebuilt analyzer it builds on, e.g. `prebuilt-document`\n- **config** — settings such as `returnDetails`\n- **fieldSchema** — a `fields` object; each field has a `type`, a `method` and a `description`\n- **models** — the generative models used for processing: `completion` and `embedding`",
+    "explanation": "Content Understanding Studio is the usual way to create and test analyzers; submitting a JSON definition is the alternative for code. The schema is the heart: it lists the fields to extract or generate from a file. In the business card example, `ContactName` and `EmailAddress` are string fields. The models map names `gpt-4.1` for completion and `text-embedding-3-large` for embedding. A real definition has more fields and settings.",
+    "addition": "The REST reference defines `returnDetails` as \"Return all content details\". A definition can also carry optional properties such as `tags`, `knowledgeSources` (labeled training data) and `processingLocation`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
+  },
+  {
+    "id": "4.6.3-02",
+    "type": "mc",
+    "section": "4.6.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/03-create-analyzer",
+    "tags": ["content-understanding", "field-schema"],
+    "question": "A custom Azure Content Understanding analyzer for scanned business cards needs an `EmailAddress` field. The address is printed on every card. Which `method` do you set for the field?",
+    "answer": "**extract** — the value exists in the document and is read from it. **generate** is for values inferred about the document.",
+    "explanation": "The method says where a field's value comes from. An email address or a contact name is printed on the card, so the service only has to find and read it. A generated field holds something the document does not state, which the model infers from the content. Both business card fields are strings with `\"method\": \"extract\"` and a description that tells the model what to look for.",
+    "options": [
+      {"text": "extract", "correct": true, "why": "The address is written on the card, so its value can be read directly from the document."},
+      {"text": "generate", "correct": false, "why": "Generate is for values inferred about the document, not for text that already appears in it."},
+      {"text": "classify", "correct": false, "why": "Classify picks one of a predefined set of categories; an email address is free text read from the card."}
+    ],
+    "addition": "The REST reference lists three generation methods: `extract` (values as they appear in the content), `generate` (values generated freely from the content) and `classify` (values classified against a predefined set of categories).",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
+  },
+  {
+    "id": "4.6.3-03",
+    "type": "mc",
+    "section": "4.6.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/03-create-analyzer",
+    "tags": ["content-understanding", "python-sdk"],
+    "question": "Complete the Python code that creates a custom Azure Content Understanding analyzer from a definition:\n\n```python\nclient = ContentUnderstandingClient(endpoint=endpoint, credential=credential)\n\npoller = client.___(analyzer_name, body=analyzer_definition)\nresult = poller.result()\nprint(f\"Analyzer created: {result.analyzer_id}\")\n```",
+    "answer": "**`begin_create_analyzer`** — it starts the asynchronous creation and returns a poller.",
+    "explanation": "Creating an analyzer is a long-running operation. The `begin_` method of `ContentUnderstandingClient` submits the definition and hands back a poller. Calling `poller.result()` waits until creation is complete, so you write no polling loop yourself. The analyzer name you pass is the ID you later use to analyze files. The client comes from the `azure-ai-contentunderstanding` package and here authenticates with an `AzureKeyCredential`.",
+    "options": [
+      {"text": "begin_create_analyzer", "correct": true, "why": "It submits the analyzer definition and returns a poller for the asynchronous creation."},
+      {"text": "begin_analyze", "correct": false, "why": "It submits content to an existing analyzer for analysis; it does not create an analyzer."},
+      {"text": "begin_analyze_binary", "correct": false, "why": "It analyzes raw file bytes with an existing analyzer instead of creating one."},
+      {"text": "get_analyzer", "correct": false, "why": "It retrieves an existing analyzer's definition; it takes no body and returns no poller."}
+    ]
+  },
+  {
+    "id": "4.6.3-04",
+    "type": "basic",
+    "section": "4.6.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/03-create-analyzer",
+    "tags": ["content-understanding", "rest-api"],
+    "question": "You create a custom Azure Content Understanding analyzer with the REST API instead of the SDK. Which HTTP request do you send, and how do you authenticate it?",
+    "answer": "- A **`PUT`** with the JSON analyzer definition as body\n- to `{endpoint}/contentunderstanding/analyzers/{analyzer_name}?api-version=2025-11-01`\n- with the Foundry resource key in the **`Ocp-Apim-Subscription-Key`** header",
+    "explanation": "The analyzer name goes into the URL, so the request puts a resource with that name. The body is the same definition you would pass to the SDK, for example loaded from a `card.json` file. The request only starts the creation: the analyzer is not ready when the `PUT` returns. Analyzing a file later uses a `POST` to the analyzer's `:analyze` operation instead.",
+    "addition": "Add `allowReplace=true` to the query string to replace an existing analyzer of the same name. Instead of the key header, the API also accepts a Microsoft Entra ID access token with the scope `https://cognitiveservices.azure.com/.default`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
+  },
+  {
+    "id": "4.6.3-05",
+    "type": "basic",
+    "section": "4.6.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/03-create-analyzer",
+    "tags": ["content-understanding", "rest-api", "async-operations"],
+    "question": "Your app sent a `PUT` request to create an Azure Content Understanding analyzer through the REST API. How does it find out when the analyzer has been created?",
+    "answer": "Read the **`Operation-Location`** header of the `PUT` response — a callback URL — and send **`GET`** requests to it until the returned `status` is no longer `Running`.",
+    "explanation": "Analyzer creation is asynchronous, so the `PUT` response carries no finished analyzer. The header points to the operation, and each `GET` with the same key header returns its current status. The REST client has to write this polling loop itself. The SDK hides it: `poller.result()` does the same waiting. Analysis requests work the same way, but there the ID comes in the response body.",
+    "addition": "The sample `Operation-Location` has the form `{endpoint}/contentunderstanding/analyzers/{analyzerId}/operations/{operationId}?api-version=2025-11-01`. The analyzer resource itself reports `creating`, then `ready` or `failed`.",
+    "addition_source": "https://learn.microsoft.com/en-us/rest/api/contentunderstanding/content-analyzers/create-or-replace"
+  }
+]

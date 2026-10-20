@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2.8.7-01",
+    "type": "mc",
+    "section": "2.8.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/7-use-handoff-orchestration",
+    "tags": ["orchestration", "multi-agent", "agent-framework"],
+    "question": "You build a customer support solution with the Microsoft Agent Framework. A general support agent talks to the customer first; whether a technical or a billing specialist is needed only becomes clear during the conversation. Exactly **one** agent should own the conversation at a time. Which orchestration pattern fits?",
+    "options": [
+      {"text": "Handoff orchestration", "correct": true, "why": "Agents transfer control to the agent with the right expertise based on context, one agent at a time, even when the right agent is not known upfront."},
+      {"text": "Sequential orchestration", "correct": false, "why": "Sequential runs agents in a fixed order decided beforehand; the agents do not choose who comes next."},
+      {"text": "Concurrent orchestration", "correct": false, "why": "Concurrent broadcasts the same task to several agents at once and collects their results; nobody hands off."},
+      {"text": "Group chat orchestration", "correct": false, "why": "Group chat runs a shared conversation among several agents, with a chat manager picking the next speaker; it suits brainstorming and maker-checker loops, not routing to one owner."},
+      {"text": "Magentic orchestration", "correct": false, "why": "Magentic uses a manager that plans and keeps a task ledger for open-ended problems; it is heavier than simple expert routing."}
+    ],
+    "answer": "**Handoff orchestration** — each agent can pass full control to the agent with the right expertise, based on context or rules.",
+    "explanation": "Handoff fits when the best agent is not known upfront and the needed expertise emerges while the task is processed. Other good fits: multi-domain problems where different specialists work one after another, and cases where you can define clear signals for when to transfer control and to whom. Unlike parallel patterns, agents work one at a time and hand off control fully. Typical uses are customer support and expert systems; a human can be brought in when needed.",
+    "explanation_images": [
+      {"src": "media/ai-103/2.8.7-handoff-flow.png", "alt": "Handoff flow: input goes to Agent A (general support), which either completes or hands off to Agent B (technical expert) or Agent C (billing); every agent can talk to a human, and each completes to the result."}
+    ]
+  },
+  {
+    "id": "2.8.7-02",
+    "type": "basic",
+    "section": "2.8.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/7-use-handoff-orchestration",
+    "tags": ["orchestration", "multi-agent"],
+    "question": "Name the **five** situations in which you should avoid handoff orchestration in a Microsoft Agent Framework multi-agent solution.",
+    "answer": "- **Fixed agents and order** — known upfront\n- **Simple, rule-based routing** — no dynamic interpretation needed\n- **Poor routing would frustrate users**\n- **Parallel work** — several operations must run at the same time\n- **Loops hard to prevent** — infinite handoffs or bouncing between agents",
+    "explanation": "Each point attacks what handoff is for: deciding the next agent dynamically while the task runs. If the agents and their order are fixed, sequential orchestration does the same job predictably. If operations must run simultaneously, handoff cannot help, because its agents work one at a time. And because the agents themselves decide where control goes, a wrong decision reaches the user directly, and agents can pass a task back and forth without end."
+  },
+  {
+    "id": "2.8.7-03",
+    "type": "basic",
+    "section": "2.8.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/7-use-handoff-orchestration",
+    "tags": ["orchestration", "agent-framework", "workflows"],
+    "question": "Name the **three** kinds of executor you create when you implement handoff orchestration as a control workflow with the Microsoft Agent Framework SDK.",
+    "answer": "- **Input storage executor** — saves incoming data to shared state and forwards it to the classification agent\n- **Transformation executor** — turns the agent's JSON response into a typed routing object\n- **Handler executors** — one per classification outcome, with guard conditions that check the message",
+    "explanation": "Before the executors, you set up the chat client and Pydantic models, and give the agents a `response_format` so they answer in structured JSON. Simple data classes carry information between workflow steps. The flow then is: store the input, let the classifying agent answer, convert its JSON into a routing object, and route to the matching handler. A terminal executor yields the final output."
+  },
+  {
+    "id": "2.8.7-04",
+    "type": "basic",
+    "section": "2.8.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/7-use-handoff-orchestration",
+    "tags": ["orchestration", "agent-framework", "workflows"],
+    "question": "In a handoff control workflow built with the Microsoft Agent Framework SDK, how does the workflow decide which agent gets the task next?",
+    "answer": "- A **switch-case edge group**, added with `WorkflowBuilder`\n- **Case** objects, each with a condition that returns true for one classification value\n- The **first matching case** wins\n- A **Default** case catches unexpected results",
+    "explanation": "Each agent processes the task in turn, and its classification result decides the next step. Factory functions generate one condition checker per classification value; each checker examines the incoming message. `WorkflowBuilder` connects the other executors with regular edges and adds the switch-case edge group for the routing. Always include the Default case: it is the fallback for any result no case expects.",
+    "addition": "The current Agent Framework also has a dedicated `HandoffBuilder` (`agent_framework.orchestrations`). Agents are connected in a mesh without a central orchestrator. Each agent hands off by calling handoff tools that the builder registers automatically.",
+    "addition_source": "https://learn.microsoft.com/en-us/agent-framework/user-guide/workflows/orchestrations/handoff"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4.3.7-01",
+    "type": "mc",
+    "section": "4.3.7",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/6-knowledge-check",
+    "tags": ["video-generation", "sora"],
+    "question": "What video durations does Sora 2 support?",
+    "answer": "**4, 8, or 12 seconds**.",
+    "explanation": "In the API the duration is the `seconds` parameter, and it accepts only these three values, with 4 as the default. The model follows instructions more reliably in shorter clips. For a longer scene, generate two 4-second clips and stitch them together rather than one 8-second clip.",
+    "options": [
+      {"text": "1 to 20 seconds in 1-second increments", "correct": false, "why": "Units 4.3.2 and 4.3.3 list only three fixed durations, not a free range in 1-second steps."},
+      {"text": "4, 8, or 12 seconds", "correct": true, "why": "Unit 4.3.2 (variable duration) and the `seconds` parameter in unit 4.3.3 both give exactly 4, 8 or 12 seconds."},
+      {"text": "Any duration up to 60 seconds", "correct": false, "why": "The longest duration in units 4.3.2 and 4.3.3 is 12 seconds; there is no free choice up to 60."}
+    ]
+  },
+  {
+    "id": "4.3.7-02",
+    "type": "mc",
+    "section": "4.3.7",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/6-knowledge-check",
+    "tags": ["video-generation", "sora"],
+    "question": "What is required when using a reference image with Sora 2?",
+    "answer": "**The image resolution must match the target video size** (`1280x720` or `720x1280`).",
+    "explanation": "A reference image is passed as `input_reference` and anchors the first frame; the prompt defines what happens next. Besides the exact resolution match, the image must be JPEG, PNG or WebP. Images with human faces are currently rejected, so use landscapes, objects or animated characters.",
+    "options": [
+      {"text": "The image must be smaller than 1 MB", "correct": false, "why": "Units 4.3.3 and 4.3.4 name no file-size limit; they require a matching resolution and a JPEG, PNG or WebP format."},
+      {"text": "The image resolution must match the target video size", "correct": true, "why": "Unit 4.3.3 (reference image requirements) and unit 4.3.4 (key considerations) require the resolution to match the target video size exactly."},
+      {"text": "The image must contain at least one human face", "correct": false, "why": "The opposite holds: unit 4.3.4 says reference images containing human faces are currently rejected."}
+    ]
+  },
+  {
+    "id": "4.3.7-03",
+    "type": "mc",
+    "section": "4.3.7",
+    "exam_area": "vision",
+    "origin": "knowledge-check",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/6-knowledge-check",
+    "tags": ["video-generation", "sora"],
+    "question": "What is the remix feature used for in Sora 2?",
+    "answer": "**Making targeted adjustments to an existing video** without regenerating from scratch.",
+    "explanation": "Remix keeps the video's core elements: scene transitions, visual layout and overall structure. You pass the original video ID and a prompt that describes only the change, in Python with `client.videos.remix(video_id=..., prompt=...)`. One narrow, precise change per remix keeps the result closest to the source.",
+    "options": [
+      {"text": "Combining multiple videos into one", "correct": false, "why": "Remix works on one existing video by its ID (units 4.3.3 and 4.3.4); stitching clips together is a separate step outside Sora 2."},
+      {"text": "Making targeted adjustments to an existing video without regenerating from scratch", "correct": true, "why": "Unit 4.3.2 (video remix) and unit 4.3.3 (remixing existing videos) describe exactly this use."},
+      {"text": "Adding background music to generated videos", "correct": false, "why": "Audio comes from Sora 2's audio generation during creation (unit 4.3.2), not from the remix feature."}
+    ]
+  }
+]

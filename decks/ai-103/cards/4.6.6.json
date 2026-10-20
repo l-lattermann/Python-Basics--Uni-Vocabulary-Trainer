@@ -1,0 +1,57 @@
+[
+  {
+    "id": "4.6.6-01",
+    "type": "order",
+    "section": "4.6.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/02-content-understanding-api.html",
+    "tags": [
+      "content-understanding",
+      "python",
+      "sdk"
+    ],
+    "question": "Put the steps of building a business-card client app with the **Azure Content Understanding Python SDK** in order.",
+    "answer": "Project → connect resource and deploy models → configure endpoint/key → create analyzer → analyze cards → clean up.",
+    "explanation": "The analyzer runs on OpenAI models deployed in your Foundry resource, so the Studio connection with auto-deployment must exist before any analyzer is created. The client app needs the resource endpoint, an API key and the analyzer name. Only an existing analyzer can analyze a card, so `create-analyzer.py` runs before `read-card.py`. Deleting the resource group avoids further Azure costs.",
+    "items": [
+      "Create a Microsoft Foundry project (with its parent resource) in a supported region",
+      "In Content Understanding Studio, add the Foundry resource with auto-deployment enabled",
+      "Put the resource endpoint, API key and analyzer name in the app's .env file",
+      "Create the analyzer from the JSON schema (create-analyzer.py)",
+      "Submit business card images to the analyzer (read-card.py)",
+      "Delete the resource group in the Azure portal"
+    ]
+  },
+  {
+    "id": "4.6.6-02",
+    "type": "basic",
+    "section": "4.6.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/02-content-understanding-api.html",
+    "tags": [
+      "content-understanding",
+      "model-deployment"
+    ],
+    "question": "You created a Microsoft Foundry project and want to use **Azure Content Understanding** analyzers. Where do you connect the Foundry resource and get the required models deployed?",
+    "answer": "- In **Content Understanding Studio** (`contentunderstanding.ai.azure.com`): **settings gear → + Add resource**\n- Select subscription, resource group and the **parent Foundry resource** of the project\n- Keep **Enable auto-deployment** checked → **Next** → **Save**",
+    "explanation": "Content Understanding analyzes content with models that must be deployed in your Foundry resource before any analyzer can run: `GPT-4.1`, `GPT-4.1-mini` and `text-embedding-3-large`. The Studio sets up the connection and those deployments in one step; with auto-deployment on, it deploys the models for you. You pick the resource, not the project — the project only sits inside it."
+  },
+  {
+    "id": "4.6.6-03",
+    "type": "basic",
+    "section": "4.6.6",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-information-extraction/Instructions/Exercises/02-content-understanding-api.html",
+    "tags": [
+      "content-understanding",
+      "python",
+      "sdk"
+    ],
+    "question": "With the **Azure Content Understanding Python SDK** (`ContentUnderstandingClient`), which calls create an analyzer from a JSON schema, analyze a local image file, and wait for each operation to finish?",
+    "answer": "- **`begin_create_analyzer`**(`analyzer_id`, `resource`=schema, `allow_replace=True`)\n- **`begin_analyze_binary`**(`analyzer_id`, `binary_input`=file bytes)\n- **`.result()`** on the returned poller waits and returns the result",
+    "explanation": "Both creating and analyzing are long-running operations, so the methods start with `begin_` and return an `LROPoller`. Calling `.result()` makes the SDK poll for you; no manual polling loop is needed, unlike the REST API. `begin_analyze_binary` takes the image bytes read with `open(..., \"rb\")`. The extracted values are in `result.contents[...].fields`, one entry per schema field such as Name or Email."
+  }
+]

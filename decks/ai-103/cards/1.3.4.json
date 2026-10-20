@@ -1,0 +1,461 @@
+[
+  {
+    "id": "1.3.4-01",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "sdk"
+    ],
+    "question": "What is the OpenAI **Responses API** in Microsoft Foundry, and which two older APIs does it bring together?",
+    "answer": "A **stateful, multi-turn** response generation API that unifies the **ChatCompletions** and **Assistants** APIs. It is the **recommended** way to generate responses in Foundry apps and replaces ChatCompletions for most scenarios.",
+    "explanation": "Before, plain chat and stateful assistant conversations lived in two separate APIs. The Responses API brings both patterns together, which makes it a natural fit for conversational apps. You reach it through an OpenAI-compatible client from either the Foundry SDK or the OpenAI SDK. ChatCompletions stays useful for maintaining existing code and for cross-platform compatibility."
+  },
+  {
+    "id": "1.3.4-02",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "chat-completions"
+    ],
+    "question": "Name the **four** advantages the **Responses API** offers over traditional chat completions in Microsoft Foundry.",
+    "answer": "- **Stateful conversations** — keeps context across multiple turns\n- **Unified experience** — combines chat completions and Assistants API patterns\n- **Foundry direct models** — works with models hosted directly in Foundry, not just Azure OpenAI models\n- **Simple integration** — accessed through the OpenAI-compatible client",
+    "explanation": "The first point is the biggest practical difference: with ChatCompletions you must track and resend every earlier message yourself, while the Responses API can link a new request to the previous response. Foundry direct models are models such as Microsoft Phi or DeepSeek, which run in Foundry itself rather than as Azure OpenAI deployments."
+  },
+  {
+    "id": "1.3.4-03",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "python",
+      "sdk"
+    ],
+    "question": "Complete the code so it prints the text the model generated with the **Responses API**.\n\n```python\nresponse = openai_client.responses.create(\n    model=\"gpt-4.1\",\n    input=\"What is Microsoft Foundry?\"\n)\nprint(response.___)\n```",
+    "answer": "`output_text`",
+    "explanation": "`responses.create()` returns a response object, and its `output_text` property holds the generated text as one string. The `model` argument is your model deployment name, and `input` is the prompt as a text string. The ChatCompletions API reads the text from a different place, `choices[0].message.content`, which is a common trap when you switch between the two APIs.",
+    "options": [
+      {
+        "text": "`output_text`",
+        "correct": true,
+        "why": "It is the response property that holds the generated text."
+      },
+      {
+        "text": "`choices[0].message.content`",
+        "correct": false,
+        "why": "That is where a ChatCompletions result holds the text, not a Responses API result."
+      },
+      {
+        "text": "`id`",
+        "correct": false,
+        "why": "It is the unique identifier of the response, not its text."
+      },
+      {
+        "text": "`usage`",
+        "correct": false,
+        "why": "It holds the token usage (input, output and total tokens), not the text."
+      }
+    ]
+  },
+  {
+    "id": "1.3.4-04",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "tokens"
+    ],
+    "question": "Name the **five** useful properties of a response object returned by the **Responses API** (`responses.create()`).",
+    "answer": "- **output_text** — the generated text\n- **id** — unique identifier of this response\n- **status** — response status, for example \"completed\"\n- **usage** — token usage (input, output and total tokens)\n- **model** — the model used to generate the response",
+    "explanation": "Each property serves a different job. You show `output_text` to the user. You keep `id` to continue the conversation or fetch the response again later. You check `status` before trusting the result. You read `usage`, for example `response.usage.total_tokens`, to track cost. And `model` confirms which deployment actually answered."
+  },
+  {
+    "id": "1.3.4-05",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "prompts"
+    ],
+    "question": "In a **Responses API** call (`responses.create()`), what is the difference between the `instructions` and the `input` parameter?",
+    "answer": "- **instructions** — the **system prompt** that guides the model's behaviour\n- **input** — the user's prompt that the model answers",
+    "explanation": "A typical call passes both: `instructions=\"You are a helpful AI assistant that answers questions clearly and concisely.\"` sets tone and role, and `input=\"Explain neural networks.\"` is the actual question. In ChatCompletions the same split is expressed as a message with role `system` and one with role `user`. `input` can also take a list of message objects instead of a string when you build the history yourself."
+  },
+  {
+    "id": "1.3.4-06",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "parameters",
+      "responses-api"
+    ],
+    "question": "Name the **three** parameters of a **Responses API** call that control response generation, and what each does.",
+    "answer": "- **temperature** — controls randomness (0.0–2.0); higher means more creative and varied\n- **max_output_tokens** — limits the maximum number of tokens in the response\n- **top_p** — an alternative to temperature for controlling randomness",
+    "explanation": "temperature and top_p both steer how random the output is; top_p is the alternative way to do it. A story generator might use `temperature=0.8` for more creative, varied text, while `max_output_tokens=200` keeps the reply short. max_output_tokens is about length, not randomness, so it combines freely with either of the other two."
+  },
+  {
+    "id": "1.3.4-07",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "parameters",
+      "responses-api"
+    ],
+    "question": "A Microsoft Foundry app calls `responses.create()` to write product descriptions. The texts are too long and drive up token costs. Which parameter caps the length of each response?",
+    "answer": "**max_output_tokens**",
+    "explanation": "max_output_tokens sets the maximum number of tokens the model may generate in its response. temperature and top_p only change how random the wording is, so they do not shorten anything. Length and randomness are separate controls, and you can set both in the same call.",
+    "options": [
+      {
+        "text": "`max_output_tokens`",
+        "correct": true,
+        "why": "It limits the maximum number of tokens in the response."
+      },
+      {
+        "text": "`temperature`",
+        "correct": false,
+        "why": "It controls randomness (0.0–2.0), not length."
+      },
+      {
+        "text": "`top_p`",
+        "correct": false,
+        "why": "It is an alternative to temperature for controlling randomness, not a length limit."
+      },
+      {
+        "text": "`instructions`",
+        "correct": false,
+        "why": "It sets the system prompt; asking for brevity there is not a hard token limit."
+      }
+    ]
+  },
+  {
+    "id": "1.3.4-08",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "foundry-direct-models"
+    ],
+    "question": "Through which Microsoft Foundry endpoint does the **Responses API** serve both Azure OpenAI models and **Foundry direct models** such as Microsoft Phi or DeepSeek, and what changes in the call?",
+    "answer": "Connect the Foundry SDK or AzureOpenAI client to the **project endpoint**. The call stays the same; only `model` names the **Foundry direct model** deployment, e.g. `\"microsoft-phi-4\"`.",
+    "explanation": "Foundry direct models are models hosted directly in Microsoft Foundry rather than Azure OpenAI models. Through the project endpoint, the Responses API serves both kinds with the same `responses.create()` call, the same `instructions` and `input`, and the same `output_text`. So you can swap a GPT deployment for a small language model by changing one string."
+  },
+  {
+    "id": "1.3.4-09",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "python",
+      "conversation-state"
+    ],
+    "question": "Complete the code so the second **Responses API** call continues the conversation from the first.\n\n```python\nresponse2 = openai_client.responses.create(\n    model=\"gpt-4.1\",\n    instructions=\"You explain technology concepts clearly.\",\n    input=\"Can you give me an example?\",\n    ___=response1.id\n)\n```",
+    "answer": "`previous_response_id`",
+    "explanation": "`previous_response_id` links the new request to an earlier response, so the model sees that response as context and \"an example\" refers to machine learning from the first turn. You do not resend the earlier messages yourself; the ID is enough. This is the stateful tracking that ChatCompletions lacks.",
+    "options": [
+      {
+        "text": "`previous_response_id`",
+        "correct": true,
+        "why": "It is the Responses API parameter that chains a request to the previous response."
+      },
+      {
+        "text": "`instructions`",
+        "correct": false,
+        "why": "It is already set and holds the system prompt, not a link to earlier turns."
+      },
+      {
+        "text": "`messages`",
+        "correct": false,
+        "why": "It is the ChatCompletions parameter for the message list and takes messages, not a response ID."
+      },
+      {
+        "text": "`input`",
+        "correct": false,
+        "why": "It is already set and carries the new user prompt."
+      }
+    ]
+  },
+  {
+    "id": "1.3.4-10",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "conversation-state",
+      "responses-api"
+    ],
+    "question": "In a chat loop that chains turns with `previous_response_id` in the **Responses API**, what context does the model get for each new user input?",
+    "answer": "- the **instructions** (system message)\n- the user's new **input**\n- the **previous response** the model generated",
+    "explanation": "Linking to the previous response grounds the new input in the context of what the model said before. That is why a follow-up like \"Can you give me an example?\" makes sense to the model. In the loop, the app stores `last_response_id = response.id` after every turn and starts with `None`, so the first turn has no previous response."
+  },
+  {
+    "id": "1.3.4-11",
+    "type": "order",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "conversation-state",
+      "responses-api"
+    ],
+    "question": "Put the steps of one turn of an interactive **Responses API** chat loop that uses `previous_response_id` in order.",
+    "answer": "Read input → check for quit → create with previous ID → print text → store the new ID.",
+    "items": [
+      "Read the user's input",
+      "Stop the loop if the input is \"quit\"",
+      "Call `responses.create()` with `instructions`, `input` and `previous_response_id=last_response_id`",
+      "Print `response.output_text`",
+      "Set `last_response_id = response.id`"
+    ],
+    "explanation": "The ID must be stored after the call, because the next turn needs exactly this response as its predecessor. Before the first turn `last_response_id` is `None`, so the first request starts a fresh conversation."
+  },
+  {
+    "id": "1.3.4-12",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "conversation-state",
+      "responses-api"
+    ],
+    "question": "How do you chain a conversation **manually** with the **Responses API** instead of using `previous_response_id`?",
+    "answer": "- Keep a **message history list** of `{\"type\": \"message\", \"role\": \"user\", \"content\": ...}` items\n- Pass the whole list as `input`\n- Append `response.output` to the list\n- Append the next user message and call again",
+    "explanation": "Here the app, not the service, owns the context: every request carries the full list, and nothing links the calls by ID. Note that the model's reply is added as `response.output`, the list of output items, rather than as `output_text`. This mirrors how ChatCompletions keeps context, but uses the Responses API call."
+  },
+  {
+    "id": "1.3.4-13",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "conversation-state",
+      "tokens"
+    ],
+    "question": "Name the **three** situations in which **manual conversation chaining** with the Responses API is useful.",
+    "answer": "- **Customize** which messages are included in context\n- **Prune** the conversation to manage token limits\n- **Store and restore** conversation history from a database",
+    "explanation": "All three need control over the exact list of messages, which `previous_response_id` does not give you: it simply links to the previous response. Building the history yourself lets you drop old turns, leave out irrelevant ones, and persist a conversation so a user can resume it later."
+  },
+  {
+    "id": "1.3.4-14",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "conversation-state",
+      "tokens"
+    ],
+    "question": "A Microsoft Foundry chat app built on the **Responses API** hits token limits in long sessions. You want to drop older turns from the context before each request. Which approach fits?",
+    "answer": "**Manual conversation chaining** — build the message history yourself and pass it as `input`.",
+    "explanation": "Pruning means choosing which messages go into the context, and only a history you build yourself lets you choose. Linking by `previous_response_id` carries the previous context along as it is. Streaming and retrieving do not change what is sent at all.",
+    "options": [
+      {
+        "text": "Build the message history yourself and pass the list as `input`",
+        "correct": true,
+        "why": "Manual chaining lets you prune the conversation to manage token limits."
+      },
+      {
+        "text": "Pass `previous_response_id` on every call",
+        "correct": false,
+        "why": "It links to the previous response with its context; it gives you no say in which messages are kept."
+      },
+      {
+        "text": "Set `stream=True`",
+        "correct": false,
+        "why": "Streaming only delivers output incrementally; the context sent is the same."
+      },
+      {
+        "text": "Call `responses.retrieve()` for each earlier turn",
+        "correct": false,
+        "why": "It fetches a stored response by ID; it does not shape the context of a new request."
+      }
+    ]
+  },
+  {
+    "id": "1.3.4-15",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "responses-api",
+      "python"
+    ],
+    "question": "You have the ID of an earlier **Responses API** response, such as `resp_67cb...`, and want to show its text again. Which method do you call?",
+    "answer": "`openai_client.responses.**retrieve**(response_id)` — then read `.output_text`.",
+    "explanation": "The Responses API maintains response history, so a response stays available by its ID after the call that created it. You pass the ID, get the stored response object back, and read its properties like any other response. Like the other examples, the call sits in a `try`/`except` block to handle errors.",
+    "addition": "By default, Foundry retains response data for **30 days**. You can delete a stored response by ID with `client.responses.delete(\"<response_id>\")`.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses"
+  },
+  {
+    "id": "1.3.4-16",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "tokens",
+      "context-window"
+    ],
+    "question": "Name the **six** kinds of content that can make up the active **context window** of a single Responses API run.",
+    "answer": "- **System instructions** — instructions, safety rules\n- **Current prompt**\n- **Conversation history** — previous user and assistant messages\n- **Tool schemas** — functions, OpenAPI specs, MCP tools\n- **Tool outputs** — search results, code interpreter output, files\n- **Retrieved memory or documents** — memory stores, RAG, file search",
+    "explanation": "All six are concatenated, tokenized and sent to the model together on every request. So the cost of a call is not just the new prompt: an agent with many tool schemas and long retrieved documents pays for them again on each turn."
+  },
+  {
+    "id": "1.3.4-17",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "tokens",
+      "conversation-state"
+    ],
+    "question": "Does chaining turns with `previous_response_id` in the **Responses API** make a long conversation cheaper in tokens?",
+    "answer": "**No.** Keeping conversation history **increases token usage**; the SDK manages state but does not make tokens cheaper.",
+    "explanation": "previous_response_id saves you from resending the history in your own code, but the model still receives it. Instructions, prompt, history, tool data and retrieved documents are concatenated and tokenized on every request. A longer conversation therefore costs more per turn, which is one reason to prune history with manual chaining."
+  },
+  {
+    "id": "1.3.4-18",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "streaming",
+      "latency"
+    ],
+    "question": "Users of a Microsoft Foundry chat app complain that it seems to **freeze** while long answers are generated. What do you change in the Responses API call?",
+    "answer": "Use **streaming**: pass `stream=True` to `responses.create()` and iterate over the returned events.",
+    "explanation": "Generation time depends on the model, the context window size and the prompt size. Without streaming the app shows nothing until the whole response is done. With streaming the user sees partially complete output as soon as it is available, which keeps the app responsive. Streaming does not make the model faster; it only changes when the user sees the text."
+  },
+  {
+    "id": "1.3.4-19",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "streaming",
+      "python"
+    ],
+    "question": "Complete the code so a streamed **Responses API** call prints only the generated text as it arrives, and keeps the response ID at the end.\n\n```python\nstream = openai_client.responses.create(\n    model=\"gpt-4.1\", input=\"Write a short story.\", stream=True\n)\nfor event in stream:\n    if event.type == \"___\":\n        print(event.delta, end=\"\")\n    elif event.type == \"response.completed\":\n        response_id = event.response.id\n```",
+    "answer": "`response.output_text.delta`",
+    "explanation": "A stream yields events of different types. The text arrives in pieces as `response.output_text.delta` events, each with a `delta`. The `response.completed` event comes last and carries the finished response, so that is where you get the ID when you track the conversation while streaming.",
+    "options": [
+      {
+        "text": "`response.output_text.delta`",
+        "correct": true,
+        "why": "This event carries each new piece of text in `event.delta`."
+      },
+      {
+        "text": "`response.completed`",
+        "correct": false,
+        "why": "It arrives once at the end with the whole response; the code already uses it for the ID."
+      },
+      {
+        "text": "`output_text`",
+        "correct": false,
+        "why": "It is a property of a finished response object, not a stream event type."
+      },
+      {
+        "text": "`status`",
+        "correct": false,
+        "why": "It is a property of a response object, such as \"completed\", not a stream event type."
+      }
+    ]
+  },
+  {
+    "id": "1.3.4-20",
+    "type": "basic",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "async",
+      "python",
+      "latency"
+    ],
+    "question": "How do you make **non-blocking** Responses API calls from Python, and when does it actually pay off?",
+    "answer": "- Import **`AsyncOpenAI`** instead of `OpenAI`\n- `await` each call, e.g. `await client.responses.create(...)`\n- It pays off only when requests run **concurrently**, e.g. with `asyncio.gather()`\n- Async streaming: `async for event in stream`",
+    "explanation": "While one call waits on the network, the app can issue other calls or do other async work. A single `await` inside `asyncio.run()` takes about as long as the synchronous client, because `asyncio.run()` still waits for the coroutine to finish. The gain comes from overlapping requests, such as three prompts sent at once instead of one after another."
+  },
+  {
+    "id": "1.3.4-21",
+    "type": "mc",
+    "section": "1.3.4",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/04-responses-api",
+    "tags": [
+      "async",
+      "python"
+    ],
+    "question": "Complete the code so the three prompts are sent to the **Responses API** concurrently with the `AsyncOpenAI` client.\n\n```python\nasync def ask(prompt):\n    response = await client.responses.create(model=\"gpt-4.1\", input=prompt)\n    return response.output_text\n\nasync def main():\n    results = await asyncio.___(*(ask(p) for p in prompts))\n\nasyncio.run(main())\n```",
+    "answer": "`gather`",
+    "explanation": "`asyncio.gather()` runs the coroutines together and returns their results in order, so the three network waits overlap. `asyncio.run()` is the entry point that runs `main()`; using it per request would wait for each one in turn and lose the benefit of the async client.",
+    "options": [
+      {
+        "text": "`gather`",
+        "correct": true,
+        "why": "It runs several awaitables concurrently and collects their results."
+      },
+      {
+        "text": "`run`",
+        "correct": false,
+        "why": "It runs one coroutine to completion and is already the entry point that runs `main()`; it does not overlap the requests."
+      },
+      {
+        "text": "`sleep`",
+        "correct": false,
+        "why": "It only pauses a coroutine; it does not run the requests."
+      },
+      {
+        "text": "`Queue`",
+        "correct": false,
+        "why": "It is a class for passing items between coroutines, not a way to run them together."
+      }
+    ]
+  }
+]

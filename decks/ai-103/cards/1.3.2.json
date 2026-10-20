@@ -1,0 +1,80 @@
+[
+  {
+    "id": "1.3.2-01",
+    "type": "basic",
+    "section": "1.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/02-chat-playground",
+    "tags": ["playground", "prompts", "parameters"],
+    "question": "Name the **four** things the **Model playground** in the Microsoft Foundry portal lets you do before you write any code.",
+    "answer": "- **Send prompts** to deployed models and see responses in real time\n- **Adjust settings** like temperature and max tokens\n- **Add system messages** to customize model behavior\n- **Experiment** with different models and configurations",
+    "explanation": "The Model playground is a no-code, interactive environment that you open from the portal's left navigation. Its point is to understand how a model responds to different inputs and settings. What works there, such as a system message or a temperature, makes it easier to design your application, and the playground can then generate code samples as a starting point."
+  },
+  {
+    "id": "1.3.2-02",
+    "type": "basic",
+    "section": "1.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/02-chat-playground",
+    "tags": ["playground", "sdk", "foundry-portal"],
+    "question": "You have tuned a chat session in the Microsoft Foundry **Model playground** and want the same session in your app without writing the setup by hand. What do you use, and what is already filled in?",
+    "answer": "The **Code** button in the chat pane. Its sample is pre-populated with:\n- the **project endpoint**\n- the **model deployment name**\n- your **current settings**",
+    "explanation": "You can select Code at any point while experimenting. It shows code that reproduces the current chat session in your app. Because endpoint, deployment and settings are already in it, the sample is a ready-to-use starting point: copy it into your development environment and adapt it to your needs.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.3.2-model-playground.png",
+        "alt": "Model playground for a gpt-5.2-chat deployment in the Foundry portal: Instructions field on the left, and Chat and Code tabs at the top of the chat pane on the right"
+      }
+    ]
+  },
+  {
+    "id": "1.3.2-03",
+    "type": "basic",
+    "section": "1.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/02-chat-playground",
+    "tags": ["playground", "sdk", "responses-api"],
+    "question": "Name the **three** choices you make for a code sample from the **Code** button of the Microsoft Foundry Model playground.",
+    "answer": "- **API** — the Responses API, or another API such as ChatCompletions\n- **Language** — your preferred programming language\n- **SDK** — which SDK the sample uses",
+    "explanation": "The three choices set the shape of the sample, while the endpoint, deployment name and settings are filled in from your playground session. So you can get the same chat as Responses or ChatCompletions code, in the language and SDK your app uses, and start development from code that already matches what you tested."
+  },
+  {
+    "id": "1.3.2-04",
+    "type": "order",
+    "section": "1.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/02-chat-playground",
+    "tags": ["playground", "workflow"],
+    "question": "Put the typical workflow for building an AI application with Microsoft Foundry in order, from the playground to a finished app.",
+    "answer": "Explore in the playground → generate code samples → develop the app → iterate and refine.",
+    "items": [
+      "**Explore in the playground** — test prompts, adjust settings, find what works",
+      "**Generate code samples** — use the **Code** tab to get SDK samples",
+      "**Develop your application** — customize the generated code for your needs",
+      "**Iterate and refine** — test new ideas in the playground, then update your code"
+    ],
+    "explanation": "The workflow is a loop, not a one-way path: the last step sends you back to the playground for each new idea before the code changes. That lets you prototype and validate ideas quickly, before you invest time in development."
+  },
+  {
+    "id": "1.3.2-05",
+    "type": "mc",
+    "section": "1.3.2",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/02-chat-playground",
+    "tags": ["playground", "parameters"],
+    "question": "You have deployed a chat model in your Microsoft Foundry project. Before you write any code, you want to see how a different system message and a lower temperature change its replies. Where do you do this?",
+    "answer": "In the **Model playground** of the Foundry portal.",
+    "explanation": "The Model playground sends prompts to your deployed model and shows the replies in real time, while you change the system message and settings like temperature and max tokens. It needs no code, which is why it is the first step before you generate code samples and build the app.",
+    "options": [
+      {"text": "The Model playground", "correct": true, "why": "It is the no-code environment for sending prompts to a deployed model while you adjust system messages and settings."},
+      {"text": "The Model leaderboard in the model catalog", "correct": false, "why": "It ranks models on benchmark quality, safety, cost and throughput; you cannot send your own prompts there."},
+      {"text": "The Benchmarks tab on the model card", "correct": false, "why": "It shows one model's published benchmark results against similar models, not responses to your prompts."},
+      {"text": "The project's Overview page", "correct": false, "why": "That is where you find the project endpoint for client code, not where you test prompts."}
+    ]
+  }
+]

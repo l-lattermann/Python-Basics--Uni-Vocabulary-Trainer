@@ -1,0 +1,54 @@
+[
+  {
+    "id": "2.5.9-01",
+    "type": "order",
+    "section": "2.5.9",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05b-work-iq-integration.html",
+    "tags": ["work-iq", "mcp", "setup"],
+    "question": "Put the steps in order to set up **Work IQ** and run a Python Microsoft Foundry agent app that uses it.",
+    "answer": "`npm install -g @microsoft/workiq` → `workiq accept-eula` → test with `workiq ask` → venv + `pip install` → set `.env` → `python workiq_lab.py`.",
+    "explanation": "Work IQ **only works** with Microsoft 365 Copilot-licensed accounts, and organizational accounts also need **admin consent**. The test query proves both before you write code: on *Admin consent required* it shows a consent URL to send to your IT admin; on *No M365 Copilot license* you cannot continue. You copy the project endpoint in VS Code via the **Foundry Toolkit**: right-click the project → **Copy Endpoint**. The lab creates no Azure resources, because Work IQ runs on your Microsoft 365 license.",
+    "items": [
+      "Install the Work IQ CLI globally: npm install -g @microsoft/workiq",
+      "Accept the End User License Agreement: workiq accept-eula",
+      "Test it: workiq ask -q \"What meetings do I have today?\"",
+      "Create and activate a Python virtual environment, then pip install -r requirements.txt",
+      "Set PROJECT_ENDPOINT and MODEL_DEPLOYMENT_NAME in the .env file",
+      "Run the app: python workiq_lab.py"
+    ]
+  },
+  {
+    "id": "2.5.9-02",
+    "type": "order",
+    "section": "2.5.9",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05b-work-iq-integration.html",
+    "tags": ["work-iq", "mcp", "function-calling"],
+    "question": "A Python app gives a Microsoft Foundry prompt agent the tools of the local **Work IQ MCP server** and answers a query with the Responses API. Put the steps in order.",
+    "answer": "List the MCP tools → wrap them as **`FunctionTool`** and create the agent version → send the query with `agent_reference` → run each `function_call` over MCP → return **`FunctionCallOutput`** until no calls remain → delete the agent version.",
+    "explanation": "The agent never calls Work IQ itself. It only **requests** a function call, and the app bridges it: it runs the tool over MCP and feeds the result back with the matching `call_id` and `previous_response_id`. The loop ends when a response has no pending function calls; `response.output_text` then holds the answer. The app opens a **new MCP session per operation** instead of keeping a persistent connection. This Responses API pattern replaces the old Runs/Threads pattern.",
+    "items": [
+      "Launch the server with StdioServerParameters (npx -y @microsoft/workiq mcp) and call session.list_tools()",
+      "Wrap each MCP tool in a FunctionTool and create the agent with agents.create_version and a PromptAgentDefinition",
+      "Create a conversation with the user's query and call responses.create with the agent_reference",
+      "For each function_call output item, run session.call_tool(item.name, kwargs) in a new MCP session",
+      "Send the results as FunctionCallOutput items with previous_response_id, repeating until no function calls remain",
+      "On exit, remove the agent with agents.delete_version"
+    ]
+  },
+  {
+    "id": "2.5.9-03",
+    "type": "basic",
+    "section": "2.5.9",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/Exercises/05b-work-iq-integration.html",
+    "tags": ["work-iq", "foundry-iq", "knowledge-base"],
+    "question": "A Microsoft Foundry agent must compare what employees **discuss** about the expense policy with what the **official policy documents** say. Which source provides each side, and what must the Foundry project have for the documents?",
+    "answer": "- **Work IQ** — workplace data: emails, meetings, Teams discussions (what people actually do and say)\n- **Foundry IQ** — the knowledge base: official docs, policies, procedures\n- Foundry IQ needs **Azure AI Search** with an indexed knowledge base in the project",
+    "explanation": "In the lab's *Combined Intelligence* scenario one agent searches both sources. It compares informal discussion with official documentation, finds gaps or contradictions, and labels each source in its summary. Neither source alone is enough: Work IQ shows current practice, Foundry IQ shows the documented rule. Together they give complete context for a decision. Only the Foundry IQ side needs an Azure resource; Work IQ runs on the user's Microsoft 365 Copilot license."
+  }
+]

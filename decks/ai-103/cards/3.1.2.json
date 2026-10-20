@@ -1,0 +1,44 @@
+[
+  {
+    "id": "3.1.2-01",
+    "type": "basic",
+    "section": "3.1.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/2-provision-resource",
+    "tags": ["azure-language", "service-choice"],
+    "question": "Name the **three** text analysis tasks Azure Language in Foundry Tools is designed for, and the older capabilities it still offers only for existing applications.",
+    "answer": "- **Language detection** — which language the text is written in\n- **Named entity recognition** — references to people, locations, time periods, organizations and more\n- **PII extraction** — identifying and redacting personal details\n- Deprecated, kept for existing apps: **sentiment analysis**, **summarization**, **key phrase extraction**",
+    "explanation": "Azure Language is built to extract information from text. The three current tasks differ in what they return: a language, a list of categorized entities, or the personal details to find and mask. NER finds every named thing; PII extraction targets only the sensitive ones and can redact them. Sentiment analysis, summarization and key phrase extraction still work, but they are deprecated and exist only so that existing applications keep running — do not plan a new solution around them."
+  },
+  {
+    "id": "3.1.2-02",
+    "type": "mc",
+    "section": "3.1.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/2-provision-resource",
+    "tags": ["azure-language", "keyless-auth", "python-sdk"],
+    "question": "A production app calls Azure Language in Foundry Tools with the Python SDK. It must authenticate with Microsoft Entra ID instead of a resource key. What completes the gap?\n\n```python\nfrom azure.identity import DefaultAzureCredential\nfrom azure.ai.textanalytics import TextAnalyticsClient\n\ncredential = ___\nclient = TextAnalyticsClient(endpoint=\"YOUR_FOUNDRY_RESOURCE_ENDPOINT\",\n                             credential=credential)\n```",
+    "answer": "**`DefaultAzureCredential()`** — the default Azure identity of the context the app runs in.",
+    "explanation": "To call Azure Language you provision a Microsoft Foundry resource and use its endpoint, either through REST requests in JSON or a language SDK such as the Python package `azure-ai-textanalytics`. Requests are authenticated with the resource key (`AzureKeyCredential`) or with a Microsoft Entra ID identity. Microsoft recommends Entra ID for greater security in production; `DefaultAzureCredential` picks up whatever identity the app is running under, so no key sits in the code.",
+    "options": [
+      {"text": "`DefaultAzureCredential()`", "correct": true, "why": "It uses the default Azure identity of the running context, which is the Entra ID authentication Microsoft recommends for production."},
+      {"text": "`AzureKeyCredential(\"YOUR_FOUNDRY_RESOURCE_KEY\")`", "correct": false, "why": "This is key-based authentication with the resource key, which the scenario rules out."},
+      {"text": "`TextAnalyticsClient(\"YOUR_FOUNDRY_RESOURCE_ENDPOINT\")`", "correct": false, "why": "The client is the object that receives the credential; it is not a credential itself."},
+      {"text": "`\"YOUR_FOUNDRY_RESOURCE_KEY\"`", "correct": false, "why": "A bare key string is not a credential object, and it would still be key-based authentication."}
+    ]
+  },
+  {
+    "id": "3.1.2-03",
+    "type": "basic",
+    "section": "3.1.2",
+    "exam_area": "text",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/2-provision-resource",
+    "tags": ["azure-language", "endpoints"],
+    "question": "The Foundry portal home page shows your project endpoint `https://my-ai-app-foundry.services.ai.azure.com/api/projects/my-ai-app`. Which endpoint and key do you pass to a `TextAnalyticsClient` for Azure Language?",
+    "answer": "- The **resource endpoint**: the project endpoint without `/api/projects/{project_name}` → `https://my-ai-app-foundry.services.ai.azure.com`\n- The **key** is the same for project and resource",
+    "explanation": "Azure Language is called on the Foundry resource, not on the project. The portal home page shows the project's endpoint and key by default. The resource's own values are on the parent resource, under the **Admin** tab of the **Operate** page. Because the keys are identical and the project endpoint only appends a path, you can also derive the resource endpoint by cutting that path off."
+  }
+]

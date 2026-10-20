@@ -1,0 +1,158 @@
+[
+  {
+    "id": "4.5.3-01",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "schema"],
+    "question": "In Azure Content Understanding, what is an **analyzer**, and what decides which information it extracts?",
+    "answer": "An **analyzer** extracts specific information from a particular type of content. What it extracts is set by a **schema** that you define.",
+    "explanation": "Every Content Understanding solution is built around an analyzer. The schema lists the fields you want, for example the vendor and total of an invoice. The analyzer is then built from that schema and reused on new content of the same kind. So the schema is the design you work on, and the analyzer is the finished, callable result."
+  },
+  {
+    "id": "4.5.3-02",
+    "type": "order",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "analyzer"],
+    "question": "Put the high-level steps of creating an **Azure Content Understanding** solution in order.",
+    "answer": "Foundry resource → **schema** → build **analyzer** → use it on new content.",
+    "explanation": "The resource comes first because Content Understanding runs on a Microsoft Foundry resource. The schema is often based on a content sample and an analyzer template. Only a completed schema is built into an analyzer. A client application then sends new content to the analyzer and gets the extracted or generated fields back.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.5.3-analyzer-process.png", "alt": "Diagram: (1) Foundry resource, (2) a sample document turned into a schema, (3) the analyzer built from it, (4) a client app sending a document and receiving fields."}
+    ],
+    "items": [
+      "Create a Microsoft Foundry resource",
+      "Define a Content Understanding schema, based on a content sample and an analyzer template",
+      "Build an analyzer based on the completed schema",
+      "Use the analyzer to extract or generate fields from new content"
+    ]
+  },
+  {
+    "id": "4.5.3-03",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "schema"],
+    "question": "You must build an Azure Content Understanding analyzer but have only one or two sample files. How do you define the schema, and how can you improve accuracy?",
+    "answer": "- Start from an **analyzer template**\n- **Define the schema by example** from the sample — minimal training data needed\n- The service maps sample values to schema fields automatically\n- **Label fields** explicitly (e.g. in documents) to improve performance",
+    "explanation": "Content Understanding is a generative AI service, so it does not need a large labelled training set. In many cases it finds the values in the sample that belong to each field on its own. Templates give you a quick starting point for common needs. Explicit labelling is the extra step when the automatic mapping is not good enough."
+  },
+  {
+    "id": "4.5.3-04",
+    "type": "mc",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "studio"],
+    "question": "You want to create and test a **custom** Azure Content Understanding analyzer in a visual tool. In the Microsoft Foundry portal you only find some prebuilt models. Which tool do you use?",
+    "answer": "**Content Understanding Studio**.",
+    "explanation": "The Foundry portal offers only certain prebuilt models directly. Content Understanding Studio is the visual interface for the full custom workflow: create a project, define a schema, and build and test an analyzer. The same work can also be done in code through the API or a language-specific SDK.",
+    "options": [
+      {"text": "Content Understanding Studio", "correct": true, "why": "It is the visual tool for custom analyzer creation and testing."},
+      {"text": "The Microsoft Foundry portal", "correct": false, "why": "It exposes only certain prebuilt models, not custom analyzer creation."},
+      {"text": "Azure Machine Learning studio", "correct": false, "why": "It is for training and deploying your own ML models, not for Content Understanding schemas."},
+      {"text": "Document Intelligence Studio", "correct": false, "why": "It belongs to Azure Document Intelligence, a different service, not to Content Understanding."}
+    ]
+  },
+  {
+    "id": "4.5.3-05",
+    "type": "order",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "studio"],
+    "question": "Put the steps of creating a custom analyzer in **Content Understanding Studio** in order.",
+    "answer": "Project → schema → test → build → refine into new versions.",
+    "explanation": "Defining the schema is the first step after the project exists. Testing is not a fixed stage: you can run test analysis at any time while you work on the schema. Building is what makes the analyzer usable by clients. After that you can keep testing and save refined schemas as new named versions with different capabilities.",
+    "items": [
+      "Create a project associated with a Microsoft Foundry resource",
+      "Upload a sample file, apply a schema template and define fields",
+      "Run test analysis on the sample or other files",
+      "Build the analyzer",
+      "Refine the schema to create new named analyzer versions"
+    ]
+  },
+  {
+    "id": "4.5.3-06",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "key-vault", "regions"],
+    "question": "What happens when you create a project in **Content Understanding Studio**, and what limits where you can create a schema?",
+    "answer": "- The project is **associated with a Microsoft Foundry resource**\n- It provisions **storage**\n- It provisions a **key vault** for credentials and keys\n- Schemas can only be created in **regions where Content Understanding is supported**",
+    "explanation": "The project is the container for one solution. You do not create its supporting resources by hand: creating the project provisions them. The storage holds the data used to build the analyzer, and the key vault stores sensitive details such as credentials and keys. Content Understanding is not available in every Azure location, so check region support before you choose where the resource lives."
+  },
+  {
+    "id": "4.5.3-07",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "schema", "studio"],
+    "question": "How do you define a schema in the schema editor of **Content Understanding Studio**?",
+    "answer": "- **Upload a sample file**: document, image, audio or video\n- Apply a **schema template**\n- **Define the fields** the analyzer should identify",
+    "explanation": "The sample file anchors the schema: the editor shows it next to the field list, so you can see which content each field should come from. The template gives you a starting set, and you then add or change the fields you actually need. Each field has a name, a description and a value type.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.5.3-define-schema.png", "alt": "Content Understanding Studio schema editor: a slide image on the left, and on the right a Schema tab with fields Title, Summary, Charts, QuarterlyRevenue and ProductCategories, each with a description, value type and method."}
+    ],
+    "addition": "Each field also has a method: **extract** (value appears in the content, e.g. invoice number), **generate** (needs inference, e.g. a summary) or **classify** (choose from predefined options). `extract` is only supported for document analyzers.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/concepts/best-practices"
+  },
+  {
+    "id": "4.5.3-08",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "schema"],
+    "question": "In Content Understanding Studio, the schema editor offers different templates and field types for an audio file than for a PDF. What decides this, and what is an example of content-specific functionality?",
+    "answer": "The **content type of the sample file** the schema is based on. Some content types add optional features, such as extracting **barcodes and formulae** from text in documents.",
+    "explanation": "One service covers documents, images, audio and video, but each kind of content holds different information. So the editor offers only the templates and field types that make sense for the file you uploaded. Optional extras like barcode and formula extraction exist only where they fit, here for text in documents."
+  },
+  {
+    "id": "4.5.3-09",
+    "type": "basic",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "testing"],
+    "question": "When can you test an analyzer schema in Content Understanding Studio, and what do the test results show?",
+    "answer": "- **At any time** during development, on the sample file or other uploaded files\n- Results show the **extracted field values**\n- and the **JSON output** the analyzer returns to client applications",
+    "explanation": "Testing early lets you see whether the schema finds the right values before you build anything. The JSON view matters for developers: it is exactly what a client application will receive later, so you can plan how the app reads the fields. Testing on files other than the sample shows whether the schema works on new content too.",
+    "explanation_images": [
+      {"src": "media/ai-103/4.5.3-test-results.png", "alt": "Content Understanding Studio test results for a slide image, showing the extracted field values for the schema fields."}
+    ]
+  },
+  {
+    "id": "4.5.3-10",
+    "type": "mc",
+    "section": "4.5.3",
+    "exam_area": "extraction",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/03-create-analyzer",
+    "tags": ["content-understanding", "endpoint"],
+    "question": "You have built a custom analyzer in Content Understanding Studio. Through what does a client application reach it?",
+    "answer": "The **endpoint of the Microsoft Foundry resource** associated with the project.",
+    "explanation": "Building the analyzer is the step that publishes it to client applications, through the endpoint of the Foundry resource the project is associated with. Building does not end the work: you can keep testing in Content Understanding Studio and refine the schema into new named versions with different capabilities.",
+    "options": [
+      {"text": "The endpoint of the Microsoft Foundry resource associated with the project", "correct": true, "why": "Building an analyzer makes it accessible to clients through this endpoint."},
+      {"text": "The key vault provisioned with the project", "correct": false, "why": "The key vault stores credentials and keys; it does not serve analysis requests."},
+      {"text": "The storage provisioned with the project", "correct": false, "why": "The storage holds project data; clients do not call the analyzer through it."},
+      {"text": "A separate managed online endpoint that you deploy in Azure Machine Learning", "correct": false, "why": "No extra deployment is needed; the analyzer is served by the Foundry resource itself."}
+    ]
+  }
+]

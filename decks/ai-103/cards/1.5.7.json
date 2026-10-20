@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1.5.7-01",
+    "type": "order",
+    "section": "1.5.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04b-finetune-model.html",
+    "tags": ["fine-tuning", "foundry-portal", "playground"],
+    "question": "In the Microsoft Foundry portal, you want to find out whether fine-tuning gives a travel chat app a more consistent tone than a system prompt alone. Put the steps in order.",
+    "answer": "Deploy the **base model** → submit the **fine-tuning job** → baseline test in the playground while it runs → wait for the fine-tuned deployment → test it with the **same Instructions**.",
+    "explanation": "The job is submitted early because training and deployment can take an hour or more. The base model is tested in the meantime: a plain prompt gives generic answers, a detailed system prompt steers the content. That baseline is what the fine-tuned model is judged against. Only the same Instructions and the same questions make the comparison fair, so any difference in tone comes from the training.",
+    "items": [
+      "**Discover** > **Models**: deploy the base model (gpt-5) from the model catalog",
+      "**Fine-tune** > **Fine-tune**: configure the job with the JSONL training data and **Submit**",
+      "While the job runs: chat with the base model in the playground and refine its **Instructions**",
+      "Follow the job until the fine-tuned model appears on the **Deployments** page",
+      "Open the fine-tuned model in the playground, set the same **Instructions** and ask the same questions"
+    ]
+  },
+  {
+    "id": "1.5.7-02",
+    "type": "basic",
+    "section": "1.5.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04b-finetune-model.html",
+    "tags": ["fine-tuning", "foundry-portal", "jsonl"],
+    "question": "In the Microsoft Foundry portal, you create a fine-tuning job that teaches gpt-5 a travel assistant's tone from example conversations, and the result must be ready to test without a separate deploy step. Which settings do you choose?",
+    "answer": "- **Customization method**: Supervised; **Training type**: Standard\n- **Training data**: Upload new dataset — a `.jsonl` file\n- **Suffix**: e.g. `ft-travel`, to name the custom model\n- **Automatically deploy model after job completion**, deployment type **Developer**",
+    "explanation": "Supervised fits because the file shows the wanted answers: each line is one conversation with a system, a user and an assistant message. The style of the assistant messages is what the model learns. Every example carries the same system message that was tested on the base model. The remaining hyperparameters stay at their defaults. The project must sit in a region that supports fine-tuning the model; the exercise names North Central US and Sweden Central.",
+    "addition": "Current docs: Standard training runs in the resource's own region, for data residency. A Developer deployment bills per token with no hourly hosting fee, lasts 24 hours and has no SLA — for evaluation only. The docs now list gpt-5 for reinforcement fine-tuning only, without Developer deployment.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/fine-tuning/overview"
+  },
+  {
+    "id": "1.5.7-03",
+    "type": "basic",
+    "section": "1.5.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04b-finetune-model.html",
+    "tags": ["fine-tuning", "foundry-portal", "deployment"],
+    "question": "A fine-tuning job in the Microsoft Foundry portal has been running for over an hour. Where do you follow its progress, and how do you get to the finished model to test it?",
+    "answer": "- **Fine-tune** page in the left pane → select the job → **Monitor** and **Logs** tabs\n- **Deployments** page → select the fine-tuned model → **model playground**\n- Automatic deployment failed: **deploy from the completed job**",
+    "explanation": "Fine-tuning needs cloud capacity, so a job can take 60 minutes or longer and may seem to hang. Monitor shows the progress so far, Logs lists the tasks already performed. With automatic deployment selected, the model shows up under Deployments on its own. In the playground it gets the same Instructions as the base model, so you can judge whether its tone is more consistent."
+  }
+]

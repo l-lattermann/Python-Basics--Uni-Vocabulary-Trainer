@@ -1,6 +1,6 @@
 """Build a double-clickable macOS app next to this folder that starts the trainer and opens the browser.
 
-python3 scripts/make_app.py ["AI-103 lernen"]   needs Pillow and macOS iconutil
+python3 scripts/make_app.py ["AI-103 lernen"]   needs Pillow and macOS osacompile, iconutil, codesign
 """
 import plistlib
 import shutil
@@ -32,31 +32,34 @@ def icon(size=1024):
 
 
 def main():
-    """Write <parent>/<name>.app with Info.plist, launcher and icon."""
+    """Write <parent>/<name>.app: an AppleScript applet, so macOS asks once for access to the folder.
+
+    It is built and signed in a temp folder: iCloud-synced folders add attributes that codesign rejects.
+    """
     name = sys.argv[1] if len(sys.argv) > 1 else "AI-103 lernen"
-    app = ROOT.parent / f"{name}.app"
-    shutil.rmtree(app, ignore_errors=True)
-    (app / "Contents/MacOS").mkdir(parents=True)
-    (app / "Contents/Resources").mkdir()
-
-    launcher = app / "Contents/MacOS/launcher"
-    launcher.write_text(f'#!/bin/bash\nexec "$(cd "$(dirname "$0")/../../.." && pwd)/{ROOT.name}/scripts/open_app.sh"\n')
-    launcher.chmod(0o755)
-    plistlib.dump({"CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "launcher",
-                   "CFBundleIconFile": "AppIcon", "CFBundleIdentifier": "local.vocab-trainer.launcher",
-                   "CFBundlePackageType": "APPL", "CFBundleVersion": "1", "LSUIElement": True},
-                  (app / "Contents/Info.plist").open("wb"))
-
+    target = ROOT.parent / f"{name}.app"
+    script = (f'do shell script quoted form of (POSIX path of (path to me) & "../{ROOT.name}/scripts/open_app.sh")'
+              ' & " > /dev/null 2>&1 &"')
     with tempfile.TemporaryDirectory() as tmp:
+        app = Path(tmp) / f"{name}.app"
+        subprocess.run(["osacompile", "-o", str(app), "-e", script], check=True)
+        plist_path = app / "Contents/Info.plist"
+        plist = plistlib.loads(plist_path.read_bytes())
+        plist.update({"CFBundleName": name, "CFBundleIdentifier": "local.vocab-trainer.launcher", "LSUIElement": True})
+        plist_path.write_bytes(plistlib.dumps(plist))
+
         iconset = Path(tmp) / "AppIcon.iconset"
         iconset.mkdir()
         big = icon()
         for px in (16, 32, 128, 256, 512):
             big.resize((px, px), Image.LANCZOS).save(iconset / f"icon_{px}x{px}.png")
             big.resize((px * 2, px * 2), Image.LANCZOS).save(iconset / f"icon_{px}x{px}@2x.png")
-        subprocess.run(["iconutil", "-c", "icns", str(iconset), "-o", str(app / "Contents/Resources/AppIcon.icns")],
+        subprocess.run(["iconutil", "-c", "icns", str(iconset), "-o", str(app / "Contents/Resources/applet.icns")],
                        check=True)
-    print(app)
+        subprocess.run(["codesign", "--force", "--deep", "-s", "-", str(app)], check=True)
+        shutil.rmtree(target, ignore_errors=True)
+        subprocess.run(["ditto", str(app), str(target)], check=True)
+    print(target)
 
 
 if __name__ == "__main__":

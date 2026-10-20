@@ -108,16 +108,16 @@ def test_images_must_exist():
 
 
 def test_long_answer_and_explanation_warn():
-    errors, warnings = check({"answer": "word " * 41, "explanation": "word " * 91})
+    errors, warnings = check({"answer": "word " * 71, "explanation": "word " * 121})
     assert errors == []
-    assert warnings == ["card c1: answer has 41 words (limit 40)",
-                        "card c1: explanation has 91 words (limit 90)"]
+    assert warnings == ["card c1: answer has 71 words (limit 70)",
+                        "card c1: explanation has 121 words (limit 120)"]
 
 
 def test_word_count_ignores_code():
     text = "Use `client.chat.completions.create` here.\n\n```python\n" + "x = 1\n" * 100 + "```\nDone now."
     assert deck.word_count(text) == 4
-    assert check({"answer": "short " * 40 + "`" + "code " * 50 + "`"}) == ([], [])
+    assert check({"answer": "short " * 70 + "`" + "code " * 50 + "`"}) == ([], [])
 
 
 def test_load_raises_with_every_error(tmp_path):

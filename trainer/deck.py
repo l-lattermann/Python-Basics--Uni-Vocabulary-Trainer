@@ -15,7 +15,7 @@ CARD_FIELDS = {
 }
 REQUIRED = ("id", "type", "section", "origin", "question", "answer")
 DECK_FIELDS = {"schema": int, "id": str, "title": str, "exam_areas": dict, "sections": dict, "cards": list}
-MAX_WORDS = {"answer": 40, "explanation": 90}
+MAX_WORDS = {"answer": 70, "explanation": 120}
 CODE = re.compile(r"```.*?```|`[^`\n]*`", re.S)
 
 

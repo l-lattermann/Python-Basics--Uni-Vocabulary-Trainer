@@ -4,16 +4,24 @@ Two roles work on one course unit at a time: a **generator** writes the
 unit's cards, then an independent **reviewer** checks them against the
 source. Both read this whole file.
 
-The learner studies about 1000 cards in a week, mostly in very fast passes:
-read the question, recall, flip, glance at the answer, next — a second or two
-per card. Early on they also read the explanation to understand the topic.
-Every rule below serves one of those two moments.
+These are **learning cards, not only exam cards**. Each card teaches one
+concept: a question, an answer of up to four bullets that hold the core,
+and an explanation that makes it understood. The learner first reads the
+explanations to learn the topic; later they run fast passes — question,
+recall, flip, glance at the bullets, next. Every rule below serves one of
+those two moments.
+
+**Hard cap: 1000 cards for the whole deck.** It is split over the modules
+by exam weight and content (`decks/ai-103/budgets.json`); each unit gets its
+share as `BUDGET`. Never exceed it. When the material does not fit, put more on
+one card — never drop a defined term.
 
 ## Inputs
 
 - `UNIT`: the unit's Markdown file under `~/Documents/work/AI-103/ai-103/…`.
   Its first lines name the section (`# 1.2.3 …`) and the unit URL (`Quelle:`).
 - `SECTION`: the section number, e.g. `1.2.3`.
+- `BUDGET`: the most cards this unit may have.
 - The unit's module folder: read the neighbouring units too, so you know the
   context and do not ask what a neighbour already covers.
 - `prompts/exam-outline.md`: what the exam measures and how much.
@@ -25,10 +33,12 @@ Every rule below serves one of those two moments.
 - `decks/ai-103/review/<SECTION>.md`: short notes (see the end).
 - Images, if any, under `decks/media/ai-103/`.
 
-After writing, run `~/.pyenv/versions/3.12.11/bin/python scripts/build_deck.py`
-from the repo root `~/Documents/Uni/vocab_trainer`. It must print no errors;
-fix any warning about your cards by splitting the card, not by cutting
-content.
+After writing, run
+`~/.pyenv/versions/3.12.11/bin/python scripts/build_deck.py --only <SECTION>`
+from the repo root `~/Documents/Uni/vocab_trainer`. It checks your file
+alone (many units are generated in parallel; never run it without `--only`).
+It must print no errors; fix a length warning by splitting the card, not by
+cutting content.
 
 ## Card format
 
@@ -66,12 +76,13 @@ content.
 
 ### The three text layers
 
-- **`answer`** — what the learner must recall, readable in one second. One
-  phrase, one sentence, or at most 4 short bullets. Target ≤ 25 words; the
-  build warns above 40. No reasons, no "because".
+- **`answer`** — the core the learner must recall, readable at a glance:
+  one phrase, one sentence, or up to 4 short bullets (list cards: one
+  bullet per term). About 15–50 words; the build warns above 70. Bold the
+  key terms. No long reasoning — that goes in the explanation.
 - **`explanation`** — why it is so and how it fits, written fresh in clear
-  words. **Only facts that are in the course text.** 30–70 words; the build
-  warns above 90. Never restate the answer; add what makes it stick (the
+  words. **Only facts that are in the course text.** 30–90 words; the build
+  warns above 120. Never restate the answer; add what makes it stick (the
   contrast, the reason, the typical scenario).
 - **`addition`** — only facts that are **not** in the course: a missing piece
   needed to understand the card, a correction, a rename, an exam-relevant
@@ -114,30 +125,32 @@ names the difference with its source.
    deployment types, roles and SDK calls, limits that drive a design choice.
    Skip marketing sentences, history, and anything you could only answer by
    having memorised the page layout.
-3. **One fact per card** (minimum information principle). A list of 7 things
-   is not one card: make one card per item, plus the overview card of rule 4.
-   Apart from overview cards, an answer that wants to grow past 4 bullets is
-   split.
+3. **One concept per card.** A card holds what belongs together: a
+   question, an answer of up to **4 bullets** (the core to recall, ~15–50
+   words), and an explanation that teaches it (30–90 words). Related facts
+   share a card instead of being spread over five thin ones. A concept that
+   needs more than 4 bullets becomes two cards.
 4. **Every defined term is covered.** Whenever the course names things and
    defines them — a `**Term**: definition` list, a table, a set of metrics,
-   deployment types, evaluators, tools, roles — every single term must be
-   learnable from the cards. Each term is the answer of a card that gives its
-   definition or a scenario ("Which metric checks whether a response stays on
-   the user's question?" → **Relevance**), or a correct option of an mc built
-   for that term. A term that only appears as a distractor, in an
-   explanation or in an addition is **not** covered. Before writing cards,
-   list every such term of the unit under `Terms:` in the review notes; after
-   writing, put the covering card id(s) behind each term. No term may be
-   left without one.
+   deployment types, evaluators, tools, roles — every single term must
+   appear in the **answer** of a card. A term that only appears as a
+   distractor, in an explanation or in an addition is **not** covered.
+   Before writing cards, list every such term of the unit under `Terms:` in
+   the review notes; after writing, put the covering card id behind each
+   term. No term may be left without one.
 
-   **Every such list also gets one overview card**, always, in addition to
-   the per-term cards. The question names the group, its context and the
-   count: "Name the **five** criteria human evaluators rate responses on in
-   a structured review." The answer is the terms only, one bullet each,
-   bold, in the course's order — as many bullets as the list has, the
-   4-bullet limit does not apply here. The explanation gives each term a
-   few words of its definition. In the notes, the overview card id goes
-   behind the list's heading.
+   **Every such list gets one list card**: the question names the group,
+   its context and the count — "Name the **five** criteria human evaluators
+   rate responses on in a structured review." The answer is one bullet per
+   term: `**Term** — a few words of definition`, in the course's order. For
+   lists longer than 4, the bullet limit does not apply; for lists longer
+   than 8, split into two cards by a natural sub-group. The explanation adds
+   how the terms differ or when each is used. In the notes, the list card id
+   goes behind the list's heading.
+
+   Spend extra cards from the budget only on terms the exam is likely to
+   ask in a scenario ("Which metric checks whether a response stays on the
+   user's question?" → **Relevance**), as `basic` or `mc`.
 5. The question must make sense out of context, months later, shuffled among
    1000 others: name the product ("in Microsoft Foundry", "in Azure AI
    Search"), never "according to this unit" or "the tool above".
@@ -146,9 +159,11 @@ names the difference with its source.
 7. Vary the direction: not only "What is X?" but "You need Y — which X?" —
    the exam asks mostly in scenarios.
 
-How many: as many as the substance carries, roughly one card per 150–250
-words of real content, usually 3–8 per content unit. About 70 % `basic`,
-the rest `mc` (including code gaps) and `order`. Do not pad.
+How many: at most `BUDGET`, fewer if the substance is covered with fewer.
+About 70 % `basic`, the rest `mc` (including code gaps) and `order`. Do not
+pad. When the budget is tight, cut in this order: scenario cards for terms
+already on a list card, then near-duplicates of neighbouring units, then
+trivia — never a term's only appearance.
 
 ### By unit kind
 
@@ -195,8 +210,10 @@ You did not write these cards. Read the unit, its neighbours, this file and
 2. **Layers clean**: `explanation` holds only course facts; anything else
    moves to `addition`. Open every `addition_source` with WebFetch: it must
    exist and state the fact, or the addition goes.
-3. **One-second answer**: ≤ 25 words is the target; a long answer becomes two
-   cards.
+3. **Learning card shape**: one concept, answer ≤ 4 bullets (list cards:
+   one `**Term** — definition` bullet per term, ≤ 8), an explanation that
+   teaches. Thin cards on the same concept get merged; an overloaded one
+   gets split. The unit stays within `BUDGET`.
 4. **Standalone question** with exactly one defensible answer; scenario
    phrasing where it fits.
 5. **mc**: distractors plausible and real, every `why` right, "choose N"
@@ -206,13 +223,13 @@ You did not write these cards. Read the unit, its neighbours, this file and
    one; a card on trivia goes. Build your own list of every defined term in
    the unit (see rule 4 above) without looking at the generator's `Terms:`
    list, then check that each term is the answer or a correct option of a
-   card. Add a card for every term that is missing, and correct the
-   `Terms:` list in the notes. Every list of defined terms needs its
-   overview card ("Name the N …"); add the ones that are missing.
+   card's answer. Add every missing term — to the fitting list card if there
+   is one, otherwise as a new card — and correct the `Terms:` list in the
+   notes. Every list of defined terms needs its list card ("Name the N …").
 7. Knowledge-check answers: re-derive them yourself; disagree → fix and note.
 
 Edit the card file in place, keep ids stable for cards that stay (renumber
-only new ones at the end), run `scripts/build_deck.py`, and append to the
+only new ones at the end), run `scripts/build_deck.py --only <SECTION>`, and append to the
 review notes:
 
 ```markdown

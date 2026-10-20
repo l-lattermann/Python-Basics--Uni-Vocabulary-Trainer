@@ -1,0 +1,1889 @@
+{
+ "total": 1000,
+ "gaps": 74,
+ "units": {
+  "1.1.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/01-introduction.md",
+   "kind": "skip",
+   "words": 182,
+   "budget": 0
+  },
+  "1.1.2": {
+   "title": "What is AI?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/02-what-is-ai.md",
+   "kind": "content",
+   "words": 611,
+   "budget": 7
+  },
+  "1.1.3": {
+   "title": "Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/03-microsoft-foundry.md",
+   "kind": "content",
+   "words": 627,
+   "budget": 7
+  },
+  "1.1.4": {
+   "title": "Foundry Tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/04-foundry-tools.md",
+   "kind": "content",
+   "words": 392,
+   "budget": 4
+  },
+  "1.1.5": {
+   "title": "Developer tools and SDKs",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/05-developer-tools-and-sdks.md",
+   "kind": "content",
+   "words": 483,
+   "budget": 5
+  },
+  "1.1.6": {
+   "title": "Responsible AI",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/06-responsible-ai.md",
+   "kind": "content",
+   "words": 814,
+   "budget": 9
+  },
+  "1.1.7": {
+   "title": "Exercise - Prepare for an AI development project",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/07-exercise-prepare-for-an-ai-development-project.md",
+   "kind": "skip",
+   "words": 69,
+   "budget": 0
+  },
+  "1.1.8": {
+   "title": "Übung (GitHub): Prepare for an AI development project",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/08-uebung-01-explore-ai-studio.md",
+   "kind": "exercise",
+   "words": 1169,
+   "budget": 3
+  },
+  "1.1.9": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/09-module-assessment.md",
+   "kind": "kc",
+   "words": 82,
+   "budget": 3
+  },
+  "1.1.10": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/01-prepare-azure-ai-development/10-summary.md",
+   "kind": "skip",
+   "words": 64,
+   "budget": 0
+  },
+  "1.2.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/01-introduction.md",
+   "kind": "skip",
+   "words": 363,
+   "budget": 0
+  },
+  "1.2.2": {
+   "title": "Explore the model catalog",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/02-explore-the-model-catalog.md",
+   "kind": "content",
+   "words": 665,
+   "budget": 8
+  },
+  "1.2.3": {
+   "title": "Select models using benchmarks",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/03-select-models-using-benchmarks.md",
+   "kind": "content",
+   "words": 998,
+   "budget": 12
+  },
+  "1.2.4": {
+   "title": "Deploy models to endpoints",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/04-deploy-models-to-endpoints.md",
+   "kind": "content",
+   "words": 1104,
+   "budget": 13
+  },
+  "1.2.5": {
+   "title": "Evaluate model performance",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/05-evaluate-model-performance.md",
+   "kind": "content",
+   "words": 1335,
+   "budget": 15
+  },
+  "1.2.6": {
+   "title": "Exercise - Select, deploy, and evaluate models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/06-exercise-select-deploy-and-evaluate-models.md",
+   "kind": "skip",
+   "words": 61,
+   "budget": 0
+  },
+  "1.2.7": {
+   "title": "Übung (GitHub): Explore and compare models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/07-uebung-02-model-catalog-evaluation.md",
+   "kind": "exercise",
+   "words": 1708,
+   "budget": 3
+  },
+  "1.2.8": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/08-knowledge-check.md",
+   "kind": "kc",
+   "words": 70,
+   "budget": 3
+  },
+  "1.2.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/02-model-catalog-evaluate/09-summary.md",
+   "kind": "skip",
+   "words": 293,
+   "budget": 0
+  },
+  "1.3.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/01-introduction.md",
+   "kind": "skip",
+   "words": 153,
+   "budget": 0
+  },
+  "1.3.2": {
+   "title": "Explore with the model playground",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/02-explore-with-the-model-playground.md",
+   "kind": "content",
+   "words": 403,
+   "budget": 6
+  },
+  "1.3.3": {
+   "title": "Choose an endpoint and SDK",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/03-choose-an-endpoint-and-sdk.md",
+   "kind": "content",
+   "words": 1317,
+   "budget": 19
+  },
+  "1.3.4": {
+   "title": "Generate responses with the Responses API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/04-generate-responses-with-the-responses-api.md",
+   "kind": "content",
+   "words": 1614,
+   "budget": 23
+  },
+  "1.3.5": {
+   "title": "Generate responses with the ChatCompletions API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/05-generate-responses-with-the-chatcompletions-api.md",
+   "kind": "content",
+   "words": 450,
+   "budget": 6
+  },
+  "1.3.6": {
+   "title": "Exercise - Create a generative AI chat app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/06-exercise-create-a-generative-ai-chat-app.md",
+   "kind": "skip",
+   "words": 72,
+   "budget": 0
+  },
+  "1.3.7": {
+   "title": "Übung (GitHub): Create a generative AI chat app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/07-uebung-03-foundry-sdk.md",
+   "kind": "exercise",
+   "words": 2644,
+   "budget": 3
+  },
+  "1.3.8": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/08-knowledge-check.md",
+   "kind": "kc",
+   "words": 74,
+   "budget": 3
+  },
+  "1.3.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/03-foundry-sdk/09-summary.md",
+   "kind": "skip",
+   "words": 134,
+   "budget": 0
+  },
+  "1.4.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/01-introduction.md",
+   "kind": "skip",
+   "words": 380,
+   "budget": 0
+  },
+  "1.4.2": {
+   "title": "What are tools?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/02-what-are-tools.md",
+   "kind": "content",
+   "words": 431,
+   "budget": 5
+  },
+  "1.4.3": {
+   "title": "Use the code_interpreter tool",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/03-use-the-code-interpreter-tool.md",
+   "kind": "content",
+   "words": 595,
+   "budget": 8
+  },
+  "1.4.4": {
+   "title": "Use the web_search tool",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/04-use-the-web-search-tool.md",
+   "kind": "content",
+   "words": 549,
+   "budget": 7
+  },
+  "1.4.5": {
+   "title": "Use the file_search tool",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/05-use-the-file-search-tool.md",
+   "kind": "content",
+   "words": 598,
+   "budget": 8
+  },
+  "1.4.6": {
+   "title": "Use the function tool",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/06-use-the-function-tool.md",
+   "kind": "content",
+   "words": 911,
+   "budget": 11
+  },
+  "1.4.7": {
+   "title": "Exercise - Create a generative AI chat app that uses tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/07-exercise-create-a-generative-ai-chat-app-that-uses-tools.md",
+   "kind": "skip",
+   "words": 88,
+   "budget": 0
+  },
+  "1.4.8": {
+   "title": "Übung (GitHub): Create a generative AI app that uses tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/08-uebung-04a-use-own-data.md",
+   "kind": "exercise",
+   "words": 1810,
+   "budget": 3
+  },
+  "1.4.9": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/09-module-assessment.md",
+   "kind": "kc",
+   "words": 119,
+   "budget": 3
+  },
+  "1.4.10": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/04-use-generative-ai-tools/10-summary.md",
+   "kind": "skip",
+   "words": 207,
+   "budget": 0
+  },
+  "1.5.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/01-introduction.md",
+   "kind": "skip",
+   "words": 246,
+   "budget": 0
+  },
+  "1.5.2": {
+   "title": "Optimize model output with prompt engineering",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/02-optimize-model-output-with-prompt-engineering.md",
+   "kind": "content",
+   "words": 1276,
+   "budget": 14
+  },
+  "1.5.3": {
+   "title": "Ground your model with Retrieval Augmented Generation",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/03-ground-your-model-with-retrieval-augmented-generation.md",
+   "kind": "content",
+   "words": 1128,
+   "budget": 13
+  },
+  "1.5.4": {
+   "title": "Fine-tune a model for consistent behavior",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/04-fine-tune-a-model-for-consistent-behavior.md",
+   "kind": "content",
+   "words": 1026,
+   "budget": 11
+  },
+  "1.5.5": {
+   "title": "Compare and combine optimization strategies",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/05-compare-and-combine-optimization-strategies.md",
+   "kind": "content",
+   "words": 903,
+   "budget": 10
+  },
+  "1.5.6": {
+   "title": "Exercise - Optimize generative AI model performance",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/06-exercise-optimize-generative-ai-model-performance.md",
+   "kind": "skip",
+   "words": 69,
+   "budget": 0
+  },
+  "1.5.7": {
+   "title": "Übung (GitHub): Fine-tune a language model",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/07-uebung-04b-finetune-model.md",
+   "kind": "exercise",
+   "words": 1687,
+   "budget": 3
+  },
+  "1.5.8": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/08-module-assessment.md",
+   "kind": "kc",
+   "words": 246,
+   "budget": 5
+  },
+  "1.5.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/05-optimize-generative-ai-model-performance/09-summary.md",
+   "kind": "skip",
+   "words": 239,
+   "budget": 0
+  },
+  "1.6.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/01-introduction.md",
+   "kind": "skip",
+   "words": 190,
+   "budget": 0
+  },
+  "1.6.2": {
+   "title": "Plan a responsible generative AI solution",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/02-plan-a-responsible-generative-ai-solution.md",
+   "kind": "content",
+   "words": 161,
+   "budget": 2
+  },
+  "1.6.3": {
+   "title": "Map potential harms",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/03-map-potential-harms.md",
+   "kind": "content",
+   "words": 766,
+   "budget": 9
+  },
+  "1.6.4": {
+   "title": "Measure potential harms",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/04-measure-potential-harms.md",
+   "kind": "content",
+   "words": 359,
+   "budget": 4
+  },
+  "1.6.5": {
+   "title": "Mitigate potential harms",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/05-mitigate-potential-harms.md",
+   "kind": "content",
+   "words": 541,
+   "budget": 6
+  },
+  "1.6.6": {
+   "title": "Manage a responsible generative AI solution",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/06-manage-a-responsible-generative-ai-solution.md",
+   "kind": "content",
+   "words": 295,
+   "budget": 3
+  },
+  "1.6.7": {
+   "title": "Exercise - Apply guardrails to prevent the output of harmful content",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/07-exercise-apply-guardrails-to-prevent-the-output-of-harmful-c.md",
+   "kind": "skip",
+   "words": 80,
+   "budget": 0
+  },
+  "1.6.8": {
+   "title": "Übung (GitHub): Apply guardrails to prevent the output of harmful content",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/08-uebung-06-explore-content-filters.md",
+   "kind": "exercise",
+   "words": 1063,
+   "budget": 3
+  },
+  "1.6.9": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/09-module-assessment.md",
+   "kind": "kc",
+   "words": 136,
+   "budget": 3
+  },
+  "1.6.10": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/1-develop-generative-ai-apps/06-responsible-ai-studio/10-summary.md",
+   "kind": "skip",
+   "words": 119,
+   "budget": 0
+  },
+  "2.1.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/01-introduction.md",
+   "kind": "skip",
+   "words": 358,
+   "budget": 0
+  },
+  "2.1.2": {
+   "title": "Understand AI agents and Microsoft Foundry Agent Service",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/02-understand-ai-agents-and-microsoft-foundry-agent-service.md",
+   "kind": "content",
+   "words": 1357,
+   "budget": 8
+  },
+  "2.1.3": {
+   "title": "Explore development approaches",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/03-explore-development-approaches.md",
+   "kind": "content",
+   "words": 959,
+   "budget": 6
+  },
+  "2.1.4": {
+   "title": "Build your first agent in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/04-build-your-first-agent-in-microsoft-foundry.md",
+   "kind": "content",
+   "words": 530,
+   "budget": 3
+  },
+  "2.1.5": {
+   "title": "Set up Visual Studio Code for agent development",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/05-set-up-visual-studio-code-for-agent-development.md",
+   "kind": "content",
+   "words": 691,
+   "budget": 4
+  },
+  "2.1.6": {
+   "title": "Configure and manage agents in Visual Studio Code",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/06-configure-and-manage-agents-in-visual-studio-code.md",
+   "kind": "content",
+   "words": 844,
+   "budget": 5
+  },
+  "2.1.7": {
+   "title": "Extend agent capabilities with tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/07-extend-agent-capabilities-with-tools.md",
+   "kind": "content",
+   "words": 1482,
+   "budget": 9
+  },
+  "2.1.8": {
+   "title": "Test, deploy, and integrate agents",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/08-test-deploy-and-integrate-agents.md",
+   "kind": "content",
+   "words": 996,
+   "budget": 6
+  },
+  "2.1.9": {
+   "title": "Exercise - Build and deploy an AI agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/09-exercise-build-and-deploy-an-ai-agent.md",
+   "kind": "skip",
+   "words": 115,
+   "budget": 0
+  },
+  "2.1.10": {
+   "title": "Übung (GitHub): Build AI agents with portal and VS Code",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/10-uebung-01-build-agent-portal-and-vscode.md",
+   "kind": "exercise",
+   "words": 2343,
+   "budget": 3
+  },
+  "2.1.11": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/11-knowledge-check.md",
+   "kind": "kc",
+   "words": 197,
+   "budget": 4
+  },
+  "2.1.12": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/01-develop-ai-agents-azure-vs-code/12-summary.md",
+   "kind": "skip",
+   "words": 240,
+   "budget": 0
+  },
+  "2.2.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/01-introduction.md",
+   "kind": "skip",
+   "words": 221,
+   "budget": 0
+  },
+  "2.2.2": {
+   "title": "Why use custom tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/02-why-use-custom-tools.md",
+   "kind": "content",
+   "words": 600,
+   "budget": 6
+  },
+  "2.2.3": {
+   "title": "Options for implementing custom tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/03-options-for-implementing-custom-tools.md",
+   "kind": "content",
+   "words": 305,
+   "budget": 3
+  },
+  "2.2.4": {
+   "title": "How to integrate custom tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/04-how-to-integrate-custom-tools.md",
+   "kind": "content",
+   "words": 916,
+   "budget": 9
+  },
+  "2.2.5": {
+   "title": "Exercise - Build an agent with custom tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/05-exercise-build-an-agent-with-custom-tools.md",
+   "kind": "skip",
+   "words": 108,
+   "budget": 0
+  },
+  "2.2.6": {
+   "title": "Übung (GitHub): Use a custom function in an AI agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/06-uebung-02-agent-custom-tools.md",
+   "kind": "exercise",
+   "words": 2815,
+   "budget": 3
+  },
+  "2.2.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/07-module-assessment.md",
+   "kind": "kc",
+   "words": 157,
+   "budget": 3
+  },
+  "2.2.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/02-build-agent-with-custom-tools/08-summary.md",
+   "kind": "skip",
+   "words": 136,
+   "budget": 0
+  },
+  "2.3.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/01-introduction.md",
+   "kind": "skip",
+   "words": 209,
+   "budget": 0
+  },
+  "2.3.2": {
+   "title": "Understand MCP tool discovery",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/02-understand-mcp-tool-discovery.md",
+   "kind": "content",
+   "words": 533,
+   "budget": 7
+  },
+  "2.3.3": {
+   "title": "Integrate agent tools using an MCP server and client",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/03-integrate-agent-tools-using-an-mcp-server-and-client.md",
+   "kind": "content",
+   "words": 436,
+   "budget": 5
+  },
+  "2.3.4": {
+   "title": "Use Azure AI agents with MCP servers",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/04-use-azure-ai-agents-with-mcp-servers.md",
+   "kind": "content",
+   "words": 530,
+   "budget": 6
+  },
+  "2.3.5": {
+   "title": "Exercise - Connect MCP tools to Azure AI Agents",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/05-exercise-connect-mcp-tools-to-azure-ai-agents.md",
+   "kind": "skip",
+   "words": 79,
+   "budget": 0
+  },
+  "2.3.6": {
+   "title": "Übung (GitHub): Extend agents with Model Context Protocol (MCP) tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/06-uebung-03-mcp-integration.md",
+   "kind": "exercise",
+   "words": 3102,
+   "budget": 3
+  },
+  "2.3.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/07-module-assessment.md",
+   "kind": "kc",
+   "words": 134,
+   "budget": 3
+  },
+  "2.3.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/03-connect-agent-to-mcp-tools/08-summary.md",
+   "kind": "skip",
+   "words": 124,
+   "budget": 0
+  },
+  "2.4.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/01-introduction.md",
+   "kind": "skip",
+   "words": 343,
+   "budget": 0
+  },
+  "2.4.2": {
+   "title": "Understanding RAG for agents",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/02-understanding-rag-for-agents.md",
+   "kind": "content",
+   "words": 382,
+   "budget": 3
+  },
+  "2.4.3": {
+   "title": "Explore Foundry IQ",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/03-explore-foundry-iq.md",
+   "kind": "content",
+   "words": 808,
+   "budget": 7
+  },
+  "2.4.4": {
+   "title": "Configure data sources for knowledge bases",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/04-configure-data-sources-for-knowledge-bases.md",
+   "kind": "content",
+   "words": 1213,
+   "budget": 10
+  },
+  "2.4.5": {
+   "title": "Configure retrieval with Foundry IQ",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/05-configure-retrieval-with-foundry-iq.md",
+   "kind": "content",
+   "words": 1137,
+   "budget": 9
+  },
+  "2.4.6": {
+   "title": "Exercise - Integrate an AI agent with Foundry IQ",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/06-exercise-integrate-an-ai-agent-with-foundry-iq.md",
+   "kind": "skip",
+   "words": 73,
+   "budget": 0
+  },
+  "2.4.7": {
+   "title": "Übung (GitHub): Integrate an AI agent with Foundry IQ",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/07-uebung-04-integrate-agent-with-foundry-iq.md",
+   "kind": "exercise",
+   "words": 3274,
+   "budget": 3
+  },
+  "2.4.8": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/08-knowledge-check.md",
+   "kind": "kc",
+   "words": 216,
+   "budget": 4
+  },
+  "2.4.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/04-introduction-foundry-iq/09-summary.md",
+   "kind": "skip",
+   "words": 274,
+   "budget": 0
+  },
+  "2.5.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/01-introduction.md",
+   "kind": "skip",
+   "words": 358,
+   "budget": 0
+  },
+  "2.5.2": {
+   "title": "Understand Foundry agent publishing options",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/02-understand-foundry-agent-publishing-options.md",
+   "kind": "content",
+   "words": 636,
+   "budget": 5
+  },
+  "2.5.3": {
+   "title": "Publish an agent from Foundry portal to Teams",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/03-publish-an-agent-from-foundry-portal-to-teams.md",
+   "kind": "content",
+   "words": 1027,
+   "budget": 8
+  },
+  "2.5.4": {
+   "title": "Advanced - Use Microsoft 365 Agents Toolkit",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/04-advanced-use-microsoft-365-agents-toolkit.md",
+   "kind": "content",
+   "words": 625,
+   "budget": 5
+  },
+  "2.5.5": {
+   "title": "Access Microsoft 365 data with Work IQ",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/05-access-microsoft-365-data-with-work-iq.md",
+   "kind": "content",
+   "words": 1119,
+   "budget": 9
+  },
+  "2.5.6": {
+   "title": "Test and iterate your integrated agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/06-test-and-iterate-your-integrated-agent.md",
+   "kind": "content",
+   "words": 567,
+   "budget": 5
+  },
+  "2.5.7": {
+   "title": "Exercise - Publish a Foundry agent to Teams",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/07-exercise-publish-a-foundry-agent-to-teams.md",
+   "kind": "skip",
+   "words": 107,
+   "budget": 0
+  },
+  "2.5.8": {
+   "title": "Übung (GitHub): Deploy agents to Microsoft Teams and Copilot",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/08-uebung-05a-m365-teams-integration.md",
+   "kind": "exercise",
+   "words": 1971,
+   "budget": 3
+  },
+  "2.5.9": {
+   "title": "Übung (GitHub): Work IQ - Workplace intelligence for AI agents",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/09-uebung-05b-work-iq-integration.md",
+   "kind": "exercise",
+   "words": 2182,
+   "budget": 3
+  },
+  "2.5.10": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/10-knowledge-check.md",
+   "kind": "kc",
+   "words": 218,
+   "budget": 5
+  },
+  "2.5.11": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/05-integrate-foundry-agent-with-m365/11-summary.md",
+   "kind": "skip",
+   "words": 140,
+   "budget": 0
+  },
+  "2.6.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/01-introduction.md",
+   "kind": "skip",
+   "words": 327,
+   "budget": 0
+  },
+  "2.6.2": {
+   "title": "Understand Workflows",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/02-understand-workflows.md",
+   "kind": "content",
+   "words": 258,
+   "budget": 2
+  },
+  "2.6.3": {
+   "title": "Identify Workflow Patterns",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/03-identify-workflow-patterns.md",
+   "kind": "content",
+   "words": 307,
+   "budget": 3
+  },
+  "2.6.4": {
+   "title": "Create workflows in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/04-create-workflows-in-microsoft-foundry.md",
+   "kind": "content",
+   "words": 533,
+   "budget": 5
+  },
+  "2.6.5": {
+   "title": "Add Agents to a Workflow",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/05-add-agents-to-a-workflow.md",
+   "kind": "content",
+   "words": 371,
+   "budget": 4
+  },
+  "2.6.6": {
+   "title": "Apply Power Fx in Workflows",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/06-apply-power-fx-in-workflows.md",
+   "kind": "content",
+   "words": 574,
+   "budget": 5
+  },
+  "2.6.7": {
+   "title": "Maintain Workflows in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/07-maintain-workflows-in-microsoft-foundry.md",
+   "kind": "content",
+   "words": 338,
+   "budget": 3
+  },
+  "2.6.8": {
+   "title": "Use workflows in code",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/08-use-workflows-in-code.md",
+   "kind": "content",
+   "words": 608,
+   "budget": 6
+  },
+  "2.6.9": {
+   "title": "Exercise - Create an Agent-driven Workflow",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/09-exercise-create-an-agent-driven-workflow.md",
+   "kind": "skip",
+   "words": 77,
+   "budget": 0
+  },
+  "2.6.10": {
+   "title": "Übung (GitHub): Build a workflow in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/10-uebung-06-build-workflow-ms-foundry.md",
+   "kind": "exercise",
+   "words": 3029,
+   "budget": 3
+  },
+  "2.6.11": {
+   "title": "Module Assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/11-module-assessment.md",
+   "kind": "content",
+   "words": 108,
+   "budget": 2
+  },
+  "2.6.12": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/06-build-agent-workflows-microsoft-foundry/12-summary.md",
+   "kind": "skip",
+   "words": 238,
+   "budget": 0
+  },
+  "2.7.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/01-introduction.md",
+   "kind": "skip",
+   "words": 284,
+   "budget": 0
+  },
+  "2.7.2": {
+   "title": "Understand Microsoft Agent Framework AI agents",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/02-understand-microsoft-agent-framework-ai-agents.md",
+   "kind": "content",
+   "words": 655,
+   "budget": 5
+  },
+  "2.7.3": {
+   "title": "Create an Azure AI agent with Microsoft Agent Framework",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/03-create-an-azure-ai-agent-with-microsoft-agent-framework.md",
+   "kind": "content",
+   "words": 602,
+   "budget": 4
+  },
+  "2.7.4": {
+   "title": "Add tools to Azure AI agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/04-add-tools-to-azure-ai-agent.md",
+   "kind": "content",
+   "words": 794,
+   "budget": 5
+  },
+  "2.7.5": {
+   "title": "Exercise - Develop an Azure AI agent with the Microsoft Agent Framework SDK",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/05-exercise-develop-an-azure-ai-agent-with-the-microsoft-agent-.md",
+   "kind": "skip",
+   "words": 185,
+   "budget": 0
+  },
+  "2.7.6": {
+   "title": "Übung (GitHub): Develop an Azure AI chat agent with the Microsoft Agent Framework SDK",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/06-uebung-07-agent-framework.md",
+   "kind": "exercise",
+   "words": 1675,
+   "budget": 3
+  },
+  "2.7.7": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/07-knowledge-check.md",
+   "kind": "kc",
+   "words": 145,
+   "budget": 3
+  },
+  "2.7.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/07-develop-ai-agent-with-semantic-kernel/08-summary.md",
+   "kind": "skip",
+   "words": 77,
+   "budget": 0
+  },
+  "2.8.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/01-introduction.md",
+   "kind": "skip",
+   "words": 379,
+   "budget": 0
+  },
+  "2.8.2": {
+   "title": "Understand the Microsoft Agent Framework",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/02-understand-the-microsoft-agent-framework.md",
+   "kind": "content",
+   "words": 452,
+   "budget": 3
+  },
+  "2.8.3": {
+   "title": "Understand agent orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/03-understand-agent-orchestration.md",
+   "kind": "content",
+   "words": 1036,
+   "budget": 6
+  },
+  "2.8.4": {
+   "title": "Use concurrent orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/04-use-concurrent-orchestration.md",
+   "kind": "content",
+   "words": 719,
+   "budget": 4
+  },
+  "2.8.5": {
+   "title": "Use sequential orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/05-use-sequential-orchestration.md",
+   "kind": "content",
+   "words": 569,
+   "budget": 3
+  },
+  "2.8.6": {
+   "title": "Use group chat orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/06-use-group-chat-orchestration.md",
+   "kind": "content",
+   "words": 798,
+   "budget": 5
+  },
+  "2.8.7": {
+   "title": "Use handoff orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/07-use-handoff-orchestration.md",
+   "kind": "content",
+   "words": 600,
+   "budget": 4
+  },
+  "2.8.8": {
+   "title": "Use Magentic orchestration",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/08-use-magentic-orchestration.md",
+   "kind": "content",
+   "words": 580,
+   "budget": 3
+  },
+  "2.8.9": {
+   "title": "Exercise - Develop a multi-agent solution",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/09-exercise-develop-a-multi-agent-solution.md",
+   "kind": "skip",
+   "words": 103,
+   "budget": 0
+  },
+  "2.8.10": {
+   "title": "Übung (GitHub): Develop a multi-agent solution with Microsoft Agent Framework",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/10-uebung-08-agent-framework-multi-agents.md",
+   "kind": "exercise",
+   "words": 1650,
+   "budget": 3
+  },
+  "2.8.11": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/11-knowledge-check.md",
+   "kind": "kc",
+   "words": 77,
+   "budget": 3
+  },
+  "2.8.12": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/08-orchestrate-semantic-kernel-multi-agent-solution/12-summary.md",
+   "kind": "skip",
+   "words": 114,
+   "budget": 0
+  },
+  "2.9.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/01-introduction.md",
+   "kind": "skip",
+   "words": 237,
+   "budget": 0
+  },
+  "2.9.2": {
+   "title": "Define an A2A agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/02-define-an-a2a-agent.md",
+   "kind": "content",
+   "words": 613,
+   "budget": 5
+  },
+  "2.9.3": {
+   "title": "Implement an agent executor",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/03-implement-an-agent-executor.md",
+   "kind": "content",
+   "words": 326,
+   "budget": 3
+  },
+  "2.9.4": {
+   "title": "Host an A2A server",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/04-host-an-a2a-server.md",
+   "kind": "content",
+   "words": 422,
+   "budget": 4
+  },
+  "2.9.5": {
+   "title": "Connect to your A2A agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/05-connect-to-your-a2a-agent.md",
+   "kind": "content",
+   "words": 400,
+   "budget": 4
+  },
+  "2.9.6": {
+   "title": "Exercise - Connect to remote Azure AI Agents with the A2A protocol",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/06-exercise-connect-to-remote-azure-ai-agents-with-the-a2a-prot.md",
+   "kind": "skip",
+   "words": 75,
+   "budget": 0
+  },
+  "2.9.7": {
+   "title": "Übung (GitHub): Connect to remote agents with A2A protocol",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/07-uebung-09-multi-remote-agents-with-a2a.md",
+   "kind": "exercise",
+   "words": 2403,
+   "budget": 3
+  },
+  "2.9.8": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/08-module-assessment.md",
+   "kind": "kc",
+   "words": 115,
+   "budget": 3
+  },
+  "2.9.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/2-develop-ai-agents-azure/09-discover-agents-with-a2a/09-summary.md",
+   "kind": "skip",
+   "words": 90,
+   "budget": 0
+  },
+  "3.1.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/01-introduction.md",
+   "kind": "skip",
+   "words": 201,
+   "budget": 0
+  },
+  "3.1.2": {
+   "title": "Azure Language in Microsoft Foundry Tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/02-azure-language-in-microsoft-foundry-tools.md",
+   "kind": "content",
+   "words": 495,
+   "budget": 3
+  },
+  "3.1.3": {
+   "title": "Detect language",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/03-detect-language.md",
+   "kind": "content",
+   "words": 502,
+   "budget": 3
+  },
+  "3.1.4": {
+   "title": "Extract entities",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/04-extract-entities.md",
+   "kind": "content",
+   "words": 186,
+   "budget": 2
+  },
+  "3.1.5": {
+   "title": "Extract personally identifiable information (PII)",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/05-extract-personally-identifiable-information-pii.md",
+   "kind": "content",
+   "words": 359,
+   "budget": 3
+  },
+  "3.1.6": {
+   "title": "Exercise - Analyze text",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/06-exercise-analyze-text.md",
+   "kind": "skip",
+   "words": 77,
+   "budget": 0
+  },
+  "3.1.7": {
+   "title": "Übung (GitHub): Analyze Text",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/07-uebung-01-analyze-text.md",
+   "kind": "exercise",
+   "words": 1654,
+   "budget": 3
+  },
+  "3.1.8": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/08-module-assessment.md",
+   "kind": "kc",
+   "words": 137,
+   "budget": 2
+  },
+  "3.1.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/01-analyze-text-ai-language/09-summary.md",
+   "kind": "skip",
+   "words": 69,
+   "budget": 0
+  },
+  "3.2.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/01-introduction.md",
+   "kind": "skip",
+   "words": 297,
+   "budget": 0
+  },
+  "3.2.2": {
+   "title": "Understand the Azure Language MCP server",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/02-understand-the-azure-language-mcp-server.md",
+   "kind": "content",
+   "words": 712,
+   "budget": 5
+  },
+  "3.2.3": {
+   "title": "Connect and use the Language MCP server with an agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/03-connect-and-use-the-language-mcp-server-with-an-agent.md",
+   "kind": "content",
+   "words": 929,
+   "budget": 6
+  },
+  "3.2.4": {
+   "title": "Exercise - Develop a text analysis agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/04-exercise-develop-a-text-analysis-agent.md",
+   "kind": "skip",
+   "words": 104,
+   "budget": 0
+  },
+  "3.2.5": {
+   "title": "Übung (GitHub): Develop a text analysis agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/05-uebung-02-language-agent.md",
+   "kind": "exercise",
+   "words": 2413,
+   "budget": 3
+  },
+  "3.2.6": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/06-knowledge-check.md",
+   "kind": "kc",
+   "words": 209,
+   "budget": 4
+  },
+  "3.2.7": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/02-develop-text-analysis-agent-language-mcp/07-summary.md",
+   "kind": "skip",
+   "words": 160,
+   "budget": 0
+  },
+  "3.3.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/01-introduction.md",
+   "kind": "skip",
+   "words": 137,
+   "budget": 0
+  },
+  "3.3.2": {
+   "title": "Choose a speech-capable model",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/02-choose-a-speech-capable-model.md",
+   "kind": "content",
+   "words": 140,
+   "budget": 2
+  },
+  "3.3.3": {
+   "title": "Transcribe speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/03-transcribe-speech.md",
+   "kind": "content",
+   "words": 160,
+   "budget": 2
+  },
+  "3.3.4": {
+   "title": "Synthesize speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/04-synthesize-speech.md",
+   "kind": "content",
+   "words": 162,
+   "budget": 3
+  },
+  "3.3.5": {
+   "title": "Exercise - Use speech-capable generative AI models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/05-exercise-use-speech-capable-generative-ai-models.md",
+   "kind": "skip",
+   "words": 72,
+   "budget": 0
+  },
+  "3.3.6": {
+   "title": "Übung (GitHub): Use speech-capable generative AI models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/06-uebung-03-gen-ai-speech.md",
+   "kind": "exercise",
+   "words": 2199,
+   "budget": 3
+  },
+  "3.3.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/07-module-assessment.md",
+   "kind": "kc",
+   "words": 37,
+   "budget": 2
+  },
+  "3.3.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/03-develop-generative-ai-audio-apps/08-summary.md",
+   "kind": "skip",
+   "words": 58,
+   "budget": 0
+  },
+  "3.4.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/01-introduction.md",
+   "kind": "skip",
+   "words": 226,
+   "budget": 0
+  },
+  "3.4.2": {
+   "title": "Azure Speech in Foundry Tools",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/02-azure-speech-in-foundry-tools.md",
+   "kind": "content",
+   "words": 419,
+   "budget": 3
+  },
+  "3.4.3": {
+   "title": "Use the Speech to Text API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/03-use-the-speech-to-text-api.md",
+   "kind": "content",
+   "words": 377,
+   "budget": 2
+  },
+  "3.4.4": {
+   "title": "Use the Text to Speech API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/04-use-the-text-to-speech-api.md",
+   "kind": "content",
+   "words": 407,
+   "budget": 2
+  },
+  "3.4.5": {
+   "title": "Configure audio format and voices",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/05-configure-audio-format-and-voices.md",
+   "kind": "content",
+   "words": 175,
+   "budget": 2
+  },
+  "3.4.6": {
+   "title": "Use Speech Synthesis Markup Language",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/06-use-speech-synthesis-markup-language.md",
+   "kind": "content",
+   "words": 270,
+   "budget": 2
+  },
+  "3.4.7": {
+   "title": "Exercise - Create a speech-enabled app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/07-exercise-create-a-speech-enabled-app.md",
+   "kind": "skip",
+   "words": 69,
+   "budget": 0
+  },
+  "3.4.8": {
+   "title": "Übung (GitHub): Recognize and synthesize speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/08-uebung-04-azure-speech.md",
+   "kind": "exercise",
+   "words": 1510,
+   "budget": 3
+  },
+  "3.4.9": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/09-module-assessment.md",
+   "kind": "kc",
+   "words": 109,
+   "budget": 3
+  },
+  "3.4.10": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/04-create-speech-enabled-apps/10-summary.md",
+   "kind": "skip",
+   "words": 78,
+   "budget": 0
+  },
+  "3.5.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/01-introduction.md",
+   "kind": "skip",
+   "words": 280,
+   "budget": 0
+  },
+  "3.5.2": {
+   "title": "Understand the Azure Speech MCP server",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/02-understand-the-azure-speech-mcp-server.md",
+   "kind": "content",
+   "words": 915,
+   "budget": 5
+  },
+  "3.5.3": {
+   "title": "Connect and use the Speech MCP server with an agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/03-connect-and-use-the-speech-mcp-server-with-an-agent.md",
+   "kind": "content",
+   "words": 987,
+   "budget": 6
+  },
+  "3.5.4": {
+   "title": "Exercise - Use Azure Speech in an agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/04-exercise-use-azure-speech-in-an-agent.md",
+   "kind": "skip",
+   "words": 96,
+   "budget": 0
+  },
+  "3.5.5": {
+   "title": "Übung (GitHub): Use Azure Speech in an agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/05-uebung-05-azure-speech-mcp.md",
+   "kind": "exercise",
+   "words": 2098,
+   "budget": 3
+  },
+  "3.5.6": {
+   "title": "Knowledge check",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/06-knowledge-check.md",
+   "kind": "kc",
+   "words": 180,
+   "budget": 4
+  },
+  "3.5.7": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/05-develop-speech-agent-speech-mcp/07-summary.md",
+   "kind": "skip",
+   "words": 155,
+   "budget": 0
+  },
+  "3.6.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/01-introduction.md",
+   "kind": "skip",
+   "words": 187,
+   "budget": 0
+  },
+  "3.6.2": {
+   "title": "Explore the Azure Voice Live API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/02-explore-the-azure-voice-live-api.md",
+   "kind": "content",
+   "words": 854,
+   "budget": 5
+  },
+  "3.6.3": {
+   "title": "Explore the AI Voice Live client library for Python",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/03-explore-the-ai-voice-live-client-library-for-python.md",
+   "kind": "content",
+   "words": 470,
+   "budget": 3
+  },
+  "3.6.4": {
+   "title": "Create a Voice Live agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/04-create-a-voice-live-agent.md",
+   "kind": "content",
+   "words": 1299,
+   "budget": 7
+  },
+  "3.6.5": {
+   "title": "Exercise - Develop a Voice Live agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/05-exercise-develop-a-voice-live-agent.md",
+   "kind": "skip",
+   "words": 167,
+   "budget": 0
+  },
+  "3.6.6": {
+   "title": "Übung (GitHub): Develop a Voice Live agent",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/06-uebung-06-voice-live-agent.md",
+   "kind": "exercise",
+   "words": 2177,
+   "budget": 3
+  },
+  "3.6.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/07-module-assessment.md",
+   "kind": "kc",
+   "words": 143,
+   "budget": 4
+  },
+  "3.6.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/06-develop-voice-live-agent/08-summary.md",
+   "kind": "skip",
+   "words": 105,
+   "budget": 0
+  },
+  "3.7.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/01-introduction.md",
+   "kind": "skip",
+   "words": 186,
+   "budget": 0
+  },
+  "3.7.2": {
+   "title": "Translation in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/02-translation-in-microsoft-foundry.md",
+   "kind": "content",
+   "words": 132,
+   "budget": 2
+  },
+  "3.7.3": {
+   "title": "Translate text",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/03-translate-text.md",
+   "kind": "content",
+   "words": 861,
+   "budget": 6
+  },
+  "3.7.4": {
+   "title": "Translate speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/04-translate-speech.md",
+   "kind": "content",
+   "words": 909,
+   "budget": 6
+  },
+  "3.7.5": {
+   "title": "Exercise - Translate text and speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/05-exercise-translate-text-and-speech.md",
+   "kind": "skip",
+   "words": 50,
+   "budget": 0
+  },
+  "3.7.6": {
+   "title": "Übung (GitHub): Translate text and speech",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/06-uebung-07-translation.md",
+   "kind": "exercise",
+   "words": 2282,
+   "budget": 3
+  },
+  "3.7.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/07-module-assessment.md",
+   "kind": "kc",
+   "words": 86,
+   "budget": 3
+  },
+  "3.7.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/3-develop-language-solutions-azure-ai/07-translate-text-speech/08-summary.md",
+   "kind": "skip",
+   "words": 75,
+   "budget": 0
+  },
+  "4.1.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/01-introduction.md",
+   "kind": "skip",
+   "words": 139,
+   "budget": 0
+  },
+  "4.1.2": {
+   "title": "Use a vision-capable model in the Microsoft Foundry portal",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/02-use-a-vision-capable-model-in-the-microsoft-foundry-portal.md",
+   "kind": "content",
+   "words": 153,
+   "budget": 3
+  },
+  "4.1.3": {
+   "title": "Develop a vision-based chat app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/03-develop-a-vision-based-chat-app.md",
+   "kind": "content",
+   "words": 392,
+   "budget": 8
+  },
+  "4.1.4": {
+   "title": "Exercise - Develop a vision-enabled chat app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/04-exercise-develop-a-vision-enabled-chat-app.md",
+   "kind": "skip",
+   "words": 65,
+   "budget": 0
+  },
+  "4.1.5": {
+   "title": "Übung (GitHub): Develop a vision-enabled chat app",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/05-uebung-01-gen-ai-vision.md",
+   "kind": "exercise",
+   "words": 1729,
+   "budget": 3
+  },
+  "4.1.6": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/06-module-assessment.md",
+   "kind": "kc",
+   "words": 117,
+   "budget": 3
+  },
+  "4.1.7": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/01-develop-generative-ai-vision-apps/07-summary.md",
+   "kind": "skip",
+   "words": 99,
+   "budget": 0
+  },
+  "4.2.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/01-introduction.md",
+   "kind": "skip",
+   "words": 192,
+   "budget": 0
+  },
+  "4.2.2": {
+   "title": "What are image-generation models?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/02-what-are-image-generation-models.md",
+   "kind": "content",
+   "words": 196,
+   "budget": 5
+  },
+  "4.2.3": {
+   "title": "Explore image-generation models in Microsoft Foundry portal",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/03-explore-image-generation-models-in-microsoft-foundry-portal.md",
+   "kind": "content",
+   "words": 86,
+   "budget": 2
+  },
+  "4.2.4": {
+   "title": "Create a client application that uses an image generation model",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/04-create-a-client-application-that-uses-an-image-generation-mo.md",
+   "kind": "content",
+   "words": 122,
+   "budget": 3
+  },
+  "4.2.5": {
+   "title": "Exercise - Generate images with AI",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/05-exercise-generate-images-with-ai.md",
+   "kind": "skip",
+   "words": 96,
+   "budget": 0
+  },
+  "4.2.6": {
+   "title": "Übung (GitHub): Generate images with AI",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/06-uebung-02-generate-image.md",
+   "kind": "exercise",
+   "words": 1592,
+   "budget": 3
+  },
+  "4.2.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/07-module-assessment.md",
+   "kind": "kc",
+   "words": 49,
+   "budget": 2
+  },
+  "4.2.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/02-generate-images-azure-openai/08-summary.md",
+   "kind": "skip",
+   "words": 60,
+   "budget": 0
+  },
+  "4.3.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/01-introduction.md",
+   "kind": "skip",
+   "words": 130,
+   "budget": 0
+  },
+  "4.3.2": {
+   "title": "Deploy a video generating model",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/02-deploy-a-video-generating-model.md",
+   "kind": "content",
+   "words": 384,
+   "budget": 5
+  },
+  "4.3.3": {
+   "title": "Generate video from a prompt",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/03-generate-video-from-a-prompt.md",
+   "kind": "content",
+   "words": 915,
+   "budget": 13
+  },
+  "4.3.4": {
+   "title": "Generate video in Python",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/04-generate-video-in-python.md",
+   "kind": "content",
+   "words": 397,
+   "budget": 5
+  },
+  "4.3.5": {
+   "title": "Exercise - Generate video with Sora 2 in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/05-exercise-generate-video-with-sora-2-in-microsoft-foundry.md",
+   "kind": "skip",
+   "words": 103,
+   "budget": 0
+  },
+  "4.3.6": {
+   "title": "Übung (GitHub): Generate video with Sora in Microsoft Foundry",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/06-uebung-03-generate-video.md",
+   "kind": "exercise",
+   "words": 2029,
+   "budget": 3
+  },
+  "4.3.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/07-module-assessment.md",
+   "kind": "kc",
+   "words": 106,
+   "budget": 3
+  },
+  "4.3.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/03-generate-video-with-foundry/08-summary.md",
+   "kind": "skip",
+   "words": 151,
+   "budget": 0
+  },
+  "4.4.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/01-introduction.md",
+   "kind": "skip",
+   "words": 151,
+   "budget": 0
+  },
+  "4.4.2": {
+   "title": "What is Content Understanding?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/02-what-is-content-understanding.md",
+   "kind": "content",
+   "words": 565,
+   "budget": 9
+  },
+  "4.4.3": {
+   "title": "Analyze images with Content Understanding",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/03-analyze-images-with-content-understanding.md",
+   "kind": "content",
+   "words": 749,
+   "budget": 11
+  },
+  "4.4.4": {
+   "title": "Exercise - Analyze images with Content Understanding",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/04-exercise-analyze-images-with-content-understanding.md",
+   "kind": "skip",
+   "words": 99,
+   "budget": 0
+  },
+  "4.4.5": {
+   "title": "Übung (GitHub): Analyze images with Azure Content Understanding",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/05-uebung-04-content-understanding.md",
+   "kind": "exercise",
+   "words": 2144,
+   "budget": 3
+  },
+  "4.4.6": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/06-module-assessment.md",
+   "kind": "kc",
+   "words": 101,
+   "budget": 3
+  },
+  "4.4.7": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/04-analyze-images-with-content-understanding/07-summary.md",
+   "kind": "skip",
+   "words": 127,
+   "budget": 0
+  },
+  "4.5.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/01-introduction.md",
+   "kind": "skip",
+   "words": 177,
+   "budget": 0
+  },
+  "4.5.2": {
+   "title": "What is Azure Content Understanding?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/02-what-is-azure-content-understanding.md",
+   "kind": "content",
+   "words": 373,
+   "budget": 9
+  },
+  "4.5.3": {
+   "title": "Create a Content Understanding analyzer",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/03-create-a-content-understanding-analyzer.md",
+   "kind": "content",
+   "words": 663,
+   "budget": 15
+  },
+  "4.5.4": {
+   "title": "Use the Content Understanding API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/04-use-the-content-understanding-api.md",
+   "kind": "content",
+   "words": 373,
+   "budget": 8
+  },
+  "4.5.5": {
+   "title": "Exercise - Extract information from multimodal content",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/05-exercise-extract-information-from-multimodal-content.md",
+   "kind": "skip",
+   "words": 72,
+   "budget": 0
+  },
+  "4.5.6": {
+   "title": "Übung (GitHub): Extract information from multimodal content",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/06-uebung-01-content-understanding.md",
+   "kind": "exercise",
+   "words": 3537,
+   "budget": 3
+  },
+  "4.5.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/07-module-assessment.md",
+   "kind": "kc",
+   "words": 97,
+   "budget": 3
+  },
+  "4.5.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/05-analyze-content-ai/08-summary.md",
+   "kind": "skip",
+   "words": 62,
+   "budget": 0
+  },
+  "4.6.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/01-introduction.md",
+   "kind": "skip",
+   "words": 124,
+   "budget": 0
+  },
+  "4.6.2": {
+   "title": "Prepare to use the AI Content Understanding API",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/02-prepare-to-use-the-ai-content-understanding-api.md",
+   "kind": "content",
+   "words": 337,
+   "budget": 3
+  },
+  "4.6.3": {
+   "title": "Create a Content Understanding analyzer",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/03-create-a-content-understanding-analyzer.md",
+   "kind": "content",
+   "words": 663,
+   "budget": 7
+  },
+  "4.6.4": {
+   "title": "Analyze content",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/04-analyze-content.md",
+   "kind": "content",
+   "words": 1022,
+   "budget": 10
+  },
+  "4.6.5": {
+   "title": "Exercise - Develop a Content Understanding client application",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/05-exercise-develop-a-content-understanding-client-application.md",
+   "kind": "skip",
+   "words": 76,
+   "budget": 0
+  },
+  "4.6.6": {
+   "title": "Übung (GitHub): Develop a Content Understanding client application",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/06-uebung-02-content-understanding-api.md",
+   "kind": "exercise",
+   "words": 1428,
+   "budget": 3
+  },
+  "4.6.7": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/07-module-assessment.md",
+   "kind": "kc",
+   "words": 102,
+   "budget": 3
+  },
+  "4.6.8": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/06-analyze-content-ai-api/08-summary.md",
+   "kind": "skip",
+   "words": 65,
+   "budget": 0
+  },
+  "4.7.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/01-introduction.md",
+   "kind": "skip",
+   "words": 286,
+   "budget": 0
+  },
+  "4.7.2": {
+   "title": "What is Azure Document Intelligence?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/02-what-is-azure-document-intelligence.md",
+   "kind": "content",
+   "words": 581,
+   "budget": 6
+  },
+  "4.7.3": {
+   "title": "Use the Document Intelligence Studio",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/03-use-the-document-intelligence-studio.md",
+   "kind": "content",
+   "words": 516,
+   "budget": 5
+  },
+  "4.7.4": {
+   "title": "Use prebuilt models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/04-use-prebuilt-models.md",
+   "kind": "content",
+   "words": 929,
+   "budget": 10
+  },
+  "4.7.5": {
+   "title": "Train and use custom models",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/05-train-and-use-custom-models.md",
+   "kind": "content",
+   "words": 814,
+   "budget": 8
+  },
+  "4.7.6": {
+   "title": "Exercise - Analyze documents with Document Intelligence",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/06-exercise-analyze-documents-with-document-intelligence.md",
+   "kind": "skip",
+   "words": 95,
+   "budget": 0
+  },
+  "4.7.7": {
+   "title": "Übung (GitHub): Extract data with Azure Document Intelligence",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/07-uebung-03-document-intelligence.md",
+   "kind": "exercise",
+   "words": 1722,
+   "budget": 3
+  },
+  "4.7.8": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/08-module-assessment.md",
+   "kind": "kc",
+   "words": 163,
+   "budget": 3
+  },
+  "4.7.9": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/07-extract-data-with-document-intelligence/09-summary.md",
+   "kind": "skip",
+   "words": 172,
+   "budget": 0
+  },
+  "4.8.1": {
+   "title": "Introduction",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/01-introduction.md",
+   "kind": "skip",
+   "words": 198,
+   "budget": 0
+  },
+  "4.8.2": {
+   "title": "What is Azure AI Search?",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/02-what-is-azure-ai-search.md",
+   "kind": "content",
+   "words": 228,
+   "budget": 4
+  },
+  "4.8.3": {
+   "title": "Extract data with an indexer",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/03-extract-data-with-an-indexer.md",
+   "kind": "content",
+   "words": 644,
+   "budget": 11
+  },
+  "4.8.4": {
+   "title": "Enrich extracted data with AI skills",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/04-enrich-extracted-data-with-ai-skills.md",
+   "kind": "content",
+   "words": 352,
+   "budget": 6
+  },
+  "4.8.5": {
+   "title": "Search an index",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/05-search-an-index.md",
+   "kind": "content",
+   "words": 1023,
+   "budget": 17
+  },
+  "4.8.6": {
+   "title": "Persist extracted information in a knowledge store",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/06-persist-extracted-information-in-a-knowledge-store.md",
+   "kind": "content",
+   "words": 217,
+   "budget": 3
+  },
+  "4.8.7": {
+   "title": "Exercise - Create a knowledge mining solution",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/07-exercise-create-a-knowledge-mining-solution.md",
+   "kind": "skip",
+   "words": 73,
+   "budget": 0
+  },
+  "4.8.8": {
+   "title": "Übung (GitHub): Create a knowledge mining solution",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/08-uebung-04-knowledge-mining.md",
+   "kind": "exercise",
+   "words": 1659,
+   "budget": 3
+  },
+  "4.8.9": {
+   "title": "Übung (GitHub): Build an automated RAG ingestion pipeline with Content Understanding",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/09-uebung-05-rag-pipeline.md",
+   "kind": "exercise",
+   "words": 2431,
+   "budget": 3
+  },
+  "4.8.10": {
+   "title": "Module assessment",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/10-module-assessment.md",
+   "kind": "kc",
+   "words": 71,
+   "budget": 3
+  },
+  "4.8.11": {
+   "title": "Summary",
+   "file": "/Users/laurenz.lattermann/Documents/work/AI-103/ai-103/4-insight-visual-data/08-ai-knowldge-mining/11-summary.md",
+   "kind": "skip",
+   "words": 99,
+   "budget": 0
+  }
+ }
+}

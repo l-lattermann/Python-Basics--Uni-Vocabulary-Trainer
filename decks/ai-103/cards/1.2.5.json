@@ -259,7 +259,7 @@
   },
   {
     "id": "1.2.5-13",
-    "type": "mc",
+    "type": "basic",
     "section": "1.2.5",
     "exam_area": "plan",
     "origin": "generated",
@@ -269,36 +269,9 @@
       "content-safety",
       "guardrails"
     ],
-    "question": "A Microsoft Foundry evaluation shows concerning **risk and safety** metrics for your chat app. Which **three** measures address this?",
-    "answer": "**Content filters**, **prompt hardening** and **output validation**.",
-    "explanation": "All three act on harmful output: filters through Azure AI Content Safety, safety instructions in the system message, and checks on responses before users see them. RAG integration belongs to the remedies for low quality scores. Re-run the evaluation after each change to measure its impact and make sure quality doesn't regress.",
-    "options": [
-      {
-        "text": "Implement content filters with Azure AI Content Safety",
-        "correct": true,
-        "why": "Content Safety filters harmful content around the model."
-      },
-      {
-        "text": "Add safety instructions to the system message (prompt hardening)",
-        "correct": true,
-        "why": "Hardened system messages tell the model what it must not produce."
-      },
-      {
-        "text": "Check responses before displaying them to users (output validation)",
-        "correct": true,
-        "why": "Validation stops a harmful response before it reaches a user."
-      },
-      {
-        "text": "Add RAG integration to ground responses in your data",
-        "correct": false,
-        "why": "RAG is a remedy for low quality scores such as groundedness, not a safety control."
-      },
-      {
-        "text": "Switch from AI-assisted metrics to NLP metrics",
-        "correct": false,
-        "why": "That changes how you measure, not what the model produces."
-      }
-    ]
+    "question": "A Microsoft Foundry evaluation shows concerning **risk and safety** metrics for your chat app. Name the **three** measures that address this.",
+    "answer": "- **Content filters**\n- **Prompt hardening**\n- **Output validation**",
+    "explanation": "Content filters: Azure AI Content Safety services. Prompt hardening: safety instructions in the system message. Output validation: checking responses before users see them. RAG integration belongs to the remedies for low quality scores, not to safety. Re-run the evaluation after each change to measure its impact and make sure quality doesn't regress."
   },
   {
     "id": "1.2.5-14",
@@ -312,7 +285,7 @@
       "rag",
       "fine-tuning"
     ],
-    "question": "A Microsoft Foundry evaluation shows **quality** scores below your requirements. Which four kinds of improvement can you consider?",
+    "question": "A Microsoft Foundry evaluation shows **quality** scores below your requirements. Name the **four** kinds of improvement you can consider.",
     "answer": "- **Prompt engineering**\n- A **different model**\n- **RAG integration**\n- **Fine-tuning** (if the model supports it)",
     "explanation": "Prompt engineering refines instructions and system messages. A different model may be better optimized for your use case. RAG grounds responses in your own data. Fine-tuning trains the model on your domain. Each step can grow in complexity and cost, so plan for that, and re-run the evaluation after every change to measure its impact."
   },
@@ -1009,5 +982,122 @@
     "question": "Last month you uploaded a test dataset to your Microsoft Foundry project. Which dataset option lets you evaluate a new model against the same data?",
     "answer": "**Use existing dataset**.",
     "explanation": "It selects from datasets previously uploaded to the project, so the file is not uploaded again. The other two options are uploading a new CSV or JSONL file and generating a synthetic dataset. Re-running evaluations after each change shows whether quality improved or regressed."
+  },
+  {
+    "id": "1.2.5-48",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Name the **four** purposes that evaluating a generative AI model serves during application development in Microsoft Foundry.",
+    "answer": "- **Quality assurance**\n- **User satisfaction**\n- **Continuous improvement**\n- **Compliance and safety**",
+    "explanation": "Quality assurance: find issues during evaluation, not in production. User satisfaction: learn how users experience the app and where improvements matter most. Continuous improvement: re-evaluate as prompts, features or models change. Compliance and safety: confirm the model follows policies, avoids harmful content and respects privacy and data protection."
+  },
+  {
+    "id": "1.2.5-49",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "Name the **three** manual evaluation approaches, in which human reviewers assess a generative AI model's responses.",
+    "answer": "- **Interactive testing**\n- **Structured review**\n- **User studies**",
+    "explanation": "Interactive testing: explore the model qualitatively with diverse prompts in the playground. Structured review: human evaluators rate responses to a set of test cases on criteria, often on a 1–5 scale. User studies: actual or representative users work with the app and reveal real-world issues. All three capture subjective quality that automated metrics can't measure."
+  },
+  {
+    "id": "1.2.5-50",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "human-review"
+    ],
+    "question": "Name the **five** criteria human evaluators rate responses on in a structured review of a generative AI app.",
+    "answer": "- **Relevance**\n- **Informativeness**\n- **Engagement**\n- **Accuracy**\n- **Safety**",
+    "explanation": "Relevance: addresses the question or request. Informativeness: sufficient detail and useful information. Engagement: interesting and appropriately conversational. Accuracy: facts and statements are correct. Safety: avoids harmful, biased or inappropriate content. Each criterion typically gets a rating scale such as 1–5, and ratings aggregated across test cases give a quantitative measure of quality."
+  },
+  {
+    "id": "1.2.5-51",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Name the **four** generation quality metrics that a Microsoft Foundry evaluation offers to judge overall response quality.",
+    "answer": "- **Groundedness**\n- **Relevance**\n- **Coherence**\n- **Fluency**",
+    "explanation": "Groundedness: based on the provided context, not speculation; Groundedness Pro gives a binary grounded / not grounded verdict. Relevance: addresses the user's question or request. Coherence: flows logically with consistent ideas. Fluency: linguistic correctness and natural language quality. With AI-assisted evaluation, a GPT model you specify does the scoring."
+  },
+  {
+    "id": "1.2.5-52",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "content-safety"
+    ],
+    "question": "Name the **six** risk and safety metrics a Microsoft Foundry evaluation uses to identify potentially harmful content.",
+    "answer": "- **Self-harm content**\n- **Hateful and unfair content**\n- **Violent content**\n- **Sexual content**\n- **Protected material**\n- **Indirect attack (jailbreak)**",
+    "explanation": "Self-harm: discussing or encouraging self-harm. Hateful and unfair: bias, discrimination, hate. Violent: containing or promoting violence. Sexual: inappropriate sexual content. Protected material: reproduced copyright or proprietary content. Indirect attack: vulnerability to manipulation attempts. The four content harm metrics report a defect rate above a severity threshold; protected material and indirect attack count true instances out of all instances."
+  },
+  {
+    "id": "1.2.5-53",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "nlp-metrics"
+    ],
+    "question": "Name the **five** NLP metrics that Microsoft Foundry evaluation calculates mathematically against ground truth data.",
+    "answer": "- **F1-score**\n- **BLEU**\n- **METEOR**\n- **ROUGE**\n- **GLEU**",
+    "explanation": "F1-score: ratio of shared words, balancing precision and recall. BLEU: compares n-grams with reference texts, common for machine translation. METEOR: extends BLEU with synonyms, stemming and paraphrasing. ROUGE: emphasizes recall, suits summarization. GLEU: Google's sentence-level variant of BLEU. None needs an evaluator model, but all suit tasks with definitive correct answers better than open-ended generation."
+  },
+  {
+    "id": "1.2.5-54",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation"
+    ],
+    "question": "Name the **three** bases you can choose for an evaluation in the Microsoft Foundry **Evaluation** feature.",
+    "answer": "- **Model**\n- **Agent**\n- **Dataset**",
+    "explanation": "Model: a deployed model answers prompts you specify, and the outputs are generated during the evaluation. Agent: an agent's responses to user-defined prompts are evaluated. Dataset: pre-generated outputs already in your test dataset are evaluated. Model and agent evaluations need a dataset to supply the inputs."
+  },
+  {
+    "id": "1.2.5-55",
+    "type": "basic",
+    "section": "1.2.5",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/5-evaluate-performance",
+    "tags": [
+      "evaluation",
+      "datasets"
+    ],
+    "question": "Name the **three** options for supplying test data when you evaluate a model or agent in the Microsoft Foundry **Evaluation** feature.",
+    "answer": "- **Upload new dataset**\n- **Use existing dataset**\n- **Generate synthetic dataset**",
+    "explanation": "Upload new dataset: a CSV or JSONL file of test cases from local storage. Use existing dataset: one you uploaded to the project before. Generate synthetic dataset: without test data, the system creates sample data from a topic description; you set the generating resource, the number of rows and a prompt, and can upload files to make it more relevant."
   }
 ]

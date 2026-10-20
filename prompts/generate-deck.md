@@ -115,8 +115,9 @@ names the difference with its source.
    Skip marketing sentences, history, and anything you could only answer by
    having memorised the page layout.
 3. **One fact per card** (minimum information principle). A list of 7 things
-   is not one card: make one card per item, plus at most one overview card
-   that asks for the group. If an answer wants to grow past 4 bullets, split.
+   is not one card: make one card per item, plus the overview card of rule 4.
+   Apart from overview cards, an answer that wants to grow past 4 bullets is
+   split.
 4. **Every defined term is covered.** Whenever the course names things and
    defines them — a `**Term**: definition` list, a table, a set of metrics,
    deployment types, evaluators, tools, roles — every single term must be
@@ -128,6 +129,15 @@ names the difference with its source.
    list every such term of the unit under `Terms:` in the review notes; after
    writing, put the covering card id(s) behind each term. No term may be
    left without one.
+
+   **Every such list also gets one overview card**, always, in addition to
+   the per-term cards. The question names the group, its context and the
+   count: "Name the **five** criteria human evaluators rate responses on in
+   a structured review." The answer is the terms only, one bullet each,
+   bold, in the course's order — as many bullets as the list has, the
+   4-bullet limit does not apply here. The explanation gives each term a
+   few words of its definition. In the notes, the overview card id goes
+   behind the list's heading.
 5. The question must make sense out of context, months later, shuffled among
    1000 others: name the product ("in Microsoft Foundry", "in Azure AI
    Search"), never "according to this unit" or "the tool above".
@@ -197,7 +207,8 @@ You did not write these cards. Read the unit, its neighbours, this file and
    the unit (see rule 4 above) without looking at the generator's `Terms:`
    list, then check that each term is the answer or a correct option of a
    card. Add a card for every term that is missing, and correct the
-   `Terms:` list in the notes.
+   `Terms:` list in the notes. Every list of defined terms needs its
+   overview card ("Name the N …"); add the ones that are missing.
 7. Knowledge-check answers: re-derive them yourself; disagree → fix and note.
 
 Edit the card file in place, keep ids stable for cards that stay (renumber

@@ -425,5 +425,101 @@
     "question": "Your app must **read its text replies aloud** to users. Which type of model from the **Microsoft Foundry** catalog does that, with an example?",
     "answer": "A **text to speech model**, such as GPT-4o-tts.",
     "explanation": "Text to speech models convert text input into synthesized speech. Speech to text models such as GPT-4o-transcribe work in the opposite direction: they turn audio that contains speech into text transcriptions. The catalog lists the two directions as separate model types."
+  },
+  {
+    "id": "1.2.2-21",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog",
+      "billing"
+    ],
+    "question": "Name the **two** broad categories of models in the **Microsoft Foundry** model catalog.",
+    "answer": "- **Foundry Models sold directly by Azure**\n- **Foundry Models from partners and community**",
+    "explanation": "Sold directly by Azure: billed through your Azure subscription; Azure OpenAI models plus models from Microsoft and other providers. From partners and community: provided by trusted partners and the community, each with its own licensing and pricing."
+  },
+  {
+    "id": "1.2.2-22",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog"
+    ],
+    "question": "Name the **six** attributes you can filter the **Microsoft Foundry** model catalog by.",
+    "answer": "- **Collection**\n- **Capabilities**\n- **Source**\n- **Inference tasks**\n- **Fine-tuning methods**\n- **Industry**",
+    "explanation": "Collection: organized sets, such as models provided directly in Azure or the Hugging Face repository. Capabilities: abilities such as reasoning or tool calling. Source: the provider, such as Meta or Mistral. Inference tasks: jobs such as summarization or translation. Fine-tuning methods: supported fine-tuning techniques. Industry: models trained on industry-specific datasets.",
+    "explanation_images": [
+      {
+        "src": "media/ai-103/1.2.2-model-catalog.png",
+        "alt": "Foundry portal model catalog with the filter list Collections, Capabilities, Source, Inference tasks, Fine-tuning methods and Industry on the left"
+      }
+    ]
+  },
+  {
+    "id": "1.2.2-23",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-catalog"
+    ],
+    "question": "Name the **three** model abilities the **Microsoft Foundry** model catalog gives as values of its **Capabilities** filter.",
+    "answer": "- **Reasoning**\n- **Tool calling**\n- **Multimodal processing**",
+    "explanation": "Reasoning: complex problem-solving. Tool calling: integration with APIs and functions. Multimodal processing: handling text, images and audio. All three describe what a model can do; jobs such as summarization or translation sit under the Inference tasks filter instead."
+  },
+  {
+    "id": "1.2.2-24",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "llm",
+      "slm",
+      "model-choice"
+    ],
+    "question": "Name the **two** broad categories of language models you meet in the **Microsoft Foundry** model catalog, told apart by size.",
+    "answer": "- **Large Language Models (LLMs)**\n- **Small Language Models (SLMs)**",
+    "explanation": "LLMs such as GPT-5, Mistral Large or Llama 3 70B: deep reasoning, complex content generation and extensive context, at a higher compute cost. SLMs such as Phi-4, Mistral OSS models or Llama 3 8B: efficient and cost-effective for common NLP tasks, able to run on lower-end hardware or edge devices."
+  },
+  {
+    "id": "1.2.2-25",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "chat-completion",
+      "reasoning-models",
+      "model-choice"
+    ],
+    "question": "Name the **two** kinds of language models in the **Microsoft Foundry** catalog: one for conversation and content generation, one for complex problem-solving.",
+    "answer": "- **Chat completion models**\n- **Reasoning models**",
+    "explanation": "Chat completion models: most catalog language models; they generate coherent, contextually appropriate text for chat interfaces and content generation. Reasoning models such as Claude Opus 4.6: higher performance in mathematics, coding, science, strategy and logistics; they break complex problems down and show their reasoning process."
+  },
+  {
+    "id": "1.2.2-26",
+    "type": "basic",
+    "section": "1.2.2",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/2-explore-model-catalog",
+    "tags": [
+      "model-choice",
+      "model-catalog"
+    ],
+    "question": "Name the **six** types of task-specific (specialized) models in the **Microsoft Foundry** model catalog.",
+    "answer": "- **Embedding models**\n- **Image generation models**\n- **Video generation models**\n- **Image analysis models**\n- **Text to speech models**\n- **Speech to text models**",
+    "explanation": "Embedding (text-embedding-3-large): text into numbers for semantic search and RAG. Image generation (GPT-image-1): images from text. Video generation (Sora 2): video from text. Image analysis (GPT-4.1): text and image input, natural-language output. Text to speech (GPT-4o-tts): synthesized speech. Speech to text (GPT-4o-transcribe): audio into transcriptions."
   }
 ]

@@ -769,5 +769,110 @@
     "question": "Which four kinds of information does Microsoft Foundry's side-by-side model comparison show?",
     "answer": "- **Performance benchmarks**: quality, safety, throughput\n- **Model details**: context window, training data, languages\n- **Supported endpoints**: deployment options\n- **Feature support**: function calling, structured output, vision",
     "explanation": "The view opens after you tick two or three models in the leaderboard and choose Compare. It adds to the rankings: the leaderboard sorts by quality, safety, estimated cost and throughput, while the comparison also shows the details and capabilities each model brings."
+  },
+  {
+    "id": "1.2.3-38",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "Name the **two** places in the Microsoft Foundry portal where you explore model benchmarks.",
+    "answer": "- **Model leaderboard**\n- **Benchmarks tab**",
+    "explanation": "Model leaderboard: in the model catalog, comparative rankings across all models by quality, safety, estimated cost and throughput. Benchmarks tab: on one model's card, how that model performs across metrics and datasets, with charts placing it against similar models."
+  },
+  {
+    "id": "1.2.3-39",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "quality"
+    ],
+    "question": "Name the **eight** datasets Microsoft Foundry's quality benchmarks use to measure model quality.",
+    "answer": "- **Arena-Hard**\n- **BIG-Bench Hard**\n- **GPQA**\n- **HumanEval+**\n- **MBPP+**\n- **MATH**\n- **MMLU-Pro**\n- **IFEval**",
+    "explanation": "Arena-Hard: adversarial question answering. BIG-Bench Hard: reasoning. GPQA: graduate-level multi-discipline questions. HumanEval+ and MBPP+: code generation. MATH: mathematical reasoning. MMLU-Pro: general knowledge. IFEval: instruction following. Scores are normalized from 0 to 1, higher is better."
+  },
+  {
+    "id": "1.2.3-40",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "cost"
+    ],
+    "question": "Name the **three** cost benchmarks Microsoft Foundry shows for serverless API deployments and Azure OpenAI models.",
+    "answer": "- **Cost per input tokens**\n- **Cost per output tokens**\n- **Estimated cost**",
+    "explanation": "Cost per input tokens: price for 1 million tokens of the text you send. Cost per output tokens: price for 1 million tokens the model generates. Estimated cost: both combined at three input tokens per output token into one number; lower is more cost-effective."
+  },
+  {
+    "id": "1.2.3-41",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "latency"
+    ],
+    "question": "Name the **two** groups of measurements in Microsoft Foundry's performance benchmarks.",
+    "answer": "- **Latency**\n- **Throughput**",
+    "explanation": "Latency: how long a request takes — latency mean, P50 to P99 and time to first token. Throughput: how fast tokens flow — generated tokens per second, total tokens per second and time between tokens. The leaderboard summarizes them as mean time to first token (lower is better) and mean generated tokens per second (higher is better)."
+  },
+  {
+    "id": "1.2.3-42",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "latency"
+    ],
+    "question": "Name the **six** latency measurements in Microsoft Foundry's performance benchmarks.",
+    "answer": "- **Latency mean**\n- **Latency P50**\n- **Latency P90**\n- **Latency P95**\n- **Latency P99**\n- **Time to first token (TTFT)**",
+    "explanation": "Latency mean: average seconds per request. P50: the median; P90, P95, P99: the time that 90, 95 or 99 % of requests beat. TTFT: time until the first token arrives when streaming."
+  },
+  {
+    "id": "1.2.3-43",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "throughput"
+    ],
+    "question": "Name the **three** throughput measurements in Microsoft Foundry's performance benchmarks.",
+    "answer": "- **Generated tokens per second (GTPS)**\n- **Total tokens per second (TTPS)**\n- **Time between tokens**",
+    "explanation": "GTPS: output tokens generated per second. TTPS: input and output tokens processed per second, combined. Time between tokens: interval between receiving consecutive tokens."
+  },
+  {
+    "id": "1.2.3-44",
+    "type": "basic",
+    "section": "1.2.3",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/3-select-models-benchmarks",
+    "tags": [
+      "benchmarks",
+      "model-selection"
+    ],
+    "question": "Besides sorting the Microsoft Foundry model leaderboard by one metric, name the **three** features it offers to find the model that fits your requirements.",
+    "answer": "- **Scenario leaderboards**\n- **Trade-off charts**\n- **Side-by-side comparison**",
+    "explanation": "Scenario leaderboards: rankings for a use case such as reasoning, coding, math, question answering or groundedness. Trade-off charts: two metrics plotted at once, quality against cost, throughput or safety. Side-by-side comparison: two or three ticked models compared across benchmarks, model details, endpoints and features."
   }
 ]

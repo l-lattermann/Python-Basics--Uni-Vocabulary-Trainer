@@ -126,8 +126,8 @@
     "origin": "generated",
     "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
     "tags": ["model-selection", "benchmarks", "foundry-portal"],
-    "question": "In the trade-off chart of the Microsoft Foundry model leaderboard, which metrics can you choose from the dropdown to set against model quality?",
-    "answer": "**Benchmark Cost**, **Throughput** and **Safety**.",
+    "question": "In the trade-off chart of the Microsoft Foundry model leaderboard, which **three** metrics can you choose from the dropdown to set against model quality?",
+    "answer": "- **Benchmark Cost**\n- **Throughput**\n- **Safety**",
     "explanation": "Each choice shows how quality relates to one more dimension: Benchmark Cost to price, Throughput to throughput scores, Safety to safety scores. The model list beside the chart decides which models are compared, for example gpt-5.2 against gpt-5-mini, and you can add further models.",
     "addition": "Current docs call the dropdown **Compare quality against**, with the choices estimated cost, throughput or safety.",
     "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/benchmark-model-in-catalog"
@@ -205,5 +205,31 @@
     "question": "In the Microsoft Foundry **Create new evaluation** wizard, where do you set the instructions the evaluated model runs with, for example \"You are a helpful travel assistant…\"?",
     "answer": "The **Developer** prompt in the **Configure models** step.",
     "explanation": "Every dataset row is sent to the model during the evaluation, so it should run with the role it will have in your app. The developer prompt gives it that role; the other values of the step can stay at their defaults. The step comes after Data and before Criteria."
+  },
+  {
+    "id": "1.2.7-17",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "plan",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["model-selection", "benchmarks", "foundry-portal"],
+    "question": "You select two models in the Microsoft Foundry model leaderboard table and choose **Compare models**. Name the **five** kinds of data the side-by-side comparison shows.",
+    "answer": "- **Performance benchmarks**\n- **Input and output**\n- **Context**\n- **Endpoints**\n- **Supported features**",
+    "explanation": "Performance benchmarks: quality, safety and throughput scores. Input and output: the formats supported for prompts and responses. Context: tokens kept in a conversation and produced as output, plus the training date. Endpoints: the APIs client apps consume the model through, and whether an agent can use it. Supported features: specific capabilities your scenario may require.",
+    "addition": "Current docs group the comparison into four tabs: **Performance benchmarks**, **Model details**, **Supported endpoints** and **Feature support**.",
+    "addition_source": "https://learn.microsoft.com/en-us/azure/foundry/how-to/benchmark-model-in-catalog"
+  },
+  {
+    "id": "1.2.7-18",
+    "type": "basic",
+    "section": "1.2.7",
+    "exam_area": "genai",
+    "origin": "generated",
+    "source_url": "https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/02-model-catalog-evaluation.html",
+    "tags": ["evaluation", "synthetic-data", "foundry-portal"],
+    "question": "In the Microsoft Foundry **Create new evaluation** wizard, you choose **Synthetic generation** as the dataset source and select **Generate**. Name the **five** settings you set for the generated dataset.",
+    "answer": "- **Name of the new dataset**\n- **Model**\n- **Number of rows**\n- **Prompt**\n- **Seed data**",
+    "explanation": "Name of the new dataset: what the generated dataset is saved as; the default is fine. Model: the deployment that writes the test questions. Number of rows: how many test inputs are generated, for example 45. Prompt: describes the data to generate, for example travel questions with safety tests. Seed data: optional sample data to start from; it can stay blank."
   }
 ]

@@ -4,3 +4,4 @@ legacy/src_and_data/vocabulary_backup
 progress/backups/
 __pycache__/
 .pytest_cache/
+progress/server.log

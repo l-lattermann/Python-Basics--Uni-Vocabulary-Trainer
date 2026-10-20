@@ -10,10 +10,16 @@ from the Microsoft Learn course with Claude Code (see [Decks](#decks)).
 
 ## Start
 
-Double-click `start_vocabtrainer.command`. It starts the server and opens
+Double-click `START.command`. It starts the server and opens
 `http://127.0.0.1:8642` in Firefox. Put Firefox in fullscreen — the page
 background matches the macOS dark window colour. Closing the terminal window
 stops the server.
+
+Without a terminal window: `python3 scripts/make_app.py` builds
+`AI-103 lernen.app` with its own icon **next to** this folder. Double-clicking
+it starts the server in the background (unless it already runs) and opens the
+browser; the server then runs until you log out or stop it
+(`pkill -f "python.* -m trainer"`). Its log is `progress/server.log`.
 
 Or from a terminal, in this folder:
 
